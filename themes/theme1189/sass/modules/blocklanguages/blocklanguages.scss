@@ -1,0 +1,81 @@
+@import "../../_theme_variables";
+
+#languages-block-top {
+  float: left;
+  border-right: 1px solid #e2e2e2;
+  position: relative;
+  margin-right: 10px;
+  span.firstWord {
+    display: none;
+  }
+  div.current {
+    font: 300 10px/14px $font-family;
+    color: #888;
+    cursor: pointer;
+    text-transform: uppercase;
+    strong {
+      font-weight: 300;
+	  @media (max-width: $screen-xs - 1) {
+        display: none;
+      }
+    }
+    span {
+      color: #12afa3;
+      padding-left: 3px;
+    }
+    &:hover, &.active {
+      span {
+        color: #888;
+      }
+    }
+    &:after {
+      content: "\f107";
+      font-family: $font-icon;
+      font-size: 10px;
+      line-height: 14px;
+      color: #888;
+      padding: 0 10px 0 6px;
+    }
+    &.active {
+      &:after {
+        content: "\f106";
+      }
+    }
+    .cur-label {
+      // max 479px
+      @media (max-width: $screen-xs - 1) {
+        display: none;
+      }
+    }
+  }
+  ul {
+    display: none;
+    position: absolute;
+    top: 17px;
+    left: 0;
+    width: 150px;
+    background: #fff;
+    z-index: 2;
+    box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15);
+    li {
+      font: 300 12px/22px $font-family;
+      text-transform: uppercase;
+      border-bottom: 1px solid #DDDDDD;
+      &:last-child {
+        border-bottom: none;
+      }
+      a,
+      > span {
+        padding: 0 5px 0 10px;
+        display: block;
+        color: #333;
+      }
+      &.selected, &:hover a {
+        box-shadow: inset 0 0px 15px rgba(0,0,0,0.18);
+        -moz-box-shadow: inset 0 0px 15px rgba(0,0,0,0.18);
+        -webkit-box-shadow: inset 0 0px 15px rgba(0,0,0,0.18);
+      }
+    }
+  }
+}

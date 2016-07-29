@@ -1,0 +1,99 @@
+@import "../../../_theme_variables";
+
+#header-login {
+  position: relative;
+  float: right;
+  .header_user_info {
+    float: right;
+    line-height: 14px;
+	@media (max-width:$screen-sm-max){line-height:11px;}
+    a {
+      font: 300 10px/14px $font-family;
+      color: #888;
+      padding-left: 10px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    &.current {
+      a {
+        &:after {
+          content: "\f107";
+          font-family: $font-icon;
+          font-size: 10px;
+          line-height: 14px;
+          color: #888;
+          padding-left: 6px;
+        }
+        &:hover {
+          color: #12afa3;
+        }
+      }
+      &.active a:after {
+        content: "\f106";
+      }
+    }
+  }
+  .logout {
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+}
+
+#header-login-content {
+  display: none;
+  width: 270px;
+  padding: 15px;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 25px;
+  z-index: 1;
+  background: #fff;
+  color: #888;
+  box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15);
+  label {
+    font: 300 14px/normal $font-family;
+    color: #888;
+  }
+  li {
+    margin: 0;
+    padding: 0;
+    ul {
+      margin: 0 0 10px 0;
+      li {
+        display: block;
+        border-top: 1px solid rgba(0, 0, 0, 0.4);
+        line-height: 35px;
+        &:first-child {
+          border: none;
+        }
+        a {
+          font: 300 14px/22px $font-family;
+          color: #888;
+          padding: 3px 10px;
+          display: block;
+          &:hover {
+            background: #12afa3;
+			color: #fff;
+            color: #ffffff;
+          }
+          i {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .btn.btn-default{
+	&:hover, &:active, &:active:focus, &:focus{
+		border-color: $slt;
+		background: #fff;
+		color: $slt;
+	}
+  }
+}
+
+#create_header_account_error {
+  padding: 8px;
+}

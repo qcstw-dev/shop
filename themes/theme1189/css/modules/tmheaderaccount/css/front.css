@@ -1,0 +1,75 @@
+#header-login {
+  position: relative;
+  float: right; }
+  #header-login .header_user_info {
+    float: right;
+    line-height: 14px; }
+    @media (max-width: 991px) {
+      #header-login .header_user_info {
+        line-height: 11px; } }
+    #header-login .header_user_info a {
+      font: 300 10px/14px Ubuntu, sans-serif;
+      color: #888;
+      padding-left: 10px;
+      cursor: pointer;
+      text-transform: uppercase; }
+    #header-login .header_user_info.current a:after {
+      content: "\f107";
+      font-family: "FontAwesome";
+      font-size: 10px;
+      line-height: 14px;
+      color: #888;
+      padding-left: 6px; }
+    #header-login .header_user_info.current a:hover {
+      color: #12afa3; }
+    #header-login .header_user_info.current.active a:after {
+      content: "\f106"; }
+  #header-login .logout {
+    overflow: hidden;
+    margin-bottom: 0; }
+
+#header-login-content {
+  display: none;
+  width: 270px;
+  padding: 15px;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 25px;
+  z-index: 1;
+  background: #fff;
+  color: #888;
+  box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15); }
+  #header-login-content label {
+    font: 300 14px/normal Ubuntu, sans-serif;
+    color: #888; }
+  #header-login-content li {
+    margin: 0;
+    padding: 0; }
+    #header-login-content li ul {
+      margin: 0 0 10px 0; }
+      #header-login-content li ul li {
+        display: block;
+        border-top: 1px solid rgba(0, 0, 0, 0.4);
+        line-height: 35px; }
+        #header-login-content li ul li:first-child {
+          border: none; }
+        #header-login-content li ul li a {
+          font: 300 14px/22px Ubuntu, sans-serif;
+          color: #888;
+          padding: 3px 10px;
+          display: block; }
+          #header-login-content li ul li a:hover {
+            background: #12afa3;
+            color: #fff;
+            color: #ffffff; }
+          #header-login-content li ul li a i {
+            display: none; }
+  #header-login-content .btn.btn-default:hover, #header-login-content .btn.btn-default:active, #header-login-content .btn.btn-default:active:focus, #header-login-content .btn.btn-default:focus {
+    border-color: #12afa3;
+    background: #fff;
+    color: #12afa3; }
+
+#create_header_account_error {
+  padding: 8px; }

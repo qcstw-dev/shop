@@ -1,0 +1,35 @@
+
+[{shop_url}] 
+
+Hallo {firstname} {lastname},
+
+Vielen Dank für Ihre Bestellung bei {shop_name}! 
+
+Ihre Bestellung (Nr. {order_name}) wurde erfolgreich aufgenommen
+und wird, SOBALD DIE ZAHLUNG EINGEGANGEN IST, versendet. 
+
+Bitte beachten Sie, dass Sie die Banküberweisung für Ihre Zahlung
+gewählt haben. 
+
+Die Banküberweisung muss folgende Angaben enthalten:
+
+BETRAG: {total_paid}
+
+KONTOINHABER: {bankwire_owner}
+
+KONTO: {bankwire_details}
+
+ANSCHRIFT DER BANK: {bankwire_address} 		 
+
+You can review your order and download your invoice from the
+"Order history" [{history_url}] section of your
+customer account by clicking "My account"
+[{my_account_url}] on our shop. 
+
+If you have a guest account, you can follow your order via the
+"Guest Tracking" [{guest_tracking_url}] section on
+our shop. 
+
+{shop_name} [{shop_url}] powered by
+PrestaShop(tm) [http://www.prestashop.com/] 
+

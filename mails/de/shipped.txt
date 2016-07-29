@@ -1,0 +1,19 @@
+
+[{shop_url}] 
+
+Hallo {firstname} {lastname},
+
+Your order has been shipped 
+
+Ihre Bestellung Nr. {order_name} wurde versendet.
+
+Vielen Dank für Ihre Bestellung bei {shop_name}! 		 
+
+You can review your order and download your invoice from the
+"Order history" [{history_url}] section of your
+customer account by clicking "My account"
+[{my_account_url}] on our shop. 
+
+{shop_name} [{shop_url}] powered by
+PrestaShop(tm) [http://www.prestashop.com/] 
+

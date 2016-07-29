@@ -1,0 +1,16 @@
+ul.product_list .product-image-container img {background-color:#fff;}
+.gallery-thumb-list {
+	overflow:hidden;
+	margin:5px 0 0 -5px;	
+}
+.gallery-thumb-list li {
+	float:left;
+	padding-left:5px;
+	width:25%;	
+}
+.gallery-thumb-list li a img {
+	border:1px solid #d6d4d4;	
+}
+.gallery-thumb-list li.active a img {
+	border-color:#000;	
+}

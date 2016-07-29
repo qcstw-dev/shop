@@ -1,0 +1,20 @@
+
+[{shop_url}] 
+
+Hola {firstname} {lastname}, 
+
+Your guest account for {shop_name} has been transformed into a
+customer account. 
+
+E-MAIL ADDRESS: {email}
+
+PASSWORD: {passwd} 		 
+
+No comparta los detalles de su cuenta con otras personas. 
+
+Puede acceder con su cuenta a través de nuestra página web:
+{shop_url} 
+
+{shop_name} [{shop_url}] powered by
+PrestaShop(tm) [http://www.prestashop.com/] 
+

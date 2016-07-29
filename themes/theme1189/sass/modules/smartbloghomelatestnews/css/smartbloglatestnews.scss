@@ -1,0 +1,118 @@
+@import "../../../_theme_variables";
+
+.blog-image {
+	margin-bottom:15px;
+	float: left;
+	margin-right: 19px;
+	@media (min-width:$screen-md) and (max-width:$screen-md-max){margin-right:15px;}
+	@media (max-width:$screen-sm-max){float:none;}
+	a {
+		display:block;
+		@include blog-image;
+	}
+	img{
+		@media (max-width:$screen-xs - 1){margin:0 auto;}
+	}
+}
+
+#homepage-blog {
+ 	 margin-top: 31px;
+	.title_block {
+	  border: none;
+	  background: none;
+	  text-align: center;
+	  position: relative;
+	  margin: 0 0 6px 0;
+	  padding: 14px 10px 17px;
+	  &:before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background: #e2e2e2;
+	  }
+	  &:after {
+		display:none;
+	  }
+	  a {
+		font: 300 18px/28px $font-family;
+		color: #888888;
+		padding: 10px 23px;
+		background: #ffffff;
+		position: relative;
+		z-index: 1;
+		&:hover {
+		  color: $slt;
+		}
+	  }
+	}
+	li {
+		width: 50%;
+		@media (min-width:$screen-lg){padding-right:35px;}
+		@media (max-width:$screen-xs - 1){width:100%;margin-bottom:35px;text-align:center;}
+		.date-added{
+			margin: 16px 0 17px;
+			@media (max-width:$screen-md-max){margin-top:0;}
+			span{
+				display: inline-block;
+				background: #f2f2f2;
+				color: $slt;
+				font-weight: 300;
+				font-size: 10px;
+				line-height: 14px;
+				padding: 3px 9px;
+			}
+		}
+		h5{
+			font: 300 14px/16px $font-family;
+			text-transform: uppercase;
+			color: $slt;
+			margin: 10px 0 12px;
+			@media (max-width:$screen-md-max){margin-bottom:5px;}
+			a{
+				color: $slt;
+				-webkit-transition: color 0.2s ease;
+				-moz-transition: color 0.2s ease;
+				-ms-transition: color 0.2s ease;
+				-o-transition: color 0.2s ease;
+				transition: color 0.2s ease;
+				&:hover{
+					color: #24918a;
+				}
+			}
+		}
+		.post-descr{
+			font: 300 12px/20px $font-family;
+			color: #888;
+			margin: 0 0 10px;
+		}
+		.read_more{
+			font: 300 12px/20px $font-family;
+			color: $slt;
+			text-transform: uppercase;
+			-webkit-transition: color 0.2s ease;
+			-moz-transition: color 0.2s ease;
+			-ms-transition: color 0.2s ease;
+			-o-transition: color 0.2s ease;
+			transition: color 0.2s ease;
+			&:after{
+				content: "\F101";
+				font-family: $font-icon;
+				padding-left: 5px;
+				-webkit-transition: all 0.2s ease;
+				-moz-transition: all 0.2s ease;
+				-ms-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+			}
+			&:hover{
+				color: #24918a;
+				@media (min-width:$screen-xs){
+					&:after{padding-left:10px;}
+				}
+			}
+		}
+	}
+}
