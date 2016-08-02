@@ -27,6 +27,7 @@
           font-size: 28px; } }
     #homepage-slider .homeslider-description p {
       font: 300 30px/normal Ubuntu, sans-serif;
+      text-align: center;
       color: #888;
       margin: 0; }
       @media (max-width: 479px) {
@@ -44,9 +45,11 @@
   left: 0;
   top: 0; }
 #homepage-slider .homeslider-description {
-  position: absolute;
-  right: 145px;
-  bottom: 190px; }
+    position: absolute;
+    bottom: 35px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.75);
+}
   @media (max-width: 1199px) {
     #homepage-slider .homeslider-description {
       right: auto;

@@ -2944,6 +2944,7 @@ tbody.collapse.in {
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 20px;
+  margin-top: 20px;
   list-style: none;
   background-color: whitesmoke;
   border-radius: 0; }
@@ -5730,8 +5731,7 @@ sup, .required {
 
 #columns {
   position: relative;
-  padding-bottom: 50px;
-  padding-top: 15px; }
+  padding-bottom: 50px; }
 
 #index .tab-content {
   margin-top: 26px; }
@@ -5746,8 +5746,7 @@ sup, .required {
 header {
   z-index: 1;
   position: relative;
-  background: white;
-  padding-bottom: 15px; }
+  background: white; }
   header .banner {
     background: black;
     max-height: 100%; }

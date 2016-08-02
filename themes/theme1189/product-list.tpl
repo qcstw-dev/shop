@@ -1,5 +1,4 @@
 {if isset($products) && $products}
-
     {*define number of products per line in other page for desktop*}
     {if $page_name !='category'}
         {if ($hide_left_column || $hide_right_column) && ($hide_left_column !='true' || $hide_right_column !='true')}     {* left or right column *}
@@ -75,7 +74,7 @@
                 <span class="list-desc">{$product.description_short|strip_tags:'UTF-8'|truncate:360:'...'}</span>
                 <span class="grid-desc">{$product.description_short|strip_tags:'UTF-8'|truncate:40:'...'}</span>
             </p>
-            {if (!$PS_CATALOG_MODE && ((isset($product.show_price) && $product.show_price) || (isset($product.available_for_order) && $product.available_for_order)))}
+            {if (!$PS_CATALOG_MODE && $product.category != 'designs' && ((isset($product.show_price) && $product.show_price) || (isset($product.available_for_order) && $product.available_for_order)))}
                 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="content_price">
                     {if isset($product.show_price) && $product.show_price && !isset($restricted_country_mode)}
                         <span itemprop="price" class="price product-price{if isset($product.specific_prices) && $product.specific_prices && isset($product.specific_prices.reduction) && $product.specific_prices.reduction > 0} product-price-new{/if}">
@@ -100,7 +99,8 @@
     <div class="hovBox">
         {hook h='displayProductListReviews' product=$product}
         <div class="button-container">
-            {if ($product.id_product_attribute == 0 || (isset($add_prod_display) && ($add_prod_display == 1))) && $product.available_for_order && !isset($restricted_country_mode) && $product.customizable != 2 && !$PS_CATALOG_MODE}
+            {*{We avoid to display cart button adding a condition if 'false' }*}
+            {if false && (($product.id_product_attribute == 0 || (isset($add_prod_display) && ($add_prod_display == 1))) && $product.available_for_order && !isset($restricted_country_mode) && $product.customizable != 2 && !$PS_CATALOG_MODE)}
                 {if (!isset($product.customization_required) || !$product.customization_required) && ($product.allow_oosp || $product.quantity > 0)}
                 {capture}add=1&amp;id_product={$product.id_product|intval}{if isset($static_token)}&amp;token={$static_token}{/if}{/capture}
                 <a class="ajax_add_to_cart_button btn btn-default" href="{$link->getPageLink('cart', true, NULL, $smarty.capture.default, false)|escape:'html':'UTF-8'}" rel="nofollow" title="{l s='Add to cart'}" data-id-product="{$product.id_product|intval}" data-minimal_quantity="{if isset($product.product_attribute_minimal_quantity) && $product.product_attribute_minimal_quantity > 1}{$product.product_attribute_minimal_quantity|intval}{else}{$product.minimal_quantity|intval}{/if}">

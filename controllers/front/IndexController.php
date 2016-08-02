@@ -37,12 +37,18 @@ class IndexControllerCore extends FrontController
         parent::initContent();
         $this->addJS(_THEME_JS_DIR_.'index.js');
         
-        $products = Product::getProducts($this->context->language->id, 0, 0, 'date_upd', 'DESC', '46', true );
+        $oDesignCategory = new Category('45', $this->context->language->id);
+        $oProductCategory = new Category('46', $this->context->language->id);
+        
+        $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
+        $aBlankProducts = $oProductCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
         
         $this->context->smarty->assign(array('HOOK_HOME' => Hook::exec('displayHome'),
-            'HOOK_HOME_TAB' => Hook::exec('displayHomeTab'),
+            'HOOK_HOME_TAB'         => Hook::exec('displayHomeTab'),
             'HOOK_HOME_TAB_CONTENT' => Hook::exec('displayHomeTabContent'),
-            'products' => $products
+            'aBlankProducts'        => $aBlankProducts,
+            'aDesigns'              => $aDesigns,
+            'link'                  => $this->context->link
         ));
         $this->setTemplate(_PS_THEME_DIR_.'index.tpl');
     }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 02 Août 2016 à 06:54
+-- Généré le :  Mar 02 Août 2016 à 10:04
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.19
 
@@ -826,7 +826,7 @@ INSERT INTO `ps_advice` (`id_advice`, `id_ps_advice`, `id_tab`, `ids_tab`, `vali
 (24, 682, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
 (25, 690, 1, NULL, 1, 0, 'after', '#dashtrends', 0, 0, 1),
 (26, 696, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
-(27, 698, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
+(27, 698, 1, NULL, 0, 0, 'after', '.dash_news', 0, 0, 1),
 (28, 708, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
 (29, 730, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
 (30, 731, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
@@ -3151,12 +3151,13 @@ CREATE TABLE `ps_category` (
 --
 
 INSERT INTO `ps_category` (`id_category`, `id_parent`, `id_shop_default`, `level_depth`, `nleft`, `nright`, `active`, `date_add`, `date_upd`, `position`, `is_root_category`) VALUES
-(1, 0, 1, 0, 1, 12, 1, '2016-07-29 08:54:13', '2016-07-29 08:54:13', 0, 0),
-(2, 1, 1, 1, 2, 11, 1, '2016-07-29 08:54:13', '2016-07-29 08:54:13', 0, 1),
+(1, 0, 1, 0, 1, 14, 1, '2016-07-29 08:54:13', '2016-07-29 08:54:13', 0, 0),
+(2, 1, 1, 1, 2, 13, 1, '2016-07-29 08:54:13', '2016-07-29 08:54:13', 0, 1),
 (45, 2, 1, 2, 3, 4, 1, '2016-08-01 04:38:14', '2016-08-01 05:00:20', 0, 0),
-(46, 2, 1, 2, 5, 10, 1, '2016-08-01 04:39:03', '2016-08-01 05:00:20', 1, 0),
+(46, 2, 1, 2, 5, 12, 1, '2016-08-01 04:39:03', '2016-08-01 05:00:20', 1, 0),
 (47, 46, 1, 3, 6, 7, 1, '2016-08-01 05:28:06', '2016-08-01 05:35:20', 0, 0),
-(48, 46, 1, 3, 8, 9, 1, '2016-08-01 05:28:25', '2016-08-01 05:36:10', 1, 0);
+(48, 46, 1, 3, 8, 9, 1, '2016-08-01 05:28:25', '2016-08-01 05:36:10', 1, 0),
+(49, 46, 1, 3, 10, 11, 1, '2016-08-02 05:00:11', '2016-08-02 05:00:11', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -3189,7 +3190,10 @@ INSERT INTO `ps_category_group` (`id_category`, `id_group`) VALUES
 (47, 3),
 (48, 1),
 (48, 2),
-(48, 3);
+(48, 3),
+(49, 1),
+(49, 2),
+(49, 3);
 
 -- --------------------------------------------------------
 
@@ -3243,7 +3247,12 @@ INSERT INTO `ps_category_lang` (`id_category`, `id_shop`, `id_lang`, `name`, `de
 (48, 1, 2, 'Plastic injection', '', 'plastic-injection', '', '', ''),
 (48, 1, 3, 'Plastic injection', '', 'plastic-injection', '', '', ''),
 (48, 1, 4, 'Plastic injection', '', 'plastic-injection', '', '', ''),
-(48, 1, 5, 'Plastic injection', '', 'plastic-injection', '', '', '');
+(48, 1, 5, 'Plastic injection', '', 'plastic-injection', '', '', ''),
+(49, 1, 1, 'Aluminium', '', 'aluminium', '', '', ''),
+(49, 1, 2, 'Aluminium', '', 'aluminium', '', '', ''),
+(49, 1, 3, 'Aluminium', '', 'aluminium', '', '', ''),
+(49, 1, 4, 'Aluminium', '', 'aluminium', '', '', ''),
+(49, 1, 5, 'Aluminium', '', 'aluminium', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -3262,12 +3271,18 @@ CREATE TABLE `ps_category_product` (
 --
 
 INSERT INTO `ps_category_product` (`id_category`, `id_product`, `position`) VALUES
+(45, 24, 0),
+(45, 25, 1),
+(45, 26, 2),
+(45, 27, 3),
 (46, 21, 0),
 (46, 22, 1),
 (46, 23, 2),
+(46, 28, 3),
 (47, 22, 0),
 (47, 23, 1),
-(48, 21, 0);
+(48, 21, 0),
+(49, 28, 0);
 
 -- --------------------------------------------------------
 
@@ -3291,7 +3306,8 @@ INSERT INTO `ps_category_shop` (`id_category`, `id_shop`, `position`) VALUES
 (45, 1, 0),
 (46, 1, 1),
 (47, 1, 0),
-(48, 1, 1);
+(48, 1, 1),
+(49, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -3588,6 +3604,13 @@ CREATE TABLE `ps_compare` (
   `id_customer` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Contenu de la table `ps_compare`
+--
+
+INSERT INTO `ps_compare` (`id_compare`, `id_customer`) VALUES
+(1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -3600,6 +3623,14 @@ CREATE TABLE `ps_compare_product` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `ps_compare_product`
+--
+
+INSERT INTO `ps_compare_product` (`id_compare`, `id_product`, `date_add`, `date_upd`) VALUES
+(1, 22, '2016-08-02 17:40:17', '2016-08-02 17:40:17'),
+(1, 23, '2016-08-02 17:40:02', '2016-08-02 17:40:02');
 
 -- --------------------------------------------------------
 
@@ -3632,11 +3663,11 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (3, 19, 'install', '', '>', '0', '1', 'time', '1', 1, '2016-08-01 23:13:14', '2016-08-01 23:13:14'),
 (4, 40, 'install', '', '>=', '730', '', 'time', '2', 0, '2016-08-01 23:13:14', '2016-08-01 23:13:14'),
 (5, 324, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like "%shoppingfluxexport%" ', '==', '0', '0', 'time', '1', 1, '2016-08-01 23:13:14', '2016-08-01 23:13:14'),
-(6, 399, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE "demo_%"', '>', '499', '3', 'hook', 'actionObjectProductAddAfter', 0, '2016-08-01 23:13:14', '2016-08-01 23:13:14'),
+(6, 399, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE "demo_%"', '>', '499', '8', 'hook', 'actionObjectProductAddAfter', 0, '2016-08-01 23:13:14', '2016-08-02 04:54:44'),
 (7, 323, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like "%shoppingfluxexport%" ', '>=', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2016-08-01 23:13:14', '2016-08-02 00:12:47'),
 (8, 521, 'sql', 'SELECT COUNT( id_module ) FROM PREFIX_module WHERE `name` like "%simplifycommerce%"', '==', '1', '0', 'hook', 'actionModuleInstallAfter', 0, '2016-08-01 23:13:14', '2016-08-02 00:12:47'),
 (9, 55, 'sql', 'SELECT COUNT(*) FROM ps_orders WHERE reference NOT IN ("XKBKNABJK", "OHSATSERP", "FFATNOMMJ", "UOYEVOLI", "KHWLILZLL")', '>=', '100', '', 'hook', 'actionObjectOrderAddAfter', 0, '2016-08-01 23:13:14', '2016-08-01 23:13:14'),
-(10, 12, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE "demo_%"', '>', '99', '3', 'hook', 'actionObjectProductAddAfter', 0, '2016-08-01 23:13:14', '2016-08-01 23:13:14'),
+(10, 12, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE "demo_%"', '>', '99', '8', 'hook', 'actionObjectProductAddAfter', 0, '2016-08-01 23:13:14', '2016-08-02 04:54:44'),
 (11, 39, 'install', '', '>=', '365', '', 'time', '2', 0, '2016-08-01 23:13:14', '2016-08-01 23:13:14'),
 (12, 132, 'sql', 'SELECT count(id_configuration) FROM PREFIX_configuration WHERE `name` = \'PS_SHOP_DOMAIN\' AND value IN (\'127.0.0.1\', \'localhost\' )', '==', '1', '1', 'time', '1', 1, '2016-08-01 23:13:14', '2016-08-01 23:13:14'),
 (13, 175, 'sql', 'SELECT count(*) FROM	 PREFIX_configuration WHERE name = \'PS_HOSTED_MODE\'', '==', '0', '0', 'time', '1', 1, '2016-08-01 23:13:14', '2016-08-01 23:13:14'),
@@ -3657,9 +3688,9 @@ INSERT INTO `ps_condition` (`id_condition`, `id_ps_condition`, `type`, `request`
 (28, 16, 'configuration', 'PS_SHOP_PHONE', '!=', '0', '', 'hook', 'actionAdminStoresControllerUpdate_optionsAfter', 0, '2016-08-01 23:13:15', '2016-08-01 23:13:15'),
 (29, 17, 'sql', 'SELECT COUNT(*) FROM PREFIX_contact', '>', '2', '', 'hook', 'actionObjectContactAddAfter', 0, '2016-08-01 23:13:15', '2016-08-01 23:13:15'),
 (30, 18, 'sql', 'SELECT COUNT(*) FROM PREFIX_contact', '>', '4', '', 'hook', 'actionObjectContactAddAfter', 0, '2016-08-01 23:13:15', '2016-08-01 23:13:15'),
-(31, 13, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE "demo_%"', '>', '999', '3', 'hook', 'actionObjectProductAddAfter', 0, '2016-08-01 23:13:15', '2016-08-01 23:13:15'),
-(32, 14, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE "demo_%"', '>', '9999', '3', 'hook', 'actionObjectProductAddAfter', 0, '2016-08-01 23:13:15', '2016-08-01 23:13:15'),
-(33, 15, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE "demo_%"', '>', '99999', '3', 'hook', 'actionObjectProductAddAfter', 0, '2016-08-01 23:13:15', '2016-08-01 23:13:15'),
+(31, 13, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE "demo_%"', '>', '999', '8', 'hook', 'actionObjectProductAddAfter', 0, '2016-08-01 23:13:15', '2016-08-02 04:54:44'),
+(32, 14, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE "demo_%"', '>', '9999', '8', 'hook', 'actionObjectProductAddAfter', 0, '2016-08-01 23:13:15', '2016-08-02 04:54:44'),
+(33, 15, 'sql', 'SELECT COUNT(*) FROM PREFIX_product WHERE reference NOT LIKE "demo_%"', '>', '99999', '8', 'hook', 'actionObjectProductAddAfter', 0, '2016-08-01 23:13:15', '2016-08-02 04:54:44'),
 (34, 20, 'install', '', '>=', '7', '', 'time', '1', 0, '2016-08-01 23:13:15', '2016-08-02 00:00:11'),
 (35, 21, 'configuration', 'PS_LOGO', '!=', 'logo.jpg', '1', 'hook', 'actionAdminThemesControllerUpdate_optionsAfter', 1, '2016-08-01 23:13:15', '2016-08-01 23:13:15'),
 (36, 22, 'sql', 'SELECT COUNT(*) FROM PREFIX_theme WHERE directory != "default" AND directory != "prestashop" AND directory ! "default-bootstrap"', '>', '0', '0', 'hook', 'actionObjectShopUpdateAfter', 0, '2016-08-01 23:13:15', '2016-08-01 23:13:15'),
@@ -4371,7 +4402,7 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (151, NULL, NULL, 'PS_VIRTUAL_PROD_FEATURE_ACTIVE', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (152, NULL, NULL, 'PS_CUSTOMIZATION_FEATURE_ACTIVE', NULL, '0000-00-00 00:00:00', '2016-08-01 03:29:05'),
 (153, NULL, NULL, 'PS_CART_RULE_FEATURE_ACTIVE', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(154, NULL, NULL, 'PS_PACK_FEATURE_ACTIVE', NULL, '0000-00-00 00:00:00', '2016-08-02 01:38:41'),
+(154, NULL, NULL, 'PS_PACK_FEATURE_ACTIVE', NULL, '0000-00-00 00:00:00', '2016-08-02 05:02:57'),
 (155, NULL, NULL, 'PS_ALIAS_FEATURE_ACTIVE', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (156, NULL, NULL, 'PS_TAX_ADDRESS_TYPE', 'id_address_delivery', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (157, NULL, NULL, 'PS_SHOP_DEFAULT', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -4605,15 +4636,15 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (385, NULL, NULL, 'smartshowrecentpost', '5', '2016-07-29 09:05:49', '2016-07-29 09:05:49'),
 (386, NULL, NULL, 'smartshowrelatedpost', '5', '2016-07-29 09:05:51', '2016-07-29 09:05:51'),
 (387, NULL, NULL, 'smartshowposttag', '5', '2016-07-29 09:05:54', '2016-07-29 09:05:54'),
-(388, NULL, NULL, 'TMTWITTERFEED_ID', NULL, '2016-07-29 09:06:02', '2016-07-29 09:23:16'),
-(389, NULL, NULL, 'TMFACEBOOK_ID', 'https://www.facebook.com/TemplateMonster', '2016-07-29 09:06:02', '2016-07-29 09:23:16'),
-(390, NULL, NULL, 'TMPINTEREST_ID', NULL, '2016-07-29 09:06:02', '2016-07-29 09:23:17'),
-(391, NULL, NULL, 'TMINSTAGRAM_ID', NULL, '2016-07-29 09:06:02', '2016-07-29 09:23:17'),
-(392, NULL, NULL, 'TMINSTAGRAM_USERNAME', NULL, '2016-07-29 09:06:02', '2016-07-29 09:23:17'),
-(393, NULL, NULL, 'TMINSTAGRAM_ACCESSTOKEN', NULL, '2016-07-29 09:06:02', '2016-07-29 09:23:17'),
-(394, NULL, NULL, 'TMINSTAGRAM_USERID', NULL, '2016-07-29 09:06:02', '2016-07-29 09:23:17'),
+(388, NULL, NULL, 'TMTWITTERFEED_ID', NULL, '2016-07-29 09:06:02', '2016-08-02 05:49:29'),
+(389, NULL, NULL, 'TMFACEBOOK_ID', 'https://www.facebook.com/QCS-ASIA-182231511328', '2016-07-29 09:06:02', '2016-08-02 05:49:29'),
+(390, NULL, NULL, 'TMPINTEREST_ID', NULL, '2016-07-29 09:06:02', '2016-08-02 05:49:29'),
+(391, NULL, NULL, 'TMINSTAGRAM_ID', NULL, '2016-07-29 09:06:02', '2016-08-02 05:49:29'),
+(392, NULL, NULL, 'TMINSTAGRAM_USERNAME', NULL, '2016-07-29 09:06:02', '2016-08-02 05:49:29'),
+(393, NULL, NULL, 'TMINSTAGRAM_ACCESSTOKEN', NULL, '2016-07-29 09:06:02', '2016-08-02 05:49:29'),
+(394, NULL, NULL, 'TMINSTAGRAM_USERID', NULL, '2016-07-29 09:06:02', '2016-08-02 05:49:29'),
 (395, NULL, NULL, 'TMINSTAGRAM_TYPE', 'tagged', '2016-07-29 09:06:02', '2016-07-29 09:23:17'),
-(396, NULL, NULL, 'TMINSTAGRAM_TAG', NULL, '2016-07-29 09:06:02', '2016-07-29 09:23:17'),
+(396, NULL, NULL, 'TMINSTAGRAM_TAG', NULL, '2016-07-29 09:06:02', '2016-08-02 05:49:29'),
 (397, NULL, NULL, 'CROSSSELLING_DISPLAY_PRICE', NULL, '2016-07-29 09:06:21', '2016-07-29 09:23:17'),
 (398, NULL, NULL, 'CROSSSELLING_NBR', '10', '2016-07-29 09:06:21', '2016-07-29 09:06:21'),
 (399, NULL, NULL, 'PRODUCTSCATEGORY_DISPLAY_PRICE', NULL, '2016-07-29 09:06:22', '2016-07-29 09:23:18'),
@@ -4658,7 +4689,7 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (441, NULL, NULL, 'PS_REFERRERS_CACHE_DATE', '2015-01-16 09:32:15', '2016-07-29 09:23:22', '2016-07-29 09:23:22'),
 (442, NULL, NULL, 'smartshowauthor', '1', '2016-07-29 09:23:22', '2016-07-29 09:23:22'),
 (443, NULL, NULL, 'PS_GRID_PRODUCT', NULL, '2016-07-29 09:23:22', '2016-07-29 09:23:22'),
-(444, NULL, NULL, 'PS_SHOW_CAT_MODULES_1', NULL, '2016-07-29 09:23:22', '2016-08-02 00:11:11'),
+(444, NULL, NULL, 'PS_SHOW_CAT_MODULES_1', NULL, '2016-07-29 09:23:22', '2016-08-02 03:41:55'),
 (445, NULL, NULL, 'PS_IMAGE_GENERATION_METHOD', NULL, '2016-07-29 09:23:22', '2016-07-29 09:23:22'),
 (446, NULL, NULL, 'smooth_scroll_on', '1', '2016-07-29 09:23:22', '2016-07-29 09:23:22'),
 (447, NULL, NULL, 'smooth_scroll_time', '330', '2016-07-29 09:23:22', '2016-07-29 09:23:22'),
@@ -4670,13 +4701,13 @@ INSERT INTO `ps_configuration` (`id_configuration`, `id_shop_group`, `id_shop`, 
 (453, NULL, NULL, 'FOOTER_CMS_TEXT_3', NULL, '2016-07-29 09:23:23', '2016-07-29 09:23:23'),
 (454, NULL, NULL, 'FOOTER_CMS_TEXT_4', NULL, '2016-07-29 09:23:23', '2016-07-29 09:23:23'),
 (455, NULL, NULL, 'FOOTER_CMS_TEXT_5', NULL, '2016-07-29 09:23:23', '2016-07-29 09:23:23'),
-(456, NULL, NULL, 'TMTWITTERFEED_DISPLAY', NULL, '2016-07-29 09:23:23', '2016-07-29 09:23:23'),
+(456, NULL, NULL, 'TMTWITTERFEED_DISPLAY', '0', '2016-07-29 09:23:23', '2016-08-02 05:49:29'),
 (457, NULL, NULL, 'TMFACEBOOK_DISPLAY', '1', '2016-07-29 09:23:24', '2016-07-29 09:23:24'),
-(458, NULL, NULL, 'TMPINTEREST_DISPLAY', NULL, '2016-07-29 09:23:24', '2016-07-29 09:23:24'),
-(459, NULL, NULL, 'TMINSTAGRAM_DISPLAY', NULL, '2016-07-29 09:23:24', '2016-07-29 09:23:24'),
+(458, NULL, NULL, 'TMPINTEREST_DISPLAY', '0', '2016-07-29 09:23:24', '2016-08-02 05:49:29'),
+(459, NULL, NULL, 'TMINSTAGRAM_DISPLAY', '0', '2016-07-29 09:23:24', '2016-08-02 05:49:29'),
 (461, NULL, NULL, 'PS_SHOW_TYPE_MODULES_1', 'allModules', '2016-07-29 03:43:08', '2016-07-29 03:43:08'),
 (462, NULL, NULL, 'PS_SHOW_INSTALLED_MODULES_1', 'installedUninstalled', '2016-07-29 03:43:08', '2016-08-01 05:44:45'),
-(463, NULL, NULL, 'PS_SHOW_ENABLED_MODULES_1', 'enabledDisabled', '2016-07-29 03:43:08', '2016-08-02 01:43:48'),
+(463, NULL, NULL, 'PS_SHOW_ENABLED_MODULES_1', 'enabledDisabled', '2016-07-29 03:43:08', '2016-08-02 05:47:55'),
 (464, NULL, NULL, 'PS_CCCJS_VERSION', '1', '2016-08-01 04:46:44', '2016-08-01 04:46:44'),
 (465, NULL, NULL, 'PS_CCCCSS_VERSION', '1', '2016-08-01 04:46:44', '2016-08-01 04:46:44'),
 (466, NULL, NULL, 'PS_HTACCESS_DISABLE_MULTIVIEWS', '0', '2016-08-01 05:16:34', '2016-08-01 05:16:34'),
@@ -4751,35 +4782,35 @@ INSERT INTO `ps_configuration_kpi` (`id_configuration_kpi`, `id_shop_group`, `id
 (35, NULL, NULL, 'DASHGOALS_CONVERSION_12_2016', '2', '2016-07-29 08:57:52', '2016-07-29 08:57:52'),
 (36, NULL, NULL, 'DASHGOALS_AVG_CART_VALUE_12_2016', '80', '2016-07-29 08:57:52', '2016-07-29 08:57:52'),
 (37, NULL, NULL, 'UPDATE_MODULES', '0', '2016-07-29 03:42:24', '2016-08-01 05:46:11'),
-(38, NULL, NULL, 'INSTALLED_MODULES', '85', '2016-07-29 03:42:27', '2016-08-02 01:28:29'),
-(39, NULL, NULL, 'DISABLED_MODULES', '2', '2016-07-29 03:42:27', '2016-08-02 01:28:29'),
-(40, NULL, NULL, 'INSTALLED_MODULES_EXPIRE', '1470119062', '2016-07-29 03:42:27', '2016-08-02 02:22:22'),
-(41, NULL, NULL, 'DISABLED_MODULES_EXPIRE', '1470120802', '2016-07-29 03:42:27', '2016-08-02 02:51:22'),
-(42, NULL, NULL, 'UPDATE_MODULES_EXPIRE', '1470120804', '2016-07-29 03:42:29', '2016-08-02 02:51:24'),
+(38, NULL, NULL, 'INSTALLED_MODULES', '83', '2016-07-29 03:42:27', '2016-08-02 04:33:14'),
+(39, NULL, NULL, 'DISABLED_MODULES', '4', '2016-07-29 03:42:27', '2016-08-02 04:33:14'),
+(40, NULL, NULL, 'INSTALLED_MODULES_EXPIRE', '1470131384', '2016-07-29 03:42:27', '2016-08-02 05:47:44'),
+(41, NULL, NULL, 'DISABLED_MODULES_EXPIRE', '1470131384', '2016-07-29 03:42:27', '2016-08-02 05:47:44'),
+(42, NULL, NULL, 'UPDATE_MODULES_EXPIRE', '1470131386', '2016-07-29 03:42:29', '2016-08-02 05:47:46'),
 (43, NULL, NULL, 'PRODUCT_AVG_GROSS_MARGIN', '0%', '2016-07-29 03:44:56', '2016-08-01 23:14:01'),
 (44, NULL, NULL, 'PERCENT_PRODUCT_OUT_OF_STOCK', '0%', '2016-07-29 03:44:56', '2016-07-29 03:44:56'),
 (45, NULL, NULL, '8020_SALES_CATALOG', '0% of your Catalog', '2016-07-29 03:44:56', '2016-07-29 03:44:56'),
 (46, NULL, NULL, 'DISABLED_PRODUCTS', '0%', '2016-07-29 03:44:56', '2016-07-29 03:44:56'),
-(47, NULL, NULL, 'PRODUCT_AVG_GROSS_MARGIN_EXPIRE', '1470129242', '2016-07-29 03:44:56', '2016-08-01 23:14:02'),
+(47, NULL, NULL, 'PRODUCT_AVG_GROSS_MARGIN_EXPIRE', '1470151340', '2016-07-29 03:44:56', '2016-08-02 05:22:20'),
 (48, NULL, NULL, 'PERCENT_PRODUCT_OUT_OF_STOCK_EXPIRE', '1470049594', '2016-07-29 03:44:56', '2016-08-01 03:06:34'),
-(49, NULL, NULL, 'DISABLED_PRODUCTS_EXPIRE', '1470123488', '2016-07-29 03:44:56', '2016-08-02 01:38:08'),
+(49, NULL, NULL, 'DISABLED_PRODUCTS_EXPIRE', '1470131477', '2016-07-29 03:44:56', '2016-08-02 03:51:17'),
 (50, NULL, NULL, '8020_SALES_CATALOG_EXPIRE', '1470150841', '2016-07-29 03:44:56', '2016-08-01 23:14:01'),
 (51, NULL, NULL, 'DISABLED_CATEGORIES', '0', '2016-07-29 04:24:26', '2016-07-29 04:24:26'),
 (52, NULL, NULL, 'PRODUCTS_PER_CATEGORY', '1', '2016-07-29 04:24:26', '2016-08-01 06:00:24'),
 (53, NULL, NULL, 'TOP_CATEGORY', NULL, '2016-07-29 04:24:26', '2016-07-29 04:24:26'),
-(54, NULL, NULL, 'PRODUCTS_PER_CATEGORY_EXPIRE', '1470122198', '2016-07-29 04:24:26', '2016-08-02 02:16:38'),
-(55, NULL, NULL, 'EMPTY_CATEGORIES', '1', '2016-07-29 04:24:26', '2016-08-01 05:33:46'),
-(56, NULL, NULL, 'DISABLED_CATEGORIES_EXPIRE', '1470125798', '2016-07-29 04:24:26', '2016-08-02 02:16:38'),
-(57, NULL, NULL, 'EMPTY_CATEGORIES_EXPIRE', '1470125798', '2016-07-29 04:24:26', '2016-08-02 02:16:38'),
+(54, NULL, NULL, 'PRODUCTS_PER_CATEGORY_EXPIRE', '1470129025', '2016-07-29 04:24:26', '2016-08-02 04:10:25'),
+(55, NULL, NULL, 'EMPTY_CATEGORIES', '0', '2016-07-29 04:24:26', '2016-08-02 04:57:42'),
+(56, NULL, NULL, 'DISABLED_CATEGORIES_EXPIRE', '1470135617', '2016-07-29 04:24:26', '2016-08-02 05:00:17'),
+(57, NULL, NULL, 'EMPTY_CATEGORIES_EXPIRE', '1470135462', '2016-07-29 04:24:26', '2016-08-02 04:57:42'),
 (58, NULL, NULL, 'TOP_CATEGORY_EXPIRE', NULL, '2016-07-29 04:24:26', '2016-07-29 04:24:26'),
 (59, NULL, NULL, 'AVG_ORDER_VALUE', '$0.00', '2016-07-29 05:19:13', '2016-07-29 05:19:13'),
 (60, NULL, NULL, 'CONVERSION_RATE', '0%', '2016-07-29 05:19:13', '2016-07-29 05:19:13'),
 (61, NULL, NULL, 'AVG_ORDER_VALUE_EXPIRE', '1470110400', '2016-07-29 05:19:13', '2016-08-01 03:13:22'),
-(62, NULL, NULL, 'CONVERSION_RATE_EXPIRE', '1470110400', '2016-07-29 05:19:13', '2016-08-01 03:13:22'),
+(62, NULL, NULL, 'CONVERSION_RATE_EXPIRE', '1470196800', '2016-07-29 05:19:13', '2016-08-02 05:55:45'),
 (63, NULL, NULL, 'NETPROFIT_VISIT', '$0.00', '2016-07-29 05:19:13', '2016-07-29 05:19:13'),
 (64, NULL, NULL, 'ABANDONED_CARTS', '0', '2016-07-29 05:19:13', '2016-07-29 05:19:13'),
 (65, NULL, NULL, 'NETPROFIT_VISIT_EXPIRE', '1470110400', '2016-07-29 05:19:13', '2016-08-01 03:13:22'),
-(66, NULL, NULL, 'ABANDONED_CARTS_EXPIRE', '1470039202', '2016-07-29 05:19:13', '2016-08-01 03:13:22');
+(66, NULL, NULL, 'ABANDONED_CARTS_EXPIRE', '1470135345', '2016-07-29 05:19:13', '2016-08-02 05:55:45');
 
 -- --------------------------------------------------------
 
@@ -5047,7 +5078,8 @@ INSERT INTO `ps_connections` (`id_connections`, `id_shop_group`, `id_shop`, `id_
 (4, 1, 1, 3, 2, 0, '2016-07-29 05:43:38', ''),
 (5, 1, 1, 4, 1, 0, '2016-07-31 21:51:12', ''),
 (6, 1, 1, 4, 3, 0, '2016-08-01 05:16:56', ''),
-(7, 1, 1, 5, 1, 0, '2016-08-01 23:12:09', '');
+(7, 1, 1, 5, 1, 0, '2016-08-01 23:12:09', ''),
+(8, 1, 1, 5, 4, 0, '2016-08-02 03:11:53', '');
 
 -- --------------------------------------------------------
 
@@ -7251,7 +7283,7 @@ CREATE TABLE `ps_employee` (
 --
 
 INSERT INTO `ps_employee` (`id_employee`, `id_profile`, `id_lang`, `lastname`, `firstname`, `email`, `passwd`, `last_passwd_gen`, `stats_date_from`, `stats_date_to`, `stats_compare_from`, `stats_compare_to`, `stats_compare_option`, `preselect_date_range`, `bo_color`, `bo_theme`, `bo_css`, `default_tab`, `bo_width`, `bo_menu`, `active`, `optin`, `id_last_order`, `id_last_customer_message`, `id_last_customer`, `last_connection_date`) VALUES
-(1, 1, 1, 'Lefèvre', 'Maxime', 'maxime.lefevre89@gmail.com', '49a82c64a597266e357be824c54ca7fe', '2016-07-28 18:54:57', '2016-08-01', '2016-08-01', '0000-00-00', '0000-00-00', 1, '', '', 'default', 'admin-theme.css', 1, 0, 1, 1, 1, 0, 0, 0, '2016-08-02');
+(1, 1, 1, 'Lefèvre', 'Maxime', 'maxime.lefevre89@gmail.com', '49a82c64a597266e357be824c54ca7fe', '2016-07-28 18:54:57', '2016-08-01', '2016-08-02', '0000-00-00', '0000-00-00', 1, '', '', 'default', 'admin-theme.css', 1, 0, 1, 1, 1, 0, 0, 0, '2016-08-02');
 
 -- --------------------------------------------------------
 
@@ -7667,12 +7699,12 @@ INSERT INTO `ps_homeslider_slides_lang` (`id_homeslider_slides`, `id_lang`, `tit
 (3, 3, 'Sample 3', '<h4>Siemens</h4>\r\n<p>SIREMOBIL Compact L</p>', 'sample-3', 'index.php?id_category=5&controller=category', '9711dd5e7f737d16623a79845ca06bfb84f61c9a_slide3.jpg'),
 (3, 4, 'Sample 3', '<h4>Siemens</h4>\r\n<p>SIREMOBIL Compact L</p>', 'sample-3', 'index.php?id_category=5&controller=category', '9711dd5e7f737d16623a79845ca06bfb84f61c9a_slide3.jpg'),
 (3, 5, 'Sample 3', '<h4>Siemens</h4>\r\n<p>SIREMOBIL Compact L</p>', 'sample-3', 'index.php?id_category=5&controller=category', '9711dd5e7f737d16623a79845ca06bfb84f61c9a_slide3.jpg'),
-(4, 1, 'Plastic glass holder badge and keychain #PKGH', '', 'Plastic glass holder badge and keychain #PKGH', 'products/21-plastic-glass-holder-badge-and-keychain-pkgh', 'c58a23d557c33d6c56ea18f41ab15f6fe6b67e2c_pkgh.jpg'),
+(4, 1, 'Plastic glass holder badge and keychain #PKGH', '<p>Plastic glass holder badge and keychain #PKGH</p>', 'Plastic glass holder badge and keychain #PKGH', 'products/21-plastic-glass-holder-badge-and-keychain-pkgh', 'c58a23d557c33d6c56ea18f41ab15f6fe6b67e2c_pkgh.jpg'),
 (4, 2, 'Plastic glass holder badge and keychain #PKGH', '', 'Plastic glass holder badge and keychain #PKGH', 'plastic-glass-holder-badge-and-keychain-pkgh', ''),
 (4, 3, 'Plastic glass holder badge and keychain #PKGH', '', 'Plastic glass holder badge and keychain #PKGH', 'plastic-glass-holder-badge-and-keychain-pkgh', ''),
 (4, 4, 'Plastic glass holder badge and keychain #PKGH', '', 'Plastic glass holder badge and keychain #PKGH', 'plastic-glass-holder-badge-and-keychain-pkgh', ''),
 (4, 5, 'Plastic glass holder badge and keychain #PKGH', '', 'Plastic glass holder badge and keychain #PKGH', 'plastic-glass-holder-badge-and-keychain-pkgh', ''),
-(5, 1, 'Zamac hotel & rental keychain #ZHK', '', 'Zamac hotel & rental keychain #ZHK', 'products/22-zamac-hotel-rental-keychain-zhk', '5aeb3e1cfb0ca21c9de5b523867f5c4536c0db12_ZHK-zamac-hotel-and-rental-keychain.jpg'),
+(5, 1, 'Zamac hotel & rental keychain #ZHK', '<p>Zamac hotel &amp; rental keychain #ZHK</p>', 'Zamac hotel & rental keychain #ZHK', 'products/22-zamac-hotel-rental-keychain-zhk', '5aeb3e1cfb0ca21c9de5b523867f5c4536c0db12_ZHK-zamac-hotel-and-rental-keychain.jpg'),
 (5, 2, 'Zamac hotel & rental keychain #ZHK', '', 'Zamac hotel & rental keychain #ZHK', 'products/22-zamac-hotel-rental-keychain-zhk', ''),
 (5, 3, 'Zamac hotel & rental keychain #ZHK', '', 'Zamac hotel & rental keychain #ZHK', 'products/22-zamac-hotel-rental-keychain-zhk', ''),
 (5, 4, 'Zamac hotel & rental keychain #ZHK', '', 'Zamac hotel & rental keychain #ZHK', 'products/22-zamac-hotel-rental-keychain-zhk', ''),
@@ -8054,13 +8086,13 @@ INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VAL
 (19, 1, 13, 1),
 (19, 1, 14, 1),
 (19, 1, 17, 1),
-(19, 1, 96, 1),
+(19, 1, 97, 1),
 (20, 1, 26, 1),
 (20, 1, 31, 1),
 (22, 1, 15, 1),
 (22, 1, 128, 1),
 (22, 1, 129, 1),
-(23, 1, 97, 1),
+(23, 1, 96, 1),
 (25, 1, 130, 1),
 (25, 1, 131, 1),
 (25, 1, 132, 1),
@@ -8125,7 +8157,7 @@ INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VAL
 (86, 1, 55, 1),
 (2, 1, 10, 2),
 (4, 1, 55, 2),
-(4, 1, 97, 2),
+(4, 1, 96, 2),
 (5, 1, 15, 2),
 (6, 1, 26, 2),
 (7, 1, 8, 2),
@@ -8137,7 +8169,7 @@ INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VAL
 (23, 1, 13, 2),
 (23, 1, 14, 2),
 (23, 1, 17, 2),
-(23, 1, 96, 2),
+(23, 1, 97, 2),
 (27, 1, 107, 2),
 (27, 1, 108, 2),
 (27, 1, 117, 2),
@@ -8175,8 +8207,9 @@ INSERT INTO `ps_hook_module` (`id_module`, `id_shop`, `id_hook`, `position`) VAL
 (81, 1, 7, 2),
 (81, 1, 9, 2),
 (87, 1, 18, 2),
-(4, 1, 96, 3),
+(4, 1, 97, 3),
 (5, 1, 10, 3),
+(19, 1, 96, 3),
 (27, 1, 15, 3),
 (27, 1, 68, 3),
 (33, 1, 139, 3),
@@ -8437,7 +8470,13 @@ INSERT INTO `ps_image` (`id_image`, `id_product`, `position`, `cover`) VALUES
 (104, 22, 1, 1),
 (105, 22, 2, NULL),
 (107, 23, 1, 1),
-(108, 23, 2, NULL);
+(108, 23, 2, NULL),
+(111, 24, 1, 1),
+(113, 25, 1, 1),
+(115, 26, 1, 1),
+(117, 28, 1, 1),
+(118, 28, 2, NULL),
+(119, 27, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -8485,7 +8524,37 @@ INSERT INTO `ps_image_lang` (`id_image`, `id_lang`, `legend`) VALUES
 (108, 2, 'Zamac coin holder keychain ZUM01302'),
 (108, 3, 'Zamac coin holder keychain ZUM01302'),
 (108, 4, 'Zamac coin holder keychain ZUM01302'),
-(108, 5, 'Zamac coin holder keychain ZUM01302');
+(108, 5, 'Zamac coin holder keychain ZUM01302'),
+(111, 1, 'Monkey'),
+(111, 2, 'Monkey'),
+(111, 3, 'Monkey'),
+(111, 4, 'Monkey'),
+(111, 5, 'Monkey'),
+(113, 1, 'Monkey'),
+(113, 2, 'Monkey'),
+(113, 3, 'Monkey'),
+(113, 4, 'Monkey'),
+(113, 5, 'Monkey'),
+(115, 1, 'Monkey'),
+(115, 2, 'Monkey'),
+(115, 3, 'Monkey'),
+(115, 4, 'Monkey'),
+(115, 5, 'Monkey'),
+(117, 1, 'Aluminium dogtag keychain PDTOV'),
+(117, 2, 'Aluminium dogtag keychain PDTOV'),
+(117, 3, 'Aluminium dogtag keychain PDTOV'),
+(117, 4, 'Aluminium dogtag keychain PDTOV'),
+(117, 5, 'Aluminium dogtag keychain PDTOV'),
+(118, 1, 'Aluminium dogtag keychain PDTOV'),
+(118, 2, 'Aluminium dogtag keychain PDTOV'),
+(118, 3, 'Aluminium dogtag keychain PDTOV'),
+(118, 4, 'Aluminium dogtag keychain PDTOV'),
+(118, 5, 'Aluminium dogtag keychain PDTOV'),
+(119, 1, 'Cloud'),
+(119, 2, 'Monkey'),
+(119, 3, 'Monkey'),
+(119, 4, 'Monkey'),
+(119, 5, 'Monkey');
 
 -- --------------------------------------------------------
 
@@ -8510,7 +8579,13 @@ INSERT INTO `ps_image_shop` (`id_product`, `id_image`, `id_shop`, `cover`) VALUE
 (22, 105, 1, NULL),
 (22, 104, 1, 1),
 (23, 108, 1, NULL),
-(23, 107, 1, 1);
+(23, 107, 1, 1),
+(24, 111, 1, 1),
+(25, 113, 1, 1),
+(26, 115, 1, 1),
+(27, 119, 1, 1),
+(28, 118, 1, NULL),
+(28, 117, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -9168,7 +9243,12 @@ INSERT INTO `ps_layered_price_index` (`id_product`, `id_currency`, `id_shop`, `p
 (20, 1, 1, 198, 207),
 (21, 1, 1, 0, 0),
 (22, 1, 1, 0, 0),
-(23, 1, 1, 0, 0);
+(23, 1, 1, 0, 0),
+(24, 1, 1, 0, 0),
+(25, 1, 1, 0, 0),
+(26, 1, 1, 0, 0),
+(27, 1, 1, 0, 0),
+(28, 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -9314,7 +9394,25 @@ INSERT INTO `ps_log` (`id_log`, `severity`, `error_code`, `message`, `object_typ
 (80, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-08-02 01:28:10', '2016-08-02 01:28:10'),
 (81, 1, 0, 'Product modification', 'Product', 21, 1, '2016-08-02 01:38:39', '2016-08-02 01:38:39'),
 (82, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-08-02 02:05:23', '2016-08-02 02:05:23'),
-(83, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-08-02 02:51:15', '2016-08-02 02:51:15');
+(83, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-08-02 02:51:15', '2016-08-02 02:51:15'),
+(84, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-08-02 03:37:52', '2016-08-02 03:37:52'),
+(85, 1, 0, 'Product addition', 'Product', 24, 1, '2016-08-02 04:09:21', '2016-08-02 04:09:21'),
+(86, 1, 0, 'Product modification', 'Product', 24, 1, '2016-08-02 04:09:51', '2016-08-02 04:09:51'),
+(87, 1, 0, 'Product modification', 'Product', 24, 1, '2016-08-02 04:11:32', '2016-08-02 04:11:32'),
+(88, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-08-02 04:33:07', '2016-08-02 04:33:07'),
+(89, 1, 0, 'Product modification', 'Product', 25, 1, '2016-08-02 04:45:13', '2016-08-02 04:45:13'),
+(90, 1, 0, 'Product status switched to enable', 'Product', 25, 1, '2016-08-02 04:45:39', '2016-08-02 04:45:39'),
+(91, 1, 0, 'Product modification', 'Product', 26, 1, '2016-08-02 04:47:42', '2016-08-02 04:47:42'),
+(92, 1, 0, 'Product status switched to enable', 'Product', 26, 1, '2016-08-02 04:47:53', '2016-08-02 04:47:53'),
+(93, 1, 0, 'Product modification', 'Product', 27, 1, '2016-08-02 04:49:36', '2016-08-02 04:49:36'),
+(94, 1, 0, 'Product modification', 'Product', 27, 1, '2016-08-02 04:50:08', '2016-08-02 04:50:08'),
+(95, 1, 0, 'Product addition', 'Product', 28, 1, '2016-08-02 04:54:44', '2016-08-02 04:54:44'),
+(96, 1, 0, 'Product modification', 'Product', 28, 1, '2016-08-02 04:55:54', '2016-08-02 04:55:54'),
+(97, 1, 0, 'Category addition', 'Category', 49, 1, '2016-08-02 05:00:12', '2016-08-02 05:00:12'),
+(98, 1, 0, 'Product modification', 'Product', 28, 1, '2016-08-02 05:02:30', '2016-08-02 05:02:30'),
+(99, 1, 0, 'Product modification', 'Product', 27, 1, '2016-08-02 05:02:55', '2016-08-02 05:02:55'),
+(100, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-08-02 05:22:14', '2016-08-02 05:22:14'),
+(101, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-08-02 05:40:39', '2016-08-02 05:40:39');
 
 -- --------------------------------------------------------
 
@@ -11031,7 +11129,6 @@ INSERT INTO `ps_module_shop` (`id_module`, `id_shop`, `enable_device`) VALUES
 (16, 1, 7),
 (17, 1, 7),
 (18, 1, 7),
-(19, 1, 7),
 (20, 1, 7),
 (21, 1, 7),
 (22, 1, 7),
@@ -11073,7 +11170,6 @@ INSERT INTO `ps_module_shop` (`id_module`, `id_shop`, `enable_device`) VALUES
 (60, 1, 7),
 (61, 1, 7),
 (62, 1, 7),
-(63, 1, 7),
 (64, 1, 7),
 (65, 1, 7),
 (67, 1, 7),
@@ -11797,7 +11893,8 @@ CREATE TABLE `ps_page` (
 INSERT INTO `ps_page` (`id_page`, `id_page_type`, `id_object`) VALUES
 (1, 1, NULL),
 (2, 2, NULL),
-(3, 3, 21);
+(3, 3, 21),
+(4, 4, 46);
 
 -- --------------------------------------------------------
 
@@ -11848,6 +11945,7 @@ CREATE TABLE `ps_page_type` (
 --
 
 INSERT INTO `ps_page_type` (`id_page_type`, `name`) VALUES
+(4, 'category'),
 (1, 'index'),
 (2, 'pagenotfound'),
 (3, 'product');
@@ -11929,7 +12027,12 @@ CREATE TABLE `ps_product` (
 INSERT INTO `ps_product` (`id_product`, `id_supplier`, `id_manufacturer`, `id_category_default`, `id_shop_default`, `id_tax_rules_group`, `on_sale`, `online_only`, `ean13`, `upc`, `ecotax`, `quantity`, `minimal_quantity`, `price`, `wholesale_price`, `unity`, `unit_price_ratio`, `additional_shipping_cost`, `reference`, `supplier_reference`, `location`, `width`, `height`, `depth`, `weight`, `out_of_stock`, `quantity_discount`, `customizable`, `uploadable_files`, `text_fields`, `active`, `redirect_type`, `id_product_redirected`, `available_for_order`, `available_date`, `condition`, `show_price`, `indexed`, `visibility`, `cache_is_pack`, `cache_has_attachments`, `is_virtual`, `cache_default_attribute`, `date_add`, `date_upd`, `advanced_stock_management`, `pack_stock_type`) VALUES
 (21, 0, 0, 46, 1, 1, 0, 0, '', '', '0.000000', 0, 1, '0.000000', '0.000000', '', '0.000000', '0.00', 'PKGH', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, 0, 0, '2016-08-01 04:41:59', '2016-08-02 01:38:38', 0, 3),
 (22, 0, 0, 46, 1, 1, 0, 0, '', '', '0.000000', 0, 1, '0.000000', '0.000000', '', '0.000000', '0.00', 'ZHK', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, 0, 0, '2016-08-01 05:24:56', '2016-08-01 05:29:34', 0, 3),
-(23, 0, 0, 46, 1, 1, 0, 0, '', '', '0.000000', 0, 1, '0.000000', '0.000000', '', '0.000000', '0.00', 'ZUM01302', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, 0, 0, '2016-08-01 05:31:05', '2016-08-01 05:32:05', 0, 3);
+(23, 0, 0, 46, 1, 1, 0, 0, '', '', '0.000000', 0, 1, '0.000000', '0.000000', '', '0.000000', '0.00', 'ZUM01302', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, 0, 0, '2016-08-01 05:31:05', '2016-08-01 05:32:05', 0, 3),
+(24, 0, 0, 45, 1, 1, 0, 0, '', '', '0.000000', 0, 1, '0.000000', '0.000000', '', '0.000000', '0.00', '', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, 0, 0, '2016-08-02 04:09:19', '2016-08-02 04:11:31', 0, 3),
+(25, 0, 0, 45, 1, 1, 0, 0, '', '', '0.000000', 0, 1, '0.000000', '0.000000', '', '0.000000', '0.00', '', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 1, '', 0, 1, '0000-00-00', 'new', 1, 0, 'both', 0, 0, 0, 0, '2016-08-02 04:44:02', '2016-08-02 04:45:38', 0, 3),
+(26, 0, 0, 45, 1, 1, 0, 0, '', '', '0.000000', 0, 1, '0.000000', '0.000000', '', '0.000000', '0.00', '', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 1, '', 0, 1, '0000-00-00', 'new', 1, 0, 'both', 0, 0, 0, 0, '2016-08-02 04:46:19', '2016-08-02 04:47:52', 0, 3),
+(27, 0, 0, 45, 1, 1, 0, 0, '', '', '0.000000', 0, 1, '0.000000', '0.000000', '', '0.000000', '0.00', '', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, 0, 0, '2016-08-02 04:48:31', '2016-08-02 05:02:54', 0, 3),
+(28, 0, 0, 46, 1, 1, 0, 0, '', '', '0.000000', 0, 1, '0.000000', '0.000000', '', '0.000000', '0.00', 'PDTOV', '', '', '0.000000', '0.000000', '0.000000', '0.000000', 2, 0, 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, 0, 0, '2016-08-02 04:54:43', '2016-08-02 05:02:29', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -12104,7 +12207,32 @@ INSERT INTO `ps_product_lang` (`id_product`, `id_shop`, `id_lang`, `description`
 (23, 1, 2, '', '', 'zamac-coin-holder-keychain-zum01302', '', '', '', 'Zamac coin holder keychain ZUM01302', '', ''),
 (23, 1, 3, '', '', 'zamac-coin-holder-keychain-zum01302', '', '', '', 'Zamac coin holder keychain ZUM01302', '', ''),
 (23, 1, 4, '', '', 'zamac-coin-holder-keychain-zum01302', '', '', '', 'Zamac coin holder keychain ZUM01302', '', ''),
-(23, 1, 5, '', '', 'zamac-coin-holder-keychain-zum01302', '', '', '', 'Zamac coin holder keychain ZUM01302', '', '');
+(23, 1, 5, '', '', 'zamac-coin-holder-keychain-zum01302', '', '', '', 'Zamac coin holder keychain ZUM01302', '', ''),
+(24, 1, 1, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(24, 1, 2, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(24, 1, 3, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(24, 1, 4, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(24, 1, 5, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(25, 1, 1, '', '', 'monkey', '', '', '', 'Sunset', '', ''),
+(25, 1, 2, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(25, 1, 3, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(25, 1, 4, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(25, 1, 5, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(26, 1, 1, '', '', 'monkey', '', '', '', 'Angry Bird', '', ''),
+(26, 1, 2, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(26, 1, 3, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(26, 1, 4, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(26, 1, 5, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(27, 1, 1, '', '', 'cloud', '', '', '', 'Cloud', '', ''),
+(27, 1, 2, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(27, 1, 3, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(27, 1, 4, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(27, 1, 5, '', '', 'monkey', '', '', '', 'Monkey', '', ''),
+(28, 1, 1, '', '', 'aluminium-dogtag-keychain-pdtov', '', '', '', 'Aluminium dogtag keychain PDTOV', '', ''),
+(28, 1, 2, '', '', 'aluminium-dogtag-keychain-pdtov', '', '', '', 'Aluminium dogtag keychain PDTOV', '', ''),
+(28, 1, 3, '', '', 'aluminium-dogtag-keychain-pdtov', '', '', '', 'Aluminium dogtag keychain PDTOV', '', ''),
+(28, 1, 4, '', '', 'aluminium-dogtag-keychain-pdtov', '', '', '', 'Aluminium dogtag keychain PDTOV', '', ''),
+(28, 1, 5, '', '', 'aluminium-dogtag-keychain-pdtov', '', '', '', 'Aluminium dogtag keychain PDTOV', '', '');
 
 -- --------------------------------------------------------
 
@@ -12165,7 +12293,12 @@ CREATE TABLE `ps_product_shop` (
 INSERT INTO `ps_product_shop` (`id_product`, `id_shop`, `id_category_default`, `id_tax_rules_group`, `on_sale`, `online_only`, `ecotax`, `minimal_quantity`, `price`, `wholesale_price`, `unity`, `unit_price_ratio`, `additional_shipping_cost`, `customizable`, `uploadable_files`, `text_fields`, `active`, `redirect_type`, `id_product_redirected`, `available_for_order`, `available_date`, `condition`, `show_price`, `indexed`, `visibility`, `cache_default_attribute`, `advanced_stock_management`, `date_add`, `date_upd`, `pack_stock_type`) VALUES
 (21, 1, 46, 1, 0, 0, '0.000000', 1, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, '2016-08-01 04:41:59', '2016-08-02 01:38:38', 3),
 (22, 1, 46, 1, 0, 0, '0.000000', 1, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, '2016-08-01 05:24:56', '2016-08-01 05:29:34', 3),
-(23, 1, 46, 1, 0, 0, '0.000000', 1, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, '2016-08-01 05:31:05', '2016-08-01 05:32:05', 3);
+(23, 1, 46, 1, 0, 0, '0.000000', 1, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, '2016-08-01 05:31:05', '2016-08-01 05:32:05', 3),
+(24, 1, 45, 1, 0, 0, '0.000000', 1, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, '2016-08-02 04:09:19', '2016-08-02 04:11:31', 3),
+(25, 1, 45, 1, 0, 0, '0.000000', 1, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '', 0, 1, '0000-00-00', 'new', 1, 0, 'both', 0, 0, '2016-08-02 04:44:02', '2016-08-02 04:45:38', 3),
+(26, 1, 45, 1, 0, 0, '0.000000', 1, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '', 0, 1, '0000-00-00', 'new', 1, 0, 'both', 0, 0, '2016-08-02 04:46:19', '2016-08-02 04:47:52', 3),
+(27, 1, 45, 1, 0, 0, '0.000000', 1, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, '2016-08-02 04:48:31', '2016-08-02 05:02:54', 3),
+(28, 1, 46, 1, 0, 0, '0.000000', 1, '0.000000', '0.000000', '', '0.000000', '0.00', 0, 0, 0, 1, '404', 0, 1, '0000-00-00', 'new', 1, 1, 'both', 0, 0, '2016-08-02 04:54:43', '2016-08-02 05:02:29', 3);
 
 -- --------------------------------------------------------
 
@@ -22793,6 +22926,7 @@ INSERT INTO `ps_search_index` (`id_product`, `id_word`, `weight`) VALUES
 (21, 14040, 6),
 (22, 14040, 6),
 (23, 14040, 6),
+(28, 14040, 6),
 (21, 14041, 16),
 (21, 14043, 6),
 (21, 14044, 6),
@@ -22802,6 +22936,7 @@ INSERT INTO `ps_search_index` (`id_product`, `id_word`, `weight`) VALUES
 (21, 14047, 6),
 (22, 14047, 6),
 (23, 14047, 6),
+(28, 14047, 6),
 (21, 14048, 16),
 (21, 14051, 6),
 (21, 14052, 6),
@@ -22811,6 +22946,7 @@ INSERT INTO `ps_search_index` (`id_product`, `id_word`, `weight`) VALUES
 (21, 14055, 6),
 (22, 14055, 6),
 (23, 14055, 6),
+(28, 14055, 6),
 (21, 14056, 16),
 (21, 14059, 6),
 (21, 14060, 6),
@@ -22820,6 +22956,7 @@ INSERT INTO `ps_search_index` (`id_product`, `id_word`, `weight`) VALUES
 (21, 14063, 6),
 (22, 14063, 6),
 (23, 14063, 6),
+(28, 14063, 6),
 (21, 14064, 16),
 (21, 14067, 6),
 (21, 14068, 6),
@@ -22829,6 +22966,7 @@ INSERT INTO `ps_search_index` (`id_product`, `id_word`, `weight`) VALUES
 (21, 14071, 6),
 (22, 14071, 6),
 (23, 14071, 6),
+(28, 14071, 6),
 (21, 14072, 16),
 (21, 14121, 6),
 (21, 14129, 6),
@@ -22837,18 +22975,23 @@ INSERT INTO `ps_search_index` (`id_product`, `id_word`, `weight`) VALUES
 (21, 14153, 3),
 (22, 14153, 3),
 (23, 14153, 3),
+(28, 14153, 3),
 (21, 14160, 3),
 (22, 14160, 3),
 (23, 14160, 3),
+(28, 14160, 3),
 (21, 14168, 3),
 (22, 14168, 3),
 (23, 14168, 3),
+(28, 14168, 3),
 (21, 14176, 3),
 (22, 14176, 3),
 (23, 14176, 3),
+(28, 14176, 3),
 (21, 14184, 3),
 (22, 14184, 3),
 (23, 14184, 3),
+(28, 14184, 3),
 (22, 14192, 6),
 (23, 14192, 6),
 (22, 14193, 6),
@@ -22888,7 +23031,42 @@ INSERT INTO `ps_search_index` (`id_product`, `id_word`, `weight`) VALUES
 (21, 14424, 2),
 (21, 14433, 2),
 (21, 14442, 2),
-(21, 14451, 2);
+(21, 14451, 2),
+(24, 14460, 6),
+(24, 14462, 6),
+(27, 14462, 6),
+(24, 14464, 6),
+(27, 14464, 6),
+(24, 14466, 6),
+(27, 14466, 6),
+(24, 14468, 6),
+(27, 14468, 6),
+(24, 14480, 3),
+(27, 14480, 3),
+(24, 14482, 3),
+(27, 14482, 3),
+(24, 14484, 3),
+(27, 14484, 3),
+(24, 14486, 3),
+(27, 14486, 3),
+(24, 14488, 3),
+(27, 14488, 3),
+(27, 14490, 6),
+(28, 14500, 6),
+(28, 14501, 6),
+(28, 14502, 16),
+(28, 14505, 6),
+(28, 14506, 6),
+(28, 14507, 16),
+(28, 14510, 6),
+(28, 14511, 6),
+(28, 14512, 16),
+(28, 14515, 6),
+(28, 14516, 6),
+(28, 14517, 16),
+(28, 14520, 6),
+(28, 14521, 6),
+(28, 14522, 16);
 
 -- --------------------------------------------------------
 
@@ -22909,16 +23087,22 @@ CREATE TABLE `ps_search_word` (
 
 INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (14416, 1, 1, '100'),
+(14500, 1, 1, 'aluminium'),
 (10340, 1, 1, 'aluminum'),
 (14039, 1, 1, 'badge'),
 (10339, 1, 1, 'c500u'),
+(14490, 1, 1, 'cloud'),
 (14390, 1, 1, 'coin'),
 (10342, 1, 1, 'crutches'),
+(14480, 1, 1, 'designs'),
+(14501, 1, 1, 'dogtag'),
 (14037, 1, 1, 'glass'),
 (14038, 1, 1, 'holder'),
 (14114, 1, 1, 'home'),
 (14193, 1, 1, 'hotel'),
 (14040, 1, 1, 'keychain'),
+(14460, 1, 1, 'monkey'),
+(14502, 1, 1, 'pdtov'),
 (14041, 1, 1, 'pkgh'),
 (14036, 1, 1, 'plastic'),
 (14153, 1, 1, 'products'),
@@ -22929,16 +23113,21 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (14391, 1, 1, 'zum01302'),
 (14424, 1, 2, '100'),
 (14122, 1, 2, 'accueil'),
+(14505, 1, 2, 'aluminium'),
 (10428, 1, 2, 'aluminum'),
 (14121, 1, 2, 'and'),
 (14046, 1, 2, 'badge'),
 (10427, 1, 2, 'c500u'),
 (14396, 1, 2, 'coin'),
 (10430, 1, 2, 'crutches'),
+(14482, 1, 2, 'designs'),
+(14506, 1, 2, 'dogtag'),
 (14044, 1, 2, 'glass'),
 (14045, 1, 2, 'holder'),
 (14199, 1, 2, 'hotel'),
 (14047, 1, 2, 'keychain'),
+(14462, 1, 2, 'monkey'),
+(14507, 1, 2, 'pdtov'),
 (14048, 1, 2, 'pkgh'),
 (14043, 1, 2, 'plastic'),
 (14160, 1, 2, 'products'),
@@ -22948,17 +23137,22 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (14201, 1, 2, 'zhk'),
 (14397, 1, 2, 'zum01302'),
 (14433, 1, 3, '100'),
+(14510, 1, 3, 'aluminium'),
 (10542, 1, 3, 'aluminum'),
 (14129, 1, 3, 'and'),
 (14054, 1, 3, 'badge'),
 (10541, 1, 3, 'c500u'),
 (14402, 1, 3, 'coin'),
 (10544, 1, 3, 'crutches'),
+(14484, 1, 3, 'designs'),
+(14511, 1, 3, 'dogtag'),
 (14052, 1, 3, 'glass'),
 (14053, 1, 3, 'holder'),
 (14130, 1, 3, 'home'),
 (14205, 1, 3, 'hotel'),
 (14055, 1, 3, 'keychain'),
+(14464, 1, 3, 'monkey'),
+(14512, 1, 3, 'pdtov'),
 (14056, 1, 3, 'pkgh'),
 (14051, 1, 3, 'plastic'),
 (14168, 1, 3, 'products'),
@@ -22968,17 +23162,22 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (14207, 1, 3, 'zhk'),
 (14403, 1, 3, 'zum01302'),
 (14442, 1, 4, '100'),
+(14515, 1, 4, 'aluminium'),
 (10655, 1, 4, 'aluminum'),
 (14137, 1, 4, 'and'),
 (14062, 1, 4, 'badge'),
 (10654, 1, 4, 'c500u'),
 (14408, 1, 4, 'coin'),
 (10657, 1, 4, 'crutches'),
+(14486, 1, 4, 'designs'),
+(14516, 1, 4, 'dogtag'),
 (14060, 1, 4, 'glass'),
 (14061, 1, 4, 'holder'),
 (14138, 1, 4, 'home'),
 (14211, 1, 4, 'hotel'),
 (14063, 1, 4, 'keychain'),
+(14466, 1, 4, 'monkey'),
+(14517, 1, 4, 'pdtov'),
 (14064, 1, 4, 'pkgh'),
 (14059, 1, 4, 'plastic'),
 (14176, 1, 4, 'products'),
@@ -22988,17 +23187,22 @@ INSERT INTO `ps_search_word` (`id_word`, `id_shop`, `id_lang`, `word`) VALUES
 (14213, 1, 4, 'zhk'),
 (14409, 1, 4, 'zum01302'),
 (14451, 1, 5, '100'),
+(14520, 1, 5, 'aluminium'),
 (10768, 1, 5, 'aluminum'),
 (14145, 1, 5, 'and'),
 (14070, 1, 5, 'badge'),
 (10767, 1, 5, 'c500u'),
 (14414, 1, 5, 'coin'),
 (10770, 1, 5, 'crutches'),
+(14488, 1, 5, 'designs'),
+(14521, 1, 5, 'dogtag'),
 (14068, 1, 5, 'glass'),
 (14069, 1, 5, 'holder'),
 (14146, 1, 5, 'home'),
 (14217, 1, 5, 'hotel'),
 (14071, 1, 5, 'keychain'),
+(14468, 1, 5, 'monkey'),
+(14522, 1, 5, 'pdtov'),
 (14072, 1, 5, 'pkgh'),
 (14067, 1, 5, 'plastic'),
 (14184, 1, 5, 'products'),
@@ -23122,8 +23326,8 @@ CREATE TABLE `ps_smarty_last_flush` (
 --
 
 INSERT INTO `ps_smarty_last_flush` (`type`, `last_flush`) VALUES
-('compile', '2016-08-02 12:00:59'),
-('template', '2016-08-02 12:00:58');
+('compile', '2016-08-02 18:02:38'),
+('template', '2016-08-02 18:02:38');
 
 -- --------------------------------------------------------
 
@@ -23548,7 +23752,12 @@ INSERT INTO `ps_specific_price_priority` (`id_specific_price_priority`, `id_prod
 (1, 1, 'id_shop;id_currency;id_country;id_group'),
 (5, 21, 'id_shop;id_currency;id_country;id_group'),
 (8, 22, 'id_shop;id_currency;id_country;id_group'),
-(13, 23, 'id_shop;id_currency;id_country;id_group');
+(13, 23, 'id_shop;id_currency;id_country;id_group'),
+(15, 24, 'id_shop;id_currency;id_country;id_group'),
+(17, 25, 'id_shop;id_currency;id_country;id_group'),
+(18, 26, 'id_shop;id_currency;id_country;id_group'),
+(19, 27, 'id_shop;id_currency;id_country;id_group'),
+(21, 28, 'id_shop;id_currency;id_country;id_group');
 
 -- --------------------------------------------------------
 
@@ -24006,7 +24215,12 @@ CREATE TABLE `ps_stock_available` (
 INSERT INTO `ps_stock_available` (`id_stock_available`, `id_product`, `id_product_attribute`, `id_shop`, `id_shop_group`, `quantity`, `depends_on_stock`, `out_of_stock`) VALUES
 (21, 21, 0, 1, 0, 0, 0, 2),
 (22, 22, 0, 1, 0, 0, 0, 2),
-(23, 23, 0, 1, 0, 0, 0, 2);
+(23, 23, 0, 1, 0, 0, 0, 2),
+(24, 24, 0, 1, 0, 0, 0, 2),
+(25, 25, 0, 1, 0, 0, 0, 2),
+(26, 26, 0, 1, 0, 0, 0, 2),
+(27, 27, 0, 1, 0, 0, 0, 2),
+(28, 28, 0, 1, 0, 0, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -28895,7 +29109,7 @@ ALTER TABLE `ps_cart_rule_product_rule_group`
 -- AUTO_INCREMENT pour la table `ps_category`
 --
 ALTER TABLE `ps_category`
-  MODIFY `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_category` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT pour la table `ps_cms`
 --
@@ -28935,7 +29149,7 @@ ALTER TABLE `ps_cms_role`
 -- AUTO_INCREMENT pour la table `ps_compare`
 --
 ALTER TABLE `ps_compare`
-  MODIFY `id_compare` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_compare` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `ps_condition`
 --
@@ -28955,7 +29169,7 @@ ALTER TABLE `ps_configuration_kpi`
 -- AUTO_INCREMENT pour la table `ps_connections`
 --
 ALTER TABLE `ps_connections`
-  MODIFY `id_connections` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_connections` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `ps_connections_source`
 --
@@ -29080,7 +29294,7 @@ ALTER TABLE `ps_hook_module_exceptions`
 -- AUTO_INCREMENT pour la table `ps_image`
 --
 ALTER TABLE `ps_image`
-  MODIFY `id_image` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id_image` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 --
 -- AUTO_INCREMENT pour la table `ps_image_type`
 --
@@ -29125,7 +29339,7 @@ ALTER TABLE `ps_linksmenutop`
 -- AUTO_INCREMENT pour la table `ps_log`
 --
 ALTER TABLE `ps_log`
-  MODIFY `id_log` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id_log` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 --
 -- AUTO_INCREMENT pour la table `ps_mail`
 --
@@ -29240,7 +29454,7 @@ ALTER TABLE `ps_order_state`
 -- AUTO_INCREMENT pour la table `ps_page`
 --
 ALTER TABLE `ps_page`
-  MODIFY `id_page` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_page` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `ps_pagenotfound`
 --
@@ -29250,12 +29464,12 @@ ALTER TABLE `ps_pagenotfound`
 -- AUTO_INCREMENT pour la table `ps_page_type`
 --
 ALTER TABLE `ps_page_type`
-  MODIFY `id_page_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_page_type` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `ps_product`
 --
 ALTER TABLE `ps_product`
-  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_product` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT pour la table `ps_product_attribute`
 --
@@ -29335,7 +29549,7 @@ ALTER TABLE `ps_search_engine`
 -- AUTO_INCREMENT pour la table `ps_search_word`
 --
 ALTER TABLE `ps_search_word`
-  MODIFY `id_word` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14460;
+  MODIFY `id_word` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14585;
 --
 -- AUTO_INCREMENT pour la table `ps_sekeyword`
 --
@@ -29410,7 +29624,7 @@ ALTER TABLE `ps_specific_price`
 -- AUTO_INCREMENT pour la table `ps_specific_price_priority`
 --
 ALTER TABLE `ps_specific_price_priority`
-  MODIFY `id_specific_price_priority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_specific_price_priority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT pour la table `ps_specific_price_rule`
 --
@@ -29445,7 +29659,7 @@ ALTER TABLE `ps_stock`
 -- AUTO_INCREMENT pour la table `ps_stock_available`
 --
 ALTER TABLE `ps_stock_available`
-  MODIFY `id_stock_available` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_stock_available` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT pour la table `ps_stock_mvt`
 --
