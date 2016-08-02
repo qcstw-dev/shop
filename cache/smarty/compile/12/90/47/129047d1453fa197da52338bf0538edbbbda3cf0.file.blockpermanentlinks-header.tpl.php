@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-07-29 03:25:28
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-02 02:51:41
          compiled from "C:\wamp64\www\shop\themes\theme1189\modules\blockpermanentlinks\blockpermanentlinks-header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:26447579b04e8e8f270-13968169%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1219357a042fd46e0c3-34072776%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '26447579b04e8e8f270-13968169',
+  'nocache_hash' => '1219357a042fd46e0c3-34072776',
   'function' => 
   array (
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_579b04e8f13f75_13225090',
+  'unifunc' => 'content_57a042fd4c7e60_30721392',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_579b04e8f13f75_13225090')) {function content_579b04e8f13f75_13225090($_smarty_tpl) {?><!-- Block permanent links module HEADER -->
+<?php if ($_valid && !is_callable('content_57a042fd4c7e60_30721392')) {function content_57a042fd4c7e60_30721392($_smarty_tpl) {?><!-- Block permanent links module HEADER -->
 <ul id="header_links">
 	<li id="header_link_title">
 		<span><?php echo smartyTranslate(array('s'=>'Welcome to our online store!','mod'=>'blockpermanentlinks'),$_smarty_tpl);?>

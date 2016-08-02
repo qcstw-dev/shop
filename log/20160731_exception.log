@@ -1,0 +1,9 @@
+*ERROR* 	2016/07/31 - 21:58:51: Table 'shop.ps_design' doesn't exist<br /><br /><pre>SELECT SQL_CALC_FOUND_ROWS
+								a.`id_design`, `name`, `description`, sa.`position` AS `position`, `active`
+			
+			FROM `ps_design` a 
+			LEFT JOIN `ps_design_lang` b ON (b.`id_design` = a.`id_design` AND b.`id_lang` = 1)
+			
+			 WHERE 1  
+			
+			 ORDER BY sa.`position` ASC  LIMIT 0, 50</pre> at line 791 in file classes/db/Db.php

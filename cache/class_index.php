@@ -431,6 +431,18 @@
     'type' => 'class',
     'override' => false,
   ),
+  'AdminDesignsController' => 
+  array (
+    'path' => '',
+    'type' => 'class',
+    'override' => false,
+  ),
+  'AdminDesignsControllerCore' => 
+  array (
+    'path' => 'controllers/admin/AdminDesignsController.php',
+    'type' => 'class',
+    'override' => false,
+  ),
   'AdminEmailsController' => 
   array (
     'path' => '',
@@ -2084,6 +2096,18 @@
   'DeliveryCore' => 
   array (
     'path' => 'classes/Delivery.php',
+    'type' => 'class',
+    'override' => false,
+  ),
+  'Design' => 
+  array (
+    'path' => '',
+    'type' => 'class',
+    'override' => false,
+  ),
+  'DesignCore' => 
+  array (
+    'path' => 'classes/Design.php',
     'type' => 'class',
     'override' => false,
   ),

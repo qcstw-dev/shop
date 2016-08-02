@@ -14,7 +14,7 @@
   position: relative;
   padding: 0;
   width: 100%;
-  background: #12afa3; }
+  background: #777; }
   @media (max-width: 767px) {
     .sf-menu {
       display: none; } }
@@ -36,10 +36,10 @@
 
 .sf-menu > li {
   float: left;
-  border-right: 1px solid #1cd1c4; }
+  border-right: 1px solid #fff; }
   @media (min-width: 768px) {
     .sf-menu > li:first-child {
-      border-left: 1px solid #1cd1c4; } }
+      border-left: 1px solid #fff; } }
   @media (max-width: 767px) {
     .sf-menu > li {
       float: none;
@@ -66,7 +66,7 @@
     color: #fff;
     display: block;
     padding: 17px 20px;
-    background: #12afa3;
+    background: #777;
     text-transform: uppercase;
     -webkit-transition: background 0.3s ease;
     -moz-transition: background 0.3s ease;
@@ -91,8 +91,9 @@
       content: "\f106"; }
   .sf-menu > li.sfHover > a,
   .sf-menu > li > a:hover, .sf-menu > li.sfHoverForce > a {
-    background: #24918a;
-    color: #fff1f2; }
+    background: #fff;
+    color: #777;
+    border: 1px solid; }
 
 .sf-menu li li li a {
   display: inline-block;
@@ -218,7 +219,7 @@ ul.sf-menu li li li.sfHover ul {
       display: block;
       font: 300 22px/22px Ubuntu, sans-serif;
       text-transform: uppercase;
-      color: #12afa3;
+      color: #777;
       display: block;
       padding: 17px 55px 17px 20px;
       border-bottom: 3px solid #F2F2F2;

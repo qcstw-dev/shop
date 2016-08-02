@@ -1,0 +1,77 @@
+*ERROR* 	2016/07/29 - 05:32:58: Table 'shop.ps_design' doesn't exist<br /><br /><pre>SELECT
+								`id_product`, b.`name` AS `name`, `reference`, a.`price` AS `price`, sa.`active` AS `active`
+			, shop.`name` AS `shopname`, a.`id_shop_default`, image_shop.`id_image` AS `id_image`, cl.`name` AS `name_category`, sa.`price`, 0 AS `price_final`, a.`is_virtual`, pd.`nb_downloadable`, sav.`quantity` AS `sav_quantity`, sa.`active`, IF(sav.`quantity`<=0, 1, 0) AS `badge_danger`
+			FROM `ps_design` a 
+			LEFT JOIN `ps_design_lang` b ON (b.`id_design` = a.`id_design` AND b.`id_lang` = 1 AND b.`id_shop` = 1)
+			
+		LEFT JOIN `ps_stock_available` sav ON (sav.`id_product` = a.`id_product` AND sav.`id_product_attribute` = 0
+		 AND sav.id_shop = 1  AND sav.id_shop_group = 0 )  JOIN `ps_product_shop` sa ON (a.`id_product` = sa.`id_product` AND sa.id_shop = a.id_shop_default)
+				LEFT JOIN `ps_category_lang` cl ON (sa.`id_category_default` = cl.`id_category` AND b.`id_lang` = cl.`id_lang` AND cl.id_shop = a.id_shop_default)
+				LEFT JOIN `ps_shop` shop ON (shop.id_shop = a.id_shop_default)
+				LEFT JOIN `ps_image_shop` image_shop ON (image_shop.`id_product` = a.`id_product` AND image_shop.`cover` = 1 AND image_shop.id_shop = a.id_shop_default)
+				LEFT JOIN `ps_image` i ON (i.`id_image` = image_shop.`id_image`)
+				LEFT JOIN `ps_product_download` pd ON (pd.`id_product` = a.`id_product`) 
+			 WHERE 1  
+			 
+			 ORDER BY a.`id_design` ASC  LIMIT 0, 50</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/07/29 - 05:34:38: Table 'shop.ps_design' doesn't exist<br /><br /><pre>SELECT
+								a.`id_design`, b.`name` AS `name`, `reference`, a.`price` AS `price`, sa.`active` AS `active`
+			, shop.`name` AS `shopname`, a.`id_shop_default`, image_shop.`id_image` AS `id_image`, cl.`name` AS `name_category`, sa.`price`, 0 AS `price_final`, a.`is_virtual`, pd.`nb_downloadable`, sav.`quantity` AS `sav_quantity`, sa.`active`, IF(sav.`quantity`<=0, 1, 0) AS `badge_danger`
+			FROM `ps_design` a 
+			LEFT JOIN `ps_design_lang` b ON (b.`id_design` = a.`id_design` AND b.`id_lang` = 1 AND b.`id_shop` = 1)
+			
+		LEFT JOIN `ps_stock_available` sav ON (sav.`id_design` = a.`id_design` AND sav.`id_design_attribute` = 0
+		 AND sav.id_shop = 1  AND sav.id_shop_group = 0 )  JOIN `ps_design_shop` sa ON (a.`id_design` = sa.`id_design` AND sa.id_shop = a.id_shop_default)
+				LEFT JOIN `ps_category_lang` cl ON (sa.`id_category_default` = cl.`id_category` AND b.`id_lang` = cl.`id_lang` AND cl.id_shop = a.id_shop_default)
+				LEFT JOIN `ps_shop` shop ON (shop.id_shop = a.id_shop_default)
+				LEFT JOIN `ps_image_shop` image_shop ON (image_shop.`id_design` = a.`id_design` AND image_shop.`cover` = 1 AND image_shop.id_shop = a.id_shop_default)
+				LEFT JOIN `ps_image` i ON (i.`id_image` = image_shop.`id_image`)
+				LEFT JOIN `ps_design_download` pd ON (pd.`id_design` = a.`id_design`) 
+			 WHERE 1  
+			 
+			 ORDER BY a.`id_design` ASC  LIMIT 0, 50</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/07/29 - 05:47:28: Table 'shop.ps_design' doesn't exist<br /><br /><pre>SELECT SQL_CALC_FOUND_ROWS
+								`id_category`, `name`, `description`, sa.`position` AS `position`, `active`
+			
+			FROM `ps_design` a 
+			LEFT JOIN `ps_design_lang` b ON (b.`id_design` = a.`id_design` AND b.`id_lang` = 1)
+			
+			 WHERE 1  
+			
+			 ORDER BY sa.`position` ASC  LIMIT 0, 50</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/07/29 - 05:47:46: Table 'shop.ps_design' doesn't exist<br /><br /><pre>SELECT SQL_CALC_FOUND_ROWS
+								a.`id_design`, `name`, `description`, sa.`position` AS `position`, `active`
+			
+			FROM `ps_design` a 
+			LEFT JOIN `ps_design_lang` b ON (b.`id_design` = a.`id_design` AND b.`id_lang` = 1)
+			
+			 WHERE 1  
+			
+			 ORDER BY sa.`position` ASC  LIMIT 0, 50</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/07/29 - 05:57:35: Table 'shop.ps_design' doesn't exist<br /><br /><pre>SELECT SQL_CALC_FOUND_ROWS
+								a.`id_design`, `name`, `description`, sa.`position` AS `position`, `active`
+			
+			FROM `ps_design` a 
+			LEFT JOIN `ps_design_lang` b ON (b.`id_design` = a.`id_design` AND b.`id_lang` = 1)
+			
+			 WHERE 1  
+			
+			 ORDER BY sa.`position` ASC  LIMIT 0, 50</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/07/29 - 05:57:38: Table 'shop.ps_design' doesn't exist<br /><br /><pre>SELECT SQL_CALC_FOUND_ROWS
+								a.`id_design`, `name`, `description`, sa.`position` AS `position`, `active`
+			
+			FROM `ps_design` a 
+			LEFT JOIN `ps_design_lang` b ON (b.`id_design` = a.`id_design` AND b.`id_lang` = 1)
+			
+			 WHERE 1  
+			
+			 ORDER BY sa.`position` ASC  LIMIT 0, 50</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/07/29 - 06:03:51: Table 'shop.ps_design' doesn't exist<br /><br /><pre>SELECT SQL_CALC_FOUND_ROWS
+								a.`id_design`, `name`, `description`, sa.`position` AS `position`, `active`
+			
+			FROM `ps_design` a 
+			LEFT JOIN `ps_design_lang` b ON (b.`id_design` = a.`id_design` AND b.`id_lang` = 1)
+			
+			 WHERE 1  
+			
+			 ORDER BY sa.`position` ASC  LIMIT 0, 50</pre> at line 791 in file classes/db/Db.php
