@@ -6248,7 +6248,8 @@ a.product-name {
 			 				Labels New/Sale 
 --------------------------------------------------------------------------- */
 .new-box,
-.sale-box {
+.sale-box,
+.select-box {
   position: absolute;
   top: 10px;
   overflow: hidden;
@@ -6256,7 +6257,15 @@ a.product-name {
   z-index: 0; }
 
 .new-box {
-  right: 10px; }
+  left: 10px; }
+
+.select-box {
+  right: 10px;
+  top: 4px;}
+.select-box .glyphicon {
+  font-size: 30px;
+  color: #595959;
+}
 
 .sale-box {
   left: 11px; }
@@ -8946,3 +8955,7 @@ ul.step a:hover:after {
   background: #12afa3;
   border-color: #24918a;
   color: #fff; }
+
+.cursor-pointer {
+    cursor: pointer;
+}

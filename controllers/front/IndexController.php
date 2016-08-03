@@ -43,12 +43,18 @@ class IndexControllerCore extends FrontController
         $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
         $aBlankProducts = $oProductCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
         
+//        $selection = (isset($_SESSION['selection']) && $_SESSION['selection'] ? $_SESSION['selection'] : []);
+//        $selection = $this->context->cookie;
+//        $selection = ['21', '23', '26'];
+//        $selection = [];
+          $selection = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
         $this->context->smarty->assign(array('HOOK_HOME' => Hook::exec('displayHome'),
             'HOOK_HOME_TAB'         => Hook::exec('displayHomeTab'),
             'HOOK_HOME_TAB_CONTENT' => Hook::exec('displayHomeTabContent'),
             'aBlankProducts'        => $aBlankProducts,
             'aDesigns'              => $aDesigns,
-            'link'                  => $this->context->link
+            'link'                  => $this->context->link,
+            'selection'             => $selection
         ));
         $this->setTemplate(_PS_THEME_DIR_.'index.tpl');
     }

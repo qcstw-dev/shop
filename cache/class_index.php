@@ -1613,6 +1613,18 @@
     'type' => 'class',
     'override' => false,
   ),
+  'AjaxController' => 
+  array (
+    'path' => '',
+    'type' => 'class',
+    'override' => false,
+  ),
+  'AjaxControllerCore' => 
+  array (
+    'path' => 'controllers/front/AjaxController.php',
+    'type' => 'class',
+    'override' => false,
+  ),
   'ChangeCurrencyController' => 
   array (
     'path' => '',

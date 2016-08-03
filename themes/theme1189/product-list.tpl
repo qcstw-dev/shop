@@ -28,6 +28,7 @@
         <!-- Products list -->
         <ul{if isset($id) && $id} id="{$id}"{/if} class="product_list grid row{if isset($class) && $class} {$class}{/if}">
             {foreach from=$products item=product name=products}
+                {assign var="isInSelection" value="{($selection && in_array($product.id_product, $selection))}"}
                 {math equation="(total%perLine)" total=$smarty.foreach.products.total perLine=$nbItemsPerLine assign=totModulo}
                 {math equation="(total%perLineT)" total=$smarty.foreach.products.total perLineT=$nbItemsPerLineTablet assign=totModuloTablet}
                 {math equation="(total%perLineM)" total=$smarty.foreach.products.total perLineM=$nbItemsPerLineMobile assign=totModuloMobile}
@@ -53,6 +54,9 @@
                             <span class="new-label">{l s='New'}</span>
                         </a>
                     {/if}
+                    <div class="select-box cursor-pointer" data-id="{$product.id_product}" data-toggle="tooltip" data-placement="left" title="{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
+                        <span class="glyphicon glyphicon-{if !$isInSelection}plus-sign{else}minus-sign{/if}"></span>
+                    </div>
                     {if isset($product.on_sale) && $product.on_sale && isset($product.show_price) && $product.show_price && !$PS_CATALOG_MODE}
                         <a class="sale-box" href="{$product.link|escape:'html':'UTF-8'}">
                             <span class="sale-label">{l s='Sale!'}</span>

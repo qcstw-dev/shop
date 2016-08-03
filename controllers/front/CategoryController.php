@@ -144,7 +144,12 @@ class CategoryControllerCore extends FrontController
         $this->assignScenes();
         $this->assignSubcategories();
         $this->assignProductList();
-
+        
+//        $selection = (isset($_SESSION['selection']) && $_SESSION['selection'] ? $_SESSION['selection'] : []);
+//        $selection = ['21', '23', '26'];
+//        $selection = [];
+        $selection = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
+        
         $this->context->smarty->assign(array(
             'category'             => $this->category,
             'description_short'    => Tools::truncateString($this->category->description, 350),
@@ -161,7 +166,8 @@ class CategoryControllerCore extends FrontController
             'allow_oosp'           => (int)Configuration::get('PS_ORDER_OUT_OF_STOCK'),
             'comparator_max_item'  => (int)Configuration::get('PS_COMPARATOR_MAX_ITEM'),
             'suppliers'            => Supplier::getSuppliers(),
-            'body_classes'         => array($this->php_self.'-'.$this->category->id, $this->php_self.'-'.$this->category->link_rewrite)
+            'body_classes'         => array($this->php_self.'-'.$this->category->id, $this->php_self.'-'.$this->category->link_rewrite),
+            'selection'            => $selection
         ));
     }
 
