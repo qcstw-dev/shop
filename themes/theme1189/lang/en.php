@@ -854,5 +854,6 @@ $_LANG['live_edit_3c5b87f318f203adbfcc5d6a68959359'] = 'Failed to load module li
 $_LANG['live_edit_c9cc8cce247e49bae79f15173ce97354'] = 'Save';
 $_LANG['live_edit_d8dcfab18b3a6eba56d617dd1dcb1ba7'] = 'Close Live edit';
 
+$_LANG['index_7f3098e9ea4a36b21d46b945a74fd56d'] = 'Your selection';
 
 return $_LANG;

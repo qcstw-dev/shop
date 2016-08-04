@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-02 22:33:58
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:46:27
          compiled from "C:\wamp64\www\shop\admin4475uqijs\themes\default\template\controllers\modules\page_header_toolbar.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1463157a1581655a384-48180491%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1289857a2d6b32d0df9-22485999%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -17,7 +17,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1463157a1581655a384-48180491',
+  'nocache_hash' => '1289857a2d6b32d0df9-22485999',
   'function' => 
   array (
   ),
@@ -37,16 +37,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a15816b51b73_65088572',
+  'unifunc' => 'content_57a2d6b3a146e5_65137017',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a15816b51b73_65088572')) {function content_57a15816b51b73_65088572($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_57a2d6b3a146e5_65137017')) {function content_57a2d6b3a146e5_65137017($_smarty_tpl) {?>
 
 
 <?php if (!isset($_smarty_tpl->tpl_vars['title']->value)&&isset($_smarty_tpl->tpl_vars['page_header_toolbar_title']->value)) {?>
-	<?php $_smarty_tpl->tpl_vars['title'] = new Smarty_variable($_smarty_tpl->tpl_vars['page_header_toolbar_title']->value, null, 0);?>
+	<?php if (isset($_smarty_tpl->tpl_vars['title'])) {$_smarty_tpl->tpl_vars['title'] = clone $_smarty_tpl->tpl_vars['title'];
+$_smarty_tpl->tpl_vars['title']->value = $_smarty_tpl->tpl_vars['page_header_toolbar_title']->value; $_smarty_tpl->tpl_vars['title']->nocache = null; $_smarty_tpl->tpl_vars['title']->scope = 0;
+} else $_smarty_tpl->tpl_vars['title'] = new Smarty_variable($_smarty_tpl->tpl_vars['page_header_toolbar_title']->value, null, 0);?>
 <?php }?>
 <?php if (isset($_smarty_tpl->tpl_vars['page_header_toolbar_btn']->value)) {?>
-	<?php $_smarty_tpl->tpl_vars['toolbar_btn'] = new Smarty_variable($_smarty_tpl->tpl_vars['page_header_toolbar_btn']->value, null, 0);?>
+	<?php if (isset($_smarty_tpl->tpl_vars['toolbar_btn'])) {$_smarty_tpl->tpl_vars['toolbar_btn'] = clone $_smarty_tpl->tpl_vars['toolbar_btn'];
+$_smarty_tpl->tpl_vars['toolbar_btn']->value = $_smarty_tpl->tpl_vars['page_header_toolbar_btn']->value; $_smarty_tpl->tpl_vars['toolbar_btn']->nocache = null; $_smarty_tpl->tpl_vars['toolbar_btn']->scope = 0;
+} else $_smarty_tpl->tpl_vars['toolbar_btn'] = new Smarty_variable($_smarty_tpl->tpl_vars['page_header_toolbar_btn']->value, null, 0);?>
 <?php }?>
 
 <div class="bootstrap">
@@ -91,15 +95,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="btn-toolbar">
 		<ul class="nav nav-pills pull-right">
 			<?php if (isset($_smarty_tpl->tpl_vars['upgrade_available']->value)&&count($_smarty_tpl->tpl_vars['upgrade_available']->value)) {?>
-			<?php $_smarty_tpl->tpl_vars['modules'] = new Smarty_variable('', null, 0);?>
+			<?php if (isset($_smarty_tpl->tpl_vars['modules'])) {$_smarty_tpl->tpl_vars['modules'] = clone $_smarty_tpl->tpl_vars['modules'];
+$_smarty_tpl->tpl_vars['modules']->value = ''; $_smarty_tpl->tpl_vars['modules']->nocache = null; $_smarty_tpl->tpl_vars['modules']->scope = 0;
+} else $_smarty_tpl->tpl_vars['modules'] = new Smarty_variable('', null, 0);?>
 			<?php  $_smarty_tpl->tpl_vars['module'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['module']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['upgrade_available']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['module']->key => $_smarty_tpl->tpl_vars['module']->value) {
 $_smarty_tpl->tpl_vars['module']->_loop = true;
 ?>
-				<?php $_smarty_tpl->tpl_vars['modules'] = new Smarty_variable(($_smarty_tpl->tpl_vars['modules']->value).($_smarty_tpl->tpl_vars['module']->value['name']).('|'), null, 0);?>
+				<?php if (isset($_smarty_tpl->tpl_vars['modules'])) {$_smarty_tpl->tpl_vars['modules'] = clone $_smarty_tpl->tpl_vars['modules'];
+$_smarty_tpl->tpl_vars['modules']->value = ($_smarty_tpl->tpl_vars['modules']->value).($_smarty_tpl->tpl_vars['module']->value['name']).('|'); $_smarty_tpl->tpl_vars['modules']->nocache = null; $_smarty_tpl->tpl_vars['modules']->scope = 0;
+} else $_smarty_tpl->tpl_vars['modules'] = new Smarty_variable(($_smarty_tpl->tpl_vars['modules']->value).($_smarty_tpl->tpl_vars['module']->value['name']).('|'), null, 0);?>
 			<?php } ?>
-			<?php $_smarty_tpl->tpl_vars['modules'] = new Smarty_variable(substr($_smarty_tpl->tpl_vars['modules']->value,0,-1), null, 0);?>
+			<?php if (isset($_smarty_tpl->tpl_vars['modules'])) {$_smarty_tpl->tpl_vars['modules'] = clone $_smarty_tpl->tpl_vars['modules'];
+$_smarty_tpl->tpl_vars['modules']->value = substr($_smarty_tpl->tpl_vars['modules']->value,0,-1); $_smarty_tpl->tpl_vars['modules']->nocache = null; $_smarty_tpl->tpl_vars['modules']->scope = 0;
+} else $_smarty_tpl->tpl_vars['modules'] = new Smarty_variable(substr($_smarty_tpl->tpl_vars['modules']->value,0,-1), null, 0);?>
 			<li>
 				<a id="desc-module-update-all" class="toolbar_btn" href="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['currentIndex']->value, ENT_QUOTES, 'UTF-8', true);?>
 &amp;token=<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['token']->value, ENT_QUOTES, 'UTF-8', true);?>

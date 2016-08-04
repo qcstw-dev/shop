@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-03 06:06:50
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:41:58
          compiled from "C:\wamp64\www\shop\themes\theme1189\layout.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2617757a1c23ad246f5-04077955%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:786557a2d5a64b6236-51287049%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2617757a1c23ad246f5-04077955',
+  'nocache_hash' => '786557a2d5a64b6236-51287049',
   'function' => 
   array (
   ),
@@ -29,9 +29,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a1c23ae2e160_13037528',
+  'unifunc' => 'content_57a2d5a690f872_64455897',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a1c23ae2e160_13037528')) {function content_57a1c23ae2e160_13037528($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['left_column_size'])) {$_smarty_tpl->tpl_vars['left_column_size'] = clone $_smarty_tpl->tpl_vars['left_column_size'];
+<?php if ($_valid && !is_callable('content_57a2d5a690f872_64455897')) {function content_57a2d5a690f872_64455897($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['left_column_size'])) {$_smarty_tpl->tpl_vars['left_column_size'] = clone $_smarty_tpl->tpl_vars['left_column_size'];
 $_smarty_tpl->tpl_vars['left_column_size']->value = 0; $_smarty_tpl->tpl_vars['left_column_size']->nocache = null; $_smarty_tpl->tpl_vars['left_column_size']->scope = 0;
 } else $_smarty_tpl->tpl_vars['left_column_size'] = new Smarty_variable(0, null, 0);?><?php if (isset($_smarty_tpl->tpl_vars['right_column_size'])) {$_smarty_tpl->tpl_vars['right_column_size'] = clone $_smarty_tpl->tpl_vars['right_column_size'];
 $_smarty_tpl->tpl_vars['right_column_size']->value = 0; $_smarty_tpl->tpl_vars['right_column_size']->nocache = null; $_smarty_tpl->tpl_vars['right_column_size']->scope = 0;

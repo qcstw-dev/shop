@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-03 05:36:20
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 02:09:28
          compiled from "C:\wamp64\www\shop\themes\theme1189\nbr-product-page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2909257a1bb149e0651-13364245%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1011757a2dc18a10bd4-95862147%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2909257a1bb149e0651-13364245',
+  'nocache_hash' => '1011757a2dc18a10bd4-95862147',
   'function' => 
   array (
   ),
@@ -36,9 +36,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a1bb14d340a3_26878549',
+  'unifunc' => 'content_57a2dc18d701b7_97207496',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a1bb14d340a3_26878549')) {function content_57a1bb14d340a3_26878549($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['p']->value)&&$_smarty_tpl->tpl_vars['p']->value) {?>
+<?php if ($_valid && !is_callable('content_57a2dc18d701b7_97207496')) {function content_57a2dc18d701b7_97207496($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['p']->value)&&$_smarty_tpl->tpl_vars['p']->value) {?>
 	<?php if (isset($_GET['id_category'])&&$_GET['id_category']&&isset($_smarty_tpl->tpl_vars['category']->value)) {?>
 		<?php if (isset($_smarty_tpl->tpl_vars['requestPage'])) {$_smarty_tpl->tpl_vars['requestPage'] = clone $_smarty_tpl->tpl_vars['requestPage'];
 $_smarty_tpl->tpl_vars['requestPage']->value = $_smarty_tpl->tpl_vars['link']->value->getPaginationLink('category',$_smarty_tpl->tpl_vars['category']->value,false,false,true,false); $_smarty_tpl->tpl_vars['requestPage']->nocache = null; $_smarty_tpl->tpl_vars['requestPage']->scope = 0;

@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-02 22:33:38
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:46:41
          compiled from "C:\wamp64\www\shop\modules\blocktopmenu\views\templates\admin\_configure\helpers\form\form.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3182457a15802064901-09695121%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2763357a2d6c15edee3-38226746%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -23,7 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3182457a15802064901-09695121',
+  'nocache_hash' => '2763357a2d6c15edee3-38226746',
   'function' => 
   array (
   ),
@@ -79,9 +79,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a1580684dc37_77073543',
+  'unifunc' => 'content_57a2d6c480a380_86676852',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a1580684dc37_77073543')) {function content_57a1580684dc37_77073543($_smarty_tpl) {?><?php if (!is_callable('smarty_function_counter')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\function.counter.php';
+<?php if ($_valid && !is_callable('content_57a2d6c480a380_86676852')) {function content_57a2d6c480a380_86676852($_smarty_tpl) {?><?php if (!is_callable('smarty_function_counter')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\function.counter.php';
 ?>
 <?php if (isset($_smarty_tpl->tpl_vars['fields']->value['title'])) {?><h3><?php echo $_smarty_tpl->tpl_vars['fields']->value['title'];?>
 </h3><?php }?>
@@ -101,7 +101,9 @@ if (!empty($_capture_buffer)) {
  if (isset( $_capture_append)) $_smarty_tpl->append( $_capture_append, ob_get_contents());
  Smarty::$_smarty_vars['capture'][$_capture_buffer]=ob_get_clean();
 } else $_smarty_tpl->capture_error();?><?php }?>
-<?php $_smarty_tpl->tpl_vars['identifier_bk'] = new Smarty_variable($_smarty_tpl->tpl_vars['identifier']->value, null, 1);
+<?php if (isset($_smarty_tpl->tpl_vars['identifier_bk'])) {$_smarty_tpl->tpl_vars['identifier_bk'] = clone $_smarty_tpl->tpl_vars['identifier_bk'];
+$_smarty_tpl->tpl_vars['identifier_bk']->value = $_smarty_tpl->tpl_vars['identifier']->value; $_smarty_tpl->tpl_vars['identifier_bk']->nocache = null; $_smarty_tpl->tpl_vars['identifier_bk']->scope = 1;
+} else $_smarty_tpl->tpl_vars['identifier_bk'] = new Smarty_variable($_smarty_tpl->tpl_vars['identifier']->value, null, 1);
 if ($_smarty_tpl->parent != null) $_smarty_tpl->parent->tpl_vars['identifier_bk'] = clone $_smarty_tpl->tpl_vars['identifier_bk'];?>
 <?php if (isset($_smarty_tpl->tpl_vars['table_bk']->value)&&$_smarty_tpl->tpl_vars['table_bk']->value==$_smarty_tpl->tpl_vars['table']->value) {?><?php $_smarty_tpl->_capture_stack[0][] = array('table_count', null, null); ob_start(); ?><?php echo smarty_function_counter(array('name'=>'table_count'),$_smarty_tpl);?>
 <?php list($_capture_buffer, $_capture_assign, $_capture_append) = array_pop($_smarty_tpl->_capture_stack[0]);
@@ -110,7 +112,9 @@ if (!empty($_capture_buffer)) {
  if (isset( $_capture_append)) $_smarty_tpl->append( $_capture_append, ob_get_contents());
  Smarty::$_smarty_vars['capture'][$_capture_buffer]=ob_get_clean();
 } else $_smarty_tpl->capture_error();?><?php }?>
-<?php $_smarty_tpl->tpl_vars['table_bk'] = new Smarty_variable($_smarty_tpl->tpl_vars['table']->value, null, 1);
+<?php if (isset($_smarty_tpl->tpl_vars['table_bk'])) {$_smarty_tpl->tpl_vars['table_bk'] = clone $_smarty_tpl->tpl_vars['table_bk'];
+$_smarty_tpl->tpl_vars['table_bk']->value = $_smarty_tpl->tpl_vars['table']->value; $_smarty_tpl->tpl_vars['table_bk']->nocache = null; $_smarty_tpl->tpl_vars['table_bk']->scope = 1;
+} else $_smarty_tpl->tpl_vars['table_bk'] = new Smarty_variable($_smarty_tpl->tpl_vars['table']->value, null, 1);
 if ($_smarty_tpl->parent != null) $_smarty_tpl->parent->tpl_vars['table_bk'] = clone $_smarty_tpl->tpl_vars['table_bk'];?>
 <form id="<?php if (isset($_smarty_tpl->tpl_vars['fields']->value['form']['form']['id_form'])) {?><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['fields']->value['form']['form']['id_form'], ENT_QUOTES, 'UTF-8', true);?>
 <?php } else { ?><?php if ($_smarty_tpl->tpl_vars['table']->value==null) {?>configuration_form<?php } else { ?><?php echo $_smarty_tpl->tpl_vars['table']->value;?>
@@ -276,7 +280,9 @@ $_smarty_tpl->tpl_vars['hint']->_loop = true;
 foreach ($_from as $_smarty_tpl->tpl_vars['language']->key => $_smarty_tpl->tpl_vars['language']->value) {
 $_smarty_tpl->tpl_vars['language']->_loop = true;
 ?>
-										<?php $_smarty_tpl->tpl_vars['value_text'] = new Smarty_variable($_smarty_tpl->tpl_vars['fields_value']->value[$_smarty_tpl->tpl_vars['input']->value['name']][$_smarty_tpl->tpl_vars['language']->value['id_lang']], null, 0);?>
+										<?php if (isset($_smarty_tpl->tpl_vars['value_text'])) {$_smarty_tpl->tpl_vars['value_text'] = clone $_smarty_tpl->tpl_vars['value_text'];
+$_smarty_tpl->tpl_vars['value_text']->value = $_smarty_tpl->tpl_vars['fields_value']->value[$_smarty_tpl->tpl_vars['input']->value['name']][$_smarty_tpl->tpl_vars['language']->value['id_lang']]; $_smarty_tpl->tpl_vars['value_text']->nocache = null; $_smarty_tpl->tpl_vars['value_text']->scope = 0;
+} else $_smarty_tpl->tpl_vars['value_text'] = new Smarty_variable($_smarty_tpl->tpl_vars['fields_value']->value[$_smarty_tpl->tpl_vars['input']->value['name']][$_smarty_tpl->tpl_vars['language']->value['id_lang']], null, 0);?>
 										<?php if (count($_smarty_tpl->tpl_vars['languages']->value)>1) {?>
 										<div class="translatable-field lang-<?php echo $_smarty_tpl->tpl_vars['language']->value['id_lang'];?>
 " <?php if ($_smarty_tpl->tpl_vars['language']->value['id_lang']!=$_smarty_tpl->tpl_vars['defaultFormLanguage']->value) {?>style="display:none"<?php }?>>
@@ -422,7 +428,9 @@ _form').submit( function() {
 											</script>
 											
 										<?php }?>
-										<?php $_smarty_tpl->tpl_vars['value_text'] = new Smarty_variable($_smarty_tpl->tpl_vars['fields_value']->value[$_smarty_tpl->tpl_vars['input']->value['name']], null, 0);?>
+										<?php if (isset($_smarty_tpl->tpl_vars['value_text'])) {$_smarty_tpl->tpl_vars['value_text'] = clone $_smarty_tpl->tpl_vars['value_text'];
+$_smarty_tpl->tpl_vars['value_text']->value = $_smarty_tpl->tpl_vars['fields_value']->value[$_smarty_tpl->tpl_vars['input']->value['name']]; $_smarty_tpl->tpl_vars['value_text']->nocache = null; $_smarty_tpl->tpl_vars['value_text']->scope = 0;
+} else $_smarty_tpl->tpl_vars['value_text'] = new Smarty_variable($_smarty_tpl->tpl_vars['fields_value']->value[$_smarty_tpl->tpl_vars['input']->value['name']], null, 0);?>
 										<?php if (isset($_smarty_tpl->tpl_vars['input']->value['maxchar'])||isset($_smarty_tpl->tpl_vars['input']->value['prefix'])||isset($_smarty_tpl->tpl_vars['input']->value['suffix'])) {?>
 										<div class="input-group<?php if (isset($_smarty_tpl->tpl_vars['input']->value['class'])) {?> <?php echo $_smarty_tpl->tpl_vars['input']->value['class'];?>
 <?php }?>">
@@ -486,7 +494,9 @@ _form').submit( function() {
 										<?php }?>
 									<?php }?>
 								<?php } elseif ($_smarty_tpl->tpl_vars['input']->value['type']=='textbutton') {?>
-									<?php $_smarty_tpl->tpl_vars['value_text'] = new Smarty_variable($_smarty_tpl->tpl_vars['fields_value']->value[$_smarty_tpl->tpl_vars['input']->value['name']], null, 0);?>
+									<?php if (isset($_smarty_tpl->tpl_vars['value_text'])) {$_smarty_tpl->tpl_vars['value_text'] = clone $_smarty_tpl->tpl_vars['value_text'];
+$_smarty_tpl->tpl_vars['value_text']->value = $_smarty_tpl->tpl_vars['fields_value']->value[$_smarty_tpl->tpl_vars['input']->value['name']]; $_smarty_tpl->tpl_vars['value_text']->nocache = null; $_smarty_tpl->tpl_vars['value_text']->scope = 0;
+} else $_smarty_tpl->tpl_vars['value_text'] = new Smarty_variable($_smarty_tpl->tpl_vars['fields_value']->value[$_smarty_tpl->tpl_vars['input']->value['name']], null, 0);?>
 									<div class="row">
 										<div class="col-lg-9">
 										<?php if (isset($_smarty_tpl->tpl_vars['input']->value['maxchar'])) {?>
@@ -780,7 +790,9 @@ _off"<?php }?>><?php if ($_smarty_tpl->tpl_vars['value']->value['value']==1) {?>
 									</span>
 								<?php } elseif ($_smarty_tpl->tpl_vars['input']->value['type']=='textarea') {?>
 									<?php if (isset($_smarty_tpl->tpl_vars['input']->value['maxchar'])&&$_smarty_tpl->tpl_vars['input']->value['maxchar']) {?><div class="input-group"><?php }?>
-									<?php $_smarty_tpl->tpl_vars['use_textarea_autosize'] = new Smarty_variable(true, null, 0);?>
+									<?php if (isset($_smarty_tpl->tpl_vars['use_textarea_autosize'])) {$_smarty_tpl->tpl_vars['use_textarea_autosize'] = clone $_smarty_tpl->tpl_vars['use_textarea_autosize'];
+$_smarty_tpl->tpl_vars['use_textarea_autosize']->value = true; $_smarty_tpl->tpl_vars['use_textarea_autosize']->nocache = null; $_smarty_tpl->tpl_vars['use_textarea_autosize']->scope = 0;
+} else $_smarty_tpl->tpl_vars['use_textarea_autosize'] = new Smarty_variable(true, null, 0);?>
 									<?php if (isset($_smarty_tpl->tpl_vars['input']->value['lang'])&&$_smarty_tpl->tpl_vars['input']->value['lang']) {?>
 										<?php  $_smarty_tpl->tpl_vars['language'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['language']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['languages']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -920,7 +932,9 @@ _<?php echo $_smarty_tpl->tpl_vars['language']->value['id_lang'];?>
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->key => $_smarty_tpl->tpl_vars['value']->value) {
 $_smarty_tpl->tpl_vars['value']->_loop = true;
 ?>
-										<?php $_smarty_tpl->tpl_vars['id_checkbox'] = new Smarty_variable((($_smarty_tpl->tpl_vars['input']->value['name']).('_')).($_smarty_tpl->tpl_vars['value']->value[$_smarty_tpl->tpl_vars['input']->value['values']['id']]), null, 0);?>
+										<?php if (isset($_smarty_tpl->tpl_vars['id_checkbox'])) {$_smarty_tpl->tpl_vars['id_checkbox'] = clone $_smarty_tpl->tpl_vars['id_checkbox'];
+$_smarty_tpl->tpl_vars['id_checkbox']->value = (($_smarty_tpl->tpl_vars['input']->value['name']).('_')).($_smarty_tpl->tpl_vars['value']->value[$_smarty_tpl->tpl_vars['input']->value['values']['id']]); $_smarty_tpl->tpl_vars['id_checkbox']->nocache = null; $_smarty_tpl->tpl_vars['id_checkbox']->scope = 0;
+} else $_smarty_tpl->tpl_vars['id_checkbox'] = new Smarty_variable((($_smarty_tpl->tpl_vars['input']->value['name']).('_')).($_smarty_tpl->tpl_vars['value']->value[$_smarty_tpl->tpl_vars['input']->value['values']['id']]), null, 0);?>
 										<div class="checkbox<?php if (isset($_smarty_tpl->tpl_vars['input']->value['expand'])&&strtolower($_smarty_tpl->tpl_vars['input']->value['expand']['default'])=='show') {?> hidden<?php }?>">
 											<label for="<?php echo $_smarty_tpl->tpl_vars['id_checkbox']->value;?>
 "><input type="checkbox" name="<?php echo $_smarty_tpl->tpl_vars['id_checkbox']->value;?>
@@ -1196,11 +1210,13 @@ $_smarty_tpl->tpl_vars['v']->_loop = true;
 									<?php } ?>
 								</div>
 								<?php } elseif ($_smarty_tpl->tpl_vars['input']->value['type']=='group') {?>
-									<?php $_smarty_tpl->tpl_vars['groups'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['values'], null, 0);?>
+									<?php if (isset($_smarty_tpl->tpl_vars['groups'])) {$_smarty_tpl->tpl_vars['groups'] = clone $_smarty_tpl->tpl_vars['groups'];
+$_smarty_tpl->tpl_vars['groups']->value = $_smarty_tpl->tpl_vars['input']->value['values']; $_smarty_tpl->tpl_vars['groups']->nocache = null; $_smarty_tpl->tpl_vars['groups']->scope = 0;
+} else $_smarty_tpl->tpl_vars['groups'] = new Smarty_variable($_smarty_tpl->tpl_vars['input']->value['values'], null, 0);?>
 									<?php /*  Call merged included template "helpers/form/form_group.tpl" */
 $_tpl_stack[] = $_smarty_tpl;
- $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_group.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0, '3182457a15802064901-09695121');
-content_57a15805d009e9_37267627($_smarty_tpl);
+ $_smarty_tpl = $_smarty_tpl->setupInlineSubTemplate('helpers/form/form_group.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0, '2763357a2d6c15edee3-38226746');
+content_57a2d6c3b9bfc7_87590630($_smarty_tpl);
 $_smarty_tpl = array_pop($_tpl_stack); 
 /*  End of included template "helpers/form/form_group.tpl" */?>
 								<?php } elseif ($_smarty_tpl->tpl_vars['input']->value['type']=='shop') {?>
@@ -1650,9 +1666,9 @@ function move(up)
 	</script>
 <?php }?>
 <?php }} ?>
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-02 22:33:41
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:46:43
          compiled from "C:\wamp64\www\shop\admin4475uqijs\themes\default\template\helpers\form\form_group.tpl" */ ?>
-<?php if ($_valid && !is_callable('content_57a15805d009e9_37267627')) {function content_57a15805d009e9_37267627($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_57a2d6c3b9bfc7_87590630')) {function content_57a2d6c3b9bfc7_87590630($_smarty_tpl) {?>
 
 <?php if (count($_smarty_tpl->tpl_vars['groups']->value)&&isset($_smarty_tpl->tpl_vars['groups']->value)) {?>
 <div class="row">
@@ -1685,7 +1701,9 @@ $_smarty_tpl->tpl_vars['group']->_loop = true;
 ?>
 				<tr>
 					<td>
-						<?php $_smarty_tpl->tpl_vars['id_checkbox'] = new Smarty_variable((('groupBox').('_')).($_smarty_tpl->tpl_vars['group']->value['id_group']), null, 0);?>
+						<?php if (isset($_smarty_tpl->tpl_vars['id_checkbox'])) {$_smarty_tpl->tpl_vars['id_checkbox'] = clone $_smarty_tpl->tpl_vars['id_checkbox'];
+$_smarty_tpl->tpl_vars['id_checkbox']->value = (('groupBox').('_')).($_smarty_tpl->tpl_vars['group']->value['id_group']); $_smarty_tpl->tpl_vars['id_checkbox']->nocache = null; $_smarty_tpl->tpl_vars['id_checkbox']->scope = 0;
+} else $_smarty_tpl->tpl_vars['id_checkbox'] = new Smarty_variable((('groupBox').('_')).($_smarty_tpl->tpl_vars['group']->value['id_group']), null, 0);?>
 						<input type="checkbox" name="groupBox[]" class="groupBox" id="<?php echo $_smarty_tpl->tpl_vars['id_checkbox']->value;?>
 " value="<?php echo $_smarty_tpl->tpl_vars['group']->value['id_group'];?>
 " <?php if ($_smarty_tpl->tpl_vars['fields_value']->value[$_smarty_tpl->tpl_vars['id_checkbox']->value]) {?>checked="checked"<?php }?> />

@@ -571,7 +571,21 @@ class FrontControllerCore extends Controller
         if (!isset($this->context->cart)) {
             $this->context->cart = new Cart();
         }
-
+        
+        $aSelectedItems = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
+        $aSelectedDesigns = [];
+        $aSelectedProducts = [];
+        foreach ($aSelectedItems as $sSelectedItemId) {
+            $oItem = new Product($sSelectedItemId, true, $this->context->language->id);
+            if(in_array('45', $oItem->getCategories())){
+                // it's a product
+                $aSelectedProducts[] = $oItem;
+            } else {
+                // it's a design
+                $aSelectedDesigns[] = $oItem;
+            }
+        }
+        
         if (!$this->useMobileTheme()) {
             // These hooks aren't used for the mobile theme.
             // Needed hooks are called in the tpl files.

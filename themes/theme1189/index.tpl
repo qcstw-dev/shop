@@ -6,9 +6,13 @@
     {/if}
     <div class="tab-content">
         {$HOOK_HOME_TAB_CONTENT}
-        <h4>Last Designs</h4>
-        {include file="./product-list.tpl" products=$aDesigns}
-        <h4>Last Products</h4>
-        {include file="./product-list.tpl" products=$aBlankProducts}
+        {if $aDesigns}
+            <h4>Last Designs</h4>
+            {include file="./product-list.tpl" products=$aDesigns}
+        {/if}
+        {if $aProducts}
+            <h4>Last Products</h4>
+            {include file="./product-list.tpl" products=$aProducts}
+        {/if}
     </div>
 {*{/if}*}

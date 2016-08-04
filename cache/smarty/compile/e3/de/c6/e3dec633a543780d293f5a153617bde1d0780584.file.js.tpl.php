@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-02 22:33:57
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:46:26
          compiled from "C:\wamp64\www\shop\admin4475uqijs\themes\default\template\controllers\modules\js.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1313157a158156ec361-33692235%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3247057a2d6b2214f61-96850608%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1313157a158156ec361-33692235',
+  'nocache_hash' => '3247057a2d6b2214f61-96850608',
   'function' => 
   array (
   ),
@@ -28,9 +28,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a158158345f2_49517843',
+  'unifunc' => 'content_57a2d6b23af281_11802002',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a158158345f2_49517843')) {function content_57a158158345f2_49517843($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_replace')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\modifier.replace.php';
+<?php if ($_valid && !is_callable('content_57a2d6b23af281_11802002')) {function content_57a2d6b23af281_11802002($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_replace')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\modifier.replace.php';
 ?>
 
 <script type="text/javascript"><?php echo $_smarty_tpl->tpl_vars['autocompleteList']->value;?>

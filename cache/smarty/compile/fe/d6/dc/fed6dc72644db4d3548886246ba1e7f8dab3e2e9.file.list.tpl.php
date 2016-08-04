@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-02 22:33:57
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:46:26
          compiled from "C:\wamp64\www\shop\admin4475uqijs\themes\default\template\controllers\modules\list.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1593757a15815a63059-62978252%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2259657a2d6b2624209-55142217%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1593757a15815a63059-62978252',
+  'nocache_hash' => '2259657a2d6b2624209-55142217',
   'function' => 
   array (
   ),
@@ -27,9 +27,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a15816221eb5_49371369',
+  'unifunc' => 'content_57a2d6b2dd12b7_18244775',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a15816221eb5_49371369')) {function content_57a15816221eb5_49371369($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_replace')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\modifier.replace.php';
+<?php if ($_valid && !is_callable('content_57a2d6b2dd12b7_18244775')) {function content_57a2d6b2dd12b7_18244775($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_replace')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\modifier.replace.php';
 ?>
 
 <table id="module-list" class="table">
@@ -147,7 +147,9 @@ if (!empty($_capture_buffer)) {
 											</a>
 										<?php } elseif (!isset($_smarty_tpl->tpl_vars['module']->value->not_on_disk)) {?>
 											<?php if (count($_smarty_tpl->tpl_vars['module']->value->optionsHtml)>0) {?>
-												<?php $_smarty_tpl->tpl_vars['option'] = new Smarty_variable($_smarty_tpl->tpl_vars['module']->value->optionsHtml[0], null, 0);?>
+												<?php if (isset($_smarty_tpl->tpl_vars['option'])) {$_smarty_tpl->tpl_vars['option'] = clone $_smarty_tpl->tpl_vars['option'];
+$_smarty_tpl->tpl_vars['option']->value = $_smarty_tpl->tpl_vars['module']->value->optionsHtml[0]; $_smarty_tpl->tpl_vars['option']->nocache = null; $_smarty_tpl->tpl_vars['option']->scope = 0;
+} else $_smarty_tpl->tpl_vars['option'] = new Smarty_variable($_smarty_tpl->tpl_vars['module']->value->optionsHtml[0], null, 0);?>
 												<?php echo $_smarty_tpl->tpl_vars['option']->value;?>
 
 											<?php }?>

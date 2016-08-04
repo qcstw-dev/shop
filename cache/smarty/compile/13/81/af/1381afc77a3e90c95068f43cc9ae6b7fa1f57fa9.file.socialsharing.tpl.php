@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-03 01:40:43
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:41:52
          compiled from "C:\wamp64\www\shop\themes\theme1189\modules\socialsharing\views\templates\hook\socialsharing.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2477457a183db443711-08465356%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3209057a2d5a0d0cb91-46791856%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2477457a183db443711-08465356',
+  'nocache_hash' => '3209057a2d5a0d0cb91-46791856',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a183db5f4e83_83840704',
+  'unifunc' => 'content_57a2d5a0d724c9_62819508',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a183db5f4e83_83840704')) {function content_57a183db5f4e83_83840704($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['PS_SC_TWITTER']->value||$_smarty_tpl->tpl_vars['PS_SC_FACEBOOK']->value||$_smarty_tpl->tpl_vars['PS_SC_GOOGLE']->value||$_smarty_tpl->tpl_vars['PS_SC_PINTEREST']->value) {?>
+<?php if ($_valid && !is_callable('content_57a2d5a0d724c9_62819508')) {function content_57a2d5a0d724c9_62819508($_smarty_tpl) {?><?php if ($_smarty_tpl->tpl_vars['PS_SC_TWITTER']->value||$_smarty_tpl->tpl_vars['PS_SC_FACEBOOK']->value||$_smarty_tpl->tpl_vars['PS_SC_GOOGLE']->value||$_smarty_tpl->tpl_vars['PS_SC_PINTEREST']->value) {?>
 	<p class="socialsharing_product no-print">
 		<?php if ($_smarty_tpl->tpl_vars['PS_SC_TWITTER']->value) {?>
 			<button data-type="twitter" type="button" class="btn btn-twitter social-sharing">

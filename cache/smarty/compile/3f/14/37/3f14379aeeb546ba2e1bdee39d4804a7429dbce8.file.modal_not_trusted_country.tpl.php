@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-02 22:34:01
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:46:01
          compiled from "C:\wamp64\www\shop\admin4475uqijs\themes\default\template\controllers\modules\modal_not_trusted_country.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:265657a15819484863-80900394%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:522357a2d699e029b4-05265199%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '265657a15819484863-80900394',
+  'nocache_hash' => '522357a2d699e029b4-05265199',
   'function' => 
   array (
   ),
@@ -21,11 +21,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a158194e2499_37198609',
+  'unifunc' => 'content_57a2d699e77ce2_85557884',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a158194e2499_37198609')) {function content_57a158194e2499_37198609($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_57a2d699e77ce2_85557884')) {function content_57a2d699e77ce2_85557884($_smarty_tpl) {?>
 
-<?php $_smarty_tpl->tpl_vars['module_name'] = new Smarty_variable('<strong><span class="module-display-name-placeholder"></span></strong>', null, 0);?>
+<?php if (isset($_smarty_tpl->tpl_vars['module_name'])) {$_smarty_tpl->tpl_vars['module_name'] = clone $_smarty_tpl->tpl_vars['module_name'];
+$_smarty_tpl->tpl_vars['module_name']->value = '<strong><span class="module-display-name-placeholder"></span></strong>'; $_smarty_tpl->tpl_vars['module_name']->nocache = null; $_smarty_tpl->tpl_vars['module_name']->scope = 0;
+} else $_smarty_tpl->tpl_vars['module_name'] = new Smarty_variable('<strong><span class="module-display-name-placeholder"></span></strong>', null, 0);?>
 
 <div class="modal-body">
 	<div class="alert alert-warning">

@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-02 23:05:20
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:47:19
          compiled from "C:\wamp64\www\shop\admin4475uqijs\themes\default\template\helpers\uploader\simple.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2511957a15f70b35d66-52529506%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:478257a2d6e7e3c9c0-09762082%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2511957a15f70b35d66-52529506',
+  'nocache_hash' => '478257a2d6e7e3c9c0-09762082',
   'function' => 
   array (
   ),
@@ -28,18 +28,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a15f70e91361_16423884',
+  'unifunc' => 'content_57a2d6e8324df2_66068460',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a15f70e91361_16423884')) {function content_57a15f70e91361_16423884($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_57a2d6e8324df2_66068460')) {function content_57a2d6e8324df2_66068460($_smarty_tpl) {?>
 <?php if (isset($_smarty_tpl->tpl_vars['files']->value)&&count($_smarty_tpl->tpl_vars['files']->value)>0) {?>
-	<?php $_smarty_tpl->tpl_vars['show_thumbnail'] = new Smarty_variable(false, null, 0);?>
+	<?php if (isset($_smarty_tpl->tpl_vars['show_thumbnail'])) {$_smarty_tpl->tpl_vars['show_thumbnail'] = clone $_smarty_tpl->tpl_vars['show_thumbnail'];
+$_smarty_tpl->tpl_vars['show_thumbnail']->value = false; $_smarty_tpl->tpl_vars['show_thumbnail']->nocache = null; $_smarty_tpl->tpl_vars['show_thumbnail']->scope = 0;
+} else $_smarty_tpl->tpl_vars['show_thumbnail'] = new Smarty_variable(false, null, 0);?>
 	<?php  $_smarty_tpl->tpl_vars['file'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['file']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['files']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['file']->key => $_smarty_tpl->tpl_vars['file']->value) {
 $_smarty_tpl->tpl_vars['file']->_loop = true;
 ?>
 		<?php if (isset($_smarty_tpl->tpl_vars['file']->value['image'])&&$_smarty_tpl->tpl_vars['file']->value['type']=='image') {?>
-			<?php $_smarty_tpl->tpl_vars['show_thumbnail'] = new Smarty_variable(true, null, 0);?>
+			<?php if (isset($_smarty_tpl->tpl_vars['show_thumbnail'])) {$_smarty_tpl->tpl_vars['show_thumbnail'] = clone $_smarty_tpl->tpl_vars['show_thumbnail'];
+$_smarty_tpl->tpl_vars['show_thumbnail']->value = true; $_smarty_tpl->tpl_vars['show_thumbnail']->nocache = null; $_smarty_tpl->tpl_vars['show_thumbnail']->scope = 0;
+} else $_smarty_tpl->tpl_vars['show_thumbnail'] = new Smarty_variable(true, null, 0);?>
 		<?php }?>
 	<?php } ?>
 <?php if ($_smarty_tpl->tpl_vars['show_thumbnail']->value) {?>

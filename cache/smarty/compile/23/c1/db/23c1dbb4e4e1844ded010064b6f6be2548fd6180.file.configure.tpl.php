@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-02 22:33:46
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:46:06
          compiled from "C:\wamp64\www\shop\admin4475uqijs\themes\default\template\controllers\modules\configure.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1391457a1580a257d42-62560819%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:409957a2d69e2d4fe0-18097487%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -17,7 +17,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1391457a1580a257d42-62560819',
+  'nocache_hash' => '409957a2d69e2d4fe0-18097487',
   'function' => 
   array (
   ),
@@ -37,16 +37,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a1580aa8d9a2_23294376',
+  'unifunc' => 'content_57a2d69e9f17c7_55579598',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a1580aa8d9a2_23294376')) {function content_57a1580aa8d9a2_23294376($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_57a2d69e9f17c7_55579598')) {function content_57a2d69e9f17c7_55579598($_smarty_tpl) {?>
 
 
 <?php if (!isset($_smarty_tpl->tpl_vars['title']->value)&&isset($_smarty_tpl->tpl_vars['page_header_toolbar_title']->value)) {?>
-	<?php $_smarty_tpl->tpl_vars['title'] = new Smarty_variable($_smarty_tpl->tpl_vars['page_header_toolbar_title']->value, null, 0);?>
+	<?php if (isset($_smarty_tpl->tpl_vars['title'])) {$_smarty_tpl->tpl_vars['title'] = clone $_smarty_tpl->tpl_vars['title'];
+$_smarty_tpl->tpl_vars['title']->value = $_smarty_tpl->tpl_vars['page_header_toolbar_title']->value; $_smarty_tpl->tpl_vars['title']->nocache = null; $_smarty_tpl->tpl_vars['title']->scope = 0;
+} else $_smarty_tpl->tpl_vars['title'] = new Smarty_variable($_smarty_tpl->tpl_vars['page_header_toolbar_title']->value, null, 0);?>
 <?php }?>
 <?php if (isset($_smarty_tpl->tpl_vars['page_header_toolbar_btn']->value)) {?>
-	<?php $_smarty_tpl->tpl_vars['toolbar_btn'] = new Smarty_variable($_smarty_tpl->tpl_vars['page_header_toolbar_btn']->value, null, 0);?>
+	<?php if (isset($_smarty_tpl->tpl_vars['toolbar_btn'])) {$_smarty_tpl->tpl_vars['toolbar_btn'] = clone $_smarty_tpl->tpl_vars['toolbar_btn'];
+$_smarty_tpl->tpl_vars['toolbar_btn']->value = $_smarty_tpl->tpl_vars['page_header_toolbar_btn']->value; $_smarty_tpl->tpl_vars['toolbar_btn']->nocache = null; $_smarty_tpl->tpl_vars['toolbar_btn']->scope = 0;
+} else $_smarty_tpl->tpl_vars['toolbar_btn'] = new Smarty_variable($_smarty_tpl->tpl_vars['page_header_toolbar_btn']->value, null, 0);?>
 <?php }?>
 
 <div class="bootstrap">

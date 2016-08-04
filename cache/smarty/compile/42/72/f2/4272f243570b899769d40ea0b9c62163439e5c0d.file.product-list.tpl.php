@@ -1,20 +1,22 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-03 06:06:49
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 05:29:08
          compiled from "C:\wamp64\www\shop\themes\theme1189\product-list.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:698757a1c239e490b1-32199728%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2669757a2d5a5e04cc5-26235847%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '4272f243570b899769d40ea0b9c62163439e5c0d' => 
     array (
       0 => 'C:\\wamp64\\www\\shop\\themes\\theme1189\\product-list.tpl',
-      1 => 1470216493,
+      1 => 1470302946,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '698757a1c239e490b1-32199728',
+  'nocache_hash' => '2669757a2d5a5e04cc5-26235847',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.19',
+  'unifunc' => 'content_57a2d5a6e7e4b5_23320023',
   'variables' => 
   array (
     'products' => 0,
@@ -46,10 +48,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'compared_products' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a1c23ab47d39_48852792',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a1c23ab47d39_48852792')) {function content_57a1c23ab47d39_48852792($_smarty_tpl) {?><?php if (!is_callable('smarty_function_math')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\function.math.php';
+<?php if ($_valid && !is_callable('content_57a2d5a6e7e4b5_23320023')) {function content_57a2d5a6e7e4b5_23320023($_smarty_tpl) {?><?php if (!is_callable('smarty_function_math')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\function.math.php';
 ?><?php if (isset($_smarty_tpl->tpl_vars['products']->value)&&$_smarty_tpl->tpl_vars['products']->value) {?>
     
     <?php if ($_smarty_tpl->tpl_vars['page_name']->value!='category') {?>
@@ -119,9 +119,9 @@ $_smarty_tpl->tpl_vars['product']->_loop = true;
  $_smarty_tpl->tpl_vars['smarty']->value['foreach']['products']['iteration']++;
 ?>
                 <?php ob_start();?><?php echo ($_smarty_tpl->tpl_vars['selection']->value&&in_array($_smarty_tpl->tpl_vars['product']->value['id_product'],$_smarty_tpl->tpl_vars['selection']->value));?>
-<?php $_tmp7=ob_get_clean();?><?php if (isset($_smarty_tpl->tpl_vars["isInSelection"])) {$_smarty_tpl->tpl_vars["isInSelection"] = clone $_smarty_tpl->tpl_vars["isInSelection"];
-$_smarty_tpl->tpl_vars["isInSelection"]->value = $_tmp7; $_smarty_tpl->tpl_vars["isInSelection"]->nocache = null; $_smarty_tpl->tpl_vars["isInSelection"]->scope = 0;
-} else $_smarty_tpl->tpl_vars["isInSelection"] = new Smarty_variable($_tmp7, null, 0);?>
+<?php $_tmp1=ob_get_clean();?><?php if (isset($_smarty_tpl->tpl_vars["isInSelection"])) {$_smarty_tpl->tpl_vars["isInSelection"] = clone $_smarty_tpl->tpl_vars["isInSelection"];
+$_smarty_tpl->tpl_vars["isInSelection"]->value = $_tmp1; $_smarty_tpl->tpl_vars["isInSelection"]->nocache = null; $_smarty_tpl->tpl_vars["isInSelection"]->scope = 0;
+} else $_smarty_tpl->tpl_vars["isInSelection"] = new Smarty_variable($_tmp1, null, 0);?>
                 <?php echo smarty_function_math(array('equation'=>"(total%perLine)",'total'=>$_smarty_tpl->getVariable('smarty')->value['foreach']['products']['total'],'perLine'=>$_smarty_tpl->tpl_vars['nbItemsPerLine']->value,'assign'=>'totModulo'),$_smarty_tpl);?>
 
                 <?php echo smarty_function_math(array('equation'=>"(total%perLineT)",'total'=>$_smarty_tpl->getVariable('smarty')->value['foreach']['products']['total'],'perLineT'=>$_smarty_tpl->tpl_vars['nbItemsPerLineTablet']->value,'assign'=>'totModuloTablet'),$_smarty_tpl);?>
@@ -173,6 +173,8 @@ $_smarty_tpl->tpl_vars['totModuloMobile']->value = $_smarty_tpl->tpl_vars['nbIte
                         </a>
                     <?php }?>
                     <div class="select-box cursor-pointer" data-id="<?php echo $_smarty_tpl->tpl_vars['product']->value['id_product'];?>
+" data-product-title="<?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
+" data-type="<?php echo $_smarty_tpl->tpl_vars['product']->value['category'];?>
 " data-toggle="tooltip" data-placement="left" title="<?php if (!$_smarty_tpl->tpl_vars['isInSelection']->value) {?> <?php echo smartyTranslate(array('s'=>'Add to selection'),$_smarty_tpl);?>
  <?php } else { ?> <?php echo smartyTranslate(array('s'=>'Remove from selection'),$_smarty_tpl);?>
 <?php }?>" data-text-add="<?php echo smartyTranslate(array('s'=>'Add to selection'),$_smarty_tpl);?>

@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-03 06:05:16
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 02:47:45
          compiled from "C:\wamp64\www\shop\themes\theme1189\modules\blockmyaccount\blockmyaccount.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:186557a1c1dccffb76-82894807%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:576157a2e511a283d0-37221754%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '186557a1c1dccffb76-82894807',
+  'nocache_hash' => '576157a2e511a283d0-37221754',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a1c1dce67209_94993514',
+  'unifunc' => 'content_57a2e511bb2cf1_43426015',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a1c1dce67209_94993514')) {function content_57a1c1dce67209_94993514($_smarty_tpl) {?><!-- Block myaccount module -->
+<?php if ($_valid && !is_callable('content_57a2e511bb2cf1_43426015')) {function content_57a2e511bb2cf1_43426015($_smarty_tpl) {?><!-- Block myaccount module -->
 <section class="block myaccount-column">
 	<h4 class="title_block">
 		<a href="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['link']->value->getPageLink('my-account',true), ENT_QUOTES, 'UTF-8', true);?>

@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-03 05:36:20
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 02:09:28
          compiled from "C:\wamp64\www\shop\themes\theme1189\product-sort.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:210357a1bb146cf295-21758246%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2175657a2dc186e8109-17179961%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '210357a1bb146cf295-21758246',
+  'nocache_hash' => '2175657a2dc186e8109-17179961',
   'function' => 
   array (
   ),
@@ -33,9 +33,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a1bb149ccdc5_70725971',
+  'unifunc' => 'content_57a2dc18a011c4_37602474',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a1bb149ccdc5_70725971')) {function content_57a1bb149ccdc5_70725971($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['orderby']->value)&&isset($_smarty_tpl->tpl_vars['orderway']->value)) {?>
+<?php if ($_valid && !is_callable('content_57a2dc18a011c4_37602474')) {function content_57a2dc18a011c4_37602474($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['orderby']->value)&&isset($_smarty_tpl->tpl_vars['orderway']->value)) {?>
     <ul class="display hidden-xs">
         <li class="display-title"><?php echo smartyTranslate(array('s'=>'View:'),$_smarty_tpl);?>
 </li>

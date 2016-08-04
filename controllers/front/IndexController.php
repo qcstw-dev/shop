@@ -37,24 +37,35 @@ class IndexControllerCore extends FrontController
         parent::initContent();
         $this->addJS(_THEME_JS_DIR_.'index.js');
         
-        $oDesignCategory = new Category('45', $this->context->language->id);
-        $oProductCategory = new Category('46', $this->context->language->id);
+        $oDesignCategory = new Category('46', $this->context->language->id);
+        $oProductCategory = new Category('45', $this->context->language->id);
         
         $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
-        $aBlankProducts = $oProductCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
+        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
         
-//        $selection = (isset($_SESSION['selection']) && $_SESSION['selection'] ? $_SESSION['selection'] : []);
-//        $selection = $this->context->cookie;
-//        $selection = ['21', '23', '26'];
-//        $selection = [];
-          $selection = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
+        $aSelectedItems = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
+        $aSelectedDesigns = [];
+        $aSelectedProducts = [];
+        foreach ($aSelectedItems as $sSelectedItemId) {
+            $oItem = new Product($sSelectedItemId, true, $this->context->language->id);
+            if(in_array('45', $oItem->getCategories())){
+                // it's a product
+                $aSelectedProducts[] = $oItem;
+            } else {
+                // it's a design
+                $aSelectedDesigns[] = $oItem;
+            }
+        }
+        
         $this->context->smarty->assign(array('HOOK_HOME' => Hook::exec('displayHome'),
             'HOOK_HOME_TAB'         => Hook::exec('displayHomeTab'),
             'HOOK_HOME_TAB_CONTENT' => Hook::exec('displayHomeTabContent'),
-            'aBlankProducts'        => $aBlankProducts,
+            'aProducts'             => $aProducts,
             'aDesigns'              => $aDesigns,
             'link'                  => $this->context->link,
-            'selection'             => $selection
+            'selection'             => $aSelectedItems,
+            'aSelectedDesigns'      => $aSelectedDesigns,
+            'aSelectedProducts'      => $aSelectedProducts
         ));
         $this->setTemplate(_PS_THEME_DIR_.'index.tpl');
     }
