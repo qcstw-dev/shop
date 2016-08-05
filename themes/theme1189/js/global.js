@@ -436,22 +436,24 @@ function addRemoveToSelection (element) {
             console.log(json);
             if (json.success === true) {
                 if (json.type === 'remove') {
-                    element.find('span').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
+                    element.find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
                     element.attr('title', element.data('text-add')).tooltip('fixTitle').tooltip('show');
+                    element.find('.text').text(element.data('text-add'));
                     $('.list-item-'+element.data('id')).remove();
                     if (!$('.designs-list').find('li').length && !$('.products-list').find('li').length) {
                         $('.block-selection').hide();
                     }
                 } else {
                     $('.block-selection').show();
-                    element.find('span').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
+                    element.find('.glyphicon').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
                     element.attr('title', element.data('text-remove')).tooltip('fixTitle').tooltip('show');
+                    element.find('.text').text(element.data('text-remove'));
                     $('.'+element.data('type')+'-list').append('\
                         <li class="list-item-'+element.data('id')+'">\n\
                             <a href="'+element.data('product-link')+'" title="'+element.data('product-title')+'">\n\
                                 <img scr="" />\n\
-                                <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
                             </a>\n\
+                            <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
                         </li>');
                     $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img')).attr('title', element.data('product-title')).tooltip('fixTitle');
                 }
@@ -467,7 +469,7 @@ $(window).load(function () {
     listBlocksAnimate('#homefeatured', '#homefeatured li', nbItemsPerLine, -300, true);
     listBlocksAnimate('#homepage-blog', '#homepage-blog li', nbItemsPerLine, -300, true);
     $('[data-toggle="tooltip"]').tooltip();
-    $('.selection').on('click',function () {
+    $('.selection').live('click' ,function () {
         addRemoveToSelection($(this));  
     });
 });

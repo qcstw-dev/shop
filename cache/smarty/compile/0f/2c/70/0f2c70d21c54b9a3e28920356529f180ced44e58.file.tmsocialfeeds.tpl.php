@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:41:55
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-05 03:04:28
          compiled from "C:\wamp64\www\shop\themes\theme1189\modules\tmsocialfeeds\views\templates\hook\tmsocialfeeds.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2398657a2d5a3370b67-90973697%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:637257a43a7c786355-63025597%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2398657a2d5a3370b67-90973697',
+  'nocache_hash' => '637257a43a7c786355-63025597',
   'function' => 
   array (
   ),
@@ -38,9 +38,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a2d5a3875ff5_64640601',
+  'unifunc' => 'content_57a43a7cc34f37_27706780',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a2d5a3875ff5_64640601')) {function content_57a2d5a3875ff5_64640601($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\modifier.escape.php';
+<?php if ($_valid && !is_callable('content_57a43a7cc34f37_27706780')) {function content_57a43a7cc34f37_27706780($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\modifier.escape.php';
 ?><?php if ($_smarty_tpl->tpl_vars['hook_content']->value) {?>
 	
     <div class="socialfeedblock <?php echo $_smarty_tpl->tpl_vars['hook_name']->value;?>

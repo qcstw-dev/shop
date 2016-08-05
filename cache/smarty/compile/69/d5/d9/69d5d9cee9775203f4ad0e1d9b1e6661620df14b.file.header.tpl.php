@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 23:00:52
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-05 03:30:53
          compiled from "C:\wamp64\www\shop\themes\theme1189\header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:895857a2d5a691b404-42829462%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2501057a43a7e6bfd99-89703653%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '69d5d9cee9775203f4ad0e1d9b1e6661620df14b' => 
     array (
       0 => 'C:\\wamp64\\www\\shop\\themes\\theme1189\\header.tpl',
-      1 => 1470366049,
+      1 => 1470382251,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '895857a2d5a691b404-42829462',
+  'nocache_hash' => '2501057a43a7e6bfd99-89703653',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a2d5a718dda8_03216648',
+  'unifunc' => 'content_57a43a7eb3fbb3_04247001',
   'variables' => 
   array (
     'language_code' => 0,
@@ -58,7 +58,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a2d5a718dda8_03216648')) {function content_57a2d5a718dda8_03216648($_smarty_tpl) {?><?php if (!is_callable('smarty_function_implode')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\function.implode.php';
+<?php if ($_valid && !is_callable('content_57a43a7eb3fbb3_04247001')) {function content_57a43a7eb3fbb3_04247001($_smarty_tpl) {?><?php if (!is_callable('smarty_function_implode')) include 'C:\\wamp64\\www\\shop\\tools\\smarty\\plugins\\function.implode.php';
 ?><!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['language_code']->value, ENT_QUOTES, 'UTF-8', true);?>
 "><![endif]-->
@@ -202,8 +202,10 @@ $_smarty_tpl->tpl_vars["columns"]->value = "3"; $_smarty_tpl->tpl_vars["columns"
             </div>
             <div class="columns-container">
                 <div id="columns" class="container">
-                    <?php echo $_smarty_tpl->getSubTemplate ("./selection.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array('seelction'=>$_smarty_tpl->tpl_vars['selection']->value), 0);?>
+                    <?php if ($_smarty_tpl->tpl_vars['page_name']->value!='layoutmaker'&&$_smarty_tpl->tpl_vars['page_name']->value!='pagenotfound') {?>
+                        <?php echo $_smarty_tpl->getSubTemplate ("./selection.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array('seelction'=>$_smarty_tpl->tpl_vars['selection']->value), 0);?>
 
+                    <?php }?>
                     <?php if ($_smarty_tpl->tpl_vars['page_name']->value!='index'&&$_smarty_tpl->tpl_vars['page_name']->value!='pagenotfound') {?>
                         <?php echo $_smarty_tpl->getSubTemplate (((string)$_smarty_tpl->tpl_vars['tpl_dir']->value)."./breadcrumb.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 

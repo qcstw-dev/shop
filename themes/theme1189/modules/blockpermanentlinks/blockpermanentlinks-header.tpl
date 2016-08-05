@@ -9,8 +9,5 @@
 	<li id="header_link_wishlist">
 		<a href="{$link->getModuleLink('blockwishlist', 'mywishlist', array(), true)|escape:'html':'UTF-8'}" title="{l s='My Wishlist' mod='blockpermanentlinks'}">{l s='My Wishlist' mod='blockpermanentlinks'}</a>
 	</li>
-	<li id="header_link_blog">
-		<a href="index.php?fc=module&module=smartblog&controller=category" title="{l s='Blog' mod='blockpermanentlinks'}">{l s='Blog' mod='blockpermanentlinks'}</a>
-	</li>
 </ul>
 <!-- /Block permanent links module HEADER -->

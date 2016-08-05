@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 01:41:53
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-05 03:04:29
          compiled from "C:\wamp64\www\shop\themes\theme1189\modules\themeconfigurator\views\templates\hook\hook.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2470557a2d5a1350ae9-60301652%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1217157a43a7db7fc57-33689457%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2470557a2d5a1350ae9-60301652',
+  'nocache_hash' => '1217157a43a7db7fc57-33689457',
   'function' => 
   array (
   ),
@@ -26,9 +26,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.19',
-  'unifunc' => 'content_57a2d5a172d0f0_83955606',
+  'unifunc' => 'content_57a43a7debb901_57727836',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57a2d5a172d0f0_83955606')) {function content_57a2d5a172d0f0_83955606($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['htmlitems']->value)&&$_smarty_tpl->tpl_vars['htmlitems']->value) {?>
+<?php if ($_valid && !is_callable('content_57a43a7debb901_57727836')) {function content_57a43a7debb901_57727836($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['htmlitems']->value)&&$_smarty_tpl->tpl_vars['htmlitems']->value) {?>
     <?php ob_start();?><?php echo mb_convert_encoding(htmlspecialchars($_smarty_tpl->tpl_vars['hook']->value, ENT_QUOTES, 'UTF-8', true), "HTML-ENTITIES", 'UTF-8');?>
 <?php $_tmp7=ob_get_clean();?><?php if (isset($_smarty_tpl->tpl_vars['hookName'])) {$_smarty_tpl->tpl_vars['hookName'] = clone $_smarty_tpl->tpl_vars['hookName'];
 $_smarty_tpl->tpl_vars['hookName']->value = $_tmp7; $_smarty_tpl->tpl_vars['hookName']->nocache = null; $_smarty_tpl->tpl_vars['hookName']->scope = 0;

@@ -343,37 +343,46 @@
                             {/if}
                             <div class="clearfix">
                                 {if $product->category != 'designs'}
-                                    <!-- quantity wanted -->
-                                    {if !$PS_CATALOG_MODE}
-                                        <p id="quantity_wanted_p"{if (!$allow_oosp && $product->quantity <= 0) || !$product->available_for_order || $PS_CATALOG_MODE} style="display: none;"{/if}>
-                                            <label>{l s='Quantity'}</label>
-                                            <input type="text" name="qty" id="quantity_wanted" class="text" value="{if isset($quantityBackup)}{$quantityBackup|intval}{else}{if $product->minimal_quantity > 1}{$product->minimal_quantity}{else}1{/if}{/if}" />
-                                            <a href="#" data-field-qty="qty" class="btn btn-default button-minus product_quantity_down">
-                                                <span>
-                                                    <i class="fa fa-minus"></i>
-                                                </span>
-                                            </a>
-                                            <a href="#" data-field-qty="qty" class="btn btn-default button-plus product_quantity_up">
-                                                <span>
-                                                    <i class="fa fa-plus"></i>
-                                                </span>
-                                            </a>
-                                            <span class="clearfix"></span>
-                                        </p>
-                                    {/if}
-                                    <div id="add_to_cart_product_page_button" {if (!$allow_oosp && $product->quantity <= 0) || !$product->available_for_order || (isset($restricted_country_mode) && $restricted_country_mode) || $PS_CATALOG_MODE} class="unvisible"{/if}>
-                                        <p id="add_to_cart" class="buttons_bottom_block no-print">
-                                            {if $content_only && (isset($product->customization_required) && $product->customization_required)}
-                                                <button type="submit" name="Submit" class="btn btn-default">
-                                                    <span>{l s='Customize'}</span>
-                                                </button>
-                                            {else}
-                                                <button type="submit" name="Submit" class="btn btn-default ajax_add_to_cart_product_button">
-                                                    <span>{l s='Add to cart'}</span>
-                                                </button>
-                                            {/if}
-                                        </p>
+                                    {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
+                                    <div class="btn btn-default selection margin-bottom-10"
+                                            data-product-link="{$product->getLink()|escape:'html':'UTF-8'}" 
+                                            data-img="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" 
+                                            data-id="{$product->id}" data-product-title="{$product->name}" data-type="{$product->category}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
+                                            <span class="glyphicon glyphicon-{if !$isInSelection}plus{else}minus{/if}-sign"></span> <span class="text">{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}</span>
                                     </div>
+                                    {if false}
+                                        <!-- quantity wanted -->
+                                        {if !$PS_CATALOG_MODE}
+                                            <p id="quantity_wanted_p"{if (!$allow_oosp && $product->quantity <= 0) || !$product->available_for_order || $PS_CATALOG_MODE} style="display: none;"{/if}>
+                                                <label>{l s='Quantity'}</label>
+                                                <input type="text" name="qty" id="quantity_wanted" class="text" value="{if isset($quantityBackup)}{$quantityBackup|intval}{else}{if $product->minimal_quantity > 1}{$product->minimal_quantity}{else}1{/if}{/if}" />
+                                                <a href="#" data-field-qty="qty" class="btn btn-default button-minus product_quantity_down">
+                                                    <span>
+                                                        <i class="fa fa-minus"></i>
+                                                    </span>
+                                                </a>
+                                                <a href="#" data-field-qty="qty" class="btn btn-default button-plus product_quantity_up">
+                                                    <span>
+                                                        <i class="fa fa-plus"></i>
+                                                    </span>
+                                                </a>
+                                                <span class="clearfix"></span>
+                                            </p>
+                                        {/if}
+                                        <div id="add_to_cart_product_page_button" {if (!$allow_oosp && $product->quantity <= 0) || !$product->available_for_order || (isset($restricted_country_mode) && $restricted_country_mode) || $PS_CATALOG_MODE} class="unvisible"{/if}>
+                                            <p id="add_to_cart" class="buttons_bottom_block no-print">
+                                                {if $content_only && (isset($product->customization_required) && $product->customization_required)}
+                                                    <button type="submit" name="Submit" class="btn btn-default">
+                                                        <span>{l s='Customize'}</span>
+                                                    </button>
+                                                {else}
+                                                    <button type="submit" name="Submit" class="btn btn-default ajax_add_to_cart_product_button">
+                                                        <span>{l s='Add to cart'}</span>
+                                                    </button>
+                                                {/if}
+                                            </p>
+                                        </div>
+                                    {/if}
                                 {/if}
                             </div>
                             <!-- minimal quantity wanted -->
@@ -382,7 +391,7 @@
                                 <b id="minimal_quantity_label">{$product->minimal_quantity}</b>
                             </p>
                         </div> <!-- end product_attributes -->
-                        <div class="box-cart-bottom">
+                        <div class="box-cart-bottom margin-top-10">
                         {if isset($HOOK_PRODUCT_ACTIONS) && $HOOK_PRODUCT_ACTIONS}{$HOOK_PRODUCT_ACTIONS}{/if}
                     </div> <!-- end box-cart-bottom -->
                 </div> <!-- end box-info-product -->

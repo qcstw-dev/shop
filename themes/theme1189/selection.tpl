@@ -4,7 +4,7 @@
             <h4 class="margin-top-20">{l s='Your selection'}</h4>
         </div>
         <div class="col-xs-2 margin-top-10 margin-bottom-10">
-            <a class="btn btn-warning pull-right" href="layout-maker"><span class="glyphicon glyphicon-pencil"></span> Layout maker</a>
+            <a class="btn btn-warning pull-right" href="{$base_dir}{$lang_iso}/layout-maker"><span class="glyphicon glyphicon-pencil"></span> Layout maker</a>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -15,8 +15,8 @@
                 <li class="list-item-{$design->id}">
                     <a href="{$design->getLink()|escape:'html':'UTF-8'}">
                         <img src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-toggle="tooltip" data-placement="right" title="{$design->name}" />
-                        <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$design->id}"></span>
                     </a>
+                    <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$design->id}"></span>
                 </li>
             {/foreach}
         </ul>
@@ -28,8 +28,8 @@
                 <li class="list-item-{$product->id}">
                     <a href="{$product->getLink()|escape:'html':'UTF-8'}">
                         <img src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-toggle="tooltip" data-placement="right" title="{$product->name}" />
-                        <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$product->id}"></span>
                     </a>
+                    <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$product->id}"></span>
                 </li>
             {/foreach}
         </ul>

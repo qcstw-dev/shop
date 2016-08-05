@@ -90,7 +90,9 @@
             </div>
             <div class="columns-container">
                 <div id="columns" class="container">
-                    {include file="./selection.tpl" seelction=$selection}
+                    {if $page_name !='layoutmaker' && $page_name !='pagenotfound'}
+                        {include file="./selection.tpl" seelction=$selection}
+                    {/if}
                     {if $page_name !='index' && $page_name !='pagenotfound'}
                         {include file="$tpl_dir./breadcrumb.tpl"}
                     {/if}

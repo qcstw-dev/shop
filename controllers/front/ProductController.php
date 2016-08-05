@@ -257,7 +257,10 @@ class ProductControllerCore extends FrontController
             if ($this->product->customizable) {
                 $customization_datas = $this->context->cart->getProductCustomization($this->product->id, null, true);
             }
-
+            $this->product->image = Product::getCover($this->product->id);
+            
+            $selection = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
+            
             $this->context->smarty->assign(array(
                 'stock_management' => Configuration::get('PS_STOCK_MANAGEMENT'),
                 'customizationFields' => $customization_fields,
@@ -291,6 +294,7 @@ class ProductControllerCore extends FrontController
                     'category-'.(isset($this->category) ? $this->category->getFieldByLang('link_rewrite') : '')
                 ),
                 'display_discount_price' => Configuration::get('PS_DISPLAY_DISCOUNT_PRICE'),
+                'selection' => $selection,
             ));
         }
         $this->setTemplate(_PS_THEME_DIR_.'product.tpl');
