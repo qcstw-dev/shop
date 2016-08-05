@@ -577,6 +577,7 @@ class FrontControllerCore extends Controller
         $aSelectedProducts = [];
         foreach ($aSelectedItems as $sSelectedItemId) {
             $oItem = new Product($sSelectedItemId, true, $this->context->language->id);
+            $oItem->image = Product::getCover($oItem->id);
             if(in_array('45', $oItem->getCategories())){
                 // it's a product
                 $aSelectedProducts[] = $oItem;
@@ -594,6 +595,9 @@ class FrontControllerCore extends Controller
                 'HOOK_TOP'          => Hook::exec('displayTop'),
                 'HOOK_LEFT_COLUMN'  => ($this->display_column_left  ? Hook::exec('displayLeftColumn') : ''),
                 'HOOK_RIGHT_COLUMN' => ($this->display_column_right ? Hook::exec('displayRightColumn', array('cart' => $this->context->cart)) : ''),
+                'selection'             => $aSelectedItems,
+                'aSelectedDesigns'      => $aSelectedDesigns,
+                'aSelectedProducts'      => $aSelectedProducts
             ));
         } else {
             $this->context->smarty->assign('HOOK_MOBILE_HEADER', Hook::exec('displayMobileHeader'));

@@ -54,8 +54,8 @@
                             <span class="new-label">{l s='New'}</span>
                         </a>
                     {/if}
-                    <div class="select-box cursor-pointer" data-id="{$product.id_product}" data-product-title="{$product.name}" data-type="{$product.category}" data-toggle="tooltip" data-placement="left" title="{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
-                        <span class="glyphicon glyphicon-{if !$isInSelection}plus-sign{else}minus-sign{/if}"></span>
+                    <div class="selection select-box cursor-pointer" data-product-link="{$product.link|escape:'html':'UTF-8'}" data-img="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-id="{$product.id_product}" data-product-title="{$product.name}" data-type="{$product.category}" data-toggle="tooltip" data-placement="left" title="{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
+                        <span class="font-size-30 glyphicon glyphicon-{if !$isInSelection}plus-sign{else}minus-sign{/if}"></span>
                     </div>
                     {if isset($product.on_sale) && $product.on_sale && isset($product.show_price) && $product.show_price && !$PS_CATALOG_MODE}
                         <a class="sale-box" href="{$product.link|escape:'html':'UTF-8'}">

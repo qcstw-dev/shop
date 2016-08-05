@@ -1307,6 +1307,18 @@
     'type' => 'class',
     'override' => false,
   ),
+  'AjaxController' => 
+  array (
+    'path' => '',
+    'type' => 'class',
+    'override' => false,
+  ),
+  'AjaxControllerCore' => 
+  array (
+    'path' => 'controllers/front/AjaxController.php',
+    'type' => 'class',
+    'override' => false,
+  ),
   'Alias' => 
   array (
     'path' => '',
@@ -1610,18 +1622,6 @@
   'CategoryCore' => 
   array (
     'path' => 'classes/Category.php',
-    'type' => 'class',
-    'override' => false,
-  ),
-  'AjaxController' => 
-  array (
-    'path' => '',
-    'type' => 'class',
-    'override' => false,
-  ),
-  'AjaxControllerCore' => 
-  array (
-    'path' => 'controllers/front/AjaxController.php',
     'type' => 'class',
     'override' => false,
   ),
@@ -2660,6 +2660,18 @@
   'LanguageCore' => 
   array (
     'path' => 'classes/Language.php',
+    'type' => 'class',
+    'override' => false,
+  ),
+  'LayoutMakerController' => 
+  array (
+    'path' => '',
+    'type' => 'class',
+    'override' => false,
+  ),
+  'LayoutMakerControllerCore' => 
+  array (
+    'path' => 'controllers/front/LayoutMakerController.php',
     'type' => 'class',
     'override' => false,
   ),

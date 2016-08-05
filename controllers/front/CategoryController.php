@@ -145,9 +145,6 @@ class CategoryControllerCore extends FrontController
         $this->assignSubcategories();
         $this->assignProductList();
         
-//        $selection = (isset($_SESSION['selection']) && $_SESSION['selection'] ? $_SESSION['selection'] : []);
-//        $selection = ['21', '23', '26'];
-//        $selection = [];
         $selection = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
         
         $this->context->smarty->assign(array(

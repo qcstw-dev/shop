@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 05:44:51
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 23:00:52
          compiled from "C:\wamp64\www\shop\themes\theme1189\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:895857a2d5a691b404-42829462%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '69d5d9cee9775203f4ad0e1d9b1e6661620df14b' => 
     array (
       0 => 'C:\\wamp64\\www\\shop\\themes\\theme1189\\header.tpl',
-      1 => 1470303889,
+      1 => 1470366049,
       2 => 'file',
     ),
   ),
@@ -53,10 +53,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'logo_image_height' => 0,
     'HOOK_TOP' => 0,
     'selection' => 0,
-    'aSelectedDesigns' => 0,
-    'design' => 0,
-    'aSelectedProducts' => 0,
-    'product' => 0,
     'right_column_size' => 0,
     'left_column_size' => 0,
   ),
@@ -206,47 +202,8 @@ $_smarty_tpl->tpl_vars["columns"]->value = "3"; $_smarty_tpl->tpl_vars["columns"
             </div>
             <div class="columns-container">
                 <div id="columns" class="container">
-                    <div class="block-selection border margin-top-10 margin-bottom-10" <?php if (!$_smarty_tpl->tpl_vars['selection']->value) {?> style="display: none;" <?php }?>>
-                        <div class="col-xs-12 padding-0">
-                            <div class="col-xs-10">
-                                <h4 class="margin-top-20"><?php echo smartyTranslate(array('s'=>'Your selection'),$_smarty_tpl);?>
-</h4>
-                            </div>
-                            <div class="col-xs-2 pull-right margin-top-10 margin-bottom-10">
-                                <a class="btn btn-warning" href="layout-maker"><span class="glyphicon glyphicon-pencil"></span> Layout maker</a>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="col-xs-6 border-top border-right">
-                            <h5 class="text-center bold">Designs</h5>
-                            <ul class="designs-list">
-                                <?php  $_smarty_tpl->tpl_vars['design'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['design']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['aSelectedDesigns']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['design']->key => $_smarty_tpl->tpl_vars['design']->value) {
-$_smarty_tpl->tpl_vars['design']->_loop = true;
-?>
-                                    <li class="list-item-<?php echo $_smarty_tpl->tpl_vars['design']->value->id;?>
-"><?php echo $_smarty_tpl->tpl_vars['design']->value->name;?>
-</li>
-                                <?php } ?>
-                            </ul>
-                        </div>
-                        <div class="col-xs-6 border-top">
-                            <h5 class="text-center bold">Products</h5>
-                            <ul class="products-list">
-                                <?php  $_smarty_tpl->tpl_vars['product'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['product']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['aSelectedProducts']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['product']->key => $_smarty_tpl->tpl_vars['product']->value) {
-$_smarty_tpl->tpl_vars['product']->_loop = true;
-?>
-                                    <li class="list-item-<?php echo $_smarty_tpl->tpl_vars['product']->value->id;?>
-"><?php echo $_smarty_tpl->tpl_vars['product']->value->name;?>
-</li>
-                                <?php } ?>
-                            </ul>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                    <?php echo $_smarty_tpl->getSubTemplate ("./selection.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array('seelction'=>$_smarty_tpl->tpl_vars['selection']->value), 0);?>
+
                     <?php if ($_smarty_tpl->tpl_vars['page_name']->value!='index'&&$_smarty_tpl->tpl_vars['page_name']->value!='pagenotfound') {?>
                         <?php echo $_smarty_tpl->getSubTemplate (((string)$_smarty_tpl->tpl_vars['tpl_dir']->value)."./breadcrumb.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 

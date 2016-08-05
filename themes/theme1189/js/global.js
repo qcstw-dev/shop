@@ -446,7 +446,14 @@ function addRemoveToSelection (element) {
                     $('.block-selection').show();
                     element.find('span').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
                     element.attr('title', element.data('text-remove')).tooltip('fixTitle').tooltip('show');
-                    $('.'+element.data('type')+'-list').append('<li class="list-item-'+element.data('id')+'">'+element.data('product-title')+'</li>');
+                    $('.'+element.data('type')+'-list').append('\
+                        <li class="list-item-'+element.data('id')+'">\n\
+                            <a href="'+element.data('product-link')+'" title="'+element.data('product-title')+'">\n\
+                                <img scr="" />\n\
+                                <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
+                            </a>\n\
+                        </li>');
+                    $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img')).attr('title', element.data('product-title')).tooltip('fixTitle');
                 }
             } else {
                 $.fancybox('<p class="text-center">Error</p>');
@@ -460,7 +467,7 @@ $(window).load(function () {
     listBlocksAnimate('#homefeatured', '#homefeatured li', nbItemsPerLine, -300, true);
     listBlocksAnimate('#homepage-blog', '#homepage-blog li', nbItemsPerLine, -300, true);
     $('[data-toggle="tooltip"]').tooltip();
-    $('.select-box').on('click',function () {
+    $('.selection').on('click',function () {
         addRemoveToSelection($(this));  
     });
 });

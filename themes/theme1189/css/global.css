@@ -6261,9 +6261,9 @@ a.product-name {
 
 .select-box {
   right: 10px;
-  top: 4px;}
+  top: 4px;
+}
 .select-box .glyphicon {
-  font-size: 30px;
   color: #595959;
 }
 .select-box .glyphicon-plus-sign {
@@ -8968,8 +8968,23 @@ ul.step a:hover:after {
 
 .block-selection .designs-list,
 .block-selection .products-list {
-    list-style: disc;
     padding-left: 20px;
+}
+
+.block-selection a,
+.block-selection a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+.block-selection ul li .glyphicon-remove {
+    top:-16px
+}
+.block-selection ul li {
+    display: inline;
+}
+.block-selection ul li img {
+    width: 50px;
+    height: 50px;
 }
 
 .visibility-hidden {
@@ -9078,7 +9093,7 @@ ul.step a:hover:after {
     padding-left: 15px;
 }
 .padding-0 {
-    padding: 0;
+    padding: 0 !important;
 }
 .padding-top-10 {
     padding-top: 10px;

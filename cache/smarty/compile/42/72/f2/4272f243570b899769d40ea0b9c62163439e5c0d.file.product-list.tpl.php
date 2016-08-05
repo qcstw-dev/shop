@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 05:29:08
+<?php /* Smarty version Smarty-3.1.19, created on 2016-08-04 23:08:38
          compiled from "C:\wamp64\www\shop\themes\theme1189\product-list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2669757a2d5a5e04cc5-26235847%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4272f243570b899769d40ea0b9c62163439e5c0d' => 
     array (
       0 => 'C:\\wamp64\\www\\shop\\themes\\theme1189\\product-list.tpl',
-      1 => 1470302946,
+      1 => 1470366508,
       2 => 'file',
     ),
   ),
@@ -172,7 +172,9 @@ $_smarty_tpl->tpl_vars['totModuloMobile']->value = $_smarty_tpl->tpl_vars['nbIte
 </span>
                         </a>
                     <?php }?>
-                    <div class="select-box cursor-pointer" data-id="<?php echo $_smarty_tpl->tpl_vars['product']->value['id_product'];?>
+                    <div class="selection select-box cursor-pointer" data-product-link="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['product']->value['link'], ENT_QUOTES, 'UTF-8', true);?>
+" data-img="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['link']->value->getImageLink($_smarty_tpl->tpl_vars['product']->value['link_rewrite'],$_smarty_tpl->tpl_vars['product']->value['id_image'],'tm_home_default'), ENT_QUOTES, 'UTF-8', true);?>
+" data-id="<?php echo $_smarty_tpl->tpl_vars['product']->value['id_product'];?>
 " data-product-title="<?php echo $_smarty_tpl->tpl_vars['product']->value['name'];?>
 " data-type="<?php echo $_smarty_tpl->tpl_vars['product']->value['category'];?>
 " data-toggle="tooltip" data-placement="left" title="<?php if (!$_smarty_tpl->tpl_vars['isInSelection']->value) {?> <?php echo smartyTranslate(array('s'=>'Add to selection'),$_smarty_tpl);?>
@@ -180,7 +182,7 @@ $_smarty_tpl->tpl_vars['totModuloMobile']->value = $_smarty_tpl->tpl_vars['nbIte
 <?php }?>" data-text-add="<?php echo smartyTranslate(array('s'=>'Add to selection'),$_smarty_tpl);?>
 " data-text-remove="<?php echo smartyTranslate(array('s'=>'Remove from selection'),$_smarty_tpl);?>
 ">
-                        <span class="glyphicon glyphicon-<?php if (!$_smarty_tpl->tpl_vars['isInSelection']->value) {?>plus-sign<?php } else { ?>minus-sign<?php }?>"></span>
+                        <span class="font-size-30 glyphicon glyphicon-<?php if (!$_smarty_tpl->tpl_vars['isInSelection']->value) {?>plus-sign<?php } else { ?>minus-sign<?php }?>"></span>
                     </div>
                     <?php if (isset($_smarty_tpl->tpl_vars['product']->value['on_sale'])&&$_smarty_tpl->tpl_vars['product']->value['on_sale']&&isset($_smarty_tpl->tpl_vars['product']->value['show_price'])&&$_smarty_tpl->tpl_vars['product']->value['show_price']&&!$_smarty_tpl->tpl_vars['PS_CATALOG_MODE']->value) {?>
                         <a class="sale-box" href="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['product']->value['link'], ENT_QUOTES, 'UTF-8', true);?>

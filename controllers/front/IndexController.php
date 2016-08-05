@@ -43,29 +43,12 @@ class IndexControllerCore extends FrontController
         $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
         $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
         
-        $aSelectedItems = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
-        $aSelectedDesigns = [];
-        $aSelectedProducts = [];
-        foreach ($aSelectedItems as $sSelectedItemId) {
-            $oItem = new Product($sSelectedItemId, true, $this->context->language->id);
-            if(in_array('45', $oItem->getCategories())){
-                // it's a product
-                $aSelectedProducts[] = $oItem;
-            } else {
-                // it's a design
-                $aSelectedDesigns[] = $oItem;
-            }
-        }
-        
         $this->context->smarty->assign(array('HOOK_HOME' => Hook::exec('displayHome'),
             'HOOK_HOME_TAB'         => Hook::exec('displayHomeTab'),
             'HOOK_HOME_TAB_CONTENT' => Hook::exec('displayHomeTabContent'),
             'aProducts'             => $aProducts,
             'aDesigns'              => $aDesigns,
-            'link'                  => $this->context->link,
-            'selection'             => $aSelectedItems,
-            'aSelectedDesigns'      => $aSelectedDesigns,
-            'aSelectedProducts'      => $aSelectedProducts
+            'link'                  => $this->context->link
         ));
         $this->setTemplate(_PS_THEME_DIR_.'index.tpl');
     }
