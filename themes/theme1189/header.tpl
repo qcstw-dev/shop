@@ -93,7 +93,7 @@
                     {if $page_name !='layoutmaker' && $page_name !='pagenotfound'}
                         {include file="./selection.tpl" seelction=$selection}
                     {/if}
-                    {if $page_name !='index' && $page_name !='pagenotfound'}
+                    {if $page_name !='index' && $page_name !='layoutmaker' && $page_name !='pagenotfound'}
                         {include file="$tpl_dir./breadcrumb.tpl"}
                     {/if}
                     <div id="slider_row" class="row">

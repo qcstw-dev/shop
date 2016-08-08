@@ -8966,25 +8966,20 @@ ul.step a:hover:after {
     cursor: pointer;
 }
 
-.block-selection .designs-list,
-.block-selection .products-list {
-    padding-left: 20px;
-}
-
 .block-selection ul li a,
 .block-selection ul li a:hover {
     color: inherit;
     text-decoration: none;
 }
 .block-selection ul li .glyphicon-remove {
-    top:-16px
+    top: -40px;
 }
 .block-selection ul li {
-    display: inline;
+    display: inline-block;
 }
 .block-selection ul li img {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
 }
 
 .visibility-hidden {
