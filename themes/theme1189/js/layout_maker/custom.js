@@ -32,15 +32,10 @@ $(function() {
         $('.overlay').data('product-id', $(this).data('product-id'));
     });
 
-    $('.change-color-product').on('click', function () {
-        if ($('.resize-image').data('is-first-image')) {
-            $('.resize-image').attr('src', '');
-            $('.resize-image').data('is-first-image', 0);
-        }
-        $('.overlay-img').attr('src', $(this).data('image-large')); 
-        $('.overlay').data('item-size', $(this).data('item-size'));
-        $('.overlay').data('logo-size', $(this).data('logo-size'));
-        $('.overlay').data('product-id', $(this).data('product-id'));
+    $('.change-color-product').live('click', function () {
+//        $('.overlay-img.added').remove();
+//        $('.overlay-inner').append('<img class="overlay-img added" src="'+$(this).attr('src')+'">');
+        $('.overlay-img').attr('src', $(this).attr('src'));
     });
     
     var drop = document.getElementById("component");
@@ -55,19 +50,10 @@ $(function() {
       drop.style.border = '3px solid #e9e9e9';
     };
     
-    
-    $('.block-color-product').hover(function (){
-        $(this).find('.block-layout-maker-info').stop(true, true).slideDown();
-    }, function () {
-        $(this).find('.block-layout-maker-info').stop(true, true).slideUp();
-    });
-
     $('.list-item').click(function () {
         $('.list-item-'+$(this).data('type')).removeClass('selected');
         $(this).addClass('selected');
         if ($('.list-item-design.selected').length && $('.list-item-product.selected').length) {
-            console.log('appel ajax');
-            
             $.ajax({
                 type: 'POST',
                 url: baseDir + 'index.php',
@@ -80,22 +66,27 @@ $(function() {
                     $.fancybox.hideLoading();
                     console.log(json);
                     if (json.success === true) {
-                        $('.overlay-img').attr('src', json.url);
+                        $('.resize-image').attr('src', json.url);
+                        $('.block-color-product').remove();
                         if (json.colors) {
                             json.colors.forEach(function (element) {
-                                $('.change-color .block-color-product').append('\
-                                    <div class="thumbnail thumbnail-hover">\n\
-                                        <img class="change-color-product" \n\
-                                         src="'+element+'"\n\
-                                         data-product-id="" \n\
-                                         alt="preview product" />\n\
+                                $('.change-color-product-block .block-colors').append('\
+                                    <div class="col-xs-6 block-color-product">\n\
+                                        <div class="thumbnail thumbnail-hover">\n\
+                                            <img class="change-color-product" \n\
+                                             src="'+element+'"\n\
+                                             data-product-id="" \n\
+                                             alt="preview product" />\n\
+                                        </div>\n\
                                     </div>\n\
                                 ');
                             });
-                            $('.change-color').show();
+                            $('.change-color-product-block').show();
+                            $('.btn-crop').show();
+                            resizeableImage($('.resize-image'), false);
                         }
                     } else {
-                        $.fancybox({html :'<p class="text-center">'+json.error+'</p>'});
+                        $.fancybox('<div class="text-center"><div class="glyphicon glyphicon-warning-sign font-size-44 margin-bottom-10"></div><div>'+json.error+'</div></div>');
                     }
                 }
             });

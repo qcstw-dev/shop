@@ -1,4 +1,4 @@
-{if count($product_images) > 1}
+{if count($product_images) > 1 && $product.category != 'designs'}
     <ul class="gallery-thumb-list">
         {foreach from=$product_images item=image}
             {assign var=imageId value="`$product.id_product`-`$image.id_image`"}

@@ -15,14 +15,14 @@
 .clearfix:before, .clearfix:after { content: ''; display: table; }
 .clearfix:after { clear: both; }
 
-body {
+/*body {
     background: #88ABC2;
     font-weight: 500;
     font-size: 1em;
     font-family: 'Raleway', Arial, sans-serif;
-}
+}*/
 
-a {
+/*a {
     color: #D0E0EB;
     text-decoration: none;
     outline: none;
@@ -30,7 +30,7 @@ a {
 
 a:hover, a:focus {
     color: #fff;
-}
+}*/
 
 .component {
     position: relative;

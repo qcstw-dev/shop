@@ -4,8 +4,7 @@ if (window.location.protocol == 'file:') {
 
 var initialized = false;
 
-var resizeableImage = function (image_target) {
-    
+var resizeableImage = function (image_target, customizable) {
     // Some variable and settings
     var $container,
             orig_src = new Image(),
@@ -24,30 +23,33 @@ var resizeableImage = function (image_target) {
     init = function () {
         // When resizing, we will always use this copy of the original as the base
         orig_src.src = image_target.src;
-        
+
         if (!initialized) {
+            $(image_target).wrap('<div id="resize-container" class="resize-container"></div>');
+            if (customizable) {
             // Wrap the image with the container and add resize handles
-            $(image_target).wrap('<div id="resize-container" class="resize-container"></div>')
-                    .before('<span class="border-dashed-top"></span>')
-                    .before('<span class="border-dashed-right"></span>')
-                    .before('<span class="border-dashed-left"></span>')
-                    .before('<span class="border-dashed-bottom"></span>')
-                    .before('<span class="resize-handle resize-handle-nw"></span>')
-                    .before('<span class="resize-handle resize-handle-ne"></span>')
-                    .after('<span class="resize-handle resize-handle-se"></span>')
-                    .after('<span class="resize-handle resize-handle-sw"></span>');
-            
+            $(image_target)
+                .before('<span class="border-dashed-top"></span>')
+                .before('<span class="border-dashed-right"></span>')
+                .before('<span class="border-dashed-left"></span>')
+                .before('<span class="border-dashed-bottom"></span>')
+                .before('<span class="resize-handle resize-handle-nw"></span>')
+                .before('<span class="resize-handle resize-handle-ne"></span>')
+                .after('<span class="resize-handle resize-handle-se"></span>')
+                .after('<span class="resize-handle resize-handle-sw"></span>');
+            }
             $('.js-crop').on('click', crop);
-            $('.js-crop-all').on('click', cropAll);
         }
         
         // Assign the container to a variable
         $container_overlay = $(image_overlay);
         $container = $(image_target).parent('.resize-container');
         
-        // Add events
-        $container.on('mousedown touchstart', '.resize-handle', startResize);
-        $container.on('mousedown touchstart', 'img', startMoving);
+        if (customizable) {
+            // Add events
+            $container.on('mousedown touchstart', '.resize-handle', startResize);
+            $container.on('mousedown touchstart', 'img', startMoving);
+        }
         
         initialized = true;
     };
@@ -262,8 +264,8 @@ var resizeableImage = function (image_target) {
             items: [{
                 src: $('<div class="popup">'+
                         '<div class="text-center"><img id="layout" src="'+crop_canvas.toDataURL("image/png")+'" /></div>'+
-                        '<div class="send-image btn btn-primary">Send layout to get a quick quote <span class="glyphicon glyphicon-envelope"></span></div>'+
-                        '<div class="export-image btn btn-primary">Download layout <span class="glyphicon glyphicon-download-alt"></span></div>'+
+//                        '<div class="send-image btn btn-primary">Send layout to get a quick quote <span class="glyphicon glyphicon-envelope"></span></div>'+
+//                        '<div class="export-image btn btn-primary">Download layout <span class="glyphicon glyphicon-download-alt"></span></div>'+
                      '</div>'),
                 type:'inline'
             }]
@@ -303,30 +305,6 @@ var resizeableImage = function (image_target) {
             });
         });
     };
-    cropAll = function () {
-        var crop_canvas_all;
-//        crop_canvas_all = capture($('.canvas-multi-product'));
-//        var context = crop_canvas_all.getContext("2d");
-        $('.change-color-product.'+$('.overlay').data('product-id')).each(function () {
-            if ($('.overlay-img').attr('src', $(this).data('image-large'))) {
-                var crop_canvas,
-                crop_canvas = capture($('.overlay'));
-                $('.canvas-multi-product').append('<img src="'+crop_canvas.toDataURL("image/png")+'" />');
-            }
-        });
-        crop_canvas_all = capture($('.canvas-multi-product'));
-        
-        $.magnificPopup.open({
-            items: [{
-                src: $('<div class="popup">'+
-                        '<div><img src="'+crop_canvas_all.toDataURL("image/png")+'" /></div>'+
-                        '<div class="margin-top-10 text-right"><span class="export-image btn btn-primary">Download layout <span class="glyphicon glyphicon-download-alt"></span></span></div>'+
-                     '</div>'),
-                type:'inline'
-            }]
-        });
-    }
-
     init();
 };
 

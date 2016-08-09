@@ -8966,12 +8966,12 @@ ul.step a:hover:after {
     cursor: pointer;
 }
 
-.block-selection ul li a,
+.block-selection a,
 .block-selection ul li a:hover {
     color: inherit;
     text-decoration: none;
 }
-.block-selection ul li .glyphicon-remove {
+.block-selection .glyphicon-remove {
     top: -40px;
 }
 .block-selection ul li {
@@ -8981,7 +8981,12 @@ ul.step a:hover:after {
     width: 100px;
     height: 100px;
 }
-
+.thumbnail-hover {
+    cursor: pointer;
+}
+.overflow-auto {
+    overflow: auto;
+}
 .visibility-hidden {
     visibility: hidden;
 }
@@ -9061,6 +9066,9 @@ ul.step a:hover:after {
 }
 .line-height-20 {
     line-height: 30px;
+}
+.border-none {
+    border: 0 !important;
 }
 .border-left {
     border-left: 1px solid #ddd;
@@ -9143,13 +9151,13 @@ ul.step a:hover:after {
     margin: auto;
 }
 .margin-0 {
-    margin: 0;
+    margin: 0 !important;
 }
 .margin-top-0 {
-    margin-top: 0;
+    margin-top: 0 !important;
 }
 .margin-bottom-0 {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 .margin-top-10 {
     margin-top: 10px;
@@ -9288,4 +9296,12 @@ ul.step a:hover:after {
     .border-md-top {
         border-top: 1px solid #ddd;
     }
+}
+.popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: auto;
+    max-width: 700px;
+    margin: 20px auto;
 }

@@ -91,26 +91,33 @@
                             <ul id="thumbs_list_frame">
                                 {if isset($images)}
                                     {foreach from=$images item=image name=thumbnails}
-                                        {assign var=imageIds value="`$product->id`-`$image.id_image`"}
-                                        {if !empty($image.legend)}
-                                            {assign var=imageTitle value=$image.legend|escape:'html':'UTF-8'}
+                                        {if preg_match('/^[0-9]+$/', $image.legend)}
+                                            {continue}
                                         {else}
-                                            {assign var=imageTitle value=$product->name|escape:'html':'UTF-8'}
+                                            {assign var=imageIds value="`$product->id`-`$image.id_image`"}
+                                            {if !empty($image.legend)}
+                                                {assign var=imageTitle value=$image.legend|escape:'html':'UTF-8'}
+                                            {else}
+                                                {assign var=imageTitle value=$product->name|escape:'html':'UTF-8'}
+                                            {/if}
+                                            <li id="thumbnail_{$image.id_image}"{if $smarty.foreach.thumbnails.last} class="last"{/if}>
+                                                <a 
+                                                    {if $jqZoomEnabled && $have_image && !$content_only}
+                                                        href="javascript:void(0);"
+                                                        rel="{literal}{{/literal}gallery: 'gal1', smallimage: '{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_large_default')|escape:'html':'UTF-8'}',largeimage: '{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_thickbox_default')|escape:'html':'UTF-8'}'{literal}}{/literal}"
+                                                    {else}
+                                                        href="{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_thickbox_default')|escape:'html':'UTF-8'}"
+                                                        data-fancybox-group="other-views"
+                                                        class="fancybox{if $image.id_image == $cover.id_image} shown{/if}"
+                                                    {/if}
+                                                    title="{$imageTitle}">
+                                                    <img class="img-responsive" id="thumb_{$image.id_image}" src="{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_cart_default')|escape:'html':'UTF-8'}" alt="{$imageTitle}" title="{$imageTitle}" height="{$cartSize.height}" width="{$cartSize.width}" itemprop="image" />
+                                                </a>
+                                            </li>
                                         {/if}
-                                        <li id="thumbnail_{$image.id_image}"{if $smarty.foreach.thumbnails.last} class="last"{/if}>
-                                            <a 
-                                                {if $jqZoomEnabled && $have_image && !$content_only}
-                                                    href="javascript:void(0);"
-                                                    rel="{literal}{{/literal}gallery: 'gal1', smallimage: '{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_large_default')|escape:'html':'UTF-8'}',largeimage: '{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_thickbox_default')|escape:'html':'UTF-8'}'{literal}}{/literal}"
-                                                {else}
-                                                    href="{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_thickbox_default')|escape:'html':'UTF-8'}"
-                                                    data-fancybox-group="other-views"
-                                                    class="fancybox{if $image.id_image == $cover.id_image} shown{/if}"
-                                                {/if}
-                                                title="{$imageTitle}">
-                                                <img class="img-responsive" id="thumb_{$image.id_image}" src="{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_cart_default')|escape:'html':'UTF-8'}" alt="{$imageTitle}" title="{$imageTitle}" height="{$cartSize.height}" width="{$cartSize.width}" itemprop="image" />
-                                            </a>
-                                        </li>
+{*                                        {if $product->category == 'designs'}*}
+{*                                            {break}*}
+{*                                        {/if}*}
                                     {/foreach}
                                 {/if}
                             </ul>

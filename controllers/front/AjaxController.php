@@ -47,13 +47,11 @@ class AjaxControllerCore extends FrontController
             }
             if (isset($sFinalPicture)) {
                 $result['url'] = $sFinalPicture;
-                
                 foreach ($oProduct->getImages($this->context->language->id) as $aProductImage){
-                    if ($aProductImage['legend']) {
+                    if ($aProductImage['legend'] && preg_match('/^[0-9]+$/', $aProductImage['legend'])) {
                         $result['colors'][] = $this->context->link->getImageLink($oProduct->link_rewrite, $aProductImage['id_image'], 'layout');
                     }
                 }
-                
             } else {
                 $result['success'] = false;
                 $result['error'] = 'Combination not available';
