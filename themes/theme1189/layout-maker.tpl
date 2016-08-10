@@ -53,7 +53,19 @@
             <img class="icon-rotate" src="{$img_dir}layout_maker/reload.svg" alt="rotate">
         </div>
         <div class="change-color-product-block text-left col-xs-3 background-white position-absolute" >
-            <div class="preview-color">
+            <div class="col-xs-12 padding-0 border text-center margin-bottom-10 background-dark-grey block-item-size" style="display: none">
+                <div class="col-xs-6">
+                    Item size:
+                </div>
+                <div class="col-xs-6 background-white info-item-size"></div>
+            </div>
+            <div class="col-xs-12 padding-0 border text-center margin-bottom-10 background-dark-grey block-design-size" style="display: none">
+                <div class="col-xs-6">
+                    Design size:
+                </div>
+                <div class="col-xs-6 background-white info-design-size"></div>
+            </div>
+            <div class="preview-color" style="display: none">
                 <div class="col-xs-12 padding-0 border overflow-auto">
                     <h4 class="padding-10">Colors available:</h4>
                         <div class="block-colors">

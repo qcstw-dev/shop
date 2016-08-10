@@ -52,6 +52,15 @@ class AjaxControllerCore extends FrontController
                         $result['colors'][] = $this->context->link->getImageLink($oProduct->link_rewrite, $aProductImage['id_image'], 'layout');
                     }
                 }
+                $aFeatures = $oProduct->getFrontFeatures($this->context->language->id);
+                $aFeaturesByKey = [];
+                foreach ($aFeatures as $key=>$aFeature) {
+                    $aFeaturesByKey[$aFeature['id_feature']]['name'] = $aFeature['name'];
+                    $aFeaturesByKey[$aFeature['id_feature']]['value'] = $aFeature['value'];
+                }
+                $result['item_size'] = isset($aFeaturesByKey['8']['value']) ? $aFeaturesByKey['8']['value'] : '';
+                $result['design_size'] = isset($aFeaturesByKey['9']['value']) ? $aFeaturesByKey['9']['value'] : '';
+                
             } else {
                 $result['success'] = false;
                 $result['error'] = 'Combination not available';

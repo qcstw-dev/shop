@@ -34,7 +34,7 @@ class LayoutMakerControllerCore extends FrontController
     {
         parent::initContent();
         $this->setTemplate(_PS_THEME_DIR_.'layout-maker.tpl');
-
+        
         $selection = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
 
         $this->context->smarty->assign(array(

@@ -68,6 +68,11 @@ $(function() {
                     if (json.success === true) {
                         $('.resize-image').attr('src', json.url);
                         $('.block-color-product').remove();
+                        $('.change-color-product-block').hide();
+                            $('.preview-color').hide();
+                        $('.block-item-size').hide();
+                        $('.block-design-size').hide();
+                        $('.btn-crop').hide();
                         if (json.colors) {
                             json.colors.forEach(function (element) {
                                 $('.change-color-product-block .block-colors').append('\
@@ -81,10 +86,22 @@ $(function() {
                                     </div>\n\
                                 ');
                             });
+                            $('.preview-color').show();
                             $('.change-color-product-block').show();
-                            $('.btn-crop').show();
-                            resizeableImage($('.resize-image'), false);
                         }
+                        $('.btn-crop').show();
+
+                        if (json.item_size) {
+                            $('.info-item-size').text(json.item_size);
+                            $('.block-item-size').show();
+                            $('.change-color-product-block').show();
+                        }
+                        if (json.design_size) {
+                            $('.info-design-size').text(json.design_size);
+                            $('.block-design-size').show();
+                            $('.change-color-product-block').show();
+                        }
+                        resizeableImage($('.resize-image'), false);
                     } else {
                         $.fancybox('<div class="text-center"><div class="glyphicon glyphicon-warning-sign font-size-44 margin-bottom-10"></div><div>'+json.error+'</div></div>');
                     }

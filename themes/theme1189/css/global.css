@@ -8981,6 +8981,29 @@ ul.step a:hover:after {
     width: 100px;
     height: 100px;
 }
+
+
+
+
+
+
+
+
+.background-grey {
+    background: #eee;
+}
+.background-white {
+    background: #fff;
+}
+.background-dark-grey {
+    background: #e4e4e4;
+}
+.background-grey-hover:hover {
+    background: #eee;
+}
+.background-light {
+    background: rgb(243, 243, 243);
+}
 .thumbnail-hover {
     cursor: pointer;
 }

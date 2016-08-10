@@ -254,18 +254,10 @@ var resizeableImage = function (image_target, customizable) {
         var crop_canvas;
         crop_canvas = capture($('.overlay'));
         
-        var ctx = crop_canvas.getContext("2d");
-        ctx.font = "12px Arial";
-        ctx.fillText('Product: '+$('.overlay').data('ref'),10,30);
-        ctx.fillText('Item size: '+$('.overlay').data('item-size'),10,50);
-        ctx.fillText('Logo size: '+$('.overlay').data('logo-size'),10,70);
-        
         $.magnificPopup.open({
             items: [{
                 src: $('<div class="popup">'+
                         '<div class="text-center"><img id="layout" src="'+crop_canvas.toDataURL("image/png")+'" /></div>'+
-//                        '<div class="send-image btn btn-primary">Send layout to get a quick quote <span class="glyphicon glyphicon-envelope"></span></div>'+
-//                        '<div class="export-image btn btn-primary">Download layout <span class="glyphicon glyphicon-download-alt"></span></div>'+
                      '</div>'),
                 type:'inline'
             }]
