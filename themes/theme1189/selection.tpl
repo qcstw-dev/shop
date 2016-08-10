@@ -4,7 +4,7 @@
             <h4 class="margin-top-20">{l s='Your selection'}</h4>
         </div>
         <div class="col-xs-2 margin-top-10 margin-bottom-10">
-            <a class="btn btn-warning pull-right" href="{$base_dir}{$lang_iso}/layout-maker"><span class="glyphicon glyphicon-pencil"></span> Layout maker</a>
+            <a class="btn btn-warning pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-pencil"></span> Layout maker</a>
         </div>
     </div>
     <div class="clearfix"></div>

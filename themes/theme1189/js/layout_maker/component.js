@@ -2,9 +2,11 @@ if (window.location.protocol == 'file:') {
     alert('To test this demo properly please use a local server such as XAMPP or WAMP. See README.md for more details.');
 }
 
-var initialized = false;
-
 var resizeableImage = function (image_target, customizable) {
+    if (customizable != false) {
+        customizable = true;
+    }
+    
     // Some variable and settings
     var $container,
             orig_src = new Image(),
@@ -19,8 +21,13 @@ var resizeableImage = function (image_target, customizable) {
             max_height = 900,
             resize_canvas = document.createElement('canvas'),
             rotate_value = 0;
-    
     init = function () {
+        
+        var initialized = false;
+        
+        $('.resize-image').show();
+        $('.resize-container').find('span').remove();
+        $('.resize-container').removeAttr('style');
         // When resizing, we will always use this copy of the original as the base
         orig_src.src = image_target.src;
 
@@ -38,7 +45,7 @@ var resizeableImage = function (image_target, customizable) {
                 .after('<span class="resize-handle resize-handle-se"></span>')
                 .after('<span class="resize-handle resize-handle-sw"></span>');
             }
-            $('.js-crop').on('click', crop);
+            $('.add-to-cart').on('click', crop);
         }
         
         // Assign the container to a variable
@@ -49,6 +56,8 @@ var resizeableImage = function (image_target, customizable) {
             // Add events
             $container.on('mousedown touchstart', '.resize-handle', startResize);
             $container.on('mousedown touchstart', 'img', startMoving);
+        } else {
+            $(image_target).unwrap();
         }
         
         initialized = true;

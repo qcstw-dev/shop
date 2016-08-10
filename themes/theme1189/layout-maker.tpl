@@ -9,8 +9,11 @@
             </div>
             <div class="col-md-12 padding-10">
                 <div class="designs-list">
+                    <div class="col-md-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-custom" data-id="custom" data-type="design">
+                        <div class="padding border list-item-custom-text">Upload your Design</div>
+                    </div>
                     {foreach from=$aSelectedDesigns item=design name=designs}
-                        <div class="col-md-3 thumbnail border-none margin-bottom-0 list-item list-item-design list-item-{$design->id} cursor-pointer" data-id="{$design->id}" data-type="design">
+                        <div class="col-md-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-{$design->id}" data-id="{$design->id}" data-type="design">
                             <img src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-toggle="tooltip" data-placement="right" title="{$design->name}" />
                         </div>
                     {/foreach}
@@ -24,7 +27,7 @@
             <div class="col-md-12 padding-10">
                 <div class="products-list">
                     {foreach from=$aSelectedProducts item=product name=products}
-                        <div class="col-md-3 thumbnail border-none margin-bottom-0 list-item list-item-product list-item-{$product->id} cursor-pointer" data-id="{$product->id}" data-type="product">
+                        <div class="col-md-3 thumbnail border-none margin-bottom-0 list-item list-item-product cursor-pointer list-item-{$product->id}" data-id="{$product->id}" data-type="product">
                             <img src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-toggle="tooltip" data-placement="right" title="{$product->name}" />
                         </div>
                     {/foreach}
@@ -48,7 +51,7 @@
                 <img class="overlay-img" src="">
             </div>
         </div>
-        <img id="image" class="resize-image" data-is-first-image="1" src="{$img_dir}layout_maker/drag-and-drop.png">
+        <img id="image" class="resize-image" data-is-first-image="1" src="{$img_dir}layout_maker/drag-and-drop.png" data-original-url="{$img_dir}layout_maker/drag-and-drop.png">
         <div id="slider-vertical" style="display: none">
             <img class="icon-rotate" src="{$img_dir}layout_maker/reload.svg" alt="rotate">
         </div>
@@ -74,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary btn-crop js-crop" style="display: none">Preview / Download / Send <img class="icon-crop" src="{$img_dir}layout_maker/crop.svg"  alt="crop"></button>
+        <button class="btn btn-primary add-to-cart  btn-crop js-crop" style="display: none"><span class="glyphicon glyphicon-shopping-cart"></span> {l s='Add to cart'}</button>
     </div>
         
 {else}

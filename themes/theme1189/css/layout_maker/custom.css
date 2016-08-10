@@ -24,7 +24,7 @@
 
 .change-color-product-block {
     position: absolute;
-    top: 60px;
+    top: 100px;
     left: 0;
     display: none;
 }
@@ -61,7 +61,7 @@
 .overlay-top {
     width: 100%;
     top: 0;
-    height: 57px;
+    height: 56px;
 }
 .overlay-bottom {
     width: 100%;
@@ -80,7 +80,15 @@
     top: 0;
     left: 0;
 }
-
+.list-item.selected div,
 .list-item.selected img {
     border: 3px solid #ddd;
+}
+.list-item-custom-text {
+    font-size: 19px;
+    text-align: center;
+    min-height: 126px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

@@ -14,28 +14,9 @@ $(function() {
         }
     });
 
-    $('.change-product').on('click', function () {
-        //reset image exemple import
-        if ($('.resize-image').data('is-first-image')) {
-            $('.resize-image').attr('src', '');
-            $('.resize-image').data('is-first-image', 0);
-        }
-        $('.btn-show-hide-text-area').trigger('click');
-        $('.product-title').hide();
-        $('.product-title-'+$(this).data('product-id')).show();
-        $('.change-color-product-block').hide();
-        $('.change-color-product-block.'+$(this).data('product-id')).show();
-        $('.overlay-img').attr('src', $(this).data('image-large'));
-        $('.overlay').data('ref', $(this).data('ref'));
-        $('.overlay').data('item-size', $(this).data('item-size'));
-        $('.overlay').data('logo-size', $(this).data('logo-size'));
-        $('.overlay').data('product-id', $(this).data('product-id'));
-    });
-
     $('.change-color-product').live('click', function () {
-//        $('.overlay-img.added').remove();
-//        $('.overlay-inner').append('<img class="overlay-img added" src="'+$(this).attr('src')+'">');
         $('.overlay-img').attr('src', $(this).attr('src'));
+        $('.overlay-img').show();
     });
     
     var drop = document.getElementById("component");
@@ -44,10 +25,10 @@ $(function() {
     drop.addEventListener("drop", undashing_component,false);
 
     function dashing_component() {
-      drop.style.border = '3px dashed #38B15D';
+      drop.style.border = '3px dashed #ddd';
     };
     function undashing_component() {
-      drop.style.border = '3px solid #e9e9e9';
+      drop.style.border = '3px solid #ddd';
     };
     
     $('.list-item').click(function () {
@@ -66,14 +47,15 @@ $(function() {
                     $.fancybox.hideLoading();
                     console.log(json);
                     if (json.success === true) {
-                        $('.resize-image').attr('src', json.url);
                         $('.block-color-product').remove();
                         $('.change-color-product-block').hide();
-                            $('.preview-color').hide();
+                        $('.preview-color').hide();
                         $('.block-item-size').hide();
                         $('.block-design-size').hide();
-                        $('.btn-crop').hide();
-                        if (json.colors) {
+                        $('.overlay-img').hide();
+                        $('.add-to-cart').hide();
+                        $('.fileinput-button').hide();
+                        if (json.colors && json.colors.length > 1) {
                             json.colors.forEach(function (element) {
                                 $('.change-color-product-block .block-colors').append('\
                                     <div class="col-xs-6 block-color-product">\n\
@@ -89,8 +71,20 @@ $(function() {
                             $('.preview-color').show();
                             $('.change-color-product-block').show();
                         }
-                        $('.btn-crop').show();
-
+                        
+                        if (json.colors) {
+                            $('.overlay-img').attr('src', json.colors[0]);
+                            $('.overlay-img').show();
+                            if ($('.resize-image').attr('src') === $('.resize-image').data('original-url')) {
+                                $('.resize-image').hide();
+                            }
+                        }
+                        
+                        $('.add-to-cart').show();
+                        
+                        if (json.custom && !$('.resize-image').find('.resize-container')) {
+                            $('.resize-image').hide();
+                        }
                         if (json.item_size) {
                             $('.info-item-size').text(json.item_size);
                             $('.block-item-size').show();
@@ -101,9 +95,20 @@ $(function() {
                             $('.block-design-size').show();
                             $('.change-color-product-block').show();
                         }
-                        resizeableImage($('.resize-image'), false);
+                        if (json.url) {
+                            $('.resize-image').attr('src', json.url);
+                            resizeableImage($('.resize-image'), false);
+                        } else {
+//                            $('.resize-image').attr('src', $('.resize-image').data('original-url'));
+                            $('.fileinput-button').show();
+                        }
                     } else {
-                        $.fancybox('<div class="text-center"><div class="glyphicon glyphicon-warning-sign font-size-44 margin-bottom-10"></div><div>'+json.error+'</div></div>');
+                        $.fancybox('\
+                                <div class="text-center">\n\
+                                    <div class="glyphicon glyphicon-warning-sign font-size-44 margin-bottom-10"></div>\n\
+                                    <div>'+json.error+'</div>\n\
+                                </div>\n\
+                            ');
                     }
                 }
             });

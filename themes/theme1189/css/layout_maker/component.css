@@ -175,17 +175,14 @@
 	margin-top: -2px;
 }
 
-.btn-crop {
+.add-to-cart {
     position: absolute;
     vertical-align: bottom;
     right: 30px;
     bottom: 5px;
 }
-.btn-crop-all {
-    right: 200px;
-}
 
-.btn-crop img {
+.add-to-cart img {
 	vertical-align: middle;
 	margin-left: 8px;
 }
