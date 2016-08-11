@@ -59,7 +59,7 @@ var resizeableImage = function (image_target, customizable) {
             $container.on('mousedown touchstart', '.resize-handle', startResize);
             $container.on('mousedown touchstart', 'img', startMoving);
         } else {
-//            $(image_target).unwrap();
+            $(image_target).unwrap();
         }
         
         initialized = true;
