@@ -27,6 +27,7 @@ var resizeableImage = function (image_target, customizable) {
         
         $('.resize-image').show();
         $('.resize-container').find('span').remove();
+        $('.resize-container').removeClass('custom');
         $('.resize-container').removeAttr('style');
         // When resizing, we will always use this copy of the original as the base
         orig_src.src = image_target.src;
@@ -34,6 +35,7 @@ var resizeableImage = function (image_target, customizable) {
         if (!initialized) {
             $(image_target).wrap('<div id="resize-container" class="resize-container"></div>');
             if (customizable) {
+                $('.resize-container').addClass('custom');
             // Wrap the image with the container and add resize handles
             $(image_target)
                 .before('<span class="border-dashed-top"></span>')
@@ -57,7 +59,7 @@ var resizeableImage = function (image_target, customizable) {
             $container.on('mousedown touchstart', '.resize-handle', startResize);
             $container.on('mousedown touchstart', 'img', startMoving);
         } else {
-            $(image_target).unwrap();
+//            $(image_target).unwrap();
         }
         
         initialized = true;

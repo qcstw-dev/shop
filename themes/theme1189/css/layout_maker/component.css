@@ -1,6 +1,4 @@
 .resize-container {
-/*    position: relative;
-    display: inline-block;*/
     cursor: move;
     margin: 0 auto;
     position: absolute;

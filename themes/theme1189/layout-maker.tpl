@@ -51,8 +51,8 @@
                 <img class="overlay-img" src="">
             </div>
         </div>
-        <img id="image" class="resize-image" data-is-first-image="1" src="{$img_dir}layout_maker/drag-and-drop.png" data-original-url="{$img_dir}layout_maker/drag-and-drop.png">
-        <div id="slider-vertical" style="display: none">
+        <img id="image" class="resize-image" src="{$img_dir}layout_maker/drag-and-drop.png" data-original-url="{$img_dir}layout_maker/drag-and-drop.png">
+        <div id="slider-vertical" class="slider-vertical" style="display: none">
             <img class="icon-rotate" src="{$img_dir}layout_maker/reload.svg" alt="rotate">
         </div>
         <div class="change-color-product-block text-left col-xs-3 background-white position-absolute" >
