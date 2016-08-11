@@ -3,6 +3,8 @@ $(function () {
         dataType: 'json',
         autoUpload: false,
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png|eps)$/i,
+        previewMinWidth: 400,
+        previewMinHeight: 400,
         previewMaxWidth: 800,
         previewMaxHeight: 400,
         previewThumbnail: false,

@@ -15,8 +15,8 @@ var resizeableImage = function (image_target, customizable) {
             image_overlay = $('.overlay-img').get(0),
             event_state = {},
 //            constrain = false,
-            min_width = 60, // Change as required
-            min_height = 60,
+            min_width = 20, // Change as required
+            min_height = 20,
             max_width = 800, // Change as required
             max_height = 900,
             resize_canvas = document.createElement('canvas'),
@@ -29,23 +29,28 @@ var resizeableImage = function (image_target, customizable) {
         $('.resize-container').find('span').remove();
         $('.resize-container').removeClass('custom');
         $('.resize-container').removeAttr('style');
+        
+        if ($('.resize-container').length) {
+            $(image_target).unwrap('.resize-container');
+        }
+        
         // When resizing, we will always use this copy of the original as the base
         orig_src.src = image_target.src;
-
+        
         if (!initialized) {
             $(image_target).wrap('<div id="resize-container" class="resize-container"></div>');
             if (customizable) {
+                // Wrap the image with the container and add resize handles
                 $('.resize-container').addClass('custom');
-            // Wrap the image with the container and add resize handles
-            $(image_target)
-                .before('<span class="border-dashed-top"></span>')
-                .before('<span class="border-dashed-right"></span>')
-                .before('<span class="border-dashed-left"></span>')
-                .before('<span class="border-dashed-bottom"></span>')
-                .before('<span class="resize-handle resize-handle-nw"></span>')
-                .before('<span class="resize-handle resize-handle-ne"></span>')
-                .after('<span class="resize-handle resize-handle-se"></span>')
-                .after('<span class="resize-handle resize-handle-sw"></span>');
+                $(image_target)
+                    .before('<span class="border-dashed-top"></span>')
+                    .before('<span class="border-dashed-right"></span>')
+                    .before('<span class="border-dashed-left"></span>')
+                    .before('<span class="border-dashed-bottom"></span>')
+                    .before('<span class="resize-handle resize-handle-nw"></span>')
+                    .before('<span class="resize-handle resize-handle-ne"></span>')
+                    .after('<span class="resize-handle resize-handle-se"></span>')
+                    .after('<span class="resize-handle resize-handle-sw"></span>');
             }
             $('.add-to-cart').on('click', crop);
         }
@@ -58,8 +63,6 @@ var resizeableImage = function (image_target, customizable) {
             // Add events
             $container.on('mousedown touchstart', '.resize-handle', startResize);
             $container.on('mousedown touchstart', 'img', startMoving);
-        } else {
-            $(image_target).unwrap();
         }
         
         initialized = true;
