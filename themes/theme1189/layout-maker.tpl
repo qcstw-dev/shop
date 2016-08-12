@@ -1,4 +1,4 @@
-{if $selection}
+{if $aSelectedProducts}
     <div class="block-selection col-xs-12 border margin-bottom-10 margin-top-10 padding-0">
         <div class="col-md-12 border-bottom">
             <h4 class="text-center bold">{l s='Your selection'}</h4>
@@ -77,12 +77,19 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary add-to-cart  btn-crop js-crop" style="display: none"><span class="glyphicon glyphicon-shopping-cart"></span> {l s='Add to cart'}</button>
+        <button class="btn btn-primary add-to-cart ajax_add_to_cart_button" 
+                rel="nofollow" title="{l s='Add to cart'}"
+                data-id-product=""
+                data-minimal_quantity="1"
+                data-picture-url=""
+                data-custom-picture=""
+                data-original-picture=""
+                style="display: none">{l s='Add to cart'}</button>
     </div>
         
 {else}
     <div class="alert alert-info margin-top-10">
-        <p>You first have to select your designs and your products to custom them</p>
+        <p>First you have to select at least one product and them you can comeback to customize it</p>
         <p><a href="46-designs" title="See the Designs">>> See the Designs</a></p>
         <p><a href="45-products">>> See the Products</a></p>
     </div>

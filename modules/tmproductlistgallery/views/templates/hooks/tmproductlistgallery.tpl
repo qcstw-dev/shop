@@ -7,11 +7,13 @@
             {else}
                 {assign var=imageTitle value=$product.name}
             {/if}
-            <li id="thumb-{$product.id_product}-{$image.id_image}" class="gallery-image-thumb{if $image.cover == 1} active{/if}">
-                <a href="{$product.link|escape:'html':'UTF-8'}" title="{$imageTitle}" data-href="{$link->getImageLink($product.link_rewrite, $imageId, 'tm_home_default')|escape:'html':'UTF-8'}">
-                    <img class="img-responsive" id="thumb-{$image.id_image}" src="{$link->getImageLink($product.link_rewrite, $imageId, 'tm_cart_default')|escape:'html':'UTF-8'}" alt="{$imageTitle}" title="{$imageTitle}" itemprop="image" />
-                </a>
-            </li>
+            {if !preg_match('/^[0-9]+$/', $image.legend) && $image.legend != 'blank' }
+                <li id="thumb-{$product.id_product}-{$image.id_image}" class="gallery-image-thumb{if $image.cover == 1} active{/if}">
+                    <a href="{$product.link|escape:'html':'UTF-8'}" title="{$imageTitle}" data-href="{$link->getImageLink($product.link_rewrite, $imageId, 'tm_home_default')|escape:'html':'UTF-8'}">
+                        <img class="img-responsive" id="thumb-{$image.id_image}" src="{$link->getImageLink($product.link_rewrite, $imageId, 'tm_cart_default')|escape:'html':'UTF-8'}" alt="{$imageTitle}" title="{$imageTitle}" itemprop="image" />
+                    </a>
+                </li>
+            {/if}
         {/foreach}
     </ul>
 {/if}

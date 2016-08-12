@@ -3,7 +3,7 @@ if (window.location.protocol == 'file:') {
 }
 
 var resizeableImage = function (image_target, customizable) {
-    if (customizable != false) {
+    if (customizable !== false) {
         customizable = true;
     }
     
@@ -52,7 +52,6 @@ var resizeableImage = function (image_target, customizable) {
                     .after('<span class="resize-handle resize-handle-se"></span>')
                     .after('<span class="resize-handle resize-handle-sw"></span>');
             }
-            $('.add-to-cart').on('click', crop);
         }
         
         // Assign the container to a variable
@@ -171,7 +170,7 @@ var resizeableImage = function (image_target, customizable) {
             // Without this Firefox will not re-calculate the the image dimensions until drag end
             $container.offset({'left': left, 'top': top});
         }
-    }
+    };
 
     resizeImage = function (width, height) {
         resize_canvas.width = width;
@@ -268,48 +267,71 @@ var resizeableImage = function (image_target, customizable) {
         var crop_canvas;
         crop_canvas = capture($('.overlay'));
         
-        $.magnificPopup.open({
-            items: [{
-                src: $('<div class="popup">'+
-                        '<div class="text-center"><img id="layout" src="'+crop_canvas.toDataURL("image/png")+'" /></div>'+
-                     '</div>'),
-                type:'inline'
-            }]
-        });
-        $('.export-image').on('click', function () {
-           var a = $("<a>")
-                .attr("href", crop_canvas.toDataURL("image/png"))
-                .attr("download", "qcsasia-layout-maker-"+$('.overlay').data('ref').replace('#', '')+".png")
-                .appendTo("body");
-            a[0].click();
-            a.remove();
-        });
-        $('.send-image').on('click', function () {
-            // upload image
-            var newWindow = window.open(baseUrl+'send-layout/', '_blank');
-            $.ajax(baseUrl+'upload', {
-                beforeSend: function () {
-                    $.magnificPopup.open({
-                        items: [{
-                                src: $('<div class="white-popup text-left"><img src="'+baseUrl+'/sites/all/themes/qcsasia/images/template/loader.gif" /></div>'),
-                                type: 'inline'
-                            }]
-                    });
-                },
-                method: 'post',
-                data: { 
-                    layout_url :  crop_canvas.toDataURL("image/png"),
-                    layout_name : "qcsasia-layout-maker-"+$('.overlay').data('ref').replace('#', '')
-                    },
-                dataType: 'html',
-                success: function (data) {
-//                    window.open(baseUrl+'send-layout/?layout_file='+data, '_blank');
-                    newWindow.location = baseUrl+'send-layout/?layout_file='+data;
-                    $.magnificPopup.close();
-                },
-                async: false
-            });
-        });
+        $('.add-to-cart').data('custom-picture', crop_canvas.toDataURL("image/png"));
+        
+        if (customizable) {
+            $('.add-to-cart').data('original-picture', $('.resize-image').attr('src'));
+        }
+//        $('.add-to-cart').data('custom-picture', 'titi');
+//        $('.add-to-cart').data('original-picture', 'tutu');
+        
+        
+//        $.ajax({
+//            type: 'POST',
+//            url: baseDir + 'index.php',
+//            data: 'controller=cart&add=1&ajax=true&qty=1&id_product=' + $('.list-item-product.selected').data('id')+ '&id_design=' + $('.list-item-design.selected').data('id'),
+//            dataType: 'json',
+//            beforeSend: function () {
+//                $.fancybox.showLoading();
+//            },
+//            success: function(json) {
+//                console.log(json);
+//                $.fancybox.hideLoading();
+//            }
+//        });
+        
+//        $.magnificPopup.open({
+//            items: [{
+//                src:    $('<div class="popup">'+
+//                            '<div class="text-center"><img id="layout" src="'+crop_canvas.toDataURL("image/png")+'" /></div>'+
+//                        '</div>'),
+//                type:'inline'
+//            }]
+//        });
+//        $('.export-image').on('click', function () {
+//           var a = $("<a>")
+//                .attr("href", crop_canvas.toDataURL("image/png"))
+//                .attr("download", "qcsasia-layout-maker-"+$('.overlay').data('ref').replace('#', '')+".png")
+//                .appendTo("body");
+//            a[0].click();
+//            a.remove();
+//        });
+//        $('.send-image').on('click', function () {
+//            // upload image
+//            var newWindow = window.open(baseUrl+'send-layout/', '_blank');
+//            $.ajax(baseUrl+'upload', {
+//                beforeSend: function () {
+//                    $.magnificPopup.open({
+//                        items: [{
+//                                src: $('<div class="white-popup text-left"><img src="'+baseUrl+'/sites/all/themes/qcsasia/images/template/loader.gif" /></div>'),
+//                                type: 'inline'
+//                            }]
+//                    });
+//                },
+//                method: 'post',
+//                data: { 
+//                    layout_url :  crop_canvas.toDataURL("image/png"),
+//                    layout_name : "qcsasia-layout-maker-"+$('.overlay').data('ref').replace('#', '')
+//                    },
+//                dataType: 'html',
+//                success: function (data) {
+////                    window.open(baseUrl+'send-layout/?layout_file='+data, '_blank');
+//                    newWindow.location = baseUrl+'send-layout/?layout_file='+data;
+//                    $.magnificPopup.close();
+//                },
+//                async: false
+//            });
+//        });
     };
     init();
 };

@@ -81,7 +81,7 @@ $(function() {
                                 $('.resize-image').hide();
                             }
                         }
-                        
+                        $('.add-to-cart').data('id-product', $('.list-item-product.selected').data('id'));
                         $('.add-to-cart').show();
                         
                         if (json.custom) {

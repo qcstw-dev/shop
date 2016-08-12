@@ -911,7 +911,7 @@ class CartCore extends ObjectModel
      * @param string $operator Indicate if quantity must be increased or decreased
      */
     public function updateQty($quantity, $id_product, $id_product_attribute = null, $id_customization = false,
-        $operator = 'up', $id_address_delivery = 0, Shop $shop = null, $auto_add_cart_rule = true)
+        $operator = 'up', $id_address_delivery = 0, Shop $shop = null, $auto_add_cart_rule = true, $custom_picture, $original_picture)
     {
         if (!$shop) {
             $shop = Context::getContext()->shop;
@@ -1049,7 +1049,7 @@ class CartCore extends ObjectModel
                 if ((int)$quantity < $minimal_quantity) {
                     return -1;
                 }
-
+                
                 $result_add = Db::getInstance()->insert('cart_product', array(
                     'id_product' =>            (int)$id_product,
                     'id_product_attribute' =>    (int)$id_product_attribute,
@@ -1057,7 +1057,9 @@ class CartCore extends ObjectModel
                     'id_address_delivery' =>    (int)$id_address_delivery,
                     'id_shop' =>                $shop->id,
                     'quantity' =>                (int)$quantity,
-                    'date_add' =>                date('Y-m-d H:i:s')
+                    'date_add' =>                date('Y-m-d H:i:s'),
+                    'custom_picture' =>          $custom_picture,
+                    'original_picture' =>        $original_picture
                 ));
 
                 if (!$result_add) {

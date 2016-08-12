@@ -108,10 +108,13 @@ var ajaxCart = {
 			e.preventDefault();
 			var idProduct =  parseInt($(this).data('id-product'));
 			var minimalQuantity =  parseInt($(this).data('minimal_quantity'));
+                        crop();
+                        var customPicture = $(this).data('custom-picture');
+                        var originalPicture = $(this).data('original-picture');
 			if (!minimalQuantity)
 				minimalQuantity = 1;
 			if ($(this).prop('disabled') != 'disabled')
-				ajaxCart.add(idProduct, null, false, this, minimalQuantity);
+				ajaxCart.add(idProduct, null, false, this, minimalQuantity, false, customPicture, originalPicture);
 		});
 		//for product page 'add' button...
 		$(document).off('click', '#add_to_cart button').on('click', '#add_to_cart button', function(e){
@@ -251,7 +254,7 @@ var ajaxCart = {
 	// close fancybox
 	updateFancyBox : function (){},
 	// add a product in the cart via ajax
-	add : function(idProduct, idCombination, addedFromProductPage, callerElement, quantity, whishlist){
+	add : function(idProduct, idCombination, addedFromProductPage, callerElement, quantity, whishlist, customPicture, originalPicture){
 		if (addedFromProductPage && !checkCustomizations())
 		{
 			if (contentOnly) 
@@ -297,7 +300,7 @@ var ajaxCart = {
 			async: true,
 			cache: false,
 			dataType : "json",
-			data: 'controller=cart&add=1&ajax=true&qty=' + ((quantity && quantity != null) ? quantity : '1') + '&id_product=' + idProduct + '&token=' + static_token + ( (parseInt(idCombination) && idCombination != null) ? '&ipa=' + parseInt(idCombination): ''),
+			data: 'controller=cart&add=1&ajax=true&qty=' + ((quantity && quantity != null) ? quantity : '1') + '&id_product=' + idProduct + '&token=' + static_token + ( (parseInt(idCombination) && idCombination != null) ? '&ipa=' + parseInt(idCombination): '') + '&custom_picture=' + customPicture + '&original_picture=' + originalPicture,
 			success: function(jsonData,textStatus,jqXHR)
 			{
 				// add appliance to whishlist module

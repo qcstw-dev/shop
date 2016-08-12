@@ -90,7 +90,7 @@
             </div>
             <div class="columns-container">
                 <div id="columns" class="container">
-                    {if $page_name !='layoutmaker' && $page_name !='pagenotfound'}
+                    {if $page_name != 'layoutmaker' && $page_name != 'pagenotfound' && $page_name != 'order'}
                         {include file="./selection.tpl" seelction=$selection}
                     {/if}
                     {if $page_name !='index' && $page_name !='layoutmaker' && $page_name !='pagenotfound'}

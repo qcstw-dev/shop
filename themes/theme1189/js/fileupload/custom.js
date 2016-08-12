@@ -3,8 +3,8 @@ $(function () {
         dataType: 'json',
         autoUpload: false,
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png|eps)$/i,
-        previewMinWidth: 400,
-        previewMinHeight: 400,
+        previewMinWidth: 300,
+        previewMinHeight: 300,
         previewMaxWidth: 800,
         previewMaxHeight: 400,
         previewThumbnail: false,
@@ -22,8 +22,12 @@ $(function () {
         if (file.preview && !file.error) {
             var dataURL = file.preview.toDataURL();
 
-            $(".resize-image").attr("src", dataURL).removeClass('hidden');
-            $('.resize-image').data('is-first-image', 0);
+            $('.resize-image').attr("src", dataURL).removeClass('hidden');
+            
+            $('.slider-vertical').show();
+            $('.add-to-cart').show();
+            $('.fileinput-button').show();
+            $('.list-item-custom').trigger('click');
             
             // Kick everything off with the target image
             resizeableImage($('.resize-image'));
