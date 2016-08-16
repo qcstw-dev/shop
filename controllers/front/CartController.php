@@ -294,7 +294,11 @@ class CartControllerCore extends FrontController
             if (!$this->errors) {
                 $cart_rules = $this->context->cart->getCartRules();
                 $available_cart_rules = CartRule::getCustomerCartRules($this->context->language->id, (isset($this->context->customer->id) ? $this->context->customer->id : 0), true, true, true, $this->context->cart, false, true);
-                $update_quantity = $this->context->cart->updateQty($this->qty, $this->id_product, $this->id_product_attribute, $this->customization_id, Tools::getValue('op', 'up'), $this->id_address_delivery, null, null, $this->custom_picture, $this->original_picture);
+                
+                $sCustomPictureName = $this->savePicture($this->custom_picture, ['folder' => 'custom']);
+                $sOriginalPictureName = ($this->original_picture ? $this->savePicture($this->original_picture, ['folder' => 'original']) : '');
+                
+                $update_quantity = $this->context->cart->updateQty($this->qty, $this->id_product, $this->id_product_attribute, $this->customization_id, Tools::getValue('op', 'up'), $this->id_address_delivery, null, null, $sCustomPictureName, $sOriginalPictureName);
                 if ($update_quantity < 0) {
                     // If product has attribute, minimal quantity is set with minimal quantity of attribute
                     $minimal_quantity = ($this->id_product_attribute) ? Attribute::getAttributeMinimalQty($this->id_product_attribute) : $product->minimal_quantity;
@@ -344,8 +348,36 @@ class CartControllerCore extends FrontController
             $this->ajax_refresh = true;
         }
     }
+    
+    //save picutres in folder
+    protected function savePicture ($sUrl, $aOptions = []) {
+        $aOptions = array_merge([
+                'folder'    => 'custom',
+                'prod_ref'  => '',
+                'design'    => ''
+            ], $aOptions);
+        
+        $aFolder = [
+            'custom'    => 'custom_pictures',
+            'original'  => 'original_pictures'
+        ];
+        
+        $sImgPath = $sUrl;
+        $sImgPath = str_replace('data:image/png;base64,', '', $sImgPath);
+        $sImgPath = str_replace(' ', '+', $sImgPath);
+        $sData = base64_decode($sImgPath);
+        
+        $sName = ($aOptions['prod_ref'] ? $aOptions['prod_ref'].'_' : '').($aOptions['design'] ? $aOptions['design'].'_' : '').time().'.png';
+        $sFolder = 'img/layout_maker/'.$aFolder[$aOptions['folder']];
+        
+        $sImgFinalPath = $sFolder.'/'.$sName;
+        
+        if (file_put_contents($sImgFinalPath, $sData)) {
+            return $sName;
+        }
+    }
 
-    /**
+        /**
      * Remove discounts on cart
      *
      * @deprecated 1.5.3.0

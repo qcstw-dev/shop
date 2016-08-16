@@ -80,8 +80,7 @@
     top: 0;
     left: 0;
 }
-.list-item.selected div,
-.list-item.selected img {
+.list-item.selected .img-product {
     border: 3px solid #ddd;
 }
 .list-item-custom-text {
