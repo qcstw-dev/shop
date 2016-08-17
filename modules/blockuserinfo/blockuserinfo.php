@@ -59,7 +59,7 @@ class BlockUserInfo extends Module
 	{
 		if (!$this->active)
 			return;
-
+                
 		$this->smarty->assign(array(
 			'cart' => $this->context->cart,
 			'cart_qties' => $this->context->cart->nbProducts(),

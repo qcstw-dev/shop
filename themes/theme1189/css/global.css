@@ -7487,10 +7487,8 @@ a.price_discount_delete {
   border-left: none;
   border-bottom: none; }
   #cart_summary tbody td.cart_product {
-    padding: 19px;
-    width: 137px; }
-    #cart_summary tbody td.cart_product img {
-      border: 1px solid #d6d4d4; }
+    width: 200px; }
+    #cart_summary tbody td.cart_product img {}
   #cart_summary tbody td.cart_unit .price span {
     display: block; }
     #cart_summary tbody td.cart_unit .price span.price-percent-reduction {
@@ -9329,4 +9327,8 @@ ul.step a:hover:after {
     width: auto;
     max-width: 700px;
     margin: 20px auto;
+}
+.tooltip-inner {
+    max-width: 350px;
+    min-width: 100px;
 }

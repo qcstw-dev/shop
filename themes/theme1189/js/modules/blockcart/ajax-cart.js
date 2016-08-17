@@ -108,13 +108,17 @@ var ajaxCart = {
 			e.preventDefault();
 			var idProduct =  parseInt($(this).data('id-product'));
 			var minimalQuantity =  parseInt($(this).data('minimal_quantity'));
+                        
                         crop();
                         var customPicture = $(this).data('custom-picture');
                         var originalPicture = $(this).data('original-picture');
-			if (!minimalQuantity)
-				minimalQuantity = 1;
-			if ($(this).prop('disabled') != 'disabled')
-				ajaxCart.add(idProduct, null, false, this, minimalQuantity, false, customPicture, originalPicture);
+                        var attributeRef = $(this).data('attribute');
+
+                        if (!minimalQuantity)
+                                minimalQuantity = 1;
+                        if ($(this).prop('disabled') != 'disabled')
+                                ajaxCart.add(idProduct, null, false, this, minimalQuantity, false, customPicture, originalPicture);
+                        
 		});
 		//for product page 'add' button...
 		$(document).off('click', '#add_to_cart button').on('click', '#add_to_cart button', function(e){
@@ -131,7 +135,7 @@ var ajaxCart = {
 			var productAttributeId = 0;
 			var customizableProductDiv = $($(this).parent().parent()).find("div[data-id^=deleteCustomizableProduct_]");
 			var idAddressDelivery = false;
-
+                        var custom_picture = $(this).data('custom-product');
 			if (customizableProductDiv && $(customizableProductDiv).length)
 			{
 				var ids = customizableProductDiv.data('id').split('_');
@@ -162,7 +166,7 @@ var ajaxCart = {
 			}
 
 			// Removing product from the cart
-			ajaxCart.remove(productId, productAttributeId, customizationId, idAddressDelivery);
+			ajaxCart.remove(productId, productAttributeId, customizationId, idAddressDelivery, custom_picture);
 		});
 	},
 
@@ -300,6 +304,7 @@ var ajaxCart = {
 			async: true,
 			cache: false,
 			dataType : "json",
+                        
 			data: 'controller=cart&add=1&ajax=true&qty=' + ((quantity && quantity != null) ? quantity : '1') + '&id_product=' + idProduct + '&token=' + static_token + ( (parseInt(idCombination) && idCombination != null) ? '&ipa=' + parseInt(idCombination): '') + '&custom_picture=' + customPicture + '&original_picture=' + originalPicture,
 			success: function(jsonData,textStatus,jqXHR)
 			{
@@ -375,7 +380,7 @@ var ajaxCart = {
 	},
 
 	//remove a product from the cart via ajax
-	remove : function(idProduct, idCombination, customizationId, idAddressDelivery){
+	remove : function(idProduct, idCombination, customizationId, idAddressDelivery, custom_picture){
 		//send the ajax request to the server
 		$.ajax({
 			type: 'POST',
@@ -384,7 +389,7 @@ var ajaxCart = {
 			async: true,
 			cache: false,
 			dataType : "json",
-			data: 'controller=cart&delete=1&id_product=' + idProduct + '&ipa=' + ((idCombination != null && parseInt(idCombination)) ? idCombination : '') + ((customizationId && customizationId != null) ? '&id_customization=' + customizationId : '') + '&id_address_delivery=' + idAddressDelivery + '&token=' + static_token + '&ajax=true',
+			data: 'controller=cart&delete=1&id_product=' + idProduct + '&ipa=' + ((idCombination != null && parseInt(idCombination)) ? idCombination : '') + ((customizationId && customizationId != null) ? '&id_customization=' + customizationId : '') + '&id_address_delivery=' + idAddressDelivery + '&token=' + static_token + '&ajax=true'+ '&custom_picture='+ custom_picture,
 			success: function(jsonData)	{
 				ajaxCart.updateCart(jsonData);
 				if ($('body').attr('id') == 'order' || $('body').attr('id') == 'order-opc')
@@ -583,8 +588,9 @@ var ajaxCart = {
 					var content =  '<dt class="unvisible" data-id="cart_block_product_' + domIdProduct + '">';
 					var name = $.trim($('<span />').html(this.name).text());
 					name = (name.length > 12 ? name.substring(0, 10) + '...' : name);
-					content += '<a class="cart-images" href="' + this.link + '" title="' + name + '"><img  src="' + this.image_cart + '" alt="' + this.name +'"></a>';
-					content += '<div class="cart-info"><div class="product-name">' + '<span class="quantity-formated"><span class="quantity">' + this.quantity + '</span>&nbsp;x&nbsp;</span><a href="' + this.link + '" title="' + this.name + '" class="cart_block_product_name">' + name + '</a></div>';
+					content += '<a class="cart-images col-md-6" href="' + this.link + '" title="' + name + '"><img  src="' + this.image_cart + '" alt="' + this.name +'"></a>';
+//					content += '<a class="cart-images" href="' + this.link + '" title="' + name + '"><img  src="'+ baseUri + 'img/layout_maker/custom_pictures/' + this.image_cart + '" alt="' + this.name +'"></a>';
+					content += '<div class="cart-info col-md-6"><div class="product-name">' + '<span class="quantity-formated"><span class="quantity">' + this.quantity + '</span>&nbsp;x&nbsp;</span><a href="' + this.link + '" title="' + this.name + '" class="cart_block_product_name">' + name + '</a></div>';
 					if (this.hasAttributes)
 						  content += '<div class="product-atributes"><a href="' + this.link + '" title="' + this.name + '">' + this.attributes + '</a></div>';
 					if (typeof(freeProductTranslation) != 'undefined')
@@ -709,6 +715,7 @@ var ajaxCart = {
 		$('#layer_cart_product_price').text(product.price);
 		$('#layer_cart_product_quantity').text(product.quantity);
 		$('.layer_cart_img').html('<img class="layer_cart_img img-responsive" src="' + product.image + '" alt="' + product.name + '" title="' + product.name + '" />');
+//		$('.layer_cart_img').html('<img class="layer_cart_img img-responsive" src="'+ baseUri + 'img/layout_maker/custom_pictures/' + this.image_cart + '" alt="' + product.name + '" title="' + product.name + '" />');
 
 		var n = parseInt($(window).scrollTop()) + 'px';
 

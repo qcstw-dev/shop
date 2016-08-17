@@ -34,6 +34,7 @@ class CartControllerCore extends FrontController
     protected $customization_id;
     protected $custom_picture;
     protected $original_picture;
+    protected $ref_design;
     protected $qty;
     public $ssl = true;
 
@@ -136,13 +137,14 @@ class CartControllerCore extends FrontController
             }
         }
 
-        if ($this->context->cart->deleteProduct($this->id_product, $this->id_product_attribute, $this->customization_id, $this->id_address_delivery)) {
+        if ($this->context->cart->deleteProduct($this->id_product, $this->id_product_attribute, $this->customization_id, $this->id_address_delivery, $this->custom_picture)) {
             Hook::exec('actionAfterDeleteProductInCart', array(
                 'id_cart' => (int)$this->context->cart->id,
                 'id_product' => (int)$this->id_product,
                 'id_product_attribute' => (int)$this->id_product_attribute,
                 'customization_id' => (int)$this->customization_id,
-                'id_address_delivery' => (int)$this->id_address_delivery
+                'id_address_delivery' => (int)$this->id_address_delivery,
+                'custom_picture' => $this->custom_picture
             ));
 
             if (!Cart::getNbProducts((int)$this->context->cart->id)) {
@@ -298,7 +300,8 @@ class CartControllerCore extends FrontController
                 $sCustomPictureName = $this->savePicture($this->custom_picture, ['folder' => 'custom']);
                 $sOriginalPictureName = ($this->original_picture ? $this->savePicture($this->original_picture, ['folder' => 'original']) : '');
                 
-                $update_quantity = $this->context->cart->updateQty($this->qty, $this->id_product, $this->id_product_attribute, $this->customization_id, Tools::getValue('op', 'up'), $this->id_address_delivery, null, null, $sCustomPictureName, $sOriginalPictureName);
+                $update_quantity = $this->context->cart->updateQty($this->qty, $this->id_product, $this->id_product_attribute, $this->customization_id, 'up', $this->id_address_delivery, null, null, $sCustomPictureName, $sOriginalPictureName);
+                
                 if ($update_quantity < 0) {
                     // If product has attribute, minimal quantity is set with minimal quantity of attribute
                     $minimal_quantity = ($this->id_product_attribute) ? Attribute::getAttributeMinimalQty($this->id_product_attribute) : $product->minimal_quantity;

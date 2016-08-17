@@ -83,6 +83,9 @@ class CartCore extends ObjectModel
     /** @var bool Allow to seperate order in multiple package in order to recieve as soon as possible the available products */
     public $allow_seperated_package = false;
 
+//    public $custom_picture;
+//    public $original_picture;
+
     protected static $_nbProducts = array();
     protected static $_isVirtualCart = array();
 
@@ -478,6 +481,8 @@ class CartCore extends ObjectModel
         return false;
     }
 
+    
+    
     /**
      * Return cart products
      *
@@ -506,7 +511,7 @@ class CartCore extends ObjectModel
         $sql = new DbQuery();
 
         // Build SELECT
-        $sql->select('cp.`id_product_attribute`, cp.`id_product`, cp.`quantity` AS cart_quantity, cp.id_shop, pl.`name`, p.`is_virtual`,
+        $sql->select('cp.`id_product_attribute`, cp.`id_product`, cp.`quantity` AS cart_quantity, cp.id_shop, cp.`custom_picture`, pl.`name`, p.`is_virtual`,
 						pl.`description_short`, pl.`available_now`, pl.`available_later`, product_shop.`id_category_default`, p.`id_supplier`,
 						p.`id_manufacturer`, product_shop.`on_sale`, product_shop.`ecotax`, product_shop.`additional_shipping_cost`,
 						product_shop.`available_for_order`, product_shop.`price`, product_shop.`active`, product_shop.`unity`, product_shop.`unit_price_ratio`,
@@ -550,7 +555,7 @@ class CartCore extends ObjectModel
             $sql->select('cu.`id_customization`, cu.`quantity` AS customization_quantity');
             $sql->leftJoin('customization', 'cu',
                 'p.`id_product` = cu.`id_product` AND cp.`id_product_attribute` = cu.`id_product_attribute` AND cu.`id_cart` = '.(int)$this->id);
-            $sql->groupBy('cp.`id_product_attribute`, cp.`id_product`, cp.`id_shop`');
+            $sql->groupBy('cp.`id_product_attribute`, cp.`id_product`, cp.`id_shop`, cp.`custom_picture`');
         } else {
             $sql->select('NULL AS customization_quantity, NULL AS id_customization');
         }
@@ -913,6 +918,9 @@ class CartCore extends ObjectModel
     public function updateQty($quantity, $id_product, $id_product_attribute = null, $id_customization = false,
         $operator = 'up', $id_address_delivery = 0, Shop $shop = null, $auto_add_cart_rule = true, $custom_picture, $original_picture)
     {
+//        $this->custom_picture = $custom_picture;
+//        $this->original_picture = $original_picture;
+        
         if (!$shop) {
             $shop = Context::getContext()->shop;
         }
@@ -976,10 +984,10 @@ class CartCore extends ObjectModel
             return false;
         } else {
             /* Check if the product is already in the cart */
-            $result = $this->containsProduct($id_product, $id_product_attribute, (int)$id_customization, (int)$id_address_delivery);
+//            $result = $this->containsProduct($id_product, $id_product_attribute, (int)$id_customization, (int)$id_address_delivery);
 
             /* Update quantity if product already exist */
-            if ($result) {
+            if (false) {
                 if ($operator == 'up') {
                     $sql = 'SELECT stock.out_of_stock, IFNULL(stock.quantity, 0) as quantity
 							FROM '._DB_PREFIX_.'product p
@@ -1026,6 +1034,7 @@ class CartCore extends ObjectModel
                     );
                 }
             }
+            
             /* Add product to the cart */
             elseif ($operator == 'up') {
                 $sql = 'SELECT stock.out_of_stock, IFNULL(stock.quantity, 0) as quantity
@@ -1251,7 +1260,7 @@ class CartCore extends ObjectModel
      * @param int $id_customization Customization id
      * @return bool result
      */
-    public function deleteProduct($id_product, $id_product_attribute = null, $id_customization = null, $id_address_delivery = 0)
+    public function deleteProduct($id_product, $id_product_attribute = null, $id_customization = null, $id_address_delivery = 0, $custom_picture = "" )
     {
         if (isset(self::$_nbProducts[$this->id])) {
             unset(self::$_nbProducts[$this->id]);
@@ -1315,7 +1324,8 @@ class CartCore extends ObjectModel
 		WHERE `id_product` = '.(int)$id_product.'
 		'.(!is_null($id_product_attribute) ? ' AND `id_product_attribute` = '.(int)$id_product_attribute : '').'
 		AND `id_cart` = '.(int)$this->id.'
-		'.((int)$id_address_delivery ? 'AND `id_address_delivery` = '.(int)$id_address_delivery : ''));
+		'.((int)$id_address_delivery ? 'AND `id_address_delivery` = '.(int)$id_address_delivery : '')
+                .' AND `custom_picture` = "'.$custom_picture.'"');
 
         if ($result) {
             $return = $this->update();
@@ -3228,6 +3238,8 @@ class CartCore extends ObjectModel
             }
         }
 
+        
+        
         $summary = array(
             'delivery' => $delivery,
             'delivery_state' => State::getNameById($delivery->id_state),
@@ -3695,7 +3707,7 @@ class CartCore extends ObjectModel
     }
 
     public function duplicateProduct($id_product, $id_product_attribute, $id_address_delivery,
-        $new_id_address_delivery, $quantity = 1, $keep_quantity = false)
+        $new_id_address_delivery, $quantity = 1, $keep_quantity = false, $custom_picture = '', $original_picture = '')
     {
         // Check address is linked with the customer
         if (!Customer::customerHasAddress(Context::getContext()->customer->id, $new_id_address_delivery)) {

@@ -272,6 +272,7 @@ var resizeableImage = function (image_target, customizable) {
         if (customizable) {
             $('.add-to-cart').data('original-picture', $('.resize-image').attr('src'));
         }
+        
 //        $('.add-to-cart').data('custom-picture', 'titi');
 //        $('.add-to-cart').data('original-picture', 'tutu');
         

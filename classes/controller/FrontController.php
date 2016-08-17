@@ -441,6 +441,8 @@ class FrontControllerCore extends Controller
             'force_ssl'           => Configuration::get('PS_SSL_ENABLED') && Configuration::get('PS_SSL_ENABLED_EVERYWHERE'),
             'content_dir'         => $protocol_content.Tools::getHttpHost().__PS_BASE_URI__,
             'base_uri'            => $protocol_content.Tools::getHttpHost().__PS_BASE_URI__.(!Configuration::get('PS_REWRITING_SETTINGS') ? 'index.php' : ''),
+            'custom_picture_path' => 'img/layout_maker/custom_pictures/',
+            'original_picture_path'=> 'img/layout_maker/original_picture/',
             'tpl_dir'             => _PS_THEME_DIR_,
             'tpl_uri'             => _THEME_DIR_,
             'modules_dir'         => _MODULE_DIR_,

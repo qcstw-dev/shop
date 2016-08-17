@@ -1,0 +1,16 @@
+*ERROR* 	2016/08/17 - 02:41:39: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2<br /><br /><pre>SELECT * FROM `ps_customization`
+		WHERE `id_cart` = 14 AND `id_product` = 22 AND `id_customization` != 0 AND `custom_picture` != </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/17 - 02:42:04: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2<br /><br /><pre>SELECT * FROM `ps_customization`
+		WHERE `id_cart` = 14 AND `id_product` = 22 AND `id_customization` != 0 AND `custom_picture` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/17 - 02:42:15: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2<br /><br /><pre>SELECT * FROM `ps_customization`
+		WHERE `id_cart` = 14 AND `id_product` = 22 AND `id_customization` != 0 AND `custom_picture` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/17 - 02:43:17: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2<br /><br /><pre>SELECT * FROM `ps_customization`
+		WHERE `id_cart` = 14 AND `id_product` = 22 AND `id_customization` != 0 AND `custom_picture` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/17 - 02:47:19: Unknown column 'custom_picture' in 'where clause'<br /><br /><pre>SELECT * FROM `ps_customization`
+		WHERE `id_cart` = 14 AND `id_product` = 22 AND `id_customization` != 0 AND `custom_picture` = undefined</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/17 - 02:47:44: Unknown column 'custom_picture' in 'where clause'<br /><br /><pre>SELECT * FROM `ps_customization`
+		WHERE `id_cart` = 14 AND `id_product` = 22 AND `id_customization` != 0 AND `custom_picture` = undefined</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/17 - 02:47:47: Unknown column 'custom_picture' in 'where clause'<br /><br /><pre>SELECT * FROM `ps_customization`
+		WHERE `id_cart` = 14 AND `id_product` = 22 AND `id_customization` != 0 AND `custom_picture` = undefined</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/17 - 02:49:18: Unknown column 'custom_picture' in 'where clause'<br /><br /><pre>SELECT * FROM `ps_customization`
+		WHERE `id_cart` = 14 AND `id_product` = 22 AND `id_customization` != 0 AND `custom_picture` = undefined</pre> at line 791 in file classes/db/Db.php
