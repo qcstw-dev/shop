@@ -270,7 +270,7 @@ var resizeableImage = function (image_target, customizable) {
         $('.add-to-cart').data('custom-picture', crop_canvas.toDataURL("image/png"));
         
         if (customizable) {
-            $('.add-to-cart').data('original-picture', $('.resize-image').attr('src'));
+            $('.add-to-cart').data('original-picture', $('.hidden-original-picture').attr('src'));
         }
         
 //        $('.add-to-cart').data('custom-picture', 'titi');

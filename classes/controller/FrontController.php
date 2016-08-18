@@ -424,7 +424,7 @@ class FrontControllerCore extends Controller
         if (Configuration::get('PS_COMPARATOR_MAX_ITEM') && isset($this->context->cookie->id_compare)) {
             $compared_products = CompareProduct::getCompareProducts($this->context->cookie->id_compare);
         }
-
+        $base_uri = $protocol_content.Tools::getHttpHost().__PS_BASE_URI__.(!Configuration::get('PS_REWRITING_SETTINGS') ? 'index.php' : '');
         $this->context->smarty->assign(array(
             // Useful for layout.tpl
             'mobile_device'       => $this->context->getMobileDevice(),
@@ -440,9 +440,11 @@ class FrontControllerCore extends Controller
             'base_dir_ssl'        => $protocol_link.Tools::getShopDomainSsl().__PS_BASE_URI__,
             'force_ssl'           => Configuration::get('PS_SSL_ENABLED') && Configuration::get('PS_SSL_ENABLED_EVERYWHERE'),
             'content_dir'         => $protocol_content.Tools::getHttpHost().__PS_BASE_URI__,
-            'base_uri'            => $protocol_content.Tools::getHttpHost().__PS_BASE_URI__.(!Configuration::get('PS_REWRITING_SETTINGS') ? 'index.php' : ''),
+            'base_uri'            => $base_uri,
             'custom_picture_path' => 'img/layout_maker/custom_pictures/',
             'original_picture_path'=> 'img/layout_maker/original_picture/',
+            'custom_picture_uri' => $base_uri.'img/layout_maker/custom_pictures/',
+            'original_picture_uri'=> $base_uri.'img/layout_maker/original_picture/',
             'tpl_dir'             => _PS_THEME_DIR_,
             'tpl_uri'             => _THEME_DIR_,
             'modules_dir'         => _MODULE_DIR_,

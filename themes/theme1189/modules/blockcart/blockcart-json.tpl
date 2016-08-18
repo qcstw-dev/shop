@@ -4,12 +4,13 @@
 {foreach from=$products item=product name='products'}
 {assign var='productId' value=$product.id_product}
 {assign var='productAttributeId' value=$product.id_product_attribute}
+{assign var='custom_picture_file_uri' value=$base_uri|cat:$custom_picture_path|cat:$product.custom_picture}
 	{ldelim}
 		"id": {$product.id_product|intval},
 		"link": {$link->getProductLink($product.id_product, $product.link_rewrite, $product.category, null, null, $product.id_shop, $product.id_product_attribute)|json_encode},
 		"quantity": {$product.cart_quantity|intval},
-		"image": {$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|json_encode},
-		"image_cart": {$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_cart_default')|json_encode},
+		"image": {$custom_picture_file_uri|json_encode},
+		"image_cart": {$custom_picture_file_uri|json_encode},
 		"priceByLine": {if $priceDisplay == $smarty.const.PS_TAX_EXC}{displayWtPrice|json_encode p=$product.total}{else}{displayWtPrice|json_encode p=$product.total_wt}{/if},
 		"name": {$product.name|trim|html_entity_decode:2:'UTF-8'|json_encode},
 		"price": {if $priceDisplay == $smarty.const.PS_TAX_EXC}{displayWtPrice|json_encode p=$product.total}{else}{displayWtPrice|json_encode p=$product.total_wt}{/if},
