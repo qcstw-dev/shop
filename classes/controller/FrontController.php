@@ -443,7 +443,7 @@ class FrontControllerCore extends Controller
             'base_uri'            => $base_uri,
             'custom_picture_path' => 'img/layout_maker/custom_pictures/',
             'original_picture_path'=> 'img/layout_maker/original_picture/',
-            'custom_picture_uri' => $base_uri.'img/layout_maker/custom_pictures/',
+            'custom_picture_uri'    => $base_uri.'img/layout_maker/custom_pictures/',
             'original_picture_uri'=> $base_uri.'img/layout_maker/original_picture/',
             'tpl_dir'             => _PS_THEME_DIR_,
             'tpl_uri'             => _THEME_DIR_,

@@ -393,7 +393,7 @@ var ajaxCart = {
 			success: function(jsonData)	{
 				ajaxCart.updateCart(jsonData);
 				if ($('body').attr('id') == 'order' || $('body').attr('id') == 'order-opc')
-					deleteProductFromSummary(idProduct+'_'+idCombination+'_'+customizationId+'_'+idAddressDelivery);
+					deleteProductFromSummary(idProduct+'_'+idCombination+'_'+customizationId+'_'+idAddressDelivery+'_'+custom_picture);
 			},
 			error: function()
             {
@@ -438,7 +438,7 @@ var ajaxCart = {
 				{
 					//we've called the variable aProduct because IE6 bug if this variable is called product
 					//if product has attributes
-					if (jsonData.products[aProduct]['id'] == ids[0] && (!ids[1] || jsonData.products[aProduct]['idCombination'] == ids[1]))
+					if (jsonData.products[aProduct]['custom_picture'] == ids[3]+'_'+ids[4] && (!ids[1] || jsonData.products[aProduct]['idCombination'] == ids[1]))
 					{
 						stayInTheCart = true;
 						// update the product customization display (when the product is still in the cart)
@@ -578,7 +578,7 @@ var ajaxCart = {
 					$('.cart_block_no_products').hide();
 				}
 				//if product is not in the displayed cart, add a new product's line
-				var domIdProduct = this.id + '_' + (this.idCombination ? this.idCombination : '0') + '_' + (this.idAddressDelivery ? this.idAddressDelivery : '0');
+				var domIdProduct = this.id + '_' + (this.idCombination ? this.idCombination : '0') + '_' + (this.idAddressDelivery ? this.idAddressDelivery : '0') + '_' + this.custom_picture;
 				var domIdProductAttribute = this.id + '_' + (this.idCombination ? this.idCombination : '0');
 
 				if ($('dt[data-id="cart_block_product_' + domIdProduct + '"]').length == 0)
@@ -600,7 +600,11 @@ var ajaxCart = {
 						content += '<span class="price">' + (parseFloat(this.price_float) > 0 ? this.priceByLine : freeProductTranslation) + '</span></div>';
 
 					if (typeof(this.is_gift) == 'undefined' || this.is_gift == 0)
-						content += '<span class="remove_link"><a rel="nofollow" class="ajax_cart_block_remove_link" href="' + baseUri + '?controller=cart&amp;delete=1&amp;id_product=' + productId + '&amp;token=' + static_token + (this.hasAttributes ? '&amp;ipa=' + parseInt(this.idCombination) : '') + '"> </a></span>';
+						content += '\
+                                                    <span class="remove_link">\n\
+                                                        <a rel="nofollow" class="ajax_cart_block_remove_link" data-custom-product="'+this.custom_picture+'" href="' + baseUri + '?controller=cart&amp;delete=1&amp;id_product=' + productId + '&amp;token=' + static_token + '&custom_picture='+this.custom_picture+'"> \n\
+                                                        </a>\n\
+                                                    </span>';
 					else
 						content += '<span class="remove_link"></span>';
 					content += '</dt>';
@@ -616,6 +620,7 @@ var ajaxCart = {
 				else
 				{
 					var jsonProduct = this;
+                                        
 					if($.trim($('dt[data-id="cart_block_product_' + domIdProduct + '"] .quantity').html()) != jsonProduct.quantity || $.trim($('dt[data-id="cart_block_product_' + domIdProduct + '"] .price').html()) != jsonProduct.priceByLine)
 					{
 						// Usual product

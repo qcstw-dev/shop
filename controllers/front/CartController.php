@@ -370,13 +370,15 @@ class CartControllerCore extends FrontController
         $sImgPath = str_replace(' ', '+', $sImgPath);
         $sData = base64_decode($sImgPath);
         
-        $sName = ($aOptions['prod_ref'] ? $aOptions['prod_ref'].'_' : '').($aOptions['design'] ? $aOptions['design'].'_' : '').time().'.png';
+        $sId = time().'_'.rand(1, 100);
+        
+        $sName = ($aOptions['prod_ref'] ? $aOptions['prod_ref'].'_' : '').($aOptions['design'] ? $aOptions['design'].'_' : '').$sId.'.png';
         $sFolder = 'img/layout_maker/'.$aFolder[$aOptions['folder']];
         
         $sImgFinalPath = $sFolder.'/'.$sName;
         
         if (file_put_contents($sImgFinalPath, $sData)) {
-            return $sName;
+            return $sId;
         }
     }
 

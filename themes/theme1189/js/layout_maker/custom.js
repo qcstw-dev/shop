@@ -63,7 +63,6 @@ $(function() {
                                         <div class="thumbnail thumbnail-hover">\n\
                                             <img class="change-color-product" \n\
                                              src="'+element+'"\n\
-                                             data-product-id="" \n\
                                              alt="preview product" />\n\
                                         </div>\n\
                                     </div>\n\

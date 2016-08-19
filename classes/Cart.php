@@ -979,7 +979,7 @@ class CartCore extends ObjectModel
         ));
 
         if ((int)$quantity <= 0) {
-            return $this->deleteProduct($id_product, $id_product_attribute, (int)$id_customization);
+            return $this->deleteProduct($id_product, $id_product_attribute, (int)$id_customization, $custom_picture);
         } elseif (!$product->available_for_order || (Configuration::get('PS_CATALOG_MODE') && !defined('_PS_ADMIN_DIR_'))) {
             return false;
         } else {
@@ -1020,7 +1020,7 @@ class CartCore extends ObjectModel
 
                 /* Delete product from cart */
                 if ($new_qty <= 0) {
-                    return $this->deleteProduct((int)$id_product, (int)$id_product_attribute, (int)$id_customization);
+                    return $this->deleteProduct((int)$id_product, (int)$id_product_attribute, (int)$id_customization, $custom_picture);
                 } elseif ($new_qty < $minimal_quantity) {
                     return -1;
                 } else {
@@ -1276,7 +1276,8 @@ class CartCore extends ObjectModel
 				FROM `'._DB_PREFIX_.'cart_product`
 				WHERE `id_product` = '.(int)$id_product.'
 				AND `id_cart` = '.(int)$this->id.'
-				AND `id_product_attribute` = '.(int)$id_product_attribute);
+				AND `id_product_attribute` = '.(int)$id_product_attribute.'
+				AND `custom_picture` = "'.$custom_picture.'"');
 
             $customization_quantity = (int)Db::getInstance()->getValue('
 			SELECT `quantity`
@@ -1292,7 +1293,7 @@ class CartCore extends ObjectModel
 
             // refresh cache of self::_products
             $this->_products = $this->getProducts(true);
-            return ($customization_quantity == $product_total_quantity && $this->deleteProduct((int)$id_product, (int)$id_product_attribute, null, (int)$id_address_delivery));
+            return ($customization_quantity == $product_total_quantity && $this->deleteProduct((int)$id_product, (int)$id_product_attribute, null, (int)$id_address_delivery, $custom_picture));
         }
 
         /* Get customization quantity */
@@ -1314,7 +1315,8 @@ class CartCore extends ObjectModel
 				SET `quantity` = '.(int)$result['quantity'].'
 				WHERE `id_cart` = '.(int)$this->id.'
 				AND `id_product` = '.(int)$id_product.
-                ($id_product_attribute != null ? ' AND `id_product_attribute` = '.(int)$id_product_attribute : '')
+                ($id_product_attribute != null ? ' AND `id_product_attribute` = '.(int)$id_product_attribute : '').'
+                                AND `custom_picture` = "'.$custom_picture.'"'
             );
         }
 

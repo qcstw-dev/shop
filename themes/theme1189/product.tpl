@@ -349,7 +349,6 @@
                                 </div> <!-- end attributes -->
                             {/if}
                             <div class="clearfix">
-                                {if $product->category != 'designs'}
                                     {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
                                     <div class="btn btn-default selection margin-bottom-10"
                                             data-product-link="{$product->getLink()|escape:'html':'UTF-8'}" 
@@ -357,6 +356,7 @@
                                             data-id="{$product->id}" data-product-title="{$product->name}" data-type="{$product->category}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
                                             <span class="glyphicon glyphicon-{if !$isInSelection}plus{else}minus{/if}-sign"></span> <span class="text">{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}</span>
                                     </div>
+                                {if $product->category != 'designs'}
                                     {if false}
                                         <!-- quantity wanted -->
                                         {if !$PS_CATALOG_MODE}
