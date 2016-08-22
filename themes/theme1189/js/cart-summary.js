@@ -34,7 +34,7 @@ $(document).ready(function () {
     });
     $('.cart_quantity_delete').off('click').on('click', function (e) {
         e.preventDefault();
-        deleteProductFromSummary($(this).attr('id'), $(this).data('custom-picture'));
+        deleteProductFromSummary($(this).attr('id'), $(this).data('custom-picture'), $(this).data('original-picture'));
     });
     $('.cart_address_delivery').on('change', function (e) {
         changeAddressDelivery($(this));
@@ -360,7 +360,7 @@ function updateQty(val, cart, el)
         getCarrierListAndUpdate();
 }
 
-function deleteProductFromSummary(id, custom_picture)
+function deleteProductFromSummary(id, custom_picture, original_picture)
 {
     var customizationId = 0;
     var productId = 0;
@@ -390,7 +390,8 @@ function deleteProductFromSummary(id, custom_picture)
                 + ((customizationId !== 0) ? '&id_customization=' + customizationId : '')
                 + '&token=' + static_token
                 + '&allow_refresh=1'
-                + '&custom_picture=' + custom_picture,
+                + '&custom_picture=' + custom_picture
+                + '&original_picture=' + original_picture,
         success: function (jsonData)
         {
             if (jsonData.hasError)
@@ -729,7 +730,7 @@ function downQuantity(id, qty)
 
     } else
     {
-        deleteProductFromSummary(id, $(this).data('custom_picture'));
+        deleteProductFromSummary(id, $(this).data('custom_picture'), $(this).data('original_picture'));
     }
 }
 

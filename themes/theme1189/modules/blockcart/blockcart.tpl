@@ -61,7 +61,7 @@
                                 </div>
                                 <span class="remove_link">
                                     {if !isset($customizedDatas.$productId.$productAttributeId) && (!isset($product.is_gift) || !$product.is_gift)}
-                                        <a class="ajax_cart_block_remove_link" data-custom-product="{$product.custom_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={$product.custom_picture}")|escape:'html':'UTF-8'}" rel="nofollow" title="{l s='remove this product from my cart' mod='blockcart'}">&nbsp;</a>
+                                        <a class="ajax_cart_block_remove_link" data-custom-product="{$product.custom_picture}" data-original-product="{$product.original_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}" rel="nofollow" title="{l s='remove this product from my cart' mod='blockcart'}">&nbsp;</a>
                                     {/if}
                                 </span>
                             </dt>

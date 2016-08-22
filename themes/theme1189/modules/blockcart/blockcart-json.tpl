@@ -12,6 +12,7 @@
         "image": {$custom_picture_file_uri|json_encode},
         "image_cart": {$custom_picture_file_uri|json_encode},
         "custom_picture": {$product.custom_picture|json_encode},
+        "original_picture": {$product.original_picture|json_encode},
         "priceByLine": {if $priceDisplay == $smarty.const.PS_TAX_EXC}{displayWtPrice|json_encode p=$product.total}{else}{displayWtPrice|json_encode p=$product.total_wt}{/if},
         "name": {$product.name|trim|html_entity_decode:2:'UTF-8'|json_encode},
         "price": {if $priceDisplay == $smarty.const.PS_TAX_EXC}{displayWtPrice|json_encode p=$product.total}{else}{displayWtPrice|json_encode p=$product.total_wt}{/if},

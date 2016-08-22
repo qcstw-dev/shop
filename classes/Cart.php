@@ -83,9 +83,6 @@ class CartCore extends ObjectModel
     /** @var bool Allow to seperate order in multiple package in order to recieve as soon as possible the available products */
     public $allow_seperated_package = false;
 
-//    public $custom_picture;
-//    public $original_picture;
-
     protected static $_nbProducts = array();
     protected static $_isVirtualCart = array();
 
@@ -511,7 +508,7 @@ class CartCore extends ObjectModel
         $sql = new DbQuery();
 
         // Build SELECT
-        $sql->select('cp.`id_product_attribute`, cp.`id_product`, cp.`quantity` AS cart_quantity, cp.id_shop, cp.`custom_picture`, pl.`name`, p.`is_virtual`,
+        $sql->select('cp.`id_product_attribute`, cp.`id_product`, cp.`quantity` AS cart_quantity, cp.id_shop, cp.`custom_picture`, cp.`original_picture`, pl.`name`, p.`is_virtual`,
 						pl.`description_short`, pl.`available_now`, pl.`available_later`, product_shop.`id_category_default`, p.`id_supplier`,
 						p.`id_manufacturer`, product_shop.`on_sale`, product_shop.`ecotax`, product_shop.`additional_shipping_cost`,
 						product_shop.`available_for_order`, product_shop.`price`, product_shop.`active`, product_shop.`unity`, product_shop.`unit_price_ratio`,
@@ -979,7 +976,7 @@ class CartCore extends ObjectModel
         ));
 
         if ((int)$quantity <= 0) {
-            return $this->deleteProduct($id_product, $id_product_attribute, (int)$id_customization, $custom_picture);
+            return $this->deleteProduct($id_product, $id_product_attribute, (int)$id_customization, $custom_picture, $original_picture);
         } elseif (!$product->available_for_order || (Configuration::get('PS_CATALOG_MODE') && !defined('_PS_ADMIN_DIR_'))) {
             return false;
         } else {
@@ -1020,7 +1017,7 @@ class CartCore extends ObjectModel
 
                 /* Delete product from cart */
                 if ($new_qty <= 0) {
-                    return $this->deleteProduct((int)$id_product, (int)$id_product_attribute, (int)$id_customization, $custom_picture);
+                    return $this->deleteProduct((int)$id_product, (int)$id_product_attribute, (int)$id_customization, $custom_picture, $original_picture);
                 } elseif ($new_qty < $minimal_quantity) {
                     return -1;
                 } else {
@@ -1260,7 +1257,7 @@ class CartCore extends ObjectModel
      * @param int $id_customization Customization id
      * @return bool result
      */
-    public function deleteProduct($id_product, $id_product_attribute = null, $id_customization = null, $id_address_delivery = 0, $custom_picture = "" )
+    public function deleteProduct($id_product, $id_product_attribute = null, $id_customization = null, $id_address_delivery = 0, $custom_picture = "", $original_picture = "")
     {
         if (isset(self::$_nbProducts[$this->id])) {
             unset(self::$_nbProducts[$this->id]);
@@ -1273,10 +1270,10 @@ class CartCore extends ObjectModel
         if ((int)$id_customization) {
             $product_total_quantity = (int)Db::getInstance()->getValue(
                 'SELECT `quantity`
-				FROM `'._DB_PREFIX_.'cart_product`
-				WHERE `id_product` = '.(int)$id_product.'
-				AND `id_cart` = '.(int)$this->id.'
-				AND `id_product_attribute` = '.(int)$id_product_attribute.'
+                        FROM `'._DB_PREFIX_.'cart_product`
+                        WHERE `id_product` = '.(int)$id_product.'
+                        AND `id_cart` = '.(int)$this->id.'
+                        AND `id_product_attribute` = '.(int)$id_product_attribute.'
 				AND `custom_picture` = "'.$custom_picture.'"');
 
             $customization_quantity = (int)Db::getInstance()->getValue('
@@ -1293,7 +1290,7 @@ class CartCore extends ObjectModel
 
             // refresh cache of self::_products
             $this->_products = $this->getProducts(true);
-            return ($customization_quantity == $product_total_quantity && $this->deleteProduct((int)$id_product, (int)$id_product_attribute, null, (int)$id_address_delivery, $custom_picture));
+            return ($customization_quantity == $product_total_quantity && $this->deleteProduct((int)$id_product, (int)$id_product_attribute, null, (int)$id_address_delivery, $custom_picture, $original_picture));
         }
 
         /* Get customization quantity */
@@ -1329,6 +1326,11 @@ class CartCore extends ObjectModel
 		'.((int)$id_address_delivery ? 'AND `id_address_delivery` = '.(int)$id_address_delivery : '')
                 .' AND `custom_picture` = "'.$custom_picture.'"');
 
+        unlink(_PS_IMG_DIR_.'layout_maker/custom_pictures/'.$custom_picture.'.png');
+        if ($original_picture) {
+            unlink(_PS_IMG_DIR_.'layout_maker/original_pictures/'.$original_picture.'.png');
+        }
+        
         if ($result) {
             $return = $this->update();
             // refresh cache of self::_products

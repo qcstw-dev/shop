@@ -136,6 +136,7 @@ var ajaxCart = {
 			var customizableProductDiv = $($(this).parent().parent()).find("div[data-id^=deleteCustomizableProduct_]");
 			var idAddressDelivery = false;
                         var custom_picture = $(this).data('custom-product');
+                        var original_picture = $(this).data('original-product');
 			if (customizableProductDiv && $(customizableProductDiv).length)
 			{
 				var ids = customizableProductDiv.data('id').split('_');
@@ -166,7 +167,7 @@ var ajaxCart = {
 			}
 
 			// Removing product from the cart
-			ajaxCart.remove(productId, productAttributeId, customizationId, idAddressDelivery, custom_picture);
+			ajaxCart.remove(productId, productAttributeId, customizationId, idAddressDelivery, custom_picture, original_picture);
 		});
 	},
 
@@ -305,7 +306,7 @@ var ajaxCart = {
 			cache: false,
 			dataType : "json",
                         
-			data: 'controller=cart&add=1&ajax=true&qty=' + ((quantity && quantity != null) ? quantity : '1') + '&id_product=' + idProduct + '&token=' + static_token + ( (parseInt(idCombination) && idCombination != null) ? '&ipa=' + parseInt(idCombination): '') + '&custom_picture=' + customPicture + '&original_picture=' + originalPicture,
+			data: 'controller=cart&add=1&ajax=true&qty=' + ((quantity && quantity != null) ? quantity : '1') + '&id_product=' + idProduct + '&token=' + static_token + ( (parseInt(idCombination) && idCombination != null) ? '&ipa=' + parseInt(idCombination): '') + '&custom_picture=' + customPicture +(originalPicture ? '&original_picture=' + originalPicture : ''),
 			success: function(jsonData,textStatus,jqXHR)
 			{
 				// add appliance to whishlist module
@@ -380,7 +381,7 @@ var ajaxCart = {
 	},
 
 	//remove a product from the cart via ajax
-	remove : function(idProduct, idCombination, customizationId, idAddressDelivery, custom_picture){
+	remove : function(idProduct, idCombination, customizationId, idAddressDelivery, custom_picture, original_picture){
 		//send the ajax request to the server
 		$.ajax({
 			type: 'POST',
@@ -389,7 +390,7 @@ var ajaxCart = {
 			async: true,
 			cache: false,
 			dataType : "json",
-			data: 'controller=cart&delete=1&id_product=' + idProduct + '&ipa=' + ((idCombination != null && parseInt(idCombination)) ? idCombination : '') + ((customizationId && customizationId != null) ? '&id_customization=' + customizationId : '') + '&id_address_delivery=' + idAddressDelivery + '&token=' + static_token + '&ajax=true'+ '&custom_picture='+ custom_picture,
+			data: 'controller=cart&delete=1&id_product=' + idProduct + '&ipa=' + ((idCombination != null && parseInt(idCombination)) ? idCombination : '') + ((customizationId && customizationId != null) ? '&id_customization=' + customizationId : '') + '&id_address_delivery=' + idAddressDelivery + '&token=' + static_token + '&ajax=true'+ '&custom_picture='+ custom_picture +'&original_picture=' + original_picture,
 			success: function(jsonData)	{
 				ajaxCart.updateCart(jsonData);
 				if ($('body').attr('id') == 'order' || $('body').attr('id') == 'order-opc')
@@ -602,7 +603,7 @@ var ajaxCart = {
 					if (typeof(this.is_gift) == 'undefined' || this.is_gift == 0)
 						content += '\
                                                     <span class="remove_link">\n\
-                                                        <a rel="nofollow" class="ajax_cart_block_remove_link" data-custom-product="'+this.custom_picture+'" href="' + baseUri + '?controller=cart&amp;delete=1&amp;id_product=' + productId + '&amp;token=' + static_token + '&custom_picture='+this.custom_picture+'"> \n\
+                                                        <a rel="nofollow" class="ajax_cart_block_remove_link" data-custom-product="'+this.custom_picture+'" data-original-product="'+this.original_picture+'" href="' + baseUri + '?controller=cart&amp;delete=1&amp;id_product=' + productId + '&amp;token=' + static_token + '&custom_picture='+this.custom_picture+'"> \n\
                                                         </a>\n\
                                                     </span>';
 					else
