@@ -86,7 +86,7 @@
 .list-item-custom-text {
     font-size: 19px;
     text-align: center;
-    min-height: 126px;
+    height: 14vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

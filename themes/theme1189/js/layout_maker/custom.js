@@ -56,28 +56,26 @@ $(function() {
                         $('.fileinput-button').hide();
                         $('.slider-vertical').hide();
                         
-                        if (json.colors && json.colors.length > 1) {
-                            json.colors.forEach(function (element) {
-                                $('.change-color-product-block .block-colors').append('\
-                                    <div class="col-xs-6 block-color-product">\n\
-                                        <div class="thumbnail thumbnail-hover">\n\
-                                            <img class="change-color-product" \n\
-                                             src="'+element+'"\n\
-                                             alt="preview product" />\n\
-                                        </div>\n\
+                        json.colors.forEach(function (element) {
+                            $('.change-color-product-block .block-colors').append('\
+                                <div class="col-xs-6 block-color-product">\n\
+                                    <div class="thumbnail thumbnail-hover">\n\
+                                        <img class="change-color-product" \n\
+                                         src="'+element+'"\n\
+                                         alt="preview product" />\n\
                                     </div>\n\
-                                ');
-                            });
-                            $('.preview-color').show();
-                            $('.change-color-product-block').show();
-                        }
+                                </div>\n\
+                            ');
+                        });
+                        $('.preview-color').show();
+                        $('.change-color-product-block').show();
                         
                         if (json.colors) {
-                            $('.overlay-img').attr('src', json.colors[0]);
-                            $('.overlay-img').show();
-                            if ($('.resize-image').attr('src') === $('.resize-image').data('original-url')) {
-                                $('.resize-image').hide();
-                            }
+//                            $('.overlay-img').attr('src', json.colors[0]);
+//                            $('.overlay-img').show();
+//                            if ($('.resize-image').attr('src') === $('.resize-image').data('original-url')) {
+//                                $('.resize-image').hide();
+//                            }
                         }
                         $('.add-to-cart').data('id-product', $('.list-item-product.selected').data('id'));
                         $('.add-to-cart').show();
@@ -85,9 +83,9 @@ $(function() {
                         if (json.custom) {
                             $('.slider-vertical').show();
                         }
-                        if (json.custom && !$('.resize-container').hasClass('custom')) {
-                            $('.resize-image').hide();
-                        }
+//                        if (json.custom && !$('.resize-container').hasClass('custom')) {
+//                            $('.resize-image').hide();
+//                        }
                         if (json.item_size) {
                             $('.info-item-size').text(json.item_size);
                             $('.block-item-size').show();
