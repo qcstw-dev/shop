@@ -539,6 +539,7 @@ function upQuantity(id, qty)
     var productAttributeId = 0;
     var id_address_delivery = 0;
     var ids = 0;
+    var custom_picture = 0;
     ids = id.split('_');
     productId = parseInt(ids[0]);
     if (typeof (ids[1]) !== 'undefined')
@@ -547,6 +548,10 @@ function upQuantity(id, qty)
         customizationId = parseInt(ids[2]);
     if (typeof (ids[3]) !== 'undefined')
         id_address_delivery = parseInt(ids[3]);
+    if (typeof (ids[4]) !== 'undefined')
+        custom_picture = parseInt(ids[4]);
+    if (typeof (ids[5]) !== 'undefined')
+        custom_picture = custom_picture+'_'+parseInt(ids[5]);
 
     $.ajax({
         type: 'POST',
@@ -566,7 +571,8 @@ function upQuantity(id, qty)
                 + ((customizationId !== 0) ? '&id_customization=' + customizationId : '')
                 + '&qty=' + qty
                 + '&token=' + static_token
-                + '&allow_refresh=1',
+                + '&allow_refresh=1'
+                + '&custom_picture=' + custom_picture,
         success: function (jsonData)
         {
             if (jsonData.hasError)
@@ -645,7 +651,8 @@ function downQuantity(id, qty)
     var productAttributeId = 0;
     var id_address_delivery = 0;
     var ids = 0;
-
+    var custom_picture = 0;
+    
     ids = id.split('_');
     productId = parseInt(ids[0]);
     if (typeof (ids[1]) !== 'undefined')
@@ -654,7 +661,11 @@ function downQuantity(id, qty)
         customizationId = parseInt(ids[2]);
     if (typeof (ids[3]) !== 'undefined')
         id_address_delivery = parseInt(ids[3]);
-
+    if (typeof (ids[4]) !== 'undefined')
+        custom_picture = parseInt(ids[4]);
+    if (typeof (ids[5]) !== 'undefined')
+        custom_picture = custom_picture+'_'+parseInt(ids[5]);
+    
     if (newVal > 0 || $('#product_' + id + '_gift').length)
     {
         $.ajax({
@@ -676,7 +687,8 @@ function downQuantity(id, qty)
                     + ((customizationId !== 0) ? '&id_customization=' + customizationId : '')
                     + '&qty=' + qty
                     + '&token=' + static_token
-                    + '&allow_refresh=1',
+                    + '&allow_refresh=1'
+                    + '&custom_picture=' + custom_picture,
             success: function (jsonData)
             {
                 if (jsonData.hasError)
@@ -812,7 +824,7 @@ function updateCartSummary(json)
         }
 
         var key_for_blockcart = product_list[i].id_product + '_' + product_list[i].id_product_attribute + '_' + product_list[i].id_address_delivery;
-        var key_for_blockcart_nocustom = product_list[i].id_product + '_' + product_list[i].id_product_attribute + '_' + ((product_list[i].id_customization && product_list[i].quantity_without_customization != product_list[i].quantity) ? 'nocustom' : '0') + '_' + product_list[i].id_address_delivery;
+        var key_for_blockcart_nocustom = product_list[i].id_product + '_' + product_list[i].id_product_attribute + '_' + ((product_list[i].id_customization && product_list[i].quantity_without_customization != product_list[i].quantity) ? 'nocustom' : '0') + '_' + product_list[i].id_address_delivery+ '_' +product_list[i].custom_picture;
 
         $('#product_price_' + key_for_blockcart).html('<li class="' + current_price_class + '">' + current_price + '</li>' + initial_price_text);
         if (typeof (product_list[i].customizationQuantityTotal) !== 'undefined' && product_list[i].customizationQuantityTotal > 0)

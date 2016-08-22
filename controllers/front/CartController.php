@@ -298,10 +298,15 @@ class CartControllerCore extends FrontController
                 $cart_rules = $this->context->cart->getCartRules();
                 $available_cart_rules = CartRule::getCustomerCartRules($this->context->language->id, (isset($this->context->customer->id) ? $this->context->customer->id : 0), true, true, true, $this->context->cart, false, true);
                 
-                $sCustomPictureName = $this->savePicture($this->custom_picture, ['folder' => 'custom']);
-                $sOriginalPictureName = ($this->original_picture ? $this->savePicture($this->original_picture, ['folder' => 'original']) : '');
+                if (!$this->custom_picture) {
+                    $sCustomPictureName = $this->savePicture($this->custom_picture, ['folder' => 'custom']);
+                    $sOriginalPictureName = ($this->original_picture ? $this->savePicture($this->original_picture, ['folder' => 'original']) : '');
+                } else {
+                    $sCustomPictureName = $this->custom_picture;
+                    $sOriginalPictureName = $this->original_picture;
+                }
                 
-                $update_quantity = $this->context->cart->updateQty($this->qty, $this->id_product, $this->id_product_attribute, $this->customization_id, 'up', $this->id_address_delivery, null, null, $sCustomPictureName, $sOriginalPictureName);
+                $update_quantity = $this->context->cart->updateQty($this->qty, $this->id_product, $this->id_product_attribute, $this->customization_id, Tools::getValue('op', 'up'), $this->id_address_delivery, null, null, $sCustomPictureName, $sOriginalPictureName);
                 
                 if ($update_quantity < 0) {
                     // If product has attribute, minimal quantity is set with minimal quantity of attribute

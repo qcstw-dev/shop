@@ -877,7 +877,7 @@ class CartCore extends ObjectModel
         return true;
     }
 
-    public function containsProduct($id_product, $id_product_attribute = 0, $id_customization = 0, $id_address_delivery = 0)
+    public function containsProduct($id_product, $id_product_attribute = 0, $id_customization = 0, $id_address_delivery = 0, $custom_picture = '')
     {
         $sql = 'SELECT cp.`quantity` FROM `'._DB_PREFIX_.'cart_product` cp';
 
@@ -892,7 +892,8 @@ class CartCore extends ObjectModel
         $sql .= '
 			WHERE cp.`id_product` = '.(int)$id_product.'
 			AND cp.`id_product_attribute` = '.(int)$id_product_attribute.'
-			AND cp.`id_cart` = '.(int)$this->id;
+			AND cp.`id_cart` = '.(int)$this->id.'
+                        AND cp.`custom_picture` = "'.$custom_picture.'"';
         if (Configuration::get('PS_ALLOW_MULTISHIPPING') && $this->isMultiAddressDelivery()) {
             $sql .= ' AND cp.`id_address_delivery` = '.(int)$id_address_delivery;
         }
@@ -900,7 +901,7 @@ class CartCore extends ObjectModel
         if ($id_customization) {
             $sql .= ' AND c.`id_customization` = '.(int)$id_customization;
         }
-
+        
         return Db::getInstance()->getRow($sql);
     }
 
@@ -915,9 +916,7 @@ class CartCore extends ObjectModel
     public function updateQty($quantity, $id_product, $id_product_attribute = null, $id_customization = false,
         $operator = 'up', $id_address_delivery = 0, Shop $shop = null, $auto_add_cart_rule = true, $custom_picture, $original_picture)
     {
-//        $this->custom_picture = $custom_picture;
-//        $this->original_picture = $original_picture;
-        
+
         if (!$shop) {
             $shop = Context::getContext()->shop;
         }
@@ -981,10 +980,10 @@ class CartCore extends ObjectModel
             return false;
         } else {
             /* Check if the product is already in the cart */
-//            $result = $this->containsProduct($id_product, $id_product_attribute, (int)$id_customization, (int)$id_address_delivery);
+            $result = $this->containsProduct($id_product, $id_product_attribute, (int)$id_customization, (int)$id_address_delivery, $custom_picture);
 
             /* Update quantity if product already exist */
-            if (false) {
+            if ($result) {
                 if ($operator == 'up') {
                     $sql = 'SELECT stock.out_of_stock, IFNULL(stock.quantity, 0) as quantity
 							FROM '._DB_PREFIX_.'product p

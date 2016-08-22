@@ -86,8 +86,12 @@
 .list-item-custom-text {
     font-size: 19px;
     text-align: center;
-    height: 14vh;
+    height: 128px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.designs-list {
+    overflow: auto;
+    height: 139px;
 }

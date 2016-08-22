@@ -347,9 +347,9 @@
                                 <div class="cart_quantity_button clearfix">
                                     {if $product.minimal_quantity < ($customization.quantity -$quantityDisplayed) OR $product.minimal_quantity <= 1}
                                         <a
-                                            id="cart_quantity_down_{$product.id_product}_{$product.id_product_attribute}_{$id_customization}_{$product.id_address_delivery|intval}"
+                                            id="cart_quantity_down_{$product.id_product}_{$product.id_product_attribute}_{$id_customization}_{$product.id_address_delivery|intval}_{$custom_picture}"
                                             class="cart_quantity_down btn btn-default button-minus"
-                                            href="{$link->getPageLink('cart', true, NULL, "add=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery}&amp;id_customization={$id_customization}&amp;op=down&amp;token={$token_cart}")|escape:'html':'UTF-8'}"
+                                            href="{$link->getPageLink('cart', true, NULL, "add=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery}&amp;id_customization={$id_customization}&amp;op=down&amp;token={$token_cart}&amp;custom_picture={$custom_picture}")|escape:'html':'UTF-8'}"
                                             rel="nofollow"
                                             title="{l s='Subtract'}">
                                             <span>
@@ -358,7 +358,7 @@
                                         </a>
                                     {else}
                                         <a
-                                            id="cart_quantity_down_{$product.id_product}_{$product.id_product_attribute}_{$id_customization}"
+                                            id="cart_quantity_down_{$product.id_product}_{$product.id_product_attribute}_{$id_customization}_{$custom_picture}"
                                             class="cart_quantity_down btn btn-default button-minus disabled"
                                             href="#"
                                             title="{l s='Subtract'}">
@@ -368,9 +368,9 @@
                                         </a>
                                     {/if}
                                     <a
-                                        id="cart_quantity_up_{$product.id_product}_{$product.id_product_attribute}_{$id_customization}_{$product.id_address_delivery|intval}"
+                                        id="cart_quantity_up_{$product.id_product}_{$product.id_product_attribute}_{$id_customization}_{$product.id_address_delivery|intval}_{$custom_picture}"
                                         class="cart_quantity_up btn btn-default button-plus"
-                                        href="{$link->getPageLink('cart', true, NULL, "add=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery}&amp;id_customization={$id_customization}&amp;token={$token_cart}")|escape:'html':'UTF-8'}"
+                                        href="{$link->getPageLink('cart', true, NULL, "add=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery}&amp;id_customization={$id_customization}&amp;token={$token_cart}&amp;custom_picture={$custom_picture}")|escape:'html':'UTF-8'}"
                                         rel="nofollow"
                                         title="{l s='Add'}">
                                         <span>
