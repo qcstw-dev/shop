@@ -12,3 +12,5 @@
 			AND `id_product` = 22
 			AND `id_product_attribute` = 6
                         AND `custom_picture` = "1471586895_75" LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/19 - 04:09:53: Duplicate entry '' for key 'PRIMARY'<br /><br /><pre>INSERT INTO `ps_cart_product` (`id_product`, `id_product_attribute`, `id_cart`, `id_address_delivery`, `id_shop`, `quantity`, `date_add`, `custom_picture`, `original_picture`) VALUES ('22', '6', '16', '0', '1', '1', '2016-08-19 04:09:53', '', '')</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/19 - 04:15:13: Duplicate entry '16-22-6-' for key 'PRIMARY'<br /><br /><pre>INSERT INTO `ps_cart_product` (`id_product`, `id_product_attribute`, `id_cart`, `id_address_delivery`, `id_shop`, `quantity`, `date_add`, `custom_picture`, `original_picture`) VALUES ('22', '6', '16', '0', '1', '1', '2016-08-19 04:15:13', '', '')</pre> at line 791 in file classes/db/Db.php
