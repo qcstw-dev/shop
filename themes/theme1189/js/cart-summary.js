@@ -742,7 +742,7 @@ function downQuantity(id, qty)
 
     } else
     {
-        deleteProductFromSummary(id, $(this).data('custom_picture'), $(this).data('original_picture'));
+        deleteProductFromSummary(id, $('#'+id).data('custom-picture'), $('#'+id).data('original-picture'));
     }
 }
 
@@ -823,7 +823,7 @@ function updateCartSummary(json)
             }
         }
 
-        var key_for_blockcart = product_list[i].id_product + '_' + product_list[i].id_product_attribute + '_' + product_list[i].id_address_delivery;
+        var key_for_blockcart = product_list[i].id_product + '_' + product_list[i].id_product_attribute + '_' + product_list[i].id_address_delivery + '_' + product_list[i].custom_picture;
         var key_for_blockcart_nocustom = product_list[i].id_product + '_' + product_list[i].id_product_attribute + '_' + ((product_list[i].id_customization && product_list[i].quantity_without_customization != product_list[i].quantity) ? 'nocustom' : '0') + '_' + product_list[i].id_address_delivery+ '_' +product_list[i].custom_picture;
 
         $('#product_price_' + key_for_blockcart).html('<li class="' + current_price_class + '">' + current_price + '</li>' + initial_price_text);

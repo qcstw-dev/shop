@@ -69,6 +69,7 @@ $(function() {
                         });
                         $('.preview-color').show();
                         $('.change-color-product-block').show();
+                        $('.slider-vertical').show();
                         
                         if (json.colors) {
 //                            $('.overlay-img').attr('src', json.colors[0]);

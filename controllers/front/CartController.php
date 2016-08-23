@@ -297,8 +297,8 @@ class CartControllerCore extends FrontController
             if (!$this->errors) {
                 $cart_rules = $this->context->cart->getCartRules();
                 $available_cart_rules = CartRule::getCustomerCartRules($this->context->language->id, (isset($this->context->customer->id) ? $this->context->customer->id : 0), true, true, true, $this->context->cart, false, true);
-                
-                if (!$this->custom_picture) {
+
+                if (strpos($this->custom_picture, 'data:') !== false) {
                     $sCustomPictureName = $this->savePicture($this->custom_picture, ['folder' => 'custom']);
                     $sOriginalPictureName = ($this->original_picture ? $this->savePicture($this->original_picture, ['folder' => 'original']) : '');
                 } else {

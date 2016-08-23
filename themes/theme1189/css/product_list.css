@@ -108,7 +108,7 @@ ul.product_list.grid > li {
         transition: all 0.3s ease; } }
     ul.product_list.grid > li .product-container .product-image-container {
       position: relative;
-      margin-bottom: 13px; }
+      padding-top: 30px; }
       @media (max-width: 1230px) {
         ul.product_list.grid > li .product-container .product-image-container {
           overflow: hidden; } }

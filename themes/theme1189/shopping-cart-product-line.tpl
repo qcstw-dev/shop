@@ -82,7 +82,7 @@
             <input size="2" type="text" autocomplete="off" class="cart_quantity_input form-control grey" value="{if $quantityDisplayed == 0 AND isset($customizedDatas.$productId.$productAttributeId)}{$customizedDatas.$productId.$productAttributeId|@count}{else}{$product.cart_quantity-$quantityDisplayed}{/if}"  name="quantity_{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}_{$product.custom_picture}" />
             <div class="cart_quantity_button clearfix">
                 {if $product.minimal_quantity < ($product.cart_quantity-$quantityDisplayed) OR $product.minimal_quantity <= 1}
-                    <a rel="nofollow" class="cart_quantity_down btn btn-default button-minus" id="cart_quantity_down_{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}_{$product.custom_picture}" href="{$link->getPageLink('cart', true, NULL, "add=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery|intval}&amp;op=down&amp;token={$token_cart}&amp;custom_picture={$product.custom_picture}")|escape:'html':'UTF-8'}" title="{l s='Subtract'}">
+                    <a rel="nofollow" class="cart_quantity_down btn btn-default button-minus" data-custom-picture="{$product.custom_picture}" data-original-picture="{$product.original_picture}" id="cart_quantity_down_{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}_{$product.custom_picture}" href="{$link->getPageLink('cart', true, NULL, "add=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery|intval}&amp;op=down&amp;token={$token_cart}&amp;custom_picture={$product.custom_picture}")|escape:'html':'UTF-8'}" title="{l s='Subtract'}">
                         <span>
                             <i class="fa fa-minus"></i>
                         </span>
@@ -104,7 +104,7 @@
     {/if}
 </td>
 <td class="cart_total" data-title="{l s='Total'}">
-    <span class="price" id="total_product_price_{$product.id_product}_{$product.id_product_attribute}{if $quantityDisplayed > 0}_nocustom{/if}_{$product.id_address_delivery|intval}{if !empty($product.gift)}_gift{/if}">
+    <span class="price" id="total_product_price_{$product.id_product}_{$product.id_product_attribute}{if $quantityDisplayed > 0}_nocustom{/if}_{$product.id_address_delivery|intval}{if !empty($product.gift)}_gift{/if}_{$product.custom_picture}">
         {if !empty($product.gift)}
             <span class="gift-icon">{l s='Gift!'}</span>
         {else}
