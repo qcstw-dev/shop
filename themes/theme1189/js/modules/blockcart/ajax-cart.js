@@ -323,7 +323,6 @@ var ajaxCart = {
                         }
                     });
                     var MoreRecentCustomPicture = Math.max.apply(Math, aProducts);
-                    console.log(MoreRecentCustomPicture);
                     
                     if (idCombination)
                         $(jsonData.products).each(function () {
