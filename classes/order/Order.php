@@ -548,7 +548,10 @@ class OrderCore extends ObjectModel
 		FROM `'._DB_PREFIX_.'order_detail` od
 		LEFT JOIN `'._DB_PREFIX_.'product` p ON (p.id_product = od.product_id)
 		LEFT JOIN `'._DB_PREFIX_.'product_shop` ps ON (ps.id_product = p.id_product AND ps.id_shop = od.id_shop)
-		WHERE od.`id_order` = '.(int)$this->id);
+                LEFT JOIN `'._DB_PREFIX_.'orders` o ON (o.id_order = od.id_order AND o.id_shop = od.id_shop)
+                LEFT JOIN `'._DB_PREFIX_.'cart_product` cp ON (o.id_cart = cp.id_cart and od.product_quantity = cp.quantity)
+		WHERE od.`id_order` = '.(int)$this->id.'
+                GROUP BY od.product_quantity, cp.custom_picture');
     }
 
     public function getFirstMessage()
@@ -599,7 +602,7 @@ class OrderCore extends ObjectModel
         if (!$products) {
             $products = $this->getProductsDetail();
         }
-
+        
         $customized_datas = Product::getAllCustomizedDatas($this->id_cart);
 
         $result_array = array();
@@ -635,7 +638,9 @@ class OrderCore extends ObjectModel
             $row['id_address_delivery'] = $this->id_address_delivery;
 
             /* Stock product */
-            $result_array[(int)$row['id_order_detail']] = $row;
+            if (!isset($result_array[$row['id_order_detail']]) || (isset($result_array[$row['id_order_detail']]) && $result_array[$row['id_order_detail']]['custom_picture'] != $row['custom_picture'])) {
+                $result_array[(int)$row['id_order_detail'].'_'.$row['custom_picture']] = $row;
+            }
         }
 
         if ($customized_datas) {
