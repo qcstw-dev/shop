@@ -570,6 +570,7 @@ function upQuantity(id, qty)
                 + '&id_address_delivery=' + id_address_delivery
                 + ((customizationId !== 0) ? '&id_customization=' + customizationId : '')
                 + '&qty=' + qty
+                + '&op=up'
                 + '&token=' + static_token
                 + '&allow_refresh=1'
                 + '&custom_picture=' + custom_picture,

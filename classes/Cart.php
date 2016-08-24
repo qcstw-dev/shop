@@ -1023,7 +1023,8 @@ class CartCore extends ObjectModel
                     Db::getInstance()->execute('
 						UPDATE `'._DB_PREFIX_.'cart_product`
 						SET `quantity` = `quantity` '.$qty.', `date_add` = NOW()
-						WHERE `id_product` = '.(int)$id_product.
+						WHERE `id_product` = '.(int)$id_product.'
+                                                AND `custom_picture` = "'.$custom_picture.'"'.
                         (!empty($id_product_attribute) ? ' AND `id_product_attribute` = '.(int)$id_product_attribute : '').'
 						AND `id_cart` = '.(int)$this->id.(Configuration::get('PS_ALLOW_MULTISHIPPING') && $this->isMultiAddressDelivery() ? ' AND `id_address_delivery` = '.(int)$id_address_delivery : '').'
 						LIMIT 1'
