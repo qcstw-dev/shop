@@ -94,11 +94,12 @@
 {$HOOK_ORDERDETAILDISPLAYED}
 {if !$is_guest}<form action="{$link->getPageLink('order-follow', true)|escape:'html':'UTF-8'}" method="post">{/if}
     <div id="order-detail-content" class="table_block table-responsive">
-        <table class="table table-bordered toto">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     {if $return_allowed}<th class="first_item"><input type="checkbox" /></th>{/if}
-                    <th class="{if $return_allowed}item{else}first_item{/if}">{l s='Reference'}</th>
+                    <th class="{if $return_allowed}item{else}first_item{/if}">{l s='Picture'}</th>
+                    <th class="item">{l s='Reference'}</th>
                     <th class="item">{l s='Product'}</th>
                     <th class="item">{l s='Quantity'}</th>
                         {if $order->hasProductReturned()}
@@ -259,6 +260,11 @@
                         <!-- Classic products -->
                         {if $product.product_quantity > $product.customizationQuantityTotal}
                             <tr class="item">
+                                <td>
+                                    <div class="thumbnail border-none">
+                                        <img src="{$base_uri}{$custom_picture_path}{$product.custom_picture}" alt="{$product.product_name|escape:'html':'UTF-8'}" />
+                                    </div>
+                                </td>
                                 {if $return_allowed}<td class="order_cb"><input type="checkbox" id="cb_{$product.id_order_detail|intval}" name="ids_order_detail[{$product.id_order_detail|intval}]" value="{$product.id_order_detail|intval}" /></td>{/if}
                                 <td><label for="cb_{$product.id_order_detail|intval}">{if $product.product_reference}{$product.product_reference|escape:'html':'UTF-8'}{else}--{/if}</label></td>
                                 <td class="bold">

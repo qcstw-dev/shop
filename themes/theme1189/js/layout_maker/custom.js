@@ -45,7 +45,7 @@ $(function() {
                 },
                 success: function(json) {
                     $.fancybox.hideLoading();
-                    if (json.success === true) {
+                    if (json.success === true && json.colors) {
                         $('.block-color-product').remove();
                         $('.change-color-product-block').hide();
                         $('.preview-color').hide();
