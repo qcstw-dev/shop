@@ -53,8 +53,15 @@ class AjaxControllerCore extends FrontController
             }
             foreach ($oProduct->getImages($this->context->language->id) as $aProductImage){
                 if ($aProductImage['legend'] && (preg_match('/^[0-9]+$/', $aProductImage['legend']) || $aProductImage['legend'] === 'blank')) {
-                    $result['colors'][] = $this->context->link->getImageLink($oProduct->link_rewrite, $aProductImage['id_image'], 'layout');
+                    $result['colors'][] = [
+                            'color' => $this->context->link->getImageLink($oProduct->link_rewrite, $aProductImage['id_image'], 'layout'),
+                            'name' => $aProductImage['legend']
+                        ];
                 }
+            }
+            if (!$result['colors']) {
+                $result['success'] = false;
+                $result['error'] = 'Colors missing';
             }
             $aFeatures = $oProduct->getFrontFeatures($this->context->language->id);
             $aFeaturesByKey = [];

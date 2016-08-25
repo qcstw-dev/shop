@@ -56,17 +56,18 @@ $(function() {
                         $('.fileinput-button').hide();
                         $('.slider-vertical').hide();
                         
-                        json.colors.forEach(function (element) {
+                        for(var key in json.colors) {
                             $('.change-color-product-block .block-colors').append('\
                                 <div class="col-xs-6 block-color-product">\n\
                                     <div class="thumbnail thumbnail-hover">\n\
                                         <img class="change-color-product" \n\
-                                         src="'+element+'"\n\
+                                         data-id-color="'+json.colors[key]['name']+'"\n\
+                                         src="'+json.colors[key]['color']+'"\n\
                                          alt="preview product" />\n\
                                     </div>\n\
                                 </div>\n\
                             ');
-                        });
+                        };
                         $('.preview-color').show();
                         $('.change-color-product-block').show();
                         $('.slider-vertical').show();
