@@ -143,8 +143,12 @@ class OrderInvoiceCore extends ObjectModel
 		LEFT JOIN `'._DB_PREFIX_.'product` p
 		ON p.id_product = od.product_id
 		LEFT JOIN `'._DB_PREFIX_.'product_shop` ps ON (ps.id_product = p.id_product AND ps.id_shop = od.id_shop)
+                LEFT JOIN `'._DB_PREFIX_.'orders` o ON (o.id_order = od.id_order AND o.id_shop = od.id_shop)
+                LEFT JOIN `'._DB_PREFIX_.'cart_product` cp ON (o.id_cart = cp.id_cart and od.product_quantity = cp.quantity)
 		WHERE od.`id_order` = '.(int)$this->id_order.'
-		'.($this->id && $this->number ? ' AND od.`id_order_invoice` = '.(int)$this->id : '').' ORDER BY od.`product_name`');
+		'.($this->id && $this->number ? ' AND od.`id_order_invoice` = '.(int)$this->id : '').' '
+                . ' GROUP BY od.product_quantity, cp.custom_picture'
+                . ' ORDER BY od.`product_name`');
     }
 
     public static function getInvoiceByNumber($id_invoice)
@@ -243,7 +247,7 @@ class OrderInvoiceCore extends ObjectModel
             $row['unit_price_tax_incl_including_ecotax'] = $row['unit_price_tax_incl'];
             $row['total_price_tax_excl_including_ecotax'] = $row['total_price_tax_excl'];
             $row['total_price_tax_incl_including_ecotax'] = $row['total_price_tax_incl'];
-
+            $row['custom_picture'] = _PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/custom_pictures/'.$row['custom_picture'];
             /* Stock product */
             $result_array[(int)$row['id_order_detail']] = $row;
         }
