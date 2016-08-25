@@ -1,0 +1,59 @@
+
+[{shop_url}] 
+
+Gratulation 
+
+A new order was placed on {shop_name} by the following customer:
+{firstname} {lastname} ({email}) 
+
+BESTELLUNG: {order_name} vom {date}
+
+ZAHLUNG: {payment} 		 
+
+ARTIKELNR.
+
+PRODUKT
+
+STÜCKPREIS
+
+MENGE
+
+GESAMTPREIS
+
+{items} 
+
+PRODUKTE 
+
+{total_products} 
+
+RABATTE 
+
+{total_discounts} 
+
+GESCHENKVERPACKUNG 
+
+{total_wrapping} 
+
+VERSAND 
+
+{total_shipping} 
+
+STEUERN 
+
+{total_tax_paid} 
+
+GESAMT 
+
+{total_paid} 
+
+{carrier} 
+
+{delivery_block_html} 
+
+{invoice_block_html} 
+
+{message} 
+
+{shop_name} [{shop_url}] powered by
+PrestaShop(tm) [http://www.prestashop.com/] 
+

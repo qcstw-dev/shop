@@ -1,0 +1,9 @@
+*ERROR* 	2016/08/23 - 22:06:55: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '".1472003256_43 AND `id_product_attribute` = 6
+						AND `id_cart` = 20
+						LI' at line 4<br /><br /><pre>
+						UPDATE `ps_cart_product`
+						SET `quantity` = `quantity` - 1, `date_add` = NOW()
+						WHERE `id_product` = 22
+                                                AND `custom_picture` = ".1472003256_43 AND `id_product_attribute` = 6
+						AND `id_cart` = 20
+						LIMIT 1</pre> at line 791 in file classes/db/Db.php

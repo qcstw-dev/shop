@@ -378,7 +378,8 @@
 #layer_cart .crossseling .crossseling-content {
   border-top: 1px solid #d6d4d4;
   padding: 26px 30px 40px 30px;
-  position: relative; }
+  position: relative; 
+  display: none;}
 #layer_cart .crossseling h2 {
   font: 400 23px/26px Ubuntu, sans-serif;
   color: #333333;

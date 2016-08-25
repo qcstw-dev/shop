@@ -5,16 +5,17 @@ $(function () {
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png|eps)$/i,
         previewMinWidth: 300,
         previewMinHeight: 300,
-        previewMaxWidth: 10000,
-        previewMaxHeight: 10000,
+        previewMaxWidth: 100000,
+        previewMaxHeight: 100000,
         previewThumbnail: true,
         previewCrop: false,
         imageCrop: false
     }).on('fileuploadadd', function (e, data) {
-
-    data.context = $('#files');
+        $.fancybox.showLoading();
+        data.context = $('#files');
 
 }).on('fileuploadprocessalways', function (e, data) {
+        $.fancybox.hideLoading();
         $('.file-error').remove();
         var index = data.index,
                 file = data.files[index],

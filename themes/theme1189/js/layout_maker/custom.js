@@ -83,6 +83,8 @@ $(function() {
                         
                         if (json.custom) {
                             $('.slider-vertical').show();
+                        } else {
+                            $('.hidden-original-picture').attr('src', '');
                         }
 //                        if (json.custom && !$('.resize-container').hasClass('custom')) {
 //                            $('.resize-image').hide();

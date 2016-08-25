@@ -2659,7 +2659,7 @@ class AdminOrdersControllerCore extends AdminController
                 if (isset($product['custom_picture']) && $product['custom_picture']) {
                     $product['image_tag'] = ImageManager::thumbnail(_PS_IMG_DIR_.'layout_maker/custom_pictures/'.$product['custom_picture'].'.png', $name, 100, 'png', true, true);
                 } else {
-                    $product['image_tag'] = ImageManager::thumbnail(_PS_IMG_DIR_.'p/'.$product['image']->getExistingImgPath().'.jpg', $name, 45, 'jpg');
+                    $product['image_tag'] = ImageManager::thumbnail(_PS_IMG_DIR_.'p/'.$product['image']->getExistingImgPath().'.jpg', $name, 100, 'jpg');
                 }
                 if (file_exists(_PS_TMP_IMG_DIR_.$name)) {
                     $product['image_size'] = getimagesize(_PS_TMP_IMG_DIR_.$name);

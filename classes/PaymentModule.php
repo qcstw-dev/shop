@@ -458,14 +458,18 @@ abstract class PaymentModuleCore extends Module
                         $price_wt = Product::getPriceStatic((int)$product['id_product'], true, ($product['id_product_attribute'] ? (int)$product['id_product_attribute'] : null), 2, null, false, true, $product['cart_quantity'], false, (int)$order->id_customer, (int)$order->id_cart, (int)$order->{Configuration::get('PS_TAX_ADDRESS_TYPE')});
 
                         $product_price = Product::getTaxCalculationMethod() == PS_TAX_EXC ? Tools::ps_round($price, 2) : $price_wt;
-
+                        
+                        $name = 'mail_mini_'.$product['custom_picture'];
                         $product_var_tpl = array(
                             'reference' => $product['reference'],
                             'name' => $product['name'].(isset($product['attributes']) ? ' - '.$product['attributes'] : ''),
                             'unit_price' => Tools::displayPrice($product_price, $this->context->currency, false),
                             'price' => Tools::displayPrice($product_price * $product['quantity'], $this->context->currency, false),
                             'quantity' => $product['quantity'],
-                            'customization' => array()
+                            'customization' => array(),
+                            'custom_picture' => _PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/custom_pictures/'.$product['custom_picture'].'.png',
+                            'original_picture' => ($product['original_picture'] ? _PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/original_pictures/'.$product['original_picture'].'.png' : ''),
+                            'thumbnail_custom_picture' => '<img src="'._PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/custom_pictures/'.$product['custom_picture'].'.png" style="width: 100px" />',
                         );
 
                         $customized_datas = Product::getAllCustomizedDatas((int)$order->id_cart);
