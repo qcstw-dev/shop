@@ -560,7 +560,7 @@ class OrderCore extends ObjectModel
 		SELECT *
 		FROM `'._DB_PREFIX_.'cart_product`
                 WHERE `original_picture` = ""
-                ORDER BY `date_add`
+                ORDER BY `date_add` DESC
                 limit 4');
     }
 
