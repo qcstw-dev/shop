@@ -553,8 +553,18 @@ class OrderCore extends ObjectModel
 		WHERE od.`id_order` = '.(int)$this->id.'
                 GROUP BY od.product_quantity, cp.custom_picture');
     }
+    
+    public static function getLastCreations()
+    {
+        return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
+		SELECT *
+		FROM `'._DB_PREFIX_.'cart_product`
+                WHERE `original_picture` = ""
+                ORDER BY `date_add`
+                limit 4');
+    }
 
-    public function getFirstMessage()
+        public function getFirstMessage()
     {
         return Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue('
 			SELECT `message`
