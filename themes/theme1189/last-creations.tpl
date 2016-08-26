@@ -4,7 +4,7 @@
             <div class="product-container" >
                 <div class="left-block">
                     <div class="product-image-container">
-                        <img class="replace-2x img-responsive" src="{$custom_picture_path}{$creation.custom_picture}" alt="sunset" title="sunset" itemprop="image">
+                        <img class="replace-2x img-responsive" src="{$custom_picture_path}{$creation.custom_picture}" alt="last creation" title="last creation" />
                     </div>
                 </div>
             </div><!-- .product-container> -->
