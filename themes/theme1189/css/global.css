@@ -6251,8 +6251,7 @@ a.product-name {
 			 				Labels New/Sale 
 --------------------------------------------------------------------------- */
 .new-box,
-.sale-box,
-.select-box {
+.sale-box{
   position: absolute;
   top: 10px;
   overflow: hidden;
@@ -6262,20 +6261,41 @@ a.product-name {
 .new-box {
   left: 10px; }
 
-.select-box {
-  right: 10px;
-  top: 4px;
-}
-.select-box .glyphicon {
+.product-image-container .btn .glyphicon {
   color: #595959;
 }
-.select-box .glyphicon-plus-sign {
+.product-image-container .btn .glyphicon-plus-sign {
     color: #38B15D;
 }
-.select-box .glyphicon-minus-sign {
+.product-image-container .btn .glyphicon-minus-sign {
     color: #d9534f;
 }
-
+.ajax_block_product {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.btn-add, 
+.btn-remove,
+.btn-detail {
+    padding-right: 1px;
+    padding-left: 1px;
+    width: 93%;
+    text-align: center !important;
+    margin: 5px;
+    border: 1px solid #e7e7e6 !important;
+}
+/*.btn-add {
+    background: #38B15D;
+    border-color: #38B15D;
+}
+.btn-detail {
+    background: #1171bd;
+    border: #1171bd;
+}*/
+.btn-remove {
+    background: #ef6960;
+    border-color: #ef6960;
+}
 .sale-box {
   left: 11px; }
 
@@ -8982,13 +9002,6 @@ ul.step a:hover:after {
     height: 100px;
 }
 
-
-
-
-
-
-
-
 .background-grey {
     background: #eee;
 }
@@ -9122,56 +9135,56 @@ ul.step a:hover:after {
     padding: 0 !important;
 }
 .padding-top-10 {
-    padding-top: 10px;
+    padding-top: 10px !important;
 }
 .padding-top-20 {
-    padding-top: 20px;
+    padding-top: 20px !important;
 }
 .padding-left-20 {
-    padding-left: 20px;
+    padding-left: 20px !important;
 }
 .padding-right-20 {
-    padding-right: 20px;
+    padding-right: 20px !important;
 }
 .padding-left-30 {
-    padding-left: 30px;
+    padding-left: 30px !important;
 }
 .padding-right-30 {
-    padding-right: 30px;
+    padding-right: 30px !important;
 }
 .padding-left-50 {
-    padding-left: 50px;
+    padding-left: 50px !important;
 }
 .padding-right-50 {
-    padding-right: 50px;
+    padding-right: 50px !important;
 }
 .padding-bottom-10 {
-    padding-bottom: 10px;
+    padding-bottom: 10px !important;
 }
 .padding-bottom-20 {
-    padding-bottom: 20px;
+    padding-bottom: 20px !important;
 }
 .padding-left-0 {
-    padding-left: 0;
+    padding-left: 0 !important;
 }
 .padding-right-0 {
-    padding-right: 0;
+    padding-right: 0 !important;
 }
 .padding-5 {
-    padding: 5px;
+    padding: 5px !important;
 }
 .padding-10 {
-    padding: 10px;
+    padding: 10px !important;
 }
 .padding-20 {
-    padding: 20px;
+    padding: 20px !important;
 }
 .cursor-pointer {
-    cursor: pointer;
+    cursor: pointer !important;
 }
 .margin-auto {
-    float: none;
-    margin: auto;
+    float: none !important;
+    margin: auto !important;
 }
 .margin-0 {
     margin: 0 !important;
@@ -9183,141 +9196,141 @@ ul.step a:hover:after {
     margin-bottom: 0 !important;
 }
 .margin-top-10 {
-    margin-top: 10px;
+    margin-top: 10px !important;
 }
 .margin-bottom-10 {
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
 }
 .margin-top-20 {
-    margin-top: 20px;
+    margin-top: 20px !important;
 }
 .margin-top-50 {
-    margin-top: 50px;
+    margin-top: 50px !important;
 }
 .margin-top-70 {
-    margin-top: 70px;
+    margin-top: 70px !important;
 }
 .margin-bottom-20 {
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
 }
 .min-height-40 {
-    min-height: 40px;
+    min-height: 40px !important;
 }
 @media (min-width: 320px) {
     .margin-top-xs-10 {
-        margin-top: 10px;
+        margin-top: 10px !important;
     }
     .margin-right-xs-5 {
-        margin-right: 5px;
+        margin-right: 5px !important;
     }
     .margin-right-xs-10 {
-        margin-right: 10px;
+        margin-right: 10px !important;
     }
     .margin-top-xs-20 {
-        margin-top: 20px;
+        margin-top: 20px !important;
     }
     .margin-right-xs-20 {
-        margin-right: 20px;
+        margin-right: 20px !important;
     }
     .margin-left-xs-5 {
-        margin-left: 5px;
+        margin-left: 5px !important;
     }
     .margin-left-xs-10 {
-        margin-left: 10px;
+        margin-left: 10px !important;
     }
     .margin-left-xs-20 {
-        margin-left: 20px;
+        margin-left: 20px !important;
     }
     .margin-bottom-xs-10 {
-        margin-bottom: 10px;
+        margin-bottom: 10px !important;
     }
     .padding-xs-0 {
-        padding: 0;
+        padding: 0 !important;
     }
     .subtitle-pic {
-        font-size: 12px;
+        font-size: 12px !important;
     }
 }
 @media (min-width: 768px) {
     .col-sm-20-percent {
-        width: 20%;
+        width: 20% !important;
     }
     .margin-top-sm-10 {
-        margin-top: 10px;
+        margin-top: 10px !important;
     }
     .margin-right-sm-10 {
-        margin-right: 10px;
+        margin-right: 10px !important;
     }
     .margin-top-sm-20 {
-        margin-top: 20px;
+        margin-top: 20px !important;
     }
     .margin-bottom-sm-10 {
-        margin-bottom: 10px;
+        margin-bottom: 10px !important;
     }
     .margin-bottom-sm-20 {
-        margin-bottom: 20px;
+        margin-bottom: 20px !important;
     }
     .margin-right-sm-20 {
-        margin-right: 20px;
+        margin-right: 20px !important;
     }
     .margin-left-sm-20 {
-        margin-left: 20px;
+        margin-left: 20px !important;
     }
     .line-height-sm-20 {
-        line-height: 20px;
+        line-height: 20px !important;
     }
     .padding-sm-0 {
-        padding: 0;
+        padding: 0 !important;
     }
     .border-sm-right {
-        border-right: 1px solid #ddd;
+        border-right: 1px solid #ddd !important;
     }
     .border-sm-left {
-        border-left: 1px solid #ddd;
+        border-left: 1px solid #ddd !important;
     }
     .border-sm-bottom {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #ddd !important;
     }
     .border-sm-top {
-        border-top: 1px solid #ddd;
+        border-top: 1px solid #ddd !important;
     }
     .subtitle-pic {
-        font-size: 18px;
+        font-size: 18px !important;
     }
 }
 @media (min-width: 992px) {
     .line-height-md-30 {
-        line-height: 30px;
+        line-height: 30px !important;
     }
     .margin-top-md-10 {
-        margin-top: 10px;
+        margin-top: 10px !important;
     }
     .margin-right-md-10 {
-        margin-right: 10px;
+        margin-right: 10px !important;
     }
     .margin-top-md-20 {
-        margin-top: 20px;
+        margin-top: 20px !important;
     }
     .margin-right-md-20 {
-        margin-right: 20px;
+        margin-right: 20px !important;
     }
     .margin-bottom-md-10 {
-        margin-bottom: 10px;
+        margin-bottom: 10px !important;
     }
     .padding-md-0 {
-        padding: 0;
+        padding: 0 !important;
     }
     .border-md-right {
-        border-right: 1px solid #ddd;
+        border-right: 1px solid #ddd !important;
     }
     .border-md-left {
-        border-left: 1px solid #ddd;
+        border-left: 1px solid #ddd !important;
     }
     .border-md-bottom {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #ddd !important;
     }
     .border-md-top {
-        border-top: 1px solid #ddd;
+        border-top: 1px solid #ddd !important;
     }
 }
 .popup {
@@ -9331,4 +9344,6 @@ ul.step a:hover:after {
 .tooltip-inner {
     max-width: 350px;
     min-width: 100px;
+}
+.sf-menu {
 }

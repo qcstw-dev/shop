@@ -91,7 +91,9 @@
             <div class="columns-container">
                 <div id="columns" class="container">
                     {if $page_name == 'category'
-                        || $page_name == 'product'}
+                        || $page_name == 'product'
+                        || $page_name == 'index'
+                    }
                         {include file="./selection.tpl" seelction=$selection}
                     {/if}
                     {if $page_name !='index' && $page_name !='layoutmaker' && $page_name !='pagenotfound'}

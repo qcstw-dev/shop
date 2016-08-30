@@ -4,7 +4,7 @@
             <h4 class="text-center bold">{l s='Your selection'}</h4>
         </div>
         <div class="col-md-6 padding-0 border-right">
-            <div class="col-md-12 border-bottom">
+            <div class="col-md-12">
                 <h5 class="text-center">Designs</h5>
             </div>
             <div class="col-md-12 padding-10">
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="col-md-6 padding-0">
-            <div class="col-md-12 border-bottom">
+            <div class="col-md-12">
                 <h5 class="text-center">Products</h5>
             </div>
             <div class="col-md-12 padding-10">

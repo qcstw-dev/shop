@@ -13,10 +13,10 @@ $(document).ready(function () {
         viewport.setAttribute('content', 'initial-scale=1.0,maximum-scale=1.0,user-scalable=0,width=device-width,height=device-height');
         window.scrollTo(0, 1);
     }
-    blockHover();
+//    blockHover();
     if (typeof quickView !== 'undefined' && quickView)
         quick_view();
-    dropDown();
+//    dropDown();
 
     if (typeof page_name != 'undefined' && !in_array(page_name, ['index', 'product']))
     {
@@ -158,24 +158,24 @@ function blockHover(status)
 
         if ('ontouchstart' in document.documentElement) 
             return;
-        if ($('body').find('.container').width() == 1140)
+        if ($('body').find('.container').width() == 1170)
         {
-            //var pcHeight = $(this).parent().outerHeight();
-            //var pcPHeight = $(this).parent().find('.button-container').outerHeight() + $(this).parent().find('.comments_note').outerHeight() + $(this).parent().find('.functional-buttons').outerHeight();
+            var pcHeight = $(this).parent().outerHeight();
+            var pcPHeight = $(this).parent().find('.button-container').outerHeight() + $(this).parent().find('.comments_note').outerHeight() + $(this).parent().find('.functional-buttons').outerHeight();
             $(this).parent().addClass('hovered');
-            //$(this).parent().css('height', pcHeight + pcPHeight).css('margin-bottom', pcPHeight * (-1));
+            $(this).parent().css('height', pcHeight + pcPHeight).css('margin-bottom', pcPHeight * (-1));
         }
     });
 
     $(document).off('mouseleave').on('mouseleave', '.product_list.grid li.ajax_block_product .product-container', function (e) {
-        if ($('body').find('.container').width() == 1140)
+        if ($('body').find('.container').width() == 1170)
             $(this).parent().removeClass('hovered');
     });
 }
 
 function quick_view()
 {
-    $(document).on('click', '.quick-view:visible, .quick-view-mobile:visible', function (e)
+    $(document).on('click', '.quick-view-bis, .quick-view-mobile-bis', function (e)
     {
         e.preventDefault();
         var url = this.rel;
@@ -437,7 +437,7 @@ function addRemoveToSelection (element) {
             if (json.success === true) {
                 if (json.type === 'remove') {
                     element.find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
-                    element.attr('title', element.data('text-add')).tooltip('fixTitle').tooltip('show');
+//                    element.attr('title', element.data('text-add')).tooltip('fixTitle').tooltip('show');
                     element.find('.text').text(element.data('text-add'));
                     $('.list-item-'+element.data('id')).remove();
                     if (!$('.designs-list').find('li').length && !$('.products-list').find('li').length) {
@@ -446,7 +446,7 @@ function addRemoveToSelection (element) {
                 } else {
                     $('.block-selection').show();
                     element.find('.glyphicon').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
-                    element.attr('title', element.data('text-remove')).tooltip('fixTitle').tooltip('show');
+//                    element.attr('title', element.data('text-remove')).tooltip('fixTitle').tooltip('show');
                     element.find('.text').text(element.data('text-remove'));
                     $('.'+element.data('type')+'-list').append('\
                         <li class="list-item-'+element.data('id')+'">\n\

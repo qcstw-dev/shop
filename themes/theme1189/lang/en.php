@@ -622,6 +622,7 @@ $_LANG['product-list_216adaf4e98dc62ec3abeab51b9fc57f'] = 'Please select at leas
 $_LANG['product-list_90723749917a82bf3ff8a73247d32ffb'] = 'You cannot add more than %d product(s) to the product comparison';
 $_LANG['product-list_5d97a39e7e418d41d9fd9979d555ac02'] = 'Add to selection';
 $_LANG['product-list_8240fd4dd0f9a2139126d99cfe71daec'] = 'Remove from selection';
+$_LANG['product-list_4b7d496eedb665d0b5f589f2f874e7cb'] = 'Product detail';
 $_LANG['products-comparison_4dbce7d8fae730e09fce9e83433c77ff'] = 'Product Comparison';
 $_LANG['products-comparison_d6295c05503596b3ed3528aee83e3ef7'] = 'Features:';
 $_LANG['products-comparison_1063e38cb53d94d386f21227fcd84717'] = 'Remove';
