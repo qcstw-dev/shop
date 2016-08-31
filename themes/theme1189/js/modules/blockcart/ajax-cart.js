@@ -715,7 +715,7 @@ var ajaxCart = {
             $('#layer_cart_product_attributes').html(product.attributes);
         $('#layer_cart_product_price').text(product.price);
         $('#layer_cart_product_quantity').text(product.quantity);
-        $('.layer_cart_img').html('<img class="layer_cart_img img-responsive" src="' + product.image + '" alt="' + product.name + '" title="' + product.name + '" />');
+        $('.layer_cart_img').html('<img class="layer_cart_img img-responsive" src="' + product.image + '.png" alt="' + product.name + '" title="' + product.name + '" />');
 //		$('.layer_cart_img').html('<img class="layer_cart_img img-responsive" src="'+ baseUri + 'img/layout_maker/custom_pictures/' + this.image_cart + '" alt="' + product.name + '" title="' + product.name + '" />');
 
         var n = parseInt($(window).scrollTop()) + 'px';

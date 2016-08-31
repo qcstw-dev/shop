@@ -2,7 +2,7 @@
     <td class="cart_product">
         <div class="thumbnail border-none">
             <a href="{$link->getProductLink($product.id_product, $product.link_rewrite, $product.category, null, null, $product.id_shop, $product.id_product_attribute)|escape:'html':'UTF-8'}">
-                <img src="{$base_uri}{$custom_picture_path}{$product.custom_picture}" alt="{$product.name|escape:'html':'UTF-8'}" />
+                <img src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" />
             </a>
         </div>
     </td>

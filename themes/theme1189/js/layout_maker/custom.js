@@ -38,7 +38,7 @@ $(function() {
             $.ajax({
                 type: 'POST',
                 url: baseDir + 'index.php',
-                data: 'controller=ajax&action=layoutmakerselect&ajax&id_product=' + $('.list-item-product.selected').data('id')+ '&id_design=' + $('.list-item-design.selected').data('id'),
+                data: 'controller=ajax&action=layoutmakerselect&ajax=true&id_product=' + $('.list-item-product.selected').data('id')+ '&id_design=' + $('.list-item-design.selected').data('id'),
                 dataType: 'json',
                 beforeSend: function () {
                     $.fancybox.showLoading();

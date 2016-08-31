@@ -425,8 +425,8 @@ function listTabsAnimate(element) {
 function addRemoveToSelection (element) {
     $.ajax({
         type: 'POST',
-        url: baseDir + 'index.php',
-        data: 'controller=ajax&action=addtoselection&ajax&id_product=' + element.data('id'),
+        url: baseDir,
+        data: 'controller=ajax&action=addtoselection&ajax=true&id_product=' + element.data('id'),
         dataType: 'json',
         beforeSend: function () {
             $.fancybox.showLoading();
