@@ -334,7 +334,7 @@
         color: #333333; }
   .pb-right-column h1 {
     padding-bottom: 20px;
-    font-size: 25px;
+    font-size: 20px;
     color: #3a3939;
     margin: -2px 0 0 0;
     font-weight: normal; }
@@ -532,8 +532,9 @@
   margin: 0; }
 
 .box-info-product .content_prices {
-  border-bottom: 1px solid #d6d4d4;
-  margin-bottom: 20px; }
+  /*border-bottom: 1px solid #d6d4d4;*/
+  /*margin-bottom: 20px; */
+}
 
 .old-price-info {
   overflow: hidden;
@@ -803,3 +804,8 @@ Quick View Styles
 @media (max-width: 767px) {
   #product-videos .page-title {
     font-size: 16px; } }
+.color-preview {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+}

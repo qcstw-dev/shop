@@ -6264,9 +6264,11 @@ a.product-name {
 .product-image-container .btn .glyphicon {
   color: #595959;
 }
+.product_attributes .btn .glyphicon-plus-sign,
 .product-image-container .btn .glyphicon-plus-sign {
     color: #38B15D;
 }
+.product_attributes .btn .glyphicon-minus-sign,
 .product-image-container .btn .glyphicon-minus-sign {
     color: #d9534f;
 }
@@ -9346,4 +9348,14 @@ ul.step a:hover:after {
     min-width: 100px;
 }
 .sf-menu {
+}
+.color-preview-list {
+    margin-left: 5px;
+}
+.color-preview {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
 }

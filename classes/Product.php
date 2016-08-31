@@ -3658,7 +3658,39 @@ class ProductCore extends ObjectModel
 			ON DUPLICATE KEY UPDATE `id_feature_value` = '.(int)$id_feature_value
         );
     }
-
+    
+     public function getColors($context) {
+        $aFeatures = $this->getFrontFeatures($context);
+        $aColors = [];
+        $aColorsReturn = [];
+        foreach ($aFeatures as $aFeature) {
+            if ($aFeature['name'] == 'Material') {
+                switch ($aFeature['value']) {
+                    case 'Plastic':
+                        $aColors = ['03-pms287c', '05-pmsblack', '06-pmsgreenc', '07-pms1', '10-pms116c', '11-pms032c'];
+                        break;
+                    case 'Aluminum':
+                        $aColors = ['01-pms021c', '02-pms200c', '03-pms287c', '04-pms2602', '05-pmsblack', '06-pmsgreenc', '07-pms1', '08-pms312c', '09-pms237c', '10-pms116c', '11-pms032c', '12-pms367c', '13-pms349c'];
+                        break;
+                }
+            }
+        }
+        
+        if ($aColors) {
+            $aAvailableAttributes = Attribute::getAttributes($context);
+            foreach ($aAvailableAttributes as $aAvailableAttribute) {
+                if (in_array($aAvailableAttribute['url_name'], $aColors)) {
+                    $aColorsReturn[$aAvailableAttribute['url_name']] = [
+                        'name' => $aAvailableAttribute['name'],
+                        'color' => $aAvailableAttribute['color']
+                    ];
+                }
+            }
+        }
+        
+        return $aColorsReturn;
+    }
+    
     /**
     * Select all features for the object
     *

@@ -52,7 +52,7 @@ class AjaxControllerCore extends FrontController
                 $result['custom'] = true;
             }
             foreach ($oProduct->getImages($this->context->language->id) as $aProductImage){
-                if ($aProductImage['legend'] && (preg_match('/^[0-9]+$/', $aProductImage['legend']) || $aProductImage['legend'] === 'blank')) {
+                if ($aProductImage['legend'] && (preg_match('/^[0-9]+$/', $aProductImage['legend']) || $aProductImage['legend'] === 'recess')) {
                     $result['colors'][] = [
                             'color' => $this->context->link->getImageLink($oProduct->link_rewrite, $aProductImage['id_image'], 'layout'),
                             'name' => $aProductImage['legend']

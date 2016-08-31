@@ -151,7 +151,7 @@ class AttributeCore extends ObjectModel
         }
 
         return Db::getInstance()->executeS('
-			SELECT DISTINCT ag.*, agl.*, a.`id_attribute`, al.`name`, agl.`name` AS `attribute_group`
+			SELECT DISTINCT ag.*, agl.*, a.`id_attribute`, al.`name`, agl.`name` AS `attribute_group`, a.`color`, lv.`url_name`
 			FROM `'._DB_PREFIX_.'attribute_group` ag
 			LEFT JOIN `'._DB_PREFIX_.'attribute_group_lang` agl
 				ON (ag.`id_attribute_group` = agl.`id_attribute_group` AND agl.`id_lang` = '.(int)$id_lang.')
@@ -159,6 +159,8 @@ class AttributeCore extends ObjectModel
 				ON a.`id_attribute_group` = ag.`id_attribute_group`
 			LEFT JOIN `'._DB_PREFIX_.'attribute_lang` al
 				ON (a.`id_attribute` = al.`id_attribute` AND al.`id_lang` = '.(int)$id_lang.')
+			LEFT JOIN `'._DB_PREFIX_.'layered_indexable_attribute_lang_value` lv
+				ON (a.`id_attribute` = lv.`id_attribute` AND lv.`id_lang` = '.(int)$id_lang.')
 			'.Shop::addSqlAssociation('attribute_group', 'ag').'
 			'.Shop::addSqlAssociation('attribute', 'a').'
 			'.($not_null ? 'WHERE a.`id_attribute` IS NOT NULL AND al.`name` IS NOT NULL AND agl.`id_attribute_group` IS NOT NULL' : '').'

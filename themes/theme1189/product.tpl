@@ -56,9 +56,9 @@
                     {/if}
                     {if $have_image}
                         <span id="view_full_size">
-                            {if $jqZoomEnabled && $have_image && !$content_only}
+                            {if $jqZoomEnabled && $have_image}
                                 <a class="jqzoom" title="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" rel="gal1" href="{$link->getImageLink($product->link_rewrite, $cover.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" itemprop="url">
-                                    <img itemprop="image" src="{$link->getImageLink($product->link_rewrite, $cover.id_image, 'tm_large_default')|escape:'html':'UTF-8'}" title="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" alt="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}"/>
+                                    <img id="bigpic" itemprop="image" src="{$link->getImageLink($product->link_rewrite, $cover.id_image, 'tm_large_default')|escape:'html':'UTF-8'}" title="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" alt="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}"/>
                                 </a>
                             {else}
                                 <img id="bigpic" itemprop="image" src="{$link->getImageLink($product->link_rewrite, $cover.id_image, 'tm_large_default')|escape:'html':'UTF-8'}" title="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" alt="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" width="{$largeSize.width}" height="{$largeSize.height}"/>
@@ -91,7 +91,7 @@
                             <ul id="thumbs_list_frame">
                                 {if isset($images)}
                                     {foreach from=$images item=image name=thumbnails}
-                                        {if preg_match('/^[0-9]+$/', $image.legend)}
+                                        {if preg_match('/^[0-9]+$/', $image.legend) || $image.legend == 'recess'}
                                             {continue}
                                         {else}
                                             {assign var=imageIds value="`$product->id`-`$image.id_image`"}
@@ -102,7 +102,7 @@
                                             {/if}
                                             <li id="thumbnail_{$image.id_image}"{if $smarty.foreach.thumbnails.last} class="last"{/if}>
                                                 <a 
-                                                    {if $jqZoomEnabled && $have_image && !$content_only}
+                                                    {if $jqZoomEnabled && $have_image}
                                                         href="javascript:void(0);"
                                                         rel="{literal}{{/literal}gallery: 'gal1', smallimage: '{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_large_default')|escape:'html':'UTF-8'}',largeimage: '{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_thickbox_default')|escape:'html':'UTF-8'}'{literal}}{/literal}"
                                                     {else}
@@ -115,9 +115,6 @@
                                                 </a>
                                             </li>
                                         {/if}
-{*                                        {if $product->category == 'designs'}*}
-{*                                            {break}*}
-{*                                        {/if}*}
                                     {/foreach}
                                 {/if}
                             </ul>
@@ -149,10 +146,6 @@
                         {if $product->online_only}
                             <p class="online_only">{l s='Online only'}</p>
                         {/if}
-                        <p id="product_reference"{if empty($product->reference) || !$product->reference} style="display: none;"{/if}>
-                            <label>{l s='Reference:'} </label>
-                            <span class="editable" itemprop="sku">{if !isset($groups)}{$product->reference|escape:'html':'UTF-8'}{/if}</span>
-                        </p>
                         <!-- availability or doesntExist -->
                         <p id="availability_statut"{if !$PS_STOCK_MANAGEMENT || ($product->quantity <= 0 && !$product->available_later && $allow_oosp) || ($product->quantity > 0 && !$product->available_now) || !$product->available_for_order || $PS_CATALOG_MODE} style="display: none;"{/if}>
                             {*<span id="availability_label">{l s='Availability:'}</span>*}
@@ -195,12 +188,33 @@
                     <div id="oosHook"{if $product->quantity > 0} style="display: none;"{/if}>
                         {$HOOK_PRODUCT_OOS}
                     </div>
-                    <h1 itemprop="name">{$product->name|escape:'html':'UTF-8'}</h1>
+                    <h1 itemprop="name" class="margin-bottom-10 border-bottom">{$product->name|escape:'html':'UTF-8'}</h1>
 
-                    {if $content_only}
-                        <p class="grid-desc">{$product->description|truncate:100:'...'}</p>
+                    {if $content_only && $product->description}
+                        <div class="grid-desc padding-bottom-5 margin-bottom-10 border-bottom">{$product->description|truncate:300:'...'}</div>
                     {/if}
-
+                    {if $features}
+                        <div class="margin-bottom-10 border-bottom">
+                            {foreach from=$features item=feature}
+                                {if isset($feature.value)}			    
+                                    <p><span class="bold">{$feature.name|escape:'html':'UTF-8'}</span>: {$feature.value|escape:'html':'UTF-8'}</p>
+                                {/if}
+                            {/foreach}
+                        </div>
+                        {if $colors}
+                            <div class="padding-bottom-10 margin-bottom-10 border-bottom">
+                                <div class="pull-left bold">{l s='Colors available'}: </div>
+                                <div class="pull-left">
+                                    <ul class="color-preview-list">
+                                        {foreach from=$colors item=color}
+                                            <li class="color-preview" style="background: {$color.color}"></li>
+                                        {/foreach}
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        {/if}
+                    {/if}
                     {if ($product->show_price && !isset($restricted_country_mode)) || isset($groups) || $product->reference || (isset($HOOK_PRODUCT_ACTIONS) && $HOOK_PRODUCT_ACTIONS)}
                         <!-- add to cart form-->
                         <form id="buy_block"{if $PS_CATALOG_MODE && !isset($groups) && $product->quantity > 0} class="hidden"{/if} action="{$link->getPageLink('cart')|escape:'html':'UTF-8'}" method="post">
@@ -212,7 +226,7 @@
                                 <input type="hidden" name="id_product_attribute" id="idCombination" value="" />
                             </p>
                             <div class="box-info-product">
-                                <div class="content_prices clearfix">
+                                <div class="content_prices pull-left">
                                     {if $product->show_price && !isset($restricted_country_mode) && !$PS_CATALOG_MODE}
                                         <!-- prices -->
                                         <div class="old-price-info">
@@ -297,7 +311,7 @@
                             {hook h="displayProductPriceBlock" product=$product type="weight"}
                             <div class="clear"></div>
                         </div> <!-- end content_prices -->
-                        <div class="product_attributes clearfix">
+                        <div class="product_attributes pull-right">
                             {if isset($groups)}
                                 <!-- attributes -->
                                 <div id="attributes">
@@ -349,13 +363,13 @@
                                 </div> <!-- end attributes -->
                             {/if}
                             <div class="clearfix">
-                                    {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
-                                    <div class="btn btn-default selection margin-bottom-10"
-                                            data-product-link="{$product->getLink()|escape:'html':'UTF-8'}" 
-                                            data-img="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" 
-                                            data-id="{$product->id}" data-product-title="{$product->name}" data-type="{$product->category}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
-                                            <span class="glyphicon glyphicon-{if !$isInSelection}plus{else}minus{/if}-sign"></span> <span class="text">{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}</span>
-                                    </div>
+                                {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
+                                <div class="btn btn-default selection margin-bottom-10"
+                                     data-product-link="{$product->getLink()|escape:'html':'UTF-8'}" 
+                                     data-img="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" 
+                                     data-id="{$product->id}" data-product-title="{$product->name}" data-type="{$product->category}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
+                                    <span class="glyphicon glyphicon-{if !$isInSelection}plus{else}minus{/if}-sign"></span> <span class="text">{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}</span>
+                                </div>
                                 {if $product->category != 'designs'}
                                     {if false}
                                         <!-- quantity wanted -->
