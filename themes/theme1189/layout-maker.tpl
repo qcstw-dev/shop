@@ -28,7 +28,7 @@
                 <div class="products-list">
                     {foreach from=$aSelectedProducts item=product name=products}
                         <div class="col-md-3 thumbnail border-none margin-bottom-0 list-item list-item-product cursor-pointer list-item-{$product->id}" data-id="{$product->id}" data-type="product" title="{$product->name}">
-                            <img class="img-product" src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$product->name}" alt="{$product->name}" />
+                            <img class="img-product border" src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$product->name}" alt="{$product->name}" />
                         </div>
                     {/foreach}
                 </div>
