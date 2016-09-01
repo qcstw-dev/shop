@@ -6018,7 +6018,6 @@ span.exclusive {
   font-weight: 300;
   font-size: 12px;
   text-transform: uppercase;
-  border: none;
   background: #4267b2;
   padding: 6px 11px 7px;
   -webkit-transition: background 0.2s ease;
@@ -9395,4 +9394,7 @@ ul.step a:hover:after {
 }
 .secondary-background-color:hover {
     color: #fff;
+}
+.mfp-wrap, .mfp-bg {
+    z-index: 999999 !important;
 }

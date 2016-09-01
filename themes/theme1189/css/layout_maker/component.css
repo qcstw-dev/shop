@@ -36,7 +36,7 @@
 .rotate-handle-nw {
     top: -15px;
     left: -15px;
-   cursor: ne-resize;
+    cursor: ne-resize;
 }
 
 .rotate-handle-sw {
@@ -115,36 +115,36 @@
     position: absolute;
 }
 .overlay {
-	position: absolute;
-        left: 25%;
-        z-index: 100;
-        width: 600px;
-        height: 600px;
-	box-sizing: content-box;
-	pointer-events: none;
+    position: absolute;
+    left: 25%;
+    z-index: 100;
+    width: 600px;
+    height: 600px;
+    box-sizing: content-box;
+    pointer-events: none;
 }
 
 .overlay:after,
 .overlay:before {
-	content: '';
-	position: absolute;
-	display: block;
-	width: 204px;
-	height: 40px;
-/*    border-left: dashed 2px rgba(222,60,80,.9);
-	border-right: dashed 2px rgba(222,60,80,.9);*/
+    content: '';
+    position: absolute;
+    display: block;
+    width: 204px;
+    height: 40px;
+    /*    border-left: dashed 2px rgba(222,60,80,.9);
+            border-right: dashed 2px rgba(222,60,80,.9);*/
 }
 
 .overlay:before {
-	top: 0;
-	margin-left: -2px;
-	margin-top: -40px;
+    top: 0;
+    margin-left: -2px;
+    margin-top: -40px;
 }
 
 .overlay:after {
-	bottom: 0;
-	margin-left: -2px;
-	margin-bottom: -40px;
+    bottom: 0;
+    margin-left: -2px;
+    margin-bottom: -40px;
 }
 
 .overlay-inner {
@@ -152,42 +152,51 @@
 }
 .overlay-inner:after,
 .overlay-inner:before {
-	content: '';
-	position: absolute;
-	display: block;
-	width: 40px;
-	height: 204px;
-/*    border-top: dashed 2px rgba(222,60,80,.9);
-	border-bottom: dashed 2px rgba(222,60,80,.9);*/
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 204px;
+    /*    border-top: dashed 2px rgba(222,60,80,.9);
+            border-bottom: dashed 2px rgba(222,60,80,.9);*/
 }
 
 .overlay-inner:before {
-	left: 0;
-	margin-left: -40px;
-	margin-top: -2px;
+    left: 0;
+    margin-left: -40px;
+    margin-top: -2px;
 }
 
 .overlay-inner:after{
-	right: 0;
-	margin-right: -40px;
-	margin-top: -2px;
+    right: 0;
+    margin-right: -40px;
+    margin-top: -2px;
 }
 
-.add-to-cart {
+.add-to-cart,
+.preview-layout {
     position: absolute;
     vertical-align: bottom;
     right: 30px;
     bottom: 5px;
+    z-index: 100;
+}
+.preview-layout {
+    right: 165px;
 }
 
 .add-to-cart img {
-	vertical-align: middle;
-	margin-left: 8px;
+    vertical-align: middle;
+    margin-left: 8px;
 }
+.white-popup .add-to-cart,
 .export-image {
     position: absolute;
     right: 20px;
     bottom: 20px;
+}
+.export-image {
+    bottom: 60px;
 }
 .block-layout-maker-info {
     display: none;

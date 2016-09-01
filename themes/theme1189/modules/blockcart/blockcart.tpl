@@ -36,9 +36,9 @@
                                     {assign var='productId' value=$product.id_product}
                                     {assign var='productAttributeId' value=$product.id_product_attribute}
                                     <dt data-id="cart_block_product_{$product.id_product|intval}_{if $product.id_product_attribute}{$product.id_product_attribute|intval}{else}0{/if}_{if $product.id_address_delivery}{$product.id_address_delivery|intval}{else}0{/if}_{$product.custom_picture}" class="{if $smarty.foreach.myLoop.first}first_item{elseif $smarty.foreach.myLoop.last}last_item{else}item{/if}">
-                                        <a class="cart-images col-md-6" href="{$link->getProductLink($product.id_product, $product.link_rewrite, $product.category)|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}">
-                                            <img src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" />
-                                        </a>
+                                        <div class="col-md-6 thumbnail">
+                                            <img class="popup" src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" />
+                                        </div>
                                         <div class="cart-info col-md-6">
                                             <div class="product-name">
                                                 <span class="quantity-formated">

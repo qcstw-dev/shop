@@ -6,7 +6,7 @@ var resizeableImage = function (image_target, customizable) {
     if (customizable !== false) {
         customizable = true;
     }
-    
+
     // Some variable and settings
     var $container,
             orig_src = new Image(),
@@ -22,48 +22,48 @@ var resizeableImage = function (image_target, customizable) {
             resize_canvas = document.createElement('canvas'),
             rotate_value = 0;
     init = function () {
-        
+
         var initialized = false;
-        
+
         $('.resize-image').show();
         $('.resize-container').find('span').remove();
         $('.resize-container').removeClass('custom');
         $('.resize-container').removeAttr('style');
-        
+
         if ($('.resize-container').length) {
             $(image_target).unwrap('.resize-container');
         }
-        
+
         // When resizing, we will always use this copy of the original as the base
         orig_src.src = image_target.src;
-        
+
         if (!initialized) {
             $(image_target).wrap('<div id="resize-container" class="resize-container"></div>');
             if (customizable) {
                 // Wrap the image with the container and add resize handles
                 $('.resize-container').addClass('custom');
                 $(image_target)
-                    .before('<span class="border-dashed-top"></span>')
-                    .before('<span class="border-dashed-right"></span>')
-                    .before('<span class="border-dashed-left"></span>')
-                    .before('<span class="border-dashed-bottom"></span>')
-                    .before('<span class="resize-handle resize-handle-nw"></span>')
-                    .before('<span class="resize-handle resize-handle-ne"></span>')
-                    .after('<span class="resize-handle resize-handle-se"></span>')
-                    .after('<span class="resize-handle resize-handle-sw"></span>');
+                        .before('<span class="border-dashed-top"></span>')
+                        .before('<span class="border-dashed-right"></span>')
+                        .before('<span class="border-dashed-left"></span>')
+                        .before('<span class="border-dashed-bottom"></span>')
+                        .before('<span class="resize-handle resize-handle-nw"></span>')
+                        .before('<span class="resize-handle resize-handle-ne"></span>')
+                        .after('<span class="resize-handle resize-handle-se"></span>')
+                        .after('<span class="resize-handle resize-handle-sw"></span>');
             }
         }
-        
+
         // Assign the container to a variable
         $container_overlay = $(image_overlay);
         $container = $(image_target).parent('.resize-container');
-        
+
         if (customizable) {
             // Add events
             $container.on('mousedown touchstart', '.resize-handle', startResize);
             $container.on('mousedown touchstart', 'img', startMoving);
         }
-        
+
         initialized = true;
     };
 
@@ -88,17 +88,17 @@ var resizeableImage = function (image_target, customizable) {
         resize_canvas.height = height;
         canvas_width = resize_canvas.width;
         canvas_height = resize_canvas.height;
-        
+
         rotate_value = value;
-        
+
         new_image_resized = orig_src;
-        
+
         resize_canvas.getContext('2d').clearRect(0, 0, width, height);
         var TO_RADIANS = Math.PI / 180;
-        
-        context.translate(canvas_width/2, canvas_height/2); 
+
+        context.translate(canvas_width / 2, canvas_height / 2);
         context.rotate(TO_RADIANS * rotate_value);
-        context.drawImage(new_image_resized, -(width/2), -(height/2), canvas_width, canvas_height);
+        context.drawImage(new_image_resized, -(width / 2), -(height / 2), canvas_width, canvas_height);
         $(image_target).attr('src', resize_canvas.toDataURL("image/png"));
         context.restore();
     };
@@ -107,7 +107,7 @@ var resizeableImage = function (image_target, customizable) {
         // Save the initial event details and container state
         event_state.container_width = $container.width();
         event_state.container_height = $container.height();
-        event_state.container_left = $container.offset().left;  
+        event_state.container_left = $container.offset().left;
         event_state.container_top = $container.offset().top;
         event_state.mouse_x = (e.clientX || e.pageX || e.originalEvent.touches[0].clientX) + $(window).scrollLeft();
         event_state.mouse_y = (e.clientY || e.pageY || e.originalEvent.touches[0].clientY) + $(window).scrollTop();
@@ -147,7 +147,7 @@ var resizeableImage = function (image_target, customizable) {
             left = mouse.x;
             top = mouse.y;
 //            if (constrain || e.shiftKey) {
-                top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
+            top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
 //            }
         } else if ($(event_state.evnt.target).hasClass('resize-handle-ne')) {
             width = mouse.x - event_state.container_left;
@@ -155,13 +155,13 @@ var resizeableImage = function (image_target, customizable) {
             left = event_state.container_left;
             top = mouse.y;
 //            if (constrain || e.shiftKey) {
-                top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
+            top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
 //            }
         }
 
         // Optionally maintain aspect ratio
 //        if (constrain || e.shiftKey) {
-            height = width / orig_src.width * orig_src.height;
+        height = width / orig_src.width * orig_src.height;
 //        }
 
         if (width > min_width && height > min_height && width < max_width && height < max_height) {
@@ -175,18 +175,18 @@ var resizeableImage = function (image_target, customizable) {
     resizeImage = function (width, height) {
         resize_canvas.width = width;
         resize_canvas.height = height;
-        
+
         new_image_resized = orig_src;
-        
+
         if (rotate_value) {
             resize_canvas.getContext('2d').clearRect(0, 0, width, height);
             var TO_RADIANS = Math.PI / 180;
 
-            resize_canvas.getContext('2d').translate(width/2, height/2); 
+            resize_canvas.getContext('2d').translate(width / 2, height / 2);
             resize_canvas.getContext('2d').rotate(TO_RADIANS * rotate_value);
         }
-        
-        resize_canvas.getContext('2d').drawImage(new_image_resized, (rotate_value ? -(width/2) : 0), (rotate_value ? -(height/2) : 0), width, height);
+
+        resize_canvas.getContext('2d').drawImage(new_image_resized, (rotate_value ? -(width / 2) : 0), (rotate_value ? -(height / 2) : 0), width, height);
         $(image_target).attr('src', resize_canvas.toDataURL("image/png"));
     };
 
@@ -240,99 +240,61 @@ var resizeableImage = function (image_target, customizable) {
             resizeImage(width, height);
         }
     };
-    
+
     capture = function (element) {
         //Find the part of the image that is inside the crop box
         var crop_canvas,
-        left = element.offset().left - $container.offset().left,
-        top = element.offset().top - $container.offset().top;
-        
+                left = element.offset().left - $container.offset().left,
+                top = element.offset().top - $container.offset().top;
+
         left_overlay = element.offset().left - $container_overlay.offset().left,
-        top_overlay = element.offset().top - $container_overlay.offset().top;
-        
+                top_overlay = element.offset().top - $container_overlay.offset().top;
+
         width = element.width(),
-        height = element.height();
-        
+                height = element.height();
+
         crop_canvas = document.createElement('canvas');
         crop_canvas.width = width;
         crop_canvas.height = height;
-        
+
         var ctx = crop_canvas.getContext("2d");
         ctx.drawImage(image_target, left, top, width, height, 0, 0, width, height);
         ctx.drawImage(image_overlay, left_overlay, top_overlay, width, height, 0, 0, width, height);
-        
+
         return crop_canvas;
     };
-    crop = function () {
+    crop = function (preview) {
         var crop_canvas;
         crop_canvas = capture($('.overlay'));
-        
+
         $('.add-to-cart').data('custom-picture', crop_canvas.toDataURL("image/png"));
-        
+
         if (customizable) {
             $('.add-to-cart').data('original-picture', $('.hidden-original-picture').attr('src'));
         }
-        
-//        $('.add-to-cart').data('custom-picture', 'titi');
-//        $('.add-to-cart').data('original-picture', 'tutu');
-        
-        
-//        $.ajax({
-//            type: 'POST',
-//            url: baseDir + 'index.php',
-//            data: 'controller=cart&add=1&ajax=true&qty=1&id_product=' + $('.list-item-product.selected').data('id')+ '&id_design=' + $('.list-item-design.selected').data('id'),
-//            dataType: 'json',
-//            beforeSend: function () {
-//                $.fancybox.showLoading();
-//            },
-//            success: function(json) {
-//                console.log(json);
-//                $.fancybox.hideLoading();
-//            }
-//        });
-        
-//        $.magnificPopup.open({
-//            items: [{
-//                src:    $('<div class="popup">'+
-//                            '<div class="text-center"><img id="layout" src="'+crop_canvas.toDataURL("image/png")+'" /></div>'+
-//                        '</div>'),
-//                type:'inline'
-//            }]
-//        });
-//        $('.export-image').on('click', function () {
-//           var a = $("<a>")
-//                .attr("href", crop_canvas.toDataURL("image/png"))
-//                .attr("download", "qcsasia-layout-maker-"+$('.overlay').data('ref').replace('#', '')+".png")
-//                .appendTo("body");
-//            a[0].click();
-//            a.remove();
-//        });
-//        $('.send-image').on('click', function () {
-//            // upload image
-//            var newWindow = window.open(baseUrl+'send-layout/', '_blank');
-//            $.ajax(baseUrl+'upload', {
-//                beforeSend: function () {
-//                    $.magnificPopup.open({
-//                        items: [{
-//                                src: $('<div class="white-popup text-left"><img src="'+baseUrl+'/sites/all/themes/qcsasia/images/template/loader.gif" /></div>'),
-//                                type: 'inline'
-//                            }]
-//                    });
-//                },
-//                method: 'post',
-//                data: { 
-//                    layout_url :  crop_canvas.toDataURL("image/png"),
-//                    layout_name : "qcsasia-layout-maker-"+$('.overlay').data('ref').replace('#', '')
-//                    },
-//                dataType: 'html',
-//                success: function (data) {
-////                    window.open(baseUrl+'send-layout/?layout_file='+data, '_blank');
-//                    newWindow.location = baseUrl+'send-layout/?layout_file='+data;
-//                    $.magnificPopup.close();
-//                },
-//                async: false
-//            });
-//        });
+        if (preview) {
+            $.magnificPopup.open({
+                items: [{
+                        src: $('<div class="white-popup">' +
+                                '<div class="text-center"><img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" /></div>' +
+                                '<div class="add-to-cart-area"></div>' +
+                                '<div class="export-image btn btn-primary">Download layout <span class="glyphicon glyphicon-download-alt"></span></div>' +
+                                '</div>'),
+                        type: 'inline'
+                    }]
+            });
+            $('.add-to-cart').clone(true).appendTo($('.add-to-cart-area'));
+            $('.export-image').on('click', function () {
+                var fileName;
+                fileName = "gift-attitude-preview.png";
+                var a = $("<a>")
+                        .attr("href", crop_canvas.toDataURL("image/png"))
+                        .attr("download", fileName)
+                        .appendTo("body");
+                a[0].click();
+                a.remove();
+            });
+        }
     };
     init();
 };

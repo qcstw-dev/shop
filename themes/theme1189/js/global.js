@@ -463,7 +463,6 @@ function addRemoveToSelection (element) {
         }
     });
 }
-
 $(window).load(function () {
     listTabsAnimate('ul.product_list:not(".tab-pane")>li');
     listBlocksAnimate('#homefeatured', '#homefeatured li', nbItemsPerLine, -300, true);
@@ -479,11 +478,14 @@ $(window).load(function () {
         $.magnificPopup.open({
             items: [{
                 src: $('<div class="white-popup">' +
-                        '<div class="thumbnail border-none"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
+                        '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
                         '</div>'),
                 type: 'inline'
             }]
         });
+    });
+    $('.preview-layout').on('click', function () {
+       crop(true); 
     });
 });
 

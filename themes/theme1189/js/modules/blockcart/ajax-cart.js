@@ -118,6 +118,7 @@ var ajaxCart = {
             if ($(this).prop('disabled') != 'disabled')
                 ajaxCart.add(idProduct, null, false, this, minimalQuantity, false, customPicture, originalPicture);
 
+            $.magnificPopup.close();
         });
         //for product page 'add' button...
         $(document).off('click', '#add_to_cart button').on('click', '#add_to_cart button', function (e) {

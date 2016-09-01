@@ -78,6 +78,7 @@
                 </div>
             </div>
         </div>
+        <button class="btn btn-primary preview-layout" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
         <button class="btn btn-primary add-to-cart ajax_add_to_cart_button" 
                 rel="nofollow" title="{l s='Add to cart'}"
                 data-id-product=""
