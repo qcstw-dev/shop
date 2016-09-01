@@ -27,8 +27,7 @@ ul.product_list .product-image-container {
   text-align: center;
   position: relative; }
   ul.product_list .product-image-container img {
-    margin: 0 auto;
-    border: 1px solid #e9ebee;
+    padding-top: 10px;
   }
   ul.product_list .product-image-container .quick-view {
     font: 700 13px/16px Ubuntu, sans-serif;
@@ -120,10 +119,9 @@ ul.product_list.grid > li {
           margin-right: auto; } }
       ul.product_list.grid > li .product-container .product-image-container .product_img_link {
         display: block;
-        border: 1px solid #d6d4d4;
+        border-bottom: 1px solid #e7e7e6;
         padding: 9px;
-        background: white;
-        border: none; }
+        background: white; }
       ul.product_list.grid > li .product-container .product-image-container .gallery-thumb-list {
         text-align: center;
         line-height: 0;

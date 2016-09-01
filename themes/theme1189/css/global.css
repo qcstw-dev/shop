@@ -6281,12 +6281,11 @@ a.product-name {
 .btn-add, 
 .btn-remove,
 .btn-detail {
-    padding-right: 1px;
-    padding-left: 1px;
-    width: 93%;
     text-align: center !important;
-    margin: 5px;
     border: 1px solid #e7e7e6 !important;
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 12px;
 }
 /*.btn-add {
     background: #38B15D;
