@@ -7,15 +7,15 @@
     <div class="tab-content">
         {$HOOK_HOME_TAB_CONTENT}
         {if $aCreations}
-            <h4>Last creations</h4>
+            <h4 class="row-title">Last creations</h4>
             {include file="./last-creations.tpl" creations=$aCreations}
         {/if}
         {if $aDesigns}
-            <h4>Last Designs</h4>
+            <h4 class="row-title">Last Designs</h4>
             {include file="./product-list.tpl" products=$aDesigns}
         {/if}
         {if $aProducts}
-            <h4>Last Products</h4>
+            <h4 class="row-title">Last Products</h4>
             {include file="./product-list.tpl" products=$aProducts}
         {/if}
     </div>

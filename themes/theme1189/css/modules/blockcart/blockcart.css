@@ -35,7 +35,7 @@
         display: none !important; } }
     .shopping_cart > a:first-child b {
       font: 300 14px/normal Ubuntu, sans-serif;
-      color: #12afa3;
+      color: #4267b2;
       padding-right: 5px; }
     .shopping_cart > a:first-child:before {
       content: '';

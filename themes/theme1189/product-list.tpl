@@ -43,7 +43,7 @@
                         <div class="col-xs-12 padding-0">
                             <div class="col-md-6 padding-0">
                                 <a class="btn btn-default btn-detail cursor-pointer quick-view-bis" href="{$product.link|escape:'html':'UTF-8'}" rel="{$product.link|escape:'html':'UTF-8'}">
-                                    {l s='Product detail'}
+                                    <span class="glyphicon glyphicon-zoom-in"></span> {l s='Product details'}
                                 </a>
                             </div>
                             <div class="col-md-6 padding-0">
@@ -59,7 +59,7 @@
                             {if isset($quick_view) && $quick_view && $product.category != 'designs'}
                                 <a class="quick-view-bis product_img_link" href="{$product.link|escape:'html':'UTF-8'}" rel="{$product.link|escape:'html':'UTF-8'}">
                                 {/if}
-                                <img class="replace-2x img-responsive" src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" title="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" itemprop="image" />
+                                <img class="replace-2x img-responsive {if $product.category == 'designs'}popup{/if}" data-src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" title="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" itemprop="image" />
                                 {if isset($quick_view) && $quick_view}
                                 </a>
                             {/if}

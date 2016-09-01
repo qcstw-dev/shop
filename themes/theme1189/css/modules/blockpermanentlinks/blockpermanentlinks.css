@@ -34,13 +34,13 @@ ul#header_links {
           padding-right: 10px; } }
     ul#header_links li span {
       font: 300 10px/14px Ubuntu, sans-serif;
-      color: #12afa3; }
+      color: #4267b2; }
     ul#header_links li a {
       font: 300 10px/14px Ubuntu, sans-serif;
       color: #888;
       text-decoration: none; }
       ul#header_links li a:hover, ul#header_links li a.active {
-        color: #12afa3; }
+        color: #4267b2; }
   @media (max-width: 479px) {
     ul#header_links li#header_link_title {
       display: block;

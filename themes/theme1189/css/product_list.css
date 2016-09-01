@@ -144,7 +144,7 @@ ul.product_list.grid > li {
               width: 100%;
               padding: 2px; }
           ul.product_list.grid > li .product-container .product-image-container .gallery-thumb-list > li.active a img {
-            border-color: #12afa3; }
+            border-color: #4267b2; }
         ul.product_list.grid > li .product-container .product-image-container .gallery-thumb-list > li:nth-child(1), ul.product_list.grid > li .product-container .product-image-container .gallery-thumb-list > li:nth-child(2), ul.product_list.grid > li .product-container .product-image-container .gallery-thumb-list > li:nth-child(3) {
           display: inline-block; }
       ul.product_list.grid > li .product-container .product-image-container .quick-view {
@@ -172,7 +172,7 @@ ul.product_list.grid > li {
           content: "\f129";
           font-family: "FontAwesome"; }
         ul.product_list.grid > li .product-container .product-image-container .quick-view:hover {
-          color: #12afa3; }
+          color: #4267b2; }
     ul.product_list.grid > li .product-container h5 {
       padding: 0 5px;
       margin: 20px 0 2px; }
@@ -252,7 +252,7 @@ ul.product_list.grid > li {
             border-radius: 50%;
             margin-right: 4px;
             background: #f2f2f2;
-            color: #12afa3;
+            color: #4267b2;
             text-align: center;
             font-size: 13px;
             line-height: 27px;
@@ -263,10 +263,10 @@ ul.product_list.grid > li {
             -o-transition: all 0.3s ease;
             transition: all 0.3s ease; }
           ul.product_list.grid > li .product-container .functional-buttons div a:hover {
-            color: #12afa3; }
+            color: #4267b2; }
             ul.product_list.grid > li .product-container .functional-buttons div a:hover:before {
               color: #fff;
-              background: #12afa3; }
+              background: #4267b2; }
               @media (min-width: 1200px) {
                 ul.product_list.grid > li .product-container .functional-buttons div a:hover:before {
                   -moz-transform: rotate(360deg);
@@ -276,7 +276,7 @@ ul.product_list.grid > li {
                   transform: rotate(360deg); } }
           ul.product_list.grid > li .product-container .functional-buttons div a.checked:before {
             color: #fff;
-            background: #12afa3; }
+            background: #4267b2; }
       ul.product_list.grid > li .product-container .functional-buttons .wishlist a:before {
         content: "\f005"; }
       ul.product_list.grid > li .product-container .functional-buttons .compare a:before {
@@ -365,7 +365,7 @@ ul.product_list.list > li .product-image-container .quick-view {
     content: "\f129";
     font-family: "FontAwesome"; }
   ul.product_list.list > li .product-image-container .quick-view:hover {
-    color: #12afa3; }
+    color: #4267b2; }
 ul.product_list.list > li .product-image-container .gallery-thumb-list li {
   margin-bottom: 2px; }
   ul.product_list.list > li .product-image-container .gallery-thumb-list li.active a img {
@@ -496,7 +496,7 @@ ul.product_list.list > li .right-block .right-block-content .functional-buttons 
         border-radius: 50%;
         margin-right: 4px;
         background: #f2f2f2;
-        color: #12afa3;
+        color: #4267b2;
         text-align: center;
         font-size: 13px;
         line-height: 27px;
@@ -513,10 +513,10 @@ ul.product_list.list > li .right-block .right-block-content .functional-buttons 
             font-size: 20px;
             line-height: 50px; } }
       ul.product_list.list > li .right-block .right-block-content .functional-buttons div a:hover {
-        color: #12afa3; }
+        color: #4267b2; }
         ul.product_list.list > li .right-block .right-block-content .functional-buttons div a:hover:before {
           color: #fff;
-          background: #12afa3; }
+          background: #4267b2; }
           @media (min-width: 1200px) {
             ul.product_list.list > li .right-block .right-block-content .functional-buttons div a:hover:before {
               -moz-transform: rotate(360deg);
@@ -526,7 +526,7 @@ ul.product_list.list > li .right-block .right-block-content .functional-buttons 
               transform: rotate(360deg); } }
       ul.product_list.list > li .right-block .right-block-content .functional-buttons div a.checked:before {
         color: #fff;
-        background: #12afa3; }
+        background: #4267b2; }
   ul.product_list.list > li .right-block .right-block-content .functional-buttons .wishlist a:before {
     content: "\f005"; }
   ul.product_list.list > li .right-block .right-block-content .functional-buttons .compare a:before {

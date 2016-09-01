@@ -4,7 +4,7 @@
             <h4 class="margin-top-20">{l s='Your selection'}</h4>
         </div>
         <div class="col-xs-2 margin-top-10 margin-bottom-10">
-            <a class="btn btn-warning pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-pencil"></span> Layout maker</a>
+            <a class="btn secondary-background-color pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Customize your product</a>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -14,10 +14,8 @@
             {if $aSelectedDesigns}
                 {foreach from=$aSelectedDesigns item=design name=designs}
                     <li class="list-item-design list-item-{$design->id}">
-                        <a href="{$design->getLink()|escape:'html':'UTF-8'}">
-                            <img src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-toggle="tooltip" data-placement="right" title="{$design->name}" />
-                        </a>
-                        <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$design->id}"></span>
+                        <img src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" />
+                        <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$design->id}" data-toggle="tooltip" data-placement="right" title="{l s='Remove from selection'}"></span>
                     </li>
                 {/foreach}
             {/if}
@@ -29,10 +27,10 @@
             {if $aSelectedProducts}
                 {foreach from=$aSelectedProducts item=product name=products}
                     <li class="list-item-{$product->id}">
-                        <a href="{$product->getLink()|escape:'html':'UTF-8'}">
-                            <img src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-toggle="tooltip" data-placement="right" title="{$product->name}" />
+                        <a class="quick-view-bis" href="{$product->getLink()|escape:'html':'UTF-8'}" rel="{$product->getLink()|escape:'html':'UTF-8'}">
+                            <img src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$product->name}" />
                         </a>
-                        <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$product->id}"></span>
+                            <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$product->id}" data-toggle="tooltip" data-placement="right" title="{l s='Remove from selection'}"></span>
                     </li>
                 {/foreach}
             {/if}

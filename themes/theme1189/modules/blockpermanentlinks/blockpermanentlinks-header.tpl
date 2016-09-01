@@ -6,8 +6,5 @@
 	<li id="header_link_account">
     	<a href="index.php?controller=my-account" title="{l s='My Account' mod='blockpermanentlinks'}">{l s='My Account' mod='blockpermanentlinks'}</a>
     </li>
-	<li id="header_link_wishlist">
-		<a href="{$link->getModuleLink('blockwishlist', 'mywishlist', array(), true)|escape:'html':'UTF-8'}" title="{l s='My Wishlist' mod='blockpermanentlinks'}">{l s='My Wishlist' mod='blockpermanentlinks'}</a>
-	</li>
 </ul>
 <!-- /Block permanent links module HEADER -->

@@ -4,7 +4,7 @@
             <div class="product-container" >
                 <div class="left-block">
                     <div class="product-image-container padding-top-20 padding-bottom-20">
-                        <img class="replace-2x img-responsive border-none" src="{$custom_picture_path}{$creation.custom_picture}.png" alt="last creation" title="last creation" />
+                        <img class="replace-2x img-responsive border-none popup" src="{$custom_picture_path}{$creation.custom_picture}.png" alt="last creation" title="last creation" />
                     </div>
                 </div>
             </div><!-- .product-container> -->

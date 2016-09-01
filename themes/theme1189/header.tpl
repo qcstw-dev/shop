@@ -90,14 +90,14 @@
             </div>
             <div class="columns-container">
                 <div id="columns" class="container">
+                    {if $page_name !='index' && $page_name !='layoutmaker' && $page_name !='pagenotfound'}
+                        {include file="$tpl_dir./breadcrumb.tpl"}
+                    {/if}
                     {if $page_name == 'category'
                         || $page_name == 'product'
                         || $page_name == 'index'
                     }
                         {include file="./selection.tpl" seelction=$selection}
-                    {/if}
-                    {if $page_name !='index' && $page_name !='layoutmaker' && $page_name !='pagenotfound'}
-                        {include file="$tpl_dir./breadcrumb.tpl"}
                     {/if}
                     <div id="slider_row" class="row">
                         <div id="top_column" class="center_column col-xs-12">{hook h="displayTopColumn"}</div>

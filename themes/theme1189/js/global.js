@@ -16,7 +16,7 @@ $(document).ready(function () {
 //    blockHover();
     if (typeof quickView !== 'undefined' && quickView)
         quick_view();
-//    dropDown();
+    dropDown();
 
     if (typeof page_name != 'undefined' && !in_array(page_name, ['index', 'product']))
     {
@@ -468,9 +468,22 @@ $(window).load(function () {
     listTabsAnimate('ul.product_list:not(".tab-pane")>li');
     listBlocksAnimate('#homefeatured', '#homefeatured li', nbItemsPerLine, -300, true);
     listBlocksAnimate('#homepage-blog', '#homepage-blog li', nbItemsPerLine, -300, true);
+    
     $('[data-toggle="tooltip"]').tooltip();
+    
     $('.selection').live('click' ,function () {
         addRemoveToSelection($(this));  
+    });
+    
+    $('.popup').on('click', function () {
+        $.magnificPopup.open({
+            items: [{
+                src: $('<div class="white-popup">' +
+                        '<div class="thumbnail border-none"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
+                        '</div>'),
+                type: 'inline'
+            }]
+        });
     });
 });
 
