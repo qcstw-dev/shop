@@ -1,14 +1,14 @@
 <div class="block-selection border margin-top-10 margin-bottom-10" {if !$selection} style="display: none;" {/if}>
     <div class="col-xs-12 padding-0">
-        <div class="col-xs-10">
+        <div class="col-md-10">
             <h4 class="margin-top-20 uppercase">{l s='Your selection'}</h4>
         </div>
-        <div class="col-xs-2 margin-top-10 margin-bottom-10">
+        <div class="col-md-2 margin-top-10 margin-bottom-10 clearfix">
             <a class="btn secondary-background-color pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Customize your product</a>
         </div>
     </div>
     <div class="clearfix"></div>
-    <div class="col-xs-6 border-top border-right">
+    <div class="col-md-6 border-top border-right">
         <h5 class="text-center bold">Designs</h5>
         <ul class="designs-list">
             {if $aSelectedDesigns}
@@ -21,7 +21,7 @@
             {/if}
         </ul>
     </div>
-    <div class="col-xs-6 border-top">
+    <div class="col-md-6 border-top">
         <h5 class="text-center bold">Products</h5>
         <ul class="products-list">
             {if $aSelectedProducts}

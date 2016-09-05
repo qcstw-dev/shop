@@ -46,6 +46,7 @@ $(function() {
                 success: function(json) {
                     $.fancybox.hideLoading();
                     if (json.success === true && json.colors) {
+                        console.log(json);
                         $('.block-color-product').remove();
                         $('.change-color-product-block').hide();
                         $('.preview-color').hide();
@@ -88,9 +89,6 @@ $(function() {
                         } else {
                             $('.hidden-original-picture').attr('src', '');
                         }
-//                        if (json.custom && !$('.resize-container').hasClass('custom')) {
-//                            $('.resize-image').hide();
-//                        }
                         if (json.item_size) {
                             $('.info-item-size').text(json.item_size);
                             $('.block-item-size').show();
@@ -103,7 +101,6 @@ $(function() {
                         }
                         if (json.url) {
                             $('.resize-image').attr('src', json.url);
-                            $('.resize-image').removeClass('custom-margin-left');
                             resizeableImage($('.resize-image'), true);
                         } else {
 //                            $('.resize-image').attr('src', $('.resize-image').data('original-url'));

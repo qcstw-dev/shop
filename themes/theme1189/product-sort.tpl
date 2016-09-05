@@ -1,5 +1,5 @@
 {if isset($orderby) AND isset($orderway)}
-    {if $name != 'Designs'}
+    {if false}
         <ul class="display hidden-xs">
             <li class="display-title">{l s='View:'}</li>
             <li id="grid">

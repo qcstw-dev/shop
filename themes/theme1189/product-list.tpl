@@ -58,9 +58,9 @@
                             </div>
                             {if isset($quick_view) && $quick_view && $product.category != 'designs'}
                                 <a class="quick-view-bis product_img_link" href="{$product.link|escape:'html':'UTF-8'}" rel="{$product.link|escape:'html':'UTF-8'}">
-                                {/if}
-                                <img class="replace-2x img-responsive {if $product.category == 'designs'}popup{/if}" data-src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" title="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" itemprop="image" />
-                                {if isset($quick_view) && $quick_view}
+                            {/if}
+                            <img class="replace-2x img-responsive {if $product.category == 'designs'}popup{/if}" data-src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" title="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" itemprop="image" />
+                            {if isset($quick_view) && $quick_view}
                                 </a>
                             {/if}
                             {hook h="displayProductListImages" product=$product}
@@ -72,13 +72,13 @@
                     <div class="right-block">
                         {if $product.category != 'designs'}
                             <h5 itemprop="name">
-                            {if isset($product.pack_quantity) && $product.pack_quantity}{$product.pack_quantity|intval|cat:' x '}{/if}
-                            <a class="quick-view-bis product-name" rel="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" href="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" itemprop="url" >
-                                <span class="list-name">{$product.name|truncate:100:'...'|escape:'html':'UTF-8'}</span>
-                                <span class="grid-name">{$product.name|truncate:30:'...'|escape:'html':'UTF-8'}</span>
-                            </a>
-                        </h5>
-                    {/if}
+                                {if isset($product.pack_quantity) && $product.pack_quantity}{$product.pack_quantity|intval|cat:' x '}{/if}
+                                <a class="quick-view-bis product-name" rel="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" href="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" itemprop="url" >
+                                    <span class="list-name">{$product.name|truncate:100:'...'|escape:'html':'UTF-8'}</span>
+                                    <span class="grid-name">{$product.name|truncate:30:'...'|escape:'html':'UTF-8'}</span>
+                                </a>
+                            </h5>
+                        {/if}
                     <p class="product-desc" itemprop="description">
                         <span class="list-desc">{$product.description_short|strip_tags:'UTF-8'|truncate:360:'...'}</span>
                         <span class="grid-desc">{$product.description_short|strip_tags:'UTF-8'|truncate:40:'...'}</span>
@@ -161,13 +161,6 @@
                             {/if}
                         </span>
                     {/if}
-                {/if}
-                {if $page_name != 'index'}
-                    <div class="functional-buttons clearfix">
-                        <div class="btn btn-default selection cursor-pointer {if !$isInSelection}btn-add{else}btn-remove{/if}" data-product-link="{$product.link|escape:'html':'UTF-8'}" data-img="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-id="{$product.id_product}" data-product-title="{$product.name}" data-type="{$product.category}" title="{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
-                            <span class="glyphicon glyphicon-{if !$isInSelection}plus-sign{else}minus-sign{/if}"></span> <span class="text">{if !$isInSelection}{l s='Add to selection'}{else}{l s='Remove from selection'}{/if}</span>
-                        </div>
-                    </div>
                 {/if}
             </div>
         </div>
