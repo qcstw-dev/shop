@@ -251,7 +251,7 @@ var resizeableImage = function (image_target, customizable) {
                 top_overlay = element.offset().top - $container_overlay.offset().top;
 
         width = element.width(),
-                height = element.height();
+        height = element.height();
 
         crop_canvas = document.createElement('canvas');
         crop_canvas.width = width;
@@ -259,7 +259,7 @@ var resizeableImage = function (image_target, customizable) {
 
         var ctx = crop_canvas.getContext("2d");
         ctx.drawImage(image_target, left, top, width, height, 0, 0, width, height);
-        ctx.drawImage(image_overlay, left_overlay, top_overlay, width, height, 0, 0, width, height);
+        ctx.drawImage(image_overlay, left_overlay, top_overlay, width, height);
 
         return crop_canvas;
     };

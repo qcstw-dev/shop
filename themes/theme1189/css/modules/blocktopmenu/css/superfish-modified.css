@@ -80,8 +80,7 @@
         font-size: 13px; } }
     @media (min-width: 768px) and (max-width: 991px) {
       .sf-menu > li > a {
-        padding: 12px 7.42px;
-        font-size: 10px; } }
+        padding: 12px 7.42px; } }
     .sf-menu > li > a.sf-with-ul:after {
       content: "\f107";
       font-family: "FontAwesome";
@@ -235,7 +234,7 @@ ul.sf-menu li li li.sfHover ul {
       -o-transition: border 0.5s ease;
       transition: border 0.5s ease; }
       .cat-title:hover, .cat-title.active {
-        border-color: #12afa3; }
+        border-color: #4267b2; }
       .cat-title:after {
         display: block;
         font-family: "FontAwesome";

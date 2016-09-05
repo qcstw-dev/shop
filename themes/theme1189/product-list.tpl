@@ -51,7 +51,7 @@
                                 <div class="col-xs-12 padding-0">
                                     <div class="col-xs-12 padding-0">
                                     {/if}
-                                    <div class="btn btn-default selection cursor-pointer {if !$isInSelection}btn-add{else}btn-remove{/if}" data-product-link="{$product.link|escape:'html':'UTF-8'}" data-img="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-id="{$product.id_product}" data-product-title="{$product.name}" data-type="{$product.category}" title="{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
+                                    <div class="btn btn-default selection cursor-pointer {if !$isInSelection}btn-add{else}btn-remove{/if}" data-product-link="{$product.link|escape:'html':'UTF-8'}" data-img="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-img-large="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" data-id="{$product.id_product}" data-product-title="{$product.name}" data-type="{$product.category}" title="{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
                                         <span class="glyphicon glyphicon-{if !$isInSelection}plus-sign{else}minus-sign{/if}"></span> <span class="text">{if !$isInSelection}{l s='Add to selection'}{else}{l s='Remove from selection'}{/if}</span>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                         {if $product.category != 'designs'}
                             <h5 itemprop="name">
                             {if isset($product.pack_quantity) && $product.pack_quantity}{$product.pack_quantity|intval|cat:' x '}{/if}
-                            <a class="product-name" href="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" itemprop="url" >
+                            <a class="quick-view-bis product-name" rel="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" href="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" itemprop="url" >
                                 <span class="list-name">{$product.name|truncate:100:'...'|escape:'html':'UTF-8'}</span>
                                 <span class="grid-name">{$product.name|truncate:30:'...'|escape:'html':'UTF-8'}</span>
                             </a>
@@ -123,9 +123,11 @@
                     </span>
                 {/if}
                 {/if}
-                    <a itemprop="url" class="lnk_view btn btn-default" href="{$product.link|escape:'html':'UTF-8'}" title="{l s='View'}">
-                        <span>{if (isset($product.customization_required) && $product.customization_required)}{l s='Customize'}{else}{l s='More'}{/if}</span>
-                    </a>
+                    {if $product.category != 'designs'}
+                        <a itemprop="url" class="lnk_view quick-view-bis btn btn-default" rel="{$product.link|escape:'html':'UTF-8'}" href="{$product.link|escape:'html':'UTF-8'}" title="{l s='View'}">
+                            <span class="glyphicon glyphicon-zoom-in"></span> {l s='Product details'}
+                        </a>
+                    {/if}
                 </div>
                 {if isset($product.color_list)}
                     <div class="color-list-container">{$product.color_list}</div>
@@ -162,12 +164,9 @@
                 {/if}
                 {if $page_name != 'index'}
                     <div class="functional-buttons clearfix">
-                        {hook h='displayProductListFunctionalButtons' product=$product}
-                        {if isset($comparator_max_item) && $comparator_max_item}
-                            <div class="compare">
-                                <a class="add_to_compare" href="{$product.link|escape:'html':'UTF-8'}" data-id-product="{$product.id_product}" title="{l s='Add to Compare'}">{l s='Add to Compare'}</a>
-                            </div>
-                        {/if}
+                        <div class="btn btn-default selection cursor-pointer {if !$isInSelection}btn-add{else}btn-remove{/if}" data-product-link="{$product.link|escape:'html':'UTF-8'}" data-img="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-id="{$product.id_product}" data-product-title="{$product.name}" data-type="{$product.category}" title="{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
+                            <span class="glyphicon glyphicon-{if !$isInSelection}plus-sign{else}minus-sign{/if}"></span> <span class="text">{if !$isInSelection}{l s='Add to selection'}{else}{l s='Remove from selection'}{/if}</span>
+                        </div>
                     </div>
                 {/if}
             </div>

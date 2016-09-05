@@ -448,14 +448,23 @@ function addRemoveToSelection (element) {
                     element.find('.glyphicon').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
 //                    element.attr('title', element.data('text-remove')).tooltip('fixTitle').tooltip('show');
                     element.find('.text').text(element.data('text-remove'));
-                    $('.'+element.data('type')+'-list').append('\
-                        <li class="list-item-'+element.data('id')+'">\n\
-                            <a href="'+element.data('product-link')+'" title="'+element.data('product-title')+'">\n\
-                                <img scr="" />\n\
-                            </a>\n\
-                            <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
-                        </li>');
-                    $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img')).attr('title', element.data('product-title')).tooltip('fixTitle');
+                    if (element.data('type') === 'products') {
+                        $('.'+element.data('type')+'-list').append('\
+                            <li class="list-item-'+element.data('id')+'">\n\
+                                <a class="quick-view-bis" rel="'+element.data('product-link')+'" title="'+element.data('product-title')+'" href="'+element.data('product-link')+'" title="'+element.data('product-title')+'">\n\
+                                    <img scr="" title="'+element.data('product-title')+'" title="'+element.data('product-title')+'"/>\n\
+                                </a>\n\
+                                <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
+                            </li>');
+                        $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img'));
+                    } else {
+                        $('.'+element.data('type')+'-list').append('\
+                            <li class="list-item-'+element.data('id')+'">\n\
+                                <img class="popup" scr="" title="'+element.data('product-title')+'" title="'+element.data('product-title')+'"/>\n\
+                                <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
+                            </li>');
+                        $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img-large'));
+                    }
                 }
             } else {
                 $.fancybox('<p class="text-center">Error</p>');
@@ -474,7 +483,7 @@ $(window).load(function () {
         addRemoveToSelection($(this));  
     });
     
-    $('.popup').on('click', function () {
+    $('.popup').live('click', function () {
         $.magnificPopup.open({
             items: [{
                 src: $('<div class="white-popup">' +
@@ -484,7 +493,7 @@ $(window).load(function () {
             }]
         });
     });
-    $('.preview-layout').on('click', function () {
+    $('.preview-layout').live('click', function () {
        crop(true); 
     });
 });

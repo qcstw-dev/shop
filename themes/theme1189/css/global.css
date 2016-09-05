@@ -6015,8 +6015,6 @@ span.exclusive {
 }
 .btn.ajax_add_to_cart_button, .btn.ajax_add_to_cart_product_button {
   color: #fff;
-  font-weight: 300;
-  font-size: 12px;
   text-transform: uppercase;
   background: #4267b2;
   padding: 6px 11px 7px;
@@ -6265,12 +6263,10 @@ a.product-name {
 .product-image-container .btn .glyphicon {
   color: #595959;
 }
-.product_attributes .btn .glyphicon-plus-sign,
-.product-image-container .btn .glyphicon-plus-sign {
+.product_list .btn .glyphicon-plus-sign {
     color: #38B15D;
 }
-.product_attributes .btn .glyphicon-minus-sign,
-.product-image-container .btn .glyphicon-minus-sign {
+.product_list .btn .glyphicon-minus-sign {
     color: #d9534f;
 }
 .ajax_block_product {
@@ -8994,6 +8990,9 @@ ul.step a:hover:after {
 .block-selection ul li a:hover {
     text-decoration: none;
 }
+.block-selection .thumbnail {
+    margin-bottom: 10px;
+}
 .block-selection .glyphicon-remove {
     top: -52px;
     right: 21px;
@@ -9004,6 +9003,7 @@ ul.step a:hover:after {
     height: 150px;
     overflow: auto;
 }
+
 .block-selection ul li {
     display: inline-block;
     margin-bottom: 10px;
@@ -9028,6 +9028,9 @@ ul.step a:hover:after {
 }
 .background-light {
     background: rgb(243, 243, 243);
+}
+.thumbnail-hover:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.19);
 }
 .thumbnail-hover {
     cursor: pointer;
@@ -9075,6 +9078,9 @@ ul.step a:hover:after {
 }
 .margin-left-7 {
     margin-left: 7%;
+}
+.uppercase {
+    text-transform: uppercase;
 }
 .font-size-44 {
     font-size: 44px !important;
@@ -9397,4 +9403,12 @@ ul.step a:hover:after {
 }
 .mfp-wrap, .mfp-bg {
     z-index: 999999 !important;
+}
+.btn {
+    text-transform: uppercase;
+}
+@media screen and (max-width: 1024px){
+    .block-selection ul {
+        height: 135px;
+    }
 }

@@ -2,9 +2,8 @@
     cursor: move;
     margin: 0 auto;
     position: absolute;
-    left: 25%;
+    left: 30%;
 }
-
 .resize-container img {
     display: block
 }
@@ -116,7 +115,7 @@
 }
 .overlay {
     position: absolute;
-    left: 25%;
+    left: 30%;
     z-index: 100;
     width: 600px;
     height: 600px;
@@ -182,7 +181,7 @@
     z-index: 100;
 }
 .preview-layout {
-    right: 165px;
+    right: 180px;
 }
 
 .add-to-cart img {

@@ -29,7 +29,7 @@ $(function () {
                 $.magnificPopup.open({
                     items: [{
                         src: $('\
-                            <div class="popup">'+
+                            <div class="white-popup">'+
                                 '<div class="text-center">The size of the file you uploaded will be too small for us to prepare your customized product, please upload a higher quality picture</div>'+
                             '</div>'),
                         type:'inline'

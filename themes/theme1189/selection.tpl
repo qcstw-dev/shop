@@ -1,7 +1,7 @@
 <div class="block-selection border margin-top-10 margin-bottom-10" {if !$selection} style="display: none;" {/if}>
     <div class="col-xs-12 padding-0">
         <div class="col-xs-10">
-            <h4 class="margin-top-20">{l s='Your selection'}</h4>
+            <h4 class="margin-top-20 uppercase">{l s='Your selection'}</h4>
         </div>
         <div class="col-xs-2 margin-top-10 margin-bottom-10">
             <a class="btn secondary-background-color pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Customize your product</a>
@@ -14,7 +14,7 @@
             {if $aSelectedDesigns}
                 {foreach from=$aSelectedDesigns item=design name=designs}
                     <li class="list-item-design list-item-{$design->id}">
-                        <img src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" />
+                        <img class="popup" data-src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" />
                         <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$design->id}" data-toggle="tooltip" data-placement="right" title="{l s='Remove from selection'}"></span>
                     </li>
                 {/foreach}

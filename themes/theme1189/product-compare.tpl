@@ -1,4 +1,4 @@
-{if $comparator_max_item}
+{if false}
 	<form method="post" action="{$link->getPageLink('products-comparison')|escape:'html':'UTF-8'}" class="compare-form">
 		<button type="submit" class="btn btn-default bt_compare icon-right" disabled="disabled">
 			<span>{l s='Compare'} 

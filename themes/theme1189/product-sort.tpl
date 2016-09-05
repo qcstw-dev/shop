@@ -1,20 +1,21 @@
 {if isset($orderby) AND isset($orderway)}
-    <ul class="display hidden-xs">
-        <li class="display-title">{l s='View:'}</li>
-        <li id="grid">
-            <a rel="nofollow" href="#" title="{l s='Grid'}">
-                <i class="fa fa-th-large"></i>
-                {l s='Grid'}
-            </a>
-        </li>
-        <li id="list">
-            <a rel="nofollow" href="#" title="{l s='List'}">
-                <i class="fa fa-th-list"></i>
-                {l s='List'}
-            </a>
-        </li>
-    </ul>
-
+    {if $name != 'Designs'}
+        <ul class="display hidden-xs">
+            <li class="display-title">{l s='View:'}</li>
+            <li id="grid">
+                <a rel="nofollow" href="#" title="{l s='Grid'}">
+                    <i class="fa fa-th-large"></i>
+                    {l s='Grid'}
+                </a>
+            </li>
+            <li id="list">
+                <a rel="nofollow" href="#" title="{l s='List'}">
+                    <i class="fa fa-th-list"></i>
+                    {l s='List'}
+                </a>
+            </li>
+        </ul>
+    {/if}
     {* On 1.5 the var request is setted on the front controller. The next lines assure the retrocompatibility with some modules *}
     
     {if !isset($request)}

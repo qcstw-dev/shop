@@ -1,6 +1,6 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,500,700);
+/*@import url(http://fonts.googleapis.com/css?family=Raleway:400,500,700);*/
 
-@font-face {
+/*@font-face {
     font-weight: normal;
     font-style: normal;
     font-family: 'codropsicons';
@@ -9,35 +9,28 @@
         url('../fonts/codropsicons/codropsicons.woff') format('woff'),
         url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
         url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
-}
+}*/
 
-*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+/**, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
 .clearfix:before, .clearfix:after { content: ''; display: table; }
 .clearfix:after { clear: both; }
 
-/*body {
-    background: #88ABC2;
-    font-weight: 500;
-    font-size: 1em;
-    font-family: 'Raleway', Arial, sans-serif;
+body {
 }*/
 
-/*a {
-    color: #D0E0EB;
+a {
     text-decoration: none;
     outline: none;
 }
 
 a:hover, a:focus {
-    color: #fff;
-}*/
+}
 
 .component {
     position: relative;
     /*background: url(../../images/layout_maker/gridme.png) repeat center center;
     background: #FFF;*/
     padding: 4em;
-    height: 700px;
     border: 3px solid #E8E8E8;
     max-width: 100%;
     overflow: hidden;
@@ -104,7 +97,7 @@ a:hover, a:focus {
     font-weight: normal;
     font-style: normal;
     font-variant: normal;
-    font-family: 'codropsicons';
+    /*font-family: 'codropsicons';*/
     line-height: 1;
     speak: none;
     -webkit-font-smoothing: antialiased;

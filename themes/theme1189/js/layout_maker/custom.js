@@ -103,6 +103,7 @@ $(function() {
                         }
                         if (json.url) {
                             $('.resize-image').attr('src', json.url);
+                            $('.resize-image').removeClass('custom-margin-left');
                             resizeableImage($('.resize-image'), true);
                         } else {
 //                            $('.resize-image').attr('src', $('.resize-image').data('original-url'));

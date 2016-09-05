@@ -5,9 +5,7 @@
   float: right;
   margin-top: 4px; }
   @media (max-width: 991px) {
-    .basket {
-      float: none;
-      clear: both; } }
+    .basket {} }
 
 #header .shopping_cart {
   position: relative;
