@@ -422,7 +422,8 @@ function listTabsAnimate(element) {
     }
 }
 
-function addRemoveToSelection (element) {
+function addRemoveToSelection (id) {
+    var element = $('.product-'+id);
     $.ajax({
         type: 'POST',
         url: baseDir,
@@ -433,7 +434,6 @@ function addRemoveToSelection (element) {
         },
         success: function(json) {
             $.fancybox.hideLoading();
-            console.log(json);
             if (json.success === true) {
                 if (json.type === 'remove') {
                     element.find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
@@ -458,13 +458,14 @@ function addRemoveToSelection (element) {
                             </li>');
                         $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img'));
                     } else {
-                        $('.'+element.data('type')+'-list').append('\
+                        $('.designs-list').append('\
                             <li class="list-item-'+element.data('id')+'">\n\
                                 <img class="popup" scr="" title="'+element.data('product-title')+'" title="'+element.data('product-title')+'"/>\n\
                                 <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
                             </li>');
                         $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img-large'));
                     }
+                    
                 }
             } else {
                 $.fancybox('<p class="text-center">Error</p>');
@@ -480,7 +481,7 @@ $(window).load(function () {
     $('[data-toggle="tooltip"]').tooltip();
     
     $('.selection').live('click' ,function () {
-        addRemoveToSelection($(this));  
+        addRemoveToSelection($(this).data('id'));  
     });
     
     $('.popup').live('click', function () {

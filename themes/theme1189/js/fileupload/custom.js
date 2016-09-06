@@ -41,7 +41,6 @@ $(function () {
             $('.add-to-cart').show();
             $('.fileinput-button').show();
             
-            $('.resize-image').removeClass('custom-margin-left');
             $('.list-item-custom').trigger('click');
             
             // Kick everything off with the target image

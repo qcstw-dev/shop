@@ -9352,7 +9352,7 @@ ul.step a:hover:after {
     }
 }
 .popup {
-    cursor: pointer;
+    cursor: zoom-in;
 }
 .tooltip-inner {
     max-width: 350px;

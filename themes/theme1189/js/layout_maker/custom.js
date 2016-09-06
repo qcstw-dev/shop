@@ -46,7 +46,8 @@ $(function() {
                 success: function(json) {
                     $.fancybox.hideLoading();
                     if (json.success === true && json.colors) {
-                        console.log(json);
+                        
+                        $('.resize-image').removeClass('custom-margin-left');
                         $('.block-color-product').remove();
                         $('.change-color-product-block').hide();
                         $('.preview-color').hide();
