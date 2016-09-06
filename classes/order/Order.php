@@ -561,7 +561,7 @@ class OrderCore extends ObjectModel
 		FROM `'._DB_PREFIX_.'cart_product`
                 WHERE `original_picture` = ""
                 ORDER BY `date_add` DESC
-                limit 4');
+                limit 6');
     }
 
         public function getFirstMessage()

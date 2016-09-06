@@ -427,7 +427,7 @@ function addRemoveToSelection (id) {
     $.ajax({
         type: 'POST',
         url: baseDir,
-        data: 'controller=ajax&action=addtoselection&ajax=true&id_product=' + element.data('id'),
+        data: 'controller=ajax&action=addtoselection&ajax=true&id_product=' + id,
         dataType: 'json',
         beforeSend: function () {
             $.fancybox.showLoading();
@@ -439,7 +439,7 @@ function addRemoveToSelection (id) {
                     element.find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
 //                    element.attr('title', element.data('text-add')).tooltip('fixTitle').tooltip('show');
                     element.find('.text').text(element.data('text-add'));
-                    $('.list-item-'+element.data('id')).remove();
+                    $('.list-item-'+id).remove();
                     if (!$('.designs-list').find('li').length && !$('.products-list').find('li').length) {
                         $('.block-selection').hide();
                     }
