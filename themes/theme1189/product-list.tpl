@@ -7,7 +7,7 @@
                 {assign var='nbItemsPerLineMobile' value=2}
             {elseif ($hide_left_column && $hide_right_column) && ($hide_left_column =='true' && $hide_right_column =='true')} {* no columns *}
                 {assign var='nbItemsPerLine' value=4}
-                {assign var='nbItemsPerLineTablet' value=3}
+                {assign var='nbItemsPerLineTablet' value=4}
                 {assign var='nbItemsPerLineMobile' value=2}
             {else}																											  {* left and right column *}
                 {assign var='nbItemsPerLine' value=2}
@@ -35,7 +35,7 @@
             {if $totModulo == 0}{assign var='totModulo' value=$nbItemsPerLine}{/if}
         {if $totModuloTablet == 0}{assign var='totModuloTablet' value=$nbItemsPerLineTablet}{/if}
     {if $totModuloMobile == 0}{assign var='totModuloMobile' value=$nbItemsPerLineMobile}{/if}
-    <li class="ajax_block_product col-xs-12 col-sm-{12/$nbItemsPerLineTablet} col-md-{12/$nbItemsPerLine}{if $smarty.foreach.products.iteration%$nbItemsPerLine == 0} last-in-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLine == 1} first-in-line{/if}{if $smarty.foreach.products.iteration > ($smarty.foreach.products.total - $totModulo)} last-line{/if}{if $smarty.foreach.products.iteration%$nbItemsPerLineTablet == 0} last-item-of-tablet-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLineTablet == 1} first-item-of-tablet-line{/if}{if $smarty.foreach.products.iteration%$nbItemsPerLineMobile == 0} last-item-of-mobile-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLineMobile == 1} first-item-of-mobile-line{/if}{if $smarty.foreach.products.iteration > ($smarty.foreach.products.total - $totModuloMobile)} last-mobile-line{/if}">
+    <li class="ajax_block_product col-xs-6 col-sm-{12/$nbItemsPerLineTablet} col-md-{12/$nbItemsPerLine}{if $smarty.foreach.products.iteration%$nbItemsPerLine == 0} last-in-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLine == 1} first-in-line{/if}{if $smarty.foreach.products.iteration > ($smarty.foreach.products.total - $totModulo)} last-line{/if}{if $smarty.foreach.products.iteration%$nbItemsPerLineTablet == 0} last-item-of-tablet-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLineTablet == 1} first-item-of-tablet-line{/if}{if $smarty.foreach.products.iteration%$nbItemsPerLineMobile == 0} last-item-of-mobile-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLineMobile == 1} first-item-of-mobile-line{/if}{if $smarty.foreach.products.iteration > ($smarty.foreach.products.total - $totModuloMobile)} last-mobile-line{/if}">
         <div class="product-container" itemscope itemtype="http://schema.org/Product">
             <div class="left-block">
                 <div class="product-image-container">
@@ -74,8 +74,8 @@
                             <h5 itemprop="name">
                                 {if isset($product.pack_quantity) && $product.pack_quantity}{$product.pack_quantity|intval|cat:' x '}{/if}
                                 <a class="quick-view-bis product-name" rel="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" href="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" itemprop="url" >
-                                    <span class="list-name">{$product.name|truncate:100:'...'|escape:'html':'UTF-8'}</span>
-                                    <span class="grid-name">{$product.name|truncate:30:'...'|escape:'html':'UTF-8'}</span>
+                                    <span class="list-name">{$product.name|cat:$product.reference|truncate:100:'...'|escape:'html':'UTF-8'}</span>
+                                    <span class="grid-name">{$product.name|cat:$product.reference|truncate:30:'...'|escape:'html':'UTF-8'}</span>
                                 </a>
                             </h5>
                         {/if}

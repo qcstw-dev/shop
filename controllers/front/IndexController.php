@@ -43,7 +43,7 @@ class IndexControllerCore extends FrontController
         $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
         $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
         
-        $aCreations = Order::getLastCreations();
+        $aCreations = Order::getLastCreations(4);
         
         $this->context->smarty->assign(array('HOOK_HOME' => Hook::exec('displayHome'),
             'HOOK_HOME_TAB'         => Hook::exec('displayHomeTab'),

@@ -9,12 +9,12 @@
             </div>
             <div class="col-md-12 padding-10">
                 <div class="designs-list">
-                    <div class="col-xs-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-custom" data-id="custom" data-type="design">
+                    <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-custom" data-id="custom" data-type="design">
                         <div class="padding border list-item-custom-text img-product">Upload your Design</div>
                     </div>
                     {foreach from=$aSelectedDesigns item=design name=designs}
-                        <div class="col-xs-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-{$design->id}" data-id="{$design->id}" data-type="design" title="{$design->name}">
-                            <img class="img-product" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" alt="{$design->name}" />
+                        <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-{$design->id}" data-id="{$design->id}" data-type="design" title="{$design->name}">
+                            <img class="img-product border" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" alt="{$design->name}" />
                         </div>
                     {/foreach}
                 </div>
@@ -27,7 +27,7 @@
             <div class="col-md-12 padding-10">
                 <div class="products-list">
                     {foreach from=$aSelectedProducts item=product name=products}
-                        <div class="col-xs-3 thumbnail border-none margin-bottom-0 list-item list-item-product cursor-pointer list-item-{$product->id}" data-id="{$product->id}" data-type="product" title="{$product->name}">
+                        <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-product cursor-pointer list-item-{$product->id}" data-id="{$product->id}" data-type="product" title="{$product->name}">
                             <img class="img-product border" src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$product->name}" alt="{$product->name}" />
                         </div>
                     {/foreach}

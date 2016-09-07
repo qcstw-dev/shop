@@ -440,7 +440,7 @@ function addRemoveToSelection (id) {
 //                    element.attr('title', element.data('text-add')).tooltip('fixTitle').tooltip('show');
                     element.find('.text').text(element.data('text-add'));
                     $('.list-item-'+id).remove();
-                    if (!$('.designs-list').find('li').length && !$('.products-list').find('li').length) {
+                    if (!$('.designs-list').find('.list-item').length && !$('.products-list').find('.list-item').length) {
                         $('.block-selection').hide();
                     }
                 } else {
@@ -450,19 +450,19 @@ function addRemoveToSelection (id) {
                     element.find('.text').text(element.data('text-remove'));
                     if (element.data('type') === 'products') {
                         $('.'+element.data('type')+'-list').append('\
-                            <li class="list-item-'+element.data('id')+'">\n\
+                            <div class="list-item list-item-'+element.data('id')+' col-xs-6 col-sm-4 col-md-3 thumbnail border-none">\n\
                                 <a class="quick-view-bis" rel="'+element.data('product-link')+'" title="'+element.data('product-title')+'" href="'+element.data('product-link')+'" title="'+element.data('product-title')+'">\n\
-                                    <img scr="" title="'+element.data('product-title')+'" title="'+element.data('product-title')+'"/>\n\
+                                    <img class="border" scr="" title="'+element.data('product-title')+'" title="'+element.data('product-title')+'"/>\n\
                                 </a>\n\
                                 <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
-                            </li>');
+                            </div>');
                         $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img'));
                     } else {
                         $('.designs-list').append('\
-                            <li class="list-item-'+element.data('id')+'">\n\
-                                <img class="popup" scr="" title="'+element.data('product-title')+'" title="'+element.data('product-title')+'"/>\n\
+                            <div class="list-item list-item-'+element.data('id')+' col-xs-6 col-sm-4 col-md-3 thumbnail border-none">\n\
+                                <img class="popup border" scr="" title="'+element.data('product-title')+'" title="'+element.data('product-title')+'"/>\n\
                                 <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
-                            </li>');
+                            </div>');
                         $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img-large'));
                     }
                     

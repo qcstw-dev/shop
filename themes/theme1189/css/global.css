@@ -8994,13 +8994,15 @@ ul.step a:hover:after {
     margin-bottom: 10px;
 }
 .block-selection .glyphicon-remove {
-    top: -49px;
-    right: 21px;
+    top: 5px;
+    right: 5px;
     background: #fff;
     padding: 2px;
+    position: absolute;
 }
-.block-selection ul {
-    height: 150px;
+.block-selection .designs-list,
+.block-selection .products-list {
+    height: auto;
     overflow: auto;
 }
 
@@ -9410,5 +9412,17 @@ ul.step a:hover:after {
 @media screen and (max-width: 1024px){
     .block-selection ul {
         height: 135px;
+    }
+}
+@media screen and (max-width: 768px){
+    .grid-name {
+        height: 32px;
+        display: block;
+    }
+    .title-block-selection {
+        text-align: center;
+    }
+    .btn-block-selection {
+        width: 100%;
     }
 }

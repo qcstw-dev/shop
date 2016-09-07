@@ -1,6 +1,7 @@
 <ul class="product_list grid row active">
+    {assign var='nbItems' value=count($creations)}
     {foreach from=$creations item=creation name=creations}
-        <li class="ajax_block_product col-xs-12 col-sm-4 col-md-2 last-line last-item-of-mobile-line" style="opacity: 1; transform: translate3d(0px, 0px, 0px);">
+        <li class="ajax_block_product col-xs-6 col-sm-3 col-md-{12/$nbItems} last-line last-item-of-mobile-line" style="opacity: 1; transform: translate3d(0px, 0px, 0px);">
             <div class="product-container" >
                 <div class="left-block">
                     <div class="product-image-container padding-top-20 padding-bottom-20">

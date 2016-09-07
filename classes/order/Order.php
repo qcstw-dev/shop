@@ -554,14 +554,14 @@ class OrderCore extends ObjectModel
                 GROUP BY od.product_quantity, cp.custom_picture');
     }
     
-    public static function getLastCreations()
+    public static function getLastCreations($mNbItem = 6)
     {
         return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
 		SELECT *
 		FROM `'._DB_PREFIX_.'cart_product`
                 WHERE `original_picture` = ""
                 ORDER BY `date_add` DESC
-                limit 6');
+                limit '.$mNbItem);
     }
 
         public function getFirstMessage()
