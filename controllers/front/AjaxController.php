@@ -9,14 +9,14 @@ class AjaxControllerCore extends FrontController
         if (isset($_POST['id_product']) && $_POST['id_product']) {
             $context = Context::getContext();
             if ($context->cookie->selection) {
-                if (strpos($context->cookie->selection, $_POST['id_product']) !== false) {
+            $aProductArray = explode(',', $context->cookie->selection);
+                if (in_array($_POST['id_product'], $aProductArray) !== false) {
                     // remove product from selection
-                    $aProductArray = explode(',', $context->cookie->selection);
                     if(($key = array_search($_POST['id_product'], $aProductArray)) !== false) {
                         unset($aProductArray[$key]);
+                        $result['type'] = 'remove';
+                        $context->cookie->__set('selection', implode(',', $aProductArray));
                     }
-                    $context->cookie->__set('selection', implode(',', $aProductArray));
-                    $result['type'] = 'remove';
                 } else {
                     // add product from selection
                      $aProductArray = explode(',', $context->cookie->selection);
