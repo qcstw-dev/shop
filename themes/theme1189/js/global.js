@@ -154,9 +154,9 @@ function responsiveResize()
 
 function blockHover(status)
 {
-    $(document).off('mouseenter').on('mouseenter', '.product_list.grid li.ajax_block_product .product-container', function (e) {
+    $(document).off('mouseenter').on('mouseenter', '.product_list.grid div.ajax_block_product .product-container', function (e) {
 
-        if ('ontouchstart' in document.documentElement) 
+        if ('ontouchstart' in document.documentElement)
             return;
         if ($('body').find('.container').width() == 1170)
         {
@@ -167,7 +167,7 @@ function blockHover(status)
         }
     });
 
-    $(document).off('mouseleave').on('mouseleave', '.product_list.grid li.ajax_block_product .product-container', function (e) {
+    $(document).off('mouseleave').on('mouseleave', '.product_list.grid div.ajax_block_product .product-container', function (e) {
         if ($('body').find('.container').width() == 1170)
             $(this).parent().removeClass('hovered');
     });
@@ -178,7 +178,7 @@ function quick_view()
     $(document).on('click', '.quick-view-bis, .quick-view-mobile-bis', function (e)
     {
         e.preventDefault();
-        var url = this.rel;
+        var url = (this.rel ? this.rel : this.href);
         var anchor = '';
 
         if (url.indexOf('#') != -1)
@@ -240,9 +240,9 @@ function display(view)
 {
     if (view == 'list')
     {
-        $('ul.product_list').removeClass('grid').addClass('list row');
-        $('.product_list > li').removeClass('col-xs-12 col-sm-' + 12 / nbItemsPerLineTablet + ' col-md-' + 12 / nbItemsPerLine).addClass('col-xs-12');
-        $('.product_list > li').each(function (index, element) {
+        $('div.product_list').removeClass('grid').addClass('list row');
+        $('.product_list > div.ajax_block_product').removeClass('col-xs-12 col-sm-' + 12 / nbItemsPerLineTablet + ' col-md-' + 12 / nbItemsPerLine).addClass('col-xs-12');
+        $('.product_list > div.ajax_block_product').each(function (index, element) {
             html = '';
             html = '<div class="product-container"><div class="row">';
             html += '<div class="left-block col-xs-4 col-xs-5 col-md-4">' + $(element).find('.left-block').html() + '</div>';
@@ -276,13 +276,13 @@ function display(view)
         });
         $('.display').find('li#list').addClass('selected');
         $('.display').find('li#grid').removeAttr('class');
-        listTabsAnimate('ul.product_list>li');
+        listTabsAnimate('div.product_list>div.ajax_block_product');
         $.totalStorage('display', 'list');
     } else
     {
-        $('ul.product_list').removeClass('list').addClass('grid row');
-        $('.product_list > li').removeClass('col-xs-12').addClass('col-xs-12 col-sm-' + 12 / nbItemsPerLineTablet + ' col-md-' + 12 / nbItemsPerLine);
-        $('.product_list > li').each(function (index, element) {
+        $('div.product_list').removeClass('list').addClass('grid row');
+        $('.product_list > div.ajax_block_product').removeClass('col-xs-12').addClass('col-xs-12 col-sm-' + 12 / nbItemsPerLineTablet + ' col-md-' + 12 / nbItemsPerLine);
+        $('.product_list > div.ajax_block_product').each(function (index, element) {
             html = '';
             html += '<div class="product-container">';
             html += '<div class="left-block">' + $(element).find('.left-block').html() + '</div>';
@@ -317,7 +317,7 @@ function display(view)
         });
         $('.display').find('li#grid').addClass('selected');
         $('.display').find('li#list').removeAttr('class');
-        listTabsAnimate('ul.product_list>li');
+        listTabsAnimate('div.product_list>div.ajax_block_product');
         $.totalStorage('display', 'grid');
     }
 }
@@ -422,8 +422,8 @@ function listTabsAnimate(element) {
     }
 }
 
-function addRemoveToSelection (id) {
-    var element = $('.product-'+id);
+function addRemoveToSelection(id) {
+    var element = $('.product-' + id);
     $.ajax({
         type: 'POST',
         url: baseDir,
@@ -432,14 +432,17 @@ function addRemoveToSelection (id) {
         beforeSend: function () {
             $.fancybox.showLoading();
         },
-        success: function(json) {
+        success: function (json) {
+            console.log(json);
+            console.log(element);
+
             $.fancybox.hideLoading();
             if (json.success === true) {
                 if (json.type === 'remove') {
                     element.find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
 //                    element.attr('title', element.data('text-add')).tooltip('fixTitle').tooltip('show');
                     element.find('.text').text(element.data('text-add'));
-                    $('.list-item-'+id).remove();
+                    $('.list-item-' + id).remove();
                     if (!$('.designs-list').find('.list-item').length && !$('.products-list').find('.list-item').length) {
                         $('.block-selection').hide();
                     }
@@ -449,23 +452,23 @@ function addRemoveToSelection (id) {
 //                    element.attr('title', element.data('text-remove')).tooltip('fixTitle').tooltip('show');
                     element.find('.text').text(element.data('text-remove'));
                     if (element.data('type') === 'products') {
-                        $('.'+element.data('type')+'-list').append('\
-                            <div class="list-item list-item-'+element.data('id')+' col-xs-6 col-sm-4 col-md-3 thumbnail border-none">\n\
-                                <a class="quick-view-bis" rel="'+element.data('product-link')+'" title="'+element.data('product-title')+'" href="'+element.data('product-link')+'" title="'+element.data('product-title')+'">\n\
-                                    <img class="border" scr="" title="'+element.data('product-title')+'" title="'+element.data('product-title')+'"/>\n\
+                        $('.' + element.data('type') + '-list').append('\
+                            <div class="list-item list-item-' + element.data('id') + ' col-xs-6 col-sm-4 col-md-3 thumbnail border-none">\n\
+                                <a class="quick-view-bis" rel="' + element.data('product-link') + '" title="' + element.data('product-title') + '" href="' + element.data('product-link') + '" title="' + element.data('product-title') + '">\n\
+                                    <img class="border" scr="" title="' + element.data('product-title') + '" title="' + element.data('product-title') + '"/>\n\
                                 </a>\n\
-                                <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
+                                <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="' + element.data('id') + '"></span>\n\
                             </div>');
-                        $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img'));
+                        $('.list-item-' + element.data('id')).find('img').attr('src', element.data('img'));
                     } else {
                         $('.designs-list').append('\
-                            <div class="list-item list-item-'+element.data('id')+' col-xs-6 col-sm-4 col-md-3 thumbnail border-none">\n\
-                                <img class="popup border" scr="" title="'+element.data('product-title')+'" title="'+element.data('product-title')+'"/>\n\
-                                <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="'+element.data('id')+'"></span>\n\
+                            <div class="list-item list-item-' + element.data('id') + ' col-xs-6 col-sm-4 col-md-3 thumbnail border-none">\n\
+                                <img class="popup border" scr="" title="' + element.data('product-title') + '" title="' + element.data('product-title') + '"/>\n\
+                                <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="' + element.data('id') + '"></span>\n\
                             </div>');
-                        $('.list-item-'+element.data('id')).find('img').attr('src', element.data('img-large'));
+                        $('.list-item-' + element.data('id')).find('img').attr('src', element.data('img-large'));
                     }
-                    
+
                 }
             } else {
                 $.fancybox('<p class="text-center">Error</p>');
@@ -474,29 +477,55 @@ function addRemoveToSelection (id) {
     });
 }
 $(window).load(function () {
-    listTabsAnimate('ul.product_list:not(".tab-pane")>li');
+    listTabsAnimate('div.product_list:not(".tab-pane")>div.ajax_block_product');
     listBlocksAnimate('#homefeatured', '#homefeatured li', nbItemsPerLine, -300, true);
     listBlocksAnimate('#homepage-blog', '#homepage-blog li', nbItemsPerLine, -300, true);
-    
+
     $('[data-toggle="tooltip"]').tooltip();
-    
-    $('.selection').live('click' ,function () {
-        addRemoveToSelection($(this).data('id'));  
+
+    $('.selection').live('click', function () {
+        addRemoveToSelection($(this).data('id'));
     });
-    
+
     $('.popup').live('click', function () {
         $.magnificPopup.open({
             items: [{
-                src: $('<div class="white-popup">' +
-                        '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
-                        '</div>'),
-                type: 'inline'
-            }]
+                    src: $('<div class="white-popup">' +
+                            '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
+                            '</div>'),
+                    type: 'inline'
+                }]
         });
     });
     $('.preview-layout').live('click', function () {
-       crop(true); 
+        crop(true);
     });
+    $('.carousel-home, .carousel-designs, .carousel-products').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }]});
 });
 
 

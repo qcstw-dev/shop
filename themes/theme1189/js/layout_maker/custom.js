@@ -47,7 +47,6 @@ $(function() {
                     $.fancybox.hideLoading();
                     if (json.success === true && json.colors) {
                         
-                        $('.resize-image').removeClass('custom-margin-left');
                         $('.block-color-product').remove();
                         $('.change-color-product-block').hide();
                         $('.preview-color').hide();
@@ -60,7 +59,7 @@ $(function() {
                         
                         for(var key in json.colors) {
                             $('.change-color-product-block .block-colors').append('\
-                                <div class="col-xs-4 col-sm-2 block-color-product">\n\
+                                <div class="col-xs-4 col-sm-2 col-md-6 block-color-product">\n\
                                     <div class="thumbnail thumbnail-hover">\n\
                                         <img class="change-color-product" \n\
                                          data-id-color="'+json.colors[key]['name']+'"\n\
@@ -88,6 +87,7 @@ $(function() {
                         if (json.custom) {
                             $('.slider-vertical').show();
                         } else {
+                            $('.resize-image').removeClass('custom-margin-left');
                             $('.hidden-original-picture').attr('src', '');
                         }
                         if (json.item_size) {

@@ -6269,10 +6269,6 @@ a.product-name {
 .product_list .btn .glyphicon-minus-sign {
     color: #d9534f;
 }
-.ajax_block_product {
-    padding-left: 5px;
-    padding-right: 5px;
-}
 .btn-add, 
 .btn-remove,
 .btn-detail {
@@ -9002,7 +8998,7 @@ ul.step a:hover:after {
 }
 .block-selection .designs-list,
 .block-selection .products-list {
-    height: auto;
+    height: 145px;
     overflow: auto;
 }
 
@@ -9410,9 +9406,10 @@ ul.step a:hover:after {
     text-transform: uppercase;
 }
 @media screen and (max-width: 1024px){
-    .block-selection ul {
-        height: 135px;
+    .block-selection .designs-list, .block-selection .products-list {
+        height: auto;
     }
+    
 }
 @media screen and (max-width: 768px){
     .grid-name {
@@ -9425,4 +9422,30 @@ ul.step a:hover:after {
     .btn-block-selection {
         width: 100%;
     }
+}
+.slick-prev, .slick-next {
+    z-index: 1;
+}
+.slick-prev:before, .slick-next:before, #homepage-slider .bx-wrapper .bx-next:before, #homepage-slider .bx-wrapper .bx-prev:before {
+    color: #777 !important;
+    font-family: 'Glyphicons Halflings' !important;
+}
+.slick-next {
+    right: -10px !important;
+}
+.slick-prev {
+    left: -10px !important;
+}
+.slick-next:before, #homepage-slider .bx-wrapper .bx-next:before {
+    content: "\e080" !important;
+}
+.slick-prev:before, #homepage-slider .bx-wrapper .bx-prev:before {
+    content: "\e079" !important;
+}
+.big-slick img {
+    margin: auto;
+    margin-bottom: 5px;
+}
+.product-container img {
+    width: 270px;
 }

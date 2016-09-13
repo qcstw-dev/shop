@@ -175,7 +175,8 @@
       box-sizing: border-box;
       background: #fbfbfb; }
       #thumbs_list li a:hover, #thumbs_list li a.zoomThumbActive {
-        border-color: #12AFA3; }
+        border-color: #4267b2;
+      }
     #thumbs_list li img {
       width: 100%;
       height: 100%;
@@ -807,5 +808,5 @@ Quick View Styles
 .color-preview {
     width: 20px;
     height: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
 }

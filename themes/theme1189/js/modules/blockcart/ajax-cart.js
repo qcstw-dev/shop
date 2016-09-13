@@ -583,7 +583,7 @@ var ajaxCart = {
                     var name = $.trim($('<span />').html(this.name).text());
                     name = (name.length > 12 ? name.substring(0, 10) + '...' : name);
                     content += '\
-                                            <a class="cart-images col-md-6" href="' + this.link + '" title="' + name + '">\n\
+                                            <a class="cart-images col-md-6 quick-view-bis" href="' + this.link + '" title="' + name + '">\n\
                                                 <img  src="' + this.image_cart + '.png" alt="' + this.name + '">\n\
                                             </a>';
 //					content += '<a class="cart-images" href="' + this.link + '" title="' + name + '"><img  src="'+ baseUri + 'img/layout_maker/custom_pictures/' + this.image_cart + '" alt="' + this.name +'"></a>';

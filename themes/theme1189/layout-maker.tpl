@@ -93,7 +93,7 @@
 
 {else}
     <div class="alert alert-info margin-top-10">
-        <p>First you have to select at least one product and them you can comeback to customize it</p>
+        <p>First you have to select at least one product, then you can comeback on this page to customize it</p>
         <p><a href="46-designs" title="See the Designs">>> See the Designs</a></p>
         <p><a href="45-products">>> See the Products</a></p>
     </div>

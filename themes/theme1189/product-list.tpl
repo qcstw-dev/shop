@@ -26,7 +26,7 @@
         {math equation="nbLi/nbItemsPerLineTablet" nbLi=$nbLi nbItemsPerLineTablet=$nbItemsPerLineTablet assign=nbLinesTablet}
 
         <!-- Products list -->
-        <ul{if isset($id) && $id} id="{$id}"{/if} class="product_list grid row{if isset($class) && $class} {$class}{/if}">
+        <div{if isset($id) && $id} id="{$id}"{/if} class="product_list grid {if isset($class) && $class} {$class}{/if} {if isset($home_category)} padding big-slick carousel-{$home_category}{/if}">
             {foreach from=$products item=product name=products}
                 {assign var="isInSelection" value="{($selection && in_array($product.id_product, $selection))}"}
                 {math equation="(total%perLine)" total=$smarty.foreach.products.total perLine=$nbItemsPerLine assign=totModulo}
@@ -35,7 +35,7 @@
             {if $totModulo == 0}{assign var='totModulo' value=$nbItemsPerLine}{/if}
         {if $totModuloTablet == 0}{assign var='totModuloTablet' value=$nbItemsPerLineTablet}{/if}
     {if $totModuloMobile == 0}{assign var='totModuloMobile' value=$nbItemsPerLineMobile}{/if}
-    <li class="ajax_block_product col-xs-6 col-sm-{12/$nbItemsPerLineTablet} col-md-{12/$nbItemsPerLine}{if $smarty.foreach.products.iteration%$nbItemsPerLine == 0} last-in-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLine == 1} first-in-line{/if}{if $smarty.foreach.products.iteration > ($smarty.foreach.products.total - $totModulo)} last-line{/if}{if $smarty.foreach.products.iteration%$nbItemsPerLineTablet == 0} last-item-of-tablet-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLineTablet == 1} first-item-of-tablet-line{/if}{if $smarty.foreach.products.iteration%$nbItemsPerLineMobile == 0} last-item-of-mobile-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLineMobile == 1} first-item-of-mobile-line{/if}{if $smarty.foreach.products.iteration > ($smarty.foreach.products.total - $totModuloMobile)} last-mobile-line{/if}">
+    <div class="ajax_block_product col-xs-6 col-sm-{12/$nbItemsPerLineTablet} col-md-{12/$nbItemsPerLine}{if $smarty.foreach.products.iteration%$nbItemsPerLine == 0} last-in-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLine == 1} first-in-line{/if}{if $smarty.foreach.products.iteration > ($smarty.foreach.products.total - $totModulo)} last-line{/if}{if $smarty.foreach.products.iteration%$nbItemsPerLineTablet == 0} last-item-of-tablet-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLineTablet == 1} first-item-of-tablet-line{/if}{if $smarty.foreach.products.iteration%$nbItemsPerLineMobile == 0} last-item-of-mobile-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLineMobile == 1} first-item-of-mobile-line{/if}{if $smarty.foreach.products.iteration > ($smarty.foreach.products.total - $totModuloMobile)} last-mobile-line{/if}">
         <div class="product-container" itemscope itemtype="http://schema.org/Product">
             <div class="left-block">
                 <div class="product-image-container">
@@ -50,7 +50,7 @@
                             {else}
                                 <div class="col-xs-12 padding-0">
                                     <div class="col-xs-12 padding-0">
-                                    {/if}
+                            {/if}
                                     <div class="btn btn-default selection cursor-pointer {if !$isInSelection}btn-add{else}btn-remove{/if} product-{$product.id_product}" data-product-link="{$product.link|escape:'html':'UTF-8'}" data-img="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-img-large="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" data-id="{$product.id_product}" data-product-title="{$product.name}" data-type="{$product.category}" title="{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
                                         <span class="glyphicon glyphicon-{if !$isInSelection}plus-sign{else}minus-sign{/if}"></span> <span class="text">{if !$isInSelection}{l s='Add to selection'}{else}{l s='Remove from selection'}{/if}</span>
                                     </div>
@@ -123,11 +123,6 @@
                     </span>
                 {/if}
                 {/if}
-                    {if $product.category == 'products'}
-                        <a itemprop="url" class="lnk_view quick-view-bis btn btn-default" rel="{$product.link|escape:'html':'UTF-8'}" href="{$product.link|escape:'html':'UTF-8'}" title="{l s='View'}">
-                            <span class="glyphicon glyphicon-zoom-in"></span> {l s='Product details'}
-                        </a>
-                    {/if}
                 </div>
                 {if isset($product.color_list)}
                     <div class="color-list-container">{$product.color_list}</div>
@@ -165,9 +160,9 @@
             </div>
         </div>
     </div><!-- .product-container> -->
-    </li>
+    </div>
     {/foreach}
-        </ul>
+        </div>
         {addJsDefL name=min_item}{l s='Please select at least one product' js=1}{/addJsDefL}
         {addJsDefL name=max_item}{l s='You cannot add more than %d product(s) to the product comparison' sprintf=$comparator_max_item js=1}{/addJsDefL}
         {addJsDef comparator_max_item=$comparator_max_item}

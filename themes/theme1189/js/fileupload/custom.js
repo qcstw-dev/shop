@@ -36,7 +36,7 @@ $(function () {
                     }]
                 });
             }
-            
+            $('.resize-image').removeClass('custom-margin-left');
             $('.slider-vertical').show();
             $('.add-to-cart').show();
             $('.fileinput-button').show();

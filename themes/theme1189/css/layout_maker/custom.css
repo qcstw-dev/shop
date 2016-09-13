@@ -154,6 +154,9 @@
     .uploader {
         text-align: left;
     }
+    .block-selection .designs-list, .block-selection .products-list {
+        height: auto;
+    }
 }
 
 @media screen and (max-width: 768px){

@@ -13,7 +13,7 @@
         <div class="designs-list">
             {if $aSelectedDesigns}
                 {foreach from=$aSelectedDesigns item=design name=designs}
-                    <div class="list-item list-item-{$design->id} col-xs-6 col-sm-4 col-md-3 thumbnail border-none">
+                    <div class="list-item list-item-{$design->id} col-xs-6 col-sm-3 col-md-3 thumbnail border-none">
                         <img class="popup border" data-src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" />
                         <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$design->id}" data-toggle="tooltip" data-placement="right" title="{l s='Remove from selection'}"></span>
                     </div>
@@ -27,7 +27,7 @@
         <div class="products-list">
             {if $aSelectedProducts}
                 {foreach from=$aSelectedProducts item=product name=products}
-                    <div class="list-item list-item-{$product->id} col-xs-6 col-sm-4 col-md-3 thumbnail border-none">
+                    <div class="list-item list-item-{$product->id} col-xs-6 col-sm-3 col-md-3 thumbnail border-none">
                         <a class="quick-view-bis" href="{$product->getLink()|escape:'html':'UTF-8'}" rel="{$product->getLink()|escape:'html':'UTF-8'}">
                             <img class="border" src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$product->name}" />
                         </a>

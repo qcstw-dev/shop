@@ -40,10 +40,10 @@ class IndexControllerCore extends FrontController
         $oDesignCategory = new Category('46', $this->context->language->id);
         $oProductCategory = new Category('45', $this->context->language->id);
         
-        $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
-        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 4, 'date_upd', 'ASC');
+        $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 10, 'date_upd', 'ASC');
+        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 10, 'date_upd', 'ASC');
         
-        $aCreations = Order::getLastCreations(4);
+        $aCreations = Order::getLastCreations(10);
         
         $this->context->smarty->assign(array('HOOK_HOME' => Hook::exec('displayHome'),
             'HOOK_HOME_TAB'         => Hook::exec('displayHomeTab'),
@@ -54,5 +54,11 @@ class IndexControllerCore extends FrontController
             'link'                  => $this->context->link
         ));
         $this->setTemplate(_PS_THEME_DIR_.'index.tpl');
+    }
+    public function setMedia() {
+        parent::setMedia();
+        $this->context->controller->addCSS(_THEME_CSS_DIR_ . 'slick/slick.css', 'all');
+        $this->context->controller->addCSS(_THEME_CSS_DIR_ . 'slick/slick-theme.css', 'all'); 
+        $this->context->controller->addJS(_THEME_JS_DIR_ . 'slick/slick.min.js', 'all');
     }
 }
