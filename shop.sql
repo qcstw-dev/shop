@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 13 Septembre 2016 à 09:23
+-- Généré le :  Mer 14 Septembre 2016 à 02:49
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.19
 
@@ -825,7 +825,7 @@ INSERT INTO `ps_advice` (`id_advice`, `id_ps_advice`, `id_tab`, `ids_tab`, `vali
 (63, 682, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
 (64, 690, 1, NULL, 1, 0, 'after', '#dashtrends', 0, 0, 1),
 (65, 696, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
-(66, 698, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
+(66, 698, 1, NULL, 0, 0, 'after', '.dash_news', 0, 0, 1),
 (67, 708, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
 (68, 730, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
 (69, 731, 1, NULL, 1, 0, 'after', '.dash_news', 0, 0, 1),
@@ -7721,7 +7721,8 @@ INSERT INTO `ps_connections` (`id_connections`, `id_shop_group`, `id_shop`, `id_
 (362, 1, 1, 40, 1, 0, '2016-09-11 22:18:53', ''),
 (363, 1, 1, 41, 1, 0, '2016-09-12 23:15:12', ''),
 (364, 1, 1, 41, 2, 0, '2016-09-12 23:53:58', ''),
-(365, 1, 1, 41, 2, 0, '2016-09-12 23:53:58', '');
+(365, 1, 1, 41, 2, 0, '2016-09-12 23:53:58', ''),
+(366, 1, 1, 42, 1, 0, '2016-09-13 22:11:17', '');
 
 -- --------------------------------------------------------
 
@@ -11641,7 +11642,8 @@ INSERT INTO `ps_guest` (`id_guest`, `id_operating_system`, `id_web_browser`, `id
 (38, 3, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'fr', 0),
 (39, 3, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'fr', 0),
 (40, 3, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'fr', 0),
-(41, 3, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'fr', 0);
+(41, 3, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'fr', 0),
+(42, 3, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'fr', 0);
 
 -- --------------------------------------------------------
 
@@ -23444,7 +23446,8 @@ INSERT INTO `ps_log` (`id_log`, `severity`, `error_code`, `message`, `object_typ
 (1353, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-09-12 23:21:03', '2016-09-12 23:21:03'),
 (1354, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-09-13 02:46:47', '2016-09-13 02:46:47'),
 (1355, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-09-13 04:35:59', '2016-09-13 04:35:59'),
-(1356, 1, 0, 'Product modification', 'Product', 23, 1, '2016-09-13 04:36:52', '2016-09-13 04:36:52');
+(1356, 1, 0, 'Product modification', 'Product', 23, 1, '2016-09-13 04:36:52', '2016-09-13 04:36:52'),
+(1357, 1, 0, 'Back Office connection from ::1', '', 0, 1, '2016-09-13 05:47:45', '2016-09-13 05:47:45');
 
 -- --------------------------------------------------------
 
@@ -55006,7 +55009,7 @@ ALTER TABLE `ps_configuration_kpi`
 -- AUTO_INCREMENT pour la table `ps_connections`
 --
 ALTER TABLE `ps_connections`
-  MODIFY `id_connections` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=366;
+  MODIFY `id_connections` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=367;
 --
 -- AUTO_INCREMENT pour la table `ps_connections_source`
 --
@@ -55101,7 +55104,7 @@ ALTER TABLE `ps_group_reduction`
 -- AUTO_INCREMENT pour la table `ps_guest`
 --
 ALTER TABLE `ps_guest`
-  MODIFY `id_guest` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_guest` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT pour la table `ps_homeslider`
 --
@@ -55176,7 +55179,7 @@ ALTER TABLE `ps_linksmenutop`
 -- AUTO_INCREMENT pour la table `ps_log`
 --
 ALTER TABLE `ps_log`
-  MODIFY `id_log` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1357;
+  MODIFY `id_log` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1358;
 --
 -- AUTO_INCREMENT pour la table `ps_mail`
 --
@@ -55421,7 +55424,7 @@ ALTER TABLE `ps_specific_price`
 -- AUTO_INCREMENT pour la table `ps_specific_price_priority`
 --
 ALTER TABLE `ps_specific_price_priority`
-  MODIFY `id_specific_price_priority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=742;
+  MODIFY `id_specific_price_priority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=741;
 --
 -- AUTO_INCREMENT pour la table `ps_specific_price_rule`
 --

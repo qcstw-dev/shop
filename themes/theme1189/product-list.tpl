@@ -26,7 +26,7 @@
         {math equation="nbLi/nbItemsPerLineTablet" nbLi=$nbLi nbItemsPerLineTablet=$nbItemsPerLineTablet assign=nbLinesTablet}
 
         <!-- Products list -->
-        <div{if isset($id) && $id} id="{$id}"{/if} class="product_list grid {if isset($class) && $class} {$class}{/if} {if isset($home_category)} padding big-slick carousel-{$home_category}{/if}">
+        <div{if isset($id) && $id} id="{$id}"{/if} class="product_list grid row {if isset($class) && $class} {$class}{/if} {if isset($home_category)} padding big-slick carousel-{$home_category}{/if}">
             {foreach from=$products item=product name=products}
                 {assign var="isInSelection" value="{($selection && in_array($product.id_product, $selection))}"}
                 {math equation="(total%perLine)" total=$smarty.foreach.products.total perLine=$nbItemsPerLine assign=totModulo}

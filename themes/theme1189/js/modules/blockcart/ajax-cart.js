@@ -587,7 +587,7 @@ var ajaxCart = {
                                                 <img  src="' + this.image_cart + '.png" alt="' + this.name + '">\n\
                                             </a>';
 //					content += '<a class="cart-images" href="' + this.link + '" title="' + name + '"><img  src="'+ baseUri + 'img/layout_maker/custom_pictures/' + this.image_cart + '" alt="' + this.name +'"></a>';
-                    content += '<div class="cart-info col-md-6"><div class="product-name">' + '<span class="quantity-formated"><span class="quantity">' + this.quantity + '</span>&nbsp;x&nbsp;</span><a href="' + this.link + '" title="' + this.name + '" class="cart_block_product_name">' + name + '</a></div>';
+                    content += '<div class="cart-info col-md-6"><div class="product-name">' + '<span class="quantity-formated"><span class="quantity">' + this.quantity + '</span>&nbsp;x&nbsp;</span><a href="' + this.link + '" title="' + this.name + '" class="cart_block_product_name quick-view-bis">' + name + '</a></div>';
                     if (this.hasAttributes)
                         content += '<div class="product-atributes"><a href="' + this.link + '" title="' + this.name + '">' + this.attributes + '</a></div>';
                     if (typeof (freeProductTranslation) != 'undefined')

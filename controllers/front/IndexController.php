@@ -40,8 +40,8 @@ class IndexControllerCore extends FrontController
         $oDesignCategory = new Category('46', $this->context->language->id);
         $oProductCategory = new Category('45', $this->context->language->id);
         
-        $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 10, 'date_upd', 'ASC');
-        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 10, 'date_upd', 'ASC');
+        $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 10, 'date_add', 'DESC');
+        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 10, 'date_add', 'DESC');
         
         $aCreations = Order::getLastCreations(10);
         
@@ -60,5 +60,6 @@ class IndexControllerCore extends FrontController
         $this->context->controller->addCSS(_THEME_CSS_DIR_ . 'slick/slick.css', 'all');
         $this->context->controller->addCSS(_THEME_CSS_DIR_ . 'slick/slick-theme.css', 'all'); 
         $this->context->controller->addJS(_THEME_JS_DIR_ . 'slick/slick.min.js', 'all');
+        $this->context->controller->addJS(_THEME_JS_DIR_ . 'slick/custom.js', 'all');
     }
 }
