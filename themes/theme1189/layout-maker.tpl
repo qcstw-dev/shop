@@ -84,6 +84,7 @@
     <button class="btn btn-primary add-to-cart ajax_add_to_cart_button" 
             rel="nofollow" title="{l s='Add to cart'}"
             data-id-product=""
+            data-id-design=""
             data-minimal_quantity="1"
             data-picture-url=""
             data-custom-picture=""

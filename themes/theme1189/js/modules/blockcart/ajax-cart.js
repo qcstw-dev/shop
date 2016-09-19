@@ -106,6 +106,7 @@ var ajaxCart = {
         $(document).off('click', '.ajax_add_to_cart_button').on('click', '.ajax_add_to_cart_button', function (e) {
             e.preventDefault();
             var idProduct = parseInt($(this).data('id-product'));
+            var idDesign = parseInt($(this).data('id-design'));
             var minimalQuantity = parseInt($(this).data('minimal_quantity'));
 
             crop();
@@ -116,7 +117,7 @@ var ajaxCart = {
             if (!minimalQuantity)
                 minimalQuantity = 1;
             if ($(this).prop('disabled') != 'disabled')
-                ajaxCart.add(idProduct, null, false, this, minimalQuantity, false, customPicture, originalPicture);
+                ajaxCart.add(idProduct, null, false, this, minimalQuantity, false, idDesign, customPicture, originalPicture);
 
             $.magnificPopup.close();
         });
@@ -255,7 +256,7 @@ var ajaxCart = {
     // close fancybox
     updateFancyBox: function () {},
     // add a product in the cart via ajax
-    add: function (idProduct, idCombination, addedFromProductPage, callerElement, quantity, whishlist, customPicture, originalPicture) {
+    add: function (idProduct, idCombination, addedFromProductPage, callerElement, quantity, whishlist, idDesign, customPicture, originalPicture) {
         if (addedFromProductPage && !checkCustomizations())
         {
             if (contentOnly)
@@ -300,7 +301,7 @@ var ajaxCart = {
             async: true,
             cache: false,
             dataType: "json",
-            data: 'controller=cart&add=1&ajax=true&qty=' + ((quantity && quantity != null) ? quantity : '1') + '&id_product=' + idProduct + '&token=' + static_token + ((parseInt(idCombination) && idCombination != null) ? '&ipa=' + parseInt(idCombination) : '') + '&custom_picture=' + customPicture + (originalPicture ? '&original_picture=' + originalPicture : ''),
+            data: 'controller=cart&add=1&ajax=true&qty=' + ((quantity && quantity != null) ? quantity : '1') + '&id_product=' + idProduct + '&id_design='+idDesign+'&token=' + static_token + ((parseInt(idCombination) && idCombination != null) ? '&ipa=' + parseInt(idCombination) : '') + '&custom_picture=' + customPicture + (originalPicture ? '&original_picture=' + originalPicture : ''),
             success: function (jsonData, textStatus, jqXHR)
             {
                 // add appliance to whishlist module

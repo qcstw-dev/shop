@@ -914,7 +914,7 @@ class CartCore extends ObjectModel
      * @param string $operator Indicate if quantity must be increased or decreased
      */
     public function updateQty($quantity, $id_product, $id_product_attribute = null, $id_customization = false,
-        $operator = 'up', $id_address_delivery = 0, Shop $shop = null, $auto_add_cart_rule = true, $custom_picture, $original_picture)
+        $operator = 'up', $id_address_delivery = 0, Shop $shop = null, $auto_add_cart_rule = true, $id_design = null, $custom_picture, $original_picture)
     {
 
         if (!$shop) {
@@ -1064,6 +1064,7 @@ class CartCore extends ObjectModel
                     'id_shop' =>                $shop->id,
                     'quantity' =>                (int)$quantity,
                     'date_add' =>                date('Y-m-d H:i:s'),
+                    'id_design' =>            (int)$id_design,
                     'custom_picture' =>          $custom_picture,
                     'original_picture' =>        $original_picture
                 ));

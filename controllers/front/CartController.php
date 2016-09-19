@@ -29,6 +29,7 @@ class CartControllerCore extends FrontController
     public $php_self = 'cart';
 
     protected $id_product;
+    protected $id_design;
     protected $id_product_attribute;
     protected $id_address_delivery;
     protected $customization_id;
@@ -64,6 +65,7 @@ class CartControllerCore extends FrontController
         $this->id_product = (int)Tools::getValue('id_product', null);
         $this->id_product_attribute = (int)Tools::getValue('id_product_attribute', Tools::getValue('ipa'));
         $this->customization_id = (int)Tools::getValue('id_customization');
+        $this->id_design = (int)Tools::getValue('id_design');
         $this->custom_picture = Tools::getValue('custom_picture');
         $this->original_picture = Tools::getValue('original_picture');
         $this->qty = abs(Tools::getValue('qty', 1));
@@ -306,7 +308,7 @@ class CartControllerCore extends FrontController
                     $sOriginalPictureName = $this->original_picture;
                 }
                 
-                $update_quantity = $this->context->cart->updateQty($this->qty, $this->id_product, $this->id_product_attribute, $this->customization_id, Tools::getValue('op', 'up'), $this->id_address_delivery, null, null, $sCustomPictureName, $sOriginalPictureName);
+                $update_quantity = $this->context->cart->updateQty($this->qty, $this->id_product, $this->id_product_attribute, $this->customization_id, Tools::getValue('op', 'up'), $this->id_address_delivery, null, null, $this->id_design, $sCustomPictureName, $sOriginalPictureName);
                 
                 if ($update_quantity < 0) {
                     // If product has attribute, minimal quantity is set with minimal quantity of attribute
