@@ -276,11 +276,13 @@ var resizeableImage = function (image_target, customizable) {
             $.magnificPopup.open({
                 items: [{
                         src: $('<div class="white-popup">' +
-                                '<div class="thumbnail">' +
-                                    '<div class="text-center"><img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" /></div>' +
-                                    '<div class="add-to-cart-area"></div>' +
-                                    '<div class="export-image btn btn-primary">Download layout <span class="glyphicon glyphicon-download-alt"></span></div>' +
-                                '</div>'+
+                                    '<div class="thumbnail">' +
+                                        '<div class="text-center"><img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" /></div>' +
+                                    '</div>'+
+                                    '<div class="popup-btns">' +
+                                        '<div class="add-to-cart-area"></div>' +
+                                        '<div class="export-image btn btn-primary">Download layout <span class="glyphicon glyphicon-download-alt"></span></div>' +
+                                    '</div>'+
                                 '</div>'),
                         type: 'inline'
                     }]

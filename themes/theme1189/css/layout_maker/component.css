@@ -110,9 +110,9 @@
     right: -5px;
     cursor: se-resize;
 }
-.overlay img {
+/*.overlay img {
     position: absolute;
-}
+}*/
 .overlay {
     position: absolute;
     left: 30%;
@@ -174,28 +174,31 @@
 
 .add-to-cart,
 .preview-layout {
-    position: absolute;
+    /*position: absolute;*/
     vertical-align: bottom;
     right: 30px;
-    bottom: 5px;
+    /*bottom: 5px;*/
     z-index: 100;
 }
 .preview-layout {
-    right: 180px;
+    margin-right: 10px;
 }
 
 .add-to-cart img {
     vertical-align: middle;
     margin-left: 8px;
 }
-.white-popup .add-to-cart,
-.export-image {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
+.add-to-cart, .preview-layout {
+    float: right;
+}
+/*.white-popup .export-image {
+    left: 0;
+}*/
+.popup-btns {
+    text-align: left;
 }
 .export-image {
-    bottom: 60px;
+    left: 10px;
 }
 .block-layout-maker-info {
     display: none;

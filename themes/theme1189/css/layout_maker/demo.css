@@ -26,17 +26,6 @@ a {
 a:hover, a:focus {
 }
 
-.component {
-    position: relative;
-    /*background: url(../../images/layout_maker/gridme.png) repeat center center;
-    background: #FFF;*/
-    padding: 4em;
-    border: 3px solid #E8E8E8;
-    max-width: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
 /* Header */
 .codrops-header {
     padding: 0 0 2em;

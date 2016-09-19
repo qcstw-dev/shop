@@ -6017,7 +6017,7 @@ span.exclusive {
   color: #fff;
   text-transform: uppercase;
   background: #4267b2;
-  padding: 6px 11px 7px;
+  /*padding: 6px 11px 7px;*/
   -webkit-transition: background 0.2s ease;
   -moz-transition: background 0.2s ease;
   -ms-transition: background 0.2s ease;
@@ -6263,9 +6263,11 @@ a.product-name {
 .product-image-container .btn .glyphicon {
   color: #595959;
 }
+.selection .glyphicon-plus-sign,
 .product_list .btn .glyphicon-plus-sign {
     color: #38B15D;
 }
+.selection .glyphicon-minus-sign,
 .product_list .btn .glyphicon-minus-sign {
     color: #d9534f;
 }
@@ -9352,6 +9354,11 @@ ul.step a:hover:after {
 .popup {
     cursor: zoom-in;
 }
+@media screen and (max-width: 500px){
+    .white-popup {
+        padding: 10px !important;
+    }
+}
 .tooltip-inner {
     max-width: 350px;
     min-width: 100px;
@@ -9413,7 +9420,7 @@ ul.step a:hover:after {
 }
 @media screen and (max-width: 768px){
     .grid-name {
-        height: 32px;
+        height: 46px;
         display: block;
     }
     .title-block-selection {
@@ -9431,10 +9438,10 @@ ul.step a:hover:after {
     font-family: 'Glyphicons Halflings' !important;
 }
 .slick-next {
-    right: -10px !important;
+    right: 5px !important;
 }
 .slick-prev {
-    left: -10px !important;
+    left: 5px !important;
 }
 .slick-next:before, #homepage-slider .bx-wrapper .bx-next:before {
     content: "\e080" !important;
@@ -9444,7 +9451,6 @@ ul.step a:hover:after {
 }
 .big-slick img {
     margin: auto;
-    margin-bottom: 5px;
 }
 .product-container img {
     width: 270px;

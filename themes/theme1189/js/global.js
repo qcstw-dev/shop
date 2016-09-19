@@ -433,9 +433,6 @@ function addRemoveToSelection(id) {
             $.fancybox.showLoading();
         },
         success: function (json) {
-            console.log(json);
-            console.log(element);
-
             $.fancybox.hideLoading();
             if (json.success === true) {
                 if (json.type === 'remove') {

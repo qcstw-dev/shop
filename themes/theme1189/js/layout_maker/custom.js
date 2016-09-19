@@ -52,14 +52,14 @@ $(function() {
                         $('.preview-color').hide();
                         $('.block-item-size').hide();
                         $('.block-design-size').hide();
-                        $('.overlay-img').hide();
+//                        $('.overlay-img').hide();
                         $('.add-to-cart').hide();
                         $('.fileinput-button').hide();
                         $('.slider-vertical').hide();
                         
                         for(var key in json.colors) {
                             $('.change-color-product-block .block-colors').append('\
-                                <div class="col-xs-4 col-sm-2 col-md-6 block-color-product">\n\
+                                <div class="col-xs-4 col-sm-2 col-lg-6 block-color-product">\n\
                                     <div class="thumbnail thumbnail-hover">\n\
                                         <img class="change-color-product" \n\
                                          data-id-color="'+json.colors[key]['name']+'"\n\
@@ -106,6 +106,7 @@ $(function() {
                         } else {
 //                            $('.resize-image').attr('src', $('.resize-image').data('original-url'));
                             $('.fileinput-button').show();
+                            $('#fileupload').trigger('click');
                         }
                     } else {
                         $.fancybox('\

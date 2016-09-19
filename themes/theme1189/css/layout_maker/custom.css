@@ -1,6 +1,13 @@
     .component {
         text-align: center;
         height: 750px;
+        padding: 4em;
+        position: relative;
+        border: 3px solid #E8E8E8;
+        max-width: 100%;
+        overflow: hidden;
+        margin: 0 auto;
+        margin-bottom: 20px;
     }
     .white-image, .custom-white-image {
         display: none;
@@ -31,7 +38,7 @@
     }
 
     .preview-color div {
-        max-height: 550px;
+        max-height: 370px;
     }
     .change-color-product-block,
     .fileinput-button,
@@ -133,7 +140,7 @@
         text-align: center;
     }
     .block-colors {
-        height: 108px;
+        height: 132px;
         overflow: auto;
     }
     .change-color-product-block {
@@ -174,7 +181,7 @@
         width: 7%;
     }
     .overlay-right {
-        width: 9%;
+        width: 10%;
     }
     .custom-margin-left {
         margin-left: -2%;
@@ -217,39 +224,58 @@
         width: 33%;
     }
     .overlay {
-        height: 285px;
+        height: 317px;
     }
 }
 @media screen and (max-width: 470px){
     .component {
-        height: 436px;
+        height: 344px;
+        padding: 10px;
     }
     .list-item-custom-text {
-        font-size: 15px;
-        height: 72px;
+        font-size: 18px;
+        height: auto;
+        padding: 9px;
     }
     .designs-list, .products-list {
         height: 80px;
     }
     .custom-margin-left {
         margin-left: -2%;
-        width: 104%;
+        width: 80%;
+    }
+    .overlay-top,
+    .overlay-bottom
+    {
+        height: 10px;
     }
 }
-
+@media screen and (max-width: 375px){
+    .custom-margin-left {
+        margin-left: -7%;
+        width: 110%;
+        margin-top: -30px;
+    }
+    .component {
+        height: 310px;
+    }
+    .overlay {
+        height: 285px;
+    }
+}
 @media screen and (max-width: 320px){
     .col-xs-6.block-color-product {
         width: 33%;
     }
     .list-item-custom-text {
-        font-size: 13px;
-        height: 58px;
+        font-size: 14px;
+        height: auto;
     }
     .designs-list, .products-list {
         height: 68px;
     }
     .component {
-        height: 390px;
+        height: 264px;
     }
     .overlay {
         height: 240px;

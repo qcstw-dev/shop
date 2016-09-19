@@ -80,17 +80,16 @@
         <div id="slider-vertical" class="slider-vertical" style="display: none">
             <img class="icon-rotate" src="{$img_dir}layout_maker/reload.svg" alt="rotate">
         </div>
-        <button class="btn btn-primary preview-layout" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
-        <button class="btn btn-primary add-to-cart ajax_add_to_cart_button" 
-                rel="nofollow" title="{l s='Add to cart'}"
-                data-id-product=""
-                data-minimal_quantity="1"
-                data-picture-url=""
-                data-custom-picture=""
-                data-original-picture=""
-                style="display: none">{l s='Add to cart'}</button>
     </div>
-
+    <button class="btn btn-primary add-to-cart ajax_add_to_cart_button" 
+            rel="nofollow" title="{l s='Add to cart'}"
+            data-id-product=""
+            data-minimal_quantity="1"
+            data-picture-url=""
+            data-custom-picture=""
+            data-original-picture=""
+            style="display: none">{l s='Add to cart'}</button>
+    <button class="btn btn-primary preview-layout" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
 {else}
     <div class="alert alert-info margin-top-10">
         <p>First you have to select at least one product, then you can comeback on this page to customize it</p>
