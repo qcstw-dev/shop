@@ -40,7 +40,7 @@ class IndexControllerCore extends FrontController
         $oDesignCategory = new Category('46', $this->context->language->id);
         $oProductCategory = new Category('45', $this->context->language->id);
         
-        $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 10, 'date_add', 'DESC');
+        $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 10, 'date_add', 'DESC', null, null, null, null, null, null, true);
         $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 10, 'date_add', 'DESC');
         
         $aCreations = Order::getLastCreations(10);
@@ -50,7 +50,7 @@ class IndexControllerCore extends FrontController
             'HOOK_HOME_TAB_CONTENT' => Hook::exec('displayHomeTabContent'),
             'aProducts'             => $aProducts,
             'aDesigns'              => $aDesigns,
-            'aCreations'              => $aCreations,
+            'aCreations'            => $aCreations,
             'link'                  => $this->context->link
         ));
         $this->setTemplate(_PS_THEME_DIR_.'index.tpl');

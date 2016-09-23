@@ -685,7 +685,7 @@ class CategoryCore extends ObjectModel
      * @return array|int|false Products, number of products or false (no access)
      * @throws PrestaShopDatabaseException
      */
-    public function getProducts($id_lang, $p, $n, $order_by = null, $order_way = null, $get_total = false, $active = true, $random = false, $random_number_products = 1, $check_access = true, Context $context = null)
+    public function getProducts($id_lang, $p, $n, $order_by = null, $order_way = null, $get_total = false, $active = true, $random = false, $random_number_products = 1, $check_access = true, Context $context = null, $bFromDifferentCategories = false)
     {
         if (!$context) {
             $context = Context::getContext();
@@ -773,6 +773,9 @@ class CategoryCore extends ObjectModel
                     .($front ? ' AND product_shop.`visibility` IN ("both", "catalog")' : '')
                     .($id_supplier ? ' AND p.id_supplier = '.(int)$id_supplier : '');
 
+        if ($bFromDifferentCategories) {
+             $sql .= ' GROUP BY category_default';
+        }
         if ($random === true) {
             $sql .= ' ORDER BY RAND() LIMIT '.(int)$random_number_products;
         } else {
