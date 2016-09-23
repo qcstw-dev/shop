@@ -5,9 +5,9 @@
         </div>
         <div class="col-md-6 padding-0 border-right">
             <div class="col-md-12">
-                <p class="text-center uppercase primary-color bold title-block-products">Designs</p>
+                <h5 class="text-center uppercase bold">Designs</h5>
             </div>
-            <div class="col-md-12 padding-10">
+            <div class="col-md-12 padding-0">
                 <div class="designs-list">
                     <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-custom" data-id="custom" data-type="design">
                         <div class="padding border list-item-custom-text img-product">Upload your Design</div>
@@ -22,9 +22,9 @@
         </div>
         <div class="col-md-6 padding-0">
             <div class="col-md-12">
-                <p class="text-center uppercase primary-color bold title-block-products">Products</p>
+                <h5 class="text-center uppercase bold">Products</h5>
             </div>
-            <div class="col-md-12 padding-10">
+            <div class="col-md-12 padding-0">
                 <div class="products-list">
                     {foreach from=$aSelectedProducts item=product name=products}
                         <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-product cursor-pointer list-item-{$product->id}" data-id="{$product->id}" data-type="product" title="{$product->name}">
@@ -97,4 +97,12 @@
         <p><a href="46-designs" title="See the Designs">>> See the Designs</a></p>
         <p><a href="45-products">>> See the Products</a></p>
     </div>
+{/if}
+{if $preselected_design && $preselected_product}
+    <script>
+        $(function() {
+            $('.list-item-{$preselected_product}').trigger('click');
+            $('.list-item-{$preselected_design}').trigger('click');
+        });
+    </script>
 {/if}

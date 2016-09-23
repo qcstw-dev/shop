@@ -136,8 +136,10 @@ var ajaxCart = {
             var productAttributeId = 0;
             var customizableProductDiv = $($(this).parent().parent()).find("div[data-id^=deleteCustomizableProduct_]");
             var idAddressDelivery = false;
+            var designId = $(this).data('id-design');
             var custom_picture = $(this).data('custom-product');
             var original_picture = $(this).data('original-product');
+            var isModify = $(this).data('modify');
             if (customizableProductDiv && $(customizableProductDiv).length)
             {
                 var ids = customizableProductDiv.data('id').split('_');
@@ -151,6 +153,8 @@ var ajaxCart = {
                         idAddressDelivery = parseInt(ids[4]);
                 }
             }
+            console.log(designId);
+            console.log(isModify);
 
             // Common product management
             if (!customizationId)
@@ -169,6 +173,9 @@ var ajaxCart = {
 
             // Removing product from the cart
             ajaxCart.remove(productId, productAttributeId, customizationId, idAddressDelivery, custom_picture, original_picture);
+            if (isModify) {
+                window.location.replace(baseUri+'layout-maker?product='+productId+"&design="+designId);
+            }
         });
     },
     // try to expand the cart

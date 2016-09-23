@@ -9,7 +9,7 @@
     </div>
     <div class="clearfix"></div>
     <div class="col-md-6 border-top border-right">
-        <h5 class="text-center bold">Designs</h5>
+        <h5 class="text-center uppercase bold">Designs</h5>
         <div class="designs-list">
             {if $aSelectedDesigns}
                 {foreach from=$aSelectedDesigns item=design name=designs}
@@ -23,7 +23,7 @@
         <div class="clearfix"></div>
     </div>
     <div class="col-md-6 border-top">
-        <h5 class="text-center bold">Products</h5>
+        <h5 class="text-center uppercase bold">Products</h5>
         <div class="products-list">
             {if $aSelectedProducts}
                 {foreach from=$aSelectedProducts item=product name=products}

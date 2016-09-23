@@ -2,7 +2,7 @@
   width: auto;
   display: inline-block;
   float: none;
-  margin: 20px 0 0 184px; }
+  margin: 20px 0 0 60px; }
   @media (max-width: 991px) {
     #search_block_top {
       display: block;
@@ -58,7 +58,7 @@
     margin-right: 4px;
     height: 30px;
     border: 1px solid #e2e2e2;
-    background: none;
+    /*background: none;*/
     font: 300 10px/28px Ubuntu, sans-serif;
     color: #888888;
     text-transform: uppercase; }

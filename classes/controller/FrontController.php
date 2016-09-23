@@ -571,23 +571,6 @@ class FrontControllerCore extends Controller
         if (!isset($this->context->cart)) {
             $this->context->cart = new Cart();
         }
-//        $this->context->cookie->__unset('selection');
-        $aSelectedItems = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
-        $aSelectedDesigns = [];
-        $aSelectedProducts = [];
-        if ($aSelectedItems) {
-            foreach ($aSelectedItems as $sSelectedItemId) {
-                $oItem = new Product($sSelectedItemId, true, $this->context->language->id);
-                $oItem->image = Product::getCover($oItem->id);
-                if(in_array('45', $oItem->getCategories())){
-                    // it's a product
-                    $aSelectedProducts[] = $oItem;
-                } else {
-                    // it's a design
-                    $aSelectedDesigns[] = $oItem;
-                }
-            }
-        }
         
         if (!$this->useMobileTheme()) {
             // These hooks aren't used for the mobile theme.
@@ -596,10 +579,7 @@ class FrontControllerCore extends Controller
                 'HOOK_HEADER'       => Hook::exec('displayHeader'),
                 'HOOK_TOP'          => Hook::exec('displayTop'),
                 'HOOK_LEFT_COLUMN'  => ($this->display_column_left  ? Hook::exec('displayLeftColumn') : ''),
-                'HOOK_RIGHT_COLUMN' => ($this->display_column_right ? Hook::exec('displayRightColumn', array('cart' => $this->context->cart)) : ''),
-                'selection'             => $aSelectedItems,
-                'aSelectedDesigns'      => $aSelectedDesigns,
-                'aSelectedProducts'      => $aSelectedProducts
+                'HOOK_RIGHT_COLUMN' => ($this->display_column_right ? Hook::exec('displayRightColumn', array('cart' => $this->context->cart)) : '')
             ));
         } else {
             $this->context->smarty->assign('HOOK_MOBILE_HEADER', Hook::exec('displayMobileHeader'));

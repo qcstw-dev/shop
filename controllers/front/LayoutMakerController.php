@@ -35,10 +35,41 @@ class LayoutMakerControllerCore extends FrontController
         parent::initContent();
         $this->setTemplate(_PS_THEME_DIR_.'layout-maker.tpl');
         
-        $selection = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
-
+//        $aProduct = [];
+//        $aDesign = [];
+//        
+//        if (isset($_GET['product'], $_GET['design']) && $_GET['product'] && $_GET['design']) {
+//            $oProduct = new Product($_GET['product'], true, $this->context->language->id);
+//            $aProductImages = $oProduct->getImages($this->context->language->id);
+//            $aProduct['id'] = $_GET['product'];
+//            foreach ($aProductImages as $aProductImage) {
+//                if ($aProductImage['legende'] == '')
+//                $aProduct['img'] = $this->context->link->getImageLink($oProduct->link_rewrite, $_GET['product'], 'layout');
+//            }
+//            
+//            $oDesign = new Product($_GET['design'], true, $this->context->language->id);
+//            $aDesign['id'] = $_GET['design'];
+//            $aDesign['img'] = $this->context->link->getImageLink($oDesign->link_rewrite, $_GET['design'], 'layout');
+//        }
+        
+        
+        /*
+        $aSelection = explode(',', $this->context->cookie->selection);        
+        $preselected_product = (isset($_GET['product']) && $_GET['product'] ? $_GET['product'] : null);
+        $preselected_design = (isset($_GET['design']) && $_GET['design'] ? $_GET['design'] : null);
+        
+        if ($preselected_product && $preselected_design) {
+            $aSelection[] = $preselected_product;  
+            $aSelection[] = $preselected_design;
+        }
+        
+        $selection = ($this->context->cookie->selection ? $aSelection : []);
+        
         $this->context->smarty->assign(array(
-            'selection' => $selection
+            'selection' => $selection,
+            'preselected_product' => $preselected_product,
+            'preselected_design' => $preselected_design,
         ));
+*/
     }
 }
