@@ -590,10 +590,10 @@ class Blocktopmenu extends Module
         return $html;
     }
 
-    protected function generateCategoriesMenu($categories, $is_children = 0)
+    protected function generateCategoriesMenu($categories, $is_children = 0, $sParent = null)
     {
         $html = '';
-
+//        var_dump($categories);
         foreach ($categories as $key => $category) {
             if ($category['level_depth'] > 1) {
                 $cat = new Category($category['id_category']);
@@ -606,9 +606,12 @@ class Blocktopmenu extends Module
             if ((bool)$category['active'] === false) {
                 continue;
             }
-
+            
             $html .= '<li'.(($this->page_name == 'category'
                 && (int)Tools::getValue('id_category') == (int)$category['id_category']) ? ' class="sfHoverForce"' : '').'>';
+            if ($is_children && $sParent != "Products") {
+                $html .= '<a href="'.$link.'" title="'.$category['name'].'"><img src="'.$this->context->link->getCatImageLink($category['link_rewrite'], $category['id_category'], 'tm_medium_default').'" /></a>';
+            }
             $html .= '<a href="'.$link.'" title="'.$category['name'].'">'.$category['name'].'</a>';
 
             if (isset($category['children']) && !empty($category['children'])) {

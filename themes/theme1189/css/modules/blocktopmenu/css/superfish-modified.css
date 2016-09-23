@@ -162,21 +162,25 @@ ul.sf-menu li li li.sfHover ul {
 
 .sf-menu > li > ul {
   border: 1px solid #4267b2;
-  padding: 30px;
+  padding: 20px;
   width: 100%; }
   .sf-menu > li > ul > li > a {
     text-transform: uppercase;
     font: 300 14px/normal Ubuntu, sans-serif;
-    color: #4267b2;
-    font-weight: bold;
+  }
+  .sf-menu > li > ul > li > a > img {
+      width: 50px;
+      margin-right: 10px;
   }
     .sf-menu > li > ul > li > a:hover {
       color: #333333; }
 
 .sf-menu > li > ul > li {
   float: left;
-  width: 20%;
-  padding-right: 15px; }
+  width: 25%;
+  padding-right: 15px; 
+  margin-bottom: 10px;
+}
   @media (max-width: 767px) {
     .sf-menu > li > ul > li {
       width: 50%; } }
