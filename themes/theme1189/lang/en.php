@@ -120,8 +120,11 @@ $_LANG['best-sales_73d3cc7826075c127caaadb0e20162ab'] = 'No top sellers for the 
 $_LANG['breadcrumb_56cf8b33ab527ab81b4f6b3ceac090dd'] = 'Return to Home';
 $_LANG['breadcrumb_641879153fe03137042781f70f56c98d'] = 'Back to Search results for "%s" (%d other results)';
 $_LANG['category-count_ff32f7dba36bcd6d0a4214cd80253c3a'] = 'There are no products in this category.';
+$_LANG['category-count_27f0935603513e98238a064c2228a435'] = 'There are no designss in this category.';
 $_LANG['category-count_79ac892bd1769d83ef1c16dae9f4eddd'] = 'There is 1 product.';
+$_LANG['category-count_96495b4f6ae7cd371b0f2ff8e20fb6bf'] = 'There is 1 design.';
 $_LANG['category-count_a9d48596a6537347711527bab8fcd152'] = 'There are %d products.';
+$_LANG['category-count_f43e822e60217f1db6a5b267b69c9471'] = 'There are %d designs.';
 $_LANG['category_d3da97e2d9aee5c8fbe03156ad051c99'] = 'More';
 $_LANG['category_f73cc399b5ce12735a57f03414f09ef9'] = 'Subcategories';
 $_LANG['category_2f4e54ec9bebe1122b5c23217e764828'] = 'This category is currently unavailable.';
@@ -190,6 +193,7 @@ $_LANG['guest-tracking_63c193f613dd3d9d6c16da7678efda2a'] = 'Order Reference:';
 $_LANG['guest-tracking_92dbb751eb9457441af82a53f3cfae54'] = 'For example: QIIXJXNUI or QIIXJXNUI#1';
 $_LANG['guest-tracking_6a1e265f92087bb6dd18194833fe946b'] = 'Email:';
 $_LANG['header_0fcd4065ff78fceb3083316ddb958bc1'] = 'You cannot place a new order from your country.';
+$_LANG['header_1f93fec9178d7dd818bf5d60a53dca66'] = 'Custom gifts for unique memories';
 $_LANG['history_d95cf4ab2cbf1dfb63f066b50558b07d'] = 'My account';
 $_LANG['history_782c8b38bce4f2f6975ca7f33ac8189b'] = 'Order history';
 $_LANG['history_06b05d09714a236f1e285a6b5c83a209'] = 'Here are the orders you\'ve placed since your account was created.';
@@ -857,5 +861,8 @@ $_LANG['live_edit_c9cc8cce247e49bae79f15173ce97354'] = 'Save';
 $_LANG['live_edit_d8dcfab18b3a6eba56d617dd1dcb1ba7'] = 'Close Live edit';
 
 $_LANG['index_7f3098e9ea4a36b21d46b945a74fd56d'] = 'Your selection';
+$_LANG['index_b156d26319a6f0e6dbb87c1f365ce3f5'] = 'Latest designs in library';
+$_LANG['index_68cc2b0aedd624edd477bdca77fa08b5'] = 'latest product available';
+$_LANG['index_a059249371c96ed355922170c2d997bf'] = 'Recently ordered';
 
 return $_LANG;
