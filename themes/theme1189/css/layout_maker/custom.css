@@ -113,6 +113,10 @@
     .block-color-product .thumbnail {
         margin-bottom: 10px;
     }
+    .hidden-uploader {
+        position: absolute !important;
+        left: -1000px;
+    }
 @media screen and (max-width: 1024px){
     .fileinput-button{
         width: auto;

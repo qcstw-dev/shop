@@ -78,6 +78,10 @@
                                     <span class="grid-name">{$product.name|cat:$product.reference|truncate:30:'...'|escape:'html':'UTF-8'}</span>
                                 </a>
                             </h5>
+                        {else}
+                            <h5 itemprop="name">
+                                <span class="grid-name-design">{$product.name|cat:$product.reference|truncate:30:'...'|escape:'html':'UTF-8'}</span>
+                            </h5>
                         {/if}
                     <p class="product-desc" itemprop="description">
                         <span class="list-desc">{$product.description_short|strip_tags:'UTF-8'|truncate:360:'...'}</span>

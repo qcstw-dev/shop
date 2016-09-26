@@ -1,5 +1,5 @@
 $(function () {
-    $('#fileupload').fileupload({
+    $('.fileupload').fileupload({
         dataType: 'json',
         autoUpload: false,
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png|eps)$/i,
@@ -37,9 +37,6 @@ $(function () {
                 });
             }
             $('.resize-image').removeClass('custom-margin-left');
-            $('.slider-vertical').show();
-            $('.add-to-cart').show();
-            $('.fileinput-button').show();
             
             $('.list-item-custom').trigger('click');
             

@@ -10,7 +10,7 @@
             <div class="col-md-12 padding-0">
                 <div class="designs-list">
                     <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-custom" data-id="custom" data-type="design">
-                        <div class="padding border list-item-custom-text img-product">Upload your Design</div>
+                        <div class="padding border list-item-custom-text img-product uppercase">Upload your Design</div>
                     </div>
                     {foreach from=$aSelectedDesigns item=design name=designs}
                         <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-{$design->id}" data-id="{$design->id}" data-type="design" title="{$design->name}">
@@ -58,10 +58,13 @@
             </div>
         </div>
     </div>
+    <div class="hidden-uploader">
+        <input class="fileupload hidden-fileupload" type="file" name="files[]" >
+    </div>
     <span class="btn btn-primary fileinput-button col-xs-2" style="display: none">
         <i class="glyphicon glyphicon-plus"></i>
         <span>Add your logo...</span>
-        <input id="fileupload" type="file" name="files[]" >
+        <input class="fileupload" type="file" name="files[]" >
     </span>
     <div id="files" class="files"></div>
     <div class="clearfix"></div>

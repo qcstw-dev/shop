@@ -202,6 +202,30 @@ function quick_view()
     });
 }
 
+function quick_view_event(url) {
+    var url = url;
+    var anchor = '';
+
+    if (url.indexOf('#') != -1)
+    {
+        anchor = url.substring(url.indexOf('#'), url.length);
+        url = url.substring(0, url.indexOf('#'));
+    }
+    if (url.indexOf('?') != -1)
+        url += '&';
+    else
+        url += '?';
+
+    if (!!$.prototype.fancybox)
+        $.fancybox({
+            'padding': 0,
+            'width': 900,
+            'height': 500,
+            'type': 'iframe',
+            'href': url + 'content_only=1' + anchor
+        });
+}
+
 function bindGrid()
 {
     var view = $.totalStorage('display');

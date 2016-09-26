@@ -6207,7 +6207,8 @@ table.table_block td {
     .product-name a:hover {
       color: #888; }
 
-a.product-name {
+a.product-name,
+.grid-name-design {
   font-weight: 300;
   font-size: 14px;
   line-height: 16px;

@@ -147,8 +147,11 @@ class CategoryControllerCore extends FrontController
         
         $selection = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
         
+        $aParentCategory = array_values(Category::getCategoryInformations([$this->category->id_parent]))[0];
+        
         $this->context->smarty->assign(array(
             'category'             => $this->category,
+            'parent_category'      => $aParentCategory,
             'description_short'    => Tools::truncateString($this->category->description, 350),
             'products'             => (isset($this->cat_products) && $this->cat_products) ? $this->cat_products : null,
             'id_category'          => (int)$this->category->id,

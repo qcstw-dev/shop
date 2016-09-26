@@ -128,6 +128,7 @@ $_LANG['category-count_f43e822e60217f1db6a5b267b69c9471'] = 'There are %d design
 $_LANG['category_d3da97e2d9aee5c8fbe03156ad051c99'] = 'More';
 $_LANG['category_f73cc399b5ce12735a57f03414f09ef9'] = 'Subcategories';
 $_LANG['category_2f4e54ec9bebe1122b5c23217e764828'] = 'This category is currently unavailable.';
+$_LANG['category_7060c730ed2ad5e110a5d9c2a95e62ee'] = 'Back to all %s';
 $_LANG['cms_24a26cffdfea04302a5bc20b9bce6626'] = 'This CMS page is not visible to your customers.';
 $_LANG['cms_110a4b01beabd53b661a47d4b44bd7a8'] = 'Publish';
 $_LANG['cms_0557fa923dcee4d0f86b1409f5c2167f'] = 'Back';

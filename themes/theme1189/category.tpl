@@ -22,7 +22,7 @@
                     </div>
                 {else}
                     <!-- Category image -->
-                    <div class="content_scene_cat_bg row">
+                    <!--<div class="content_scene_cat_bg row">
                         {if $category->id_image}
                             <div class="category-image hidden-xs col-xs-12 col-sm-5 col-md-4 col-lg-3">
                                 <img class="img-responsive" src="{$link->getCatImageLink($category->link_rewrite, $category->id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{$category->name|escape:'html':'UTF-8'}" />
@@ -47,16 +47,18 @@
                                 {/if}
                             </div>
                         {/if}
-                    </div>
+                    </div>-->
                 {/if}
             </div>
         {/if}
         <h1 class="page-heading{if (isset($subcategories) && !$products) || (isset($subcategories) && $products) || !isset($subcategories) && $products} product-listing{/if}">
             <span class="cat-name">{$category->name|escape:'html':'UTF-8'}{if isset($categoryNameComplement)}&nbsp;{$categoryNameComplement|escape:'html':'UTF-8'}{/if}</span>
             {include file="$tpl_dir./category-count.tpl"}
+            {if $category->id_parent != '2'}
+                <div class="margin-bottom-10 margin-top-10"><a class="bold font-size-15" href="{$link->getCategoryLink($category->id_parent, $category->link_rewrite)|escape:'html':'UTF-8'}"><< {l s='Back to all %s' sprintf=$parent_category['name']}</a></div>
+            {/if}
         </h1>
-
-        {if isset($subcategories)}
+        {if false && isset($subcategories)}
             {if (isset($display_subcategories) && $display_subcategories eq 1) || !isset($display_subcategories)}
                 <!-- Subcategories -->
                 <div id="subcategories">
