@@ -58,7 +58,7 @@
                 <div class="margin-bottom-10 margin-top-10"><a class="bold font-size-15" href="{$link->getCategoryLink($category->id_parent, $category->link_rewrite)|escape:'html':'UTF-8'}"><< {l s='Back to all %s' sprintf=$parent_category['name']}</a></div>
             {/if}
         </h1>
-        {if false && isset($subcategories)}
+        {if $category->name != "Products" && isset($subcategories)}
             {if (isset($display_subcategories) && $display_subcategories eq 1) || !isset($display_subcategories)}
                 <!-- Subcategories -->
                 <div id="subcategories">
