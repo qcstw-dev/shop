@@ -261,6 +261,14 @@ class ProductControllerCore extends FrontController
             
             $selection = ($this->context->cookie->selection ? explode(',', $this->context->cookie->selection) : []);
             
+            $aQuantities = [1, 5, 10, 25, 50, 100];
+            
+            $aPrices = [];
+            
+            foreach ($aQuantities as $iQuantity) {
+                $aPrices[$iQuantity] = Product::getPriceStatic((int)$this->product->id, true, null, 0, null, false, true, $iQuantity);
+            }
+            
             $this->context->smarty->assign(array(
                 'stock_management' => Configuration::get('PS_STOCK_MANAGEMENT'),
                 'customizationFields' => $customization_fields,
@@ -295,7 +303,8 @@ class ProductControllerCore extends FrontController
                 ),
                 'display_discount_price' => Configuration::get('PS_DISPLAY_DISCOUNT_PRICE'),
                 'selection' => $selection,
-                'colors' => $this->product->getColors($this->context->language->id)
+                'colors' => $this->product->getColors($this->context->language->id),
+                'prices' => $aPrices
             ));
         }
         $this->setTemplate(_PS_THEME_DIR_.'product.tpl');

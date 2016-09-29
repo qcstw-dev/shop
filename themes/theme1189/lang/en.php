@@ -715,6 +715,7 @@ $_LANG['product_476efcbaed950dd513ffc08e4e9a632f'] = 'Uploading in progress, ple
 $_LANG['product_f787618e514c038851726224d7e4421e'] = 'No file selected';
 $_LANG['product_e635032a5f71d809146d3872389f5b0c'] = 'Choose File';
 $_LANG['product_1323281e4b3e32c8ce6184e376584a19'] = 'Colors available';
+$_LANG['product_64b742d658ef4c9ded6142219faa26e4'] = '*price for 10 pieces';
 $_LANG['restricted-country_cf8092a0be7b972d6cee3db90bfaf923'] = 'You cannot access this store from your country. We apologize for the inconvenience.';
 $_LANG['scenes_03c2e7e41ffc181a4e84080b4710e81e'] = 'New';
 $_LANG['scenes_f2cd171bd42220283b7a595c3ff2aaaf'] = 'Sale';

@@ -208,7 +208,7 @@
                                     <ul class="color-preview-list">
                                         {foreach from=$colors item=color}
                                             <li class="color-preview" style="background: {$color.color}"></li>
-                                        {/foreach}
+                                            {/foreach}
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -226,7 +226,7 @@
                                 <input type="hidden" name="id_product_attribute" id="idCombination" value="" />
                             </p>
                             <div class="box-info-product">
-                                <div class="content_prices pull-left">
+                                <div class="content_prices">
                                     {if $product->show_price && !isset($restricted_country_mode) && !$PS_CATALOG_MODE}
                                         <!-- prices -->
                                         <div class="old-price-info">
@@ -256,61 +256,73 @@
                                                 {/strip}
                                             </p>
                                         </div>
-                                        {if $product->category != 'designs'}
-                                            <p class="our_price_display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                                {strip}
-                                                    {if $product->quantity > 0}<link itemprop="availability" href="http://schema.org/InStock"/>{/if}
-                                                    {if $priceDisplay >= 0 && $priceDisplay <= 2}
-                                                        <span id="our_price_display" itemprop="price">{convertPrice price=$productPrice}</span>
-                                                        {if $tax_enabled  && ((isset($display_tax_label) && $display_tax_label == 1) || !isset($display_tax_label))}
-                                                    {if $priceDisplay == 1}{l s='tax excl.'}{else}{l s='tax incl.'}{/if}
+                                        <div class="col-xs-7 col-sm-12 padding-0 margin-bottom-10">
+                                            <div class="col-xs-12 border padding-0">
+                                                <div class="tab-price-cel-first col-xs-2 padding-0 text-center padding-0">Quantity</div>
+                                                {foreach from=$prices key=quantity item=price}
+                                                    <div class="tab-price-cel col-xs-1 padding-0 text-center border-left">{$quantity}/pcs</div>
+                                                {/foreach}
+                                            </div>
+                                            <div class="col-xs-12 border border-top-0 padding-0">
+                                                <div class="tab-price-cel-first col-xs-2 padding-0 text-center padding-0">Unit price</div>
+                                                {foreach from=$prices key=quantity item=price}
+                                                    <div class="tab-price-cel col-xs-1 padding-0 text-center border-left">{convertPrice price=$price}</div>
+                                                {/foreach}
+                                            </div>
+                                        </div>
+
+                                        {if $priceDisplay == 2}
+                                            <br />
+                                            <span id="pretaxe_price">
+                                                <span id="pretaxe_price_display">{convertPrice price=$product->getPrice(false, $smarty.const.NULL)}</span>
+                                                {l s='tax excl.'}
+                                            </span>
+                                        {/if}
+                                        <!-- end prices -->
+                                        {if $packItems|@count && $productPrice < $product->getNoPackPrice()}
+                                            <p class="pack_price">
+                                                {l s='Instead of'} 
+                                                <span style="text-decoration: line-through;">{convertPrice price=$product->getNoPackPrice()}</span>
+                                            </p>
+                                        {/if}
+                                        {if $product->ecotax != 0}
+                                            <p class="price-ecotax">
+                                                {l s='Including'}
+                                                <span id="ecotax_price_display">{if $priceDisplay == 2}{$ecotax_tax_exc|convertAndFormatPrice}{else}{$ecotax_tax_inc|convertAndFormatPrice}{/if}</span> 
+                                                {l s='for ecotax'}
+                                                {if $product->specificPrice && $product->specificPrice.reduction}
+                                                    <br />{l s='(not impacted by the discount)'}
                                                 {/if}
+                                            </p>
+                                        {/if}
+                                        {if !empty($product->unity) && $product->unit_price_ratio > 0.000000}
+                                            {math equation="pprice / punit_price"  pprice=$productPrice  punit_price=$product->unit_price_ratio assign=unit_price}
+                                            <p class="unit-price">
+                                                <span id="unit_price_display">{convertPrice price=$unit_price}</span> 
+                                                {l s='per'} {$product->unity|escape:'html':'UTF-8'}
+                                            </p>
+                                            {hook h="displayProductPriceBlock" product=$product type="unit_price"}
+                                        {/if}
+                                        {if ($product->specificPrice && $product->specificPrice.reduction && $productPriceWithoutReduction > $productPrice) && !$product->on_sale}
+                                            <span class="discount">{l s='Reduced price!'}</span>
+                                        {/if}
+                                    {/if} 
+                                    {*close if for show price*}
+                                    {hook h="displayProductPriceBlock" product=$product type="weight"}
+                                    <div class="clear"></div>
+                                </div> <!-- end content_prices -->
+                                {if $product->category != 'designs'}
+                                    <div class="pull-left">
+                                        <p class="our_price_display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                            {strip}
+                                                <span id="our_price_display" itemprop="price">{convertPrice price=$prices.10}*</span>
                                                 <meta itemprop="priceCurrency" content="{$currency->iso_code}" />
                                                 {hook h="displayProductPriceBlock" product=$product type="price"}
-                                            {/if}
-                                        {/strip}
-                                    </p>
+                                            {/strip}
+                                        </p>
+                                        <p>{l s='*price for 10 pieces'}</p>
+                                    </div>
                                 {/if}
-                                {if $priceDisplay == 2}
-                                    <br />
-                                    <span id="pretaxe_price">
-                                        <span id="pretaxe_price_display">{convertPrice price=$product->getPrice(false, $smarty.const.NULL)}</span>
-                                        {l s='tax excl.'}
-                                    </span>
-                                {/if}
-                                <!-- end prices -->
-                                {if $packItems|@count && $productPrice < $product->getNoPackPrice()}
-                                    <p class="pack_price">
-                                        {l s='Instead of'} 
-                                        <span style="text-decoration: line-through;">{convertPrice price=$product->getNoPackPrice()}</span>
-                                    </p>
-                                {/if}
-                                {if $product->ecotax != 0}
-                                    <p class="price-ecotax">
-                                        {l s='Including'}
-                                        <span id="ecotax_price_display">{if $priceDisplay == 2}{$ecotax_tax_exc|convertAndFormatPrice}{else}{$ecotax_tax_inc|convertAndFormatPrice}{/if}</span> 
-                                        {l s='for ecotax'}
-                                        {if $product->specificPrice && $product->specificPrice.reduction}
-                                            <br />{l s='(not impacted by the discount)'}
-                                        {/if}
-                                    </p>
-                                {/if}
-                                {if !empty($product->unity) && $product->unit_price_ratio > 0.000000}
-                                    {math equation="pprice / punit_price"  pprice=$productPrice  punit_price=$product->unit_price_ratio assign=unit_price}
-                                    <p class="unit-price">
-                                        <span id="unit_price_display">{convertPrice price=$unit_price}</span> 
-                                        {l s='per'} {$product->unity|escape:'html':'UTF-8'}
-                                    </p>
-                                    {hook h="displayProductPriceBlock" product=$product type="unit_price"}
-                                {/if}
-                                {if ($product->specificPrice && $product->specificPrice.reduction && $productPriceWithoutReduction > $productPrice) && !$product->on_sale}
-                                    <span class="discount">{l s='Reduced price!'}</span>
-                                {/if}
-                            {/if} 
-                            {*close if for show price*}
-                            {hook h="displayProductPriceBlock" product=$product type="weight"}
-                            <div class="clear"></div>
-                        </div> <!-- end content_prices -->
                         <div class="product_attributes pull-right">
                             {if isset($groups)}
                                 <!-- attributes -->
