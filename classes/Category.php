@@ -685,7 +685,7 @@ class CategoryCore extends ObjectModel
      * @return array|int|false Products, number of products or false (no access)
      * @throws PrestaShopDatabaseException
      */
-    public function getProducts($id_lang, $p, $n, $order_by = null, $order_way = null, $get_total = false, $active = true, $random = false, $random_number_products = 1, $check_access = true, Context $context = null, $bFromDifferentCategories = false)
+    public function getProducts($id_lang, $p, $n, $order_by = null, $order_way = null, $get_total = false, $active = true, $random = false, $random_number_products = 0, $check_access = true, Context $context = null, $bFromDifferentCategories = false)
     {
         if (!$context) {
             $context = Context::getContext();
@@ -777,7 +777,12 @@ class CategoryCore extends ObjectModel
              $sql .= ' GROUP BY category_default';
         }
         if ($random === true) {
-            $sql .= ' ORDER BY RAND() LIMIT '.(int)$random_number_products;
+            $sql .= ' ORDER BY RAND()';
+            if ($random_number_products) {
+                $sql .=' LIMIT '.(int)$random_number_products;
+            } else {
+                $sql .= 'LIMIT '.(((int)$p - 1) * (int)$n).','.(int)$n;
+            }
         } else {
             $sql .= ' ORDER BY '.(!empty($order_by_prefix) ? $order_by_prefix.'.' : '').'`'.bqSQL($order_by).'` '.pSQL($order_way).'
 			LIMIT '.(((int)$p - 1) * (int)$n).','.(int)$n;
