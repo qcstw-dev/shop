@@ -9480,3 +9480,47 @@ ul.step a:hover:after {
         float: none;
     }
 }
+.list-item-custom-text {
+    font-size: 19px;
+    text-align: center;
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+@media screen and (max-width: 1024px){
+    .list-item-custom-text {
+        font-size: 18px;
+        height: 104px;
+        padding: 0;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 768px){
+    .list-item-custom-text {
+        font-size: 25px;
+        height: 162px;
+    }
+}
+@media screen and (max-width: 670px){
+    .list-item-custom-text {
+        font-size: 25px;
+        height: 145px;
+    }
+}
+@media screen and (max-width: 470px){
+    .list-item-custom-text {
+        font-size: 18px;
+        height: auto;
+        padding: 9px;
+    }
+}
+@media screen and (max-width: 320px){
+    .list-item-custom-text {
+        font-size: 14px;
+        height: auto;
+    }
+}
+.disabled_link {
+    cursor: not-allowed;
+}

@@ -95,14 +95,6 @@
     .list-item.selected .img-product {
         border: 3px solid #ddd;
     }
-    .list-item-custom-text {
-        font-size: 19px;
-        text-align: center;
-        height: 128px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
     .designs-list {
         overflow: auto;
         height: 139px;
@@ -136,12 +128,6 @@
     }
     .overlay-right {
         width: 17%;
-    }
-    .list-item-custom-text {
-        font-size: 18px;
-        height: 104px;
-        padding: 0;
-        text-align: center;
     }
     .block-colors {
         height: 132px;
@@ -177,10 +163,6 @@
     .designs-list, .products-list {
         height: 174px;
     }
-    .list-item-custom-text {
-        font-size: 25px;
-        height: 162px;
-    }
     .overlay-left {
         width: 7%;
     }
@@ -213,10 +195,6 @@
     .resize-container img, .overlay img {
         width: 100%;
     }
-    .list-item-custom-text {
-        font-size: 25px;
-        height: 145px;
-    }
     .designs-list, .products-list {
         height: 156px;
     }
@@ -235,11 +213,6 @@
     .component {
         height: 344px;
         padding: 10px;
-    }
-    .list-item-custom-text {
-        font-size: 18px;
-        height: auto;
-        padding: 9px;
     }
     .designs-list, .products-list {
         height: 80px;
@@ -270,10 +243,6 @@
 @media screen and (max-width: 320px){
     .col-xs-6.block-color-product {
         width: 33%;
-    }
-    .list-item-custom-text {
-        font-size: 14px;
-        height: auto;
     }
     .designs-list, .products-list {
         height: 68px;
