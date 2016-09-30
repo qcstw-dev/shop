@@ -4,14 +4,14 @@
             <h4 class="title-block-selection margin-top-20 uppercase">{l s='Your selection'}</h4>
         </div>
         <div class="col-md-2 margin-top-10 margin-bottom-10 clearfix">
-            <a class="btn btn-block-selection secondary-background-color pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Customize your product</a>
+            <a class="btn btn-block-selection secondary-background-color pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Place designs on products</a>
         </div>
     </div>
     <div class="clearfix"></div>
     <div class="col-md-6 border-top border-right">
         <h5 class="text-center uppercase bold">Designs</h5>
         <div class="designs-list">
-            <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-design list-item-custom disabled_link" data-id="custom" data-type="design">
+            <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-design list-item-custom cursor-default" data-id="custom" data-type="design">
                 <div class="padding border list-item-custom-text img-product uppercase">Upload your Design</div>
             </div>
             {if $aSelectedDesigns}

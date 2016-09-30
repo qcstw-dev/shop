@@ -6276,6 +6276,11 @@ a.product-name,
 .product_list .btn .glyphicon-minus-sign {
     color: #d9534f;
 }
+.menu-your-design-icon {
+    font-size: 34px;
+    padding: 8px !important;
+    color: #FF9800;
+}
 .btn-add, 
 .btn-remove,
 .btn-detail {
@@ -7497,10 +7502,12 @@ div.star a:hover {
   vertical-align: middle; }
 
 .cart_delete a.cart_quantity_delete,
+.cart_delete a.ajax_cart_block_remove_link,
 a.price_discount_delete {
   font-size: 23px;
   color: #333333; }
-  .cart_delete a.cart_quantity_delete:hover,
+    .cart_delete a.cart_quantity_delete:hover,
+    .cart_delete a.ajax_cart_block_remove_link:hover,
   a.price_discount_delete:hover {
     color: silver; }
 
@@ -8988,7 +8995,12 @@ ul.step a:hover:after {
 .cursor-pointer {
     cursor: pointer;
 }
-
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+.cursor-default {
+    cursor: default;
+}
 .block-selection a,
 .block-selection ul li a:hover {
     text-decoration: none;
@@ -9520,7 +9532,4 @@ ul.step a:hover:after {
         font-size: 14px;
         height: auto;
     }
-}
-.disabled_link {
-    cursor: not-allowed;
 }

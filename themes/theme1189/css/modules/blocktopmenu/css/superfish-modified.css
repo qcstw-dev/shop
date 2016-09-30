@@ -163,9 +163,9 @@ ul.sf-menu li li li.sfHover ul {
 .sf-menu > li > ul {
   border: 1px solid #4267b2;
   padding: 20px;
+  text-transform: uppercase;
   width: 100%; }
   .sf-menu > li > ul > li > a {
-    text-transform: uppercase;
     font: 300 14px/normal Ubuntu, sans-serif;
   }
   .sf-menu > li > ul > li > a > img {

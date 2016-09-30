@@ -593,7 +593,7 @@ class Blocktopmenu extends Module
     protected function generateCategoriesMenu($categories, $is_children = 0, $sParent = null)
     {
         $html = '';
-//        var_dump($categories);
+        $bDisplayedYourDesign = false;
         foreach ($categories as $key => $category) {
             if ($category['level_depth'] > 1) {
                 $cat = new Category($category['id_category']);
@@ -607,9 +607,15 @@ class Blocktopmenu extends Module
                 continue;
             }
             
+        if ($is_children && $category['id_parent'] == '46') {
+                if (!$bDisplayedYourDesign) {
+                    $html .= '<li class="sfHoverForce cursor-default"><span class="glyphicon glyphicon-level-up menu-your-design-icon"></span> <span class="padding-bottom-10">Your own design</span></li>';
+                    $bDisplayedYourDesign = true;
+                }
+            }
             $html .= '<li'.(($this->page_name == 'category'
                 && (int)Tools::getValue('id_category') == (int)$category['id_category']) ? ' class="sfHoverForce"' : '').'>';
-            if ($is_children && $sParent != "Products") {
+            if ($is_children) {
                 $html .= '<a href="'.$link.'" title="'.$category['name'].'"><img src="'.$this->context->link->getCatImageLink($category['link_rewrite'], $category['id_category'], 'tm_medium_default').'" /></a>';
             }
             $html .= '<a href="'.$link.'" title="'.$category['name'].'">'.$category['name'].'</a>';
