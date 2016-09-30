@@ -128,7 +128,7 @@ var ajaxCart = {
         });
 
         //for 'delete' buttons in the cart block...
-        $(document).off('click', '.cart_block_list .ajax_cart_block_remove_link').on('click', '.cart_block_list .ajax_cart_block_remove_link', function (e) {
+        $(document).off('click', '.ajax_cart_block_remove_link').on('click', '.ajax_cart_block_remove_link', function (e) {
             e.preventDefault();
             // Customized product management
             var customizationId = 0;
@@ -152,29 +152,31 @@ var ajaxCart = {
                     if (typeof (ids[4]) != 'undefined')
                         idAddressDelivery = parseInt(ids[4]);
                 }
+            } else {
+                productId = $(this).data('id-product');
             }
-            console.log(designId);
-            console.log(isModify);
 
             // Common product management
-            if (!customizationId)
-            {
-                //retrieve idProduct and idCombination from the displayed product in the block cart
-                var firstCut = $(this).parent().parent().data('id').replace('cart_block_product_', '');
-                firstCut = firstCut.replace('deleteCustomizableProduct_', '');
-                ids = firstCut.split('_');
-                productId = parseInt(ids[0]);
-
-                if (typeof (ids[1]) != 'undefined')
-                    productAttributeId = parseInt(ids[1]);
-                if (typeof (ids[2]) != 'undefined')
-                    idAddressDelivery = parseInt(ids[2]);
-            }
+//            if (!customizationId)
+//            {
+//                //retrieve idProduct and idCombination from the displayed product in the block cart
+//                var firstCut = $(this).parent().parent().data('id').replace('cart_block_product_', '');
+//                firstCut = firstCut.replace('deleteCustomizableProduct_', '');
+//                ids = firstCut.split('_');
+//                productId = parseInt(ids[0]);
+//
+//                if (typeof (ids[1]) != 'undefined')
+//                    productAttributeId = parseInt(ids[1]);
+//                if (typeof (ids[2]) != 'undefined')
+//                    idAddressDelivery = parseInt(ids[2]);
+//            }
 
             // Removing product from the cart
-            ajaxCart.remove(productId, productAttributeId, customizationId, idAddressDelivery, custom_picture, original_picture);
-            if (isModify) {
-                window.location.replace(baseUri+'layout-maker?product='+productId+"&design="+designId);
+            if (productId && custom_picture) {
+                ajaxCart.remove(productId, productAttributeId, customizationId, idAddressDelivery, custom_picture, original_picture);
+                if (isModify) {
+                    window.location.replace(baseUri+'layout-maker?product='+productId+"&design="+designId);
+                }
             }
         });
     },

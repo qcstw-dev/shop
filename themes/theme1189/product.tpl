@@ -260,7 +260,7 @@
                                             <div class="col-xs-12 border padding-0">
                                                 <div class="tab-price-cel-first col-xs-2 padding-0 text-center padding-0">Quantity</div>
                                                 {foreach from=$prices key=quantity item=price}
-                                                    <div class="tab-price-cel col-xs-1 padding-0 text-center border-left">{$quantity}/pcs</div>
+                                                    <div class="tab-price-cel col-xs-1 padding-0 text-center border-left">{$quantity}pc{if $quantity > 1}s{/if}</div>
                                                 {/foreach}
                                             </div>
                                             <div class="col-xs-12 border border-top-0 padding-0">

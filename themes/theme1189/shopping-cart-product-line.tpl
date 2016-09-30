@@ -117,9 +117,10 @@
 {if !isset($noDeleteButton) || !$noDeleteButton}
     <td class="cart_delete text-center">
         {if (!isset($customizedDatas.$productId.$productAttributeId) OR $quantityDisplayed > 0) && empty($product.gift)}
-            <div>
+            <div class="margin-bottom-10">
                 <a rel="nofollow" title="{l s='Delete'}" class="cart_quantity_delete" data-custom-picture="{$product.custom_picture}" data-original-picture="{$product.original_picture}" id="{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}_{$product.custom_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery|intval}&amp;token={$token_cart}&amp;custom_picture={$product.custom_picture}")|escape:'html':'UTF-8'}"><i class="fa fa-trash-o"></i></a>
             </div>
+            <a class="ajax_cart_block_remove_link" data-modify="true" data-id-product="{$product.id_product}" data-id-design="{$product.id_design}" data-custom-product="{$product.custom_picture}" data-original-product="{$product.original_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}" rel="nofollow"><span class="glyphicon glyphicon-pencil font-size-15"></span></a>
         {else}
 
         {/if}
