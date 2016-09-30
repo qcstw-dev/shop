@@ -1,10 +1,10 @@
-<div class="block-selection border margin-top-10 margin-bottom-10">
-    <div class="col-xs-12 padding-0">
+<div class="block-selection margin-top-10 margin-bottom-10">
+    <div class="col-xs-12 block-selection-top-title padding-0">
         <div class="col-md-10">
             <h4 class="title-block-selection margin-top-20 uppercase">{l s='Your selection'}</h4>
         </div>
         <div class="col-md-2 margin-top-10 margin-bottom-10 clearfix">
-            <a class="btn btn-block-selection secondary-background-color pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Place designs on products</a>
+            <a class="btn btn-block-selection color-white pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Place designs on products</a>
         </div>
     </div>
     <div class="clearfix"></div>

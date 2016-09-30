@@ -1,7 +1,7 @@
 {if $aSelectedProducts}
-    <div class="block-selection col-xs-12 border margin-bottom-10 margin-top-10 padding-0">
-        <div class="col-md-12 border-bottom">
-            <div class="text-center font-size-20 primary-color padding-10 uppercase">{l s='Your selection'}</div>
+    <div class="block-selection col-xs-12 margin-bottom-10 margin-top-10 padding-0">
+        <div class="col-md-12 block-selection-top-title border-bottom">
+            <h4 class="title-block-selection text-center font-size-20 primary-color uppercase">{l s='Your selection'}</h4>
         </div>
         <div class="col-md-6 padding-0 border-right">
             <div class="col-md-12">
@@ -97,8 +97,8 @@
 {else}
     <div class="alert alert-info margin-top-10">
         <p>First you have to select at least one product, then you can comeback on this page to customize it</p>
-        <p><a href="46-designs" title="See the Designs">>> See the Designs</a></p>
-        <p><a href="45-products">>> See the Products</a></p>
+        <p><a href="46-designs" title="See the Designs">>> Select the Designs</a></p>
+        <p><a href="45-products">>> Select the Products</a></p>
     </div>
 {/if}
 {if $preselected_design && $preselected_product}

@@ -27,13 +27,13 @@
 							</li>
 						{/if}
 					{/foreach}
-					{if $cms_title.display_store}
+					{*{if $cms_title.display_store}
 						<li>
 							<a href="{$link->getPageLink('stores')|escape:'html':'UTF-8'}" title="{l s='Our stores' mod='blockcms'}">
 								{l s='Our stores' mod='blockcms'}
 							</a>
 						</li>
-					{/if}
+					{/if}*}
 				</ul>
 			</div>
 		</section>

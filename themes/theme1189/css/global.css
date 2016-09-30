@@ -9001,6 +9001,15 @@ ul.step a:hover:after {
 .cursor-default {
     cursor: default;
 }
+.block-selection {
+    border: 3px solid #9E9E9E;
+}
+.block-selection-top-title {
+    background: #9E9E9E;
+}
+.block-selection-top-title h4{
+    color: #fff;
+}
 .block-selection a,
 .block-selection ul li a:hover {
     text-decoration: none;
@@ -9532,4 +9541,7 @@ ul.step a:hover:after {
         font-size: 14px;
         height: auto;
     }
+}
+.color-white {
+    color: #fff;
 }
