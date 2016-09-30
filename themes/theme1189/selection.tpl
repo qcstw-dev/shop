@@ -1,4 +1,4 @@
-<div class="block-selection border margin-top-10 margin-bottom-10" {if !$selection} style="display: none;" {/if}>
+<div class="block-selection border margin-top-10 margin-bottom-10">
     <div class="col-xs-12 padding-0">
         <div class="col-md-10">
             <h4 class="title-block-selection margin-top-20 uppercase">{l s='Your selection'}</h4>
