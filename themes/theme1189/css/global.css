@@ -7198,7 +7198,8 @@ div.star a:hover {
     .footer-container #footer .row {
       position: relative; }
     .footer-container #footer .footer-block {
-      margin-top: 45px; }
+      margin-top: 45px;
+      padding-top: 15px; }
       @media (max-width: 767px) {
         .footer-container #footer .footer-block {
           margin-top: 20px; } }

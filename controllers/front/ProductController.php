@@ -266,9 +266,12 @@ class ProductControllerCore extends FrontController
             $aPrices = [];
             
             foreach ($aQuantities as $iQuantity) {
-                $aPrices[$iQuantity] = Product::getPriceStatic((int)$this->product->id, true, null, 0, null, false, true, $iQuantity);
+                $aPrices[$iQuantity] = Product::getPriceStatic((int)$this->product->id, true, null, 2, null, false, true, $iQuantity);
             }
-            
+//            getPriceStatic($id_product, $usetax = true, $id_product_attribute = null, $decimals = 6, $divisor = null,
+//        $only_reduc = false, $usereduc = true, $quantity = 1, $force_associated_tax = false, $id_customer = null, $id_cart = null,
+//        $id_address = null, &$specific_price_output = null, $with_ecotax = true, $use_group_reduction = true, Context $context = null,
+//        $use_customer_price = true)
             $this->context->smarty->assign(array(
                 'stock_management' => Configuration::get('PS_STOCK_MANAGEMENT'),
                 'customizationFields' => $customization_fields,
