@@ -59,7 +59,7 @@
             <thead>
                 <tr>
                     <th class="cart_product first_item">{l s='Product'}</th>
-                    <th class="cart_description item">{l s='Description'}</th>
+                    <th class="cart_description item" colspan="7">{l s='Description'}</th>
                         {if $PS_STOCK_MANAGEMENT}
                             {assign var='col_span_subtotal' value='3'}
                         <th class="cart_avail item">{l s='Avail.'}</th>
@@ -98,7 +98,7 @@
                 {if $use_taxes}
                     {if $priceDisplay}
                         <tr class="cart_total_price">
-                            <td rowspan="{$rowspan_total}" colspan="3" id="cart_voucher" class="cart_voucher">
+                            <td rowspan="{$rowspan_total}" colspan="8" id="cart_voucher" class="cart_voucher">
                                 {if $voucherAllowed}
                                     {if isset($errors_discount) && $errors_discount}
                                         <ul class="alert alert-danger">
@@ -132,7 +132,7 @@
                         </tr>
                     {else}
                         <tr class="cart_total_price">
-                            <td rowspan="{$rowspan_total}" colspan="2" id="cart_voucher" class="cart_voucher">
+                            <td rowspan="{$rowspan_total}" colspan="8" id="cart_voucher" class="cart_voucher">
                                 {if $voucherAllowed}
                                     {if isset($errors_discount) && $errors_discount}
                                         <ul class="alert alert-danger">
@@ -165,7 +165,7 @@
                     {/if}
                 {else}
                     <tr class="cart_total_price">
-                        <td rowspan="{$rowspan_total}" colspan="2" id="cart_voucher" class="cart_voucher">
+                        <td rowspan="{$rowspan_total}" colspan="8" id="cart_voucher" class="cart_voucher">
                             {if $voucherAllowed}
                                 {if isset($errors_discount) && $errors_discount}
                                     <ul class="alert alert-danger">

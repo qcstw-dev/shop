@@ -6166,7 +6166,8 @@ table.table_block td {
 
 .table {
   margin-bottom: 30px; }
-  .table > thead > tr > th {
+  .table > thead > tr > th,
+  .table > tbody > tr > th {
     background: #fbfbfb;
     border-bottom-width: 1px;
     color: #333333;
@@ -7545,7 +7546,9 @@ a.price_discount_delete {
     font: 600 21px/25px Ubuntu, sans-serif;
     color: #333333;
     background: white; }
-
+#order-detail-content #cart_summary td.prices-td {
+    padding: 0;
+}  
 @media (max-width: 767px) {
   #order-detail-content #cart_summary table,
   #order-detail-content #cart_summary thead,
@@ -7567,6 +7570,13 @@ a.price_discount_delete {
     width: 50%;
     float: left;
     white-space: normal; }
+  #order-detail-content #cart_summary tr.prices-tr {
+    width: 50%;
+    float: left;
+  }
+    #order-detail-content #cart_summary td.prices-td {
+        width: 100%;
+    }  
     #order-detail-content #cart_summary td.cart_avail {
       clear: both; }
     #order-detail-content #cart_summary td.cart_quantity {
@@ -9545,4 +9555,17 @@ ul.step a:hover:after {
 }
 .color-white {
     color: #fff;
+}
+.color-black {
+    color: #000;
+}
+
+.content_prices .tab-price-cel-first {
+    width: 65px;
+}
+.tab-price-cel-first {
+    background: #eee;
+}
+.content_prices .tab-price-cel {
+    width: 52px;
 }

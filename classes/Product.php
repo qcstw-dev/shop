@@ -4377,7 +4377,16 @@ class ProductCore extends ObjectModel
         );
 
         $row['specific_prices'] = $specific_prices;
-
+        
+        $aPrices = [];
+        $aQuantities = [1, 5, 10, 25, 50, 100];
+        
+        foreach ($aQuantities as $iQuantity) {
+            $aPrices[$iQuantity] = Product::getPriceStatic($row['id_product'], true, null, 2, null, false, true, $iQuantity);
+        }
+        
+        $row['prices'] = $aPrices;
+        
         $row['quantity'] = Product::getQuantity(
             (int)$row['id_product'],
             0,

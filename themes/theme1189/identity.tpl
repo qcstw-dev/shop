@@ -35,9 +35,9 @@
                     <label>{l s='Social title'}</label>
                     <br />
                     {foreach from=$genders key=k item=gender}
+                        <input type="radio" name="id_gender" id="id_gender{$gender->id}" value="{$gender->id|intval}" {if isset($smarty.post.id_gender) && $smarty.post.id_gender == $gender->id}checked="checked"{/if} />
                         <div class="radio-inline">
                             <label for="id_gender{$gender->id}" class="top">
-                            	<input type="radio" name="id_gender" id="id_gender{$gender->id}" value="{$gender->id|intval}" {if isset($smarty.post.id_gender) && $smarty.post.id_gender == $gender->id}checked="checked"{/if} />
                             	{$gender->name}
                             </label>
                         </div>

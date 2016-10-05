@@ -727,7 +727,16 @@ class CartCore extends ObjectModel
                     $row = array_merge($row, $row2);
                 }
             }
+            
+            $aPrices = [];
+            $aQuantities = [1, 5, 10, 25, 50, 100];
 
+            foreach ($aQuantities as $iQuantity) {
+                $aPrices[$iQuantity] = Product::getPriceStatic($row['id_product'], true, null, 2, null, false, true, $iQuantity);
+            }
+
+            $row['prices'] = $aPrices;
+            
             $row['reduction_applies'] = ($specific_price_output && (float)$specific_price_output['reduction']);
             $row['quantity_discount_applies'] = ($specific_price_output && $row['cart_quantity'] >= (int)$specific_price_output['from_quantity']);
             $row['id_image'] = Product::defineProductImage($row, $this->id_lang);

@@ -289,6 +289,7 @@ $_LANG['new-products_d58424783355b6da2dedc302f2bf4065'] = 'No new products.';
 $_LANG['order-address-multishipping-products_d28f8bbb0740354aae5456da9cc56d0e'] = 'Choose the delivery addresses';
 $_LANG['order-address-multishipping-products_deb10517653c255364175796ace3553f'] = 'Product';
 $_LANG['order-address-multishipping-products_b5a7adde1af5c87d7fd797b6245c2a39'] = 'Description';
+$_LANG['order-address-multishipping-products_10dc718bf671ff802edcc013954cd0cb'] = 'Price range';
 $_LANG['order-address-multishipping-products_12d3c7a4296542c62474856ec452c045'] = 'Ref.';
 $_LANG['order-address-multishipping-products_9ff9c46512c186ebae182519a55dc6a9'] = 'Avail.';
 $_LANG['order-address-multishipping-products_03ab340b3f99e03cff9e84314ead38c0'] = 'Qty';

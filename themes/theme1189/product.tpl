@@ -256,7 +256,7 @@
                                                 {/strip}
                                             </p>
                                         </div>
-                                        <div class="col-xs-7 col-sm-12 padding-0 margin-bottom-10">
+                                        <div class="col-xs-12 padding-0 margin-bottom-10">
                                             <div class="col-xs-12 border padding-0">
                                                 <div class="tab-price-cel-first col-xs-2 padding-0 text-center padding-0">Quantity</div>
                                                 {foreach from=$prices key=quantity item=price}
