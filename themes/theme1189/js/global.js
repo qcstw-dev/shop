@@ -462,7 +462,8 @@ function addRemoveToSelection(id) {
                 if (json.type === 'remove') {
                     element.find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
 //                    element.attr('title', element.data('text-add')).tooltip('fixTitle').tooltip('show');
-                    element.find('.text').text(element.data('text-add'));
+//                    element.find('.text').text(element.data('text-add'));
+                    element.find('.text').text('Add to cart');
                     $('.list-item-' + id).remove();
                     if (!$('.designs-list').find('.list-item').length && !$('.products-list').find('.list-item').length) {
                         $('.block-selection').hide();
@@ -471,7 +472,8 @@ function addRemoveToSelection(id) {
                     $('.block-selection').show();
                     element.find('.glyphicon').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
 //                    element.attr('title', element.data('text-remove')).tooltip('fixTitle').tooltip('show');
-                    element.find('.text').text(element.data('text-remove'));
+//                    element.find('.text').text(element.data('text-remove'));
+                    element.find('.text').text('Remove from cart');
                     if (element.data('type') === 'products') {
                         $('.' + element.data('type') + '-list').append('\
                             <div class="list-item list-item-' + element.data('id') + ' col-xs-6 col-sm-4 col-md-3 thumbnail border-none">\n\
