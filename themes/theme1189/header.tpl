@@ -83,7 +83,7 @@
                                         </a>
                                     </div>
                                     <div class="slogan">
-                                        <span class="primary-color">"</span>{l s='Custom gifts for unique memories'}<span class="primary-color">"</span>
+                                        <span class="primary-color">"</span>{l s='Personalized gifts'}<br /> {l s='for unique memories'}<span class="primary-color">"</span>
                                     </div>
                                     {if isset($HOOK_TOP)}{$HOOK_TOP}{/if}
                             </div>
@@ -98,9 +98,9 @@
                     {/if}
                     {if $page_name == 'category'
                         || $page_name == 'product'
-                        || $page_name == 'index'
+                        || ($page_name == 'index' && $selection)
                     }
-                        {include file="./selection.tpl" seelction=$selection}
+                        {include file="./selection.tpl" selection=$selection}
                     {/if}
                     <div id="slider_row" class="row">
                         <div id="top_column" class="center_column col-xs-12">{hook h="displayTopColumn"}</div>

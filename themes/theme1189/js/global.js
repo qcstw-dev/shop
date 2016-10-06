@@ -463,13 +463,14 @@ function addRemoveToSelection(id) {
                     element.find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
 //                    element.attr('title', element.data('text-add')).tooltip('fixTitle').tooltip('show');
 //                    element.find('.text').text(element.data('text-add'));
-                    element.find('.text').text('Add to cart');
+                    element.find('.text').text('Add to selection');
                     $('.list-item-' + id).remove();
-                    if (!$('.designs-list').find('.list-item').length && !$('.products-list').find('.list-item').length) {
-                        $('.block-selection').hide();
+                    if (!$('.products-list').find('.list-item').length) {
+                        $('.block-selection').find('.alert').show();
                     }
                 } else {
-                    $('.block-selection').show();
+//                    $('.block-selection').show();
+                    $('.block-selection').find('.alert').hide();
                     element.find('.glyphicon').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
 //                    element.attr('title', element.data('text-remove')).tooltip('fixTitle').tooltip('show');
 //                    element.find('.text').text(element.data('text-remove'));

@@ -37,6 +37,10 @@
                             <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$product->id}" title="{l s='Remove from selection'}"></span>
                     </div>
                 {/foreach}
+            {else}
+                <div class="alert margin-top-20 text-center">
+                    <p>No product selected yet</p>
+                </div>
             {/if}
         </div>
     </div>

@@ -609,7 +609,8 @@ class Blocktopmenu extends Module
             
         if ($is_children && $category['id_parent'] == '46') {
                 if (!$bDisplayedYourDesign) {
-                    $html .= '<li class="sfHoverForce cursor-default"><span class="glyphicon glyphicon-level-up menu-your-design-icon"></span> <span class="padding-bottom-10">Your own design</span></li>';
+                    $oLink = new Link();
+                    $html .= '<li class="sfHoverForce cursor-default"><a href="'.$oLink->getCategoryLink($category['id_parent']).'"><span class="glyphicon glyphicon-level-up menu-your-design-icon"></span> <span class="padding-bottom-10">Your own design</span></a></li>';
                     $bDisplayedYourDesign = true;
                 }
             }

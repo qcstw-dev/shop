@@ -7179,7 +7179,7 @@ div.star a:hover {
 											FOOTER 
 ------------------------------------------------------------------------------------------------------- */
 .footer-container {
-  background: #f8f8f8; }
+  background: #fff; }
   @media (min-width: 768px) {
     .footer-container {
       position: relative; }
@@ -7187,7 +7187,7 @@ div.star a:hover {
         content: "";
         display: block;
         height: 50px;
-        background: #f2f2f2;
+        background: #f8f8f8;
         position: absolute;
         left: 0;
         top: 0;
@@ -9493,10 +9493,11 @@ ul.step a:hover:after {
     width: 270px;
 }
 .slogan {
-    margin-top: 184px;
+    margin-top: 98px;
+    line-height: 2em;
     font-size: 25px;
     font-style: italic;
-    color: #ea3f23;
+    color: #4267b2;
     float: left;
 }
 @media screen and (max-width: 768px){
