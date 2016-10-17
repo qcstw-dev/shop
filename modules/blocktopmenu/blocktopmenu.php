@@ -560,13 +560,21 @@ class Blocktopmenu extends Module
                     break;
                 case 'LNK':
                     $link = MenuTopLinks::get((int)$id, (int)$id_lang, (int)$id_shop);
-                    if (count($link)) {
-                        if (!isset($link[0]['label']) || ($link[0]['label'] == '')) {
-                            $default_language = Configuration::get('PS_LANG_DEFAULT');
-                            $link = MenuTopLinks::get($link[0]['id_linksmenutop'], $default_language, (int)Shop::getContextShopID());
+                    if (in_array($link[0]['link'], ['/45-products', '/46-designs'])) {
+                        preg_match('/[0-9]{2}/', $link[0]['link'], $match);
+                        if ($match[0]) {
+                            $this->_menu .= $this->generateCategoriesMenu(Category::getNestedCategories($match[0], $id_lang, false, $this->user_groups), 0, null, $link[0]['label']);
                         }
-                        $this->_menu .= '<li><a href="'.Tools::HtmlEntitiesUTF8($link[0]['link']).'"'.(($link[0]['new_window']) ? ' onclick="return !window.open(this.href);"': '').' title="'.Tools::safeOutput($link[0]['label']).'">'.Tools::safeOutput($link[0]['label']).'</a></li>'.PHP_EOL;
+                    } else {
+                        if (count($link)) {
+                            if (!isset($link[0]['label']) || ($link[0]['label'] == '')) {
+                                $default_language = Configuration::get('PS_LANG_DEFAULT');
+                                $link = MenuTopLinks::get($link[0]['id_linksmenutop'], $default_language, (int)Shop::getContextShopID());
+                            }
+                            $this->_menu .= '<li><a href="'.Tools::HtmlEntitiesUTF8($link[0]['link']).'"'.(($link[0]['new_window']) ? ' onclick="return !window.open(this.href);"': '').' title="'.Tools::safeOutput($link[0]['label']).'">'.Tools::safeOutput($link[0]['label']).'</a></li>'.PHP_EOL;
+                        }
                     }
+                    
                     break;
             }
         }
@@ -590,7 +598,7 @@ class Blocktopmenu extends Module
         return $html;
     }
 
-    protected function generateCategoriesMenu($categories, $is_children = 0, $sParent = null)
+    protected function generateCategoriesMenu($categories, $is_children = 0, $sParent = null, $sCustomTitle = null)
     {
         $html = '';
         $bDisplayedYourDesign = false;
@@ -610,7 +618,11 @@ class Blocktopmenu extends Module
         if ($is_children && $category['id_parent'] == '46') {
                 if (!$bDisplayedYourDesign) {
                     $oLink = new Link();
-                    $html .= '<li class="sfHoverForce cursor-default"><a href="'.$oLink->getCategoryLink($category['id_parent']).'"><span class="glyphicon glyphicon-level-up menu-your-design-icon"></span> <span class="padding-bottom-10">Your own design</span></a></li>';
+                    $html .= '<li class="sfHoverForce cursor-default">'
+                            . '<a href="'.$oLink->getCategoryLink($category['id_parent']).'">'
+                            . '<span class="glyphicon glyphicon-level-up menu-your-design-icon"></span> <span class="padding-bottom-10">Your own design</span>'
+                            . '</a>'
+                            . '</li>';
                     $bDisplayedYourDesign = true;
                 }
             }
@@ -619,7 +631,7 @@ class Blocktopmenu extends Module
             if ($is_children) {
                 $html .= '<a href="'.$link.'" title="'.$category['name'].'"><img src="'.$this->context->link->getCatImageLink($category['link_rewrite'], $category['id_category'], 'tm_medium_default').'" /></a>';
             }
-            $html .= '<a href="'.$link.'" title="'.$category['name'].'">'.$category['name'].'</a>';
+            $html .= '<a href="'.$link.'" title="'.($sCustomTitle ?: $category['name']).'">'.($sCustomTitle ?: $category['name']).'</a>';
 
             if (isset($category['children']) && !empty($category['children'])) {
                 $html .= '<ul>';
