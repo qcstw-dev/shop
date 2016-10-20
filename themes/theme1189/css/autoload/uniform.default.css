@@ -133,7 +133,7 @@ div.checker {
       content: '\f00c';
       font-family: "FontAwesome";
       position: absolute;
-      left: auto;
+      left: 0;
       top: auto;
       padding: 0 0 0 1px;
       text-align: center;

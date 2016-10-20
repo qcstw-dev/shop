@@ -23,7 +23,7 @@
         {assign var='productPriceWithoutReduction' value=$product->getPriceWithoutReduct(true, $smarty.const.NULL, $priceDisplayPrecision)}
     {/if}
     <div itemscope itemtype="http://schema.org/Product">
-        <div class="primary_block row{if $columns == 2} two-columns{elseif $columns == 3} three-columns{else} one-column{/if}">	
+        <div class="primary_block {if $columns == 2} row two-columns{elseif $columns == 3} row three-columns{else} one-column{/if}">	
             {if isset($adminActionDisplay) && $adminActionDisplay}
                 <div id="admin-action">
                     <p>{l s='This product is not visible to your customers.'}
@@ -376,7 +376,7 @@
                             {/if}
                             <div class="clearfix">
                                 {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
-                                <div class="btn btn-default selection margin-bottom-10"
+                                <div class="btn btn-default selection margin-bottom-10 product-{$product->id}"
                                      data-product-link="{$product->getLink()|escape:'html':'UTF-8'}" 
                                      data-img="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" 
                                      data-id="{$product->id}" data-product-title="{$product->name}" data-type="{$product->category}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">

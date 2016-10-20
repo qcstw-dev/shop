@@ -1,10 +1,10 @@
-<div class="block-selection margin-top-10 margin-bottom-10">
+<div class="block-selection margin-top-10 margin-bottom-10" {if $page_name == 'index' && !$aSelectedProducts && !$aSelectedDesigns}style="display: none"{/if}>
     <div class="col-xs-12 block-selection-top-title padding-0">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <h4 class="title-block-selection margin-top-20 uppercase">{l s='Your selection'}</h4>
         </div>
-        <div class="col-md-2 margin-top-10 margin-bottom-10 clearfix">
-            <a class="btn btn-block-selection color-white pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Place designs on products</a>
+        <div class="col-md-3 margin-top-10 margin-bottom-10 clearfix">
+            <a class="btn btn-default btn-block-selection color-white pull-right" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Place designs on products</a>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -37,11 +37,10 @@
                             <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$product->id}" title="{l s='Remove from selection'}"></span>
                     </div>
                 {/foreach}
-            {else}
-                <div class="alert margin-top-20 text-center">
-                    <p>No product selected yet</p>
-                </div>
             {/if}
+            <div class="alert margin-top-20 text-center" {if $aSelectedProducts}style="display:none"{/if}>
+                <p>No product selected yet</p>
+            </div>
         </div>
     </div>
     <div class="clearfix"></div>

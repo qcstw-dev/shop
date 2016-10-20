@@ -57,6 +57,13 @@
                     <p>{l s='You cannot place a new order from your country.'}{if isset($geolocation_country) && $geolocation_country} <span class="bold">{$geolocation_country|escape:'html':'UTF-8'}</span>{/if}</p>
                 </div>
             {/if}
+            {if isset($smarty.get.product) && $smarty.get.product}
+                <script>
+                    $(function(){
+                        quick_view_event('{$base_dir_ssl}?controller=product&id_product={$smarty.get.product}');
+                    });
+                </script>
+            {/if}
             <div id="page">
                 <div class="header-container">
                     <header id="header">
@@ -98,7 +105,7 @@
                     {/if}
                     {if $page_name == 'category'
                         || $page_name == 'product'
-                        || ($page_name == 'index' && $selection)
+                        || $page_name == 'index'
                     }
                         {include file="./selection.tpl" selection=$selection}
                     {/if}
@@ -110,3 +117,4 @@
                             <div class="row">
                                 <div id="center_column" class="center_column col-xs-12 col-sm-{12 - $left_column_size}">
                                 {/if}
+                                

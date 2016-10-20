@@ -9560,6 +9560,9 @@ ul.step a:hover:after {
 .color-black {
     color: #000;
 }
+.color-red {
+    color: #ea3f23;
+}
 
 .content_prices .tab-price-cel-first {
     width: 65px;
@@ -9569,4 +9572,10 @@ ul.step a:hover:after {
 }
 .content_prices .tab-price-cel {
     width: 52px;
+}
+.comodo-logo {
+    position: fixed;
+    _position: absolute;
+    bottom: 0px;
+    right: 0px;
 }

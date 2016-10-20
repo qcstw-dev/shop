@@ -79,7 +79,7 @@
 		</div>
 	</div>
     
-	{if isset($inOrderProcess) && $inOrderProcess && $PS_GUEST_CHECKOUT_ENABLED}
+	{if false && isset($inOrderProcess) && $inOrderProcess && $PS_GUEST_CHECKOUT_ENABLED}
 		<form action="{$link->getPageLink('authentication', true, NULL, "back=$back")|escape:'html':'UTF-8'}" method="post" id="new_account_form" class="std clearfix">
 			<div class="box">
 				<div id="opc_account_form" style="display: block; ">

@@ -5,7 +5,7 @@
         </div>
         <div class="col-md-6 padding-0 border-right">
             <div class="col-md-12">
-                <h5 class="text-center uppercase bold">Designs</h5>
+                <h5 class="text-center font-size-15 color-red">Click on the design you want to use</h5>
             </div>
             <div class="col-md-12 padding-0">
                 <div class="designs-list">
@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-6 padding-0">
             <div class="col-md-12">
-                <h5 class="text-center uppercase bold">Products</h5>
+                <h5 class="text-center font-size-15 color-red">Click on the product you want to personalize</h5>
             </div>
             <div class="col-md-12 padding-0">
                 <div class="products-list">

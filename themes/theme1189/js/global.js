@@ -178,7 +178,7 @@ function quick_view()
     $(document).on('click', '.quick-view-bis, .quick-view-mobile-bis', function (e)
     {
         e.preventDefault();
-        var url = (this.rel ? this.rel : this.href);
+        var url = this.href;
         var anchor = '';
 
         if (url.indexOf('#') != -1)
@@ -195,10 +195,15 @@ function quick_view()
             $.fancybox({
                 'padding': 0,
                 'width': 900,
-                'height': 500,
-                'type': 'iframe',
+                'height': 450,
+                'type': 'ajax',
+                'autoSize' : false,
                 'href': url + 'content_only=1' + anchor
             });
+        var path = (window.location.host !== 'localhost' ? window.location.pathname.split('/')['1'] : window.location.pathname.split('/')['2']);
+        var currentUrl = baseDir + path;
+        var newUrl = currentUrl + '?product=' + url.match(/[0-9]{2,3}/g);
+         window.history.pushState({path: url}, '', newUrl);
     });
 }
 
@@ -220,8 +225,9 @@ function quick_view_event(url) {
         $.fancybox({
             'padding': 0,
             'width': 900,
-            'height': 500,
-            'type': 'iframe',
+            'height': 450,
+            'type': 'ajax',
+            'autoSize' : false,
             'href': url + 'content_only=1' + anchor
         });
 }
@@ -454,27 +460,31 @@ function addRemoveToSelection(id) {
         data: 'controller=ajax&action=addtoselection&ajax=true&id_product=' + id,
         dataType: 'json',
         beforeSend: function () {
-            $.fancybox.showLoading();
+            $(function(){
+                $.fancybox.showLoading();
+            });
         },
         success: function (json) {
             $.fancybox.hideLoading();
             if (json.success === true) {
                 if (json.type === 'remove') {
                     element.find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
-//                    element.attr('title', element.data('text-add')).tooltip('fixTitle').tooltip('show');
-//                    element.find('.text').text(element.data('text-add'));
-                    element.find('.text').text('Add to selection');
+                    element.each(function () {
+                        $(this).find('.text').text($(this).data('text-add'));
+                    });
                     $('.list-item-' + id).remove();
                     if (!$('.products-list').find('.list-item').length) {
                         $('.block-selection').find('.alert').show();
                     }
                 } else {
-//                    $('.block-selection').show();
-                    $('.block-selection').find('.alert').hide();
+                    $('.block-selection').show();
+                    if (element.data('type') === 'products') {
+                        $('.block-selection').find('.alert').hide();
+                    }
                     element.find('.glyphicon').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
-//                    element.attr('title', element.data('text-remove')).tooltip('fixTitle').tooltip('show');
-//                    element.find('.text').text(element.data('text-remove'));
-                    element.find('.text').text('Remove from cart');
+                    element.each(function () {
+                        $(this).find('.text').text($(this).data('text-remove'));
+                    });
                     if (element.data('type') === 'products') {
                         $('.' + element.data('type') + '-list').append('\
                             <div class="list-item list-item-' + element.data('id') + ' col-xs-6 col-sm-4 col-md-3 thumbnail border-none">\n\
@@ -500,6 +510,9 @@ function addRemoveToSelection(id) {
         }
     });
 }
+$(document).on('click', '.selection', function () {
+    addRemoveToSelection($(this).data('id'));
+});
 $(window).load(function () {
     listTabsAnimate('div.product_list:not(".tab-pane")>div.ajax_block_product');
     listBlocksAnimate('#homefeatured', '#homefeatured li', nbItemsPerLine, -300, true);
@@ -507,17 +520,13 @@ $(window).load(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    $('.selection').live('click', function () {
-        addRemoveToSelection($(this).data('id'));
-    });
-
     $('.popup').live('click', function () {
         $.magnificPopup.open({
             items: [{
-                    src: $('<div class="white-popup">' +
-                            '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
-                            '</div>'),
-                    type: 'inline'
+                src: $('<div class="white-popup">' +
+                        '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
+                        '</div>'),
+                type: 'inline'
                 }]
         });
     });

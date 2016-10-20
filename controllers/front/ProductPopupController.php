@@ -1,76 +1,14 @@
 <?php
-/*
-* 2007-2016 PrestaShop
-*
-* NOTICE OF LICENSE
-*
-* This source file is subject to the Open Software License (OSL 3.0)
-* that is bundled with this package in the file LICENSE.txt.
-* It is also available through the world-wide-web at this URL:
-* http://opensource.org/licenses/osl-3.0.php
-* If you did not receive a copy of the license and are unable to
-* obtain it through the world-wide-web, please send an email
-* to license@prestashop.com so we can send you a copy immediately.
-*
-* DISCLAIMER
-*
-* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
-* versions in the future. If you wish to customize PrestaShop for your
-* needs please refer to http://www.prestashop.com for more information.
-*
-*  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2016 PrestaShop SA
-*  @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
-*  International Registered Trademark & Property of PrestaShop SA
-*/
 
-class ProductControllerCore extends FrontController
+class ProductPopupControllerCore extends FrontController 
 {
-    public $php_self = 'product';
-
-    /** @var Product */
-    protected $product;
-
-    /** @var Category */
-    protected $category;
-
-    public function setMedia()
-    {
-//        parent::setMedia();
-        if (count($this->errors)) {
-            return;
-        }
-        if (Configuration::get('PS_DISPLAY_JQZOOM') == 1) {
-            $this->addJqueryPlugin('jqzoom');
-        }
-        if (!$this->useMobileTheme()) {
-            $this->addCSS(_THEME_CSS_DIR_.'product.css');
-            $this->addCSS(_THEME_CSS_DIR_.'print.css', 'print');
-            $this->addJqueryPlugin(array('fancybox', 'idTabs', 'scrollTo', 'serialScroll', 'bxslider'));
-            $this->addJS(array(
-                _THEME_JS_DIR_.'tools.js',  // retro compat themes 1.5
-                _THEME_JS_DIR_.'product.js'
-            ));
-        } else {
-            $this->addJqueryPlugin(array('scrollTo', 'serialScroll'));
-            $this->addJS(array(
-                _THEME_JS_DIR_.'tools.js',  // retro compat themes 1.5
-                _THEME_MOBILE_JS_DIR_.'product.js',
-                _THEME_MOBILE_JS_DIR_.'jquery.touch-gallery.js'
-            ));
-        }
+    public function setMedia() {
+        parent::setMedia(); 
+//        $this->addJqueryPlugin('jqzoom');
+//        $this->addJS(_THEME_JS_DIR_.'product.js');
+//        $this->addJS(_THEME_JS_DIR_.'global.js');
+//        $this->addCSS(_THEME_CSS_DIR_.'product.css');
     }
-
-    public function canonicalRedirection($canonical_url = '')
-    {
-        if (Tools::getValue('live_edit')) {
-            return;
-        }
-        if (Validate::isLoadedObject($this->product)) {
-            parent::canonicalRedirection($this->context->link->getProductLink($this->product));
-        }
-    }
-
     /**
      * Initialize product controller
      * @see FrontController::init()
@@ -78,6 +16,11 @@ class ProductControllerCore extends FrontController
     public function init()
     {
         parent::init();
+        
+        $this->display_header = false;
+        $this->display_footer = false;
+        $this->display_column_left = false;
+        $this->display_column_right = false;
         
         if ($id_product = (int)Tools::getValue('id_product')) {
             $this->product = new Product($id_product, true, $this->context->language->id, $this->context->shop->id);
@@ -304,7 +247,7 @@ class ProductControllerCore extends FrontController
                 'prices' => $aPrices
             ));
         }
-        $this->setTemplate(_PS_THEME_DIR_.'product.tpl');
+        $this->setTemplate(_PS_THEME_DIR_.'product-popup.tpl');
     }
 
     /**
