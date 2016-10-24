@@ -140,7 +140,7 @@
                 {/if}
             </div>
             <!-- center infos -->
-            <div class="pb-right-column {if $columns == 2}col-xs-12 col-md-5 col-lg-6{elseif $columns == 3}col-xs-12 {elseif $content_only} col-xs-6{else}col-sm-6 col-md-6 col-lg-6{/if}">
+            <div class="pb-right-column {if $columns == 2}col-xs-12 col-md-5 col-lg-6{elseif $columns == 3} col-xs-12 {elseif $content_only} col-md-6 col-xs-12{else}col-sm-6 col-md-6 col-lg-6{/if}">
                 <div class="bg-container">
                     <div class="product-info-line">
                         {if $product->online_only}
@@ -188,24 +188,40 @@
                     <div id="oosHook"{if $product->quantity > 0} style="display: none;"{/if}>
                         {$HOOK_PRODUCT_OOS}
                     </div>
-                    <h1 itemprop="name" class="margin-bottom-10 border-bottom">{$product->name|escape:'html':'UTF-8'}</h1>
+                    <h1 itemprop="name" class="padding-bottom-5 border-bottom">{$product->name|escape:'html':'UTF-8'}</h1>
 
                     {if $content_only && $product->description}
-                        <div class="grid-desc padding-bottom-5 margin-bottom-10 border-bottom">{$product->description|truncate:300:'...'}</div>
+                        <div class="grid-desc padding-top-5 margin-bottom-10 border-bottom">{$product->description|truncate:300:'...'}</div>
                     {/if}
                     {if $features}
+                    {assign var="logoProcessDisplayed" value="false"}
                         <div class="margin-bottom-10 border-bottom">
-                            {foreach from=$features item=feature}
-                                {if isset($feature.value)}			    
-                                    <p><span class="bold">{$feature.name|escape:'html':'UTF-8'}</span>: {$feature.value|escape:'html':'UTF-8'}</p>
+                            <div class="col-md-6 padding-0">
+                                <p><span class="bold">{l s='Reference'}</span>: {$product->reference}</p>
+                                {foreach from=$features key=k item=feature}
+                                    {if $k == 2}
+                                        </div>
+                                        <div class="col-md-6 padding-0">
+                                    {/if}
+                                    {if isset($feature.value)}
+                                        <p><span class="bold">{$feature.name|escape:'html':'UTF-8'}</span>: {$feature.value|escape:'html':'UTF-8'}</p>
+                                        {if $feature.name == 'Logo process'}
+                                            {assign var="logoProcessDisplayed" value="true"}
+                                        {/if}
+                                    {/if}
+                                {/foreach}
+                                {if $logoProcessDisplayed == 'false'}
+                                    <p><span class="bold">{l s='Logo process'}</span>: {l s='Doming'}</p>
                                 {/if}
-                            {/foreach}
+                                <p><span class="bold">{l s='Unit weight'}</span>: {round($product->weight,2)}g</p>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
                         {if $colors}
-                            <div class="padding-bottom-10 margin-bottom-10 border-bottom">
+                            <div class="border-bottom">
                                 <div class="pull-left bold">{l s='Colors available'}: </div>
                                 <div class="pull-left">
-                                    <ul class="color-preview-list">
+                                    <ul class="color-preview-list margin-bottom-5">
                                         {foreach from=$colors item=color}
                                             <li class="color-preview" style="background: {$color.color}"></li>
                                             {/foreach}
@@ -256,17 +272,17 @@
                                                 {/strip}
                                             </p>
                                         </div>
-                                        <div class="col-xs-12 padding-0 margin-bottom-10">
-                                            <div class="col-xs-12 border padding-0">
-                                                <div class="tab-price-cel-first col-xs-2 padding-0 text-center padding-0">Quantity</div>
+                                        <div class="col-xs-12 padding-top-5 padding-left-0 margin-bottom-20">
+                                            <div class="col-xs-6 col-md-12 border padding-0">
+                                                <div class="tab-price-cel-first col-xs-12 col-md-2 padding-0 text-center padding-0">Quantity</div>
                                                 {foreach from=$prices key=quantity item=price}
-                                                    <div class="tab-price-cel col-xs-1 padding-0 text-center border-left">{$quantity}pc{if $quantity > 1}s{/if}</div>
+                                                    <div class="tab-price-cel col-xs-12 col-md-1 padding-0 text-center border-left">{$quantity}pc{if $quantity > 1}s{/if}</div>
                                                 {/foreach}
                                             </div>
-                                            <div class="col-xs-12 border border-top-0 padding-0">
-                                                <div class="tab-price-cel-first col-xs-2 padding-0 text-center padding-0">Unit price</div>
+                                            <div class="col-xs-6 col-md-12 border border-top-0 padding-0">
+                                                <div class="tab-price-cel-first col-xs-12 col-md-2 padding-0 text-center padding-0">Unit price</div>
                                                 {foreach from=$prices key=quantity item=price}
-                                                    <div class="tab-price-cel col-xs-1 padding-0 text-center border-left">{convertPrice price=$price}</div>
+                                                    <div class="tab-price-cel col-xs-12 col-md-1 padding-0 text-center border-left">{convertPrice price=$price}</div>
                                                 {/foreach}
                                             </div>
                                         </div>

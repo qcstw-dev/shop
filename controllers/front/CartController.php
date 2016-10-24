@@ -67,7 +67,7 @@ class CartControllerCore extends FrontController
         $this->customization_id = (int)Tools::getValue('id_customization');
         $this->id_design = (int)Tools::getValue('id_design');
         $this->custom_picture = Tools::getValue('custom_picture');
-        $this->original_picture = Tools::getValue('original_picture');
+        $this->original_picture = (Tools::getValue('original_picture') ?: null);
         $this->qty = abs(Tools::getValue('qty', 1));
         $this->id_address_delivery = (int)Tools::getValue('id_address_delivery');
     }

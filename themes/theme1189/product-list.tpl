@@ -75,7 +75,7 @@
                                 {if isset($product.pack_quantity) && $product.pack_quantity}{$product.pack_quantity|intval|cat:' x '}{/if}
                                 <a class="quick-view-bis product-name" rel="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" href="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" itemprop="url" >
                                     <span class="list-name">{$product.name|cat:$product.reference|truncate:100:'...'|escape:'html':'UTF-8'}</span>
-                                    <span class="grid-name">{$product.name|cat:$product.reference|truncate:30:'...'|escape:'html':'UTF-8'}</span>
+                                    <span class="grid-name">{$product.name|escape:'html':'UTF-8'}</span>
                                 </a>
                             </h5>
                         {else}

@@ -127,16 +127,16 @@
     </td>
 {/if}
 </tr>
-<tr>
+<tr class="product_{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}{if !empty($product.gift)}_gift{/if}_{$product.custom_picture}">
     <th class="cart_description item" colspan="7">{l s='Price range'}</th>
 </tr>
-<tr class="prices-tr">
+<tr class="prices-tr product_{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}{if !empty($product.gift)}_gift{/if}_{$product.custom_picture}">
     <td class="tab-price-cel-first prices-td text-center">Quantity</td>
     {foreach from=$product.prices key=quantity item=price}
         <td class="cart_product_prices prices-td text-center">{$quantity}pc{if $quantity > 1}s{/if}</td>
     {/foreach}
 </tr>
-<tr class="prices-tr">
+<tr class="prices-tr product_{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}{if !empty($product.gift)}_gift{/if}_{$product.custom_picture}">
     <td class="tab-price-cel-first prices-td text-center">Unit price</td>
     {foreach from=$product.prices key=quantity item=price}
         <td class="cart_product_prices prices-td text-center">{convertPrice price=$price}</td>

@@ -108,9 +108,7 @@
   z-index: 1; }
 
 #thumbs_list {
-  overflow: hidden;
-  width: 86px;
-  height: 470px; }
+  width: 86px; }
   @media (min-width: 992px) and (max-width: 1199px) {
     #thumbs_list {
       height: 360px; } }
@@ -127,7 +125,7 @@
   #thumbs_list ul#thumbs_list_frame {
     list-style-type: none;
     padding-left: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     margin: -10px 0 0 0; }
     @media (min-width: 992px) and (max-width: 1199px) {
       #thumbs_list ul#thumbs_list_frame {

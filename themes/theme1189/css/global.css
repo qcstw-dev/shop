@@ -8588,7 +8588,9 @@ div.star.star_hover:after {
   padding-top: 0; }
 #product.content_only div.pb-left-column #thumbs_list_frame {
   margin-bottom: 0; }
-
+.pb-left-column {
+    margin-top: 33px;
+}
 /* -------*--------------------------------------------------------------------------------------------------------
 									 Product Compare 
 ------------------------------------------------------------------------------------------------------------------- */
@@ -9189,6 +9191,9 @@ ul.step a:hover:after {
 .padding-0 {
     padding: 0 !important;
 }
+.padding-top-5 {
+    padding-top: 5px !important;
+}
 .padding-top-10 {
     padding-top: 10px !important;
 }
@@ -9212,6 +9217,9 @@ ul.step a:hover:after {
 }
 .padding-right-50 {
     padding-right: 50px !important;
+}
+.padding-bottom-5 {
+    padding-bottom: 5px !important;
 }
 .padding-bottom-10 {
     padding-bottom: 10px !important;
@@ -9563,15 +9571,16 @@ ul.step a:hover:after {
 .color-red {
     color: #ea3f23;
 }
-
-.content_prices .tab-price-cel-first {
-    width: 65px;
+@media screen and (min-width: 470px){
+    .content_prices .tab-price-cel-first {
+        width: 65px;
+    }
+    .content_prices .tab-price-cel {
+        width: 52px;
+    }
 }
 .tab-price-cel-first {
     background: #eee;
-}
-.content_prices .tab-price-cel {
-    width: 52px;
 }
 .comodo-logo {
     position: fixed;

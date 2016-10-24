@@ -605,10 +605,10 @@ var ajaxCart = {
 
                     if (typeof (this.is_gift) == 'undefined' || this.is_gift == 0)
                         content += '\
-                                                    <span class="remove_link">\n\
-                                                        <a rel="nofollow" class="ajax_cart_block_remove_link" data-custom-product="' + this.custom_picture + '" data-original-product="' + this.original_picture + '" href="' + baseUri + '?controller=cart&amp;delete=1&amp;id_product=' + productId + '&amp;token=' + static_token + '&custom_picture=' + this.custom_picture + '"> \n\
-                                                        </a>\n\
-                                                    </span>';
+                                <span class="remove_link">\n\
+                                    <a rel="nofollow" class="ajax_cart_block_remove_link"  data-id-product=' + productId +' data-custom-product="' + this.custom_picture + '" data-original-product="' + this.original_picture + '" href="' + baseUri + '?controller=cart&amp;delete=1&amp;id_product=' + productId + '&amp;token=' + static_token + '&custom_picture=' + this.custom_picture + '"> \n\
+                                    </a>\n\
+                                </span>';
                     else
                         content += '<span class="remove_link"></span>';
                     content += '</dt>';

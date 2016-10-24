@@ -36,7 +36,9 @@ class ProductControllerCore extends FrontController
 
     public function setMedia()
     {
-//        parent::setMedia();
+        if (!Tools::getValue('content_only')) {
+            parent::setMedia();
+        }
         if (count($this->errors)) {
             return;
         }

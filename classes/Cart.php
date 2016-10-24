@@ -1335,10 +1335,15 @@ class CartCore extends ObjectModel
 		AND `id_cart` = '.(int)$this->id.'
 		'.((int)$id_address_delivery ? 'AND `id_address_delivery` = '.(int)$id_address_delivery : '')
                 .' AND `custom_picture` = "'.$custom_picture.'"');
-
-        unlink(_PS_IMG_DIR_.'layout_maker/custom_pictures/'.$custom_picture.'.png');
+        $sPathToCustomImage = _PS_IMG_DIR_.'layout_maker/custom_pictures/'.$custom_picture.'.png';
+            if (file_exists($sPathToCustomImage)) {
+                unlink($sPathToCustomImage);
+            }
         if ($original_picture) {
-            unlink(_PS_IMG_DIR_.'layout_maker/original_pictures/'.$original_picture.'.png');
+            $sPathToOriginalImage = _PS_IMG_DIR_.'layout_maker/original_pictures/'.$original_picture.'.png';
+            if (file_exists($sPathToOriginalImage)) {
+                unlink($sPathToOriginalImage);
+            }
         }
         
         if ($result) {

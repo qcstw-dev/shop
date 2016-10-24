@@ -437,7 +437,7 @@ function deleteProductFromSummary(id, custom_picture, original_picture)
                     }
                 } else
                 {
-                    $('#product_' + id).fadeOut('slow', function () {
+                    $('#product_' + id + ', .product_'+ id).fadeOut('slow', function () {
                         $(this).remove();
                         cleanSelectAddressDelivery();
                         if (!customizationId)

@@ -202,7 +202,11 @@ div.product_list.grid div.ajax_block_product .product-container .product-image-c
     color: #4267b2; }
 div.product_list.grid div.ajax_block_product .product-container h5 {
     padding: 0 5px;
-    margin: 20px 0 2px; }
+    margin: 8px 0 2px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;}
 div.product_list.grid div.ajax_block_product .product-container h5 a span.list-name {
     display: none; }
 div.product_list.grid div.ajax_block_product .product-container .comments_note {
