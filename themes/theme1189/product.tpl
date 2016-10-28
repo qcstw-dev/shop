@@ -23,7 +23,7 @@
         {assign var='productPriceWithoutReduction' value=$product->getPriceWithoutReduct(true, $smarty.const.NULL, $priceDisplayPrecision)}
     {/if}
     <div itemscope itemtype="http://schema.org/Product">
-        <div class="primary_block {if $columns == 2} row two-columns{elseif $columns == 3} row three-columns{else} one-column{/if}">	
+        <div class="primary_block {if $columns == 2} row two-columns{elseif $columns == 3} row three-columns{else} one-column{/if}" style="width:900px">	
             {if isset($adminActionDisplay) && $adminActionDisplay}
                 <div id="admin-action">
                     <p>{l s='This product is not visible to your customers.'}

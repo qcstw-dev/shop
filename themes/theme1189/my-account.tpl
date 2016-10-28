@@ -38,20 +38,6 @@
                     <span>{l s='Order history and details'}</span>
                 </a>
             </li>
-            {if $returnAllowed}
-                <li>
-                	<a href="{$link->getPageLink('order-follow', true)|escape:'html':'UTF-8'}" title="{l s='Merchandise returns'}">
-                    	<i class="fa fa-refresh"></i>
-                        <span>{l s='My merchandise returns'}</span>
-                    </a>
-                </li>
-            {/if}
-            <li>
-            	<a href="{$link->getPageLink('order-slip', true)|escape:'html':'UTF-8'}" title="{l s='Credit slips'}">
-                	<i class="fa fa-ban"></i>
-                    <span>{l s='My credit slips'}</span>
-                </a>
-            </li>
             <li>
             	<a href="{$link->getPageLink('addresses', true)|escape:'html':'UTF-8'}" title="{l s='Addresses'}">
                 	<i class="fa fa-building"></i>

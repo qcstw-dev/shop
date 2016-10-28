@@ -2,6 +2,7 @@
 var responsiveflag = false;
 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 var isiPad = /iPad/i.test(navigator.userAgent);
+
 $(document).ready(function () {
     controller = new ScrollMagic();
     highdpiInit();
@@ -191,19 +192,24 @@ function quick_view()
         else
             url += '?';
 
+        var path = (window.location.host !== 'localhost' ? window.location.pathname.split('/')['1'] : window.location.pathname.split('/')['2']);
+        var currentUrl = baseDir + path;
+        var newUrl = currentUrl + '?product=' + url.match(/[0-9]{2,3}/g);    
+        
         if (!!$.prototype.fancybox)
             $.fancybox({
                 'padding': 0,
                 'width': 900,
                 'height': 400,
                 'type': 'ajax',
-                'autoSize' : false,
-                'href': url + 'content_only=1' + anchor
+                'autoSize': false,
+                'href': url + 'content_only=1' + anchor,
+                afterClose: function() {
+                    window.history.pushState({path: currentUrl}, '', currentUrl);
+                }
             });
-        var path = (window.location.host !== 'localhost' ? window.location.pathname.split('/')['1'] : window.location.pathname.split('/')['2']);
-        var currentUrl = baseDir + path;
-        var newUrl = currentUrl + '?product=' + url.match(/[0-9]{2,3}/g);
-         window.history.pushState({path: url}, '', newUrl);
+        
+        window.history.pushState({path: url}, '', newUrl);
     });
 }
 
@@ -220,6 +226,9 @@ function quick_view_event(url) {
         url += '&';
     else
         url += '?';
+    
+    var path = (window.location.host !== 'localhost' ? window.location.pathname.split('/')['1'] : window.location.pathname.split('/')['2']);
+    var currentUrl = baseDir + path;
 
     if (!!$.prototype.fancybox)
         $.fancybox({
@@ -228,7 +237,10 @@ function quick_view_event(url) {
             'height': 400,
             'type': 'ajax',
             'autoSize' : false,
-            'href': url + 'content_only=1' + anchor
+            'href': url + 'content_only=1' + anchor,
+            afterClose: function() {
+                window.history.pushState({path: currentUrl}, '', currentUrl);
+            }
         });
 }
 
@@ -460,7 +472,7 @@ function addRemoveToSelection(id) {
         data: 'controller=ajax&action=addtoselection&ajax=true&id_product=' + id,
         dataType: 'json',
         beforeSend: function () {
-            $(function(){
+            $(function () {
                 $.fancybox.showLoading();
             });
         },
@@ -510,10 +522,10 @@ function addRemoveToSelection(id) {
         }
     });
 }
-$(document).on('click', '.selection', function () {
-    addRemoveToSelection($(this).data('id'));
-});
 $(window).load(function () {
+    $('.selection').live('click', function () {
+        addRemoveToSelection($(this).data('id'));
+    });
     listTabsAnimate('div.product_list:not(".tab-pane")>div.ajax_block_product');
     listBlocksAnimate('#homefeatured', '#homefeatured li', nbItemsPerLine, -300, true);
     listBlocksAnimate('#homepage-blog', '#homepage-blog li', nbItemsPerLine, -300, true);
@@ -523,10 +535,10 @@ $(window).load(function () {
     $('.popup').live('click', function () {
         $.magnificPopup.open({
             items: [{
-                src: $('<div class="white-popup">' +
-                        '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
-                        '</div>'),
-                type: 'inline'
+                    src: $('<div class="white-popup">' +
+                            '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
+                            '</div>'),
+                    type: 'inline'
                 }]
         });
     });

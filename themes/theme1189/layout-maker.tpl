@@ -25,6 +25,7 @@
                 <div class="designs-list">
                     <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-custom" data-id="custom" data-type="design">
                         <div class="padding border list-item-custom-text img-product uppercase">Upload your Design</div>
+                        <div class="cursor"></div>
                     </div>
                     {foreach from=$aSelectedDesigns item=design name=designs}
                         <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-0 list-item list-item-design cursor-pointer list-item-{$design->id}" data-id="{$design->id}" data-type="design" title="{$design->name}">

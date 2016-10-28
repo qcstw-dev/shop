@@ -5875,7 +5875,9 @@ label {
 .checkbox {
   line-height: 16px; }
   .checkbox label {
-    color: #777777; }
+    color: #777777;
+    padding-left: 15px;
+  }
 
 .close {
   opacity: 1; }
@@ -9587,4 +9589,16 @@ ul.step a:hover:after {
     _position: absolute;
     bottom: 0px;
     right: 0px;
+}
+.underline{
+    text-decoration: underline;
+}
+.cursor {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    right: 7px;
+    bottom: 7px;
+    background: url(../img/cursor.png) no-repeat;
+    background-size: contain;
 }

@@ -7,7 +7,7 @@ $(function () {
         previewMinHeight: 300,
         previewMaxWidth: 100000,
         previewMaxHeight: 100000,
-        previewThumbnail: true,
+        previewThumbnail: false,
         previewCrop: false,
         imageCrop: false
     }).on('fileuploadadd', function (e, data) {
@@ -31,6 +31,7 @@ $(function () {
                         src: $('\
                             <div class="white-popup">'+
                                 '<div class="text-center">The size of the file you uploaded will be too small for us to prepare your customized product, please upload a higher quality picture</div>'+
+                                '<div class="text-center color-red margin-top-10"><span class="underline">Minimum size</span>: 600*600px, <span class="underline">Format accepted</span>: .jpg, .png. .gif</div>'+
                             '</div>'),
                         type:'inline'
                     }]

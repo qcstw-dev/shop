@@ -170,10 +170,12 @@ function menuChange(status)
 })(jQuery)
 
 $(document).ready(function(){
-	var stickMenu = true;
-	var docWidth= $('body').find('.container').width();
-	if(stickMenu && docWidth > 780) {
-		$('body').find('#block_top_menu').wrapInner('<div class="stickUpTop"><div class="stickUpHolder container">');
-		$('.stickUpTop').tmStickUp();
-	}
+        if (!$('.stickUpTop').length) {
+            var stickMenu = true;
+            var docWidth= $('body').find('.container').width();
+            if(stickMenu && docWidth > 780) {
+                    $('body').find('#block_top_menu').wrapInner('<div class="stickUpTop"><div class="stickUpHolder container">');
+                    $('.stickUpTop').tmStickUp();
+            }
+        }
 })
