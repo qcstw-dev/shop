@@ -33,6 +33,58 @@ class AjaxControllerCore extends FrontController {
         echo json_encode($result);
     }
 
+    public function displayAjaxDeleteStoredCustomImage() {
+        $sFileName = $_POST['file_name'];
+        $result = [];
+        $result['success'] = true;
+        $context = Context::getContext();
+        $aImagesArray = [];
+        if ($context->cookie->custom_images) {
+            $aImagesArray = explode(',', $context->cookie->custom_images);
+        }
+        if (($key = array_search($sFileName, $aImagesArray)) !== false) {
+            $sPathToCustomImage = _PS_IMG_DIR_.'layout_maker/temp/'.$sFileName.'.png';
+            if (file_exists($sPathToCustomImage)) {
+                if (unlink($sPathToCustomImage)) {
+                    unset($aImagesArray[$key]);
+                    $context->cookie->__set('custom_images', implode(',', $aImagesArray));
+                }
+            }
+        } else {
+            $result['success'] = false;
+        }
+        echo json_encode($result);
+    }
+
+    public function displayAjaxStoreCustomImage() {
+        $result = [];
+        $result['success'] = true;
+        $sImgPath = $_POST['image_url'];
+        $sImgPath = str_replace('data:image/png;base64,', '', $sImgPath);
+        $sImgPath = str_replace(' ', '+', $sImgPath);
+        $sData = base64_decode($sImgPath);
+
+        $sId = time() . '_' . rand(1, 100);
+
+        $sName = $sId . '.png';
+        $sFolder = 'img/layout_maker/temp';
+
+        $sImgFinalPath = $sFolder . '/' . $sName;
+        if (file_put_contents($sImgFinalPath, $sData)) {
+            $context = Context::getContext();
+            $aImagesArray = [];
+            if ($context->cookie->custom_images) {
+                $aImagesArray = explode(',', $context->cookie->custom_images);
+            }
+            $aImagesArray[] = $sId;
+            $context->cookie->__set('custom_images', implode(',', $aImagesArray));
+            $result['image_name'] = $sId;
+        } else {
+            $result['success'] = false;
+        }
+        echo json_encode($result);
+    }
+
     public function displayAjaxLayoutMakerSelect() {
         $result = [];
         $result['success'] = true;
@@ -47,7 +99,7 @@ class AjaxControllerCore extends FrontController {
                     $result['success'] = false;
                     $result['error'] = 'Combination not available';
                 }
-            } 
+            }
             if (isset($_POST['id_design']) && $_POST['id_design'] && $_POST['id_design'] === 'custom') {
                 $result['custom'] = true;
             }
@@ -61,7 +113,7 @@ class AjaxControllerCore extends FrontController {
                         ];
                     }
                 }
-                if (!$result['colors']) {
+                if (!isset($result['colors'])) {
                     $result['success'] = false;
                     $result['error'] = 'Colors missing';
                 }

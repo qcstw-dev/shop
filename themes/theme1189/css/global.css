@@ -2944,8 +2944,8 @@ tbody.collapse.in {
 
 .breadcrumb {
   padding: 8px 15px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 0;
+  margin-top: 0;
   list-style: none;
   background-color: whitesmoke;
   border-radius: 0; }
@@ -7130,7 +7130,6 @@ div.star a:hover {
   -webkit-border-radius: 0;
   border-radius: 0;
   overflow: hidden;
-  margin-bottom: 16px;
   position: relative;
   z-index: 1; }
   .breadcrumb .navigation-pipe {
@@ -9033,15 +9032,15 @@ ul.step a:hover:after {
     margin-bottom: 10px;
 }
 .block-selection .glyphicon-remove {
-    top: 5px;
-    right: 5px;
+    top: 0;
+    right: 7px;
     background: #fff;
     padding: 2px;
     position: absolute;
 }
 .block-selection .designs-list,
 .block-selection .products-list {
-    height: 146px;
+    height: 150px;
     overflow: auto;
 }
 
@@ -9525,8 +9524,14 @@ ul.step a:hover:after {
 }
 .list-item-custom-text {
     font-size: 19px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.list-item {
     text-align: center;
-    height: 128px;
+    height: 130px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9534,6 +9539,8 @@ ul.step a:hover:after {
 @media screen and (max-width: 1024px){
     .list-item-custom-text {
         font-size: 18px;
+    }
+    .list-item {
         height: 104px;
         padding: 0;
         text-align: center;
@@ -9542,26 +9549,34 @@ ul.step a:hover:after {
 @media screen and (max-width: 768px){
     .list-item-custom-text {
         font-size: 25px;
+    }
+    .list-item {
         height: 162px;
     }
 }
 @media screen and (max-width: 670px){
     .list-item-custom-text {
         font-size: 25px;
+    }
+    .list-item {
         height: 145px;
     }
 }
 @media screen and (max-width: 470px){
     .list-item-custom-text {
-        font-size: 18px;
-        height: auto;
+        font-size: 16px;
+    }
+    .list-item {
+        height: 94px;
         padding: 9px;
     }
 }
 @media screen and (max-width: 320px){
     .list-item-custom-text {
         font-size: 14px;
-        height: auto;
+    }
+    .list-item {
+        height: 75px;
     }
 }
 .color-white {
@@ -9601,4 +9616,11 @@ ul.step a:hover:after {
     bottom: 7px;
     background: url(../img/cursor.png) no-repeat;
     background-size: contain;
+}
+
+/******************* MY SELECTION *******************/
+
+.hidden-uploader {
+    position: absolute !important;
+    left: -1000px;
 }
