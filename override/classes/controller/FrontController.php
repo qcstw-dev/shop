@@ -37,14 +37,19 @@ class FrontController extends FrontControllerCore {
                 }
             }
         }
+        $bBlinking = false;
+        if ($aSelectedProducts && $this->context->cookie->blinking != 'false') {
+            $bBlinking = true;
+        }
         
         $this->context->smarty->assign(array(
             'selection'             => $aSelectedItems,
-            'aCustomDesigns'      => $aCustomDesigns,
+            'aCustomDesigns'        => $aCustomDesigns,
             'aSelectedDesigns'      => $aSelectedDesigns,
-            'aSelectedProducts'      => $aSelectedProducts,
-            'preselected_product' => $preselected_product,
-            'preselected_design' => $preselected_design,
+            'aSelectedProducts'     => $aSelectedProducts,
+            'bBlinking'             => $bBlinking,
+            'preselected_product'   => $preselected_product,
+            'preselected_design'    => $preselected_design,
         ));
     }
     public function init() {

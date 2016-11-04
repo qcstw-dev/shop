@@ -9066,7 +9066,12 @@ ul.step a:hover:after {
     width: 124px;
     border: 1px solid #ddd;
 }
-
+@keyframes blink { 
+   50% { border: 2px dashed #000; }
+}
+.blink {
+    animation: blink .5s step-end infinite alternate;
+}
 .background-grey {
     background: #eee;
 }
@@ -9109,6 +9114,15 @@ ul.step a:hover:after {
 .bold {
     font-weight: bold;
 }
+.border-blue {
+    border: 2px solid #4267b2 !important;
+}
+.border-green {
+    border: 2px solid #38B15D !important;
+}
+.border-red {
+    border: 2px solid #ce1f21 !important;
+}
 .border {
     border: 1px solid #ddd;
     border-radius: 0;
@@ -9132,8 +9146,14 @@ ul.step a:hover:after {
 .margin-left-7 {
     margin-left: 7%;
 }
+.initialcase {
+    text-transform: initial !important;
+}
 .uppercase {
-    text-transform: uppercase;
+    text-transform: uppercase !important;
+}
+.lowercase {
+    text-transform: lowercase !important;
 }
 .font-size-44 {
     font-size: 44px !important;
@@ -9222,6 +9242,12 @@ ul.step a:hover:after {
 }
 .padding-left-30 {
     padding-left: 30px !important;
+}
+.padding-right-5 {
+    padding-right: 5px !important;
+}
+.padding-right-10 {
+    padding-right: 10px !important;
 }
 .padding-right-30 {
     padding-right: 30px !important;

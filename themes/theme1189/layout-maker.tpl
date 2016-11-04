@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-12 padding-0">
                     <div class="designs-list">
-                        <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10  list-item list-item-design cursor-pointer list-item-custom" data-id="custom" data-type="design">
+                        <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item cursor-pointer list-item-custom" data-id="custom" data-type="design">
                             <div class="padding-0 border list-item-custom-text img-product uppercase">Upload your own design</div>
                             <div class="cursor"></div>
                         </div>
@@ -100,10 +100,10 @@
             style="display: none">{l s='Add to cart'}</button>
     <button class="btn btn-primary preview-layout" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
 {else}
-    <div class="alert alert-info margin-top-10">
+    <div class="col-xs-12 alert alert-info margin-top-10">
         <p>First you have to select at least one product, then you can comeback on this page to customize it</p>
-        <p><a href="46-designs" title="See the Designs">>> Select the Designs</a></p>
-        <p><a href="45-products">>> Select the Products</a></p>
+        <p><a href="46-designs" title="See the Designs"> >> Select the Designs</a></p>
+        <p><a href="45-products"> >> Select the Products</a></p>
     </div>
 {/if}
 {if $preselected_design && $preselected_product}
