@@ -1920,6 +1920,10 @@ select[multiple].input-lg,
     color: white;
     background-color: #333333; }
 
+.btn-secondary {
+  color: white;
+  background-color: #ea3f23;
+}
 .btn-primary {
   color: white;
   background-color: #4267b2;
@@ -5768,8 +5772,7 @@ header {
     header .row > .container {
       position: relative; }
     header .row #header_logo {
-      width: auto;
-      padding-top: 50px; }
+      width: auto; }
       @media (max-width: 767px) {
         header .row #header_logo {
           padding-top: 15px; }
@@ -9016,13 +9019,23 @@ ul.step a:hover:after {
     cursor: default;
 }
 .block-selection {
-    border: 3px solid #9E9E9E;
+    /*border: 3px solid #9E9E9E;*/
 }
 .block-selection-top-title {
     background: #9E9E9E;
+    border: 3px solid #777;
 }
 .block-selection-top-title h4{
     color: #fff;
+}
+.block-selection-product {
+    border: 3px solid #4267b2;
+}
+.block-selection-design {
+    border: 3px solid #ea3f23;
+}
+.block-selection-design h5{
+    color: #ea3f23;
 }
 .block-selection a,
 .block-selection ul li a:hover {
@@ -9032,7 +9045,7 @@ ul.step a:hover:after {
     margin-bottom: 10px;
 }
 .block-selection .glyphicon-remove {
-    top: 0;
+    top: 2px;
     right: 7px;
     background: #fff;
     padding: 2px;
@@ -9258,6 +9271,12 @@ ul.step a:hover:after {
 }
 .margin-bottom-0 {
     margin-bottom: 0 !important;
+}
+.margin-top-5 {
+    margin-top: 5px !important;
+}
+.margin-bottom-5 {
+    margin-bottom: 5px !important;
 }
 .margin-top-10 {
     margin-top: 10px !important;
@@ -9502,7 +9521,7 @@ ul.step a:hover:after {
     width: 270px;
 }
 .slogan {
-    margin-top: 98px;
+    margin-top: 50px;
     line-height: 2em;
     font-size: 25px;
     font-style: italic;

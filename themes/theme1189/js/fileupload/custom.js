@@ -14,43 +14,53 @@ $(function () {
         singleFileUploads: false,
         limitMultiFileUploads: limit
     }).on('fileuploadadd', function (e, data) {
+        $.fancybox.showLoading();
         data.context = $('#files');
     }).on('fileuploadprocessalways', function (e, data) {
         var index = data.index,
-            file = data.files[index],
-            node = $(data.context);
+                file = data.files[index],
+                node = $(data.context);
         if (index + 1 > limit || $('.list-item-custom-image').length === limit) {
             $.fancybox.hideLoading();
             $.magnificPopup.open({
-                    items: [{
-                            src: $('<div class="white-popup">' +
-                                    '<div><span class="glyphicon glyphicon-warning-sign font-size-20"></span> Upload is limited to 10 pictures</div>' +
-                                    '</div>'),
-                            type: 'inline'
-                        }]
-                });
+                items: [{
+                        src: $('<div class="white-popup">' +
+                                '<div><span class="glyphicon glyphicon-warning-sign font-size-20"></span> Upload is limited to 10 pictures</div>' +
+                                '</div>'),
+                        type: 'inline'
+                    }]
+            });
         } else {
-            $.fancybox.showLoading();
             var isLayoutMaker = $('.resize-image').length;
             var error = [];
-            
+
             if (file.preview && !file.error) {
                 var dataURL = file.preview.toDataURL();
 
+                var formData = new FormData();
+                formData.append(file.name, file);
+                formData.append('controller', 'ajax');
+                formData.append('action', 'storecustomimage');
+                formData.append('ajax', true);
+                
                 $.ajax({
                     type: 'POST',
                     url: baseDir + 'index.php',
-                    data: {
-                        'controller': 'ajax',
-                        'action': 'storecustomimage',
-                        'ajax': true,
-                        'image_url': dataURL
-                    },
+//                    data: {
+//                        'controller': 'ajax',
+//                        'action': 'storecustomimage',
+//                        'ajax': true,
+//                        'image_url': dataURL
+//                    },
+                    data: formData,
+                    cache: false,
                     dataType: 'json',
-                    async : false,
+                    processData: false, // Don't process the files
+                    contentType: false,
+                    async: false,
                     success: function (json) {
                         if (json.success === true) {
-                            $('.designs-list').append('\
+                            $('.list-item-custom').after('\
                                 <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design list-item-custom-image cursor-pointer ">\n\
                                     <img class="' + (isLayoutMaker ? 'img-product' : 'popup') + ' border" src="' + dataURL + '" />\n\
                                     <span class="delete_cutom_picture cursor-pointer glyphicon glyphicon-remove" data-file-name="' + json.image_name + '" title="Remove from selection"></span>\n\

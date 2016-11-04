@@ -498,7 +498,7 @@ function addRemoveToSelection(id) {
                         $(this).find('.text').text($(this).data('text-remove'));
                     });
                     if (element.data('type') === 'products') {
-                        $('.' + element.data('type') + '-list').append('\
+                        $('.' + element.data('type') + '-list').prepend('\
                             <div class="list-item list-item-' + element.data('id') + ' col-xs-6 col-sm-4 col-md-3 thumbnail margin-bottom-10 margin-top-10 border-none">\n\
                                 <a class="quick-view-bis" rel="' + element.data('product-link') + '" title="' + element.data('product-title') + '" href="' + element.data('product-link') + '" title="' + element.data('product-title') + '">\n\
                                     <img class="border" scr="" title="' + element.data('product-title') + '" title="' + element.data('product-title') + '"/>\n\
@@ -507,7 +507,7 @@ function addRemoveToSelection(id) {
                             </div>');
                         $('.list-item-' + element.data('id')).find('img').attr('src', element.data('img'));
                     } else {
-                        $('.designs-list').append('\
+                        $('.designs-list').prepend('\
                             <div class="list-item list-item-' + element.data('id') + ' col-xs-6 col-sm-4 col-md-3 thumbnail margin-bottom-10 margin-top-10 border-none">\n\
                                 <img class="popup border" scr="" title="' + element.data('product-title') + '" title="' + element.data('product-title') + '"/>\n\
                                 <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="' + element.data('id') + '"></span>\n\
@@ -581,19 +581,6 @@ $(window).load(function () {
     $('.preview-layout').live('click', function () {
         crop(true);
     });
-
-//    if (sessionStorage.images) {
-//        $.each(sessionStorage.images, function (index, url) {
-//console.log(sessionStorage['images_0']);
-    for (var i; i < 10; i++) {
-        $('.designs-list').append('\
-                <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design list-item-custom cursor-pointer ">\n\
-                    <img class="img-product border" src="' + $.cookie('images_' + i) + '" />\n\
-                </div>');
-    }
-//        });
-//    }
-
 });
 
 

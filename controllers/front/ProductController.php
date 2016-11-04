@@ -80,7 +80,7 @@ class ProductControllerCore extends FrontController
     public function init()
     {
         parent::init();
-        
+
         if ($id_product = (int)Tools::getValue('id_product')) {
             $this->product = new Product($id_product, true, $this->context->language->id, $this->context->shop->id);
         }
