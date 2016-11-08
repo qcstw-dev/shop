@@ -38,7 +38,7 @@ class FrontController extends FrontControllerCore {
             }
         }
         $bBlinking = false;
-        if ($aSelectedProducts && $this->context->cookie->blinking != 'false') {
+        if ($aSelectedProducts && $aSelectedDesigns && $this->context->cookie->blinking != 'false') {
             $bBlinking = true;
         }
         

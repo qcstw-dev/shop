@@ -3,8 +3,8 @@
         <div class="col-md-9">
             <h4 class="title-block-selection margin-top-10 margin-bottom-20 uppercase">{l s='Your selection'}</h4>
         </div>
-        <div class="col-md-3 margin-top-5 margin-bottom-5 clearfix">
-            <a class="btn btn-default btn-block-selection pull-right {if $bBlinking}blink{/if}" title="" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Place designs on products</a>
+        <div class="col-md-3 margin-top-5 margin-bottom-5 clearfix container-btn-block-selection">
+            <a class="btn btn-default btn-block-selection pull-right {if !$aSelectedProducts && !$aSelectedDesigns} disabled {/if} {if $bBlinking}blink{/if}" title="" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Place designs on products</a>
         </div>
     </div>
     <div class="clearfix"></div>

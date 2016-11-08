@@ -490,10 +490,10 @@ function addRemoveToSelection(id) {
                         $('.products-list').find('.alert-no-product').show();
                     }
                 } else {
+                    $('.btn-block-selection').removeClass('disabled');
                     $('.block-selection').show();
                     if (element.data('type') === 'products') {
                         $('.products-list').find('.alert-no-product').hide();
-                        $('.btn-block-selection').addClass('blink');
                         if (!$('.list-item-product').length) {
                             popupFirstProductAdd();
                         }
@@ -523,7 +523,14 @@ function addRemoveToSelection(id) {
                             </div>');
                         $('.list-item-' + element.data('id')).find('img').attr('src', element.data('img-large'));
                     }
-
+                    if ($('.list-item-design').length && $('.list-item-product').length) {
+                        $('.btn-block-selection').addClass('blink');
+                    }
+                }
+                if (!$('.list-item-product').length && !$('.list-item-design').length) {
+                    $('.btn-block-selection').addClass('disabled');
+                } else if (!$('.list-item-product').length || !$('.list-item-design').length) {
+                    $('.btn-block-selection').removeClass('blink');
                 }
             } else {
                 $.fancybox('<p class="text-center">Error</p>');
@@ -531,16 +538,16 @@ function addRemoveToSelection(id) {
         }
     });
 }
-function popupFirstProductAdd () {
-    
-    var firstButton = '<div>\n\
-                            <a class="btn btn-default border-blue close-popup initialcase"><span class="glyphicon glyphicon-search"></span> Add other products to your selection</a>\n\
-                        </div>';
+function popupFirstProductAdd() {
+    var firstButton = '\
+        <div>\n\
+            <a class="btn btn-default border-blue close-popup initialcase"><span class="glyphicon glyphicon-search"></span> Add other products to your selection</a>\n\
+        </div>';
     var secondButton = '';
-    
+
     if (!$('.list-item-design').length) {
         secondButton = '<div class="margin-top-10">\n\
-                            <a href="'+baseDir+'46-designs" class="btn btn-default border-red initialcase" href>\n\
+                            <a href="' + baseDir + '46-designs" class="btn btn-default border-red initialcase" href>\n\
                                 <span class="glyphicon glyphicon-check margin-top-10 padding-right-10 pull-left"></span>\n\
                                 <span class="pull-left">I am done with product selection.<br />\n\
                                 Bring me to design selection step</span>\n\
@@ -548,29 +555,31 @@ function popupFirstProductAdd () {
                         </div>';
     } else {
         secondButton = '<div class="margin-top-10">\n\
-                            <a href="'+baseDir+'layout-maker" class="btn btn-default border-red initialcase" href>\n\
+                            <a href="' + baseDir + 'layout-maker" class="btn btn-default border-red initialcase" href>\n\
                                 <span class="glyphicon glyphicon-wrench"></span> Place your design on product\n\
                             </a>\n\
                         </div>';
     }
     $.magnificPopup.open({
         items: [{
-            src: $('<div class="white-popup">'+firstButton+secondButton+'</div>'),
-            type: 'inline'
-        }]
+                src: $('<div class="white-popup">' + firstButton + secondButton + '</div>'),
+                type: 'inline'
+            }]
     });
-    $('.close-popup').on('click', function () { $.magnificPopup.close(); });
+    $('.close-popup').on('click', function () {
+        $.magnificPopup.close();
+    });
 }
-function popupFirstDesignAdd () {
-    
+function popupFirstDesignAdd() {
+
     var firstButton = '<div>\n\
                             <a class="btn btn-default border-blue close-popup initialcase"><span class="glyphicon glyphicon-search"></span> Add other designs to your selection</a>\n\
                         </div>';
     var secondButton = '';
-    
+
     if (!$('.list-item-product').length) {
         secondButton = '<div class="margin-top-10">\n\
-                            <a href="'+baseDir+'46-designs" class="btn btn-default border-red initialcase" href>\n\
+                            <a href="' + baseDir + '45-products" class="btn btn-default border-red initialcase" href>\n\
                                 <span class="glyphicon glyphicon-check margin-top-10 padding-right-10 pull-left"></span>\n\
                                 <span class="pull-left">I am done with design selection.<br />\n\
                                 Bring me to product selection step</span>\n\
@@ -578,18 +587,20 @@ function popupFirstDesignAdd () {
                         </div>';
     } else {
         secondButton = '<div class="margin-top-10">\n\
-                            <a href="'+baseDir+'layout-maker" class="btn btn-default border-red initialcase" href>\n\
+                            <a href="' + baseDir + 'layout-maker" class="btn btn-default border-red initialcase" href>\n\
                                 <span class="glyphicon glyphicon-wrench"></span> Place your design on product\n\
                             </a>\n\
                         </div>';
     }
     $.magnificPopup.open({
         items: [{
-            src: $('<div class="white-popup">'+firstButton+secondButton+'</div>'),
-            type: 'inline'
-        }]
+                src: $('<div class="white-popup">' + firstButton + secondButton + '</div>'),
+                type: 'inline'
+            }]
     });
-    $('.close-popup').on('click', function () { $.magnificPopup.close(); });
+    $('.close-popup').on('click', function () {
+        $.magnificPopup.close();
+    });
 }
 
 function deleteCustomPicture(file_name, element) {

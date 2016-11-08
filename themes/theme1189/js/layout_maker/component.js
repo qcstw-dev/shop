@@ -280,8 +280,8 @@ var resizeableImage = function (image_target, customizable) {
                                         '<div class="text-center"><img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" /></div>' +
                                     '</div>'+
                                     '<div class="popup-btns">' +
-                                        '<div class="add-to-cart-area"></div>' +
-                                        '<div class="export-image btn btn-primary">Download layout <span class="glyphicon glyphicon-download-alt"></span></div>' +
+                                        '<div class="add-to-cart-area pull-left"></div>' +
+                                        '<div class="export-image btn btn-primary pull-right"><span class="glyphicon glyphicon-download-alt"></span> Download layout</div>' +
                                     '</div>'+
                                 '</div>'),
                         type: 'inline'

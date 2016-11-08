@@ -27,6 +27,7 @@ class AjaxControllerCore extends FrontController {
             } else {
                 $context->cookie->__set('selection', $_POST['id_product']);
             }
+            $context->cookie->setExpire(time() + 4*60*60*1000);
         } else {
             $result['success'] = false;
         }
@@ -71,38 +72,12 @@ class AjaxControllerCore extends FrontController {
                 }
                 $aImagesArray[] = $sId;
                 $context->cookie->__set('custom_images', implode(',', $aImagesArray));
+                $context->cookie->setExpire(time() + 4*60*60*1000);
                 $result['image_name'] = $sId;
             } else {
                 $result['success'] = false;
             }
         }
-//        if (isset($_POST['image_url'])) {
-//            $sImgPath = $_POST['image_url'];
-//            $sImgPath = str_replace('data:image/png;base64,', '', $sImgPath);
-//            $sImgPath = str_replace(' ', '+', $sImgPath);
-//            $sData = base64_decode($sImgPath);
-//
-//            $sId = time() . '_' . rand(1, 100);
-//
-//            $sName = $sId . '.png';
-//            $sFolder = 'img/layout_maker/temp';
-//
-//            $sImgFinalPath = $sFolder . '/' . $sName;
-//            if (file_put_contents($sImgFinalPath, $sData)) {
-//                $context = Context::getContext();
-//                $aImagesArray = [];
-//                if ($context->cookie->custom_images) {
-//                    $aImagesArray = explode(',', $context->cookie->custom_images);
-//                }
-//                $aImagesArray[] = $sId;
-//                $context->cookie->__set('custom_images', implode(',', $aImagesArray));
-//                $result['image_name'] = $sId;
-//            } else {
-//                $result['success'] = false;
-//            }
-//        } else {
-//            $result['success'] = false;
-//        }
         echo json_encode($result);
     }
 

@@ -46,12 +46,6 @@ $(function () {
                 $.ajax({
                     type: 'POST',
                     url: baseDir + 'index.php',
-//                    data: {
-//                        'controller': 'ajax',
-//                        'action': 'storecustomimage',
-//                        'ajax': true,
-//                        'image_url': dataURL
-//                    },
                     data: formData,
                     cache: false,
                     dataType: 'json',
@@ -67,15 +61,7 @@ $(function () {
                                 </div>');
                             // if it's layout maker page
                             if (isLayoutMaker && data.files.length === index + 1) {
-                                $('.resize-image').attr("src", dataURL).removeClass('hidden');
-                                $('.hidden-original-picture').attr("src", dataURL);
-                                $('.resize-image').removeClass('custom-margin-left');
-
-                                // Kick everything off with the target image
-                                resizeableImage($('.resize-image'));
-
-                                resizePreviewPicture(file);
-
+                                $('.list-item-custom-image').trigger('click');
                                 if (file.preview.attributes.width.value <= 500 || file.preview.attributes.height.value <= 500) {
                                     $.magnificPopup.open({
                                         items: [{
