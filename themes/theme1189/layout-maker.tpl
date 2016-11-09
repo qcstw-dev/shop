@@ -1,12 +1,12 @@
 {if $aSelectedProducts}
     <div class="col-md-12 block-selection-top-title margin-top-10">
-        <h4 class="title-block-selection text-center font-size-20 primary-color uppercase">{l s='Your selection'}</h4>
+        <h4 class="title-block-selection margin-top-20 margin-bottom-10 padding-bottom-10">{l s='Your selection'}</h4>
     </div>
     <div class="block-selection col-xs-12 margin-bottom-10 padding-0">
         <div class="col-md-6 padding-0">
             <div class="col-xs-12 block-selection-product">
                 <div class="col-md-12">
-                    <h5 class="text-center font-size-15 color-red">Click on the product you want to personalize</h5>
+                    <h5 class="text-center font-size-15 color-blue">Click on the product you want to personalize</h5>
                 </div>
                 <div class="col-md-12 padding-0">
                     <div class="products-list">
@@ -27,7 +27,7 @@
                 <div class="col-md-12 padding-0">
                     <div class="designs-list">
                         <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item cursor-pointer list-item-custom" data-id="custom" data-type="design">
-                            <div class="padding-0 border list-item-custom-text img-product uppercase">Upload your own design</div>
+                            <div class="padding-0 border list-item-custom-text img-product">Upload your own design</div>
                             <div class="cursor"></div>
                         </div>
                         {foreach from=$aSelectedDesigns item=design name=designs}
@@ -102,10 +102,14 @@
         </div>
     </div>
 {else}
-    <div class="col-xs-12 alert alert-info margin-top-10">
+    <div class="col-xs-12 alert alert-info margin-top-10 text-center">
         <p>First you have to select at least one product, then you can comeback on this page to customize it</p>
-        <p><a href="46-designs" title="See the Designs"> >> Select the Designs</a></p>
-        <p><a href="45-products"> >> Select the Products</a></p>
+        <p>
+            <a class="btn btn-default border-blue" href="45-products"><span class="glyphicon glyphicon-search"></span> Go to product selection</a>
+        </p>
+        {*<p>
+            <a class="btn btn-default border-red" href="46-designs" title="See the Designs"><span class="glyphicon glyphicon-search"></span> Go to design selection</a>
+        </p>*}
     </div>
 {/if}
 {if $preselected_design && $preselected_product}

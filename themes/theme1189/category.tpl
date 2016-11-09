@@ -64,6 +64,11 @@
                 <div id="subcategories">
                     <p class="subcategory-heading">{l s='Subcategories'}</p>
                     <ul class="clearfix">
+                        <li>
+                            <div class="subcategory-image list-item-custom cursor-pointer" >
+                                <div class="padding-0 border list-item-custom-text img-product">Upload your own Design</div>
+                            </div>
+                        </li>
                         {foreach from=$subcategories item=subcategory}
                             <li>
                                 <div class="subcategory-image">

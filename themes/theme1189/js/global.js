@@ -516,7 +516,7 @@ function addRemoveToSelection(id) {
                             </div>');
                         $('.list-item-' + element.data('id')).find('img').attr('src', element.data('img'));
                     } else {
-                        $('.list-item-custom').after('\
+                        $('.designs-list .list-item-custom').after('\
                             <div class="list-item list-item-design list-item-' + element.data('id') + ' col-xs-6 col-sm-4 col-md-3 thumbnail margin-bottom-10 margin-top-10 border-none">\n\
                                 <img class="popup border" scr="" title="' + element.data('product-title') + '" title="' + element.data('product-title') + '"/>\n\
                                 <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="' + element.data('id') + '"></span>\n\
@@ -619,6 +619,11 @@ function deleteCustomPicture(file_name, element) {
             $.fancybox.hideLoading();
             if (json.success === true) {
                 element.remove();
+                if (!$('.list-item-product').length && !$('.list-item-design').length) {
+                    $('.btn-block-selection').addClass('disabled');
+                } else if (!$('.list-item-product').length || !$('.list-item-design').length) {
+                    $('.btn-block-selection').removeClass('blink');
+                }
                 if (isLayoutMaker) {
                     $('.list-item-design').trigger('click');
                 }

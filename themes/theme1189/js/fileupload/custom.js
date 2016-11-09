@@ -42,7 +42,7 @@ $(function () {
                 formData.append('controller', 'ajax');
                 formData.append('action', 'storecustomimage');
                 formData.append('ajax', true);
-                
+
                 $.ajax({
                     type: 'POST',
                     url: baseDir + 'index.php',
@@ -54,11 +54,17 @@ $(function () {
                     async: false,
                     success: function (json) {
                         if (json.success === true) {
-                            $('.list-item-custom').after('\
+                            $('.btn-block-selection').removeClass('disabled');
+                            $('.designs-list .list-item-custom').after('\
                                 <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design list-item-custom-image cursor-pointer ">\n\
                                     <img class="' + (isLayoutMaker ? 'img-product' : 'popup') + ' border" src="' + dataURL + '" />\n\
                                     <span class="delete_cutom_picture cursor-pointer glyphicon glyphicon-remove" data-file-name="' + json.image_name + '" title="Remove from selection"></span>\n\
                                 </div>');
+                            if (!$('.list-item-product').length && !$('.list-item-design').length) {
+                                $('.btn-block-selection').addClass('disabled');
+                            } else if (!$('.list-item-product').length || !$('.list-item-design').length) {
+                                $('.btn-block-selection').removeClass('blink');
+                            }
                             // if it's layout maker page
                             if (isLayoutMaker && data.files.length === index + 1) {
                                 $('.list-item-custom-image').trigger('click');
@@ -73,6 +79,12 @@ $(function () {
                                                 type: 'inline'
                                             }]
                                     });
+                                }
+                                if ($('.list-item-product').length && $('.list-item-design').length) {
+                                    $('.add-to-cart').data('id-product', $('.list-item-product').data('id'));
+                                    $('.add-to-cart').show();
+                                    $('.preview-layout').show();
+                                    $('.slider-vertical').show();
                                 }
                             }
                         }

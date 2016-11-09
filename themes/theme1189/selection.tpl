@@ -1,16 +1,16 @@
 <div class="block-selection margin-top-10 margin-bottom-10" {if $page_name == 'index' && !$aSelectedProducts && !$aSelectedDesigns}style="display: none"{/if}>
     <div class="col-xs-12 block-selection-top-title padding-0">
         <div class="col-md-9">
-            <h4 class="title-block-selection margin-top-10 margin-bottom-20 uppercase">{l s='Your selection'}</h4>
+            <h4 class="title-block-selection margin-top-20 margin-bottom-10 padding-bottom-10">{l s='Your selection'}</h4>
         </div>
-        <div class="col-md-3 margin-top-5 margin-bottom-5 clearfix container-btn-block-selection">
+        <div class="col-md-3 margin-top-5 margin-bottom-5 clearfix container-btn-block-selection padding-top-10">
             <a class="btn btn-default btn-block-selection pull-right {if !$aSelectedProducts && !$aSelectedDesigns} disabled {/if} {if $bBlinking}blink{/if}" title="" href="{$base_dir}layout-maker"><span class="glyphicon glyphicon-wrench"></span> Place designs on products</a>
         </div>
     </div>
     <div class="clearfix"></div>
     <div class="col-md-6 padding-0">
         <div class="col-xs-12 block-selection-product">
-            <h5 class="text-center uppercase bold">Your selected products</h5>
+            <h5 class="text-center bold">Your selected products</h5>
             <div class="products-list">
                 {if $aSelectedProducts}
                     {foreach from=$aSelectedProducts item=product name=products}
@@ -24,8 +24,8 @@
                 {/if}
                 <div class="alert alert-no-product margin-top-20 text-center" {if $aSelectedProducts}style="display:none"{/if}>
                     <p>No product selected yet</p>
-                    <a class="btn btn-default margin-top-5" href="{$base_dir}45-products">
-                        <span class="glyphicon glyphicon-chevron-right"></span> Select products <span class="glyphicon glyphicon-chevron-left"></span>
+                    <a class="btn btn-default margin-top-5 border-blue" href="{$base_dir}45-products">
+                        <span class="glyphicon glyphicon-search"></span> Select products
                     </a>
                 </div>
             </div>
@@ -33,10 +33,10 @@
     </div>
     <div class="col-md-6 padding-0">
         <div class="col-xs-12 block-selection-design">
-            <h5 class="text-center uppercase bold">Your selected designs</h5>
+            <h5 class="text-center bold">Your selected designs</h5>
             <div class="designs-list">
                 <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10  list-item list-item-custom cursor-pointer" data-id="custom" data-type="design">
-                    <div class="padding-0 border list-item-custom-text img-product uppercase">Upload your own Design</div>
+                    <div class="padding-0 border list-item-custom-text img-product">Upload your own Design</div>
                     <div class="cursor"></div>
                 </div>
                 {if $aSelectedDesigns}

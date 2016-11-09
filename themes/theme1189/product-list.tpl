@@ -41,12 +41,7 @@
                 <div class="product-image-container">
                     {if $product.category == 'products'}
                         <div class="col-xs-12 padding-0">
-                            <div class="col-md-6 padding-0">
-                                <a class="btn btn-default btn-detail cursor-pointer quick-view-bis" href="{$product.link|escape:'html':'UTF-8'}" rel="{$product.link|escape:'html':'UTF-8'}">
-                                    <span class="glyphicon glyphicon-zoom-in"></span> {l s='Product details'}
-                                </a>
-                            </div>
-                            <div class="col-md-6 padding-0">
+                            <div class="col-xs-12 padding-0">
                             {else}
                                 <div class="col-xs-12 padding-0">
                                     <div class="col-xs-12 padding-0">
@@ -55,6 +50,11 @@
                                         <span class="glyphicon glyphicon-{if !$isInSelection}plus-sign{else}minus-sign{/if}"></span> <span class="text">{if !$isInSelection}{l s='Add to selection'}{else}{l s='Remove from selection'}{/if}</span>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-xs-12 padding-0">
+                                <a class="btn btn-default btn-detail cursor-pointer quick-view-bis" href="{$product.link|escape:'html':'UTF-8'}" rel="{$product.link|escape:'html':'UTF-8'}">
+                                    <span class="glyphicon glyphicon-zoom-in"></span> {l s='Product details'}
+                                </a>
                             </div>
                             {if isset($quick_view) && $quick_view && $product.category == 'products'}
                                 <a class="quick-view-bis product_img_link" href="{$product.link|escape:'html':'UTF-8'}" rel="{$product.link|escape:'html':'UTF-8'}">

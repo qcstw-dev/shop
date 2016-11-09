@@ -6189,7 +6189,7 @@ table.table_block td {
   font-size: 14px;
   line-height: 16px;
   color: #4267b2;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   margin-bottom: 0; }
   .product-name a {
     font-size: 14px;
@@ -6209,7 +6209,7 @@ a.product-name,
   font-size: 14px;
   line-height: 16px;
   color: #4267b2;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -ms-transition: all 0.2s ease;
@@ -6282,18 +6282,10 @@ a.product-name,
 .btn-detail {
     text-align: center !important;
     border: 1px solid #e7e7e6 !important;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     width: 100%;
     font-size: 12px;
 }
-/*.btn-add {
-    background: #38B15D;
-    border-color: #38B15D;
-}
-.btn-detail {
-    background: #1171bd;
-    border: #1171bd;
-}*/
 .btn-remove {
     background: #ef6960;
     border-color: #ef6960;
@@ -9466,7 +9458,7 @@ ul.step a:hover:after {
     background: #4267b2;
     color: #fff;
     font-weight: normal;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 .primary-color {
     color: #4267b2;
@@ -9493,9 +9485,9 @@ ul.step a:hover:after {
 .mfp-wrap, .mfp-bg {
     z-index: 999999 !important;
 }
-.btn {
+/*.btn {
     text-transform: uppercase;
-}
+}*/
 @media screen and (max-width: 1024px){
     .block-selection .designs-list, .block-selection .products-list {
         height: auto;
@@ -9566,6 +9558,9 @@ ul.step a:hover:after {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.subcategory-image {
+    height: 67%;
 }
 .list-item {
     text-align: center;
