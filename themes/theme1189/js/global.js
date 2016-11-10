@@ -201,7 +201,7 @@ function quick_view()
             $.fancybox({
                 'padding': 0,
                 'width': 900,
-                'height': 400,
+                'height': 'auto',
                 'type': 'ajax',
                 'autoSize': false,
                 'href': url + 'content_only=1' + anchor,
@@ -248,7 +248,7 @@ function quick_view_event(url) {
         $.fancybox({
             'padding': 0,
             'width': 900,
-            'height': 400,
+            'height': 'auto',
             'type': 'ajax',
             'autoSize': false,
             'href': url + 'content_only=1' + anchor,
