@@ -41,6 +41,7 @@ class FrontController extends FrontControllerCore {
         if ($aSelectedProducts && $aSelectedDesigns && $this->context->cookie->blinking != 'false') {
             $bBlinking = true;
         }
+        $cookie_video = new CookieCore('popup_video');
         $this->context->smarty->assign(array(
             'selection'             => $aSelectedItems,
             'aCustomDesigns'        => $aCustomDesigns,
@@ -49,18 +50,17 @@ class FrontController extends FrontControllerCore {
             'bBlinking'             => $bBlinking,
             'preselected_product'   => $preselected_product,
             'preselected_design'    => $preselected_design,
-            'popup_video'           => (in_array($this->context->cookie->popup_video, ['', 'true']) ? true : false),
+            'popup_video'           => (in_array($cookie_video->allow, ['', 'true']) ? true : false),
         ));
-        if (in_array($this->context->cookie->popup_video, ['', 'true'])) {
-            $this->context->cookie->__set('popup_video', 'false');
+        if (in_array($cookie_video->allow, ['', 'true'])) {
+            $cookie_video->__set('allow', 'false');
             $days = 14;
-            $this->context->cookie->setExpire(time()+$days*24*60*60*1000);
+            $cookie_video->setExpire(time()+$days*24*60*60*1000);
         }
     }
     public function init() {
         
         parent::init();
-        
         $useSSL = ((isset($this->ssl) && $this->ssl && Configuration::get('PS_SSL_ENABLED')) || Tools::usingSecureMode()) ? true : false;
         $protocol_content = ($useSSL) ? 'https://' : 'http://';
         $base_uri = $protocol_content.Tools::getHttpHost().__PS_BASE_URI__.(!Configuration::get('PS_REWRITING_SETTINGS') ? 'index.php' : '');

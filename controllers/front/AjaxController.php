@@ -27,7 +27,6 @@ class AjaxControllerCore extends FrontController {
             } else {
                 $context->cookie->__set('selection', $_POST['id_product']);
             }
-            $context->cookie->setExpire(time() + 4*60*60*1000);
         } else {
             $result['success'] = false;
         }
