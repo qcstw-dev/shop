@@ -59,13 +59,6 @@
                     <p>{l s='You cannot place a new order from your country.'}{if isset($geolocation_country) && $geolocation_country} <span class="bold">{$geolocation_country|escape:'html':'UTF-8'}</span>{/if}</p>
                 </div>
             {/if}
-            {if isset($smarty.get.product) && $smarty.get.product && !isset($smarty.get.design)}
-                <script>
-                    $(function(){
-                        quick_view_event('{$base_dir_ssl}?controller=product&id_product={$smarty.get.product}');
-                    });
-                </script>
-            {/if}
             <div id="page">
                 <div class="header-container">
                     <header id="header">

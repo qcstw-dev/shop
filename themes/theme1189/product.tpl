@@ -217,19 +217,19 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        {if $colors}
-                            <div class="border-bottom">
-                                <div class="pull-left bold">{l s='Colors available'}: </div>
-                                <div class="pull-left">
-                                    <ul class="color-preview-list margin-bottom-5">
-                                        {foreach from=$colors item=color}
-                                            <li class="color-preview" style="background: {$color.color}"></li>
-                                            {/foreach}
-                                    </ul>
-                                </div>
-                                <div class="clearfix"></div>
+                    {/if}
+                    {if $colors}
+                        <div class="border-bottom">
+                            <div class="pull-left bold">{l s='Colors available'}: </div>
+                            <div class="pull-left">
+                                <ul class="color-preview-list margin-bottom-5">
+                                    {foreach from=$colors item=color}
+                                        <li class="color-preview" style="background: {$color.color}"></li>
+                                        {/foreach}
+                                </ul>
                             </div>
-                        {/if}
+                            <div class="clearfix"></div>
+                        </div>
                     {/if}
                     {if ($product->show_price && !isset($restricted_country_mode)) || isset($groups) || $product->reference || (isset($HOOK_PRODUCT_ACTIONS) && $HOOK_PRODUCT_ACTIONS)}
                         <!-- add to cart form-->

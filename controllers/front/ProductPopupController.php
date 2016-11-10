@@ -4,10 +4,7 @@ class ProductPopupControllerCore extends FrontController
 {
     public function setMedia() {
         parent::setMedia(); 
-//        $this->addJqueryPlugin('jqzoom');
-//        $this->addJS(_THEME_JS_DIR_.'product.js');
-//        $this->addJS(_THEME_JS_DIR_.'global.js');
-//        $this->addCSS(_THEME_CSS_DIR_.'product.css');
+        $this->addJqueryPlugin('jqzoom');
     }
     /**
      * Initialize product controller

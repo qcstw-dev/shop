@@ -6284,7 +6284,6 @@ a.product-name,
     border: 1px solid #e7e7e6 !important;
     /*text-transform: uppercase;*/
     width: 100%;
-    font-size: 12px;
 }
 .btn-remove {
     background: #ef6960;
@@ -7185,8 +7184,9 @@ div.star a:hover {
     .footer-container #footer .row {
       position: relative; }
     .footer-container #footer .footer-block {
-      margin-top: 45px;
-      padding-top: 15px; }
+      margin-left: 20px;
+      padding-top: 15px;
+      float: right; }
       @media (max-width: 767px) {
         .footer-container #footer .footer-block {
           margin-top: 20px; } }
@@ -8885,6 +8885,11 @@ div.star.star_hover:after {
 /* ----------------------------------------------------------------------------------------------------------------
 														LUNG
 ------------------------------------------------------------------------------------------------------------------- */
+#footer #newsletter_block_left {
+    float: none !important;
+    width: auto !important;
+    
+}
 @media (min-width: 768px) and (max-width: 991px) {
   .lang_de .footer-container #footer h4 {
     font-size: 11px;
@@ -9288,6 +9293,12 @@ ul.step a:hover:after {
 }
 .margin-bottom-5 {
     margin-bottom: 5px !important;
+}
+.margin-right-10 {
+    margin-right: 10px !important;
+}
+.margin-left-10 {
+    margin-left: 10px !important;
 }
 .margin-top-10 {
     margin-top: 10px !important;

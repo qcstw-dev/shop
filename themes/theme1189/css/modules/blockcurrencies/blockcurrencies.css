@@ -24,6 +24,8 @@
       #currencies-block-top div.current .cur-label {
         display: none; } }
   #currencies-block-top ul {
+    height: 150px;
+    overflow: auto;
     display: none;
     position: absolute;
     top: 17px;

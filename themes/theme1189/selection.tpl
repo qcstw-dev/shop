@@ -15,7 +15,7 @@
                 {if $aSelectedProducts}
                     {foreach from=$aSelectedProducts item=product name=products}
                         <div class="list-item list-item-product list-item-{$product->id} col-xs-4 col-sm-3 col-md-3 thumbnail margin-bottom-10 margin-top-10 border-none">
-                            <a class="quick-view-bis" href="{$product->getLink()|escape:'html':'UTF-8'}" rel="{$product->getLink()|escape:'html':'UTF-8'}">
+                            <a class="quick-view-bis" href="{$base_uri}product-popup?id_product={$product->id}">
                                 <img class="border" src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$product->name}" />
                             </a>
                             <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$product->id}" title="{l s='Remove from selection'}"></span>

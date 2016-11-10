@@ -57,7 +57,7 @@
                                 </a>
                             </div>
                             {if isset($quick_view) && $quick_view && $product.category == 'products'}
-                                <a class="quick-view-bis product_img_link" href="{$product.link|escape:'html':'UTF-8'}" rel="{$product.link|escape:'html':'UTF-8'}">
+                                <a class="quick-view-bis product_img_link" href="{$base_uri}product-popup?id_product={$product.id_product}" rel="{$product.link|escape:'html':'UTF-8'}">
                             {/if}
                             <img class="replace-2x img-responsive {if $product.category != 'products'}popup{/if}" data-src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" title="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" itemprop="image" />
                             {if isset($quick_view) && $quick_view}
@@ -73,7 +73,7 @@
                         {if $product.category == 'products'}
                             <h5 itemprop="name">
                                 {if isset($product.pack_quantity) && $product.pack_quantity}{$product.pack_quantity|intval|cat:' x '}{/if}
-                                <a class="quick-view-bis product-name" rel="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" href="{$product.link|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" itemprop="url" >
+                                <a class="quick-view-bis product-name" title="{$product.name|escape:'html':'UTF-8'}" href="{$base_uri}product-popup?id_product={$product.id_product}" title="{$product.name|escape:'html':'UTF-8'}" itemprop="url" >
                                     <span class="list-name">{$product.name|cat:$product.reference|truncate:100:'...'|escape:'html':'UTF-8'}</span>
                                     <span class="grid-name">{$product.name|escape:'html':'UTF-8'}</span>
                                 </a>

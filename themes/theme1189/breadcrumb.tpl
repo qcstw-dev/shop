@@ -3,7 +3,7 @@
     {assign var='path' value=$smarty.capture.path}
 {/if}
 
-<div class="breadcrumb clearfix">
+<div class="breadcrumb margin-top-10 clearfix">
     <a class="home" href="{$base_dir}" title="{l s='Return to Home'}">
         <i class="fa fa-home"></i>
     </a>

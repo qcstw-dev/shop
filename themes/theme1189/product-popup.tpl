@@ -72,11 +72,6 @@
                 {if isset($images) && count($images) > 0}
                     <!-- thumbnails -->
                     <div id="views_block" class="clearfix{if isset($images) && count($images) < 2} hidden{/if}">
-                        {if isset($images) && count($images) > 0}
-                            <a id="view_scroll_left" class="" title="{l s='Other views'}" href="javascript:{ldelim}{rdelim}">
-                                {l s='Previous'}
-                            </a>
-                        {/if}
                         <div id="thumbs_list">
                             <ul id="thumbs_list_frame">
                                 {if isset($images)}
@@ -109,11 +104,6 @@
                                 {/if}
                             </ul>
                         </div> <!-- end thumbs_list -->
-                        {if isset($images) && count($images) > 0}
-                            <a id="view_scroll_right" title="{l s='Other views'}" href="javascript:{ldelim}{rdelim}">
-                                {l s='Next'}
-                            </a>
-                        {/if}
                     </div> 
                     <!-- end views-block -->
                     <!-- end thumbnails -->
@@ -132,36 +122,52 @@
             <!-- center infos -->
             <div class="pb-right-column col-xs-6">
                 <div class="bg-container">
-                    <h1 itemprop="name" class="margin-bottom-10 border-bottom">{$product->name|escape:'html':'UTF-8'}</h1>
+                    <h1 itemprop="name" class="padding-bottom-5 margin-top-10 border-bottom">{$product->name|escape:'html':'UTF-8'}</h1>
 
                     {if $product->description}
-                        <div class="grid-desc padding-bottom-5 margin-bottom-10 border-bottom">{$product->description|truncate:300:'...'}</div>
+                        <div class="grid-desc padding-top-5 margin-bottom-10 border-bottom">{$product->description|truncate:300:'...'}</div>
                     {/if}
                     {if $features}
+                        {assign var="logoProcessDisplayed" value="false"}
                         <div class="margin-bottom-10 border-bottom">
-                            {foreach from=$features item=feature}
-                                {if isset($feature.value)}			    
-                                    <p><span class="bold">{$feature.name|escape:'html':'UTF-8'}</span>: {$feature.value|escape:'html':'UTF-8'}</p>
+                            <div class="col-md-6 padding-0">
+                                <p><span class="bold">{l s='Reference'}</span>: {$product->reference}</p>
+                                {foreach from=$features key=k item=feature}
+                                    {if $k == 2}
+                                    </div>
+                                    <div class="col-md-6 padding-0">
+                                    {/if}
+                                    {if isset($feature.value)}
+                                        <p><span class="bold">{$feature.name|escape:'html':'UTF-8'}</span>: {$feature.value|escape:'html':'UTF-8'}</p>
+                                        {if $feature.name == 'Logo process'}
+                                            {assign var="logoProcessDisplayed" value="true"}
+                                        {/if}
+                                    {/if}
+                                {/foreach}
+                                {if $logoProcessDisplayed == 'false'}
+                                    <p><span class="bold">{l s='Logo process'}</span>: {l s='Doming'}</p>
                                 {/if}
-                            {/foreach}
-                        </div>
-                        {if $colors}
-                            <div class="padding-bottom-10 margin-bottom-10 border-bottom">
-                                <div class="pull-left bold">{l s='Colors available'}: </div>
-                                <div class="pull-left">
-                                    <ul class="color-preview-list">
-                                        {foreach from=$colors item=color}
-                                            <li class="color-preview" style="background: {$color.color}"></li>
-                                            {/foreach}
-                                    </ul>
-                                </div>
-                                <div class="clearfix"></div>
+                                <p><span class="bold">{l s='Unit weight'}</span>: {round($product->weight,2)}g</p>
                             </div>
-                        {/if}
+                            <div class="clearfix"></div>
+                        </div>
+                    {/if}
+                    {if $colors}
+                        <div class="border-bottom">
+                            <div class="pull-left bold">{l s='Colors available'}: </div>
+                            <div class="pull-left">
+                                <ul class="color-preview-list margin-bottom-5">
+                                    {foreach from=$colors item=color}
+                                        <li class="color-preview" style="background: {$color.color}"></li>
+                                        {/foreach}
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
                     {/if}
                     <div class="content_prices">
                         <!-- prices -->
-                        <div class="col-xs-12 padding-0 margin-bottom-10">
+                        <div class="col-xs-12 padding-top-5 padding-left-0 margin-bottom-20">
                             <div class="col-xs-12 border padding-0">
                                 <div class="tab-price-cel-first col-xs-2 padding-0 text-center padding-0">Quantity</div>
                                 {foreach from=$prices key=quantity item=price}
@@ -191,7 +197,7 @@
                     {/if}
                     <div class="product_attributes pull-right">
                         {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
-                        <div class="btn btn-default selection margin-bottom-10"
+                        <div class="btn btn-default selection margin-bottom-10 product-{$product->id}"
                              data-product-link="{$product->getLink()|escape:'html':'UTF-8'}" 
                              data-img="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" 
                              data-id="{$product->id}" data-product-title="{$product->name}" data-type="{$product->category}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
@@ -298,5 +304,5 @@
         {addJsDefL name='product_fileButtonHtml'}{l s='Choose File' js=1}{/addJsDefL}
         {addJsDef productColumns=1}
     {/strip}
-    
+
 {/if}

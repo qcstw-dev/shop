@@ -26,7 +26,13 @@
 {/if}
 </div><!-- #page -->
 {/if}
-
+{if isset($smarty.get.product) && $smarty.get.product && !isset($smarty.get.design)}
+    <script>
+        $(function(){
+            quick_view_event('{$base_dir_ssl}?controller=productpopup&id_product={$smarty.get.product}');
+        });
+    </script>
+{/if}
 {include file="$tpl_dir./global.tpl"}
 </body>
 </html>

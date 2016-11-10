@@ -44,7 +44,7 @@
                                                 <span class="quantity-formated">
                                                     <span class="quantity">{$product.cart_quantity}</span>&nbsp;x&nbsp;
                                                 </span>
-                                                <a class="cart_block_product_name quick-view-bis" href="{$link->getProductLink($product, $product.link_rewrite, $product.category, null, null, $product.id_shop, $product.id_product_attribute)|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}">{$product.name|truncate:13:'...'|escape:'html':'UTF-8'}</a>
+                                                <a class="cart_block_product_name quick-view-bis" href="{$base_uri}product-popup?id_product={$product.id_product}" title="{$product.name|escape:'html':'UTF-8'}">{$product.name|truncate:13:'...'|escape:'html':'UTF-8'}</a>
                                             </div>
                                             {if isset($product.attributes_small)}
                                                 <div class="product-atributes">

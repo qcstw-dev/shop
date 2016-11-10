@@ -19,4 +19,9 @@
         {include file="./product-list.tpl" products=$aProducts home_category='products'}
     {/if}
 </div>
+    <script>
+        {if $popup_video == 'true'}
+            videoPopupOpen();
+        {/if}
+    </script>
 {*{/if}*}

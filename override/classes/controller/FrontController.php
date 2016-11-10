@@ -41,7 +41,6 @@ class FrontController extends FrontControllerCore {
         if ($aSelectedProducts && $aSelectedDesigns && $this->context->cookie->blinking != 'false') {
             $bBlinking = true;
         }
-        
         $this->context->smarty->assign(array(
             'selection'             => $aSelectedItems,
             'aCustomDesigns'        => $aCustomDesigns,
@@ -50,7 +49,13 @@ class FrontController extends FrontControllerCore {
             'bBlinking'             => $bBlinking,
             'preselected_product'   => $preselected_product,
             'preselected_design'    => $preselected_design,
+            'popup_video'           => (in_array($this->context->cookie->popup_video, ['', 'true']) ? true : false),
         ));
+        if (in_array($this->context->cookie->popup_video, ['', 'true'])) {
+            $this->context->cookie->__set('popup_video', 'false');
+            $days = 14;
+            $this->context->cookie->setExpire(time()+$days*24*60*60*1000);
+        }
     }
     public function init() {
         
@@ -78,5 +83,11 @@ class FrontController extends FrontControllerCore {
         $this->context->controller->addJS(_THEME_JS_DIR_ . 'fileupload/jquery.iframe-transport.js', 'all');
         $this->context->controller->addJS(_THEME_JS_DIR_ . 'fileupload/custom.js', 'all');
         $this->context->controller->addJS(_THEME_JS_DIR_ . '/selection.js', 'all');
+        $this->context->controller->addJS(_THEME_JS_DIR_ . '/tools.js', 'all');
+        $this->addJqueryPlugin('jqzoom');
+//        $this->context->controller->addJS(_THEME_JS_DIR_ . '/popup-product.js', 'all');
+        $this->addJqueryPlugin(array('fancybox', 'idTabs', 'scrollTo', 'serialScroll', 'bxslider'));
+        
+        $this->context->controller->addCSS(_THEME_CSS_DIR_ . '/product.css', 'all');
     }
 }
