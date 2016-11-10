@@ -7176,7 +7176,8 @@ div.star a:hover {
         position: absolute;
         left: 0;
         top: 0;
-        width: 100%; } }
+        width: 100%; } 
+  }
   .footer-container .container {
     padding-bottom: 95px; }
   .footer-container #footer {
@@ -7186,10 +7187,12 @@ div.star a:hover {
     .footer-container #footer .footer-block {
       margin-left: 20px;
       padding-top: 15px;
-      float: right; }
+      float: right; 
+      width: 14%; }
       @media (max-width: 767px) {
         .footer-container #footer .footer-block {
-          margin-top: 20px; } }
+            margin-top: 20px;
+            width: 100%; } }
     .footer-container #footer a {
       color: #888; }
       .footer-container #footer a:hover {

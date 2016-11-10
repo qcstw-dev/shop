@@ -120,7 +120,7 @@
                 {/if}
             </div>
             <!-- center infos -->
-            <div class="pb-right-column col-xs-6">
+            <div class="pb-right-column col-sm-6">
                 <div class="bg-container">
                     <h1 itemprop="name" class="padding-bottom-5 margin-top-10 border-bottom">{$product->name|escape:'html':'UTF-8'}</h1>
 
@@ -168,16 +168,16 @@
                     <div class="content_prices">
                         <!-- prices -->
                         <div class="col-xs-12 padding-top-5 padding-left-0 margin-bottom-20">
-                            <div class="col-xs-12 border padding-0">
-                                <div class="tab-price-cel-first col-xs-2 padding-0 text-center padding-0">Quantity</div>
+                            <div class="col-xs-6 col-sm-12 border padding-0">
+                                <div class="tab-price-cel-first col-sm-2 padding-0 text-center padding-0">Quantity</div>
                                 {foreach from=$prices key=quantity item=price}
-                                    <div class="tab-price-cel col-xs-1 padding-0 text-center border-left">{$quantity}pc{if $quantity > 1}s{/if}</div>
+                                    <div class="tab-price-cel col-sm-1 padding-0 text-center border-left">{$quantity}pc{if $quantity > 1}s{/if}</div>
                                 {/foreach}
                             </div>
-                            <div class="col-xs-12 border border-top-0 padding-0">
-                                <div class="tab-price-cel-first col-xs-2 padding-0 text-center padding-0">Unit price</div>
+                            <div class="col-xs-6 col-sm-12 border border-top-0 padding-0">
+                                <div class="tab-price-cel-first col-sm-2 padding-0 text-center padding-0">Unit price</div>
                                 {foreach from=$prices key=quantity item=price}
-                                    <div class="tab-price-cel col-xs-1 padding-0 text-center border-left">{convertPrice price=$price}</div>
+                                    <div class="tab-price-cel col-sm-1 padding-0 text-center border-left">{convertPrice price=$price}</div>
                                 {/foreach}
                             </div>
                         </div>

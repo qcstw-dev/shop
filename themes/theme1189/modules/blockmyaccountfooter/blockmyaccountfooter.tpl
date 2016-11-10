@@ -1,5 +1,5 @@
 <!-- Block myaccount module -->
-<section id="MyAcFooter" class="footer-block col-xs-12 col-sm-2">
+<section id="MyAcFooter" class="footer-block col-xs-12">
     <h4>
         <a href="{$link->getPageLink('my-account', true)|escape:'html':'UTF-8'}" title="{l s='Manage my customer account' mod='blockmyaccountfooter'}" rel="nofollow">{l s='My account' mod='blockmyaccountfooter'}</a>
     </h4>

@@ -121,7 +121,9 @@
       width: 86px; } }
   @media only screen and (max-width: 479px) {
     #thumbs_list {
-      height: 189px; } }
+        height: 154px;
+        overflow: auto;
+    } }
   #thumbs_list ul#thumbs_list_frame {
     list-style-type: none;
     padding-left: 0;
