@@ -9,11 +9,6 @@
     </h4>
     <div class="block_content list-block">
         <ul>
-            <li>
-                <a href="{$base_uri}content/7-how-do-i-order" title="{l s='How do I order' mod='blockpermanentlinks'}">
-                {l s='How do I order' mod='blockpermanentlinks'}
-                </a>
-            </li>
             {foreach from=$cms_title.categories item=cms_page}
                 {if isset($cms_page.link)}
                     <li class="bullet">
@@ -42,6 +37,15 @@
     <section class="footer-block col-xs-12" id="block_various_links_footer">
         <h4>{l s='Information' mod='blockcms'}</h4>
         <ul class="toggle-footer">
+            {foreach from=$cmslinks item=cmslink}
+                {if $cmslink.meta_title != ''}
+                    <li class="item">
+                        <a href="{$cmslink.link|escape:'html':'UTF-8'}" title="{$cmslink.meta_title|escape:'html':'UTF-8'}">
+                            {$cmslink.meta_title|escape:'html':'UTF-8'}
+                        </a>
+                    </li>
+                {/if}
+            {/foreach}
             {if $show_new_products}
                 <li class="item">
                     <a href="{$link->getPageLink('new-products')|escape:'html':'UTF-8'}" title="{l s='New products' mod='blockcms'}">
@@ -70,15 +74,6 @@
                     </a>
                 </li>
             {/if}
-            {foreach from=$cmslinks item=cmslink}
-                {if $cmslink.meta_title != ''}
-                    <li class="item">
-                        <a href="{$cmslink.link|escape:'html':'UTF-8'}" title="{$cmslink.meta_title|escape:'html':'UTF-8'}">
-                            {$cmslink.meta_title|escape:'html':'UTF-8'}
-                        </a>
-                    </li>
-                {/if}
-            {/foreach}
             {if $show_sitemap}
                 <li>
                     <a href="{$link->getPageLink('sitemap')|escape:'html':'UTF-8'}" title="{l s='Sitemap' mod='blockcms'}">

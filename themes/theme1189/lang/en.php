@@ -772,6 +772,7 @@ $_LANG['shopping-cart_f4e8b53a114e5a17d051ab84d326cae5'] = 'Total shipping';
 $_LANG['shopping-cart_ecba3578d8cd65126d4a47c76b3c9c2d'] = 'Free Shipping!';
 $_LANG['shopping-cart_f246a17c095de09e043cc1cb917481da'] = 'Total shipping ';
 $_LANG['shopping-cart_e93f43fa527c3534aeca987091d6c049'] = 'Total shipping ';
+$_LANG['shopping-cart_b944f58029fde5c114d97d7b398efbc7'] = '*To be confirmed (Step 3 of check out )';
 $_LANG['shopping-cart_19809527da8b7308e45e2dc6ac40cca9'] = 'Total vouchers ';
 $_LANG['shopping-cart_9816a5054cd05761b6765fbef0062b29'] = 'Total vouchers ';
 $_LANG['shopping-cart_ada0f55ef37f4928c5cd970f378c15e8'] = 'Total vouchers';

@@ -59,8 +59,8 @@ $(document).ready(function ()
         )
                 .result(function (event, data, formatted) {
                     $input.val(data.pname);
-//                    document.location.href = data.product_link;
-                    quick_view_event(data.product_link);
+                    console.log(data);
+                    quick_view_event('product-popup?id_product='+data.id_product);
                 });
     }
 

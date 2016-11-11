@@ -13,7 +13,7 @@
         </form>
     </div>
 </div>
-<div class="pull-left margin-left-10 margin-top-20 visible-sm visible-md visible-lg">
+<div class="pull-left margin-left-10 margin-top-20">
     <iframe width="100%" height="169" src="https://www.youtube.com/embed/4EF2lC8xEgE" frameborder="0" allowfullscreen></iframe>
 </div>
 <!-- /Block Newsletter module-->

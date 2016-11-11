@@ -21,6 +21,16 @@
                     <ul class="tree {if $isDhtml}dhtml{/if}">
                     {/if}
                 {/foreach}
+                <li>
+                    <a href="/new-products" title="New products">
+                        New products
+                    </a>
+                </li>
+                <li>
+                    <a href="/best-sales" title="Top sellers">
+                        Top sellers
+                    </a>
+                </li>
             </ul>
         </div>
     </div> <!-- .category_footer -->
