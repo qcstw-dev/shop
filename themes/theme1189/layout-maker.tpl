@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <div class="btn-cart col-xs-3">
+    <div class="btn-cart col-lg-3">
         <button class="btn btn-primary add-to-cart ajax_add_to_cart_button" 
                 rel="nofollow" title="{l s='Add to cart'}"
                 data-id-product=""
@@ -56,7 +56,7 @@
                 data-custom-picture=""
                 data-original-picture=""
                 style="display: none">{l s='Add to cart'}</button>
-        <button class="btn btn-primary preview-layout margin-top-10" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
+        <button class="btn btn-default preview-layout margin-top-10" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
     </div>                
     <div class="change-color-product-block text-left col-xs-3 background-white position-absolute border padding-10">
         <div class="col-xs-12 col-sm-4 col-lg-12 padding-0 border text-center margin-bottom-10 background-dark-grey block-item-size" style="display: none">

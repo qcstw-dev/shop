@@ -1,18 +1,23 @@
 /*******************************************************************
 					Cart Block Styles
 ********************************************************************/
-.basket {
-  float: right;
-  margin-top: 4px; }
+.basket { }
   @media (max-width: 991px) {
     .basket {} }
 
 #header .shopping_cart {
-  position: relative;
-  float: right; 
-  background: #fff;
 }
-  #header .shopping_cart > a:first-child:after {
+.ajax_cart_quantity {
+    position: absolute;
+    top: -6px;
+    padding: 0px 5px 0px 5px;
+    border-radius: 20px;
+    background: #ea3f23;
+    color: #fff;
+    right: 0;
+    font-size: 10px;
+}
+/*  #header .shopping_cart > a:first-child:after {
     content: "\f107";
     font-family: "FontAwesome";
     font-size: 10px;
@@ -27,7 +32,6 @@
   .shopping_cart > a:first-child {
     display: block;
     font: 300 10px/normal Ubuntu, sans-serif;
-    color: #888888;
     overflow: hidden;
     text-transform: uppercase; }
     @media (min-width: 768px) and (max-width: 991px) {
@@ -37,14 +41,13 @@
       font: 300 14px/normal Ubuntu, sans-serif;
       color: #4267b2;
       padding-right: 5px; }
-    .shopping_cart > a:first-child:before {
+/*    .shopping_cart > a:first-child:before {
       content: '';
-      width: 41px;
-      height: 34px;
+      width: 38px;
+      height: 35px;
       background: url(../../../img/cart-icon.png) no-repeat;
       display: inline-block;
-      margin-right: 6px;
-      vertical-align: -12px; }
+      vertical-align: -12px; }*/
   .shopping_cart .ajax_cart_total {
     display: none !important; }
   .shopping_cart .block_cart_expand:after, .shopping_cart .block_cart_collapse:after {
@@ -154,7 +157,7 @@
 ********************************************************************/
 #header .cart_block {
   position: absolute;
-  top: 65px;
+  top: 43px;
   right: 15px;
   z-index: 100;
   display: none;

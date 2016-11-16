@@ -5727,7 +5727,7 @@ sup, .required {
   z-index: 5003;
 }
 #header .background{
-  background: url('../img/header-background.jpg') no-repeat;
+  background: url('../img/header-background.jpg') no-repeat -57px 0;
 }
 
 .columns-container {
@@ -5761,7 +5761,8 @@ header {
     margin: 0; }
   header .nav nav {
     width: 100%;
-    padding-top: 17px; }
+    /*padding-top: 17px;*/
+  }
   header .row {
     position: relative; }
     header .row > .container {
@@ -6015,7 +6016,7 @@ span.exclusive {
 }
 .btn.ajax_add_to_cart_button, .btn.ajax_add_to_cart_product_button {
   color: #fff;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   background: #4267b2;
   /*padding: 6px 11px 7px;*/
   -webkit-transition: background 0.2s ease;
@@ -7302,12 +7303,12 @@ div.star a:hover {
         width: 19.444443%;
         padding-right: 0; } }
     .footer-container #footer #social_block {
-      float: left;
-      width: 50%;
+        position: absolute;
+        right: 0;
       padding: 7px 15px 0 15px; }
       @media (min-width: 1200px) {
         .footer-container #footer #social_block {
-          padding-right: 185px; } }
+          padding-right: 0; } }
       @media (max-width: 767px) {
         .footer-container #footer #social_block {
           width: 100%;
@@ -8888,11 +8889,6 @@ div.star.star_hover:after {
 /* ----------------------------------------------------------------------------------------------------------------
 														LUNG
 ------------------------------------------------------------------------------------------------------------------- */
-#footer #newsletter_block_left {
-    float: none !important;
-    width: auto !important;
-    
-}
 @media (min-width: 768px) and (max-width: 991px) {
   .lang_de .footer-container #footer h4 {
     font-size: 11px;
@@ -9673,4 +9669,62 @@ ul.step a:hover:after {
 .hidden-uploader {
     position: absolute !important;
     left: -1000px;
+}
+
+/**************** ICONS HEADER **********************/
+.icons {
+    float: right;
+    width: 300px;
+    padding-top: 8px;
+}
+.icons .icon {
+    position: relative;
+    float: right;
+    background: #fff;
+    border-radius: 50px;
+    border: 2px solid #9E9E9E;
+    padding: 10px;
+    color: #9E9E9E;
+    cursor: pointer;
+    margin-bottom: 7px;
+    margin-right: 20px;
+    width: 45px;
+    height: 45px;
+}
+.icons .icon-hover {
+    width: 100%;
+}
+.icons .icon a,
+.icons .icon a:hover{
+    color: #9E9E9E;
+}
+.icons .icon .glyphicon{
+    font-size: 20px;
+}
+.icons .icon .glyphicon {
+    float: left;
+}
+.icons .icon #search_block_top {
+    float: right;
+    margin-right: 4px;
+    margin-top: -4px;
+    display: none;
+}
+.icons .icon-hover #search_block_top {
+    display: block;
+}
+.icons .icon-title {
+    text-align: center;
+    font-size: 18px;
+}
+.icons .icon-title,
+.icons .icon-content{
+    display: none;
+}
+.icons .icon-hover .icon-title,
+.icons .icon-hover .icon-content{
+    display: block;
+}
+.ac_results {
+    min-width: 200px;
 }

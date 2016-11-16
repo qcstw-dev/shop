@@ -27,6 +27,11 @@
                     </li>
                 {/if}
             {/foreach}
+            <li>
+                <a href="{$link->getPageLink($contact_url, true)|escape:'html':'UTF-8'}" title="{l s='Contact us' mod='blockcms'}">
+                    {l s='Contact us' mod='blockcms'}
+                </a>
+            </li>
         </ul>
     </div>
 </section>

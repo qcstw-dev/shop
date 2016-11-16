@@ -1,9 +1,9 @@
 #currencies-block-top {
-  float: left;
+  /*float: left;*/
   position: relative; }
   #currencies-block-top div.current {
-    font: 300 10px/14px Ubuntu, sans-serif;
-    color: #888;
+/*    font: 300 10px/14px Ubuntu, sans-serif;
+    color: #888;*/
     cursor: pointer;
     text-transform: uppercase; }
     #currencies-block-top div.current strong {
@@ -11,13 +11,13 @@
       color: #4267b2; }
     #currencies-block-top div.current:hover strong, #currencies-block-top div.current.active strong {
       color: #888; }
-    #currencies-block-top div.current:after {
+/*    #currencies-block-top div.current:after {
       content: "\f107";
       font-family: "FontAwesome";
       font-size: 10px;
       line-height: 14px;
       color: #888;
-      padding: 0 10px 0 6px; }
+      padding: 0 10px 0 6px; }*/
     #currencies-block-top div.current.active:after {
       content: "\f106"; }
     @media (max-width: 479px) {
@@ -28,9 +28,9 @@
     overflow: auto;
     display: none;
     position: absolute;
-    top: 17px;
-    left: 0;
-    width: 150px;
+    top: 43px;
+    right: 10px;
+    width: 270px;
     background: #fff;
     z-index: 2;
     box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15);

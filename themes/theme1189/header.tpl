@@ -87,7 +87,9 @@
                                     <div class="slogan">
                                         <span class="primary-color">"</span>{l s='Personalized gifts'}<br /> {l s='for unique memories'}<span class="primary-color">"</span>
                                     </div>
-                                    {if isset($HOOK_TOP)}{$HOOK_TOP}{/if}
+                                    <div class="icons">
+                                        {if isset($HOOK_TOP)}{$HOOK_TOP}{/if}
+{*                                    </div>*}
                             </div>
                         </div>
                     </div>

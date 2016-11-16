@@ -59,4 +59,6 @@
 	</ul>
     <h4>{l s='Follow us' mod='blocksocial'}</h4>
 </section>
-<div class="clearfix"></div>
+<div class="pull-left margin-left-10 margin-top-20">
+    <iframe width="100%" height="169" src="https://www.youtube.com/embed/4EF2lC8xEgE" frameborder="0" allowfullscreen></iframe>
+</div>

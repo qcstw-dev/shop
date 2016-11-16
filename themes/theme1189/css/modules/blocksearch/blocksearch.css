@@ -1,8 +1,9 @@
-#search_block_top {
-  width: auto;
-  display: inline-block;
-  float: none;
-  margin: 20px 0 0 10px; }
+.block-search {
+    /*width: 100% !important;*/
+}
+/*#search_block_top {
+    display: none;
+}*/
   @media (max-width: 991px) {
     #search_block_top {
       display: block;
