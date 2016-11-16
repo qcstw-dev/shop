@@ -33,7 +33,7 @@
 		<fieldset>
         <h3 class="page-subheading">{l s='send a message'}</h3>
         <div class="clearfix">
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12 col-md-4">
                 <div class="form-group selector1">
                     <label for="id_contact">{l s='Subject Heading'}</label>
                 {if isset($customerThread.id_contact) && $customerThread.id_contact}
@@ -110,8 +110,9 @@
                         <input type="file" name="fileUpload" id="fileUpload" class="form-control" />
                     </p>
                 {/if}
+                <div class="g-recaptcha" data-sitekey="6LdWFwwUAAAAABxzvt7l89l6Wm_ZH_aGGI1t8ru9"></div>
             </div>
-            <div class="col-xs-12 col-md-9">
+            <div class="col-xs-12 col-md-8">
                 <div class="form-group">
                     <label for="message">{l s='Message'}</label>
                     <textarea class="form-control" id="message" name="message">{if isset($message)}{$message|escape:'html':'UTF-8'|stripslashes}{/if}</textarea>

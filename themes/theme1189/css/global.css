@@ -9728,3 +9728,15 @@ ul.step a:hover:after {
 .ac_results {
     min-width: 200px;
 }
+/*************** COMODO **************/
+.comodo-logo {
+    position: fixed;
+    _position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+@media (max-width: 1366px) {
+    .comodo-logo {
+        position: initial;
+    }
+}
