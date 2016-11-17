@@ -8,7 +8,7 @@
             {capture name=sep} : {/capture}
             {capture}{l s=' : '}{/capture}
             <p class="product-name">
-                <a class="quick-view-bis" rel="{$link->getProductLink($product.id_product, $product.link_rewrite, $product.category, null, null, $product.id_shop, $product.id_product_attribute)|escape:'html':'UTF-8'}" href="{$link->getProductLink($product.id_product, $product.link_rewrite, $product.category, null, null, $product.id_shop, $product.id_product_attribute)|escape:'html':'UTF-8'}">{$product.name|escape:'html':'UTF-8'}</a>
+                <a class="quick-view-bis"  href="{$base_uri}product-popup?id_product={$product.id_product}">{$product.name|escape:'html':'UTF-8'}</a>
             </p>
             {if $product.reference}<small class="cart_ref">{l s='SKU'}{$smarty.capture.default}{$product.reference|escape:'html':'UTF-8'}</small>{/if}
             {if isset($product.attributes) && $product.attributes}

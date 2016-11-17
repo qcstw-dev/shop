@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 padding-0">
-                                <a class="btn btn-default btn-detail cursor-pointer quick-view-bis" href="{$product.link|escape:'html':'UTF-8'}" rel="{$product.link|escape:'html':'UTF-8'}">
+                                <a class="btn btn-default btn-detail cursor-pointer quick-view-bis" href="{$base_uri}product-popup?id_product={$product.id_product}">
                                     <span class="glyphicon glyphicon-zoom-in"></span> {l s='Product details'}
                                 </a>
                             </div>
