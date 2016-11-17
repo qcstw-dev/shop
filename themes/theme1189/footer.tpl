@@ -47,5 +47,10 @@
     </script>
 {/if}
 {include file="$tpl_dir./global.tpl"}
+<div class="comodo-logo">
+            <script language="JavaScript" type="text/javascript">
+                TrustLogo("https://www.giftattitude.com/img/comodo_secure.png", "CL1", "none");
+            </script>
+        </div>
 </body>
 </html>
