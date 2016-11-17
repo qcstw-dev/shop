@@ -51,15 +51,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 padding-0">
-                                <a class="btn btn-default btn-detail cursor-pointer quick-view-bis" href="{$base_uri}product-popup?id_product={$product.id_product}">
-                                    <span class="glyphicon glyphicon-zoom-in"></span> {l s='Product details'}
-                                </a>
-                            </div>
-                            {if isset($quick_view) && $quick_view && $product.category == 'products'}
+                            {if $product.category == 'products'}
+                                <div class="col-xs-12 padding-0">
+                                    <a class="btn btn-default btn-detail cursor-pointer quick-view-bis" href="{$base_uri}product-popup?id_product={$product.id_product}">
+                                        <span class="glyphicon glyphicon-zoom-in"></span> {l s='Product details'}
+                                    </a>
+                                </div>
+                            {/if}
+                            {if isset($quick_view) && $quick_view}
                                 <a class="quick-view-bis product_img_link" href="{$base_uri}product-popup?id_product={$product.id_product}" rel="{$product.link|escape:'html':'UTF-8'}">
                             {/if}
-                            <img class="replace-2x img-responsive {if $product.category != 'products'}popup{/if}" data-src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" title="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" itemprop="image" />
+                            <img class="replace-2x img-responsive" data-src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" title="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" itemprop="image" />
                             {if isset($quick_view) && $quick_view}
                                 </a>
                             {/if}

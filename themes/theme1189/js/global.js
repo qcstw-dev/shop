@@ -396,8 +396,8 @@ function dropDown()
     elementClick = '#header .current';
     elementSlide = 'ul.toogle_content';
     activeClass = 'active';
-    
-    $(elementClick+', '+elementSlide).on('hover', function () {
+
+    $(elementClick + ', ' + elementSlide).on('hover', function () {
         $(this).parent().find(elementSlide).stop().slideDown();
     }).on('mouseleave', function () {
         $(this).parent().find(elementSlide).stop().slideUp();
@@ -617,12 +617,24 @@ $(window).load(function () {
 //            $('.ac_results').css('display', 'none');
 //        });
 //    });
-    $('.icon').live('mouseenter', function () {
+    $('.icon').hover(function () {
         $(this).addClass('icon-hover');
         $(this).stop().animate({width: '100%'}, 350);
-    }).live('mouseleave', function () {
-        $(this).removeClass('icon-hover');
-        $(this).stop().animate({width: '45px', height: '45px'}, 350);
+    }, function () {
+        if (!$(this).hasClass('block-search')) {
+            $(this).removeClass('icon-hover');
+            $(this).stop().animate({width: '45px', height: '45px'}, 350);
+        } else {
+            if (!$('.ac_results').is(':visible')) {
+            $(this).removeClass('icon-hover');
+            $(this).stop().animate({width: '45px', height: '45px'}, 350);
+            }
+        }
+    });
+    $('.ac_results').live('mouseleave', function () {
+        $(this).css('display', 'none');
+        $('.block-search').removeClass('icon-hover');
+        $('.block-search').stop().animate({width: '45px', height: '45px'}, 350);
     });
 });
 

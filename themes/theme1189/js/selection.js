@@ -51,7 +51,9 @@ function addRemoveToSelection(id) {
                     } else {
                         $('.designs-list .list-item-custom').after('\
                             <div class="list-item list-item-design list-item-' + element.data('id') + ' col-xs-6 col-sm-4 col-md-3 thumbnail margin-bottom-10 margin-top-10 border-none">\n\
-                                <img class="popup border" scr="" title="' + element.data('product-title') + '" title="' + element.data('product-title') + '"/>\n\
+                                <a class="quick-view-bis" title="' + element.data('product-title') + '" href="'+ baseUri +'product-popup?id_product='+ element.data('id') + '" title="' + element.data('product-title') + '">\n\
+                                    <img class="border" scr="" title="' + element.data('product-title') + '" title="' + element.data('product-title') + '"/>\n\
+                                </a>\n\
                                 <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="' + element.data('id') + '"></span>\n\
                             </div>');
                         $('.list-item-' + element.data('id')).find('img').attr('src', element.data('img-large'));

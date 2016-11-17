@@ -244,7 +244,11 @@ class ProductPopupControllerCore extends FrontController
                 'prices' => $aPrices
             ));
         }
-        $this->setTemplate(_PS_THEME_DIR_.'product-popup.tpl');
+        if ($this->product->category == 'products') {
+            $this->setTemplate(_PS_THEME_DIR_.'product-popup.tpl');
+        } else {
+            $this->setTemplate(_PS_THEME_DIR_.'design-popup.tpl');
+        }
     }
 
     /**

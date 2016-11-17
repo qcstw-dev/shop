@@ -41,8 +41,10 @@
                 </div>
                 {if $aSelectedDesigns}
                     {foreach from=$aSelectedDesigns item=design name=designs}
-                        <div class="list-item list-item-design list-item-{$design->id} col-xs-4 col-sm-3 col-md-3 thumbnail margin-bottom-10 margin-top-10 border-none">
-                            <img class="popup border" data-src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" />
+                        <div class="list-item list-item-design list-item-{$design->id} col-xs-4 col-sm-3 col-md-3 thumbnail margin-bottom-10 margin-top-10 border-none" data-id="{$design->id}">
+                            <a class="quick-view-bis" href="{$base_uri}product-popup?id_product={$design->id}">
+                                <img class="border" data-src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" />
+                            </a>
                             <span class="selection cursor-pointer glyphicon glyphicon-remove" data-id="{$design->id}" title="{l s='Remove from selection'}"></span>
                         </div>
                     {/foreach}
