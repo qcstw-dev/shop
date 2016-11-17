@@ -618,9 +618,8 @@ $(window).load(function () {
 //        });
 //    });
     $('.icon').live('mouseenter', function () {
-        $(this).stop().animate({width: '100%'}, 350, function () {
-            $(this).addClass('icon-hover');
-        });
+        $(this).addClass('icon-hover');
+        $(this).stop().animate({width: '100%'}, 350);
     }).live('mouseleave', function () {
         $(this).removeClass('icon-hover');
         $(this).stop().animate({width: '45px', height: '45px'}, 350);

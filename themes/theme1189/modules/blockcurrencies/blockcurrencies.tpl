@@ -1,8 +1,12 @@
 <!-- Block currencies module -->
 {if count($currencies) > 1}
     <div class="clearfix">
-        <div id="currencies-block-top" class="icon current">
-            <span class="glyphicon glyphicon-usd"></span>
+        <div id="currencies-block-top" class="icon icon-currency current">
+            {foreach from=$currencies key=k item=f_currency}
+                <span class="icon-sign icon-sign-{$f_currency.sign|count_characters}">
+                        {if $cookie->id_currency == $f_currency.id_currency}<strong>{$f_currency.sign}</strong>{/if}
+                </span>
+            {/foreach}
             <div class="icon-title">{l s='Currency' mod='blockcurrencies'}</div>
             <form id="setCurrency" action="{$request_uri}" method="post">
                 <div class="current">

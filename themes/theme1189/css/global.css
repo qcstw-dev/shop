@@ -9690,6 +9690,7 @@ ul.step a:hover:after {
     margin-right: 20px;
     width: 45px;
     height: 45px;
+    font-size: 20px;
 }
 .icons .icon-hover {
     width: 100%;
@@ -9698,11 +9699,27 @@ ul.step a:hover:after {
 .icons .icon a:hover{
     color: #9E9E9E;
 }
-.icons .icon .glyphicon{
-    font-size: 20px;
-}
-.icons .icon .glyphicon {
+.icons .icon-hover .icon-sign,
+.icons .icon-hover .glyphicon{
     float: left;
+}
+.icons .icon .icon-sign {
+    display: block;
+}
+.icons .icon-currency{
+    padding: 0;
+    padding-top: 11px;
+    text-align: center;
+}
+.icons .icon .icon-sign-3,
+.icons .icon .icon-sign-4 {
+    font-size: 15px;
+}
+.icons .icon .icon-sign-1{
+    font-size: 24px;
+}
+.icons .icon-hover .icon-sign {
+    padding-left: 5px;
 }
 .icons .icon #search_block_top {
     float: right;
