@@ -14,14 +14,18 @@ class MobileLayoutMakerControllerCore extends FrontController {
     public function initContent() {
         parent::initContent();
         
+        $totalToPay = $this->context->cart->getOrderTotal(false);
+        
         if ($this->context->cookie->selected_product && (Tools::getValue('id_design') || $this->context->cookie->selected_design)) {
             if (Tools::getValue('id_design')) {
                 $this->context->cookie->__set('selected_design', Tools::getValue('id_design'));
             }
-            $oProduct = new Product($this->context->cookie->selected_product, $this->context->language->id, $this->context->shop->id);
             $bCustom = (strpos($this->context->cookie->selected_design, '_') != false ? true : false);
-            $oDesign = (!$bCustom ? new Product($this->context->cookie->selected_design, $this->context->language->id, $this->context->shop->id) : null);
-            $imageDesign = Product::getCover($oDesign->id);
+            if (!$bCustom) {
+                $oDesign = (!$bCustom ? new Product($this->context->cookie->selected_design, $this->context->language->id, $this->context->shop->id) : null);
+                $imageDesign = Product::getCover($oDesign->id);
+            }
+            $oProduct = new Product($this->context->cookie->selected_product, $this->context->language->id, $this->context->shop->id);
             $imagesProduct = $oProduct->getImages($this->context->language->id, $this->context);
             $imagesLayout = [];
             foreach ($imagesProduct as $image) {
@@ -46,11 +50,12 @@ class MobileLayoutMakerControllerCore extends FrontController {
                 'layout_maker' => true,
                 'step' => '3',
                 'product' => $oProduct,
-                'design' => $oDesign,
-                'image_design' => $imageDesign,
+                'design' => isset($oDesign) ? $oDesign : null,
+                'image_design' => isset($imageDesign) ? $imageDesign : null,
                 'images_product' => $imagesLayout,
                 'custom' => $bCustom,
-                'original_picture' => ($bCustom ? _PS_BASE_URL_ . __PS_BASE_URI__.'img/layout_maker/temp/'.$this->context->cookie->selected_design.'.png' : '')
+                'original_picture' => ($bCustom ? _PS_BASE_URL_ . __PS_BASE_URI__.'img/layout_maker/temp/'.$this->context->cookie->selected_design.'.png' : ''),
+                'total_cart' => Tools::displayPrice($totalToPay),
             ));
             $this->context->smarty->assign('header_mobile', _PS_THEME_DIR_ . 'mobile-header.tpl');
             $this->context->smarty->assign('footer_mobile', _PS_THEME_DIR_ . 'mobile-footer.tpl');

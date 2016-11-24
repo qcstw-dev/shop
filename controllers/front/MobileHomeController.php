@@ -13,7 +13,9 @@ class MobileHomeControllerCore extends FrontController {
 
     public function initContent() {
         parent::initContent();
-
+        
+        $totalToPay = $this->context->cart->getOrderTotal(false);
+        
         $cart_products = $this->context->cart->getProducts(true);
         $oProductCategory = new Category('45', $this->context->language->id);
 
@@ -38,7 +40,8 @@ class MobileHomeControllerCore extends FrontController {
             'HOOK_HEADER_MOBILE', Hook::exec('displayHeaderMobile'),
             'cart_products' => $cart_products,
             'products' => $aProducts,
-            'step'  => '1'
+            'step'  => '1',
+            'total_cart' => Tools::displayPrice($totalToPay),
         ));
         $this->context->smarty->assign('header_mobile', _PS_THEME_DIR_ . 'mobile-header.tpl');
         $this->context->smarty->assign('footer_mobile', _PS_THEME_DIR_ . 'mobile-footer.tpl');

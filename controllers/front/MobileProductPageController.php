@@ -13,6 +13,8 @@ class MobileProductPageControllerCore extends FrontController {
 
     public function initContent() {
         parent::initContent();
+        
+        $totalToPay = $this->context->cart->getOrderTotal(false);
 
         $cart_products = $this->context->cart->getProducts(true);
 
@@ -26,13 +28,13 @@ class MobileProductPageControllerCore extends FrontController {
                 unset($oProduct->images[$key]);
             }
         }
-        
+
         $aQuantities = [1, 5, 10, 25, 50, 100];
         $aPrices = [];
         foreach ($aQuantities as $iQuantity) {
             $aPrices[$iQuantity] = Product::getPriceStatic((int) $oProduct->id, true, null, 2, null, false, true, $iQuantity);
         }
-        
+
         $this->context->smarty->assign(array(
             'mobile' => true,
             'token' => Tools::getToken(false),
@@ -48,7 +50,8 @@ class MobileProductPageControllerCore extends FrontController {
             'features' => $oProduct->getFrontFeatures($this->context->language->id),
             'colors' => $oProduct->getColors($this->context->language->id),
             'prices' => $aPrices,
-            'step'  => '1'
+            'step' => '1',
+            'total_cart' => Tools::displayPrice($totalToPay),
         ));
         $this->context->smarty->assign('header_mobile', _PS_THEME_DIR_ . 'mobile-header.tpl');
         $this->context->smarty->assign('footer_mobile', _PS_THEME_DIR_ . 'mobile-footer.tpl');

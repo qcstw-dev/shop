@@ -1,3 +1,9 @@
+body {
+    color: #777;
+}
+.btn-default {
+    color: #777;
+}
 #mobile {
     color: #777;
 }
@@ -174,4 +180,8 @@ hr {
 }
 .white-popup {
     padding: 20px;
+    padding-top: 30px;
+}
+.thumbnail {
+    margin-bottom: 0;
 }

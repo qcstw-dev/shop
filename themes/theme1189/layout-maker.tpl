@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="btn-cart col-lg-3">
-        <button class="btn btn-primary add-to-cart ajax_add_to_cart_button col-xs-12" 
+        <button id="add-to-cart" class="btn btn-primary add-to-cart ajax_add_to_cart_button col-xs-12" 
                 rel="nofollow" title="{l s='Add to cart'}"
                 data-id-product=""
                 data-id-design=""

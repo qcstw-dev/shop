@@ -13,12 +13,15 @@ class MobileSelectDesignControllerCore extends FrontController {
 
     public function initContent() {
         parent::initContent();
+        
         if (Tools::getValue('id_product') || $this->context->cookie->selected_product) {
             // save selected product id
             if (Tools::getValue('id_product')) {
                 $this->context->cookie->__set('selected_product', Tools::getValue('id_product'));
             }
 
+            $totalToPay = $this->context->cart->getOrderTotal(false);
+            
             $cart_products = $this->context->cart->getProducts(true);
             $oDesignCategory = new Category('46', $this->context->language->id);
 
@@ -48,7 +51,8 @@ class MobileSelectDesignControllerCore extends FrontController {
                 'cart_products' => $cart_products,
                 'upload' => true,
                 'category' => isset($oCategory) ? $oCategory : $oDesignCategory,
-                'step'  => '2'
+                'step'  => '2',
+                'total_cart' => Tools::displayPrice($totalToPay),
             ));
             $this->context->smarty->assign('header_mobile', _PS_THEME_DIR_ . 'mobile-header.tpl');
             $this->context->smarty->assign('footer_mobile', _PS_THEME_DIR_ . 'mobile-footer.tpl');

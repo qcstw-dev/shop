@@ -32,8 +32,15 @@
     <div class="col-xs-12 border margin-bottom-10">
         <div class="preview-color">
             <div class="col-xs-12 padding-0 overflow-auto">
-                <div class="padding-md-10">Colors available:</div>
+                <div class="padding-10 bold">Colors available:</div>
                 <div class="block-colors">
+                    {foreach from=$images_product item=image_product name=images_product}
+                        <div class="col-xs-4 col-sm-2 col-lg-6 block-color-product">
+                            <div class="thumbnail thumbnail-hover">
+                                <img class="change-color-product" src="{$link->getImageLink($product->link_rewrite, $image_product.id_image, 'layout')}" alt="preview product">
+                            </div>
+                        </div>
+                    {/foreach}
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -55,8 +62,4 @@
         </div>
     </div>
 </div>
-{if $cookie->selected_product && $cookie->selected_design}
-    <script>
-    </script>
-{/if}
 {include file=$footer_mobile}

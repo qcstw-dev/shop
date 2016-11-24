@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="list-currency hidden block-currencies">
-                    <div class="options">
+                    <div class="options text-center">
                         {foreach from=$currencies key=k item=f_currency}
                             {if strpos($f_currency.name, '('|cat:$f_currency.iso_code:')') === false}
                                 {assign var="currency_name" value={l s='%s (%s)' sprintf=[$f_currency.name, $f_currency.sign]}}
@@ -80,19 +80,19 @@
                 </div>
                 <div class="row hidden block-account">
                     {if $is_logged}
-                                <div><a href="{$link->getPageLink('history', true)|escape:'html'}" title="{l s='My orders' mod='tmheaderaccount'}" rel="nofollow">{l s='My orders' mod='tmheaderaccount'}</a></div>
-                                <div><a href="{$link->getPageLink('addresses', true)|escape:'html'}" title="{l s='My addresses' mod='tmheaderaccount'}" rel="nofollow">{l s='My addresses' mod='tmheaderaccount'}</a></div>
-                                <div><a href="{$link->getPageLink('identity', true)|escape:'html'}" title="{l s='Manage my personal information' mod='tmheaderaccount'}" rel="nofollow">{l s='My personal info' mod='tmheaderaccount'}</a></div>
-                                {if $voucherAllowed}<div><a href="{$link->getPageLink('discount', true)|escape:'html'}" title="{l s='My vouchers' mod='tmheaderaccount'}" rel="nofollow">{l s='My vouchers' mod='tmheaderaccount'}</a></div>{/if}
-                                    {if isset($HOOK_BLOCK_MY_ACCOUNT) && $HOOK_BLOCK_MY_ACCOUNT !=''}
-                                        {$HOOK_BLOCK_MY_ACCOUNT}
-                                    {/if}
-                            <p class="logout">
-                                <a class="pull-right btn btn-default btn-sm" href="{$link->getPageLink('index')}?mylogout" title="{l s='Sign out' mod='tmheaderaccount'}" rel="nofollow">
-                                    <i class="fa fa-unlock left"></i> 
-                                    {l s='Sign out' mod='tmheaderaccount'}
-                                </a>
-                            </p>
+                        <div><a href="{$link->getPageLink('history', true)|escape:'html'}" title="{l s='My orders' mod='tmheaderaccount'}" rel="nofollow">{l s='My orders' mod='tmheaderaccount'}</a></div>
+                        <div><a href="{$link->getPageLink('addresses', true)|escape:'html'}" title="{l s='My addresses' mod='tmheaderaccount'}" rel="nofollow">{l s='My addresses' mod='tmheaderaccount'}</a></div>
+                        <div><a href="{$link->getPageLink('identity', true)|escape:'html'}" title="{l s='Manage my personal information' mod='tmheaderaccount'}" rel="nofollow">{l s='My personal info' mod='tmheaderaccount'}</a></div>
+                        {if $voucherAllowed}<div><a href="{$link->getPageLink('discount', true)|escape:'html'}" title="{l s='My vouchers' mod='tmheaderaccount'}" rel="nofollow">{l s='My vouchers' mod='tmheaderaccount'}</a></div>{/if}
+                            {if isset($HOOK_BLOCK_MY_ACCOUNT) && $HOOK_BLOCK_MY_ACCOUNT !=''}
+                                {$HOOK_BLOCK_MY_ACCOUNT}
+                            {/if}
+                        <p class="logout">
+                            <a class="pull-right btn btn-default btn-sm" href="{$link->getPageLink('index')}?mylogout" title="{l s='Sign out' mod='tmheaderaccount'}" rel="nofollow">
+                                <i class="fa fa-unlock left"></i> 
+                                {l s='Sign out' mod='tmheaderaccount'}
+                            </a>
+                        </p>
                     {else}
                         <form action="{$base_dir}login" method="post" id="header_login_form">
                             <div id="create_header_account_error" class="alert alert-danger" style="display:none;"></div>
@@ -120,15 +120,63 @@
                             </div>
                         </form>
                     {/if}
-                    {*                    {include file=$tmheaderaccount}*}
                 </div>
                 <div class="row hidden block-cart">
-                    {$cart_products|@var_dump}
+                    {if $cart_products}
+                        <div class="font-size-20 text-center bold">{l s='Cart'}</div>
+                        {foreach from=$cart_products item=product name=cart_products}
+                            <hr>
+                            <div class="col-xs-12 padding-0" data-id="cart_block_product_{$product.id_product|intval}_{$product.custom_picture}">
+                                <div class="col-xs-6 thumbnail">
+                                    <img class="popup" src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" />
+                                </div>
+                                <div class="col-xs-6 padding-right-0">
+                                    <div>
+                                        {$product.cart_quantity}</span>&nbsp;x&nbsp;
+                                    </div>
+                                    <div>
+                                        <a href="{$base_uri}mobile-product-page?id_product={$product.id_product}">
+                                            {$product.name|truncate:20:'...'|escape:'html':'UTF-8'}
+                                        </a>
+                                    </div>
+                                    <div class="bold font-size-20">
+                                        {if !isset($product.is_gift) || !$product.is_gift}
+                                    {if $priceDisplay == $smarty.const.PS_TAX_EXC}{displayWtPrice p="`$product.total`"}{else}{displayWtPrice p="`$product.total_wt`"}{/if}
+                                {else}
+                                    {l s='Free!' mod='blockcart'}
+                                {/if}
+                            </div>
+                            <div>
+                                <a class="btn btn-danger ajax_cart_block_remove_link" data-custom-product="{$product.custom_picture}" data-id-product="{$product.id_product}" data-id-design="{$product.id_design}" data-original-product="{$product.original_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}" rel="nofollow" title="{l s='remove this product from my cart' mod='blockcart'}">
+                                    <span class="glyphicon glyphicon-trash"></span> {l s='Remove'}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                    </div>
+                    <div class="clearfix"></div>
+                {/foreach}
+                <hr>
+                <div class="col-xs-12 bold font-size-20">
+                    <div class="col-xs-6">
+                        {l s='Total'}
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        {$total_cart}
+                    </div>
                 </div>
-            </div>
-
-            {include file=$menu_mobile}
-            {*    {$currencies|@var_dump}*}
-            {*    {$cookie|@var_dump}*}
+                <div class="clearfix"></div>
+            {else}
+                <div class="alert alert-info text-center">
+                    {l s='Your cart is empty'}
+                </div>
+            {/if}
         </div>
-        <div id="mobile-content" class="row">
+    </div>
+
+    {include file=$menu_mobile}
+    {*    {$currencies|@var_dump}*}
+    {*    {$cookie|@var_dump}*}
+</div>
+<div id="mobile-content" class="row">

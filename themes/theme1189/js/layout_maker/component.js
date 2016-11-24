@@ -276,7 +276,7 @@ var resizeableImage = function (image_target, customizable) {
         $.magnificPopup.open({
         items: [{
         src: $('<div class="white-popup">' +
-                '<div class="thumbnail border margin-top-10">' +
+                '<div class="thumbnail border-none">' +
                 '<img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" />' +
                 '</div>' +
                 '<div class="popup-btns">' +
@@ -305,6 +305,7 @@ var resizeableImage = function (image_target, customizable) {
         }
     };
     init();
+    $(document).on('mousemove', resizing);
 };
 $('.preview-layout').live('click', function () {
     crop(true);

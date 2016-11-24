@@ -31,7 +31,6 @@ $('.slick-pictures').slick({
 });
 
 $('.popup-product').click(function () {
-    console.log('toto');
     var id = $(this).data('id');
     var html = $('.popup-product-content-' + id).html();
 
@@ -53,6 +52,16 @@ $('.popup-product').click(function () {
                 $(".slick-popup-" + id).slick('unslick');
             }
         }
+    });
+});
+$('.popup').live('click', function () {
+    $.magnificPopup.open({
+        items: [{
+                src: $('<div class="white-popup">' +
+                        '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
+                        '</div>'),
+                type: 'inline'
+            }]
     });
 });
 
