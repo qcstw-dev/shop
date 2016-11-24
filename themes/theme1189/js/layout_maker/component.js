@@ -251,7 +251,7 @@ var resizeableImage = function (image_target, customizable) {
                 top_overlay = element.offset().top - $container_overlay.offset().top;
 
         width = element.width(),
-        height = element.height();
+                height = element.height();
 
         crop_canvas = document.createElement('canvas');
         crop_canvas.width = width;
@@ -273,35 +273,41 @@ var resizeableImage = function (image_target, customizable) {
             $('.add-to-cart').data('original-picture', $('.hidden-original-picture').attr('src'));
         }
         if (preview) {
-            $.magnificPopup.open({
-                items: [{
-                        src: $('<div class="white-popup">' +
-                                    '<div class="thumbnail">' +
-                                        '<div class="text-center"><img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" /></div>' +
-                                    '</div>'+
-                                    '<div class="popup-btns">' +
-                                        '<div class="add-to-cart-area pull-left"></div>' +
-                                        '<div class="export-image btn btn-primary pull-right"><span class="glyphicon glyphicon-download-alt"></span> Download layout</div>' +
-                                    '</div>'+
-                                '</div>'),
-                        type: 'inline'
-                    }]
-            });
-            $('.add-to-cart').clone(true).appendTo($('.add-to-cart-area'));
-            $('.export-image').on('click', function () {
-                var fileName;
-                fileName = "gift-attitude-preview.png";
-                var a = $("<a>")
-                        .attr("href", crop_canvas.toDataURL("image/png"))
-                        .attr("download", fileName)
-                        .appendTo("body");
-                a[0].click();
-                a.remove();
-            });
+        $.magnificPopup.open({
+        items: [{
+        src: $('<div class="white-popup">' +
+                '<div class="thumbnail border margin-top-10">' +
+                '<img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" />' +
+                '</div>' +
+                '<div class="popup-btns">' +
+                '<div class="add-to-cart-area padding-0 pull-left"></div>' +
+                '<div class="padding-0 pull-right">'+
+                '<div class="export-image btn btn-primary">'+
+                '<span class="glyphicon glyphicon-download-alt"></span> Download layout</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="clearfix"></div>' +
+                '</div>'),
+                type: 'inline'
+        }]
+        });
+                $('#add-to-cart').clone(true).appendTo($('.add-to-cart-area'));
+        $('.export-image').on('click', function () {
+            var fileName;
+            fileName = "gift-attitude-preview.png";
+            var a = $("<a>")
+                    .attr("href", crop_canvas.toDataURL("image/png"))
+                    .attr("download", fileName)
+                    .appendTo("body");
+            a[0].click();
+            a.remove();
+        });
         }
     };
     init();
 };
-
+$('.preview-layout').live('click', function () {
+    crop(true);
+});
 //// Kick everything off with the target image
 //resizeableImage($('.resize-image'));

@@ -1,6 +1,6 @@
     .component {
         text-align: center;
-        height: 750px;
+        height: 756px;
         padding: 4em;
         position: relative;
         border: 3px solid #E8E8E8;
@@ -30,14 +30,12 @@
         margin-top: -30px;
     }
     .btn-cart .btn {
-        width: 100%;
         text-align: center;
     }
     .change-color-product-block {
         position: absolute;
         top: 400px;
         left: 45px;
-        display: none;
     }
 
     .preview-color div {
@@ -218,7 +216,7 @@
 }
 @media screen and (max-width: 470px){
     .component {
-        height: 344px;
+        height: 369px;
         padding: 10px;
     }
     .designs-list, .products-list {
@@ -241,7 +239,7 @@
         margin-top: -30px;
     }
     .component {
-        height: 310px;
+        height: 336px;
     }
     .overlay {
         height: 285px;
@@ -255,10 +253,10 @@
         height: 68px;
     }
     .component {
-        height: 264px;
+        height: 288px;
     }
     .overlay {
-        height: 240px;
+        height: 263px;
     }
     .title-block-products {
         margin-bottom: 0;

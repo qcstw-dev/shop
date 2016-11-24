@@ -1,3 +1,67 @@
+function popupFirstDesignAdd() {
+
+    var firstButton = '<div>\n\
+                            <a class="btn btn-default border-blue close-popup initialcase"><span class="glyphicon glyphicon-search"></span> Add other designs to your selection</a>\n\
+                        </div>';
+    var secondButton = '';
+
+    if (!$('.list-item-product').length) {
+        secondButton = '<div class="margin-top-10">\n\
+                            <a href="' + baseDir + '45-products" class="btn btn-default border-red initialcase" href>\n\
+                                <span class="glyphicon glyphicon-check margin-top-10 padding-right-10 pull-left"></span>\n\
+                                <span class="pull-left">I am done with design selection.<br />\n\
+                                Bring me to product selection step</span>\n\
+                            </a>\n\
+                        </div>';
+    } else {
+        secondButton = '<div class="margin-top-10">\n\
+                            <a href="' + baseDir + 'layout-maker" class="btn btn-default border-red initialcase" href>\n\
+                                <span class="glyphicon glyphicon-wrench"></span> Place your design on product\n\
+                            </a>\n\
+                        </div>';
+    }
+    $.magnificPopup.open({
+        items: [{
+                src: $('<div class="white-popup">' + firstButton + secondButton + '</div>'),
+                type: 'inline'
+            }]
+    });
+    $('.close-popup').on('click', function () {
+        $.magnificPopup.close();
+    });
+}
+function popupFirstProductAdd() {
+    var firstButton = '\
+        <div>\n\
+            <a class="btn btn-default border-blue close-popup initialcase"><span class="glyphicon glyphicon-search"></span> Add other products to your selection</a>\n\
+        </div>';
+    var secondButton = '';
+
+    if (!$('.list-item-design').length) {
+        secondButton = '<div class="margin-top-10">\n\
+                            <a href="' + baseDir + '46-designs" class="btn btn-default border-red initialcase" href>\n\
+                                <span class="glyphicon glyphicon-check margin-top-10 padding-right-10 pull-left"></span>\n\
+                                <span class="pull-left">I am done with product selection.<br />\n\
+                                Bring me to design selection step</span>\n\
+                            </a>\n\
+                        </div>';
+    } else {
+        secondButton = '<div class="margin-top-10">\n\
+                            <a href="' + baseDir + 'layout-maker" class="btn btn-default border-red initialcase" href>\n\
+                                <span class="glyphicon glyphicon-wrench"></span> Place your design on product\n\
+                            </a>\n\
+                        </div>';
+    }
+    $.magnificPopup.open({
+        items: [{
+                src: $('<div class="white-popup">' + firstButton + secondButton + '</div>'),
+                type: 'inline'
+            }]
+    });
+    $('.close-popup').on('click', function () {
+        $.magnificPopup.close();
+    });
+}
 function addRemoveToSelection(id) {
     var element = $('.product-' + id);
     $.ajax({
@@ -11,6 +75,7 @@ function addRemoveToSelection(id) {
             });
         },
         success: function (json) {
+            console.log(json);
             $.fancybox.hideLoading();
             if (json.success === true) {
                 if (json.type === 'remove') {

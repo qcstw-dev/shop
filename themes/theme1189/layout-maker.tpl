@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="btn-cart col-lg-3">
-        <button class="btn btn-primary add-to-cart ajax_add_to_cart_button" 
+        <button class="btn btn-primary add-to-cart ajax_add_to_cart_button col-xs-12" 
                 rel="nofollow" title="{l s='Add to cart'}"
                 data-id-product=""
                 data-id-design=""
@@ -56,9 +56,9 @@
                 data-custom-picture=""
                 data-original-picture=""
                 style="display: none">{l s='Add to cart'}</button>
-        <button class="btn btn-default preview-layout margin-top-10" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
+        <button class="btn btn-default preview-layout margin-top-10 col-xs-12" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
     </div>                
-    <div class="change-color-product-block text-left col-xs-3 background-white position-absolute border padding-10">
+    <div class="change-color-product-block text-left col-xs-3 background-white position-absolute border padding-10" style="display: none">
         <div class="col-xs-12 col-sm-4 col-lg-12 padding-0 border text-center margin-bottom-10 background-dark-grey block-item-size" style="display: none">
             <div class="col-xs-6">
                 Item size:
@@ -95,7 +95,7 @@
                 <img class="overlay-img" src="">
             </div>
         </div>
-        <img id="image" class="resize-image custom-margin-left" src="{$img_dir}layout_maker/drag-and-drop.png" data-original-url="{$img_dir}layout_maker/drag-and-drop.png" />
+        <img id="image" class="resize-image custom-margin-left" src="{$img_dir}layout_maker/drag-and-drop.png" />
         <img class="hidden-original-picture hidden" scr="{$img_dir}layout_maker/drag-and-drop.png" />
         <div id="slider-vertical" class="slider-vertical" style="display: none">
             <img class="icon-rotate" src="{$img_dir}layout_maker/reload.svg" alt="rotate">

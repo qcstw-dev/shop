@@ -90,5 +90,6 @@ class FrontController extends FrontControllerCore {
         $this->addJqueryPlugin(array('fancybox', 'idTabs', 'scrollTo', 'serialScroll', 'bxslider'));
         
         $this->context->controller->addCSS(_THEME_CSS_DIR_ . '/product.css', 'all');
+        $this->context->controller->addCSS(_THEME_CSS_DIR_ . '/tool-custom-bootstrap.css', 'all');
     }
 }

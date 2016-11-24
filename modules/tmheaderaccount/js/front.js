@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$('#HeaderSubmitLogin').on('click', function(e){
+	$('body').on('click', '#HeaderSubmitLogin', function(e){
 		e.preventDefault();
 		submitLoginFunction();
 	});

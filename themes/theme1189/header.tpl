@@ -16,6 +16,7 @@
         <meta name="generator" content="PrestaShop" />
         <meta name="robots" content="{if isset($nobots)}no{/if}index,{if isset($nofollow) && $nofollow}no{/if}follow" />
         <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0" /> 
+{*        <meta name="viewport" content="width=1024">*}
         <meta name="apple-mobile-web-app-capable" content="yes" /> 
         <link rel="icon" type="image/vnd.microsoft.icon" href="{$favicon_url}?{$img_update_time}" />
         <link rel="shortcut icon" type="image/x-icon" href="{$favicon_url}?{$img_update_time}" />
@@ -55,7 +56,7 @@
         {assign var="columns" value="3"}
     {/if}
     <body{if isset($page_name)} id="{$page_name|escape:'html':'UTF-8'}"{/if} class="{if isset($page_name)}{$page_name|escape:'html':'UTF-8'}{/if}{if isset($body_classes) && $body_classes|@count} {implode value=$body_classes separator=' '}{/if}{if $hide_left_column} hide-left-column{/if}{if $hide_right_column} hide-right-column{/if}{if isset($content_only) && $content_only} content_only{/if} lang_{$lang_iso} {if !$content_only}{if $columns == 2} two-columns{elseif $columns == 3} three-columns{else} one-column{/if}{/if}"
-        {if $smarty.server.HTTP_HOST != 'localhost'} oncontextmenu="return false" {/if}>
+                                {if $smarty.server.HTTP_HOST != 'localhost'} oncontextmenu="return false" {/if}>
         {if !isset($content_only) || !$content_only}
             <!--[if IE 8]>
             <div style='clear:both;height:59px;padding:0 15px 0 15px;position:relative;z-index:10000;text-align:center;'><a href="//www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div>
@@ -66,58 +67,59 @@
                 </div>
             {/if}
             <div id="page">
-                <div class="header-container">
-                    <header id="header">
-                        <div class="banner">
-                            <div class="container">
-                                <div class="row">
-                                    {hook h="displayBanner"}
+                {if !isset($mobile) || !$mobile}
+                    <div class="header-container">
+                        <header id="header">
+                            <div class="banner">
+                                <div class="container">
+                                    <div class="row">
+                                        {hook h="displayBanner"}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="nav">
-                            <div class="container">
-                                <div class="row">
-                                    <nav>{hook h="displayNav"}</nav>
+                            <div class="nav">
+                                <div class="container">
+                                    <div class="row">
+                                        <nav>{hook h="displayNav"}</nav>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <div class="container background">
-                                <div class="row">
-                                    <div id="header_logo">
-                                        <a href="{if $force_ssl}{$base_dir_ssl}{else}{$base_dir}{/if}" title="{$shop_name|escape:'html':'UTF-8'}">
-                                            <img class="logo img-responsive" src="{$logo_url}" alt="{$shop_name|escape:'html':'UTF-8'}"{if isset($logo_image_width) && $logo_image_width} width="{$logo_image_width}"{/if}{if isset($logo_image_height) && $logo_image_height} height="{$logo_image_height}"{/if}/>
-                                        </a>
-                                    </div>
-                                    <div class="slogan">
-                                        <span class="primary-color">"</span>{l s='Personalized gifts'}<br /> {l s='for unique memories'}<span class="primary-color">"</span>
-                                    </div>
-                                    <div class="icons">
+                            <div>
+                                <div class="container background">
+                                    <div class="row">
+                                        <div id="header_logo">
+                                            <a href="{if $force_ssl}{$base_dir_ssl}{else}{$base_dir}{/if}" title="{$shop_name|escape:'html':'UTF-8'}">
+                                                <img class="logo img-responsive" src="{$logo_url}" alt="{$shop_name|escape:'html':'UTF-8'}"{if isset($logo_image_width) && $logo_image_width} width="{$logo_image_width}"{/if}{if isset($logo_image_height) && $logo_image_height} height="{$logo_image_height}"{/if}/>
+                                            </a>
+                                        </div>
+                                        <div class="slogan">
+                                            <span class="primary-color">"</span>{l s='Personalized gifts'}<br /> {l s='for unique memories'}<span class="primary-color">"</span>
+                                        </div>
+                                        <div class="icons">
                                         {if isset($HOOK_TOP)}{$HOOK_TOP}{/if}
-{*                                    </div>*}
+                                        {*                                    </div>*}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </header>
-            </div>
+                    </header>
+                </div>
             <div class="columns-container">
                 <div id="columns" class="container">
                     {if $page_name == 'category'
                         || $page_name == 'product'
                         || $page_name == 'index'
                     }
-                        {include file="./selection.tpl" selection=$selection}
-                    {/if}
-                    {if $page_name !='index' && $page_name !='layoutmaker' && $page_name !='pagenotfound'}
-                        {include file="$tpl_dir./breadcrumb.tpl"}
-                    {/if}
-                    <div id="slider_row" class="row">
-                        <div id="top_column" class="center_column col-xs-12">{hook h="displayTopColumn"}</div>
-                    </div>
-                    <div class="row">
-                        <div class="large-left col-sm-{12 - $right_column_size}">
-                            <div class="row">
-                                <div id="center_column" class="center_column col-xs-12 col-sm-{12 - $left_column_size}">
+                    {include file="./selection.tpl" selection=$selection}
+                {/if}
+                {if $page_name !='index' && $page_name !='layoutmaker' && $page_name !='pagenotfound'}
+                    {include file="$tpl_dir./breadcrumb.tpl"}
+                {/if}
+                <div id="slider_row" class="row">
+                    <div id="top_column" class="center_column col-xs-12">{hook h="displayTopColumn"}</div>
+                </div>
+                <div class="row">
+                    <div class="large-left col-sm-{12 - $right_column_size}">
+                        <div class="row">
+                            <div id="center_column" class="center_column col-xs-12 col-sm-{12 - $left_column_size}">
                                 {/if}
-                                
+            {/if}

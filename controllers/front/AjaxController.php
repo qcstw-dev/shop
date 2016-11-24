@@ -79,6 +79,28 @@ class AjaxControllerCore extends FrontController {
         }
         echo json_encode($result);
     }
+    public function displayAjaxStoreCustomImageMobile() {
+        $result = [];
+        $result['success'] = true;
+
+        foreach ($_FILES as $file) {
+            $sId = time() . '_' . rand(1, 100);
+            $sName = $sId . '.png';
+            $sFolder = 'img/layout_maker/temp/';
+            if (move_uploaded_file($file['tmp_name'], $sFolder . basename($sName))) {
+                $context = Context::getContext();
+                if ($context->cookie->custom_image_mobile) {
+                    unlink($sFolder.$context->cookie->custom_image_mobile.'.png');
+                }
+                $context->cookie->__set('custom_image_mobile', $sId);
+                $context->cookie->setExpire(time() + 4*60*60*1000);
+                $result['image_name'] = $sId;
+            } else {
+                $result['success'] = false;
+            }
+        }
+        echo json_encode($result);
+    }
 
     public function displayAjaxLayoutMakerSelect() {
         $result = [];

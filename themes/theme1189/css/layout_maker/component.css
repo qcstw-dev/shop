@@ -176,12 +176,12 @@
 .preview-layout {
     /*position: absolute;*/
     vertical-align: bottom;
-    right: 30px;
+    /*right: 30px;*/
     /*bottom: 5px;*/
     z-index: 100;
 }
 .preview-layout {
-    margin-right: 10px;
+    /*margin-right: 10px;*/
 }
 
 .add-to-cart img {
