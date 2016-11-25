@@ -161,7 +161,16 @@ hr {
     content: '\e090';
     padding-right: 5px; 
 }
-
+.ajax_cart_quantity {
+    position: absolute;
+    top: 8px;
+    padding: 2px 6px 1px 6px;
+    border-radius: 20px;
+    background: #ea3f23;
+    color: #fff;
+    right: 0;
+    font-size: 10px;
+}
 /************** PRODUCT PAGE ****************/
 .tab-price-cel-first {
     background: #ddd;
@@ -172,7 +181,7 @@ hr {
 }
 /************** SELECT DESIGN ****************/
 
-.block-choice-design {
+.block-choice {
     padding: 20px;
     border: 2px solid #ddd;
     text-align: center;

@@ -69,6 +69,20 @@ $('body').on('click', '.close-popup', function () {
     $.magnificPopup.close();
 });
 
+function popupMessage(html, style) {
+    $.magnificPopup.open({
+        items: [{
+                src: $('<div class="white-popup">' +
+                        '<div class="col-xs-12 alert ' + (style ? ' alert-' + style : '') + '">' +
+                        html +
+                        '</div>' +
+                        '<div class="clearfix"></div>' +
+                        '</div>'),
+                type: 'inline'
+            }]
+    });
+}
+
 function loading() {
     $.magnificPopup.open({
         items: [{
@@ -85,5 +99,83 @@ function loading() {
                 type: 'inline'
             }],
         showCloseBtn: false
+    });
+}
+$('body').on('click', '.remove-from-cart', function () {
+    var idProduct = $(this).data('id-product');
+    var customPicture = $(this).data('custom-picture');
+    var originalPicture = $(this).data('original-picture');
+    ajaxCartRemove(idProduct, customPicture, originalPicture, this);
+});
+function ajaxCartRemove(idProduct, customPicture, originalPicture, callerElement) {
+    $.ajax({
+        type: 'POST',
+        headers: {"cache-control": "no-cache"},
+        url: baseUri + '?rand=' + new Date().getTime(),
+        async: true,
+        cache: false,
+        dataType: "json",
+        data: 'controller=cart&delete=1&id_product=' + idProduct + '&token=' + static_token + '&ajax=true' + '&custom_picture=' + customPicture + '&original_picture=' + customPicture,
+        success: function (jsonData) {
+            if (!jsonData.hasError) {
+                if ($('.block-cart-element').length === 1) {
+                    $('.cart-total').text(jsonData.total);
+                } else {
+                    $('.block-cart-total').fadeOut('slow', function () {
+                        $(this).remove();
+                    });
+                }
+                $('.block-cart-element-' + idProduct + '-' + customPicture).fadeOut('slow', function () {
+                    $(this).remove();
+                    if (!$('.block-cart-element').length) {
+                        $('.empty-cart-message').removeClass('hidden');
+                    }
+                });
+                $('.ajax_cart_quantity').text(jsonData.nbTotalProducts);
+            } else {
+                popupMessage('Error, please try again or contact us', 'danger');
+            }
+        },
+        error: function ()
+        {
+            popupMessage('Error, please try again or contact us', 'danger');
+        }
+    });
+}
+
+$('body').on('click', '.add-to-cart', function () {
+    crop();
+    var idProduct = $(this).data('id-product');
+    var idDesign = ($(this).data('id-design') ? $(this).data('id-design') : null);
+    var customPicture = $(this).data('custom-picture');
+    var originalPicture = $(this).data('original-picture');
+    ajaxCartAdd(idProduct, 1, idDesign, customPicture, originalPicture, this);
+});
+function ajaxCartAdd(idProduct, quantity, idDesign, customPicture, originalPicture, callerElement) {
+    $.ajax({
+        type: 'POST',
+        headers: {"cache-control": "no-cache"},
+        url: baseUri + '?rand=' + new Date().getTime(),
+        async: true,
+        cache: false,
+        dataType: "json",
+        data: 'controller=cart&add=1&ajax=true&qty=1' + '&id_product=' + idProduct + '&id_design=' + idDesign + '&token=' + static_token + '&custom_picture=' + customPicture + (originalPicture ? '&original_picture=' + originalPicture : ''),
+        beforeSend: function ()
+        {
+            loading();
+        },
+        success: function (jsonData, textStatus, jqXHR)
+        {
+            if (!jsonData.hasError) {
+                document.location = baseUri + 'mobile-layout-maker?add_to_cart_success';
+            } else {
+                $.magnificPopup.close();
+                popupMessage('Error, please try again or contact us', 'danger');
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown)
+        {
+            popupMessage('Error, please try again or contact us', 'danger');
+        }
     });
 }

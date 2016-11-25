@@ -1,13 +1,16 @@
 </div>
 <!-- id mobile-content-->
 <div id="mobile-footer">
+    <hr>
     footer
 </div>
 <script>
-    var baseDir = '{$content_dir}';
     var baseUri = '{$base_uri}';
+    var baseDir = '{$content_dir}';
     var token = '{$token}';
     var static_token = '{$token}';
+    var hasDeliveryAddress = '';
+    var toBeDetermined = true;
 </script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-migrate-1.2.1.min.js"></script>
@@ -17,7 +20,6 @@
 
 <script type="text/javascript" src="{$base_dir_ssl}js/tools.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}modules/tmheaderaccount/js/front.js"></script>
-<script type="text/javascript" src="{$js_dir}modules/blockcart/ajax-cart.js"></script>
 
 <script type="text/javascript" src="{$js_dir}mobile-global.js"></script>
 

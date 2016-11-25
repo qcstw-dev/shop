@@ -35,7 +35,7 @@ class MobileLayoutMakerControllerCore extends FrontController {
             }
             
             $cart_products = $this->context->cart->getProducts(true);
-
+            
             $this->context->smarty->assign(array(
                 'mobile' => true,
                 'token' => Tools::getToken(false),

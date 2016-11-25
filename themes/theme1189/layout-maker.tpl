@@ -85,7 +85,7 @@
         <input class="fileupload hidden-fileupload" type="file" name="files[]" multiple>
     </div>
     <div class="clearfix"></div>
-    <div id="component" class="component">
+    <div id="component" class="component margin-bottom-10">
         <div class="overlay-top"></div>
         <div class="overlay-bottom"></div>
         <div class="overlay-left"></div>

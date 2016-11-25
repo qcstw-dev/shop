@@ -44,6 +44,7 @@
                         <div class="icon-inner"><span class="glyphicon glyphicon-user"></span></div>
                     </div>
                     <div class="col-xs-3 header-icon select" data-block="cart">
+                        <span class="ajax_cart_quantity">{$cart_qties}</span>
                         <div class="icon-inner"><span class="glyphicon glyphicon-shopping-cart"></span></div>
                     </div>
                 </div>
@@ -93,6 +94,7 @@
                                 {l s='Sign out' mod='tmheaderaccount'}
                             </a>
                         </p>
+                        <div class="clearfix"></div>
                     {else}
                         <form action="{$base_dir}login" method="post" id="header_login_form">
                             <div id="create_header_account_error" class="alert alert-danger" style="display:none;"></div>
@@ -114,9 +116,7 @@
                                 <p>
                                     <a href="{$base_dir}my-account" class="create">Create an account</a>
                                 </p>
-                                <div class="clearfix">
-
-                                </div>
+                                <div class="clearfix"></div>
                             </div>
                         </form>
                     {/if}
@@ -126,7 +126,7 @@
                         <div class="font-size-20 text-center bold">{l s='Cart'}</div>
                         {foreach from=$cart_products item=product name=cart_products}
                             <hr>
-                            <div class="col-xs-12 padding-0" data-id="cart_block_product_{$product.id_product|intval}_{$product.custom_picture}">
+                            <div class="col-xs-12 padding-0 block-cart-element block-cart-element-{$product.id_product|intval}-{$product.custom_picture}" data-id="cart_block_product_{$product.id_product|intval}_{$product.custom_picture}">
                                 <div class="col-xs-6 thumbnail">
                                     <img class="popup" src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" />
                                 </div>
@@ -147,9 +147,15 @@
                                 {/if}
                             </div>
                             <div>
-                                <a class="btn btn-danger ajax_cart_block_remove_link" data-custom-product="{$product.custom_picture}" data-id-product="{$product.id_product}" data-id-design="{$product.id_design}" data-original-product="{$product.original_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}" rel="nofollow" title="{l s='remove this product from my cart' mod='blockcart'}">
+                                <div class="btn btn-danger remove-from-cart" 
+                                     data-custom-picture="{$product.custom_picture}" 
+                                     data-id-product="{$product.id_product}" 
+                                     data-id-design="{$product.id_design}" 
+                                     data-original-product="{$product.original_picture}" 
+                                     href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}"
+                                     title="{l s='remove this product from my cart' mod='blockcart'}">
                                     <span class="glyphicon glyphicon-trash"></span> {l s='Remove'}
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -157,21 +163,20 @@
                     </div>
                     <div class="clearfix"></div>
                 {/foreach}
-                <hr>
-                <div class="col-xs-12 bold font-size-20">
+                <div class="col-xs-12 bold font-size-20 block-cart-total">
+                    <hr>
                     <div class="col-xs-6">
                         {l s='Total'}
                     </div>
-                    <div class="col-xs-6 text-right">
+                    <div class="col-xs-6 text-right cart-total">
                         {$total_cart}
                     </div>
                 </div>
                 <div class="clearfix"></div>
-            {else}
-                <div class="alert alert-info text-center">
-                    {l s='Your cart is empty'}
-                </div>
             {/if}
+            <div class="alert alert-info text-center empty-cart-message {if $cart_products}hidden{/if}">
+                {l s='Your cart is empty'}
+            </div>
         </div>
     </div>
 

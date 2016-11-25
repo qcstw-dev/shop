@@ -3,11 +3,10 @@
         height: 756px;
         padding: 4em;
         position: relative;
-        border: 3px solid #E8E8E8;
+        /*border: 3px solid #E8E8E8;*/
         max-width: 100%;
         overflow: hidden;
         margin: 0 auto;
-        margin-bottom: 20px;
     }
     .white-image, .custom-white-image {
         display: none;
@@ -72,13 +71,13 @@
     .overlay-top {
         width: 100%;
         top: 0;
-        height: 52px;
+        height: 56px;
         right: 0;
     }
     .overlay-bottom {
         width: 100%;
         bottom: 0;
-        height: 93px;
+        height: 100px;
         right: 0;
     }
     .overlay-right {
@@ -132,7 +131,7 @@
         margin-left: 2%;
     }
     .overlay-right {
-        width: 17%;
+        width: 20%;
     }
     .block-colors {
         height: 132px;
@@ -172,7 +171,7 @@
         width: 7%;
     }
     .overlay-right {
-        width: 10%;
+        width: 13%;
     }
     .custom-margin-left {
         margin-left: -2%;
@@ -229,7 +228,7 @@
     .overlay-top,
     .overlay-bottom
     {
-        height: 10px;
+        height: 11px;
     }
 }
 @media screen and (max-width: 375px){

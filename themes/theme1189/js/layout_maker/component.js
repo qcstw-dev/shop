@@ -305,7 +305,7 @@ var resizeableImage = function (image_target, customizable) {
         }
     };
     init();
-    $(document).on('mousemove', resizing);
+//    resizing;
 };
 $('.preview-layout').live('click', function () {
     crop(true);
