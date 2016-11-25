@@ -38,6 +38,10 @@
     <script type="text/javascript" src="{$js_dir}layout_maker/component.js"></script>
     <script type="text/javascript" src="{$js_dir}layout_maker/mobile-custom.js"></script>
 {/if}
+{if isset($product_list)}
+    <script type="text/javascript" src="{$js_dir}jquery.endless-scroll.js"></script>
+    <script type="text/javascript" src="{$js_dir}mobile-product-list.js"></script>
+{/if}
 </div>
 <!-- id mobile-->
 </body>

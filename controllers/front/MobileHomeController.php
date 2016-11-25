@@ -19,7 +19,7 @@ class MobileHomeControllerCore extends FrontController {
         $cart_products = $this->context->cart->getProducts(true);
         $oProductCategory = new Category('45', $this->context->language->id);
 
-        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 100, 'date_add', 'DESC');
+        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 4, 'date_add', 'DESC');
         foreach ($aProducts as &$aProduct) {
             $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($this->context->language->id);
             foreach ($aProduct['images'] as $key => $image) {
@@ -42,6 +42,7 @@ class MobileHomeControllerCore extends FrontController {
             'products' => $aProducts,
             'step'  => '1',
             'total_cart' => Tools::displayPrice($totalToPay),
+            'product_list' => true
         ));
         $this->context->smarty->assign('header_mobile', _PS_THEME_DIR_ . 'mobile-header.tpl');
         $this->context->smarty->assign('footer_mobile', _PS_THEME_DIR_ . 'mobile-footer.tpl');

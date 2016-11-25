@@ -2,6 +2,31 @@
 
 class AjaxControllerCore extends FrontController {
 
+    public function displayAjaxProductList() {
+        $iLastRange = isset($_POST['last_range']) && $_POST['last_range'] ? $_POST['last_range'] : 0;
+        if (isset($_POST['nb_products']) && $_POST['nb_products']) {
+            $iNbProducts = $_POST['nb_products'];
+        } else {
+            $iNbProducts = 4;
+        }
+        $oProductCategory = new Category('45', $this->context->language->id);
+        $aProducts = $oProductCategory->getProducts($this->context->language->id, $iLastRange, $iNbProducts, 'date_add', 'DESC');
+        foreach ($aProducts as &$aProduct) {
+            $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($this->context->language->id);
+            foreach ($aProduct['images'] as $key => $image) {
+                if ($image['legend'] == 'recess' || is_numeric($image['legend'])) {
+                    unset($aProduct['images'][$key]);
+                }
+            }
+        }
+        $this->context->smarty->assign(array(
+            'products' => $aProducts,
+            'first_item_id' => $iLastRange + 1
+        ));
+        $this->setTemplate(_PS_THEME_DIR_ . 'mobile-product-list.tpl');
+        echo $this->display();
+    }
+
     public function displayAjaxAddToSelection() {
         // add or remove from selection
         $result = [];
@@ -71,7 +96,7 @@ class AjaxControllerCore extends FrontController {
                 }
                 $aImagesArray[] = $sId;
                 $context->cookie->__set('custom_images', implode(',', $aImagesArray));
-                $context->cookie->setExpire(time() + 4*60*60*1000);
+                $context->cookie->setExpire(time() + 4 * 60 * 60 * 1000);
                 $result['image_name'] = $sId;
             } else {
                 $result['success'] = false;
@@ -79,6 +104,7 @@ class AjaxControllerCore extends FrontController {
         }
         echo json_encode($result);
     }
+
     public function displayAjaxStoreCustomImageMobile() {
         $result = [];
         $result['success'] = true;
@@ -90,10 +116,10 @@ class AjaxControllerCore extends FrontController {
             if (move_uploaded_file($file['tmp_name'], $sFolder . basename($sName))) {
                 $context = Context::getContext();
                 if ($context->cookie->custom_image_mobile) {
-                    unlink($sFolder.$context->cookie->custom_image_mobile.'.png');
+                    unlink($sFolder . $context->cookie->custom_image_mobile . '.png');
                 }
                 $context->cookie->__set('custom_image_mobile', $sId);
-                $context->cookie->setExpire(time() + 4*60*60*1000);
+                $context->cookie->setExpire(time() + 4 * 60 * 60 * 1000);
                 $result['image_name'] = $sId;
             } else {
                 $result['success'] = false;

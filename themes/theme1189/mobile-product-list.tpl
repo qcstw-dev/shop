@@ -1,6 +1,14 @@
 {if isset($products) && $products}
-    {foreach from=$products item=product name=products}
-        <div class="col-xs-6 col-sm-3 margin-bottom-10">
+    {*{if isset($first_item_id)}
+        {$first_item_id}
+    {/if}*}
+        {if isset($first_item_id)}
+            {assign var='id_item' value=$first_item_id}
+        {else}
+            {assign var='id_item' value=1}
+        {/if}
+    {foreach from=$products key=key item=product name=products}
+        <div class="col-xs-6 col-md-3 margin-bottom-10 block-product">
             <div class="col-xs-12 border padding-0">
                 <div class="col-xs-6 padding-0 padding-top-5 padding-bottom-5 text-center btn-add selection product-{$product.id_product}" data-id="{$product.id_product}" title="{l s='Add to selection'}">
                     <a href="{$base_uri}mobile-designs?id_product={$product.id_product}">
@@ -15,18 +23,12 @@
                         <span class="font-size-13">
                             {$product.name|truncate:20:'...'|escape:'html':'UTF-8'}
                         </span>
-                        {*<span class="font-size-20 visible-sm">
-                            {$product.name|truncate:29:'...'|escape:'html':'UTF-8'}
-                        </span>
-                        <span class="hidden title">
-                            {$product.name|escape:'html':'UTF-8'}
-                        </span>*}
                     </div>
                 </a>
-                <div class="col-xs-12 border-bottom slick-pictures-product-list">
+                <div class="col-xs-12 border-bottom slick-pictures-product-list slick-pictures-product-list-{$id_item}">
                     {foreach from=$product.images item=image name=images}
                         <div class="thumbnail border-none margin-bottom-0 popup-product" data-id="{$product.id_product}">
-                            <img class="picture" src="{$link->getImageLink($product.link_rewrite, $image.id_image, 'medium_default')|escape:'html':'UTF-8'}" />
+                            <img class="picture" src="{$link->getImageLink($product.link_rewrite, $image.id_image, 'large_default')|escape:'html':'UTF-8'}" />
                         </div>
                     {/foreach}
                 </div>
@@ -65,5 +67,6 @@
                 </div>
             </div>
         </div>
+        {assign var=id_item value=$id_item+1}
     {/foreach}
 {/if}

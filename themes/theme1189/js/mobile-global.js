@@ -30,7 +30,7 @@ $('.slick-pictures').slick({
     ]
 });
 
-$('.popup-product').click(function () {
+$('.popup-product').live('click',function () {
     var id = $(this).data('id');
     var html = $('.popup-product-content-' + id).html();
 
