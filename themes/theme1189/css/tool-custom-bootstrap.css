@@ -304,7 +304,7 @@
         font-size: 12px !important;
     }
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .col-sm-20-percent {
         width: 20% !important;
     }
@@ -403,6 +403,15 @@
     border-radius: 20px;
     display: inline-block;
     border: 1px solid #ccc;
+}
+.underline{
+    text-decoration: underline;
+}
+.tab-price-cel-first {
+    background: #ddd;
+}
+.color-red {
+    color: #ce1f21;
 }
 /******************* MY SELECTION *******************/
 

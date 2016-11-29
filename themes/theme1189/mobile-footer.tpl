@@ -39,8 +39,11 @@
     <script type="text/javascript" src="{$js_dir}layout_maker/mobile-custom.js"></script>
 {/if}
 {if isset($product_list)}
-    <script type="text/javascript" src="{$js_dir}jquery.endless-scroll.js"></script>
     <script type="text/javascript" src="{$js_dir}mobile-product-list.js"></script>
+{/if}
+{if isset($checkout)}
+    <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jquery.typewatch.js"></script>
+    <script type="text/javascript" src="{$js_dir}mobile-checkout.js"></script>
 {/if}
 </div>
 <!-- id mobile-->

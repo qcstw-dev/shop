@@ -41,7 +41,6 @@ class MobileProductPageControllerCore extends FrontController {
             'shop_name' => $this->context->shop->name,
             'favicon_url' => _PS_IMG_ . Configuration::get('PS_FAVICON'),
             'logo_url' => $this->context->link->getMediaLink(_PS_IMG_ . Configuration::get('PS_LOGO')),
-            'voucherAllowed' => CartRule::isFeatureActive(),
             'returnAllowed' => (int) Configuration::get('PS_ORDER_RETURN'),
             'HOOK_BLOCK_MY_ACCOUNT' => Hook::exec('displayCustomerAccount'),
             'HOOK_HEADER_MOBILE', Hook::exec('displayHeaderMobile'),

@@ -14,8 +14,10 @@
                         {l s='Step 1'}
                     {elseif strpos($meta_title, 'Select Design') !== false}
                         {l s='Step 2'}
-                    {else}
+                    {elseif strpos($meta_title, 'Place design on product') !== false}
                         {l s='Step 3'}
+                    {else}
+                        {l s='Step 4'}
                     {/if}
                 </div>
                 <div class="navbar-brand padding-0 padding-top-15 margin-left-10">
@@ -23,10 +25,12 @@
                         {l s='Select Product'}
                     {elseif strpos($meta_title, 'Select Design') !== false}
                         {l s='Select Design'}
-                    {else}
+                    {elseif strpos($meta_title, 'Place design on product') !== false}
                         <span class="font-size-13">
                             {l s='Place design on product'}
                         </span>
+                    {else}
+                        {l s='Checkout'}
                     {/if}
                 </div>
             </div>

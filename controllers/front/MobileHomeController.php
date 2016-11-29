@@ -19,7 +19,7 @@ class MobileHomeControllerCore extends FrontController {
         $cart_products = $this->context->cart->getProducts(true);
         $oProductCategory = new Category('45', $this->context->language->id);
 
-        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 4, 'date_add', 'DESC');
+        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 6, 'date_add', 'DESC');
         foreach ($aProducts as &$aProduct) {
             $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($this->context->language->id);
             foreach ($aProduct['images'] as $key => $image) {
@@ -34,7 +34,6 @@ class MobileHomeControllerCore extends FrontController {
             'shop_name' => $this->context->shop->name,
             'favicon_url' => _PS_IMG_ . Configuration::get('PS_FAVICON'),
             'logo_url' => $this->context->link->getMediaLink(_PS_IMG_ . Configuration::get('PS_LOGO')),
-            'voucherAllowed' => CartRule::isFeatureActive(),
             'returnAllowed' => (int) Configuration::get('PS_ORDER_RETURN'),
             'HOOK_BLOCK_MY_ACCOUNT' => Hook::exec('displayCustomerAccount'),
             'HOOK_HEADER_MOBILE', Hook::exec('displayHeaderMobile'),

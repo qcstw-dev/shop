@@ -2,9 +2,9 @@
     <a href="{$base_uri}mobile-designs" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> {l s='Back'}</a>
     <div class="row margin-top-20">
         {foreach from=$subcategories item=subcategory}
-            <div class="col-xs-6 col-sm-3 col-md-2">
+            <div class="col-xs-6 col-sm-3 col-md-2 margin-bottom-10">
                 <a href="{$base_uri}mobile-designs?category={$subcategory.id_category}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
-                    <div class="col-xs-12 thumbnail border">
+                    <div class="col-xs-12 thumbnail">
                         {if $subcategory.id_image}
                             <img class="" src="{$link->getCatImageLink($subcategory.link_rewrite, $subcategory.id_image, 'tm_medium_default')|escape:'html':'UTF-8'}" alt="{$subcategory.name|escape:'html':'UTF-8'}" />
                         {else}

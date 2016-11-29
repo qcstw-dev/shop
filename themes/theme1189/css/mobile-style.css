@@ -20,6 +20,9 @@ hr {
 .btn {
     border-radius: 0;
 }
+.thumbnail {
+    border-radius: 0;
+}
 @media (max-width: 991px) {
     .navbar-header {
         float: none;
@@ -94,17 +97,6 @@ hr {
     border-top: 1px solid #ddd;
 }
 
-/*.options {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 200px;
-    overflow: auto;
-    font-size: 15px;
-    border-top: 1px solid #ddd;
-    background: #fff;
-    display: none;
-}*/
 .options .option {
     padding: 10px;
     border-bottom: 1px solid #ddd;
@@ -171,12 +163,25 @@ hr {
     right: 0;
     font-size: 10px;
 }
+.loading-ajax {
+    position: fixed;
+    bottom: 0;
+    background: #f8f8f8;
+    z-index: 1;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
 /************** PRODUCT PAGE ****************/
-.tab-price-cel-first {
+
+#mobile-product-page .tab-price-cel-first, #mobile-product-page .tab-price-cel {
+    font-size: 12px;
+}
+#mobile-product-page .tab-price-cel-first {
     background: #ddd;
     min-width: 120px;
 }
-.tab-price-cel {
+#mobile-product-page .tab-price-cel {
     min-width: 60px;
 }
 /************** SELECT DESIGN ****************/
@@ -189,8 +194,60 @@ hr {
 }
 .white-popup {
     padding: 20px;
-    padding-top: 30px;
+    padding-top: 40px;
 }
 .thumbnail {
     margin-bottom: 0;
+}
+
+/************** CHECKOUT ****************/
+.title-block {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+}
+.block-hidden {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*display: none;*/
+    border: 1px solid #ddd;
+    border-top: none;
+}
+@media (min-width: 320px) {
+    #mobile-checkout .tab-price-cel-first {
+        min-width: 46px;
+    }
+    #mobile-checkout .tab-price-cel {
+        min-width: 35px;
+    }
+    #mobile-checkout .tab-price-cel-first, #mobile-checkout .tab-price-cel {
+        font-size: 10px;
+    }
+}
+@media (min-width: 375px) {
+    #mobile-checkout .tab-price-cel-first, #mobile-checkout .tab-price-cel {
+        font-size: 12px;
+    }
+    #mobile-checkout .tab-price-cel-first {
+        min-width: 55px;
+    }
+    #mobile-checkout .tab-price-cel {
+        min-width: 43px;
+    }
+}
+.input-qty {
+    width: 35px;
+    text-align: center;
+}
+.block-product {
+    position: relative;
+}
+.block-modify {
+    position: absolute;
+    right: 0;
+    z-index: 1;
 }

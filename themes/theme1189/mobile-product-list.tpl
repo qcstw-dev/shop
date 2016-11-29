@@ -1,7 +1,4 @@
 {if isset($products) && $products}
-    {*{if isset($first_item_id)}
-        {$first_item_id}
-    {/if}*}
         {if isset($first_item_id)}
             {assign var='id_item' value=$first_item_id}
         {else}

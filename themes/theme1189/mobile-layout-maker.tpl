@@ -71,8 +71,7 @@
                 </a>
             </div>
             <div class="block-choice">
-                <a href="#">
-{*                <a href="{$base_uri}check-out">*}
+                <a href="{$base_uri}mobile-checkout">
                     <span class="glyphicon glyphicon-shopping-cart"></span> {l s="Check out"}
                 </a>
             </div>

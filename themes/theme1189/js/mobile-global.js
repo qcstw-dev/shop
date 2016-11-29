@@ -1,74 +1,92 @@
-$('.select').on('click', function () {
-    $.magnificPopup.open({
-        items: [{
-                src: $('<div class="white-popup">' +
-                        $('.block-' + $(this).data('block')).html() +
-                        '</div>'),
-                type: 'inline'
-            }],
-        focus: '.search_query'
+$(function () {
+    $('.select').on('click', function () {
+        $.magnificPopup.open({
+            items: [{
+                    src: $('<div class="white-popup">' +
+                            $('.block-' + $(this).data('block')).html() +
+                            '</div>'),
+                    type: 'inline'
+                }],
+            focus: '.search_query'
+        });
     });
-});
-$('.slick-pictures-product-list').slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: []
-});
-$('.slick-pictures').slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: [
-        {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
+    $('.slick-pictures-product-list').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: []
+    });
+    $('.slick-pictures').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
             }
-        }
-    ]
-});
+        ]
+    });
 
-$('.popup-product').live('click',function () {
-    var id = $(this).data('id');
-    var html = $('.popup-product-content-' + id).html();
+    $('.popup-product').live('click', function () {
+        var id = $(this).data('id');
+        var html = $('.popup-product-content-' + id).html();
 
-    $.magnificPopup.open({
-        items: [{
-                src: $('<div class="white-popup">' +
-                        html +
-                        '</div>'),
-                type: 'inline'
-            }],
-        callbacks: {
-            open: function () {
-                $(".slick-popup-" + id).slick({
-                    infinite: true,
-                    responsive: []
-                });
-            },
-            close: function () {
-                $(".slick-popup-" + id).slick('unslick');
+        $.magnificPopup.open({
+            items: [{
+                    src: $('<div class="white-popup">' +
+                            html +
+                            '</div>'),
+                    type: 'inline'
+                }],
+            callbacks: {
+                open: function () {
+                    $(".slick-popup-" + id).slick({
+                        infinite: true,
+                        responsive: []
+                    });
+                },
+                close: function () {
+                    $(".slick-popup-" + id).slick('unslick');
+                }
             }
-        }
+        });
+    });
+    $('.popup').live('click', function () {
+        $.magnificPopup.open({
+            items: [{
+                    src: $('<div class="white-popup">' +
+                            '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
+                            '</div>'),
+                    type: 'inline'
+                }]
+        });
+    });
+
+    $('body').on('click', '.close-popup', function () {
+        $.magnificPopup.close();
+    });
+    $('body').on('click', '.remove-from-cart', function () {
+        var idProduct = $(this).data('id-product');
+        var customPicture = $(this).data('custom-picture');
+        var originalPicture = $(this).data('original-picture');
+        ajaxCartRemove(idProduct, customPicture, originalPicture, this);
+    });
+    $('body').on('click', '.add-to-cart', function () {
+        crop();
+        var idProduct = $(this).data('id-product');
+        var idDesign = ($(this).data('id-design') ? $(this).data('id-design') : null);
+        var customPicture = $(this).data('custom-picture');
+        var originalPicture = $(this).data('original-picture');
+        ajaxCartAdd(idProduct, 1, idDesign, customPicture, originalPicture, this);
+    });
+    $('body').on('click', '.title-block', function () {
+        $('.block-'+$(this).data('block')).slideToggle();
     });
 });
-$('.popup').live('click', function () {
-    $.magnificPopup.open({
-        items: [{
-                src: $('<div class="white-popup">' +
-                        '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
-                        '</div>'),
-                type: 'inline'
-            }]
-    });
-});
-
-$('body').on('click', '.close-popup', function () {
-    $.magnificPopup.close();
-});
-
 function popupMessage(html, style) {
     $.magnificPopup.open({
         items: [{
@@ -101,12 +119,7 @@ function loading() {
         showCloseBtn: false
     });
 }
-$('body').on('click', '.remove-from-cart', function () {
-    var idProduct = $(this).data('id-product');
-    var customPicture = $(this).data('custom-picture');
-    var originalPicture = $(this).data('original-picture');
-    ajaxCartRemove(idProduct, customPicture, originalPicture, this);
-});
+
 function ajaxCartRemove(idProduct, customPicture, originalPicture, callerElement) {
     $.ajax({
         type: 'POST',
@@ -129,6 +142,7 @@ function ajaxCartRemove(idProduct, customPicture, originalPicture, callerElement
                     $(this).remove();
                     if (!$('.block-cart-element').length) {
                         $('.empty-cart-message').removeClass('hidden');
+                        $('.btn-checkout').hide();
                     }
                 });
                 $('.ajax_cart_quantity').text(jsonData.nbTotalProducts);
@@ -143,14 +157,6 @@ function ajaxCartRemove(idProduct, customPicture, originalPicture, callerElement
     });
 }
 
-$('body').on('click', '.add-to-cart', function () {
-    crop();
-    var idProduct = $(this).data('id-product');
-    var idDesign = ($(this).data('id-design') ? $(this).data('id-design') : null);
-    var customPicture = $(this).data('custom-picture');
-    var originalPicture = $(this).data('original-picture');
-    ajaxCartAdd(idProduct, 1, idDesign, customPicture, originalPicture, this);
-});
 function ajaxCartAdd(idProduct, quantity, idDesign, customPicture, originalPicture, callerElement) {
     $.ajax({
         type: 'POST',

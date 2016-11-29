@@ -3,14 +3,17 @@
 class AjaxControllerCore extends FrontController {
 
     public function displayAjaxProductList() {
-        $iLastRange = isset($_POST['last_range']) && $_POST['last_range'] ? $_POST['last_range'] : 0;
-        if (isset($_POST['nb_products']) && $_POST['nb_products']) {
-            $iNbProducts = $_POST['nb_products'];
+        $iLastRange = Tools::getValue('last_range') ? Tools::getValue('last_range') : 0;
+
+        if (Tools::getValue('nb_products') && Tools::getValue('nb_products')) {
+            $iNbProducts = Tools::getValue('nb_products');
         } else {
-            $iNbProducts = 4;
+            $iNbProducts = 6;
         }
+        
         $oProductCategory = new Category('45', $this->context->language->id);
         $aProducts = $oProductCategory->getProducts($this->context->language->id, $iLastRange, $iNbProducts, 'date_add', 'DESC');
+        
         foreach ($aProducts as &$aProduct) {
             $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($this->context->language->id);
             foreach ($aProduct['images'] as $key => $image) {
@@ -24,7 +27,8 @@ class AjaxControllerCore extends FrontController {
             'first_item_id' => $iLastRange + 1
         ));
         $this->setTemplate(_PS_THEME_DIR_ . 'mobile-product-list.tpl');
-        echo $this->display();
+        $sHtml = rtrim($this->display(), "1");
+        echo $sHtml;
     }
 
     public function displayAjaxAddToSelection() {

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0" /> 
     <link rel="icon" type="image/vnd.microsoft.icon" href="{$base_dir_ssl}/img/favicon.ico?{rand()}">
@@ -24,7 +25,7 @@
                         <img src="{$logo_url}" alt="{$shop_name|escape:'html':'UTF-8'}" title="{$shop_name|escape:'html':'UTF-8'}"/>
                     </a>
                 </div>
-                <div class="col-xs-8 col-sm-4 pull-right padding-0 header-icons">
+                <div class="col-xs-8 col-sm-4 col-md-3 pull-right padding-0 header-icons">
                     <!-- Single button -->
                     <div class="col-xs-3 header-icon">
                         <div class="icon-inner icon-currency select" data-block="currencies">
@@ -128,7 +129,7 @@
                             <hr>
                             <div class="col-xs-12 padding-0 block-cart-element block-cart-element-{$product.id_product|intval}-{$product.custom_picture}" data-id="cart_block_product_{$product.id_product|intval}_{$product.custom_picture}">
                                 <div class="col-xs-6 thumbnail">
-                                    <img class="popup" src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" />
+                                    <img class="popup" src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
                                 </div>
                                 <div class="col-xs-6 padding-right-0">
                                     <div>
@@ -172,6 +173,7 @@
                         {$total_cart}
                     </div>
                 </div>
+                <a class="btn btn-primary margin-top-10 col-xs-12 col-sm-offset-4 col-sm-4 btn-checkout" href="{$base_uri}mobile-checkout">{l s='Checkout'} <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <div class="clearfix"></div>
             {/if}
             <div class="alert alert-info text-center empty-cart-message {if $cart_products}hidden{/if}">

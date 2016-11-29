@@ -16,6 +16,12 @@ class MobileLayoutMakerControllerCore extends FrontController {
         
         $totalToPay = $this->context->cart->getOrderTotal(false);
         
+        if (Tools::getValue('preselect_product') && Tools::getValue('custom_picture') && (Tools::getValue('preselect_design') || Tools::getValue('original_picture'))) {
+            $this->context->cookie->__set('selected_design', (Tools::getValue('preselect_design') ? : Tools::getValue('original_picture')));
+            $this->context->cookie->__set('selected_product', Tools::getValue('preselect_product'));
+            $this->context->cart->deleteProduct(Tools::getValue('preselect_product'), null, null, null, Tools::getValue('custom_picture'));
+        }
+        
         if ($this->context->cookie->selected_product && (Tools::getValue('id_design') || $this->context->cookie->selected_design)) {
             if (Tools::getValue('id_design')) {
                 $this->context->cookie->__set('selected_design', Tools::getValue('id_design'));
@@ -42,7 +48,6 @@ class MobileLayoutMakerControllerCore extends FrontController {
                 'shop_name' => $this->context->shop->name,
                 'favicon_url' => _PS_IMG_ . Configuration::get('PS_FAVICON'),
                 'logo_url' => $this->context->link->getMediaLink(_PS_IMG_ . Configuration::get('PS_LOGO')),
-                'voucherAllowed' => CartRule::isFeatureActive(),
                 'returnAllowed' => (int) Configuration::get('PS_ORDER_RETURN'),
                 'HOOK_BLOCK_MY_ACCOUNT' => Hook::exec('displayCustomerAccount'),
                 'HOOK_HEADER_MOBILE', Hook::exec('displayHeaderMobile'),

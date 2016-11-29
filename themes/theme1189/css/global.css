@@ -9251,9 +9251,7 @@ ul.step a:hover:after {
     bottom: 0px;
     right: 0px;
 }
-.underline{
-    text-decoration: underline;
-}
+
 .cursor {
     position: absolute;
     width: 20%;
