@@ -83,9 +83,6 @@ $(function () {
         var originalPicture = $(this).data('original-picture');
         ajaxCartAdd(idProduct, 1, idDesign, customPicture, originalPicture, this);
     });
-    $('body').on('click', '.title-block', function () {
-        $('.block-'+$(this).data('block')).slideToggle();
-    });
 });
 function popupMessage(html, style) {
     $.magnificPopup.open({

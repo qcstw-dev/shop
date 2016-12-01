@@ -173,9 +173,9 @@ var ajaxCart = {
 
             // Removing product from the cart
             if (productId && custom_picture) {
-                ajaxCart.remove(productId, productAttributeId, customizationId, idAddressDelivery, custom_picture, original_picture);
+                ajaxCart.remove(productId, productAttributeId, customizationId, idAddressDelivery, custom_picture);
                 if (isModify) {
-                    window.location.replace(baseUri+'layout-maker?product='+productId+"&design="+designId);
+                    window.location.replace(baseUri+'layout-maker?product='+productId+"&design="+(designId ? designId : original_picture));
                 }
             }
         });

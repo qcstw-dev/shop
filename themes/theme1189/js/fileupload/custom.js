@@ -56,7 +56,7 @@ $(function () {
                         if (json.success === true) {
                             $('.btn-block-selection').removeClass('disabled');
                             $('.designs-list .list-item-custom').after('\
-                                <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design list-item-custom-image cursor-pointer ">\n\
+                                <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design list-item-custom-image id_' + json.image_name + ' cursor-pointer" data-original-picture="' + json.image_name + '">\n\
                                     <img class="' + (isLayoutMaker ? 'img-product' : 'popup') + ' border" src="' + dataURL + '" />\n\
                                     <span class="delete_cutom_picture cursor-pointer glyphicon glyphicon-remove" data-file-name="' + json.image_name + '" title="Remove from selection"></span>\n\
                                 </div>');
@@ -67,7 +67,7 @@ $(function () {
                             }
                             // if it's layout maker page
                             if (isLayoutMaker && data.files.length === index + 1) {
-                                $('.list-item-custom-image').trigger('click');
+                                $('.id_'+json.image_name).trigger('click');
                                 if (file.preview.attributes.width.value <= 500 || file.preview.attributes.height.value <= 500) {
                                     $.magnificPopup.open({
                                         items: [{

@@ -97,7 +97,7 @@
                         </p>
                         <div class="clearfix"></div>
                     {else}
-                        <form action="{$base_dir}login" method="post" id="header_login_form">
+                        <form action="{$base_dir}login" method="post">
                             <div id="create_header_account_error" class="alert alert-danger" style="display:none;"></div>
                             <div class="form_content clearfix">
                                 <div class="form-group">
@@ -109,7 +109,7 @@
                                     <span><input class="is_required validate account_input form-control" type="password" data-validate="isPasswd" id="header-passwd" name="header-passwd" value="" autocomplete="off"></span>
                                 </div>
                                 <p class="submit">
-                                    <button type="button" id="HeaderSubmitLogin" name="HeaderSubmitLogin" class="btn btn-primary btn-sm">
+                                    <button type="button" id="SubmitLogin" name="HeaderSubmitLogin" class="btn btn-primary btn-sm">
                                         <i class="fa fa-lock left"></i> 
                                         Login
                                     </button>
@@ -126,8 +126,8 @@
                     {if $cart_products}
                         <div class="font-size-20 text-center bold">{l s='Cart'}</div>
                         {foreach from=$cart_products item=product name=cart_products}
-                            <hr>
                             <div class="col-xs-12 padding-0 block-cart-element block-cart-element-{$product.id_product|intval}-{$product.custom_picture}" data-id="cart_block_product_{$product.id_product|intval}_{$product.custom_picture}">
+                                <hr>
                                 <div class="col-xs-6 thumbnail">
                                     <img class="popup" src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
                                 </div>

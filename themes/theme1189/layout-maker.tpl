@@ -36,7 +36,7 @@
                             </div>
                         {/foreach}
                         {foreach from=$aCustomDesigns item=custom_design name=custom_designs}
-                            <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design list-item-custom-image cursor-pointer " data-type="design">
+                            <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design list-item-custom-image id_{$custom_design} cursor-pointer" data-original-picture="{$custom_design}" data-type="design">
                                 <img class="img-product border" src="{$base_uri}{$temp_custom_picture_path}{$custom_design}.png" title="custom" alt="custom" />
                                 <span class="delete_cutom_picture cursor-pointer glyphicon glyphicon-remove" data-file-name="{$custom_design}" title="{l s='Remove from selection'}"></span>
                             </div>
@@ -112,11 +112,15 @@
         </p>*}
     </div>
 {/if}
-{if $preselected_design && $preselected_product}
     <script>
         $(function() {
-            $('.list-item-{$preselected_product}').trigger('click');
-            $('.list-item-{$preselected_design}').trigger('click');
+            {if $preselected_product}
+                $('.list-item-{$preselected_product}').trigger('click');
+            {/if}
+            {if strpos($preselected_design, '_') == false}
+                $('.list-item-{$preselected_design}').trigger('click');
+            {else}
+                $('.id_{$preselected_design}').trigger('click');
+            {/if}
         });
     </script>
-{/if}

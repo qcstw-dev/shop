@@ -66,6 +66,12 @@
 .border-top-0 {
     border-top: none;
 }
+.form-control {
+    border-radius: 0;
+}
+ol, ul {
+    margin-bottom: 0;
+}
 .text-underline {
     text-decoration: underline;
 }
@@ -412,6 +418,9 @@
 }
 .color-red {
     color: #ce1f21;
+}
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+    margin-left: 0;
 }
 /******************* MY SELECTION *******************/
 

@@ -77,18 +77,18 @@
     .overlay-bottom {
         width: 100%;
         bottom: 0;
-        height: 100px;
+        height: 105px;
         right: 0;
     }
     .overlay-right {
         height: 100%;
-        width: 215px;
+        width: 220px;
         top: 0;
         right: 0;
     }
     .overlay-left {
         height: 100%;
-        width: 349px;
+        width: 351px;
         top: 0;
         left: 0;
     }

@@ -21,7 +21,7 @@
                     {/if}
                 </div>
                 <div class="navbar-brand padding-0 padding-top-15 margin-left-10">
-                    {if strpos($meta_title, 'Home Mobile') !== false || strpos($meta_title, 'Mobile Product') !== false}
+                    {if strpos($meta_title, 'Home Mobile') !== false}
                         {l s='Select Product'}
                     {elseif strpos($meta_title, 'Select Design') !== false}
                         {l s='Select Design'}
@@ -41,12 +41,12 @@
                         <a href="{$base_uri}mobile">{l s='Step 1 Select Product'}</a>
                     </li>
                     <li {if $step == '1'}class="disabled"{/if}>
-                        <a href="{if $step|in_array:['1', '2', '3']}{$base_uri}mobile-designs{/if}">
+                        <a href="{if $step|in_array:['2', '3', '4']}{$base_uri}mobile-designs{/if}">
                             {l s='Step 2 Select Design'}
                         </a>
                     </li>
-                    <li {if $step != '3'}class="disabled"{/if}>
-                        <a href="{if $step == '3'}{$base_uri}mobile-layout-maker{/if}">
+                    <li {if !in_array($step, ['3', '4'])}class="disabled"{/if}>
+                        <a href="{if $step|in_array:['3', '4']}{$base_uri}mobile-layout-maker{/if}">
                             {l s='Step 3 Place design on product'}
                         </a>
                     </li>

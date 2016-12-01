@@ -111,7 +111,7 @@ $(function () {
             });
         } else {
             if ($(this).hasClass('list-item-custom-image')) {
-                $('.hidden-original-picture').attr('src', $(this).find('img').attr('src'));
+                $('.hidden-original-picture').attr('src', baseDir+'img/layout_maker/temp/'+$(this).data('original-picture')+'.png');
             } else {
                 $('.hidden-original-picture').attr('src', '');
             }

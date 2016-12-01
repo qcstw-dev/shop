@@ -17,7 +17,6 @@ $('.cart_quantity_down').off('click').on('click', function (e) {
 $('.cart_quantity_input').typeWatch({
     highlight: true, wait: 600, captureLength: 0, callback: function (val) {
         var id = $(this.el).data('id');
-        console.log(id);
         var input = val;
         if (input == 0) {
             deleteProduct(id);
@@ -51,15 +50,14 @@ function deleteProduct(id) {
                 + '&ajax=true&delete=true&summary=true'
                 + '&id_product=' + productId
                 + '&token=' + static_token
-                + '&allow_refresh=1'
                 + '&custom_picture=' + custom_picture,
-        success: function (jsonData)
-        {
+        success: function (jsonData) {
             $('.block_product_' + productId + '_' + custom_picture).fadeOut('slow', function () {
                 $(this).remove();
             });
             $('.ajax_cart_quantity').text(jsonData.nbTotalProducts);
             $('.cart_total').text(jsonData.total);
+            $('.total_voucher').text(jsonData.summary.total_discounts);
         }
     });
 }
@@ -112,6 +110,7 @@ function updateQty(id, op, qty) {
             });
             $('.ajax_cart_quantity').text(jsonData.nbTotalProducts);
             $('.cart_total').text(jsonData.total);
+            $('.total_voucher').text(jsonData.summary.total_discounts);
         }
     });
 }

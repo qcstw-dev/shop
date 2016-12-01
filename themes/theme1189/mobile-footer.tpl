@@ -19,8 +19,9 @@
 <script type="text/javascript" src="{$js_dir}slick/slick.min.js"></script>
 
 <script type="text/javascript" src="{$base_dir_ssl}js/tools.js"></script>
-<script type="text/javascript" src="{$base_dir_ssl}modules/tmheaderaccount/js/front.js"></script>
+{*<script type="text/javascript" src="{$base_dir_ssl}modules/tmheaderaccount/js/front.js"></script>*}
 
+<script type="text/javascript" src="{$js_dir}mobile-login.js"></script>
 <script type="text/javascript" src="{$js_dir}mobile-global.js"></script>
 
 {if isset($upload)}
@@ -44,6 +45,11 @@
 {if isset($checkout)}
     <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jquery.typewatch.js"></script>
     <script type="text/javascript" src="{$js_dir}mobile-checkout.js"></script>
+{/if}
+{if isset($checkout) && $checkout_step == 2}
+    <script type="text/javascript" src="{$js_dir}mobile-authentication.js"></script>
+    <script type="text/javascript" src="{$js_dir}mobile-login.js"></script>
+    <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
 {/if}
 </div>
 <!-- id mobile-->

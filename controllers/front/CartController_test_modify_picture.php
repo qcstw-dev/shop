@@ -302,12 +302,7 @@ class CartControllerCore extends FrontController
 
                 if (strpos($this->custom_picture, 'data:') !== false) {
                     $sCustomPictureName = $this->savePicture($this->custom_picture, ['folder' => 'custom']);
-                    if ($this->original_picture) {
-                        preg_match('/([0-9]+_[0-9]+)/', $this->original_picture, $match);
-                        $sOriginalPictureName = ($this->original_picture ? $this->savePicture($this->original_picture, ['folder' => 'original', 'id' => $match[0]]) : '');
-                    } else {
-                        $sOriginalPictureName = '';
-                    }
+                    $sOriginalPictureName = ($this->original_picture ? $this->savePicture($this->original_picture, ['folder' => 'original', 'move' => true, 'path' => $this->original_picture]) : '');
                 } else {
                     $sCustomPictureName = $this->custom_picture;
                     $sOriginalPictureName = $this->original_picture;
@@ -369,7 +364,8 @@ class CartControllerCore extends FrontController
     protected function savePicture ($sUrl, $aOptions = []) {
         $aOptions = array_merge([
                 'folder'    => 'custom',
-                'id'        => ''
+                'path'  => '',
+                'move'    => ''
             ], $aOptions);
         
         $aFolder = [
@@ -377,21 +373,24 @@ class CartControllerCore extends FrontController
             'original'  => 'original_pictures'
         ];
         
-        if (!$aOptions['id']) {
-            $sImgPath = $sUrl;
+        $sImgPath = $sUrl;
+        if (!$aOptions['move']) {
             $sImgPath = str_replace('data:image/png;base64,', '', $sImgPath);
             $sImgPath = str_replace(' ', '+', $sImgPath);
             $sData = base64_decode($sImgPath);
+
+            $sId = time().'_'.rand(1, 100);
+            $sName = $sId.'.png';
+            $sFolder = 'img/layout_maker/'.$aFolder[$aOptions['folder']];
+            $sImgFinalPath = $sFolder.'/'.$sName;
         } else {
-            $sData = file_get_contents($sUrl);
+            $sImgPath = $aOptions['path'];
+            $sData = $sImgPath;
+            $useSSL = ((isset($this->ssl) && $this->ssl && Configuration::get('PS_SSL_ENABLED')) || Tools::usingSecureMode()) ? true : false;
+            $protocol_content = ($useSSL) ? 'https://' : 'http://';
+            $base_uri = $protocol_content . Tools::getHttpHost() . __PS_BASE_URI__ . (!Configuration::get('PS_REWRITING_SETTINGS') ? 'index.php' : '');
+            $sImgFinalPath = str_replace($base_uri , '', $aOptions['path']);
         }
-
-        $sId = ($aOptions['id'] ? : time().'_'.rand(1, 100));
-
-        $sName = $sId.'.png';
-        $sFolder = 'img/layout_maker/'.$aFolder[$aOptions['folder']];
-
-        $sImgFinalPath = $sFolder.'/'.$sName;
         
         if (file_put_contents($sImgFinalPath, $sData)) {
             return $sId;
