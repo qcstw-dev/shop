@@ -12,6 +12,7 @@
                     <input type="email" class="is_required validate form-control" id="email_create" data-validate="isEmail" name="email_create" required/>
                     <input type="hidden" class="is_required" name="back" value="{$base_uri}mobile-checkout?step=3" required/>
                     <input type="hidden" class="is_required" name="mobile" value="true" required/>
+                    <input type="hidden" class="is_required" name="checkout" value="true" required/>
                 </div>
             </div>
             <button class="btn btn-default col-xs-12 col-sm-4 pull-right margin-top-10" type="submit" id="SubmitCreate" name="SubmitCreate">{l s='Ok'}</button>

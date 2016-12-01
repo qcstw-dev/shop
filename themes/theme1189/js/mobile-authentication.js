@@ -22,6 +22,7 @@ function submitFunction()
             ajax: true,
             email_create: $('#email_create').val(),
             back: $('input[name=back]').val(),
+            checkout: $('input[name=checkout]').val(),
             mobile: $('input[name=mobile]').val(),
             token: token
         },

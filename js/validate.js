@@ -200,6 +200,6 @@ function validate_field(that)
 	}
 }
 
-$(document).on('focusout', 'input.validate, textarea.validate', function() {
+$(document).on('focusout, keyup', 'input.validate, textarea.validate', function() {
 	validate_field(this);
 });

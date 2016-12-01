@@ -422,6 +422,9 @@ ol, ul {
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
     margin-left: 0;
 }
+.checkbox-inline, .radio-inline {
+    padding-left: 0;
+}
 /******************* MY SELECTION *******************/
 
 .hidden-uploader {

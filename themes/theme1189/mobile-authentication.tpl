@@ -1,4 +1,6 @@
-{include file=$header_mobile}
+{if isset($footer_mobile)}
+    {include file=$header_mobile}
+{/if}
 <div class="col-xs-12">
     {capture name=path}
     {if !isset($email_create)}{l s='Authentication'}{else}
@@ -696,4 +698,6 @@
         {/if}
     {/strip}
 </div>
-{include file=$footer_mobile}
+{if isset($footer_mobile)}
+    {include file=$footer_mobile}
+{/if}
