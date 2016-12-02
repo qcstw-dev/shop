@@ -251,6 +251,23 @@ hr {
     z-index: 1;
 }
 
+/******************** ADDRESS **********************/
+#mobile-checkout li {
+    list-style: none;
+    padding-right: 10px; 
+    padding-left: 10px; 
+}
+.address_title {
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+#address_delivery, #address_invoice {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
 /****************** FORM VALIDATE ******************/
 .form-group.form-error input,
 .form-group.form-error textarea {

@@ -15,7 +15,7 @@
                     <input type="hidden" class="is_required" name="checkout" value="true" required/>
                 </div>
             </div>
-            <button class="btn btn-default col-xs-12 col-sm-4 pull-right margin-top-10" type="submit" id="SubmitCreate" name="SubmitCreate">{l s='Ok'}</button>
+            <button class="btn btn-primary col-xs-12 col-sm-4 pull-right margin-top-10" type="submit" id="SubmitCreate" name="SubmitCreate">{l s='Ok'}</button>
         </form>
     </div>
     <div class="col-xs-12 border margin-top-10 padding-bottom-10">
@@ -39,7 +39,7 @@
                     <input type="password" class="is_required validate form-control" data-validate="isPasswd" id="passwd" name="passwd" required/>
                 </div>
             </div>
-            <button type="submit" name="SubmitLogin" id="SubmitLogin" class="btn btn-default col-xs-12 col-sm-4 pull-right margin-top-10">{l s='sign in'}</button>
+            <button type="submit" name="SubmitLogin" id="SubmitLogin" class="btn btn-primary col-xs-12 col-sm-4 pull-right margin-top-10">{l s='sign in'}</button>
         </form>
     </div>
 </div>

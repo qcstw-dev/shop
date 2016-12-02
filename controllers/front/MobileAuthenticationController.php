@@ -50,7 +50,7 @@ class MobileAuthenticationControllerCore extends FrontController {
         $this->display_column_right = false;
 
         if (!Tools::getIsset('step') && $this->context->customer->isLogged() && !$this->ajax) {
-            Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'my-account'));
+            Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'mobile'));
         }
 
         if (Tools::getValue('create_account')) {
@@ -339,7 +339,7 @@ class MobileAuthenticationControllerCore extends FrontController {
                 CartRule::autoAddToCart($this->context);
 
                 if (!$this->ajax) {
-                    $back = Tools::getValue('back', 'my-account');
+                    $back = Tools::getValue('back', 'mobile');
 
                     if ($back == Tools::secureReferrer($back)) {
                         Tools::redirect(html_entity_decode($back));
@@ -499,7 +499,7 @@ class MobileAuthenticationControllerCore extends FrontController {
                         }
                         // else : redirection to the account
                         else {
-                            Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'my-account'));
+                            Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'mobile'));
                         }
                     } else {
                         $this->errors[] = Tools::displayError('An error occurred while creating your account.');
@@ -675,7 +675,7 @@ class MobileAuthenticationControllerCore extends FrontController {
                         }
                         // else : redirection to the account
                         else {
-                            Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'my-account'));
+                            Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'mobile'));
                         }
                     }
                 }

@@ -86,9 +86,43 @@ class MobileCheckoutControllerCore extends FrontController {
             $this->context->smarty->assign('global', _PS_THEME_DIR_ . 'global.tpl');
             $this->context->smarty->assign('tmheaderaccount', _PS_MODULE_DIR_ . 'tmheaderaccount/views/templates/hook/tmheaderaccount.tpl');
 
-            $this->context->smarty->assign('mobile_summary', _PS_THEME_DIR_ . 'mobile-summary.tpl');
-            $this->context->smarty->assign('mobile_login', _PS_THEME_DIR_ . 'mobile-login.tpl');
-            $this->context->smarty->assign('mobile_authentification', _PS_THEME_DIR_ . 'authentication.tpl');
+            switch (Tools::getValue('step')) {
+                case 1:
+                    $this->context->smarty->assign('mobile_summary', _PS_THEME_DIR_ . 'mobile-summary.tpl');
+                    break;
+                case 2:
+                    $this->context->smarty->assign('mobile_login', _PS_THEME_DIR_ . 'mobile-login.tpl');
+                    break;
+                case 3:
+                    $customer = $this->context->customer;
+                    $customerAddresses = $customer->getAddresses($this->context->language->id);
+
+                    // Getting a list of formated address fields with associated values
+                    $formatedAddressFieldsValuesList = array();
+
+                    foreach ($customerAddresses as $i => $address) {
+                        if (!Address::isCountryActiveById((int) $address['id_address'])) {
+                            unset($customerAddresses[$i]);
+                        }
+                        $tmpAddress = new Address($address['id_address']);
+                        $formatedAddressFieldsValuesList[$address['id_address']]['ordered_fields'] = AddressFormat::getOrderedAddressFields($address['id_country']);
+                        $formatedAddressFieldsValuesList[$address['id_address']]['formated_fields_values'] = AddressFormat::getFormattedAddressFieldsValues(
+                                        $tmpAddress, $formatedAddressFieldsValuesList[$address['id_address']]['ordered_fields']);
+
+                        unset($tmpAddress);
+                    }
+
+                    $customerAddresses = array_values($customerAddresses);
+
+                    $this->context->smarty->assign('formatedAddressFieldsValuesList', $formatedAddressFieldsValuesList);
+                    $this->context->smarty->assign('addresses', $customerAddresses);
+                    $this->context->smarty->assign('back', _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-checkout?step=3');
+                    $this->context->smarty->assign('opc', false);
+                    $this->context->smarty->assign('mobile_addresses', _PS_THEME_DIR_ . 'mobile-order-address.tpl');
+                    break;
+                default:
+                    $this->context->smarty->assign('mobile_summary', _PS_THEME_DIR_ . 'mobile-summary.tpl');
+            }
             $this->setTemplate(_PS_THEME_DIR_ . 'mobile-checkout.tpl');
         } else {
             header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile');

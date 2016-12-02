@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div id="component" class="component margin-bottom-10">
+        <div id="component" class="component">
             <div class="overlay-top"></div>
             <div class="overlay-bottom"></div>
             <div class="overlay-left"></div>
@@ -30,11 +30,11 @@
             <img id="image" class="resize-image" src="{($original_picture) ? $original_picture : $link->getImageLink($design->link_rewrite, $image_design.id_image, 'layout')|escape:'html':'UTF-8'}" />
             <img class="hidden-original-picture hidden" scr="{($original_picture) ? $original_picture : ''}" />
         </div>
-        <div class="col-xs-12 margin-bottom-10">
+        <div class="col-xs-12 padding-0">
             <div class="preview-color">
                 <div class="col-xs-12 padding-0 overflow-auto">
-                    <div class="padding-10 bold">Colors available:</div>
-                    <div class="block-colors">
+                    <div class="col-xs-12 bold">Colors available:</div>
+                    <div class="col-xs-12 padding-0 block-colors">
                         {foreach from=$images_product item=image_product name=images_product}
                             <div class="col-xs-4 col-sm-2 col-lg-6 block-color-product">
                                 <div class="thumbnail thumbnail-hover">

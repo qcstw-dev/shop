@@ -84,8 +84,6 @@
                     {if $is_logged}
                         <div><a href="{$link->getPageLink('history', true)|escape:'html'}" title="{l s='My orders' mod='tmheaderaccount'}" rel="nofollow">{l s='My orders' mod='tmheaderaccount'}</a></div>
                         <div><a href="{$link->getPageLink('addresses', true)|escape:'html'}" title="{l s='My addresses' mod='tmheaderaccount'}" rel="nofollow">{l s='My addresses' mod='tmheaderaccount'}</a></div>
-                        <div><a href="{$link->getPageLink('identity', true)|escape:'html'}" title="{l s='Manage my personal information' mod='tmheaderaccount'}" rel="nofollow">{l s='My personal info' mod='tmheaderaccount'}</a></div>
-                        {if $voucherAllowed}<div><a href="{$link->getPageLink('discount', true)|escape:'html'}" title="{l s='My vouchers' mod='tmheaderaccount'}" rel="nofollow">{l s='My vouchers' mod='tmheaderaccount'}</a></div>{/if}
                             {if isset($HOOK_BLOCK_MY_ACCOUNT) && $HOOK_BLOCK_MY_ACCOUNT !=''}
                                 {$HOOK_BLOCK_MY_ACCOUNT}
                             {/if}
@@ -102,11 +100,11 @@
                             <div class="form_content clearfix">
                                 <div class="form-group">
                                     <label for="email">Email address</label>
-                                    <input class="is_required validate account_input form-control" data-validate="isEmail" type="text" id="header-email" name="header-email" value="">
+                                    <input class="is_required validate account_input form-control" data-validate="isEmail" type="text" id="email" name="email" value="">
                                 </div>
                                 <div class="form-group">
                                     <label for="passwd">Password</label>
-                                    <span><input class="is_required validate account_input form-control" type="password" data-validate="isPasswd" id="header-passwd" name="header-passwd" value="" autocomplete="off"></span>
+                                    <span><input class="is_required validate account_input form-control" type="password" data-validate="isPasswd" id="passwd" name="passwd" value="" autocomplete="off"></span>
                                 </div>
                                 <p class="submit">
                                     <button type="button" id="SubmitLogin" name="HeaderSubmitLogin" class="btn btn-primary btn-sm">
@@ -115,7 +113,7 @@
                                     </button>
                                 </p>
                                 <p>
-                                    <a href="{$base_dir}my-account" class="create">Create an account</a>
+                                    <a href="{$base_dir}mobile-authentication" class="create">Create an account</a>
                                 </p>
                                 <div class="clearfix"></div>
                             </div>

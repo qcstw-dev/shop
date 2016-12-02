@@ -46,10 +46,17 @@
     <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jquery.typewatch.js"></script>
     <script type="text/javascript" src="{$js_dir}mobile-checkout.js"></script>
 {/if}
-{if isset($checkout) && $checkout_step == 2}
+{if isset($checkout) && isset($checkout_step) && $checkout_step == 2}
     <script type="text/javascript" src="{$js_dir}mobile-authentication.js"></script>
-    <script type="text/javascript" src="{$js_dir}mobile-login.js"></script>
     <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
+{/if}
+{if (isset($checkout) && isset($checkout_step) && $checkout_step == 3) || isset($mobile_address)}
+    <script type="text/javascript" src="{$js_dir}tools/vatManagement.js"></script>
+    <script type="text/javascript" src="{$js_dir}tools/statesManagement.js"></script>
+    <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
+{/if}
+{if isset($mobile_addresses)}
+    <script type="text/javascript" src="{$js_dir}order-address.js"></script>
 {/if}
 </div>
 <!-- id mobile-->
