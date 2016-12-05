@@ -25,7 +25,7 @@
  */
 
 include_once dirname(__FILE__).'/../../config/config.inc.php';
-//include_once _PS_ROOT_DIR_.'/init.php';
+include_once _PS_ROOT_DIR_.'/init.php';
 include_once _PS_MODULE_DIR_.'paypal/paypal.php';
 
 /*
@@ -228,6 +228,7 @@ class PayPalIPN extends PayPal
         return $content;
     }
 }
+
 
 if (Tools::getValue('receiver_email') == Configuration::get('PAYPAL_BUSINESS_ACCOUNT')) {
 

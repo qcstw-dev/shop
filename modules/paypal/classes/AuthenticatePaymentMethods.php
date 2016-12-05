@@ -63,7 +63,19 @@ class AuthenticatePaymentMethods
             'UA'=>array(WPS, ECS),
             'TR'=>array(WPS, ECS),
             'SI'=>array(WPS, ECS),
-            'GB'=>array(WPS, ECS),
+            'GB'=>array(WPS, HSS, ECS),
+            'IE'=>array(WPS, ECS),
+            'LT'=>array(WPS, ECS),
+            'EE'=>array(WPS, ECS),
+            'LV'=>array(WPS, ECS),
+            'RS'=>array(WPS, ECS),
+            'HR'=>array(WPS, ECS),
+            'MD'=>array(WPS, ECS),
+            'BA'=>array(WPS, ECS),
+            'AL'=>array(WPS, ECS),
+            'MT'=>array(WPS, ECS),
+            'MC'=>array(WPS, ECS),
+            'IS'=>array(WPS, ECS),
 
             //ASIE
             'CN'=>array(WPS, ECS),
@@ -99,8 +111,12 @@ class AuthenticatePaymentMethods
             'SL'=>array(WPS, ECS),
             'SN'=>array(WPS, ECS),
         );
-
-        return isset($payment_method[$iso_code]) ? $payment_method[$iso_code] : false;
+        $return = isset($payment_method[$iso_code]) ? $payment_method[$iso_code] : false;
+        if(Configuration::get('VZERO_ENABLED'))
+        {
+            $return[] = PVZ;
+        }
+        return $return;
     }
 
     public static function getCountryDependencyRetroCompatibilite($iso_code)
@@ -184,7 +200,13 @@ class AuthenticatePaymentMethods
             'US' => array(WPS, ECS),
             'ZA' => array(WPS, ECS));
 
-        return isset($payment_method[$iso_code]) ? $payment_method[$iso_code] : $payment_method['GB'];
+
+        $return = isset($payment_method[$iso_code]) ? $payment_method[$iso_code] : $payment_method['GB'];
+        if(Configuration::get('VZERO_ENABLED'))
+        {
+            $return[] = PVZ;
+        }
+        return $return;
     }
 
     public static function authenticatePaymentMethodByLang($iso_code)
