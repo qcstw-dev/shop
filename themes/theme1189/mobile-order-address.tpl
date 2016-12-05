@@ -2,7 +2,7 @@
     {assign var='current_step' value='address'}
 {capture name=path}{l s='Addresses'}{/capture}
 {include file="$tpl_dir./errors.tpl"}
-<form action="{$link->getPageLink('mobile-checkout', true, NULL, "step=4")|escape:'html':'UTF-8'}" method="post">
+<form action="{$base_uri}mobile-checkout?step=4" method="post">
 {else}
     <h1 class="page-heading step-num"><span>1</span> {l s='Addresses'}</h1>
     <div id="opc_account" class="opc-main-block">
@@ -73,7 +73,7 @@
         <p class="cart_navigation clearfix">
             <input type="hidden" name="back" value="{$back}" />
             <button type="submit" name="processAddress" class="btn btn-primary col-xs-12 col-sm-4 pull-right">
-                {l s='Proceed to checkout'} <span class="glyphicon glyphicon-chevron-right"></span>
+                {l s='Next'} <span class="glyphicon glyphicon-chevron-right"></span>
             </button>
         </p>
 </form>

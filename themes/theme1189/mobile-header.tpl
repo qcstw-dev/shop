@@ -13,7 +13,10 @@
         <link rel="stylesheet" href="{$css_dir}layout_maker/component.css" media="all">
         <link rel="stylesheet" href="{$css_dir}layout_maker/custom.css" media="all">
     {/if}
-    {*    <link rel="stylesheet" href="{$modules_dir}tmheaderaccount/css/front.css" media="all">*}
+    {if isset($mobile_payment)}
+        <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-1.11.0.min.js"></script>
+    {/if}
+    {*<link rel="stylesheet" href="{$modules_dir}tmheaderaccount/css/front.css" media="all">*}
     <meta property="og:image" content="{$logo_url}" />
     <title>{$meta_title}</title>
 </head>

@@ -657,44 +657,45 @@
     </div>
 </form>
 {/if}
-
-    {strip}
-        {if isset($smarty.post.id_state) && $smarty.post.id_state}
-            {addJsDef idSelectedState=$smarty.post.id_state|intval}
-        {else if isset($address->id_state) && $address->id_state}
-            {addJsDef idSelectedState=$address->id_state|intval}
-        {else}
-            {addJsDef idSelectedState=false}
-        {/if}
-        {if isset($smarty.post.id_state_invoice) && isset($smarty.post.id_state_invoice) && $smarty.post.id_state_invoice}
-            {addJsDef idSelectedStateInvoice=$smarty.post.id_state_invoice|intval}
-        {else}
-            {addJsDef idSelectedStateInvoice=false}
-        {/if}
-        {if isset($smarty.post.id_country) && $smarty.post.id_country}
-            {addJsDef idSelectedCountry=$smarty.post.id_country|intval}
-        {else if isset($address->id_country) && $address->id_country}
-            {addJsDef idSelectedCountry=$address->id_country|intval}
-        {else}
-            {addJsDef idSelectedCountry=false}
-        {/if}
-        {if isset($smarty.post.id_country_invoice) && isset($smarty.post.id_country_invoice) && $smarty.post.id_country_invoice}
-            {addJsDef idSelectedCountryInvoice=$smarty.post.id_country_invoice|intval}
-        {else}
-            {addJsDef idSelectedCountryInvoice=false}
-        {/if}
-        {if isset($countries)}
-            {addJsDef countries=$countries}
-        {/if}
-        {if isset($vatnumber_ajax_call) && $vatnumber_ajax_call}
-            {addJsDef vatnumber_ajax_call=$vatnumber_ajax_call}
-        {/if}
-        {if isset($email_create) && $email_create}
-            {addJsDef email_create=$email_create|boolval}
-        {else}
-            {addJsDef email_create=false}
-        {/if}
-    {/strip}
+    <script>
+        {strip}
+            {if isset($smarty.post.id_state) && $smarty.post.id_state}
+                var idSelectedState={$smarty.post.id_state|intval};
+            {else if isset($address->id_state) && $address->id_state}
+                var idSelectedState={$address->id_state|intval};
+            {else}
+                var idSelectedState=false;
+            {/if}
+            {if isset($smarty.post.id_state_invoice) && isset($smarty.post.id_state_invoice) && $smarty.post.id_state_invoice}
+                var idSelectedStateInvoice={$smarty.post.id_state_invoice|intval};
+            {else}
+                var idSelectedStateInvoice=false;
+            {/if}
+            {if isset($smarty.post.id_country) && $smarty.post.id_country}
+                var idSelectedCountry={$smarty.post.id_country|intval};
+            {else if isset($address->id_country) && $address->id_country}
+                var idSelectedCountry={$address->id_country|intval};
+            {else}
+                var idSelectedCountry=false;
+            {/if}
+            {if isset($smarty.post.id_country_invoice) && isset($smarty.post.id_country_invoice) && $smarty.post.id_country_invoice}
+                var idSelectedCountryInvoice={$smarty.post.id_country_invoice|intval};
+            {else}
+                var idSelectedCountryInvoice=false;
+            {/if}
+            {if isset($countries)}
+                var countries={$countries|@json_encode};
+            {/if}
+            {if isset($vatnumber_ajax_call) && $vatnumber_ajax_call}
+                var vatnumber_ajax_call='{$vatnumber_ajax_call}';
+            {/if}
+            {if isset($email_create) && $email_create}
+                var email_create={$email_create|boolval};
+            {else}
+                var email_create=false;
+            {/if}
+        {/strip}
+    </script>
 </div>
 {if isset($footer_mobile)}
     {include file=$footer_mobile}

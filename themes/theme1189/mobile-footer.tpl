@@ -12,7 +12,10 @@
     var hasDeliveryAddress = '';
     var toBeDetermined = true;
 </script>
-<script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-1.11.0.min.js"></script>
+{if !isset($mobile_payment)}
+    {* call in header*}
+    <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-1.11.0.min.js"></script>
+{/if}
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="{$js_dir}autoload/10-bootstrap.min.js"></script>
 <script type="text/javascript" src="{$js_dir}autoload/jquery.magnific-popup.min.js"></script>

@@ -64,7 +64,7 @@
         </label>
         {if isset($delivery_option_list) && !empty($delivery_option_list)}
             <button type="submit" name="processCarrier" class="btn btn-primary col-xs-12 col-sm-4 pull-right">
-                {l s='Proceed to checkout'} <span class="glyphicon glyphicon-chevron-right"></span>
+                {l s='Next'} <span class="glyphicon glyphicon-chevron-right"></span>
             </button>
             <div class="clearfix"></div>
         {/if}

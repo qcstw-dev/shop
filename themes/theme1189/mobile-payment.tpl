@@ -26,7 +26,7 @@
         </div>
         <hr>
     {/foreach}
-    <div class="col-xs-12 padding-0 font-size-15 bold text-center">
+    <div class="row padding font-size-15 bold text-center">
         <div>
             {l s='Total products'}: {displayWtPrice p="`$summary['total_products']`"}
         </div>
@@ -41,4 +41,6 @@
             {l s='Total Order'}: {displayWtPrice p="`$summary['total_price']`"}
         </div>
     </div>
+    <hr>
+    {$HOOK_PAYMENT}
 </div>

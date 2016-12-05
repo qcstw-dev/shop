@@ -428,6 +428,10 @@ ol, ul {
 .checkbox-inline, .radio-inline {
     padding-left: 0;
 }
+
+select.form-control {
+    padding: 6px 0px;
+}
 /******************* MY SELECTION *******************/
 
 .hidden-uploader {

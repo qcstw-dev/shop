@@ -157,6 +157,9 @@ class MobileCheckoutControllerCore extends FrontController {
 
                     // assign some informations to display cart
                     $this->_assignSummaryInformations();
+                    
+                    $this->context->smarty->assign('HOOK_PAYMENT', Module::hookExec('displayPayment'));
+                    
                     $this->context->smarty->assign('mobile_payment', _PS_THEME_DIR_ . 'mobile-payment.tpl');
                     break;
                 default:

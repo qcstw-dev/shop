@@ -100,5 +100,5 @@
         <div class="col-xs-6">{l s='TOTAL'}</div>
         <div class="col-xs-6 cart_total">{$total_cart}</div>
     </div>
-    <a class="btn btn-primary margin-top-10 col-xs-12 col-sm-2 pull-right" href="{$base_uri}mobile-checkout?step={if $isLogged}3{else}2{/if}" >{l s="OK"}</a>
+        <a class="btn btn-primary margin-top-10 col-xs-12 col-sm-2 pull-right" href="{$base_uri}mobile-checkout?step={if $isLogged}3{else}2{/if}" >{l s="Next"} <span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
