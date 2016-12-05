@@ -34,7 +34,7 @@
         </a>
         {if $checkout_step == 5}
             <div class="col-xs-12 padding-0 block-checkout padding-top-10 padding-bottom-10 font-size-13">
-                {include file=$mobile_shipping}
+                {include file=$mobile_payment}
             </div>
         {/if}
     </div>
