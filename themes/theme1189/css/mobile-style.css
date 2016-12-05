@@ -203,7 +203,7 @@ hr {
 /************** CHECKOUT ****************/
 .title-block {
     font-size: 20px;
-    text-align: center;
+    text-align: left;
     font-weight: bold;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -267,6 +267,9 @@ hr {
     padding-bottom: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
+}
+.selector span {
+    display: none;
 }
 /****************** FORM VALIDATE ******************/
 .form-group.form-error input,

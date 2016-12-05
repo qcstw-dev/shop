@@ -51,12 +51,17 @@
     <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
 {/if}
 {if (isset($checkout) && isset($checkout_step) && $checkout_step == 3) || isset($mobile_address)}
+    <script type="text/javascript" src="{$js_dir}autoload/15-jquery.uniform-modified.js"></script>
     <script type="text/javascript" src="{$js_dir}tools/vatManagement.js"></script>
     <script type="text/javascript" src="{$js_dir}tools/statesManagement.js"></script>
     <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
 {/if}
 {if isset($mobile_addresses)}
     <script type="text/javascript" src="{$js_dir}order-address.js"></script>
+{/if}
+{if isset($mobile_shipping)}
+    <script type="text/javascript" src="{$js_dir}cart-summary.js"></script>
+    <script type="text/javascript" src="{$js_dir}order-carrier.js"></script>
 {/if}
 </div>
 <!-- id mobile-->

@@ -48,7 +48,9 @@ class MobileCheckoutControllerCore extends FrontController {
             if ($isLogged && Tools::getValue('step') == 2) {
                 header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-checkout?step=3');
             }
-
+            if (!$isLogged && in_array(Tools::getValue('step'), ['3', '4', '5'])) {
+                header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-checkout?step=2');
+            }
             foreach ($cart_products as $cart_product) {
                 $aQuantities = [1, 5, 10, 25, 50, 100];
                 $aPrices = [];
@@ -87,16 +89,18 @@ class MobileCheckoutControllerCore extends FrontController {
             $this->context->smarty->assign('tmheaderaccount', _PS_MODULE_DIR_ . 'tmheaderaccount/views/templates/hook/tmheaderaccount.tpl');
 
             switch (Tools::getValue('step')) {
-                case 1:
+                case 1: // Summary
                     $this->context->smarty->assign('mobile_summary', _PS_THEME_DIR_ . 'mobile-summary.tpl');
                     break;
-                case 2:
+                case 2: // Signin
                     $this->context->smarty->assign('mobile_login', _PS_THEME_DIR_ . 'mobile-login.tpl');
                     break;
-                case 3:
+                case 3: // Address
                     $customer = $this->context->customer;
                     $customerAddresses = $customer->getAddresses($this->context->language->id);
-
+                    if (!$customerAddresses) {
+                        header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'index.php?controller=mobile-address&back=mobile-checkout%3Fstep=3');
+                    }
                     // Getting a list of formated address fields with associated values
                     $formatedAddressFieldsValuesList = array();
 
@@ -120,12 +124,97 @@ class MobileCheckoutControllerCore extends FrontController {
                     $this->context->smarty->assign('opc', false);
                     $this->context->smarty->assign('mobile_addresses', _PS_THEME_DIR_ . 'mobile-order-address.tpl');
                     break;
+                case 4: // Shipping
+                    if (Tools::isSubmit('processAddress')) {
+                        $this->processAddress();
+                    }
+                    $delivery_option_list = $this->context->cart->getDeliveryOptionList();
+                    $cms = new CMS(Configuration::get('PS_CONDITIONS_CMS_ID'), $this->context->language->id);
+                    $this->link_conditions = $this->context->link->getCMSLink($cms, $cms->link_rewrite, (bool) Configuration::get('PS_SSL_ENABLED'));
+                    $this->context->smarty->assign(array(
+                        'link_conditions' => $this->link_conditions,
+                        'checkedTOS' => (int) $this->context->cookie->checkedTOS,
+                        'delivery_option_list' => $delivery_option_list,
+                        'delivery_option' => $this->context->cart->getDeliveryOption(null, false),
+                        'conditions' => (int) Configuration::get('PS_CONDITIONS')
+                    ));
+                    $this->context->smarty->assign('mobile_shipping', _PS_THEME_DIR_ . 'mobile-order-carrier.tpl');
+                    break;
                 default:
                     $this->context->smarty->assign('mobile_summary', _PS_THEME_DIR_ . 'mobile-summary.tpl');
             }
             $this->setTemplate(_PS_THEME_DIR_ . 'mobile-checkout.tpl');
         } else {
             header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile');
+        }
+    }
+
+    /**
+     * Manage address
+     */
+    public function processAddress() {
+        $same = Tools::isSubmit('same');
+        if (!Tools::getValue('id_address_invoice', false) && !$same) {
+            $same = true;
+        }
+
+        if (!Customer::customerHasAddress($this->context->customer->id, (int) Tools::getValue('id_address_delivery')) || (!$same && Tools::getValue('id_address_delivery') != Tools::getValue('id_address_invoice') && !Customer::customerHasAddress($this->context->customer->id, (int) Tools::getValue('id_address_invoice')))) {
+            $this->errors[] = Tools::displayError('Invalid address', !Tools::getValue('ajax'));
+        } else {
+            $this->context->cart->id_address_delivery = (int) Tools::getValue('id_address_delivery');
+            $this->context->cart->id_address_invoice = $same ? $this->context->cart->id_address_delivery : (int) Tools::getValue('id_address_invoice');
+
+            CartRule::autoRemoveFromCart($this->context);
+            CartRule::autoAddToCart($this->context);
+
+            if (!$this->context->cart->update()) {
+                $this->errors[] = Tools::displayError('An error occurred while updating your cart.', !Tools::getValue('ajax'));
+            }
+
+            if (!$this->context->cart->isMultiAddressDelivery()) {
+                $this->context->cart->setNoMultishipping();
+            } // If there is only one delivery address, set each delivery address lines with the main delivery address
+
+            if (Tools::isSubmit('message')) {
+                $this->_updateMessage(Tools::getValue('message'));
+            }
+
+            // Add checking for all addresses
+            $errors = array();
+            $address_without_carriers = $this->context->cart->getDeliveryAddressesWithoutCarriers(false, $errors);
+            if (count($address_without_carriers) && !$this->context->cart->isVirtualCart()) {
+                $flag_error_message = false;
+                foreach ($errors as $error) {
+                    if ($error == Carrier::SHIPPING_WEIGHT_EXCEPTION && !$flag_error_message) {
+                        $this->errors[] = sprintf(Tools::displayError('The product selection cannot be delivered by the available carrier(s): it is too heavy. Please amend your cart to lower its weight.', !Tools::getValue('ajax')));
+                        $flag_error_message = true;
+                    } elseif ($error == Carrier::SHIPPING_PRICE_EXCEPTION && !$flag_error_message) {
+                        $this->errors[] = sprintf(Tools::displayError('The product selection cannot be delivered by the available carrier(s). Please amend your cart.', !Tools::getValue('ajax')));
+                        $flag_error_message = true;
+                    } elseif ($error == Carrier::SHIPPING_SIZE_EXCEPTION && !$flag_error_message) {
+                        $this->errors[] = sprintf(Tools::displayError('The product selection cannot be delivered by the available carrier(s): its size does not fit. Please amend your cart to reduce its size.', !Tools::getValue('ajax')));
+                        $flag_error_message = true;
+                    }
+                }
+                if (count($address_without_carriers) > 1 && !$flag_error_message) {
+                    $this->errors[] = sprintf(Tools::displayError('There are no carriers that deliver to some addresses you selected.', !Tools::getValue('ajax')));
+                } elseif ($this->context->cart->isMultiAddressDelivery() && !$flag_error_message) {
+                    $this->errors[] = sprintf(Tools::displayError('There are no carriers that deliver to one of the address you selected.', !Tools::getValue('ajax')));
+                } elseif (!$flag_error_message) {
+                    $this->errors[] = sprintf(Tools::displayError('There are no carriers that deliver to the address you selected.', !Tools::getValue('ajax')));
+                }
+            }
+        }
+
+        if ($this->errors) {
+            if (Tools::getValue('ajax')) {
+                $this->ajaxDie('{"hasError" : true, "errors" : ["' . implode('\',\'', $this->errors) . '"]}');
+            }
+            $this->step = 1;
+        }
+
+        if ($this->ajax) {
+            $this->ajaxDie(true);
         }
     }
 

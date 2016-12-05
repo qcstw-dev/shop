@@ -2,7 +2,7 @@
     {assign var='current_step' value='address'}
 {capture name=path}{l s='Addresses'}{/capture}
 {include file="$tpl_dir./errors.tpl"}
-<form action="{$link->getPageLink('mobile-checkout', true)|escape:'html':'UTF-8'}" method="post">
+<form action="{$link->getPageLink('mobile-checkout', true, NULL, "step=4")|escape:'html':'UTF-8'}" method="post">
 {else}
     <h1 class="page-heading step-num"><span>1</span> {l s='Addresses'}</h1>
     <div id="opc_account" class="opc-main-block">
@@ -40,29 +40,25 @@
                         </select><span class="waitimage"></span>
                     {else}
                         <a href="{$link->getPageLink('mobile-address', true, NULL, "back={$base_uri}mobile-checkout?step=3")|escape:'html':'UTF-8'}" title="{l s='Add'}" class="btn-sm btn btn-default icon-right">
-                            <span>
-                                {l s='Add a new address'}
-                            </span>
+                            <span class="glyphicon glyphicon-plus"></span> {l s='Add a new address'}
                         </a>
                     {/if}
                 </div>
             </div>
         </div> <!-- end row -->
         <div class="row">
-            <div class="col-xs-12 col-sm-6"{if $cart->isVirtualCart()} style="display:none;"{/if}>
+            <div class="col-xs-12 col-sm-6">
                 <div class="address item box" id="address_delivery">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <div class="address alternate_item{if $cart->isVirtualCart()} full_width{/if} box" id="address_invoice">
+                <div class="address alternate_item box" id="address_invoice" style="display:none;">
                 </div>
             </div>
         </div> <!-- end row -->
         <p class="address_add submit">
             <a href="{$link->getPageLink('mobile-address', true, NULL, "back={$base_uri}mobile-checkout?step=3")|escape:'html':'UTF-8'}" title="{l s='Add'}" class="btn-sm btn btn-default icon-right">
-                <span>
-                    {l s='Add a new address'}
-                </span>
+                <span class="glyphicon glyphicon-plus"></span> {l s='Add a new address'}
             </a>
         </p>
         {if !$opc}
@@ -77,10 +73,8 @@
         <p class="cart_navigation clearfix">
             <input type="hidden" class="hidden" name="step" value="2" />
             <input type="hidden" name="back" value="{$back}" />
-            <button type="submit" name="processAddress" class="btn btn-default btn-md icon-right">
-                <span>
-                    {l s='Proceed to checkout'}
-                </span>
+            <button type="submit" name="processAddress" class="btn btn-primary col-xs-12 col-sm-4 pull-right">
+                {l s='Proceed to checkout'} <span class="glyphicon glyphicon-chevron-right"></span>
             </button>
         </p>
 </form>
@@ -107,7 +101,7 @@
     {capture}
         {if $back}&mod={$back|urlencode}{/if}
     {/capture}
-    {capture name=addressUrl}{$link->getPageLink('mobile-address', true, NULL, 'back='|cat:$base_uri|cat:'mobile-checkout'|cat:'?step=3')|escape:'quotes':'UTF-8'}{/capture}
+    {capture name=addressUrl}{$link->getPageLink('mobile-checkout', true, NULL, 'back='|cat:$base_uri|cat:'mobile-checkout'|cat:'?step=3')|escape:'quotes':'UTF-8'}{/capture}
     var addressUrl='{$smarty.capture.addressUrl}';
     {capture}{'&multi-shipping=1'|urlencode}{/capture}
     var addressMultishippingUrl='{$smarty.capture.addressUrl|cat:$smarty.capture.default}';

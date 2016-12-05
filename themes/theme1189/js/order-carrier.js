@@ -29,7 +29,7 @@ function acceptCGV()
 {
 	if (typeof msg_order_carrier != 'undefined' && $('#cgv').length && !$('input#cgv:checked').length)
 	{
-		if (!!$.prototype.fancybox)
+		if (!!$.prototype.fancybox) {
 		    $.fancybox.open([
 	        {
 	            type: 'inline',
@@ -40,8 +40,19 @@ function acceptCGV()
 			{
 		        padding: 0
 		    });
-		else
+                    
+                } else if (!!$.prototype.magnificPopup) {
+		    $.magnificPopup.open({
+                            items: [{
+                                    src: $('<div class="white-popup">' +
+                                             msg_order_carrier +
+                                            '</div>'),
+                                    type: 'inline'
+                                }]
+                        });
+                } else {
 		    alert(msg_order_carrier);
+                }
 	}
 	else
 		return true;

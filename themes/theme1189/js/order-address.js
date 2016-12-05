@@ -30,7 +30,9 @@ function updateAddressesDisplay(first_view)
 	//if addresses have to be equals...
 	if ($('#addressesAreEquals:checked').length === 1 && ($('#multishipping_mode_checkbox:checked').length === 0))
 	{
-		if ($('#multishipping_mode_checkbox:checked').length === 0) {
+
+                if ($('#multishipping_mode_checkbox:checked').length === 0) {
+                        $('#address_invoice').hide();
 			$('#address_invoice_form:visible').hide('fast');
 		}
 		$('ul#address_invoice').html($('ul#address_delivery').html());
@@ -39,6 +41,7 @@ function updateAddressesDisplay(first_view)
 	else
 	{
 		$('#address_invoice_form:hidden').show('fast');
+                $('#address_invoice').show();
 		if ($('#id_address_invoice').val())
 			updateAddressDisplay('invoice');
 		else
@@ -119,6 +122,15 @@ function updateAddresses()
 		                ], {
 		                    padding: 0
 		                });
+		            else if (!!$.prototype.magnificPopup)
+                                $.magnificPopup.open({
+                                    items: [{
+                                            src: $('<div class="white-popup">' +
+                                                     errors +
+                                                    '</div>'),
+                                            type: 'inline'
+                                        }]
+                                });
 		            else
 		                alert(errors);
 				}
