@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 2007-2016 PrestaShop
  *
@@ -28,14 +29,12 @@
 /**
  * @since 1.5.0
  */
+class PayPalSubmitModuleFrontController extends ModuleFrontController {
 
-class PayPalSubmitModuleFrontController extends ModuleFrontController
-{
     public $display_column_left = false;
     public $ssl = true;
 
-    public function initContent()
-    {
+    public function initContent() {
         parent::initContent();
 
         $this->paypal = new PayPal();
@@ -49,14 +48,14 @@ class PayPalSubmitModuleFrontController extends ModuleFrontController
 
         if ($order_state->template[$this->context->language->id] == 'payment_error') {
             $this->context->smarty->assign(
-                array(
-                    'message' => $order_state->name[$this->context->language->id],
-                    'logs' => array(
-                        $this->paypal->l('An error occurred while processing payment.'),
-                    ),
-                    'order' => $paypal_order,
-                    'price' => Tools::displayPrice($paypal_order['total_paid'], $this->context->currency),
-                )
+                    array(
+                        'message' => $order_state->name[$this->context->language->id],
+                        'logs' => array(
+                            $this->paypal->l('An error occurred while processing payment.'),
+                        ),
+                        'order' => $paypal_order,
+                        'price' => Tools::displayPrice($paypal_order['total_paid'], $this->context->currency),
+                    )
             );
 
             return $this->setTemplate('error.tpl');
@@ -68,13 +67,13 @@ class PayPalSubmitModuleFrontController extends ModuleFrontController
         $price = Tools::convertPriceFull($paypal_order['total_paid'], $order_currency, $display_currency);
 
         $this->context->smarty->assign(
-            array(
-                'is_guest' => (($this->context->customer->is_guest) || $this->context->customer->id == false),
-                'order' => $paypal_order,
-                'price' => Tools::displayPrice($price, $this->context->currency->id),
-                'HOOK_ORDER_CONFIRMATION' => $this->displayOrderConfirmation(),
-                'HOOK_PAYMENT_RETURN' => $this->displayPaymentReturn(),
-            )
+                array(
+                    'is_guest' => (($this->context->customer->is_guest) || $this->context->customer->id == false),
+                    'order' => $paypal_order,
+                    'price' => Tools::displayPrice($price, $this->context->currency->id),
+                    'HOOK_ORDER_CONFIRMATION' => $this->displayOrderConfirmation(),
+                    'HOOK_PAYMENT_RETURN' => $this->displayPaymentReturn(),
+                )
         );
         if (version_compare(_PS_VERSION_, '1.5', '>')) {
             $this->context->smarty->assign(array(
@@ -84,11 +83,11 @@ class PayPalSubmitModuleFrontController extends ModuleFrontController
 
         if (($this->context->customer->is_guest) || $this->context->customer->id == false) {
             $this->context->smarty->assign(
-                array(
-                    'id_order' => (int) $this->id_order,
-                    'id_order_formatted' => sprintf('#%06d', (int) $this->id_order),
-                    'order_reference' => $order->reference,
-                )
+                    array(
+                        'id_order' => (int) $this->id_order,
+                        'id_order_formatted' => sprintf('#%06d', (int) $this->id_order),
+                        'order_reference' => $order->reference,
+                    )
             );
 
             /* If guest we clear the cookie for security reason */
@@ -97,16 +96,19 @@ class PayPalSubmitModuleFrontController extends ModuleFrontController
 
         $this->module->assignCartSummary();
 
-        if ($this->context->getMobileDevice() == true) {
-            $this->setTemplate('order-confirmation-mobile.tpl');
+        if ($this->context->isMobile() || $this->context->isTablet()) {
+            Tools::redirect('mobile-checkout?step=order-confirmation'
+                    . '&key=' . Tools::getValue('key')
+                    . '&id_module=' . Tools::getValue('id_module')
+                    . '&id_cart=' . Tools::getValue('id_cart')
+                    . '&id_order=' . Tools::getValue('id_order')
+            );
         } else {
             $this->setTemplate('order-confirmation.tpl');
         }
-
     }
 
-    private function displayHook()
-    {
+    private function displayHook() {
         if (Validate::isUnsignedId($this->id_order) && Validate::isUnsignedId($this->id_module)) {
             $order = new Order((int) $this->id_order);
             $currency = new Currency((int) $order->id_currency);
@@ -128,8 +130,7 @@ class PayPalSubmitModuleFrontController extends ModuleFrontController
     /**
      * Execute the hook displayPaymentReturn
      */
-    public function displayPaymentReturn()
-    {
+    public function displayPaymentReturn() {
         $params = $this->displayHook();
 
         if ($params && is_array($params)) {
@@ -142,8 +143,7 @@ class PayPalSubmitModuleFrontController extends ModuleFrontController
     /**
      * Execute the hook displayOrderConfirmation
      */
-    public function displayOrderConfirmation()
-    {
+    public function displayOrderConfirmation() {
         $params = $this->displayHook();
 
         if ($params && is_array($params)) {
@@ -152,4 +152,5 @@ class PayPalSubmitModuleFrontController extends ModuleFrontController
 
         return false;
     }
+
 }

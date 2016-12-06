@@ -43,7 +43,7 @@ class MobileCheckoutControllerCore extends FrontController {
 
         $cart_products = $this->context->cart->getProducts(true);
 
-        if ($cart_products) {
+        if ($cart_products || Tools::getValue('step') == 'order-confirmation') {
             $isLogged = $this->context->customer->isLogged();
             if ($isLogged && Tools::getValue('step') == 2) {
                 header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-checkout?step=3');
@@ -125,7 +125,7 @@ class MobileCheckoutControllerCore extends FrontController {
                     $this->context->smarty->assign('mobile_addresses', _PS_THEME_DIR_ . 'mobile-order-address.tpl');
                     break;
                 case 4: // Shipping
-                    if(!$this->context->cart->id_address_delivery) {
+                    if (!$this->context->cart->id_address_delivery) {
                         header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-checkout?step=3');
                     }
                     if (Tools::isSubmit('processAddress')) {
@@ -144,7 +144,7 @@ class MobileCheckoutControllerCore extends FrontController {
                     $this->context->smarty->assign('mobile_shipping', _PS_THEME_DIR_ . 'mobile-order-carrier.tpl');
                     break;
                 case 5:
-                    if(!$this->context->cart->id_address_delivery) {
+                    if (!$this->context->cart->id_address_delivery) {
                         header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-checkout?step=3');
                     }
 
@@ -157,10 +157,49 @@ class MobileCheckoutControllerCore extends FrontController {
 
                     // assign some informations to display cart
                     $this->_assignSummaryInformations();
-                    
+
                     $this->context->smarty->assign('HOOK_PAYMENT', Module::hookExec('displayPayment'));
-                    
+
                     $this->context->smarty->assign('mobile_payment', _PS_THEME_DIR_ . 'mobile-payment.tpl');
+                    break;
+                case 'order-confirmation':
+                    $this->paypal = new PayPal();
+                    $this->context = Context::getContext();
+
+                    $this->id_module = (int) Tools::getValue('id_module');
+                    $this->id_order = (int) Tools::getValue('id_order');
+                    $order = new Order($this->id_order);
+                    $order_state = new OrderState($order->current_state);
+                    $paypal_order = PayPalOrder::getOrderById($this->id_order);
+
+                    if ($order_state->template[$this->context->language->id] == 'payment_error') {
+                        $this->context->smarty->assign(
+                                array(
+                                    'message' => $order_state->name[$this->context->language->id],
+                                    'logs' => array(
+                                        $this->paypal->l('An error occurred while processing payment.'),
+                                    ),
+                                    'order' => $paypal_order,
+                                    'price' => Tools::displayPrice($paypal_order['total_paid'], $this->context->currency),
+                                )
+                        );
+
+                        $this->context->smarty->assign('mobile_payment_confirmation', _PS_THEME_DIR_ . 'mobile-error-payment.tpl');
+                    } else {
+                        $order_currency = new Currency((int) $order->id_currency);
+                        $display_currency = new Currency((int) $this->context->currency->id);
+
+                        $price = Tools::convertPriceFull($paypal_order['total_paid'], $order_currency, $display_currency);
+
+                        $this->context->smarty->assign(array(
+                            'is_guest' => (($this->context->customer->is_guest) || $this->context->customer->id == false),
+                            'order' => $paypal_order,
+                            'price' => Tools::displayPrice($price, $this->context->currency->id),
+                            'HOOK_ORDER_CONFIRMATION' => $this->displayOrderConfirmation(),
+                            'HOOK_PAYMENT_RETURN' => $this->displayPaymentReturn(),
+                        ));
+                        $this->context->smarty->assign('mobile_payment_confirmation', _PS_THEME_DIR_ . 'mobile-order-confirmation.tpl');
+                    }
                     break;
                 default:
                     $this->context->smarty->assign('mobile_summary', _PS_THEME_DIR_ . 'mobile-summary.tpl');
@@ -337,6 +376,51 @@ class MobileCheckoutControllerCore extends FrontController {
         if ($this->ajax) {
             $this->ajaxDie(true);
         }
+    }
+
+    private function displayHook() {
+        if (Validate::isUnsignedId($this->id_order) && Validate::isUnsignedId($this->id_module)) {
+            $order = new Order((int) $this->id_order);
+            $currency = new Currency((int) $order->id_currency);
+
+            if (Validate::isLoadedObject($order)) {
+                $params = array();
+                $params['objOrder'] = $order;
+                $params['currencyObj'] = $currency;
+                $params['currency'] = $currency->sign;
+                $params['total_to_pay'] = $order->getOrdersTotalPaid();
+
+                return $params;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Execute the hook displayPaymentReturn
+     */
+    public function displayPaymentReturn() {
+        $params = $this->displayHook();
+
+        if ($params && is_array($params)) {
+            return Hook::exec('displayPaymentReturn', $params, (int) $this->id_module);
+        }
+
+        return false;
+    }
+
+    /**
+     * Execute the hook displayOrderConfirmation
+     */
+    public function displayOrderConfirmation() {
+        $params = $this->displayHook();
+
+        if ($params && is_array($params)) {
+            return Hook::exec('displayOrderConfirmation', $params);
+        }
+
+        return false;
     }
 
 }
