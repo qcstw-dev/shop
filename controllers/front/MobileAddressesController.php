@@ -25,7 +25,7 @@
  *  International Registered Trademark & Property of PrestaShop SA
  */
 
-class MobileAddressesControllerCore extends FrontController {
+class MobileAddressesControllerCore extends MobileController {
 
     public $auth = true;
     public $php_self = 'addresses';
@@ -48,11 +48,6 @@ class MobileAddressesControllerCore extends FrontController {
      */
     public function init() {
         parent::init();
-
-        $this->display_header = false;
-        $this->display_footer = false;
-        $this->display_column_left = false;
-        $this->display_column_right = false;
 
         if (!Validate::isLoadedObject($this->context->customer)) {
             die(Tools::displayError('The customer could not be found.'));
@@ -114,27 +109,13 @@ class MobileAddressesControllerCore extends FrontController {
             $cart_product['prices'] = $aPrices;
         }
         $this->context->smarty->assign(array(
-            'mobile' => true,
             'token' => Tools::getToken(false),
-            'shop_name' => $this->context->shop->name,
-            'favicon_url' => _PS_IMG_ . Configuration::get('PS_FAVICON'),
-            'logo_url' => $this->context->link->getMediaLink(_PS_IMG_ . Configuration::get('PS_LOGO')),
-            'checkout' => true,
-            'cart_products' => $cart_products,
-            'step' => '4',
-            'total_cart' => Tools::displayPrice($totalToPay),
-            
+            'step' => '1',
             'addresses_style' => $addresses_style,
             'multipleAddresses' => $multiple_addresses_formated,
             'ordered_fields' => $ordered_fields,
             'addresses' => $addresses, // retro compat themes 1.5ibility Theme < 1.4.1
         ));
-
-        $this->context->smarty->assign('header_mobile', _PS_THEME_DIR_ . 'mobile-header.tpl');
-        $this->context->smarty->assign('footer_mobile', _PS_THEME_DIR_ . 'mobile-footer.tpl');
-        $this->context->smarty->assign('menu_mobile', _PS_THEME_DIR_ . 'mobile-menu.tpl');
-
-        $this->context->smarty->assign('tmheaderaccount', _PS_MODULE_DIR_ . 'tmheaderaccount/views/templates/hook/tmheaderaccount.tpl');
 
         $this->setTemplate(_PS_THEME_DIR_ . 'mobile-addresses.tpl');
     }

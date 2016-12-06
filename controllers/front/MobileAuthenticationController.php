@@ -25,7 +25,7 @@
  *  International Registered Trademark & Property of PrestaShop SA
  */
 
-class MobileAuthenticationControllerCore extends FrontController {
+class MobileAuthenticationControllerCore extends MobileController {
 
     public $ssl = true;
     public $php_self = 'authentication';
@@ -43,11 +43,6 @@ class MobileAuthenticationControllerCore extends FrontController {
      */
     public function init() {
         parent::init();
-
-        $this->display_header = false;
-        $this->display_footer = false;
-        $this->display_column_left = false;
-        $this->display_column_right = false;
 
         if (!Tools::getIsset('step') && $this->context->customer->isLogged() && !$this->ajax) {
             Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'mobile'));
@@ -169,19 +164,9 @@ class MobileAuthenticationControllerCore extends FrontController {
             $this->ajaxDie(Tools::jsonEncode($return));
         }
         $this->context->smarty->assign(array(
-            'mobile' => true,
             'token' => Tools::getToken(false),
-            'shop_name' => $this->context->shop->name,
-            'favicon_url' => _PS_IMG_ . Configuration::get('PS_FAVICON'),
-            'logo_url' => $this->context->link->getMediaLink(_PS_IMG_ . Configuration::get('PS_LOGO')),
             'step' => 4
         ));
-        
-        if (!Tools::getValue('checkout')) {
-            $this->context->smarty->assign('header_mobile', _PS_THEME_DIR_ . 'mobile-header.tpl');
-            $this->context->smarty->assign('footer_mobile', _PS_THEME_DIR_ . 'mobile-footer.tpl');
-        }
-        $this->context->smarty->assign('menu_mobile', _PS_THEME_DIR_ . 'mobile-menu.tpl');
     }
 
     /**

@@ -1,4 +1,4 @@
-{if isset($footer_mobile)}
+{if !isset($smarty.post.checkout)}
     {include file=$header_mobile}
 {/if}
 <div class="col-xs-12">
@@ -697,6 +697,6 @@
         {/strip}
     </script>
 </div>
-{if isset($footer_mobile)}
+{if !isset($smarty.post.checkout)}
     {include file=$footer_mobile}
 {/if}

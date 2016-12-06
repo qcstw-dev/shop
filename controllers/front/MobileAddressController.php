@@ -25,7 +25,7 @@
  *  International Registered Trademark & Property of PrestaShop SA
  */
 
-class MobileAddressControllerCore extends FrontController {
+class MobileAddressControllerCore extends MobileController {
 
     public $auth = true;
     public $guestAllowed = true;
@@ -52,11 +52,6 @@ class MobileAddressControllerCore extends FrontController {
      */
     public function init() {
         parent::init();
-
-        $this->display_header = false;
-        $this->display_footer = false;
-        $this->display_column_left = false;
-        $this->display_column_right = false;
 
         // Get address ID
         $id_address = 0;
@@ -255,8 +250,6 @@ class MobileAddressControllerCore extends FrontController {
         $this->assignVatNumber();
         $this->assignAddressFormat();
 
-        $totalToPay = $this->context->cart->getOrderTotal(false);
-        
         $cart_products = $this->context->cart->getProducts(true);
 
         foreach ($cart_products as $cart_product) {
@@ -270,17 +263,9 @@ class MobileAddressControllerCore extends FrontController {
 
         // Assign common vars
         $this->context->smarty->assign(array(
-            'mobile' => true,
             'token' => Tools::getToken(false),
-            'shop_name' => $this->context->shop->name,
-            'favicon_url' => _PS_IMG_ . Configuration::get('PS_FAVICON'),
-            'logo_url' => $this->context->link->getMediaLink(_PS_IMG_ . Configuration::get('PS_LOGO')),
-            'checkout' => true,
-            'cart_products' => $cart_products,
-            'step' => '4',
             'checkout_step' => Tools::getValue('step'),
-            'total_cart' => Tools::displayPrice($totalToPay),
-            
+            'step' => '4',
             'address_validation' => Address::$definition['fields'],
             'one_phone_at_least' => (int) Configuration::get('PS_ONE_PHONE_AT_LEAST'),
             'onr_phone_at_least' => (int) Configuration::get('PS_ONE_PHONE_AT_LEAST'), //retro compat
@@ -303,12 +288,7 @@ class MobileAddressControllerCore extends FrontController {
             $this->context->smarty->assign('account_created', 1);
             unset($this->context->cookie->account_created);
         }
-        $this->context->smarty->assign('header_mobile', _PS_THEME_DIR_ . 'mobile-header.tpl');
-        $this->context->smarty->assign('footer_mobile', _PS_THEME_DIR_ . 'mobile-footer.tpl');
-        $this->context->smarty->assign('menu_mobile', _PS_THEME_DIR_ . 'mobile-menu.tpl');
 
-        $this->context->smarty->assign('tmheaderaccount', _PS_MODULE_DIR_ . 'tmheaderaccount/views/templates/hook/tmheaderaccount.tpl');
-        
         $this->setTemplate(_PS_THEME_DIR_ . 'mobile-address.tpl');
     }
 
