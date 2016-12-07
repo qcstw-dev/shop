@@ -1,6 +1,9 @@
 body {
     color: #777;
 }
+#mobile-content {
+    font-size: 13px;
+}
 .btn-default {
     color: #777;
 }

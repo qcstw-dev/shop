@@ -20,6 +20,7 @@ class MobileControllerCore extends FrontController {
 
         $this->context->smarty->assign(array(
             'mobile' => true,
+            'step' => 1,
             'token' => Tools::getToken(false),
             'shop_name' => $this->context->shop->name,
             'shop_title' => Configuration::get('PS_SHOP_NAME'),
