@@ -86,13 +86,16 @@
                 </div>
                 <div class="row hidden block-account">
                     {if $is_logged}
+                        <hr>
                         <div><a href="{$base_uri}mobile-identity" title="{l s='My personal info' mod='tmheaderaccount'}" rel="nofollow">{l s='My personal info' mod='tmheaderaccount'}</a></div>
+                        <hr>
                         <div><a href="{$base_uri}mobile-addresses" title="{l s='My addresses' mod='tmheaderaccount'}" rel="nofollow">{l s='My addresses' mod='tmheaderaccount'}</a></div>
-                            {if isset($HOOK_BLOCK_MY_ACCOUNT) && $HOOK_BLOCK_MY_ACCOUNT !=''}
-                                {$HOOK_BLOCK_MY_ACCOUNT}
-                            {/if}
+                        <hr>
+                        {if isset($HOOK_BLOCK_MY_ACCOUNT) && $HOOK_BLOCK_MY_ACCOUNT !=''}
+                            {$HOOK_BLOCK_MY_ACCOUNT}
+                        {/if}
                         <p class="logout">
-                            <a class="pull-right btn btn-default btn-sm" href="{$link->getPageLink('index')}?mylogout" title="{l s='Sign out' mod='tmheaderaccount'}" rel="nofollow">
+                            <a class="pull-right btn btn-danger" href="{$link->getPageLink('index')}?mylogout" title="{l s='Sign out' mod='tmheaderaccount'}" rel="nofollow">
                                 <i class="fa fa-unlock left"></i> 
                                 {l s='Sign out' mod='tmheaderaccount'}
                             </a>
@@ -111,9 +114,8 @@
                                     <span><input class="is_required validate account_input form-control" type="password" data-validate="isPasswd" id="passwd" name="passwd" value="" autocomplete="off"></span>
                                 </div>
                                 <p class="submit">
-                                    <button type="button" id="SubmitLogin" name="HeaderSubmitLogin" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-lock left"></i> 
-                                        Login
+                                    <button type="button" id="SubmitLogin" name="HeaderSubmitLogin" class="btn btn-primary">
+                                        <i class="fa fa-lock left"></i> Login
                                     </button>
                                 </p>
                                 <p>
@@ -125,11 +127,11 @@
                     {/if}
                 </div>
                 <div class="row hidden block-cart">
+                    <div class="font-size-20 text-center bold">{l s='Cart'}</div>
+                    <hr>
                     {if $cart_products}
-                        <div class="font-size-20 text-center bold">{l s='Cart'}</div>
                         {foreach from=$cart_products item=product name=cart_products}
                             <div class="col-xs-12 padding-0 block-cart-element block-cart-element-{$product.id_product|intval}-{$product.custom_picture}" data-id="cart_block_product_{$product.id_product|intval}_{$product.custom_picture}">
-                                <hr>
                                 <div class="col-xs-6 thumbnail">
                                     <img class="popup" src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
                                 </div>
@@ -162,12 +164,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12">
-                    </div>
                     <div class="clearfix"></div>
+                    <hr>
                 {/foreach}
                 <div class="col-xs-12 bold font-size-20 block-cart-total">
-                    <hr>
                     <div class="col-xs-6">
                         {l s='Total'}
                     </div>

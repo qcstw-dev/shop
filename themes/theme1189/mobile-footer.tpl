@@ -1,8 +1,7 @@
 </div>
 <!-- id mobile-content-->
 <div id="mobile-footer">
-    <hr>
-    footer
+    {$HOOK_MOBILE_FOOTER}
 </div>
 <script>
     var baseUri = '{$base_uri}';

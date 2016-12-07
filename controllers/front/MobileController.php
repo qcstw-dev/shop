@@ -31,11 +31,13 @@ class MobileControllerCore extends FrontController {
             'cart_products' => $cart_products,
             'total_cart' => Tools::displayPrice($totalToPay),
         ));
+
+        $this->context->smarty->assign('HOOK_MOBILE_FOOTER', Module::hookExec('displaySocialNetwork'));
+
         $this->context->smarty->assign('header_mobile', _PS_THEME_DIR_ . 'mobile-header.tpl');
         $this->context->smarty->assign('footer_mobile', _PS_THEME_DIR_ . 'mobile-footer.tpl');
         $this->context->smarty->assign('menu_mobile', _PS_THEME_DIR_ . 'mobile-menu.tpl');
         $this->context->smarty->assign('global', _PS_THEME_DIR_ . 'global.tpl');
         $this->context->smarty->assign('tmheaderaccount', _PS_MODULE_DIR_ . 'tmheaderaccount/views/templates/hook/tmheaderaccount.tpl');
     }
-
 }
