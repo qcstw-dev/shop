@@ -4,6 +4,9 @@ body {
 #mobile-content {
     font-size: 13px;
 }
+.table>tbody>tr>td {
+    vertical-align: middle;
+}
 .btn-default {
     color: #777;
 }
