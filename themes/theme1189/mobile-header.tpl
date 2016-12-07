@@ -87,6 +87,8 @@
                 <div class="row hidden block-account">
                     {if $is_logged}
                         <hr>
+                        <div><a href="{$base_uri}mobile-order-history" title="{l s='My orders' mod='tmheaderaccount'}" rel="nofollow">{l s='My orders' mod='tmheaderaccount'}</a></div>
+                        <hr>
                         <div><a href="{$base_uri}mobile-identity" title="{l s='My personal info' mod='tmheaderaccount'}" rel="nofollow">{l s='My personal info' mod='tmheaderaccount'}</a></div>
                         <hr>
                         <div><a href="{$base_uri}mobile-addresses" title="{l s='My addresses' mod='tmheaderaccount'}" rel="nofollow">{l s='My addresses' mod='tmheaderaccount'}</a></div>
