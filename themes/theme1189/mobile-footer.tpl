@@ -66,6 +66,9 @@
     <script type="text/javascript" src="{$js_dir}cart-summary.js"></script>
     <script type="text/javascript" src="{$js_dir}order-carrier.js"></script>
 {/if}
+{if isset($mobile_identity)}
+    <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
+{/if}
 </div>
 <!-- id mobile-->
 </body>

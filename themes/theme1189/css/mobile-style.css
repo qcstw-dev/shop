@@ -250,7 +250,16 @@ hr {
     right: 0;
     z-index: 1;
 }
-
+.required {
+    color: #f13340;
+}
+label.required:before {
+    content: "*";
+    color: #f13340;
+    font-size: 14px;
+    position: relative;
+    line-height: 12px;
+}
 /******************** ADDRESS **********************/
 #mobile-checkout li {
     list-style: none;
