@@ -57,6 +57,17 @@
                     </div>
                 </div>
                 <div class="list-currency hidden block-currencies">
+                    <div class="font-size-20 text-center bold">
+                        {foreach from=$currencies key=k item=f_currency}
+                            {if $cookie->id_currency == $f_currency.id_currency}
+                                <span class="icon-sign-{$f_currency.sign|count_characters}">
+                                    {$f_currency.sign}
+                                </span>
+                            {/if}
+                        {/foreach}
+                        {l s='Currency'}
+                    </div>
+                    <hr>
                     <div class="options text-center">
                         {foreach from=$currencies key=k item=f_currency}
                             {if strpos($f_currency.name, '('|cat:$f_currency.iso_code:')') === false}
@@ -69,10 +80,13 @@
                                     {$currency_name}
                                 </a>
                             </div>
+                            <hr>
                         {/foreach}
                     </div>
                 </div>
                 <div class="row hidden block-search">
+                    <div class="font-size-20 text-center bold"><span class="glyphicon glyphicon-search"></span> {l s='Search' mod='blocksearch'}</div>
+                    <hr>
                     <form id="searchbox" method="get" action="{$link->getPageLink('search', null, null, null, false, null, true)|escape:'html':'UTF-8'}" >
                         <div class="input-group">
                             <input type="hidden" name="controller" value="search" />
@@ -81,7 +95,7 @@
                             <input class="search_query form-control" type="text" id="search_query_top" name="search_query" placeholder="{l s='Search' mod='blocksearch'}..." autofocus/>
                             <span class="input-group-btn">
                                 <button type="submit" name="submit_search" class="btn btn-primary button-search">
-                                    <span class="glyphicon glyphicon-search"></span> {l s='Search' mod='blocksearch'}
+                                    <span class="glyphicon glyphicon-search"></span>
                                 </button>
                             </span>
                         </div><!-- /input-group -->
@@ -89,6 +103,7 @@
                 </div>
                 <div class="row hidden block-account">
                     {if $is_logged}
+                        <div class="font-size-20 text-center bold"><span class="glyphicon glyphicon-user"></span> {l s='Your Account' mod='tmheaderaccount'}</div>
                         <hr>
                         <div><a href="{$base_uri}mobile-order-history" title="{l s='My orders' mod='tmheaderaccount'}" rel="nofollow">{l s='My orders' mod='tmheaderaccount'}</a></div>
                         <hr>
@@ -132,7 +147,7 @@
                     {/if}
                 </div>
                 <div class="row hidden block-cart">
-                    <div class="font-size-20 text-center bold">{l s='Cart'}</div>
+                    <div class="font-size-20 text-center bold"><span class="glyphicon glyphicon-shopping-cart"></span> {l s='My Cart' mod='blockcart'}</div>
                     <hr>
                     {if $cart_products}
                         {foreach from=$cart_products item=product name=cart_products}

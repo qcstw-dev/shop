@@ -100,13 +100,8 @@ hr {
 .options {
     max-height: 200px;
     overflow: auto;
-    border-top: 1px solid #ddd;
 }
 
-.options .option {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
 .selection {
     border-right: 1px solid #ddd; 
 }
