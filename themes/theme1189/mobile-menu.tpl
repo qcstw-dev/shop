@@ -34,7 +34,7 @@
                     {elseif strpos($meta_title, 'Checkout') !== false}
                         {l s='Checkout'}
                     {else}
-                        {str_replace(' - ', '' ,str_replace($shop_title, '', $meta_title))}
+                        {str_replace(' - ', '' , str_replace($shop_title, '', $meta_title))}
                     {/if}
                 </div>
             </div>

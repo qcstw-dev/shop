@@ -1,4 +1,5 @@
 </div>
+<div class="clearfix"></div>
 <!-- id mobile-content-->
 <div id="mobile-footer">
     {$HOOK_MOBILE_FOOTER}
@@ -65,7 +66,11 @@
     <script type="text/javascript" src="{$js_dir}cart-summary.js"></script>
     <script type="text/javascript" src="{$js_dir}order-carrier.js"></script>
 {/if}
-{if isset($mobile_identity)}
+{if isset($mobile_contact)}
+    <script type="text/javascript" src="{$js_dir}autoload/15-jquery.uniform-modified.js"></script>
+    <script type="text/javascript" src="{$js_dir}contact-form.js"></script>
+{/if}
+{if isset($mobile_identity) || isset($mobile_contact)}
     <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
 {/if}
 </div>

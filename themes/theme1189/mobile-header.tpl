@@ -16,6 +16,9 @@
     {if isset($mobile_payment)}
         <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-1.11.0.min.js"></script>
     {/if}
+    {if isset($mobile_contact)}
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+    {/if}
     {*<link rel="stylesheet" href="{$modules_dir}tmheaderaccount/css/front.css" media="all">*}
     <meta property="og:image" content="{$logo_url}" />
     <title>{$meta_title}</title>

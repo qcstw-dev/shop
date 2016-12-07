@@ -55,7 +55,7 @@ class ContactControllerCore extends FrontController {
             $extension = array('.txt', '.rtf', '.doc', '.docx', '.pdf', '.zip', '.png', '.jpeg', '.gif', '.jpg');
             $file_attachment = Tools::fileAttachment('fileUpload');
             $message = Tools::getValue('message'); // Html entities is not usefull, iscleanHtml check there is no bad html tags.
-            if (!$server_output->success) {
+            if (!$server_output || !$server_output->success) {
                 $this->errors[] = Tools::displayError('Wrong reCAPTCHA. ');
             } elseif (!($from = trim(Tools::getValue('from'))) || !Validate::isEmail($from)) {
                 $this->errors[] = Tools::displayError('Invalid email address.');
