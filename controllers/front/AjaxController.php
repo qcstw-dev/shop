@@ -10,10 +10,8 @@ class AjaxControllerCore extends FrontController {
         } else {
             $iNbProducts = 6;
         }
-        
-        $oProductCategory = new Category('45', $this->context->language->id);
-        $aProducts = $oProductCategory->getProducts($this->context->language->id, $iLastRange, $iNbProducts, 'date_add', 'DESC');
-        
+
+        $aProducts = Product::getProducts($this->context->language->id, $iLastRange, $iNbProducts, 'date_add', 'DESC', '45', true, $this->context);
         foreach ($aProducts as &$aProduct) {
             $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($this->context->language->id);
             foreach ($aProduct['images'] as $key => $image) {
@@ -21,6 +19,13 @@ class AjaxControllerCore extends FrontController {
                     unset($aProduct['images'][$key]);
                 }
             }
+
+            $aQuantities = [1, 5, 10, 25, 50, 100];
+            $aPrices = [];
+            foreach ($aQuantities as $iQuantity) {
+                $aPrices[$iQuantity] = Product::getPriceStatic((int) $aProduct['id_product'], true, null, 2, null, false, true, $iQuantity);
+            }
+            $aProduct['prices'] = $aPrices;
         }
         $this->context->smarty->assign(array(
             'products' => $aProducts,

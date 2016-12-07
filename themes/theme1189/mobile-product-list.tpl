@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-xs-12 border-top text-center bold padding-0 padding-top-5">
                         <span class="font-size-13">
-                            {$product.name|truncate:20:'...'|escape:'html':'UTF-8'}
+                            {$product.name|truncate:15:'...'|escape:'html':'UTF-8'}
                         </span>
                     </div>
                 </a>
