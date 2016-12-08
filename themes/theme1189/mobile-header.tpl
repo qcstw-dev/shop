@@ -87,14 +87,11 @@
                 <div class="row hidden block-search">
                     <div class="font-size-20 text-center bold"><span class="glyphicon glyphicon-search"></span> {l s='Search' mod='blocksearch'}</div>
                     <hr>
-                    <form id="searchbox" method="get" action="{$link->getPageLink('search', null, null, null, false, null, true)|escape:'html':'UTF-8'}" >
+                    <form id="searchbox" method="get" action="{$base_uri}mobile-search" >
                         <div class="input-group">
-                            <input type="hidden" name="controller" value="search" />
-                            <input type="hidden" name="orderby" value="position" />
-                            <input type="hidden" name="orderway" value="desc" />
                             <input class="search_query form-control" type="text" id="search_query_top" name="search_query" placeholder="{l s='Search' mod='blocksearch'}..." autofocus/>
                             <span class="input-group-btn">
-                                <button type="submit" name="submit_search" class="btn btn-primary button-search">
+                                <button type="submit" class="btn btn-primary button-search">
                                     <span class="glyphicon glyphicon-search"></span>
                                 </button>
                             </span>
