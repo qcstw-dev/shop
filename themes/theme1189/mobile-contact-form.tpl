@@ -1,7 +1,7 @@
 {include file=$header_mobile}
 {capture name=path}{l s='Contact'}{/capture}
 
-<div class="col-xs-12 font-size-15 bold text-center">
+<div class="col-xs-12 font-size-20 bold text-center">
 {l s='Customer service'} - {if isset($customerThread) && $customerThread}{l s='Your reply'}{else}{l s='Contact us'}{/if}
 <hr>
 </div>

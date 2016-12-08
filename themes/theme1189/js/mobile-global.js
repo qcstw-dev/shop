@@ -30,7 +30,11 @@ $(function () {
             }
         ]
     });
-
+    $('.modify-form').live('click', function () {
+       $(this).parents('form').find('input, select').prop('disabled', false);
+       $(this).parents('form').find('button').removeClass('hidden');
+       $(this).addClass('hidden');
+    });
     $('.popup-product').live('click', function () {
         var id = $(this).data('id');
         var html = $('.popup-product-content-' + id).html();
