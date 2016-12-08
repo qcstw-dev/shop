@@ -1,6 +1,7 @@
 </div>
 <div class="clearfix"></div>
 <!-- id mobile-content-->
+</div>
 <div id="mobile-footer">
     {$HOOK_MOBILE_FOOTER}
 </div>
@@ -73,6 +74,5 @@
 {if isset($mobile_identity) || isset($mobile_contact)}
     <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
 {/if}
-</div>
 <!-- id mobile-->
 </body>

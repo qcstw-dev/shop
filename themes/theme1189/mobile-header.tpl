@@ -105,11 +105,13 @@
                     {if $is_logged}
                         <div class="font-size-20 text-center bold"><span class="glyphicon glyphicon-user"></span> {l s='Your Account' mod='tmheaderaccount'}</div>
                         <hr>
-                        <div><a href="{$base_uri}mobile-order-history" title="{l s='My orders' mod='tmheaderaccount'}" rel="nofollow">{l s='My orders' mod='tmheaderaccount'}</a></div>
-                        <hr>
                         <div><a href="{$base_uri}mobile-identity" title="{l s='My personal info' mod='tmheaderaccount'}" rel="nofollow">{l s='My personal info' mod='tmheaderaccount'}</a></div>
                         <hr>
+                        <div><a href="{$base_uri}mobile-order-history" title="{l s='My orders' mod='tmheaderaccount'}" rel="nofollow">{l s='My orders' mod='tmheaderaccount'}</a></div>
+                        <hr>
                         <div><a href="{$base_uri}mobile-addresses" title="{l s='My addresses' mod='tmheaderaccount'}" rel="nofollow">{l s='My addresses' mod='tmheaderaccount'}</a></div>
+                        <hr>
+                        <div><a href="{$base_uri}mobile-vouchers" title="{l s='My vouchers' mod='tmheaderaccount'}" rel="nofollow">{l s='My vouchers' mod='tmheaderaccount'}</a></div>
                         <hr>
                         {if isset($HOOK_BLOCK_MY_ACCOUNT) && $HOOK_BLOCK_MY_ACCOUNT !=''}
                             {$HOOK_BLOCK_MY_ACCOUNT}

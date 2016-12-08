@@ -4,8 +4,17 @@ body {
 #mobile-content {
     font-size: 13px;
 }
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th,
 .table>tbody>tr>td {
     vertical-align: middle;
+    text-align: center;
+    font-size: 13px;
+    padding: 2px;
+}
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    font-size: 13px;
+    padding: 2px;
 }
 .btn-default {
     color: #777;
@@ -316,8 +325,9 @@ label.required:before {
 #social_block {
     margin-top: 10px;
     position: absolute;
-    right: 0;
-    padding: 7px 15px 0 15px; }
+    width: 100%;
+    padding: 7px 15px 7px 15px;
+    background: #f2f2f2; }
 #social_block ul {
     padding-left: 0; }
 @media (min-width: 1200px) {
@@ -328,8 +338,7 @@ label.required:before {
         width: 100%;
         float: left;    
         padding-top: 5px;
-        padding-bottom: 5px;
-        background: #f2f2f2; } }
+        padding-bottom: 5px; } }
 #social_block ul {
     margin: 0;
     list-style-type: none;
