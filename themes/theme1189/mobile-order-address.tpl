@@ -100,7 +100,7 @@
     {capture}
         {if $back}&mod={$back|urlencode}{/if}
     {/capture}
-    {capture name=addressUrl}{$link->getPageLink('mobile-checkout', true, NULL, 'back='|cat:$base_uri|cat:'mobile-checkout'|cat:'?step=3')|escape:'quotes':'UTF-8'}{/capture}
+    {capture name=addressUrl}{$link->getPageLink('mobile-address', true, NULL, 'back='|cat:$base_uri|cat:'mobile-checkout'|cat:'?step=3')|escape:'quotes':'UTF-8'}{/capture}
     var addressUrl='{$smarty.capture.addressUrl}';
     {capture}{'&multi-shipping=1'|urlencode}{/capture}
     var addressMultishippingUrl='{$smarty.capture.addressUrl|cat:$smarty.capture.default}';

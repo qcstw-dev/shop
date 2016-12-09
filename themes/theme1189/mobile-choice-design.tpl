@@ -3,7 +3,7 @@
         <span class="glyphicon glyphicon-upload"></span> {l s="Upload your design"}
     </div>
     <div class="hidden-uploader">
-        <input class="fileupload hidden-fileupload" type="file" name="files[]">
+        <input class="fileupload hidden-fileupload" type="file" name="files[]" accept="image/*">
     </div>
     <a href="{$base_uri}mobile-designs?categories">
         <div class="block-choice">

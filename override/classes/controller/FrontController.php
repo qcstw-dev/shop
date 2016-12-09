@@ -3,6 +3,11 @@
 class FrontController extends FrontControllerCore {
 
     public function initHeader() {
+        require_once(_PS_TOOL_DIR_ . 'mobile_Detect/Mobile_Detect.php');
+        $this->mobile_detect = new Mobile_Detect();
+        if ($this->mobile_detect->isMobile() || $this->mobile_detect->isTablet()) {
+            header('Location: '.__PS_BASE_URI__.'mobile');
+        }
         self::$smarty->assign('currentController', get_class($this));
         return parent::initHeader();
     }
@@ -26,7 +31,7 @@ class FrontController extends FrontControllerCore {
                 $aSelectedItems[] = $preselected_design;
             }
         }
-                
+
         if ($aSelectedItems) {
             foreach ($aSelectedItems as $sSelectedItemId) {
                 $oItem = new Product($sSelectedItemId, true, $this->context->language->id);

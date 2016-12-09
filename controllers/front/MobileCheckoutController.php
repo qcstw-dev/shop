@@ -186,7 +186,7 @@ class MobileCheckoutControllerCore extends MobileController {
             }
             $this->setTemplate(_PS_THEME_DIR_ . 'mobile-checkout.tpl');
         } else {
-            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile');
+            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-layout-maker');
         }
     }
 

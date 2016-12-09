@@ -102,9 +102,9 @@
                     </form>
                 </div>
                 <div class="row hidden block-account">
+                    <div class="font-size-20 text-center bold"><span class="glyphicon glyphicon-user"></span> {l s='Your Account' mod='tmheaderaccount'}</div>
+                    <hr>
                     {if $is_logged}
-                        <div class="font-size-20 text-center bold"><span class="glyphicon glyphicon-user"></span> {l s='Your Account' mod='tmheaderaccount'}</div>
-                        <hr>
                         <div><a href="{$base_uri}mobile-identity" title="{l s='My personal info' mod='tmheaderaccount'}" rel="nofollow">{l s='My personal info' mod='tmheaderaccount'}</a></div>
                         <hr>
                         <div><a href="{$base_uri}mobile-order-history" title="{l s='My orders' mod='tmheaderaccount'}" rel="nofollow">{l s='My orders' mod='tmheaderaccount'}</a></div>
@@ -154,10 +154,10 @@
                     {if $cart_products}
                         {foreach from=$cart_products item=product name=cart_products}
                             <div class="col-xs-12 padding-0 block-cart-element block-cart-element-{$product.id_product|intval}-{$product.custom_picture}" data-id="cart_block_product_{$product.id_product|intval}_{$product.custom_picture}">
-                                <div class="col-xs-6 thumbnail">
+                                <div class="col-xs-6 col-sm-4 thumbnail">
                                     <img class="popup" src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
                                 </div>
-                                <div class="col-xs-6 padding-right-0">
+                                <div class="col-xs-6 col-sm-8 padding-right-0">
                                     <div>
                                         {$product.cart_quantity}</span>&nbsp;x&nbsp;
                                     </div>
@@ -173,27 +173,28 @@
                                     {l s='Free!' mod='blockcart'}
                                 {/if}
                             </div>
-                            <div>
-                                <div class="btn btn-danger remove-from-cart" 
-                                     data-custom-picture="{$product.custom_picture}" 
-                                     data-id-product="{$product.id_product}" 
-                                     data-id-design="{$product.id_design}" 
-                                     data-original-product="{$product.original_picture}" 
-                                     href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}"
-                                     title="{l s='remove this product from my cart' mod='blockcart'}">
-                                    <span class="glyphicon glyphicon-trash"></span> {l s='Remove'}
-                                </div>
+                            <div class="btn btn-danger remove-from-cart margin-bottom-10 pull-left margin-right-10" 
+                                 data-custom-picture="{$product.custom_picture}" 
+                                 data-id-product="{$product.id_product}" 
+                                 data-id-design="{$product.id_design}" 
+                                 data-original-product="{$product.original_picture}" 
+                                 href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}"
+                                 title="{l s='remove this product from my cart' mod='blockcart'}">
+                                <span class="glyphicon glyphicon-trash"></span> {l s='Remove'}
                             </div>
+                            <a href="{$base_uri}mobile-layout-maker?preselect_design={$product.id_design}&preselect_product={$product.id_product}&custom_picture={$product.custom_picture}{if $product.original_picture}&original_picture={$product.original_picture}{/if}" class="btn btn-primary pull-left">
+                                <span class="glyphicon glyphicon-pencil"></span> {l s='Modify'}
+                            </a>
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <hr>
                 {/foreach}
                 <div class="col-xs-12 bold font-size-20 block-cart-total">
-                    <div class="col-xs-6">
+                    <div class="col-xs-6 col-sm-2 col-sm-offset-4">
                         {l s='Total'}
                     </div>
-                    <div class="col-xs-6 text-right cart-total">
+                    <div class="col-xs-6 col-sm-2 text-right cart-total">
                         {$total_cart}
                     </div>
                 </div>
@@ -203,6 +204,10 @@
             <div class="alert alert-info text-center empty-cart-message {if $cart_products}hidden{/if}">
                 {l s='Your cart is empty'}
             </div>
+        </div>
+        <div class="col-xs-8 margin-top-5 bold text-center italic color-primary">
+            <div class="visible-xs">{l s='Personalized gifts for unique memories'}</div>
+            <div class="visible-sm font-size-30 margin-top-20">{l s='Personalized gifts for unique memories'}</div>
         </div>
     </div>
 

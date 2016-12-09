@@ -304,8 +304,9 @@ var resizeableImage = function (image_target, customizable) {
         });
         }
     };
-    init();
-//    resizing;
+    if (init()) {
+        resizeImage(image_overlay.width(), image_overlay.height());
+    }
 };
 $('.preview-layout').live('click', function () {
     crop(true);

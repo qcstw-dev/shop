@@ -3,7 +3,7 @@
         <div class="block-product block_product_{$product.id_product}_{$product.custom_picture}">
             <div class="block-modify">
                 <div class="pull-right delete" data-id="{$product.id_product}_{$product.custom_picture}"><span class="glyphicon glyphicon-trash"></span></div>
-                <a href="{$base_uri}mobile-layout-maker?preselect_design={$product.id_design}&preselect_product={$product.id_product}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}" class="pull-right margin-right-10 modify" data-id="{$product.id_product}_{$product.custom_picture}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="{$base_uri}mobile-layout-maker?preselect_design={$product.id_design}&preselect_product={$product.id_product}&custom_picture={$product.custom_picture}{if $product.original_picture}&original_picture={$product.original_picture}{/if}" class="pull-right margin-right-10 modify" data-id="{$product.id_product}_{$product.custom_picture}"><span class="glyphicon glyphicon-pencil"></span></a>
             </div>
             <div class="margin-bottom-10">
                 <div class="col-xs-4 thumbnail">
@@ -15,10 +15,10 @@
                     <div class="row margin-top-5">
                         <div class="col-xs-4 col-sm-2 bold underline">{l s="Qty"}:</div>
                         <div class="col-xs-8">
-                            <div class="glyphicon glyphicon-minus-sign cart_quantity_down" data-id="{$product.id_product}_{$product.custom_picture}"></div> 
+                            <div class="cart_quantity cart_quantity_down" data-id="{$product.id_product}_{$product.custom_picture}"><span class="glyphicon glyphicon-minus-sign"></span></div> 
                             <input type="hidden" value="{$product.quantity}" class="input-qty cart_quantity_input_{$product.id_product}_{$product.custom_picture}_hidden" data-id="{$product.id_product}_{$product.custom_picture}" />
                             <input type="text" value="{$product.quantity}" class="input-qty cart_quantity_input_{$product.id_product}_{$product.custom_picture} cart_quantity_input" data-id="{$product.id_product}_{$product.custom_picture}" />
-                            <div class="glyphicon glyphicon-plus-sign cart_quantity_up" data-id="{$product.id_product}_{$product.custom_picture}"></div>
+                            <div class="cart_quantity cart_quantity_up" data-id="{$product.id_product}_{$product.custom_picture}"><span class="glyphicon glyphicon-plus-sign"></span></div>
                         </div>
                     </div>
                     <div class="row margin-top-5">
@@ -86,7 +86,7 @@
     </div>
     <div class="col-xs-12 padding-0">
         <div class="col-xs-4 padding-left-0 bold">{l s='Shipping'}:</div>
-        <div class="col-xs-8 padding-0">{l s='Calculation at Step 4'}</div>
+        <div class="col-xs-8 padding-0">{l s='Calculated when address keyed'}</div>
     </div>
     <div class="clearfix"></div>
     <hr>

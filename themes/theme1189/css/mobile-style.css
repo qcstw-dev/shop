@@ -197,6 +197,19 @@ hr {
     border-bottom: 1px solid #ddd;
     margin-bottom: 60px;
 }
+/************** PRODUCT LIST ****************/
+.product-name {
+    border-top: 1px solid #ddd;
+    text-align: center; 
+    font-weight: bold;
+    padding: 0;
+    padding-top : 5px;
+    min-height: 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 /************** PRODUCT PAGE ****************/
 
 #mobile-product-page .tab-price-cel-first, #mobile-product-page .tab-price-cel {
@@ -212,12 +225,14 @@ hr {
 /************** SELECT DESIGN ****************/
 
 .block-choice {
-    padding: 20px;
+    padding: 14px;
     border: 2px solid #ddd;
     text-align: center;
-    font-size: 18;
+    font-size: 18px;
+    font-weight: bold;
 }
 .white-popup {
+    max-width: 500px;
     padding: 20px;
     padding-top: 35px;
 }
@@ -235,11 +250,22 @@ hr {
     background: #f8f8f8;
     border: 1px solid #ddd;
 }
+.title-block.disabled {
+    color: #ccc;
+}
 .block-checkout {
     padding-top: 10px;
     padding-bottom: 10px;
     border: 1px solid #ddd;
     border-top: none;
+}
+.cart_quantity {
+    font-size: 20px;
+    float: left;
+    margin: 0 4px 0 4px;
+}
+.input-qty {
+    float: left
 }
 @media (min-width: 320px) {
     #mobile-checkout .tab-price-cel-first {

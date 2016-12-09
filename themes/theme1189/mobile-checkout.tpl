@@ -8,13 +8,13 @@
             {if $checkout_step == 1 || !$checkout_step}
                 {include file=$mobile_summary}
             {/if}
-            <a href="{$base_uri}mobile-checkout?step=2" class="col-xs-12 title-block">
+            <a {if $checkout_step > 2}href="{$base_uri}mobile-checkout?step=2"{/if} class="col-xs-12 title-block {if $checkout_step == 1 || !$checkout_step}disabled{/if}">
                 <span class="glyphicon glyphicon-user padding-right-20"></span> {l s="Sign in"} <span class="glyphicon glyphicon-chevron-down pull-right"></span>
             </a>
             {if $checkout_step == 2}
                 {include file=$mobile_login}
             {/if}
-            <a href="{$base_uri}mobile-checkout?step=3" class="col-xs-12 title-block">
+            <a {if $checkout_step > 3}href="{$base_uri}mobile-checkout?step=3"{/if} class="col-xs-12 title-block {if $checkout_step < 3}disabled{/if}">
                 <span class="glyphicon glyphicon-home padding-right-20"></span> {l s="Addresses"} <span class="glyphicon glyphicon-chevron-down pull-right"></span>
             </a>
             {if $checkout_step == 3}
@@ -22,7 +22,7 @@
                     {include file=$mobile_addresses}
                 </div>
             {/if}
-            <a href="{$base_uri}mobile-checkout?step=4" class="col-xs-12 title-block">
+            <a {if $checkout_step > 4}href="{$base_uri}mobile-checkout?step=4"{/if} class="col-xs-12 title-block {if $checkout_step < 4}disabled{/if}">
                 <span class="fa fa-truck padding-right-20"></span> {l s="Shipping"} <span class="glyphicon glyphicon-chevron-down pull-right"></span>
             </a>
             {if $checkout_step == 4}
@@ -30,7 +30,7 @@
                     {include file=$mobile_shipping}
                 </div>
             {/if}
-            <a href="{$base_uri}mobile-checkout?step=5" class="col-xs-12 title-block">
+            <a {if $checkout_step == 5}href="{$base_uri}mobile-checkout?step=5"{/if} class="col-xs-12 title-block {if $checkout_step < 5}disabled{/if}">
                 <span class="fa fa-credit-card padding-right-20"></span> {l s="Payment"} <span class="glyphicon glyphicon-chevron-down pull-right"></span>
             </a>
             {if $checkout_step == 5}

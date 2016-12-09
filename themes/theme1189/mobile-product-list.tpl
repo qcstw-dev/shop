@@ -17,10 +17,8 @@
                         <div class="col-xs-6 padding-0 padding-top-5 padding-bottom-5 text-center preview product-{$product.id_product}" data-id="{$product.id_product}" title="{l s='Product details'}">
                             <span class="glyphicon glyphicon-zoom-in"></span> <span class="text">{l s='Details'}</span>
                         </div>
-                        <div class="col-xs-12 border-top text-center bold padding-0 padding-top-5">
-                            <span class="font-size-13">
-                                {$product.name|truncate:15:'...'|escape:'html':'UTF-8'}
-                            </span>
+                        <div class="col-xs-12 product-name">
+                            {$product.name|truncate:40:'...'|escape:'html':'UTF-8'}
                         </div>
                     </a>
                     <div class="col-xs-12 border-bottom slick-pictures-product-list slick-pictures-product-list-{$id_item}">

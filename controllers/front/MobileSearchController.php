@@ -18,6 +18,7 @@ class MobileSearchControllerCore extends MobileController {
                     . ' WHERE p.id_product = pl.id_product'
                     . ' AND pl.id_lang = ' . $this->context->language->id
                     . ' AND pl.id_lang = ' . $this->context->shop->id
+                    . ' AND p.id_category_default = 45'
                     . ' AND ('
                     . ' pl.description LIKE "%' . $sKeywords . '%"'
                     . ' OR pl.name LIKE "%' . $sKeywords . '%"'

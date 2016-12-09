@@ -8,13 +8,22 @@ class MobileLayoutMakerControllerCore extends MobileController {
 
     public function initContent() {
         parent::initContent();
-        
+
         if (Tools::getValue('preselect_product') && Tools::getValue('custom_picture') && (Tools::getValue('preselect_design') || Tools::getValue('original_picture'))) {
             $this->context->cookie->__set('selected_design', (Tools::getValue('preselect_design') ? : Tools::getValue('original_picture')));
             $this->context->cookie->__set('selected_product', Tools::getValue('preselect_product'));
             $this->context->cart->deleteProduct(Tools::getValue('preselect_product'), null, null, null, Tools::getValue('custom_picture'));
+            $cart_products = $this->context->cart->getProducts(true);
+            $cart_qties = 0;
+            foreach ($cart_products as $product) {
+                $cart_qties += (int) $product['cart_quantity'];
+            }
+            $this->context->smarty->assign(array(
+                'cart_products' => $cart_products,
+                'cart_qties' => $cart_qties
+            ));
         }
-        
+
         if ($this->context->cookie->selected_product && (Tools::getValue('id_design') || $this->context->cookie->selected_design)) {
             if (Tools::getValue('id_design')) {
                 $this->context->cookie->__set('selected_design', Tools::getValue('id_design'));
@@ -32,7 +41,7 @@ class MobileLayoutMakerControllerCore extends MobileController {
                     $imagesLayout[] = $image;
                 }
             }
-            
+
             $this->context->smarty->assign(array(
                 'layout_maker' => true,
                 'step' => '3',
@@ -41,13 +50,13 @@ class MobileLayoutMakerControllerCore extends MobileController {
                 'image_design' => isset($imageDesign) ? $imageDesign : null,
                 'images_product' => $imagesLayout,
                 'custom' => $bCustom,
-                'original_picture' => ($bCustom ? _PS_BASE_URL_SSL_ . __PS_BASE_URI__.'img/layout_maker/temp/'.$this->context->cookie->selected_design.'.png' : ''),
+                'original_picture' => ($bCustom ? _PS_BASE_URL_SSL_ . __PS_BASE_URI__ . 'img/layout_maker/temp/' . $this->context->cookie->selected_design . '.png' : ''),
             ));
             $this->setTemplate(_PS_THEME_DIR_ . 'mobile-layout-maker.tpl');
         } elseif (!$this->context->cookie->selected_product) {
-            header('Location: ' . _PS_BASE_URL_SSL_ . __PS_BASE_URI__ . 'mobile');
+            header('Location: ' . Tools::getHttpHost() . __PS_BASE_URI__ . 'mobile');
         } else {
-            header('Location: ' . _PS_BASE_URL_SSL_ . __PS_BASE_URI__ . 'mobile-designs');
+            header('Location: ' . Tools::getHttpHost() . __PS_BASE_URI__ . 'mobile-designs');
         }
     }
 

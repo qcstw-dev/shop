@@ -18,11 +18,13 @@
                         {l s='Step 3'}
                     {elseif strpos($meta_title, 'Checkout') !== false}
                         {l s='Step 4'}
+                    {elseif strpos($meta_title, 'Search') !== false}
+                        {l s='Search'}
                     {else}
                         {l s='Info'}
                     {/if}
                 </div>
-                <div class="navbar-brand padding-0 padding-top-15 margin-left-10">
+                <div class="navbar-brand padding-0 padding-top-15 margin-left-5">
                     {if strpos($meta_title, 'Home Mobile') !== false}
                         {l s='Select Product'}
                     {elseif strpos($meta_title, 'Select Design') !== false}
@@ -33,6 +35,8 @@
                         </span>
                     {elseif strpos($meta_title, 'Checkout') !== false}
                         {l s='Checkout'}
+                    {elseif strpos($meta_title, 'Search') !== false}
+                        {$smarty.get.search_query|truncate:17:'...'}
                     {else}
                         {str_replace(' - ', '' , str_replace($shop_title, '', $meta_title))}
                     {/if}
@@ -44,14 +48,19 @@
                     <li>
                         <a href="{$base_uri}mobile">{l s='Step 1 Select Product'}</a>
                     </li>
-                    <li {if $step == '1'}class="disabled"{/if}>
-                        <a href="{if $step|in_array:['2', '3', '4']}{$base_uri}mobile-designs{/if}">
+                    <li>
+                        <a {if $step|in_array:['2', '3', '4']}href="{$base_uri}mobile-designs"{/if} {if $step == '1'}class="disabled"{/if}>
                             {l s='Step 2 Select Design'}
                         </a>
                     </li>
-                    <li {if !in_array($step, ['3', '4'])}class="disabled"{/if}>
-                        <a href="{if $step|in_array:['3', '4']}{$base_uri}mobile-layout-maker{/if}">
+                    <li>
+                        <a {if $step|in_array:['3', '4']}href="{$base_uri}mobile-layout-maker"{/if} {if !in_array($step, ['3', '4'])}class="disabled"{/if}>
                             {l s='Step 3 Place design on product'}
+                        </a>
+                    </li>
+                    <li>
+                        <a {if $cart_products}href="{$base_uri}mobile-checkout"{/if} {if !$cart_products}class="disabled"{/if}>
+                            {l s='Step 4 Checkout'}
                         </a>
                     </li>
                 </ul>

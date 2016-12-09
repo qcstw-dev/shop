@@ -1,12 +1,12 @@
 $(function () {
     $('body').on('click', '.title-block', function () {
-        $('.block-'+$(this).data('block')).slideToggle();
+        $('.block-' + $(this).data('block')).slideToggle();
     });
     if ($('.preselected').length) {
-        $('.block-'+$('.preselected').data('select')).slideToggle();
+        $('.block-' + $('.preselected').data('select')).slideToggle();
         $('html,body').animate({
-            scrollTop: $('.block-'+$('.preselected').data('select')).offset().top},
-        'slow');
+            scrollTop: $('.block-' + $('.preselected').data('select')).offset().top},
+                'slow');
     }
     $('.select').on('click', function () {
         $.magnificPopup.open({
@@ -40,9 +40,9 @@ $(function () {
         ]
     });
     $('.modify-form').live('click', function () {
-       $(this).parents('form').find('input, select').prop('disabled', false);
-       $(this).parents('form').find('button').removeClass('hidden');
-       $(this).addClass('hidden');
+        $(this).parents('form').find('input, select').prop('disabled', false);
+        $(this).parents('form').find('button').removeClass('hidden');
+        $(this).addClass('hidden');
     });
     $('.popup-product').live('click', function () {
         var id = $(this).data('id');
