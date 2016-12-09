@@ -174,7 +174,7 @@
 
                     {$HOOK_CUSTOMER_IDENTITY_FORM}
 
-                    <div class="btn btn-default margin-bottom-10 modify-form col-xs-12 col-sm-4 pull-right">
+                    <div class="btn btn-default modify-form col-xs-12 col-sm-4 pull-right">
                         <span class="glyphicon glyphicon-lock"></span> {l s="Modify"}
                     </div>
                     <button type="submit" name="submitIdentity" class="btn btn-primary col-xs-12 col-sm-4 pull-right hidden">

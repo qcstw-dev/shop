@@ -1,8 +1,23 @@
 body {
     color: #777;
 }
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 10px; 
+}
+#center_column ul.tree, 
+#center_column ul.tree ul{
+    list-style-type: none;
+    padding: 0;
+}
 #mobile-content {
     font-size: 13px;
+    padding-bottom: 70px;
+}
+.block-hidden {
+    clear: both;
+    display: none;
+    border: 1px solid #ddd;
+    padding: 10px;
 }
 .table-bordered>thead>tr>td,
 .table-bordered>thead>tr>th,
@@ -180,7 +195,7 @@ hr {
     z-index: 1;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 }
 /************** PRODUCT PAGE ****************/
 
@@ -303,7 +318,15 @@ label.required:before {
     background: url(../img/icon/form-ok.png) 98% 9px no-repeat #ddf9e1; }
 .form-group.form-error .form-control, .form-group.form-ok .form-control {
     padding-right: 30px; }
-/****************** FORM VALIDATE ******************/
+/****************** FOOTER ******************/
+#mobile-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    font-size: 13px;
+    background: #fff;
+}
 .socialfeedblock {
     float: left; }
 @media (min-width: 1200px) {
@@ -323,8 +346,7 @@ label.required:before {
         width: 19.444443%;
         padding-right: 0; } }
 #social_block {
-    margin-top: 10px;
-    position: absolute;
+    border-top: 1px solid #ddd;
     width: 100%;
     padding: 7px 15px 7px 15px;
     background: #f2f2f2; }

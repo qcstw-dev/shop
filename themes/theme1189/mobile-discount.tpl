@@ -17,7 +17,7 @@
                     <th data-sort-ignore="true" class="discount_code first_item">{l s='Code'}</th>
                     <th data-sort-ignore="true" class="discount_description item">{l s='Description'}</th>
                     <th class="discount_quantity item visible-sm">{l s='Quantity'}</th>
-                    <th data-sort-ignore="true" data-hide="phone,tablet" class="discount_value item">{l s='Value'}*</th>
+                    <th data-sort-ignore="true" data-hide="phone,tablet" class="discount_value item">{l s='Value'}</th>
                     <th data-hide="phone,tablet" class="discount_minimum item visible-sm">{l s='Minimum'}</th>
                     <th data-sort-ignore="true" data-hide="phone,tablet" class="discount_cumulative item visible-sm">{l s='Cumulative'}</th>
                     <th data-hide="phone" class="discount_expiration_date last_item">{l s='Expiration date'}</th>
@@ -33,7 +33,7 @@
                             {if $discountDetail.id_discount_type == 1}
                                 {$discountDetail.value|escape:'html':'UTF-8'}%
                             {elseif $discountDetail.id_discount_type == 2}
-                            {convertPrice price=$discountDetail.value} ({if $discountDetail.reduction_tax == 1}{l s='Tax included'}{else}{l s='Tax excluded'}{/if})
+                            {convertPrice price=$discountDetail.value}
                         {elseif $discountDetail.id_discount_type == 3}
                             {l s='Free shipping'}
                         {else}

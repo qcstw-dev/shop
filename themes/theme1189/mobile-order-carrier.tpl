@@ -60,7 +60,7 @@
         <label for="cgv">
             <input type="checkbox" name="cgv" id="cgv" value="1" {if $checkedTOS}checked="checked"{/if} />
             {l s='I agree to the terms of service and will adhere to them unconditionally.'}
-            <a href="{$link_conditions|escape:'html':'UTF-8'}" class="underline" rel="nofollow">{l s='(Read the Terms of Service)'}</a>
+            <a href="{$base_uri}mobile-information?select=terms" class="underline" rel="nofollow">{l s='(Read the Terms of Service)'}</a>
         </label>
         {if isset($delivery_option_list) && !empty($delivery_option_list)}
             <button type="submit" name="processCarrier" class="btn btn-primary col-xs-12 col-sm-4 pull-right">

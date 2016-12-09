@@ -41,13 +41,13 @@ class MobileLayoutMakerControllerCore extends MobileController {
                 'image_design' => isset($imageDesign) ? $imageDesign : null,
                 'images_product' => $imagesLayout,
                 'custom' => $bCustom,
-                'original_picture' => ($bCustom ? _PS_BASE_URL_ . __PS_BASE_URI__.'img/layout_maker/temp/'.$this->context->cookie->selected_design.'.png' : ''),
+                'original_picture' => ($bCustom ? _PS_BASE_URL_SSL_ . __PS_BASE_URI__.'img/layout_maker/temp/'.$this->context->cookie->selected_design.'.png' : ''),
             ));
             $this->setTemplate(_PS_THEME_DIR_ . 'mobile-layout-maker.tpl');
         } elseif (!$this->context->cookie->selected_product) {
-            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile');
+            header('Location: ' . _PS_BASE_URL_SSL_ . __PS_BASE_URI__ . 'mobile');
         } else {
-            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-designs');
+            header('Location: ' . _PS_BASE_URL_SSL_ . __PS_BASE_URI__ . 'mobile-designs');
         }
     }
 

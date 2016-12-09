@@ -45,7 +45,7 @@ class MobileAuthenticationControllerCore extends MobileController {
         parent::init();
 
         if (!Tools::getIsset('step') && $this->context->customer->isLogged() && !$this->ajax) {
-            Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'mobile'));
+            Tools::redirect((($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'mobile'));
         }
 
         if (Tools::getValue('create_account')) {
@@ -330,7 +330,7 @@ class MobileAuthenticationControllerCore extends MobileController {
                         Tools::redirect(html_entity_decode($back));
                     }
 
-                    Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : $back));
+                    Tools::redirect((($this->authRedirection !== false) ? urlencode($this->authRedirection) : $back));
                 }
             }
         }
@@ -484,7 +484,7 @@ class MobileAuthenticationControllerCore extends MobileController {
                         }
                         // else : redirection to the account
                         else {
-                            Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'mobile'));
+                            Tools::redirect((($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'mobile'));
                         }
                     } else {
                         $this->errors[] = Tools::displayError('An error occurred while creating your account.');
@@ -660,7 +660,7 @@ class MobileAuthenticationControllerCore extends MobileController {
                         }
                         // else : redirection to the account
                         else {
-                            Tools::redirect('index.php?controller=' . (($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'mobile'));
+                            Tools::redirect((($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'mobile'));
                         }
                     }
                 }

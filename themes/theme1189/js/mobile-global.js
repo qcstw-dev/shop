@@ -1,4 +1,13 @@
 $(function () {
+    $('body').on('click', '.title-block', function () {
+        $('.block-'+$(this).data('block')).slideToggle();
+    });
+    if ($('.preselected').length) {
+        $('.block-'+$('.preselected').data('select')).slideToggle();
+        $('html,body').animate({
+            scrollTop: $('.block-'+$('.preselected').data('select')).offset().top},
+        'slow');
+    }
     $('.select').on('click', function () {
         $.magnificPopup.open({
             items: [{

@@ -3,7 +3,12 @@
 <!-- id mobile-content-->
 </div>
 <div id="mobile-footer">
-    {$HOOK_MOBILE_FOOTER}
+    <div class="col-xs-12 padding-0">
+        {$HOOK_MOBILE_FOOTER}
+    </div>
+    <div class="col-xs-12 text-center">
+        <a class="underline" href="{$base_uri}mobile-information">{l s='Information'}</a> - <a class="underline" href="{$base_uri}mobile-information?select=about-us">{l s='About us'}</a> - <a class="underline" href="{$base_uri}mobile-contact-us">{l s='Contact us'}</a>
+    </div>
 </div>
 <script>
     var baseUri = '{$base_uri}';

@@ -65,16 +65,16 @@
     {else}
         <div class="col-xs-12">
             <a href="{$base_uri}mobile-layout-maker" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> {l s='Back'}</a>
-            <div class="block-choice margin-bottom-20 margin-top-20">
-                <a href="{$base_uri}mobile">
+            <a href="{$base_uri}mobile">
+                <div class="block-choice margin-bottom-20 margin-top-20">
                     <span class="glyphicon glyphicon-search"></span> {l s="Shop an other product"}
-                </a>
-            </div>
-            <div class="block-choice">
-                <a href="{$base_uri}mobile-checkout">
+                </div>
+            </a>
+            <a href="{$base_uri}mobile-checkout">
+                <div class="block-choice">
                     <span class="glyphicon glyphicon-shopping-cart"></span> {l s="Check out"}
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
     {/if}
 </div>

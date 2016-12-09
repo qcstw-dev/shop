@@ -19,6 +19,9 @@
     {if isset($mobile_contact)}
         <script src='https://www.google.com/recaptcha/api.js'></script>
     {/if}
+    {if isset($mobile_information)}
+        <link rel="stylesheet" href="{$css_dir}sitemap.css" media="all">
+    {/if}
     {*<link rel="stylesheet" href="{$modules_dir}tmheaderaccount/css/front.css" media="all">*}
     <meta property="og:image" content="{$logo_url}" />
     <title>{$meta_title}</title>

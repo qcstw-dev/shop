@@ -5,9 +5,9 @@
     <div class="hidden-uploader">
         <input class="fileupload hidden-fileupload" type="file" name="files[]">
     </div>
-    <div class="block-choice">
-        <a href="{$base_uri}mobile-designs?categories">
+    <a href="{$base_uri}mobile-designs?categories">
+        <div class="block-choice">
             <span class="glyphicon glyphicon-picture"></span> {l s="Choose design from library"}
-        </a>
-    </div>
+        </div>
+    </a>
 </div>

@@ -3,7 +3,7 @@
     {include file="./mobile-product-list.tpl" products=$products}
 {else}
     <div class="col-xs-12">
-        <div class="alert alert-danger bold">
+        <div class="alert alert-warning bold">
             {l s='No results were found for your search'}
         </div>
     </div>
