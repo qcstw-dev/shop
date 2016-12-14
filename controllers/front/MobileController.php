@@ -32,8 +32,11 @@ class MobileControllerCore extends FrontController {
             'cart_products' => $cart_products,
             'total_cart' => Tools::displayPrice($totalToPay),
         ));
-
-        $this->context->smarty->assign('HOOK_MOBILE_FOOTER', Module::hookExec('displaySocialNetwork'));
+        
+        $moduleSocialNetwork = Module::hookExec('displaySocialNetwork');
+//        $moduleSocialNetwork = str_replace('https://www.facebook.com/', 'fb://page/', $moduleSocialNetwork);
+//        $moduleSocialNetwork = str_replace('https://twitter.com/', 'twitter://user?screen_name=', $moduleSocialNetwork);
+        $this->context->smarty->assign('HOOK_MOBILE_FOOTER', $moduleSocialNetwork);
 
         $this->context->smarty->assign('header_mobile', _PS_THEME_DIR_ . 'mobile-header.tpl');
         $this->context->smarty->assign('footer_mobile', _PS_THEME_DIR_ . 'mobile-footer.tpl');

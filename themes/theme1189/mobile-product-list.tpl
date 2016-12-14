@@ -18,7 +18,7 @@
                             <span class="glyphicon glyphicon-zoom-in"></span> <span class="text">{l s='Details'}</span>
                         </div>
                         <div class="col-xs-12 product-name">
-                            {$product.name|truncate:40:'...'|escape:'html':'UTF-8'}
+                            {$product.name|truncate:30:'...'|escape:'html':'UTF-8'}
                         </div>
                     </a>
                     <div class="col-xs-12 border-bottom slick-pictures-product-list slick-pictures-product-list-{$id_item}">

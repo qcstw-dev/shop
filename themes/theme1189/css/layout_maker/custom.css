@@ -210,7 +210,7 @@
         width: 33%;
     }
     .overlay {
-        height: 317px;
+        height: 348px;
     }
 }
 @media screen and (max-width: 470px){
@@ -241,7 +241,7 @@
         height: 336px;
     }
     .overlay {
-        height: 285px;
+        height: 315px;
     }
 }
 @media screen and (max-width: 320px){
@@ -255,7 +255,7 @@
         height: 288px;
     }
     .overlay {
-        height: 263px;
+        height: 268px;
     }
     .title-block-products {
         margin-bottom: 0;

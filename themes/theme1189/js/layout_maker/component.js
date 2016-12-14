@@ -273,40 +273,66 @@ var resizeableImage = function (image_target, customizable) {
             $('.add-to-cart').data('original-picture', $('.hidden-original-picture').attr('src'));
         }
         if (preview) {
-        $.magnificPopup.open({
-        items: [{
-        src: $('<div class="white-popup">' +
-                '<div class="thumbnail border-none">' +
-                '<img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" />' +
-                '</div>' +
-                '<div class="popup-btns">' +
-                '<div class="add-to-cart-area padding-0 pull-left"></div>' +
-                '<div class="padding-0 pull-right">'+
-                '<div class="export-image btn btn-primary">'+
-                '<span class="glyphicon glyphicon-download-alt"></span> Download layout</div>' +
-                '</div>' +
-                '</div>' +
-                '<div class="clearfix"></div>' +
-                '</div>'),
-                type: 'inline'
-        }]
-        });
-                $('#add-to-cart').clone(true).appendTo($('.add-to-cart-area'));
-        $('.export-image').on('click', function () {
-            var fileName;
-            fileName = "gift-attitude-preview.png";
-            var a = $("<a>")
-                    .attr("href", crop_canvas.toDataURL("image/png"))
-                    .attr("download", fileName)
-                    .appendTo("body");
-            a[0].click();
-            a.remove();
-        });
+            var sDownloadButton = '';
+            if (!isMobile) {
+                sDownloadButton =
+                        '<div class="padding-0 pull-left">' +
+                        '<div class="export-image btn btn-primary">' +
+                        '<span class="glyphicon glyphicon-download-alt"></span> Download layout</div>' +
+                        '</div>' +
+                        '</div>';
+            }
+            $.magnificPopup.open({
+                items: [{
+                        src: $('<div class="white-popup">' +
+                                '<div class="thumbnail border-none">' +
+                                '<img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" />' +
+                                '</div>' +
+                                '<div class="popup-btns">' +
+                                sDownloadButton +
+                                '<div class="add-to-cart-area padding-0 pull-right"></div>' +
+                                '<div class="clearfix"></div>' +
+                                '</div>'),
+                        type: 'inline'
+                    }]
+            });
+            $('#add-to-cart').clone(true).appendTo($('.add-to-cart-area'));
+            $('.export-image').on('click', function () {
+                // atob to base64_decode the data-URI
+                var image_data = atob(crop_canvas.toDataURL("image/png").split(',')[1]);
+                // Use typed arrays to convert the binary data to a Blob
+                var arraybuffer = new ArrayBuffer(image_data.length);
+                var view = new Uint8Array(arraybuffer);
+                for (var i = 0; i < image_data.length; i++) {
+                    view[i] = image_data.charCodeAt(i) & 0xff;
+                }
+                try {
+                    // This is the recommended method:
+                    var blob = new Blob([arraybuffer], {type: 'image/png'});
+                } catch (e) {
+                    // The BlobBuilder API has been deprecated in favour of Blob, but older
+                    // browsers don't know about the Blob constructor
+                    // IE10 also supports BlobBuilder, but since the `Blob` constructor
+                    //  also works, there's no need to add `MSBlobBuilder`.
+                    var bb = new (window.WebKitBlobBuilder || window.MozBlobBuilder);
+                    bb.append(arraybuffer);
+                    var blob = bb.getBlob('image/png'); // <-- Here's the Blob
+                }
+
+                // Use the URL object to create a temporary URL
+                var url = (window.webkitURL || window.URL).createObjectURL(blob);
+                var fileName;
+                fileName = "gift-attitude-preview.png";
+                var a = $("<a>")
+                        .attr("href", url)
+                        .attr("download", fileName)
+                        .appendTo("body");
+                a[0].click();
+                a.remove();
+            });
         }
     };
-    if (init()) {
-        resizeImage(image_overlay.width(), image_overlay.height());
-    }
+    init();
 };
 $('.preview-layout').live('click', function () {
     crop(true);

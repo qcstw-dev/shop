@@ -1,4 +1,5 @@
 $(function () {
+    isMobile = $('#mobile').length;
     $('body').on('click', '.title-block', function () {
         $('.block-' + $(this).data('block')).slideToggle();
     });

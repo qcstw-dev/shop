@@ -23,6 +23,18 @@
         <link rel="stylesheet" href="{$css_dir}sitemap.css" media="all">
     {/if}
     {*<link rel="stylesheet" href="{$modules_dir}tmheaderaccount/css/front.css" media="all">*}
+    {literal} 
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-85358221-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    {/literal}
     <meta property="og:image" content="{$logo_url}" />
     <title>{$meta_title}</title>
 </head>
@@ -124,7 +136,7 @@
                         </p>
                         <div class="clearfix"></div>
                     {else}
-                        <form action="{$base_dir}login" method="post">
+                        <form action="{$base_uri}login" method="post">
                             <div id="create_header_account_error" class="alert alert-danger" style="display:none;"></div>
                             <div class="form_content clearfix">
                                 <div class="form-group">
@@ -141,7 +153,7 @@
                                     </button>
                                 </p>
                                 <p>
-                                    <a href="{$base_dir}mobile-authentication" class="create">Create an account</a>
+                                    <a href="{$base_uri}mobile-authentication" class="create">Create an account</a>
                                 </p>
                                 <div class="clearfix"></div>
                             </div>
