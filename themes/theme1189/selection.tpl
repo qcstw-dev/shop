@@ -1,4 +1,4 @@
-<div class="block-selection margin-top-10 margin-bottom-10" {if $page_name == 'index' && !$aSelectedProducts && !$aSelectedDesigns}style="display: none"{/if}>
+<div class="block-selection margin-top-10 margin-bottom-10" {if ($page_name == 'index' || $page_name == 'product') && !$aSelectedProducts && !$aSelectedDesigns}style="display: none"{/if}>
     <div class="col-xs-12 block-selection-top-title padding-0">
         <div class="col-md-9">
             <h4 class="title-block-selection margin-top-20 margin-bottom-10 padding-bottom-10">{l s='Your selection'}</h4>

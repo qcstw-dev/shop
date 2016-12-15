@@ -9,23 +9,25 @@ var resizeableImage = function (image_target, customizable) {
 
     // Some variable and settings
     var $container,
-            orig_src = new Image(),
-            new_image_resized = new Image(),
-            image_target = $(image_target).get(0),
-            image_overlay = $('.overlay-img').get(0),
-            event_state = {},
+    orig_src = new Image(),
+    new_image_resized = new Image(),
+    image_target = $(image_target).get(0),
+    image_overlay = $('.overlay-img').get(0),
+    event_state = {},
 //            constrain = false,
-            min_width = 20, // Change as required
-            min_height = 20,
-            max_width = 800, // Change as required
-            max_height = 900,
-            resize_canvas = document.createElement('canvas'),
-            rotate_value = 0;
+    min_width = 20, // Change as required
+    min_height = 20,
+    max_width = 800, // Change as required
+    max_height = 900,
+    resize_canvas = document.createElement('canvas');
+    rotate_value = 0;
+    
     init = function () {
 
         var initialized = false;
 
         $('.resize-image').show();
+        $('.rotate').show();
         $('.resize-container').find('span').remove();
         $('.resize-container').removeClass('custom');
         $('.resize-container').removeAttr('style');
@@ -33,9 +35,12 @@ var resizeableImage = function (image_target, customizable) {
         if ($('.resize-container').length) {
             $(image_target).unwrap('.resize-container');
         }
-
+        
         // When resizing, we will always use this copy of the original as the base
         orig_src.src = image_target.src;
+        
+        resize_canvas.width = image_target.height;
+        resize_canvas.height = image_target.width;
 
         if (!initialized) {
             $(image_target).wrap('<div id="resize-container" class="resize-container"></div>');
@@ -82,23 +87,26 @@ var resizeableImage = function (image_target, customizable) {
     };
 
     rotate = function (e, value, width, height) {
+        rotate_value = value;
         context = resize_canvas.getContext('2d');
         context.save();
-        resize_canvas.width = width;
-        resize_canvas.height = height;
+        resize_canvas.width = height;
+        resize_canvas.height = width;
         canvas_width = resize_canvas.width;
         canvas_height = resize_canvas.height;
-
-        rotate_value = value;
 
         new_image_resized = orig_src;
 
         resize_canvas.getContext('2d').clearRect(0, 0, width, height);
         var TO_RADIANS = Math.PI / 180;
-
+        
         context.translate(canvas_width / 2, canvas_height / 2);
         context.rotate(TO_RADIANS * rotate_value);
-        context.drawImage(new_image_resized, -(width / 2), -(height / 2), canvas_width, canvas_height);
+        if ($.inArray(rotate_value, [0, 180, 360]) !== -1) {
+            context.drawImage(new_image_resized, -(canvas_width / 2), -(canvas_height / 2), canvas_width, canvas_height);
+        } else {
+            context.drawImage(new_image_resized, -(canvas_height / 2), -(canvas_width / 2), canvas_height, canvas_width);
+        }
         $(image_target).attr('src', resize_canvas.toDataURL("image/png"));
         context.restore();
     };
@@ -129,7 +137,7 @@ var resizeableImage = function (image_target, customizable) {
         var mouse = {}, width, height, left, top, offset = $container.offset();
         mouse.x = (e.clientX || e.pageX || e.originalEvent.touches[0].clientX) + $(window).scrollLeft();
         mouse.y = (e.clientY || e.pageY || e.originalEvent.touches[0].clientY) + $(window).scrollTop();
-
+        
         // Position image differently depending on the corner dragged and constraints
         if ($(event_state.evnt.target).hasClass('resize-handle-se')) {
             width = mouse.x - event_state.container_left;
@@ -145,27 +153,27 @@ var resizeableImage = function (image_target, customizable) {
             width = event_state.container_width - (mouse.x - event_state.container_left);
             height = event_state.container_height - (mouse.y - event_state.container_top);
             left = mouse.x;
-            top = mouse.y;
+//            top = mouse.y;
 //            if (constrain || e.shiftKey) {
-            top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
+            top = mouse.y - ((width / resize_canvas.width * resize_canvas.height) - height);
 //            }
         } else if ($(event_state.evnt.target).hasClass('resize-handle-ne')) {
             width = mouse.x - event_state.container_left;
             height = event_state.container_height - (mouse.y - event_state.container_top);
             left = event_state.container_left;
-            top = mouse.y;
+//            top = mouse.y;
 //            if (constrain || e.shiftKey) {
-            top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
+            top = mouse.y - ((width / resize_canvas.width * resize_canvas.height) - height);
 //            }
         }
 
         // Optionally maintain aspect ratio
 //        if (constrain || e.shiftKey) {
-        height = width / orig_src.width * orig_src.height;
+        height = width / resize_canvas.width * resize_canvas.height;
 //        }
 
         if (width > min_width && height > min_height && width < max_width && height < max_height) {
-            // To improve performance you might limit how often resizeImage() is called
+            // To improve performance you might limit how often resizeImage() is 
             resizeImage(width, height);
             // Without this Firefox will not re-calculate the the image dimensions until drag end
             $container.offset({'left': left, 'top': top});
@@ -185,8 +193,14 @@ var resizeableImage = function (image_target, customizable) {
             resize_canvas.getContext('2d').translate(width / 2, height / 2);
             resize_canvas.getContext('2d').rotate(TO_RADIANS * rotate_value);
         }
-
-        resize_canvas.getContext('2d').drawImage(new_image_resized, (rotate_value ? -(width / 2) : 0), (rotate_value ? -(height / 2) : 0), width, height);
+        
+        if ($.inArray(rotate_value, [90, 270]) !== -1) {
+            resize_canvas.getContext('2d').drawImage(new_image_resized, -(height / 2), -(width / 2), height, width);
+        } else if ($.inArray(rotate_value, [180, 360]) !== -1) {
+            resize_canvas.getContext('2d').drawImage(new_image_resized, -width/2, -height/2, width , height);
+        } else {
+            resize_canvas.getContext('2d').drawImage(new_image_resized, 0, 0, width , height);
+        }
         $(image_target).attr('src', resize_canvas.toDataURL("image/png"));
     };
 
@@ -337,5 +351,12 @@ var resizeableImage = function (image_target, customizable) {
 $('.preview-layout').live('click', function () {
     crop(true);
 });
-//// Kick everything off with the target image
-//resizeableImage($('.resize-image'));
+$('.rotate').live('click', function () {
+    if ($.inArray(rotate_value, [0, 90, 180, 270]) !== -1) {
+        rotate(null, rotate_value + 90, $('.resize-container').width(), $('.resize-container').height());
+    } else if (rotate_value === 360) {
+        rotate(null, 90, $('.resize-container').width(), $('.resize-container').height());
+    } else {
+        rotate(null, 90, $('.resize-container').height(), $('.resize-container').width());
+    }
+});

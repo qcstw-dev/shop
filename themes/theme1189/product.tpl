@@ -188,7 +188,7 @@
                     <div id="oosHook"{if $product->quantity > 0} style="display: none;"{/if}>
                         {$HOOK_PRODUCT_OOS}
                     </div>
-                    <h1 itemprop="name" class="padding-bottom-5 border-bottom">{$product->name|escape:'html':'UTF-8'}</h1>
+                    <h1 itemprop="name" class="padding-bottom-5 margin-top-10 border-bottom">{$product->name|escape:'html':'UTF-8'}</h1>
 
                     {if $content_only && $product->description}
                         <div class="grid-desc padding-top-5 margin-bottom-10 border-bottom">{$product->description|truncate:300:'...'}</div>
@@ -462,6 +462,7 @@
 </div>
 <!-- end center infos-->
 </div> <!-- end primary_block -->
+<div class="clearfix"></div>
 {if !$content_only}
     {if $product->description || (isset($quantity_discounts) && count($quantity_discounts) > 0) || (isset($features) && $features) || (isset($attachments) && $attachments) || (isset($product) && $product->customizable)}
         <div class="clearfix product-information">

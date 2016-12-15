@@ -57,6 +57,7 @@
                 data-original-picture=""
                 style="display: none">{l s='Add to cart'}</button>
         <button class="btn btn-default preview-layout margin-top-10 col-xs-12" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
+        <button class="btn btn-default rotate margin-top-10 col-xs-12"><span class="glyphicon glyphicon-repeat"></span> Rotate 90°</button>
     </div>                
     <div class="change-color-product-block text-left col-xs-3 background-white position-absolute border padding-10" style="display: none">
         <div class="col-xs-12 col-sm-4 col-lg-12 padding-0 border text-center margin-bottom-10 background-dark-grey block-item-size" style="display: none">
@@ -97,9 +98,6 @@
         </div>
         <img id="image" class="resize-image custom-margin-left" src="{$img_dir}layout_maker/drag-and-drop.png" />
         <img class="hidden-original-picture hidden" scr="{$img_dir}layout_maker/drag-and-drop.png" />
-        <div id="slider-vertical" class="slider-vertical" style="display: none">
-            <img class="icon-rotate" src="{$img_dir}layout_maker/reload.svg" alt="rotate">
-        </div>
     </div>
 {else}
     <div class="col-xs-12 alert alert-info margin-top-10 text-center">

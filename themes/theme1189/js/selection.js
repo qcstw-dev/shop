@@ -62,8 +62,9 @@ function popupFirstProductAdd() {
         $.magnificPopup.close();
     });
 }
-function addRemoveToSelection(id) {
-    var element = $('.product-' + id);
+function addRemoveToSelection(element) {
+//    var element = $('.product-' + id);
+    var id = element.data('id');
     $.ajax({
         type: 'POST',
         url: baseDir,
@@ -79,8 +80,8 @@ function addRemoveToSelection(id) {
             $.fancybox.hideLoading();
             if (json.success === true) {
                 if (json.type === 'remove') {
-                    element.find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
-                    element.each(function () {
+                    $('.product-'+id).find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
+                    $('.product-'+id).each(function () {
                         $(this).find('.text').text($(this).data('text-add'));
                     });
                     $('.list-item-' + id).remove();
@@ -143,6 +144,6 @@ $(function () {
         $('.hidden-fileupload').trigger('click');
     });
     $('.selection').live('click', function () {
-        addRemoveToSelection($(this).data('id'));
+        addRemoveToSelection($(this));
     });
 });

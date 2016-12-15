@@ -30,6 +30,9 @@
             <img id="image" class="resize-image" src="{($original_picture) ? $original_picture : $link->getImageLink($design->link_rewrite, $image_design.id_image, 'layout')|escape:'html':'UTF-8'}" />
             <img class="hidden-original-picture hidden" scr="{($original_picture) ? $original_picture : ''}" />
         </div>
+        <div class=" col-xs-6 margin-auto col-sm-3">
+            <button class="btn btn-default rotate col-xs-12 margin-top-10 margin-bottom-10"><span class="glyphicon glyphicon-repeat"></span> {l s='Rotate 90°'}</button>
+        </div>
         <div class="col-xs-12 padding-0">
             <div class="preview-color">
                 <div class="col-xs-12 padding-0 overflow-auto">
