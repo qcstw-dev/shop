@@ -1,6 +1,6 @@
     .component {
         text-align: center;
-        height: 756px;
+        height: 703px;
         padding: 4em;
         position: relative;
         /*border: 3px solid #E8E8E8;*/
@@ -33,7 +33,7 @@
     }
     .change-color-product-block {
         position: absolute;
-        top: 430px;
+        top: 400px;
         left: 45px;
     }
 
@@ -47,7 +47,7 @@
         z-index: 101;
         margin-bottom: 10px;
     }
-    .rotate {
+    .btn-rotate {
         display: none;
     }
     .change-color-product {
@@ -80,7 +80,7 @@
     .overlay-bottom {
         width: 100%;
         bottom: 0;
-        height: 105px;
+        height: 52px;
         right: 0;
     }
     .overlay-right {
@@ -125,7 +125,7 @@
     }
     .resize-container,
     .overlay {
-        left: 19%;
+        left: 10%;
     }
     .overlay-left {
         width: 19%;
@@ -191,15 +191,15 @@
 }
 @media screen and (max-width: 670px){
     .component {
-        height: 468px;
+        height: 608px;
     }
     .overlay-inner {
         position: static;
     }
-    .resize-container, .overlay {
+    .overlay {
         max-width: 84%;
     }
-    .resize-container img, .overlay img {
+    .overlay img {
         width: 100%;
     }
     .designs-list, .products-list {
@@ -218,7 +218,7 @@
 }
 @media screen and (max-width: 470px){
     .component {
-        height: 369px;
+        height: 344px;
         padding: 10px;
     }
     .designs-list, .products-list {
@@ -231,7 +231,12 @@
     .overlay-top,
     .overlay-bottom
     {
-        height: 11px;
+        height: 13px;
+    }
+}
+@media screen and (max-width: 414px){
+    .component {
+        height: 369px;
     }
 }
 @media screen and (max-width: 375px){
@@ -245,6 +250,16 @@
     }
     .overlay {
         height: 315px;
+    }
+    .overlay-top,
+    .overlay-bottom
+    {
+        height: 11px;
+    }
+}
+@media screen and (max-width: 360px){
+    .component {
+        height: 323px;
     }
 }
 @media screen and (max-width: 320px){

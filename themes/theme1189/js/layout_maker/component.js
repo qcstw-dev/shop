@@ -17,8 +17,8 @@ var resizeableImage = function (image_target, customizable) {
 //            constrain = false,
     min_width = 20, // Change as required
     min_height = 20,
-    max_width = 800, // Change as required
-    max_height = 900,
+    max_width = 2000, // Change as required
+    max_height = 1000,
     resize_canvas = document.createElement('canvas');
     rotate_value = 0;
     
@@ -27,7 +27,7 @@ var resizeableImage = function (image_target, customizable) {
         var initialized = false;
 
         $('.resize-image').show();
-        $('.rotate').show();
+        $('.btn-rotate').show();
         $('.resize-container').find('span').remove();
         $('.resize-container').removeClass('custom');
         $('.resize-container').removeAttr('style');
@@ -68,7 +68,7 @@ var resizeableImage = function (image_target, customizable) {
             $container.on('mousedown touchstart', '.resize-handle', startResize);
             $container.on('mousedown touchstart', 'img', startMoving);
         }
-
+        
         initialized = true;
     };
 

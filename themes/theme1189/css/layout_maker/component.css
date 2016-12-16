@@ -210,3 +210,16 @@
     z-index: 1;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 8px 0 rgba(0, 0, 0, 0.1);
 }
+.btn-rotate {
+    z-index: 101;
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    right: 60px;
+}
+.btn-rotate .glyphicon{
+    color: #fff;
+    padding: 10px;
+    border-radius: 30px;
+    background: #ea3f23;
+}

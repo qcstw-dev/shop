@@ -57,7 +57,6 @@
                 data-original-picture=""
                 style="display: none">{l s='Add to cart'}</button>
         <button class="btn btn-default preview-layout margin-top-10 col-xs-12" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
-        <button class="btn btn-default rotate margin-top-10 col-xs-12"><span class="glyphicon glyphicon-repeat"></span> Rotate 90°</button>
     </div>                
     <div class="change-color-product-block text-left col-xs-3 background-white position-absolute border padding-10" style="display: none">
         <div class="col-xs-12 col-sm-4 col-lg-12 padding-0 border text-center margin-bottom-10 background-dark-grey block-item-size" style="display: none">
@@ -87,6 +86,10 @@
     </div>
     <div class="clearfix"></div>
     <div id="component" class="component margin-bottom-10">
+        <div class="btn-rotate rotate">
+            <div class="glyphicon glyphicon-repeat font-size-30"></div>
+            <div class="bold margin-top-5">Rotate 90°</div>
+        </div>
         <div class="overlay-top"></div>
         <div class="overlay-bottom"></div>
         <div class="overlay-left"></div>
