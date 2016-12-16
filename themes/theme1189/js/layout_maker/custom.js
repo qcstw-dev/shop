@@ -104,8 +104,8 @@ $(function () {
             $('.resize-image').removeClass('custom-margin-left');
             $('.resize-image').attr('src', $(this).find('img').attr('src'));
 
-            var newWidth = 600;
-            var img = $(this).find('img')[0]; // Get my img elem
+            var newWidth = $('.overlay').width();
+            var img = $('.resize-image')[0]; // Get my img elem
             var pic_real_width, pic_real_height;
 
             $("<img/>") // Make in memory copy of image to avoid css issues
