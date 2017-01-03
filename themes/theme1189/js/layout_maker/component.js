@@ -9,19 +9,19 @@ var resizeableImage = function (image_target, customizable) {
 
     // Some variable and settings
     var $container,
-    orig_src = new Image(),
-    new_image_resized = new Image(),
-    image_target = $(image_target).get(0),
-    image_overlay = $('.overlay-img').get(0),
-    event_state = {},
+            orig_src = new Image(),
+            new_image_resized = new Image(),
+            image_target = $(image_target).get(0),
+            image_overlay = $('.overlay-img').get(0),
+            event_state = {},
 //            constrain = false,
-    min_width = 20, // Change as required
-    min_height = 20,
-    max_width = 2000, // Change as required
-    max_height = 1000,
-    resize_canvas = document.createElement('canvas');
+            min_width = 20, // Change as required
+            min_height = 20,
+            max_width = 2000, // Change as required
+            max_height = 1000,
+            resize_canvas = document.createElement('canvas');
     rotate_value = 0;
-    
+
     init = function () {
 
         var initialized = false;
@@ -35,10 +35,10 @@ var resizeableImage = function (image_target, customizable) {
         if ($('.resize-container').length) {
             $(image_target).unwrap('.resize-container');
         }
-        
+
         // When resizing, we will always use this copy of the original as the base
         orig_src.src = image_target.src;
-        
+
         resize_canvas.width = image_target.height;
         resize_canvas.height = image_target.width;
 
@@ -68,7 +68,7 @@ var resizeableImage = function (image_target, customizable) {
             $container.on('mousedown touchstart', '.resize-handle', startResize);
             $container.on('mousedown touchstart', 'img', startMoving);
         }
-        
+
         initialized = true;
     };
 
@@ -99,7 +99,7 @@ var resizeableImage = function (image_target, customizable) {
 
         resize_canvas.getContext('2d').clearRect(0, 0, width, height);
         var TO_RADIANS = Math.PI / 180;
-        
+
         context.translate(canvas_width / 2, canvas_height / 2);
         context.rotate(TO_RADIANS * rotate_value);
         if ($.inArray(rotate_value, [0, 180, 360]) !== -1) {
@@ -137,7 +137,7 @@ var resizeableImage = function (image_target, customizable) {
         var mouse = {}, width, height, left, top, offset = $container.offset();
         mouse.x = (e.clientX || e.pageX || e.originalEvent.touches[0].clientX) + $(window).scrollLeft();
         mouse.y = (e.clientY || e.pageY || e.originalEvent.touches[0].clientY) + $(window).scrollTop();
-        
+
         // Position image differently depending on the corner dragged and constraints
         if ($(event_state.evnt.target).hasClass('resize-handle-se')) {
             width = mouse.x - event_state.container_left;
@@ -155,7 +155,7 @@ var resizeableImage = function (image_target, customizable) {
             left = mouse.x;
 //            top = mouse.y;
 //            if (constrain || e.shiftKey) {
-            top = mouse.y - ((width / resize_canvas.width * resize_canvas.height) - height);
+            top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
 //            }
         } else if ($(event_state.evnt.target).hasClass('resize-handle-ne')) {
             width = mouse.x - event_state.container_left;
@@ -163,13 +163,13 @@ var resizeableImage = function (image_target, customizable) {
             left = event_state.container_left;
 //            top = mouse.y;
 //            if (constrain || e.shiftKey) {
-            top = mouse.y - ((width / resize_canvas.width * resize_canvas.height) - height);
+            top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
 //            }
         }
 
         // Optionally maintain aspect ratio
 //        if (constrain || e.shiftKey) {
-        height = width / resize_canvas.width * resize_canvas.height;
+        height = width / orig_src.width * orig_src.height;
 //        }
 
         if (width > min_width && height > min_height && width < max_width && height < max_height) {
@@ -193,13 +193,13 @@ var resizeableImage = function (image_target, customizable) {
             resize_canvas.getContext('2d').translate(width / 2, height / 2);
             resize_canvas.getContext('2d').rotate(TO_RADIANS * rotate_value);
         }
-        
+
         if ($.inArray(rotate_value, [90, 270]) !== -1) {
             resize_canvas.getContext('2d').drawImage(new_image_resized, -(height / 2), -(width / 2), height, width);
         } else if ($.inArray(rotate_value, [180, 360]) !== -1) {
-            resize_canvas.getContext('2d').drawImage(new_image_resized, -width/2, -height/2, width , height);
+            resize_canvas.getContext('2d').drawImage(new_image_resized, -width / 2, -height / 2, width, height);
         } else {
-            resize_canvas.getContext('2d').drawImage(new_image_resized, 0, 0, width , height);
+            resize_canvas.getContext('2d').drawImage(new_image_resized, 0, 0, width, height);
         }
         $(image_target).attr('src', resize_canvas.toDataURL("image/png"));
     };
