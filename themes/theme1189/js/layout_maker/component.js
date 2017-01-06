@@ -138,39 +138,53 @@ var resizeableImage = function (image_target, customizable) {
         mouse.x = (e.clientX || e.pageX || e.originalEvent.touches[0].clientX) + $(window).scrollLeft();
         mouse.y = (e.clientY || e.pageY || e.originalEvent.touches[0].clientY) + $(window).scrollTop();
 
-        // Position image differently depending on the corner dragged and constraints
-        if ($(event_state.evnt.target).hasClass('resize-handle-se')) {
-            width = mouse.x - event_state.container_left;
-            height = mouse.y - event_state.container_top;
-            left = event_state.container_left;
-            top = event_state.container_top;
-        } else if ($(event_state.evnt.target).hasClass('resize-handle-sw')) {
-            width = event_state.container_width - (mouse.x - event_state.container_left);
-            height = mouse.y - event_state.container_top;
-            left = mouse.x;
-            top = event_state.container_top;
-        } else if ($(event_state.evnt.target).hasClass('resize-handle-nw')) {
-            width = event_state.container_width - (mouse.x - event_state.container_left);
-            height = event_state.container_height - (mouse.y - event_state.container_top);
-            left = mouse.x;
-//            top = mouse.y;
-//            if (constrain || e.shiftKey) {
-            top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
-//            }
-        } else if ($(event_state.evnt.target).hasClass('resize-handle-ne')) {
-            width = mouse.x - event_state.container_left;
-            height = event_state.container_height - (mouse.y - event_state.container_top);
-            left = event_state.container_left;
-//            top = mouse.y;
-//            if (constrain || e.shiftKey) {
-            top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
-//            }
+        if ($.inArray(rotate_value, [90, 270]) !== -1) {
+            if ($(event_state.evnt.target).hasClass('resize-handle-se')) {
+                width = mouse.x - event_state.container_left;
+                height = mouse.y - event_state.container_top;
+                left = event_state.container_left;
+                top = event_state.container_top;
+            } else if ($(event_state.evnt.target).hasClass('resize-handle-sw')) {
+                width = event_state.container_width - (mouse.x - event_state.container_left);
+                height = mouse.y - event_state.container_top;
+                left = mouse.x;
+                top = event_state.container_top;
+            } else if ($(event_state.evnt.target).hasClass('resize-handle-nw')) {
+                width = event_state.container_width - (mouse.x - event_state.container_left);
+                height = event_state.container_height - (mouse.y - event_state.container_top);
+                left = mouse.x;
+                top = mouse.y - ((width / orig_src.height * orig_src.width) - height);
+            } else if ($(event_state.evnt.target).hasClass('resize-handle-ne')) {
+                width = mouse.x - event_state.container_left;
+                height = event_state.container_height - (mouse.y - event_state.container_top);
+                left = event_state.container_left;
+                top = mouse.y - ((width / orig_src.height * orig_src.width) - height);
+            }
+            height = width / orig_src.height * orig_src.width;
+        } else if (!rotate_value || $.inArray(rotate_value, [180, 360]) !== -1) {
+            if ($(event_state.evnt.target).hasClass('resize-handle-se')) {
+                width = mouse.x - event_state.container_left;
+                height = mouse.y - event_state.container_top;
+                left = event_state.container_left;
+                top = event_state.container_top;
+            } else if ($(event_state.evnt.target).hasClass('resize-handle-sw')) {
+                width = event_state.container_width - (mouse.x - event_state.container_left);
+                height = mouse.y - event_state.container_top;
+                left = mouse.x;
+                top = event_state.container_top;
+            } else if ($(event_state.evnt.target).hasClass('resize-handle-nw')) {
+                width = event_state.container_width - (mouse.x - event_state.container_left);
+                height = event_state.container_height - (mouse.y - event_state.container_top);
+                left = mouse.x;
+                top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
+            } else if ($(event_state.evnt.target).hasClass('resize-handle-ne')) {
+                width = mouse.x - event_state.container_left;
+                height = event_state.container_height - (mouse.y - event_state.container_top);
+                left = event_state.container_left;
+                top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
+            }
+            height = width / orig_src.width * orig_src.height;
         }
-
-        // Optionally maintain aspect ratio
-//        if (constrain || e.shiftKey) {
-        height = width / orig_src.width * orig_src.height;
-//        }
 
         if (width > min_width && height > min_height && width < max_width && height < max_height) {
             // To improve performance you might limit how often resizeImage() is 
