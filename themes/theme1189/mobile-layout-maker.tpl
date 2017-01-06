@@ -33,23 +33,25 @@
         <div class=" col-xs-6 margin-auto col-sm-3">
             <button class="btn btn-default rotate col-xs-12 margin-top-10 margin-bottom-10"><span class="glyphicon glyphicon-repeat"></span> {l s='Rotate 90°'}</button>
         </div>
-        <div class="col-xs-12 padding-0">
-            <div class="preview-color">
-                <div class="col-xs-12 padding-0 overflow-auto">
-                    <div class="col-xs-12 bold">Colors available:</div>
-                    <div class="col-xs-12 padding-0 block-colors">
-                        {foreach from=$images_product item=image_product name=images_product}
-                            <div class="col-xs-4 col-sm-2 col-lg-6 block-color-product">
-                                <div class="thumbnail thumbnail-hover">
-                                    <img class="change-color-product" src="{$link->getImageLink($product->link_rewrite, $image_product.id_image, 'layout')}" alt="preview product">
+        {if count($images_product) > 1}
+            <div class="col-xs-12 padding-0">
+                <div class="preview-color">
+                    <div class="col-xs-12 padding-0 overflow-auto">
+                        <div class="col-xs-12 bold">Colors available:</div>
+                        <div class="col-xs-12 padding-0 block-colors">
+                            {foreach from=$images_product item=image_product name=images_product}
+                                <div class="col-xs-4 col-sm-2 col-lg-6 block-color-product">
+                                    <div class="thumbnail thumbnail-hover">
+                                        <img class="change-color-product" src="{$link->getImageLink($product->link_rewrite, $image_product.id_image, 'layout')}" alt="preview product">
+                                    </div>
                                 </div>
-                            </div>
-                        {/foreach}
+                            {/foreach}
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
             </div>
-        </div>
+        {/if}
         <div class="col-xs-12">
             <div class="col-xs-6 col-sm-3">
                 <button class="btn btn-primary col-xs-12 add-to-cart ajax_add_to_cart_button" 
