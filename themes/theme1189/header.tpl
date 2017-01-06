@@ -57,6 +57,7 @@
 
             </script>
         {/literal}
+        <meta name="p:domain_verify" content="5022cb310cd51f7b5a1e7644c4624213"/>
     </head>
     {if (($hide_left_column || $hide_right_column) && ($hide_left_column !='true' || $hide_right_column !='true')) && !$content_only}
         {assign var="columns" value="2"}
