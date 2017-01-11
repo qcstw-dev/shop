@@ -54,8 +54,8 @@
     {* eu-legal *}
     {hook h="displayBeforeShoppingCartBlock"}
 
-    <div id="order-detail-content" class="table_block table-responsive">
-        <table id="cart_summary" class="table table-bordered {if $PS_STOCK_MANAGEMENT}stock-management-on{else}stock-management-off{/if}">
+    <div id="order-detail-content" class="table_block table-responsive margin-bottom-20">
+        <table id="cart_summary" class="table table-bordered {if $PS_STOCK_MANAGEMENT}stock-management-on{else}stock-management-off{/if} margin-bottom-0">
             <thead>
                 <tr>
                     <th class="cart_product first_item">{l s='Product'}</th>
@@ -454,6 +454,41 @@
 </tbody>
 {/if}
 </table>
+    <div class="col-xs-3">
+        <div class="margin-bottom-5">
+            <b>{l s='Shipping estimate'}</b>
+        </div>
+        <div>
+            <select class="form-control shipping_list_countries">
+                {foreach from=$countries item=country name=country}
+                    <option value="{$country.id_country}">{$country.name}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+    <div class="col-xs-2 bold font-size-18 margin-top-20 shopping_price"></div>
+    <script>
+        $('.shipping_list_countries').on('change', function () {
+            $.ajax({
+                type: 'POST',
+                url: baseDir,
+                data: 'controller=ajax&action=getshippingcostbycountry&ajax=true&id_country=' + $(this).val(),
+                dataType: 'json',
+                beforeSend: function () {
+                    $(function () {
+                        $.fancybox.showLoading();
+                    });
+                },
+                success: function (result) {
+                    $(function () {
+                        $.fancybox.hideLoading();
+                    });
+                    console.log(result);
+                    $('.shopping_price').text(result);
+                }
+            });
+        });
+    </script>
 </div> <!-- end order-detail-content -->
 
 {if $show_option_allow_separate_package}
@@ -567,7 +602,7 @@
         {/if}
     </div>
 {/if}
-
+    
 <div id="HOOK_SHOPPING_CART">{$HOOK_SHOPPING_CART}</div>
 
 <p class="cart_navigation clearfix">

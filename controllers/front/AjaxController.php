@@ -2,6 +2,12 @@
 
 class AjaxControllerCore extends FrontController {
 
+    public function displayAjaxGetShippingCostByCountry() {
+        $oCountry = new Country(Tools::getValue('id_country'));
+        $oCarrier = new Carrier(Carrier::getCarriers($this->context->language->id, true, false)[0]['id_carrier']);
+        echo json_encode(Tools::displayPrice($oCarrier->getDeliveryPriceByWeight($this->context->cart->getTotalWeight(), Country::getIdZone($oCountry->id)), $this->context->currency));
+    }
+
     public function displayAjaxProductList() {
         $iLastRange = Tools::getValue('last_range') ? Tools::getValue('last_range') : 0;
 

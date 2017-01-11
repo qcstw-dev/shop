@@ -136,6 +136,10 @@ class ParentOrderControllerCore extends FrontController
         }
 
         $this->context->smarty->assign('back', Tools::safeOutput(Tools::getValue('back')));
+        $aCountries = Country::getCountries($this->context->language->id);
+        $this->context->smarty->assign(array(
+            'countries' => $aCountries
+        ));
     }
 
     public function setMedia()
