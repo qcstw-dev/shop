@@ -5,7 +5,14 @@ class AjaxControllerCore extends FrontController {
     public function displayAjaxGetShippingCostByCountry() {
         $oCountry = new Country(Tools::getValue('id_country'));
         $oCarrier = new Carrier(Carrier::getCarriers($this->context->language->id, true, false)[0]['id_carrier']);
-        echo json_encode(Tools::displayPrice($oCarrier->getDeliveryPriceByWeight($this->context->cart->getTotalWeight(), Country::getIdZone($oCountry->id)), $this->context->currency));
+        $fShippingPrice = $oCarrier->getDeliveryPriceByWeight($this->context->cart->getTotalWeight(), Country::getIdZone($oCountry->id));
+        $fTotalCart = $this->context->cart->getOrderTotal($this->context->cart->id);
+        $fTotalCartWithShipping = $fShippingPrice + $fTotalCart;
+        $aTablePrices = [
+            'shipping' => Tools::displayPrice($fShippingPrice, $this->context->currency),
+            'total_cart' => Tools::displayPrice($fTotalCartWithShipping, $this->context->currency)
+        ];
+        echo json_encode($aTablePrices);
     }
 
     public function displayAjaxProductList() {

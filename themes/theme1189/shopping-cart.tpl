@@ -246,8 +246,41 @@
             {/if}
         {else}
             <tr class="cart_total_delivery">
-                <td colspan="{$col_span_subtotal}" class="text-right">{l s='Total shipping'}</td>
-                <td colspan="2" class="text-right">{l s='To be confirmed (Step 3 of check out )'}</td>
+                <td colspan="{$col_span_subtotal}" class="text-right">{l s='Shipping estimate'}</td>
+                <td colspan="2">
+                        <div class="padding-left-0 col-xs-9">
+                            <select class="form-control shipping_list_countries">
+                                <option value="0">{l s='Select your delivery country'}</option>
+                                {foreach from=$countries item=country name=country}
+                                    <option value="{$country.id_country}">{$country.name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    <div class="col-xs-3 pull-right color-black bold font-size-20 padding-right-0 text-right shopping_price"></div>
+                    <script>
+                        $('.shipping_list_countries').on('change', function () {
+                            $.ajax({
+                                type: 'POST',
+                                url: baseDir,
+                                data: 'controller=ajax&action=getshippingcostbycountry&ajax=true&id_country=' + $(this).val(),
+                                dataType: 'json',
+                                beforeSend: function () {
+                                    $(function () {
+                                        $.fancybox.showLoading();
+                                    });
+                                },
+                                success: function (result) {
+                                    $(function () {
+                                        $.fancybox.hideLoading();
+                                    });
+                                    console.log(result);
+                                    $('.shopping_price').text(result.shipping);
+                                    $('#total_price').text(result.total_cart);
+                                }
+                            });
+                        });
+                    </script>
+                </td>
             </tr>
         {/if}
         <tr class="cart_total_voucher{if $total_discounts == 0} unvisible{/if}">
@@ -454,41 +487,6 @@
 </tbody>
 {/if}
 </table>
-    <div class="col-xs-3">
-        <div class="margin-bottom-5">
-            <b>{l s='Shipping estimate'}</b>
-        </div>
-        <div>
-            <select class="form-control shipping_list_countries">
-                {foreach from=$countries item=country name=country}
-                    <option value="{$country.id_country}">{$country.name}</option>
-                {/foreach}
-            </select>
-        </div>
-    </div>
-    <div class="col-xs-2 bold font-size-18 margin-top-20 shopping_price"></div>
-    <script>
-        $('.shipping_list_countries').on('change', function () {
-            $.ajax({
-                type: 'POST',
-                url: baseDir,
-                data: 'controller=ajax&action=getshippingcostbycountry&ajax=true&id_country=' + $(this).val(),
-                dataType: 'json',
-                beforeSend: function () {
-                    $(function () {
-                        $.fancybox.showLoading();
-                    });
-                },
-                success: function (result) {
-                    $(function () {
-                        $.fancybox.hideLoading();
-                    });
-                    console.log(result);
-                    $('.shopping_price').text(result);
-                }
-            });
-        });
-    </script>
 </div> <!-- end order-detail-content -->
 
 {if $show_option_allow_separate_package}

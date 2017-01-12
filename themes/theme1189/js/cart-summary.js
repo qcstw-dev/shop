@@ -937,10 +937,14 @@ function updateCartSummary(json)
             $('#total_shipping').html(formatCurrency(json.total_shipping, currencyFormat, currencySign, currencyBlank));
     } else
     {
-        if (json.carrier.id != null)
+        if (json.carrier.id != null){
             $('#total_shipping').html(freeShippingTranslation);
-        else if (!hasDeliveryAddress)
-            $('.cart_total_delivery').hide();
+        } else if (!hasDeliveryAddress) {
+//            $('.cart_total_delivery').hide();
+            $('.shipping_list_countries').parent('.selector').children('span').text($('.shipping_list_countries option:first').text());
+            $('.shipping_list_countries option:first').attr('selected','selected');
+            $('.shopping_price').text('');
+        }
     }
 
     if (json.free_ship > 0 && !json.is_virtual_cart)
