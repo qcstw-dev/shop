@@ -65,6 +65,7 @@
   .sf-menu > li > a {
     font: 300 14px/normal Ubuntu, sans-serif;
     color: #fff;
+    font-weight: bold;
     display: block;
     padding: 17px 20px;
     background: #4267b2;

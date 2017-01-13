@@ -558,9 +558,7 @@ $(window).load(function () {
         $('.block-search').removeClass('icon-hover');
         $('.block-search').stop().animate({width: '45px', height: '45px'}, 350);
     });
-//    if (screen.width <= 768) {
-//        window.location.replace(baseUri+'mobile');
-//    }
+    $('.upload-design').on('click', function () {
+        $('.hidden-fileupload').trigger('click');
+    });
 });
-
-

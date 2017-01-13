@@ -2486,7 +2486,7 @@ tbody.collapse.in {
       padding: 10px 15px; }
       .nav > li > a:hover, .nav > li > a:focus {
         text-decoration: none;
-        background-color: #eeeeee; }
+        background-color: #777;}
     .nav > li.disabled > a {
       color: #777777; }
       .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
@@ -2506,23 +2506,27 @@ tbody.collapse.in {
     max-width: none; }
 
 .nav-tabs {
-  border-bottom: 1px solid #dddddd; }
+  border-bottom: 2px solid #ea3e22; }
   .nav-tabs > li {
     float: left;
-    margin-bottom: -1px; }
+    margin-bottom: -2px; }
     .nav-tabs > li > a {
+      font-weight: bold;
       margin-right: 2px;
-      line-height: 1.42857;
-      border: 1px solid transparent;
+      line-height: 2.42857;
+      font-size: 19px;
+      background: #777;
+      color: #fff;
       border-radius: 0 0 0 0; }
-      .nav-tabs > li > a:hover {
-        border-color: #eeeeee #eeeeee #dddddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-      color: #555555;
-      background-color: white;
-      border: 1px solid #dddddd;
+      color: #fff;
+      background-color: #ea3e22;
+      border: 2px solid #ea3e22;
       border-bottom-color: transparent;
       cursor: default; }
+    .nav-tabs>li>a:hover {
+        border-color: #777;
+    }
 
 .nav-pills > li {
   float: left; }
@@ -7443,21 +7447,22 @@ ul.step a:hover:after {
 .cursor-default {
     cursor: default;
 }
+.bordered {
+    border-right: 2px solid #ea3e22;
+    border-left: 2px solid #ea3e22;
+}
+.bordered-page {
+    border: 2px solid #ea3e22;
+    border-top: none;
+}
+.step-number {
+    border: 2px solid #fff;
+    padding: 0px 5px 0px 5px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
 .block-selection {
     /*border: 3px solid #9E9E9E;*/
-}
-.block-selection-top-title {
-    background: #9E9E9E;
-    border: 3px solid #777;
-}
-.block-selection-top-title h4{
-    color: #fff;
-}
-.block-selection-product {
-    border: 3px solid #4267b2;
-}
-.block-selection-design {
-    border: 3px solid #ea3f23;
 }
 .block-selection-design h5{
     color: #ea3f23;
@@ -7470,16 +7475,18 @@ ul.step a:hover:after {
     margin-bottom: 10px;
 }
 .block-selection .glyphicon-remove {
-    top: 2px;
+    top: 0px;
     right: 7px;
     background: #fff;
     padding: 2px;
     position: absolute;
+    border: 1px solid #ddd;
 }
 .block-selection .designs-list,
 .block-selection .products-list {
-    height: 150px;
+    height: 106px;
     overflow: auto;
+    padding: 5px;
 }
 
 .block-selection ul li {
@@ -7624,7 +7631,6 @@ ul.step a:hover:after {
 }
 .list-item {
     text-align: center;
-    height: 130px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7794,4 +7800,16 @@ ul.step a:hover:after {
     .comodo-logo {
         position: initial;
     }
+}
+/*************** DESIGN PAGE ***********/
+.block-choice {
+    padding: 30px;
+    border: 3px solid #E7E7E7;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

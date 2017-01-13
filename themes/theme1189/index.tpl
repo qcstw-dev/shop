@@ -11,7 +11,7 @@
         {include file="./product-list.tpl" products=$aProducts home_category='products'}
     {/if}
     {if $aDesigns}
-        <h4 class="row-title">{l s='Latest designs in library'}</h4>
+        <h4 class="row-title">{l s='Latest pictures in library'}</h4>
         {include file="./product-list.tpl" products=$aDesigns home_category='designs'}
     {/if}
     {if $aCreations}

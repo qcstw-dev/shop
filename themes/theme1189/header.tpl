@@ -120,18 +120,29 @@
                 <div id="columns" class="container">
                     {if $page_name == 'category'
                         || $page_name == 'product'
-                        || $page_name == 'index'
+                        || $page_name =='design'
                     }
                     {include file="./selection.tpl" selection=$selection}
                 {/if}
-                {if $page_name !='index' && $page_name !='layoutmaker' && $page_name !='pagenotfound'}
+                {if $page_name !='index' 
+                    && $page_name !='pagenotfound'
+                    && $page_name !='layoutmaker' 
+                    && $page_name !='design'
+                    && $page_name !='category'
+                }
                     {include file="$tpl_dir./breadcrumb.tpl"}
                 {/if}
                 <div id="slider_row" class="row">
                     <div id="top_column" class="center_column col-xs-12">{hook h="displayTopColumn"}</div>
                 </div>
                 <div class="row">
-                    <div class="large-left col-sm-{12 - $right_column_size}">
+                    <div class="large-left
+                        {if $page_name =='layoutmaker' 
+                            || $page_name =='design'
+                            || $page_name =='category'}
+                            bordered-page
+                        {/if}
+                    col-sm-{12 - $right_column_size}">
                         <div class="row">
                             <div id="center_column" class="center_column col-xs-12 col-sm-{12 - $left_column_size}">
                                 {/if}

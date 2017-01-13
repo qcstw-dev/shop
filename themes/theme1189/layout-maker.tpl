@@ -6,7 +6,7 @@
         <div class="col-md-6 padding-0">
             <div class="col-xs-12 block-selection-product">
                 <div class="col-md-12">
-                    <h5 class="text-center font-size-15 color-blue">Click on the product you want to personalize</h5>
+                    <h5 class="text-center font-size-15 color-blue">{l s='Click on the product you want to personalize'}</h5>
                 </div>
                 <div class="col-md-12 padding-0">
                     <div class="products-list">
@@ -22,14 +22,18 @@
         <div class="col-md-6 padding-0">
             <div class="col-xs-12 block-selection-design">
                 <div class="col-md-12">
-                    <h5 class="text-center font-size-15 color-red">Click on the design you want to use</h5>
+                    <h5 class="text-center font-size-15 color-red">{l s='Click on the design you want to use'}</h5>
                 </div>
                 <div class="col-md-12 padding-0">
                     <div class="designs-list">
-                        <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item cursor-pointer list-item-custom" data-id="custom" data-type="design">
-                            <div class="padding-0 border list-item-custom-text img-product">Upload your own design</div>
-                            <div class="cursor"></div>
-                        </div>
+                        {*<div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item cursor-pointer list-item-custom" data-id="custom" data-type="design">
+                            <div class="padding-0 border list-item-custom-text img-product">
+                                <div class="font-size-30">
+                                    <span class="glyphicon glyphicon-upload"></span>
+                                </div>
+                                {l s='Upload your own pictures'}
+                            </div>
+                        </div>*}
                         {foreach from=$aSelectedDesigns item=design name=designs}
                             <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design cursor-pointer list-item-{$design->id}" data-id="{$design->id}" data-type="design" title="{$design->name}">
                                 <img class="img-product border" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" alt="{$design->name}" />
@@ -108,9 +112,6 @@
         <p>
             <a class="btn btn-default border-blue" href="45-products"><span class="glyphicon glyphicon-search"></span> Go to product selection</a>
         </p>
-        {*<p>
-            <a class="btn btn-default border-red" href="46-designs" title="See the Designs"><span class="glyphicon glyphicon-search"></span> Go to design selection</a>
-        </p>*}
     </div>
 {/if}
     <script>
