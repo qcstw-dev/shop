@@ -2513,7 +2513,7 @@ tbody.collapse.in {
     .nav-tabs > li > a {
       font-weight: bold;
       margin-right: 2px;
-      line-height: 2.42857;
+      line-height: 1.5;
       font-size: 19px;
       background: #777;
       color: #fff;
@@ -7484,11 +7484,10 @@ ul.step a:hover:after {
 }
 .block-selection .designs-list,
 .block-selection .products-list {
-    height: 106px;
+    height: 127px;
     overflow: auto;
     padding: 5px;
 }
-
 .block-selection ul li {
     display: inline-block;
     margin-bottom: 10px;
@@ -7788,6 +7787,20 @@ ul.step a:hover:after {
 }
 .ac_results {
     min-width: 200px;
+}
+.coming-soon {
+    font-size: 50px;
+    text-align: center;
+    padding: 40px;
+    margin-top: 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #4267b2;
+}
+.coming-soon .glyphicon{
+    color: #ea3e22;
 }
 /*************** COMODO **************/
 .comodo-logo {

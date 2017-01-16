@@ -3,8 +3,8 @@
 {if isset($category)}
     {if $category->id AND $category->active}
         {if $scenes || $category->description || $category->id_image}
-            <div class="content_scene_cat">
-                {if $scenes}
+            {if $scenes}
+                <div class="content_scene_cat">
                     <div class="content_scene">
                         <!-- Scenes -->
                         {include file="$tpl_dir./scenes.tpl" scenes=$scenes}
@@ -20,36 +20,36 @@
                             </div>
                         {/if}
                     </div>
-                {else}
-                    <!-- Category image -->
+                </div>
+            {else}
+                <!-- Category image -->
                     <!--<div class="content_scene_cat_bg row">
-                        {if $category->id_image}
-                            <div class="category-image hidden-xs col-xs-12 col-sm-5 col-md-4 col-lg-3">
-                                <img class="img-responsive" src="{$link->getCatImageLink($category->link_rewrite, $category->id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{$category->name|escape:'html':'UTF-8'}" />
-                            </div>
+                    {if $category->id_image}
+                        <div class="category-image hidden-xs col-xs-12 col-sm-5 col-md-4 col-lg-3">
+                            <img class="img-responsive" src="{$link->getCatImageLink($category->link_rewrite, $category->id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{$category->name|escape:'html':'UTF-8'}" />
+                        </div>
+                    {/if}
+                    {if $category->description}
+                        <div class="cat_desc  col-xs-12 col-sm-7 col-md-8 col-lg-9">
+                            <span class="category-name">
+                        {strip}
+                            {$category->name|escape:'html':'UTF-8'}
+                            {if isset($categoryNameComplement)}
+                                {$categoryNameComplement|escape:'html':'UTF-8'}
+                            {/if}
+                        {/strip}
+                    </span>
+                        {if Tools::strlen($category->description) > 350}
+                            <div id="category_description_short" class="rte">{$description_short}</div>
+                            <div id="category_description_full" class="unvisible rte">{$category->description}</div>
+                            <a href="{$link->getCategoryLink($category->id_category, $category->link_rewrite)|escape:'html':'UTF-8'}" class="lnk_more" title="{l s='More'}">{l s='More'}</a>
+                        {else}
+                            <div class="rte">{$category->description}</div>
                         {/if}
-                        {if $category->description}
-                            <div class="cat_desc  col-xs-12 col-sm-7 col-md-8 col-lg-9">
-                                <span class="category-name">
-                                    {strip}
-                                        {$category->name|escape:'html':'UTF-8'}
-                                        {if isset($categoryNameComplement)}
-                                            {$categoryNameComplement|escape:'html':'UTF-8'}
-                                        {/if}
-                                    {/strip}
-                                </span>
-                                {if Tools::strlen($category->description) > 350}
-                                    <div id="category_description_short" class="rte">{$description_short}</div>
-                                    <div id="category_description_full" class="unvisible rte">{$category->description}</div>
-                                    <a href="{$link->getCategoryLink($category->id_category, $category->link_rewrite)|escape:'html':'UTF-8'}" class="lnk_more" title="{l s='More'}">{l s='More'}</a>
-                                {else}
-                                    <div class="rte">{$category->description}</div>
-                                {/if}
-                            </div>
-                        {/if}
-                    </div>-->
-                {/if}
-            </div>
+                    </div>
+                    {/if}
+                </div>-->
+            {/if}
         {/if}
         <h1 class="page-heading{if (isset($subcategories) && !$products) || (isset($subcategories) && $products) || !isset($subcategories) && $products} product-listing{/if}">
             <span class="cat-name">{$category->name|escape:'html':'UTF-8'}{if isset($categoryNameComplement)}&nbsp;{$categoryNameComplement|escape:'html':'UTF-8'}{/if}</span>
@@ -64,11 +64,6 @@
                 <div id="subcategories">
                     <p class="subcategory-heading">{l s='Subcategories'}</p>
                     <ul class="clearfix">
-                        <li>
-                            <div class="subcategory-image list-item-custom cursor-pointer" >
-                                <div class="padding-0 border list-item-custom-text img-product">Upload your own Design</div>
-                            </div>
-                        </li>
                         {foreach from=$subcategories item=subcategory}
                             <li>
                                 <div class="subcategory-image">

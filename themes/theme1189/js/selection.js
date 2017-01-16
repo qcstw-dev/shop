@@ -113,7 +113,7 @@ function addRemoveToSelection(element) {
                             </div>');
                         $('.list-item-' + element.data('id')).find('img').attr('src', element.data('img'));
                     } else {
-                        $('.designs-list .list-item-custom').after('\
+                        $('.designs-list').prepend('\
                             <div class="list-item list-item-design list-item-' + element.data('id') + ' col-xs-1 thumbnail margin-bottom-10 margin-top-10 border-none">\n\
                                 <a class="quick-view-bis" title="' + element.data('product-title') + '" href="'+ baseUri +'product-popup?id_product='+ element.data('id') + '" title="' + element.data('product-title') + '">\n\
                                     <img class="border" scr="" title="' + element.data('product-title') + '" title="' + element.data('product-title') + '"/>\n\
@@ -144,4 +144,17 @@ $(function () {
     $('.selection').live('click', function () {
         addRemoveToSelection($(this));
     });
+    if (document.getElementsByClassName("dash").length) {
+        var drop = document.getElementsByClassName("dash")[0];
+        drop.addEventListener("dragover", dashing_component, false);
+        drop.addEventListener("dragleave", undashing_component, false);
+        drop.addEventListener("drop", undashing_component, false);
+    }
+
+    function dashing_component() {
+        drop.style.border = '3px dashed #ddd';
+    }
+    function undashing_component() {
+        drop.style.border = '3px solid #ddd';
+    }
 });

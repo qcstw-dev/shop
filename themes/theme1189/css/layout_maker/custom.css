@@ -33,7 +33,7 @@
     }
     .change-color-product-block {
         position: absolute;
-        top: 400px;
+        top: 150px;
         left: 45px;
     }
 
@@ -111,7 +111,7 @@
 @media screen and (min-width: 769px){
     .btn-cart {
         position: absolute;
-        top: 300px;
+        top: 60px;
         left: 45px;
         z-index: 101;
     }

@@ -44,6 +44,10 @@ class IndexControllerCore extends FrontController
         $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 10, 'date_add', 'DESC');
         
         $aCreations = Order::getLastCreations(10);
+        $aCreationsUrl = []; 
+        foreach ($aCreations as $aCreation) {
+            $aCreationsUrl[] = 'img/layout_maker/custom_pictures/'.$aCreation['custom_picture'].'.png';
+        }
         
         $this->context->smarty->assign(array('HOOK_HOME' => Hook::exec('displayHome'),
             'HOOK_HOME_TAB'         => Hook::exec('displayHomeTab'),
@@ -51,6 +55,7 @@ class IndexControllerCore extends FrontController
             'aProducts'             => $aProducts,
             'aDesigns'              => $aDesigns,
             'aCreations'            => $aCreations,
+            'aCreationsUrl'         => $aCreationsUrl,
             'link'                  => $this->context->link
         ));
         $this->setTemplate(_PS_THEME_DIR_.'index.tpl');

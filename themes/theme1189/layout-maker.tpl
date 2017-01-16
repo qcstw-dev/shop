@@ -1,55 +1,4 @@
 {if $aSelectedProducts}
-    <div class="col-md-12 block-selection-top-title margin-top-10">
-        <h4 class="title-block-selection margin-top-20 margin-bottom-10 padding-bottom-10">{l s='Your selection'}</h4>
-    </div>
-    <div class="block-selection col-xs-12 margin-bottom-10 padding-0">
-        <div class="col-md-6 padding-0">
-            <div class="col-xs-12 block-selection-product">
-                <div class="col-md-12">
-                    <h5 class="text-center font-size-15 color-blue">{l s='Click on the product you want to personalize'}</h5>
-                </div>
-                <div class="col-md-12 padding-0">
-                    <div class="products-list">
-                        {foreach from=$aSelectedProducts item=product name=products}
-                            <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-product cursor-pointer list-item-{$product->id}" data-id="{$product->id}" data-type="product" title="{$product->name}">
-                                <img class="img-product border" src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$product->name}" alt="{$product->name}" />
-                            </div>
-                        {/foreach}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 padding-0">
-            <div class="col-xs-12 block-selection-design">
-                <div class="col-md-12">
-                    <h5 class="text-center font-size-15 color-red">{l s='Click on the design you want to use'}</h5>
-                </div>
-                <div class="col-md-12 padding-0">
-                    <div class="designs-list">
-                        {*<div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item cursor-pointer list-item-custom" data-id="custom" data-type="design">
-                            <div class="padding-0 border list-item-custom-text img-product">
-                                <div class="font-size-30">
-                                    <span class="glyphicon glyphicon-upload"></span>
-                                </div>
-                                {l s='Upload your own pictures'}
-                            </div>
-                        </div>*}
-                        {foreach from=$aSelectedDesigns item=design name=designs}
-                            <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design cursor-pointer list-item-{$design->id}" data-id="{$design->id}" data-type="design" title="{$design->name}">
-                                <img class="img-product border" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" alt="{$design->name}" />
-                            </div>
-                        {/foreach}
-                        {foreach from=$aCustomDesigns item=custom_design name=custom_designs}
-                            <div class="col-xs-4 col-sm-3 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design list-item-custom-image id_{$custom_design} cursor-pointer" data-original-picture="{$custom_design}" data-type="design">
-                                <img class="img-product border" src="{$base_uri}{$temp_custom_picture_path}{$custom_design}.png" title="custom" alt="custom" />
-                                <span class="delete_cutom_picture cursor-pointer glyphicon glyphicon-remove" data-file-name="{$custom_design}" title="{l s='Remove from selection'}"></span>
-                            </div>
-                        {/foreach}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="btn-cart col-lg-3">
         <button id="add-to-cart" class="btn btn-primary add-to-cart ajax_add_to_cart_button col-xs-12" 
                 rel="nofollow" title="{l s='Add to cart'}"
@@ -103,7 +52,7 @@
                 <img class="overlay-img" src="">
             </div>
         </div>
-        <img id="image" class="resize-image custom-margin-left" src="{$img_dir}layout_maker/drag-and-drop.png" />
+        <img id="image" class="resize-image custom-margin-left dash" src="{$img_dir}layout_maker/drag-and-drop.png" />
         <img class="hidden-original-picture hidden" scr="{$img_dir}layout_maker/drag-and-drop.png" />
     </div>
 {else}
@@ -118,11 +67,17 @@
         $(function() {
             {if $preselected_product}
                 $('.list-item-{$preselected_product}').trigger('click');
-            {/if}
-            {if strpos($preselected_design, '_') == false}
-                $('.list-item-{$preselected_design}').trigger('click');
             {else}
-                $('.id_{$preselected_design}').trigger('click');
+                $('.list-item-product').first().trigger('click');
+            {/if}
+            {if $preselected_design}
+                {if strpos($preselected_design, '_') == false}
+                    $('.list-item-{$preselected_design}').trigger('click');
+                {else}
+                    $('.id_{$preselected_design}').trigger('click');
+                {/if}
+            {else}
+                $('.list-item-design').first().trigger('click');
             {/if}
         });
     </script>

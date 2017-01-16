@@ -5,17 +5,17 @@ $(function () {
         $('.overlay-img').show();
     });
 
-    var drop = document.getElementById("component");
-    drop.addEventListener("dragover", dashing_component, false);
-    drop.addEventListener("dragleave", undashing_component, false);
-    drop.addEventListener("drop", undashing_component, false);
-
-    function dashing_component() {
-        drop.style.border = '3px dashed #ddd';
-    }
-    function undashing_component() {
-        drop.style.border = '3px solid #ddd';
-    }
+//    var drop = document.getElementById("component");
+//    drop.addEventListener("dragover", dashing_component, false);
+//    drop.addEventListener("dragleave", undashing_component, false);
+//    drop.addEventListener("drop", undashing_component, false);
+//
+//    function dashing_component() {
+//        drop.style.border = '3px dashed #ddd';
+//    }
+//    function undashing_component() {
+//        drop.style.border = '3px solid #ddd';
+//    }
 
     $('.list-item').live('click', function () {
         $('.list-item-'+$(this).data('type')).removeClass('selected');

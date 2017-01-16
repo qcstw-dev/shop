@@ -121,6 +121,7 @@
                     {if $page_name == 'category'
                         || $page_name == 'product'
                         || $page_name =='design'
+                        || $page_name =='layoutmaker'
                     }
                     {include file="./selection.tpl" selection=$selection}
                 {/if}
@@ -129,6 +130,7 @@
                     && $page_name !='layoutmaker' 
                     && $page_name !='design'
                     && $page_name !='category'
+                    && $page_name !='shop'
                 }
                     {include file="$tpl_dir./breadcrumb.tpl"}
                 {/if}
