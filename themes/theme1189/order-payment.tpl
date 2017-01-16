@@ -305,10 +305,25 @@
 </div> <!-- end order-detail-content -->
 {/if}
 {if $opc}<div id="opc_payment_methods-content">{/if}
-    <div id="HOOK_PAYMENT">
-        {$HOOK_PAYMENT}
+    <div class="col-xs-6">
+        <div class="panel panel-default">
+            <div class="twocheckout_title font-size-20 panel-heading">
+                <div><span class="glyphicon glyphicon-lock"></span> {l s='Payment'}</div>
+            </div>
+            <div id="HOOK_PAYMENT" class="panel-body">
+                {$HOOK_PAYMENT}
+            </div>
+        </div>
     </div>
+    <div class="clearfix"></div>
     {if $opc}</div> <!-- end opc_payment_methods-content -->{/if}
+    <script>
+        $('.radio-payment').on('change', function () {
+            $('.hidden-payment').addClass('hidden');
+            console.log('hidden-'+$(this).attr('id'));
+            $('.hidden-'+$(this).attr('id')).removeClass('hidden');
+        });
+    </script>
 {else}
 <p class="alert alert-warning">{l s='No payment modules have been installed.'}</p>
 {/if}

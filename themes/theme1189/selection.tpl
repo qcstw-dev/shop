@@ -41,7 +41,7 @@
                 <div class="panel-body designs-list">
                     {if $aSelectedDesigns}
                         {foreach from=$aSelectedDesigns item=design name=designs}
-                            <div class="list-item list-item-design list-item-{$design->id} col-xs-1 thumbnail margin-bottom-10 margin-top-10 border-none" data-id="{$design->id}">
+                            <div class="list-item list-item-design list-item-{$design->id} col-xs-1 thumbnail margin-bottom-0 border-none" data-id="{$design->id}">
                                 <a class="quick-view-bis" href="{$base_uri}product-popup?id_product={$design->id}">
                                     <img class="border" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" />
                                 </a>
@@ -52,7 +52,7 @@
                     {/if}
                     {if $aCustomDesigns}
                         {foreach from=$aCustomDesigns item=custom_design name=custom_designs}
-                            <div class="col-xs-1 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design list-item-custom-image cursor-pointer " data-type="design">
+                            <div class="col-xs-1 thumbnail border-none margin-bottom-0 list-item list-item-design list-item-custom-image cursor-pointer " data-type="design">
                                 <img class="popup border" src="{$base_uri}{$temp_custom_picture_path}{$custom_design}.png" title="custom" alt="custom" />
                                 <span class="delete_cutom_picture cursor-pointer glyphicon glyphicon-remove" data-file-name="{$custom_design}" title="{l s='Remove from selection'}"></span>
                             </div>
@@ -82,7 +82,7 @@
                                 <div class="products-list">
                                     {foreach from=$aSelectedProducts item=product name=products}
                                         <div class="col-xs-2 thumbnail border-none margin-bottom-0 margin-top-10 list-item list-item-product cursor-pointer list-item-{$product->id}" data-id="{$product->id}" data-type="product" title="{$product->name}">
-                                            <img class="img-product border" src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$product->name}" alt="{$product->name}" />
+                                            <img class="img-product" src="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$product->name}" alt="{$product->name}" />
                                         </div>
                                     {/foreach}
                                 </div>
@@ -98,7 +98,7 @@
                                 <div class="designs-list">
                                     {foreach from=$aSelectedDesigns item=design name=designs}
                                         <div class="col-xs-2 thumbnail border-none margin-bottom-0 margin-top-10 list-item list-item-design cursor-pointer list-item-{$design->id}" data-id="{$design->id}" data-type="design" title="{$design->name}">
-                                            <img class="img-product border" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" alt="{$design->name}" />
+                                            <img class="img-product" src="{$link->getImageLink($design->link_rewrite, $design->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" title="{$design->name}" alt="{$design->name}" />
                                         </div>
                                     {/foreach}
                                     {foreach from=$aCustomDesigns item=custom_design name=custom_designs}
