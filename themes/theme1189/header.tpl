@@ -119,7 +119,6 @@
             <div class="columns-container">
                 <div id="columns" class="container">
                     {if $page_name == 'category'
-                        || $page_name == 'product'
                         || $page_name =='design'
                         || $page_name =='layoutmaker'
                     }

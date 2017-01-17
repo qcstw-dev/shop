@@ -59,7 +59,7 @@
                                 </div>
                             {/if}
                             {if isset($quick_view) && $quick_view}
-                                <a class="quick-view-bis product_img_link" href="{$base_uri}product-popup?id_product={$product.id_product}" rel="{$product.link|escape:'html':'UTF-8'}">
+                                <a class="quick-view-bis product_img_link" rel="nofollow" href="{$base_uri}product-popup?id_product={$product.id_product}">
                             {/if}
                             <img class="replace-2x img-responsive" data-src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" alt="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" title="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" itemprop="image" />
                             <img class="hidden" src="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_large_default')|escape:'html':'UTF-8'}" alt="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" title="{if !empty($product.legend)}{$product.legend|escape:'html':'UTF-8'}{else}{$product.name|escape:'html':'UTF-8'}{/if}" itemprop="image" />

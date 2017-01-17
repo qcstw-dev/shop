@@ -12,3 +12,11 @@
         </a>
     </div>
 </div>
+{literal}
+    <script>
+        $('.radio-payment').on('change', function () {
+            $('.hidden-payment').addClass('hidden');
+            $('.hidden-'+$(this).attr('id')).removeClass('hidden');
+        });
+    </script>
+{/literal}

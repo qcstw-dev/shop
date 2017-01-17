@@ -37,6 +37,7 @@
     {/literal}
     <meta property="og:image" content="{$logo_url}" />
     <title>{$meta_title}</title>
+    {$HOOK_HEADER_MOBILE}
 </head>
 <body>
     <div id="mobile" class="container">

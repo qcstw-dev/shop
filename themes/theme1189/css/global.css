@@ -7788,16 +7788,23 @@ ul.step a:hover:after {
 .ac_results {
     min-width: 200px;
 }
+.alert-info {
+    color: #4267b2;
+}
 .coming-soon {
-    font-size: 50px;
-    text-align: center;
-    padding: 40px;
-    margin-top: 20px;
-    min-height: 400px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: #4267b2;
+    margin-top: 20px;
+}
+.coming-soon-title {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+.coming-soon-message {
+    font-weight: bold;
 }
 .coming-soon .glyphicon{
     color: #ea3e22;

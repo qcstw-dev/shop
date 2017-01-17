@@ -32,7 +32,7 @@ class MobileControllerCore extends FrontController {
             'cart_products' => $cart_products,
             'total_cart' => Tools::displayPrice($totalToPay),
         ));
-        
+
         $moduleSocialNetwork = Module::hookExec('displaySocialNetwork');
 //        $moduleSocialNetwork = str_replace('https://www.facebook.com/', 'fb://page/', $moduleSocialNetwork);
 //        $moduleSocialNetwork = str_replace('https://twitter.com/', 'twitter://user?screen_name=', $moduleSocialNetwork);

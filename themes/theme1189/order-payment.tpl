@@ -317,15 +317,8 @@
     </div>
     <div class="clearfix"></div>
     {if $opc}</div> <!-- end opc_payment_methods-content -->{/if}
-    <script>
-        $('.radio-payment').on('change', function () {
-            $('.hidden-payment').addClass('hidden');
-            console.log('hidden-'+$(this).attr('id'));
-            $('.hidden-'+$(this).attr('id')).removeClass('hidden');
-        });
-    </script>
 {else}
-<p class="alert alert-warning">{l s='No payment modules have been installed.'}</p>
+    <p class="alert alert-warning">{l s='No payment modules have been installed.'}</p>
 {/if}
 {if !$opc}
     <p class="cart_navigation clearfix">

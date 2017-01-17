@@ -139,6 +139,7 @@ class MobileCheckoutControllerCore extends MobileController {
                     $this->_assignSummaryInformations();
 
                     $this->context->smarty->assign('HOOK_PAYMENT', Module::hookExec('displayPayment'));
+                    $this->context->smarty->assign('HOOK_HEADER_MOBILE', Module::hookExec('displayHeader'));
 
                     $this->context->smarty->assign('mobile_payment', _PS_THEME_DIR_ . 'mobile-payment.tpl');
                     break;
@@ -256,12 +257,11 @@ class MobileCheckoutControllerCore extends MobileController {
             'displayVouchers' => $available_cart_rules,
             'show_option_allow_separate_package' => $show_option_allow_separate_package,
             'smallSize' => Image::getSize(ImageType::getFormatedName('small')),
-            'advanced_payment_api' => $advanced_payment_api
-        ));
-
-        $this->context->smarty->assign(array(
+            'advanced_payment_api' => $advanced_payment_api,
             'HOOK_SHOPPING_CART' => Hook::exec('displayShoppingCartFooter', $summary),
-            'HOOK_SHOPPING_CART_EXTRA' => Hook::exec('displayShoppingCart', $summary)
+            'HOOK_SHOPPING_CART_EXTRA' => Hook::exec('displayShoppingCart', $summary),
+            'HOOK_TOP_PAYMENT' => Hook::exec('displayPaymentTop'),
+            'HOOK_PAYMENT' => Hook::exec('displayPayment')
         ));
     }
 

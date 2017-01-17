@@ -1,4 +1,5 @@
 <div class="col-xs-12">
+    <div id="HOOK_TOP_PAYMENT">{$HOOK_TOP_PAYMENT}</div>
 {*        {$summary|@var_dump}*}
     {foreach $summary.products as $key => $product}
         <div class="row padding">
@@ -42,5 +43,5 @@
         </div>
     </div>
     <hr>
-    {$HOOK_PAYMENT}
+    <div id="HOOK_PAYMENT">{$HOOK_PAYMENT}</div>
 </div>

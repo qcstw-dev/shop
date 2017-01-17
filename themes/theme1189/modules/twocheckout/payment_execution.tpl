@@ -2,7 +2,7 @@
 <script type="text/javascript"src="https://www.2checkout.com/checkout/api/2co.min.js"/></script>
 <div class="payment_module">
     <div class="font-size-20 bold">
-        <div class="pull-right"><img src="{$module_dir}assets/credit-cards.png" /></div>
+        <div class="pull-right thumbnail margin-0 padding-0 border-none"><img src="{$module_dir}assets/credit-cards.png" /></div>
         <input type="radio" id="payment-cc" name="radio-payment" class="radio-payment"/> <label for="payment-cc" class="cursor-pointer">{l s='Credit card'}</label>
     </div>
     <div class="hidden hidden-payment hidden-payment-cc">

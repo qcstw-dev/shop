@@ -47,6 +47,8 @@ class Twocheckout extends PaymentModule
                     $authorized_currencies[] = $currency['id_currency'];
             Configuration::updateValue('TWOCHECKOUT_CURRENCIES', implode(',', $authorized_currencies));
         }
+        $this->smarty->assign('twocheckout_sid', Configuration::get('TWOCHECKOUT_SID'));
+        $this->smarty->assign('twocheckout_public_key', Configuration::get('TWOCHECKOUT_PUBLIC'));
     }
 
 
@@ -84,7 +86,7 @@ class Twocheckout extends PaymentModule
 
     public function hookHeader()
     {
-        if (Tools::getValue('controller') != 'order-opc' && (!($_SERVER['PHP_SELF'] == __PS_BASE_URI__.'order.php' || $_SERVER['PHP_SELF'] == __PS_BASE_URI__.'order-opc.php' || Tools::getValue('controller') == 'order' || Tools::getValue('controller') == 'orderopc' || Tools::getValue('step') == 3)))
+        if (Tools::getValue('controller') != 'order-opc' && (!($_SERVER['PHP_SELF'] == __PS_BASE_URI__.'order.php' || $_SERVER['PHP_SELF'] == __PS_BASE_URI__.'order-opc.php' || Tools::getValue('controller') == 'order' || Tools::getValue('controller') == 'orderopc' || Tools::getValue('step') == 3 || Tools::getValue('step') == 5)))
             return;
 
         if (Configuration::get('TWOCHECKOUT_SANDBOX')) {
@@ -93,7 +95,7 @@ class Twocheckout extends PaymentModule
             $output = '
             <script type="text/javascript" src="https://www.2checkout.com/checkout/api/script/publickey/'.Configuration::get('TWOCHECKOUT_SID').'"></script>';
         }
-
+        
         $this->smarty->assign('twocheckout_sid', Configuration::get('TWOCHECKOUT_SID'));
         $this->smarty->assign('twocheckout_public_key', Configuration::get('TWOCHECKOUT_PUBLIC'));
 

@@ -262,7 +262,7 @@
                             <tr class="item">
                                 <td>
                                     <div class="thumbnail border-none">
-                                        <img src="{$base_uri}{$custom_picture_path}{$product.custom_picture}" alt="{$product.product_name|escape:'html':'UTF-8'}" />
+                                        <img src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.product_name|escape:'html':'UTF-8'}" />
                                     </div>
                                 </td>
                                 {if $return_allowed}<td class="order_cb"><input type="checkbox" id="cb_{$product.id_order_detail|intval}" name="ids_order_detail[{$product.id_order_detail|intval}]" value="{$product.id_order_detail|intval}" /></td>{/if}
