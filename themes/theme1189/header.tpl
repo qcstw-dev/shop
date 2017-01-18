@@ -70,6 +70,25 @@
     {/if}
     <body{if isset($page_name)} id="{$page_name|escape:'html':'UTF-8'}"{/if} class="{if isset($page_name)}{$page_name|escape:'html':'UTF-8'}{/if}{if isset($body_classes) && $body_classes|@count} {implode value=$body_classes separator=' '}{/if}{if $hide_left_column} hide-left-column{/if}{if $hide_right_column} hide-right-column{/if}{if isset($content_only) && $content_only} content_only{/if} lang_{$lang_iso} {if !$content_only}{if $columns == 2} two-columns{elseif $columns == 3} three-columns{else} one-column{/if}{/if}"
                                 {if $smarty.server.HTTP_HOST != 'localhost'} oncontextmenu="return false" {/if}>
+        <!-- Google Code for Adwords added tag - Gift attitude Conversion Page --> 
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var google_conversion_id = 1062791147;
+            var google_conversion_language = "en";
+            var google_conversion_format = "3";
+            var google_conversion_color = "ffffff";
+            var google_conversion_label = "DbqgCLzXum0Q68_j-gM"; var google_conversion_value = 10.00; var google_conversion_currency = "USD"; var google_remarketing_only = false;
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+        </script>
+        <noscript>
+            <div style="display:inline;">
+                <img height="1" width="1" style="border-style:none;" alt=""  
+                src="//www.googleadservices.com/pagead/conversion/1062791147/?value=10.00&amp;currency_code=USD&amp;label=DbqgCLzXum0Q68_j-gM&amp;guid=ON&amp;script=0"/>
+            </div>
+        </noscript>
+
         {if !isset($content_only) || !$content_only}
             <!--[if IE 8]>
             <div style='clear:both;height:59px;padding:0 15px 0 15px;position:relative;z-index:10000;text-align:center;'><a href="//www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div>
