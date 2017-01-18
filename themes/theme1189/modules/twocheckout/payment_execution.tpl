@@ -16,12 +16,12 @@
             <input id="sellerId" type="hidden" value="{$twocheckout_sid}">
             <input id="publishableKey" type="hidden" value="{$twocheckout_public_key}">
             <input id="token" name="token" type="hidden" value="">
-            <div class="block-left">
-                <label>{l s='Card Number' mod='twocheckout'}</label><br />
+            <div class="block-left margin-bottom-10">
+                <label class="margin-bottom-0 col-xs-12 padding-0">{l s='Card Number' mod='twocheckout'}</label>
                 <input class="numeric" type="text" size="20" autocomplete="off" id="ccNo" style="width: 210px; border: #CCCCCC solid 1px; padding: 3px;" required/>
             </div>
-            <div class="block-left">
-                <label>{l s='Expiration (MM/YYYY)' mod='twocheckout'}</label><br />
+            <div class="block-left margin-bottom-10">
+                <label class="margin-bottom-0 col-xs-12 padding-0">{l s='Expiration (MM/YYYY)' mod='twocheckout'}</label><br />
                 <select id="expMonth" name="month" style="border: #CCCCCC solid 1px; padding: 3px;" required>
                     <option value="01">{l s='January' mod='twocheckout'}</option>
                     <option value="02">{l s='February' mod='twocheckout'}</option>
@@ -56,11 +56,11 @@
                     <option value="2030">2030</option>
                 </select>
             </div>
-            <div class="block-left">
-                <label>{l s='CVC' mod='twocheckout'}</label><br />
+            <div class="block-left margin-bottom-10">
+                <label class="margin-bottom-0 col-xs-12 padding-0">{l s='CVC' mod='twocheckout'}</label><br />
                 <input class="numeric" id="cvv" type="text" size="4" autocomplete="off"  style="border: #CCCCCC solid 1px; padding: 3px;" required />
             </div>
-            <input type="submit" class="btn btn-primary margin-top-10" value="{l s='Submit Payment' mod='twocheckout'}" />
+            <input type="submit" class="btn btn-primary margin-top-10 col-xs-12" value="{l s='Submit Payment' mod='twocheckout'}" />
         </form>
     </div>
 </div>

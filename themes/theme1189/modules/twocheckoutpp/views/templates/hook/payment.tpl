@@ -7,7 +7,7 @@
         <div class="clearfix"></div>
     </div>
     <div class="hidden hidden-payment hidden-payment-pp">
-        <a class="btn btn-primary" href="{$link->getModuleLink('twocheckoutpp', 'payment', [], true)}" title="{l s='Pay with PayPal' mod='twocheckoutpp'}">
+        <a class="btn btn-primary col-xs-12" href="{$link->getModuleLink('twocheckoutpp', 'payment', [], true)}" title="{l s='Pay with PayPal' mod='twocheckoutpp'}">
             {l s='Pay with PayPal' mod='twocheckoutpp'}
         </a>
     </div>
