@@ -7,6 +7,9 @@
 .background-dark-grey {
     background: #e4e4e4;
 }
+.background-transparent {
+    background: transparent;
+}
 .background-grey-hover:hover {
     background: #eee;
 }
