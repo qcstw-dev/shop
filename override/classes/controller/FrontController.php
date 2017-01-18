@@ -6,7 +6,11 @@ class FrontController extends FrontControllerCore {
         require_once(_PS_TOOL_DIR_ . 'mobile_Detect/Mobile_Detect.php');
         $this->mobile_detect = new Mobile_Detect();
         if ($this->mobile_detect->isMobile() || $this->mobile_detect->isTablet()) {
-            header('Location: '.__PS_BASE_URI__.'mobile');
+            if (strpos($_SERVER['REQUEST_URI'], 'order-history') !== false) {
+                header('Location: '.__PS_BASE_URI__.'mobile-order-history');
+            } else {
+                header('Location: '.__PS_BASE_URI__.'mobile');
+            }
         }
         self::$smarty->assign('currentController', get_class($this));
         return parent::initHeader();
