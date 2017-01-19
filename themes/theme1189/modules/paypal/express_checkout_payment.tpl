@@ -28,12 +28,12 @@
         <a class="btn btn-primary col-xs-12 col-sm-4 pull-right" href="javascript:void(0)" id="paypal_process_payment" title="{l s='Pay with PayPal' mod='paypal'}"><span class="fa fa-credit-card"></span> {l s='Proceed payment'}</a>
     {else}
         <div class="row">
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12">
                 <p class="payment_module paypal">
                     {if $use_paypal_in_context}
-                        <a href="javascript:void(0)" onclick="" id="paypal_process_payment" title="{l s='Pay with PayPal' mod='paypal'}">
+                        <a href="javascript:void(0)" onclick="" id="paypal_process_payment" class="border-none" title="{l s='Pay with PayPal' mod='paypal'}">
                         {else}
-                            <a href="javascript:void(0)" onclick="$('#paypal_payment_form').submit();" title="{l s='Pay with PayPal' mod='paypal'}">
+                            <a href="javascript:void(0)" onclick="$('#paypal_payment_form').submit();" class="border-none" title="{l s='Pay with PayPal' mod='paypal'}">
                             {/if}
                             {if isset($use_mobile) && $use_mobile}
                                 <img src="{$base_dir_ssl|escape:'htmlall':'UTF-8'}modules/paypal/views/img/logos/express_checkout_mobile/CO_{$PayPal_lang_code|escape:'htmlall':'UTF-8'}_orange_295x43.png" />
