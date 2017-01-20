@@ -45,6 +45,20 @@ class DispatcherCore
      * @var array List of default routes
      */
     public $default_routes = array(
+        'custom_shop' => array(
+            'controller' =>    'customshop',
+            'rule' =>        'shop/{shop_name}',
+            'keywords' => array(
+                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
+            ),
+        ),
+        'custom_shop_admin' => array(
+            'controller' =>    'customshopadmin',
+            'rule' =>        'custom-shop-admin/{shop_name}',
+            'keywords' => array(
+                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
+            ),
+        ),
         'category_rule' => array(
             'controller' =>    'category',
             'rule' =>        '{id}-{rewrite}',
