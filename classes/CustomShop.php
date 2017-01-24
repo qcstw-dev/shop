@@ -30,7 +30,7 @@ class CustomShopCore extends ObjectModel {
         return Db::getInstance()->getRow('
 		SELECT *
 		FROM `' . _DB_PREFIX_ . 'custom_shop`
-		WHERE `name` = ' . pSQL($iId));
+		WHERE `id` = ' . pSQL($iId));
     }
 
     public static function getShopByName($sName) {

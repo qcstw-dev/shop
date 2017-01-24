@@ -1,0 +1,98 @@
+.logo-top-container img {
+    height: 100px;
+    padding-left: 5px;
+}
+.admin-menu {
+    text-align: center;
+    position: fixed;
+    width: 93px;
+}
+.admin-menu a:first-child {
+    border-top-right-radius: 0;
+}
+.admin-menu a:last-child {
+    border-bottom-right-radius: 0;
+}
+.admin-menu a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.content-admin {
+    padding: 10px;
+}
+.creation-block:hover {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+.creation-block {
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    min-height: 200px;
+}
+.block-picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.border-3px {
+    border-width: 3px;
+}
+.dashed {
+    border: 3px dashed #ddd;
+}
+.file-name {
+    overflow: hidden;
+    height: 20px;
+}
+.upload-btn {
+    width: 11.42vw;
+    height: 11.42vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.trash {
+    position: absolute;
+    right: 15px;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    z-index: 1;
+}
+.color-green {
+    color: #5cb85c;
+}
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .block-picture {
+        /*width: 300px*/
+    }
+}

@@ -2,6 +2,8 @@
 
 class FrontController extends FrontControllerCore {
 
+    public $base_uri = '';
+
     public function initHeader() {
         require_once(_PS_TOOL_DIR_ . 'mobile_Detect/Mobile_Detect.php');
         $this->mobile_detect = new Mobile_Detect();
@@ -13,6 +15,9 @@ class FrontController extends FrontControllerCore {
             }
         }
         self::$smarty->assign('currentController', get_class($this));
+        $useSSL = ((isset($this->ssl) && $this->ssl && Configuration::get('PS_SSL_ENABLED')) || Tools::usingSecureMode()) ? true : false;
+        $protocol_content = ($useSSL) ? 'https://' : 'http://';
+        $this->base_uri = $protocol_content . Tools::getHttpHost() . __PS_BASE_URI__ . (!Configuration::get('PS_REWRITING_SETTINGS') ? 'index.php' : '');
         return parent::initHeader();
     }
 

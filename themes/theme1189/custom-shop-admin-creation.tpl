@@ -1,0 +1,41 @@
+{include file=$header}
+{include file=$menu}
+
+<div class="col-xs-12 col-md-offset-1">
+    <div class="col-xs-12 col-md-5 margin-bottom-20">
+        <a href="{$base_uri}{$custom_shop_name}/admin/creation/picture" class="text-decoration-none">
+            <div class="border creation-block">
+                <span class="glyphicon glyphicon-upload font-size-44"></span>
+                Upload your picture and set your comission
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-12 col-md-5 margin-bottom-20">
+        <a href="#" class="text-decoration-none">
+            <div class="border creation-block">
+                <span class="glyphicon glyphicon-check font-size-44"></span>
+                Select products
+            </div>
+        </a>
+    </div>
+</div>
+<div class="col-xs-12 col-md-offset-1">
+    <div class="col-xs-12 col-md-5">
+        <a href="#" class="text-decoration-none">
+            <div class="border creation-block">
+                <span class="glyphicon glyphicon-pencil font-size-44"></span>
+                Place pictures on products
+            </div>
+        </a>
+    </div>
+    <div class="col-xs-12 col-md-5">
+        <a href="#" class="text-decoration-none">
+            <div class="border creation-block">
+                <span class="glyphicon glyphicon-list-alt font-size-44"></span>
+                Your creation summary
+            </div>
+        </a>
+    </div>
+</div>
+
+{include file=$footer}

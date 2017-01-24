@@ -8,6 +8,7 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
      */
     public function init() {
         parent::init();
+        $this->bDisplayTopLogo = false;
     }
 
     public function initContent() {
@@ -43,7 +44,7 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
                             $oCustomShop = new CustomShop(null, ['name' => Tools::getValue('shop_name'), 'id_account' => $oCustomShopAccount->id]);
                             $oCustomShop->save();
                             $oCustomShopAccount->login();
-                            header('Location: '.$this->base_uri.'custom-shop-admin/'.$oCustomShop->name);
+                            header('Location: '.$this->base_uri.$oCustomShop->name.'/creation');
                         }
                     } else {
                         $aErrors['account_exist'] = 'Account already exist';
@@ -57,7 +58,7 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
                         $oCustomShopAccount = CustomShopAccount::getAccountByEmail(Tools::getValue('email'));
                         $oCustomShopAccount->login();
                         $oCustomShop = $oCustomShopAccount->getShop();
-                        header('Location: '.$this->base_uri.'custom-shop-admin/'.$oCustomShop->name);
+                        header('Location: '.$this->base_uri.$oCustomShop->name.'/creation');
                     } else {
                         $aErrors['wrong_password'] = 'Wrong password';
                     }

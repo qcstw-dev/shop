@@ -4,11 +4,11 @@
             <div class="font-size-65 margin-bottom-20">
                 <span class="glyphicon glyphicon-upload"></span>
             </div>
-            <div>{l s='Upload your design'}</div>
+            <div>{l s='Upload your picture'}</div>
         </div>
     </div>
     <div class="col-xs-6">
-        <a href="{$base_uri}46-pictures" title="{l s='Choose design from library'}">
+        <a href="{$base_uri}46-pictures" title="{l s='Choose picture from library'}">
             <div class="block-choice">
                     <div class="font-size-65 margin-bottom-20">
                         <span class="glyphicon glyphicon-picture"></span>
