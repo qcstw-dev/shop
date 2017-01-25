@@ -2,39 +2,61 @@
 {include file=$menu}
 {include file=$menu_creation}
 <div class="pictures-list"></div>
-{for $counter=1 to 8}
-    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container">
-        <div class="trash" data-id="{$counter}"><span class="glyphicon glyphicon-trash"></span></div>
-        <div class="border block-picture" data-id="{$counter}">
-            <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5 text-center bold file-name file-name-{$counter}">File name</div>
+{assign var='nbr_pic' value=7}
+{if count($pictures) >= 8}
+    {assign var='nbr_pic' value=count($pictures)-1}
+{/if}
+{for $counter=0 to $nbr_pic}
+    {assign var='db_id' value=''}
+    {if isset($pictures.$counter.id)}
+        {assign var='db_id' value=$pictures.$counter.id}
+    {/if}
+    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container block-picture-container-{$counter}">
+        <div class="trash" data-id="{$counter}" data-db-id="{$db_id}"><span class="glyphicon glyphicon-trash"></span></div>
+        <div class="border shadow block-picture" data-id="{$counter}">
+            {*            <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5 text-center file-name file-name-{$counter}">{if $db_id}{$pictures.$counter.name}{else}File name{/if}</div>*}
+            <div class="col-xs-10 margin-auto">
+                <input class="form-control margin-top-5 margin-bottom-5 text-center file-name file-name-{$counter}" placeholder="Picture name" value="{if $db_id}{$pictures.$counter.name}{/if}" {if !$db_id}disabled{/if}/>
+            </div>
             <div class="col-xs-12 thumbnail border-none margin-bottom-0 padding-0 cursor-pointer upload-btn" data-id="{$counter}">
-                <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}img/upload-icon.jpg" title="upload" alt="upload" />
+                {if isset($pictures.$counter)}
+                    <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}img/custom_shop/picture/{$pictures.$counter.picture}" title="upload" alt="upload" />
+                {else}
+                    <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}img/upload-icon.jpg" title="upload" alt="upload" />
+                {/if}
                 <div class="hidden-uploader">
-                    <input class="fileupload hidden-fileupload-{$counter}" data-id-upload="{$counter}" type="file" name="files[]">
+                    <input class="fileupload hidden-fileupload-{$counter}" data-db-id="{$db_id}" data-id-upload="{$counter}" type="file" name="files[]">
                 </div>
             </div>
             <div class="col-xs-12 margin-top-5 margin-bottom-5">
-                <label class="col-xs-6 margin-top-10">Price:</label>
-                <input class="col-xs-6 margin-top-5 price" data-id="{$counter}" type="number" min="1" max="1" />
-                {*<div class="col-xs-2">
-                    <button class="btn btn-primary">Ok</button>
-                </div>*}
+                <div class="col-xs-5 margin-top-10">Price:</div>
+                <div class="col-xs-1 margin-top-10 padding-0">$</div>
+                <div class="col-xs-5 input-group-sm padding-0">
+                    <input class="form-control margin-0 margin-top-5 price" 
+                           data-db-id="{$db_id}" 
+                           data-id="{$counter}" 
+                           type="number" min="1" max="5" 
+                           placeholder="0" 
+                           {if !$db_id}disabled{/if}
+                           {if $db_id && $pictures.$counter.price}value="{$pictures.$counter.price}"{/if}
+                           />
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
 {/for}
-<div class="clearfix"></div>
-<div class="col-xs-12">
-    <div class="panel panel-default text-center font-size-20 cursor-pointer btn-add-more-pictures">
-        <span class="glyphicon glyphicon-plus"></span>
+<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-10">
+    <div class="cursor-pointer dashed block-picture block-picture-add">
+        <div class="thumbnail border-none margin-0 padding-0">
+            <img src="{$base_uri}img/plus-icon.jpg" title="upload" alt="upload" />
+        </div>
     </div>
 </div>
-{*<div class="col-xs-6 col-sm-4 col-md-4 col-lg-2 margin-bottom-10">
-<div class="cursor-pointer block-picture block-picture-add">
-<div class="dashed thumbnail margin-0 padding-0 vertical-center">
-<img src="{$base_uri}img/plus-icon.jpg" title="upload" alt="upload" />
-</div>
+{*<div class="clearfix"></div>
+<div class="col-xs-12">
+<div class="panel panel-default shadow text-center font-size-20 cursor-pointer btn-add-more-pictures">
+<span class="glyphicon glyphicon-plus"></span>
 </div>
 </div>*}
 {include file=$footer}
