@@ -45,6 +45,11 @@ class DispatcherCore
      * @var array List of default routes
      */
     public $default_routes = array(
+        'mobile' => array(
+            'controller' =>    'mobilehome',
+            'rule' =>        'mobile',
+            'keywords' => array(),
+        ),
         'custom_shop' => array(
             'controller' =>    'customshop',
             'rule' =>        'shop/{shop_name}',
@@ -73,14 +78,13 @@ class DispatcherCore
                 'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name'),
             ),
         ),
-//        'custom_shop_admin_creation_zone' => array(
-//            'controller' =>    'customshopadmincreation',
-//            'rule' =>        '{shop_name}/admin/creation/{creation_zone}',
-//            'keywords' => array(
-//                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name'),
-//                'creation_zone' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'creation_zone')
-//            ),
-//        ),
+        'custom_shop_admin_creation_picture' => array(
+            'controller' =>    'customshopadmincreationproduct',
+            'rule' =>        '{shop_name}/admin/creation/product',
+            'keywords' => array(
+                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name'),
+            ),
+        ),
         'category_rule' => array(
             'controller' =>    'category',
             'rule' =>        '{id}-{rewrite}',

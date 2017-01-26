@@ -2,8 +2,8 @@
 {include file=$menu}
 {include file=$menu_creation}
 <div class="pictures-list"></div>
-{assign var='nbr_pic' value=7}
-{if count($pictures) >= 8}
+{assign var='nbr_pic' value=6}
+{if count($pictures) >= 7}
     {assign var='nbr_pic' value=count($pictures)-1}
 {/if}
 {for $counter=0 to $nbr_pic}
@@ -14,9 +14,8 @@
     <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container block-picture-container-{$counter}">
         <div class="trash" data-id="{$counter}" data-db-id="{$db_id}"><span class="glyphicon glyphicon-trash"></span></div>
         <div class="border shadow block-picture" data-id="{$counter}">
-            {*            <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5 text-center file-name file-name-{$counter}">{if $db_id}{$pictures.$counter.name}{else}File name{/if}</div>*}
             <div class="col-xs-10 margin-auto">
-                <input class="form-control margin-top-5 margin-bottom-5 text-center file-name file-name-{$counter}" placeholder="Picture name" value="{if $db_id}{$pictures.$counter.name}{/if}" {if !$db_id}disabled{/if}/>
+                <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-{$counter}" data-db-id="{$db_id}" placeholder="Picture name" value="{if $db_id}{$pictures.$counter.name}{/if}" {if !$db_id}disabled{/if}/>
             </div>
             <div class="col-xs-12 thumbnail border-none margin-bottom-0 padding-0 cursor-pointer upload-btn" data-id="{$counter}">
                 {if isset($pictures.$counter)}
@@ -48,7 +47,7 @@
 {/for}
 <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-10">
     <div class="cursor-pointer dashed block-picture block-picture-add">
-        <div class="thumbnail border-none margin-0 padding-0">
+        <div class="thumbnail border-none margin-0 padding-0 margin-top-lg-30 margin-bottom-lg-30">
             <img src="{$base_uri}img/plus-icon.jpg" title="upload" alt="upload" />
         </div>
     </div>

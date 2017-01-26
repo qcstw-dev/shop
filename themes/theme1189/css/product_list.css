@@ -98,6 +98,7 @@ div.product_list.grid div.ajax_block_product {
 div.product_list.grid div.ajax_block_product .product-container {
     background: white;
     border: 1px solid #e7e7e6;
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 30px 0 rgba(0, 0, 0, 0.10);
     position: relative; }
 @media (min-width: 1200px) {
     div.product_list.grid div.ajax_block_product .product-container {

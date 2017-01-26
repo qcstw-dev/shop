@@ -5,7 +5,7 @@
         <div class="pull-right thumbnail margin-0 padding-0 border-none"><img src="{$module_dir}assets/credit-cards.png" /></div>
         <input type="radio" id="payment-cc" name="radio-payment" class="radio-payment"/> <label for="payment-cc" class="cursor-pointer">{l s='Credit card'}</label>
     </div>
-    <div class="hidden hidden-payment hidden-payment-cc">
+    <div class="hidden hidden-payment hidden-payment-cc margin-bottom-10">
         <p id="twocheckout-error" class="alert-danger">
             {l s='Payment Authorization Failed: Please verify your Credit Card details are entered correctly and try again, or try another payment method.' mod='twocheckout'}
         </p>
@@ -60,7 +60,7 @@
                 <label class="margin-bottom-0 col-xs-12 padding-0">{l s='CVC' mod='twocheckout'}</label><br />
                 <input class="numeric" id="cvv" type="text" size="4" autocomplete="off"  style="border: #CCCCCC solid 1px; padding: 3px;" required />
             </div>
-            <input type="submit" class="btn btn-primary margin-top-10 col-xs-12" value="{l s='Submit Payment' mod='twocheckout'}" />
+            <input type="submit" class="btn btn-primary margin-top-10" value="{l s='Submit Payment' mod='twocheckout'}" />
         </form>
     </div>
 </div>

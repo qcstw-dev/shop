@@ -29,25 +29,21 @@
     {else}
         <div class="row">
             <div class="col-xs-12">
-                <p class="payment_module paypal">
+                <div class="font-size-20 bold margin-bottom-10">
+                    <input type="radio" id="payment-pp" name="radio-payment" class="radio-payment"/> <label for="payment-pp" class="cursor-pointer">{l s='PayPal'}</label>
+                    <div class="pull-right">
+                        <img src="{$module_dir}paypal.png" alt="{l s='Pay with PayPal' mod='paypal'}" />
+                    </div>
+                </div>
+                <div class="hidden hidden-payment hidden-payment-pp">
                     {if $use_paypal_in_context}
-                        <a href="javascript:void(0)" onclick="" id="paypal_process_payment" class="border-none" title="{l s='Pay with PayPal' mod='paypal'}">
+                        <a href="javascript:void(0)" onclick="" id="paypal_process_payment" class="btn btn-primary border-none" title="{l s='Pay with PayPal' mod='paypal'}">
                         {else}
-                            <a href="javascript:void(0)" onclick="$('#paypal_payment_form').submit();" class="border-none" title="{l s='Pay with PayPal' mod='paypal'}">
+                            <a href="javascript:void(0)" onclick="$('#paypal_payment_form').submit();" class="btn btn-primary border-none" title="{l s='Pay with PayPal' mod='paypal'}">
                             {/if}
-                            {if isset($use_mobile) && $use_mobile}
-                                <img src="{$base_dir_ssl|escape:'htmlall':'UTF-8'}modules/paypal/views/img/logos/express_checkout_mobile/CO_{$PayPal_lang_code|escape:'htmlall':'UTF-8'}_orange_295x43.png" />
-                            {else}
-                                {if isset($logos.LocalPayPalHorizontalSolutionPP) && $PayPal_payment_method == $PayPal_integral}
-                                    <img src="{$logos.LocalPayPalHorizontalSolutionPP|escape:'htmlall':'UTF-8'}" alt="{l s='Pay with your card or your PayPal account' mod='paypal'}}" height="48px" />
-                                {else}
-                                    <img src="{$logos.LocalPayPalLogoMedium|escape:'htmlall':'UTF-8'}" alt="{l s='Pay with your card or your PayPal account' mod='paypal'}" />
-                                {/if}
-                                {l s='Pay with your card or your PayPal account' mod='paypal'}
-                            {/if}
-
+                            {l s='Pay with PayPal' mod='paypal'}
                         </a>
-                </p>
+                </div>
             </div>
         </div>
     {/if}

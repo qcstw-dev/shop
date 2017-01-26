@@ -38,6 +38,12 @@
     <title>{$meta_title}</title>
 </head>
 <body>
+    <div class="panel panel-default col-md-2 vertical-center shadow saving" style="display: none;">
+        <div class="thumbnail border-none margin-0">
+            <img src="{$base_uri}/img/loader.gif" title="Loading" alt="Loading"/> 
+        </div>
+        Saving</div>
+    <div class="panel panel-success col-md-2 vertical-center shadow confirm" style="display: none;"><span class="glyphicon glyphicon-ok font-size-40 color-green"></span> Saved</div>
     <img class="hidden" src="{$base_uri}img/loader.gif" />
     <div class="container">
         {if $display_top_logo}

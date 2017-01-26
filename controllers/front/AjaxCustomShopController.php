@@ -13,7 +13,7 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
                     <div class="trash" data-id="' . $i . '"  data-db-id=""><span class="glyphicon glyphicon-trash"></span></div>
                     <div class="border shadow block-picture" data-id="' . $i . '">
                         <div class="col-xs-10 margin-auto">
-                            <input class="form-control margin-top-5 margin-bottom-5 text-center file-name file-name-' . $i . '" placeholder="Picture name"/>
+                            <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-' . $i . '" data-db-id="" placeholder="Picture name" disabled/>
                         </div>
                         <div class="col-xs-12 thumbnail border-none margin-bottom-0 padding-0 cursor-pointer upload-btn" data-id="' . $i . '">
                             <img class="upload-picture upload-picture-' . $i . '" src="' . __PS_BASE_URI__ . 'img/upload-icon.jpg" title="upload" alt="upload" />
@@ -57,7 +57,8 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
                 $oDesign = new CustomShopDesign(Tools::getValue('db_id'));
                 $oDesign->setPrice(Tools::getValue('price'));
             } else {
-                $oDesign = new CustomShopDesign(null, ['price' => Tools::getValue('price'), 'id_shop' => $this->custom_shop->id]);
+//                $oDesign = new CustomShopDesign(null, ['price' => Tools::getValue('price'), 'id_shop' => $this->custom_shop->id]);
+                $result['success'] = false;
             }
             if (!$oDesign->save()) {
                 $result['success'] = false;
@@ -67,6 +68,23 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
         } else {
             $result['success'] = false;
         }
+        echo json_encode($result);
+    }
+    public function displayAjaxSavePictureName() {
+        $result = [];
+        $result['success'] = true;
+            if (Tools::getValue('db_id')) {
+                $oDesign = new CustomShopDesign(Tools::getValue('db_id'));
+                $oDesign->setName(Tools::getValue('picture_name'));
+            } else {
+//                $oDesign = new CustomShopDesign(null, ['name' => Tools::getValue('picture_name'), 'id_shop' => $this->custom_shop->id]);
+                $result['success'] = false;
+            }
+            if (!$oDesign->save()) {
+                $result['success'] = false;
+            } else {
+                $result['id'] = $oDesign->id;
+            }
         echo json_encode($result);
     }
 

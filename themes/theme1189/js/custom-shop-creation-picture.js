@@ -20,15 +20,9 @@ $(document).ready(function () {
             url: baseDir + 'index.php?controller=ajaxcustomshop&action=loadpictureblocks&ajax=true&offset=' + $('.block-picture-container:last').find('.block-picture').data('id'),
             cache: false,
             dataType: 'html',
-            processData: false, // Don't process the files
+            processData: false,
             contentType: false,
             async: true,
-//            beforeSend: function () {
-//                loading();
-//            },
-//            complete: function () {
-//                loading_hide();
-//            },
             success: function (html) {
                 if (html) {
                     $('.block-picture-container:last').after(html);
@@ -38,8 +32,8 @@ $(document).ready(function () {
         });
     });
     var globalTimeout = null;
-    $('.price, .file-name').live('click', function () {
-       $(this).select(); 
+    $('.price, .picture-name').live('click', function () {
+        $(this).select();
     });
     $('.price').live('keyup', function () {
         var element = $(this);
@@ -52,27 +46,42 @@ $(document).ready(function () {
                 if (element.val() > 5) {
                     popupError('Cannot be more than $5');
                 } else {
-                    $.ajax({
-                        type: 'POST',
-                        url: baseDir + 'index.php?controller=ajaxcustomshop&action=saveprice&ajax=true&price='
-                                + element.val() + (element.data('db-id') ? '&db_id=' + element.data('db-id') : ''),
-                        cache: false,
-                        dataType: 'json',
-                        processData: false, // Don't process the files
-                        contentType: false,
-                        async: true,
-                        beforeSend: function () {
-                            loading('Saving');
-                        },
-                        success: function (json) {
-                            if (json.success) {
-                                popupConfirm();
-                            }
-                        }
-                    });
+                    saveField(element, 'price');
                 }
             }
         }, 500);
+    });
+    function saveField(element, name) {
+        saving();
+        $.ajax({
+            type: 'POST',
+            url: baseDir + 'index.php?controller=ajaxcustomshop&action=savepicturename&ajax=true&'+name+'='
+                    + element.val() + (element.data('db-id') ? '&db_id=' + element.data('db-id') : ''),
+            cache: false,
+            dataType: 'json',
+            processData: false, // Don't process the files
+            contentType: false,
+            async: true,
+            success: function (json) {
+                if (json.success) {
+                    element.blur();
+                    saving_hide();
+                    confirm();
+                }
+            }
+        });
+    }
+    $('.picture-name').live('keyup', function () {
+        var element = $(this);
+        if (globalTimeout !== null) {
+            clearTimeout(globalTimeout);
+        }
+        globalTimeout = setTimeout(function () {
+            globalTimeout = null;
+            if (element.val()) {
+                saveField(element, 'picture_name');
+            }
+        }, 1000);
     });
 });
 function deletePicture(db_id, id) {
@@ -135,7 +144,7 @@ function fileuploadListener() {
         limitMultiFileUploads: limit
     }).on('fileuploadadd', function (e, data) {
         // loading GIF
-        loading('Saving');
+        saving();
     }).on('fileuploadprocessalways', function (e, data) {
         var index = data.index,
                 file = data.files[index],
@@ -166,14 +175,15 @@ function fileuploadListener() {
                     if (json.success === true) {
                         // append PICTURE
                         if (!$('.block-picture-container-' + data.idUpload).find('.trash').data('db-id')) {
-                            $('.block-picture-container-' + data.idUpload).find('.trash, .fileupload, .price').data('db-id', json.id);
+                            $('.block-picture-container-' + data.idUpload).find('.trash, .fileupload, .price, .picture-name').data('db-id', json.id);
                         }
-                        $('.file-name-' + data.idUpload).text(json.image_title);
+                        $('.picture-name-' + data.idUpload).val(json.image_title);
                         $('.upload-picture-' + data.idUpload).replaceWith(
                                 '<img class="upload-picture upload-picture-' + data.idUpload + '" src="' + baseUri + 'img/custom_shop/picture/' + json.image_name + '" />'
                                 );
-                        popupConfirm();
-                        $('.block-picture-container-' + data.idUpload).find('.price').prop('disabled', false);
+                        saving_hide();
+                        confirm();
+                        $('.block-picture-container-' + data.idUpload).find('.price, .picture-name').prop('disabled', false);
                     } else {
                         if (json.error) {
                             popupError(json.error);

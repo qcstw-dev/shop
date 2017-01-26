@@ -1,4 +1,5 @@
-    <div class="btn-group col-xs-12 margin-bottom-10" role="group">
+<div class="col-xs-12 margin-bottom-10">
+    <div class="btn-group btn-group-justified" role="group">
         <a href="{$base_uri}{$custom_shop_name}/admin/creation/picture" class="btn btn-default{if $page_name == 'customshopadmincreationpicture'} active{/if}">
             <span class="glyphicon glyphicon-upload"></span> Upload you pictures and set your comission
         </a>
@@ -12,3 +13,4 @@
             <span class="glyphicon glyphicon-list-alt"></span> Your creations summay
         </a>
     </div>
+</div>

@@ -4150,7 +4150,7 @@ body {
   height: 100%;
   line-height: 18px;
   font-size: 13px;
-  font-family: Ubuntu, sans-serif;
+  /*font-family: Ubuntu, sans-serif;*/
   color: #777777; }
   body.content_only {
     background: none; }

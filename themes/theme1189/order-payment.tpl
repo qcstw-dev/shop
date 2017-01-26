@@ -305,7 +305,7 @@
 </div> <!-- end order-detail-content -->
 {/if}
 {if $opc}<div id="opc_payment_methods-content">{/if}
-    <div class="col-xs-12">
+    <div class="col-xs-8">
         <div class="panel panel-default">
             <div class="font-size-20 panel-heading">
                 <div><span class="glyphicon glyphicon-lock"></span> {l s='Payment'}</div>
@@ -316,9 +316,17 @@
         </div>
     </div>
     <div class="clearfix"></div>
+    {literal}
+        <script>
+            $('.radio-payment').on('change', function () {
+                $('.hidden-payment').addClass('hidden');
+                $('.hidden-' + $(this).attr('id')).removeClass('hidden');
+            });
+        </script>
+    {/literal}
     {if $opc}</div> <!-- end opc_payment_methods-content -->{/if}
 {else}
-    <p class="alert alert-warning">{l s='No payment modules have been installed.'}</p>
+<p class="alert alert-warning">{l s='No payment modules have been installed.'}</p>
 {/if}
 {if !$opc}
     <p class="cart_navigation clearfix">

@@ -7,7 +7,7 @@
     {foreach from=$products key=key item=product name=products}
         {if $product.id_category_default == '45'}
             <div class="col-xs-6 col-md-3 margin-bottom-10 block-product">
-                <div class="col-xs-12 border padding-0">
+                <div class="col-xs-12 border padding-0 shadow">
                     <div class="col-xs-6 padding-0 padding-top-5 padding-bottom-5 text-center btn-add selection product-{$product.id_product}" data-id="{$product.id_product}" title="{l s='Add to selection'}">
                         <a href="{$base_uri}mobile-designs?id_product={$product.id_product}">
                             <span class="glyphicon glyphicon-plus-sign"></span> <span class="text">{l s='Select'}</span>
@@ -65,7 +65,7 @@
             </div>
         {else}
             <div class="col-xs-6 col-sm-3 margin-bottom-10">
-                <div class="col-xs-12 border padding-0">
+                <div class="col-xs-12 border padding-0 shadow">
                     <div class="col-xs-6 padding-0 padding-top-5 padding-bottom-5 text-center btn-add selection" data-id="{$product.id_product}" title="Add to selection">
                         <a href="{$base_uri}mobile-layout-maker?id_design={$product.id_product}">
                             <span class="glyphicon glyphicon-plus-sign"></span> <span class="text">{l s='Select'}</span>
