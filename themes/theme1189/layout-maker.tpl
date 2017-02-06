@@ -64,7 +64,7 @@
     </div>
 {/if}
     <script>
-        $(function() {
+        $(document).ready(function () {
             {if $preselected_product}
                 $('.list-item-{$preselected_product}').trigger('click');
             {else}

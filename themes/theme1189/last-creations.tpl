@@ -6,7 +6,7 @@
                 <div class="product-container" >
                     <div class="left-block">
                         <div class="product-image-container padding-top-20 padding padding-bottom-20">
-                            <img class="img-responsive border padding-bottom-10 padding-top-10 popup" src="{$creationUrl}" alt="last creation" title="last creation" />
+                            <img class="img-responsive border padding-bottom-10 padding-top-10 shadow popup" src="{$creationUrl}" alt="last creation" title="last creation" />
                         </div>
                     </div>
                 </div><!-- .product-container> -->

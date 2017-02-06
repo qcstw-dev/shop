@@ -58,16 +58,16 @@ class CustomShopDesignCore extends ObjectModel {
     public function save() {
         if ($this->id) {
             return Db::getInstance()->update(self::$definition['table'], [
-                        'price' => $this->price,
-                        'picture' => $this->picture,
-                        'name' => $this->name,
-                        'id_shop' => $this->id_shop], 'id = ' . pSQL($this->id));
+                        'price' => pSQL($this->price),
+                        'picture' => pSQL($this->picture),
+                        'name' => pSQL($this->name),
+                        'id_shop' => pSQL($this->id_shop)], 'id = ' . pSQL($this->id));
         } else {
             if (!Db::getInstance()->insert(self::$definition['table'], [
-                        'price' => $this->price,
-                        'picture' => $this->picture,
-                        'name' => $this->name,
-                        'id_shop' => $this->id_shop,
+                        'price' => pSQL($this->price),
+                        'picture' => pSQL($this->picture),
+                        'name' => pSQL($this->name),
+                        'id_shop' => pSQL($this->id_shop),
                     ])) {
                 return false;
             } else {

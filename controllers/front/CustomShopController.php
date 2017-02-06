@@ -16,19 +16,6 @@ class CustomShopControllerCore extends FrontController {
         $this->display_column_right = false;
         $this->display_header = false;
         $this->display_footer = false;
-        if (Tools::getValue('shop_name')) {
-            if (!$this->context->cookie->custom_shop_id || ($this->context->cookie->custom_shop_id != CustomShop::getShopByName(Tools::getValue('shop_name'))->id)) {
-                $this->context->cookie->__set('custom_shop_id', CustomShop::getShopByName(Tools::getValue('shop_name'))->id);
-            }
-        }
-        $this->custom_shop = new CustomShop($this->context->cookie->custom_shop_id);
-
-        if (!$this->context->cookie->custom_shop_account_id || ($this->context->cookie->custom_shop_account_id != $this->custom_shop->id_account)) {
-            if (Tools::getValue('shop_name')) {
-                $this->context->cookie->__set('custom_shop_account_id', $this->custom_shop->id_account);
-            }
-        }
-        $this->custom_shop_account = CustomShopAccount::getAccountById($this->custom_shop->id_account);
     }
 
     public function initContent() {
@@ -41,6 +28,7 @@ class CustomShopControllerCore extends FrontController {
             'header' => _PS_THEME_DIR_ . 'custom-shop-header.tpl',
             'footer' => _PS_THEME_DIR_ . 'custom-shop-footer.tpl',
             'display_top_logo' => $this->bDisplayTopLogo,
+            'picture_dir' => 'img/custom_shop/picture/'
         ));
     }
 

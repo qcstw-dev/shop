@@ -70,7 +70,7 @@
         <div class="col-xs-12">
             <div class="panel panel-default  margin-bottom-10 block-selection-design">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{l s='Your selection'}</h3>
+                    <h3 class="panel-title bold">{l s='Your selection'}</h3>
                 </div>
                 <div class="panel-body block-selection col-xs-12 padding-0">
                     <div class="col-md-6 padding-0">

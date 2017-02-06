@@ -17,6 +17,7 @@ time, mark, audio, video {
   border: 0;
   font: inherit;
   font-size: 100%;
+  font-family: Ubuntu, sans-serif;
   vertical-align: baseline; }
 
 html {
@@ -7684,17 +7685,6 @@ ul.step a:hover:after {
 }
 .color-red {
     color: #ea3f23;
-}
-@media screen and (min-width: 470px){
-    .content_prices .tab-price-cel-first {
-        width: 65px;
-    }
-    .content_prices .tab-price-cel {
-        width: 52px;
-    }
-}
-.tab-price-cel-first {
-    background: #eee;
 }
 .comodo-logo {
     position: fixed;

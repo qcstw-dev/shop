@@ -76,9 +76,6 @@ $(function () {
                             $('.block-design-size').show();
                             $('.change-color-product-block').show();
                         }
-                        if (json.custom) {
-                            $('.fileinput-button').show();
-                        }
                         if (json.url) {
                             $('.resize-image').removeClass('custom-margin-left');
                             $('.hidden-original-picture').attr('src', '');

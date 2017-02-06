@@ -183,7 +183,7 @@
                         </div>
                         <div class="clear"></div>
                     </div> <!-- end content_prices -->
-                    {if $product->category != 'designs'}
+                    {if $product->category != 'designs' && !isset($smarty.get.admin)}
                         <div class="pull-left">
                             <p class="our_price_display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                 {strip}
@@ -195,15 +195,17 @@
                             <p>{l s='*price for 10 pieces'}</p>
                         </div>
                     {/if}
-                    <div class="product_attributes pull-right">
-                        {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
-                        <div class="btn btn-default selection margin-bottom-10 product-{$product->id}"
-                             data-product-link="{$product->getLink()|escape:'html':'UTF-8'}" 
-                             data-img="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" 
-                             data-id="{$product->id}" data-product-title="{$product->name}" data-type="{$product->category}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
-                            <span class="glyphicon glyphicon-{if !$isInSelection}plus{else}minus{/if}-sign"></span> <span class="text">{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}</span>
+                    {if !isset($smarty.get.admin)}
+                        <div class="product_attributes pull-right">
+                            {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
+                            <div class="btn btn-default selection margin-bottom-10 product-{$product->id}"
+                                 data-product-link="{$product->getLink()|escape:'html':'UTF-8'}" 
+                                 data-img="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" 
+                                 data-id="{$product->id}" data-product-title="{$product->name}" data-type="{$product->category}" data-text-add="{l s='Add to selection'}" data-text-remove="{l s='Remove from selection'}">
+                                <span class="glyphicon glyphicon-{if !$isInSelection}plus{else}minus{/if}-sign"></span> <span class="text">{if !$isInSelection} {l s='Add to selection'} {else} {l s='Remove from selection'}{/if}</span>
+                            </div>
                         </div>
-                    </div>
+                    {/if}
                 </div>
             </div>
             <!-- end center infos-->

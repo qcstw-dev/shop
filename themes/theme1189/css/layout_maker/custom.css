@@ -11,11 +11,6 @@
     .white-image, .custom-white-image {
         display: none;
     }
-    .component .fileinput-button {
-        top: 20px;
-        left: 46px;
-        position: absolute;
-    }
     #slider-vertical {
         float: right;
         height: 100%;

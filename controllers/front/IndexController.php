@@ -40,8 +40,8 @@ class IndexControllerCore extends FrontController
         $oDesignCategory = new Category('46', $this->context->language->id);
         $oProductCategory = new Category('45', $this->context->language->id);
         
-        $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 10, 'date_add', 'DESC', null, null, null, null, null, null, true);
-        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 10, 'date_add', 'DESC');
+        $aDesigns = $oDesignCategory->getProducts($this->context->language->id, 0, 10, 'date_add', 'DESC', null, true, null, null, null, null, true);
+        $aProducts = $oProductCategory->getProducts($this->context->language->id, 0, 10, 'date_add', 'DESC', null, true);
         
         $aCreations = Order::getLastCreations(10);
         $aCreationsUrl = []; 

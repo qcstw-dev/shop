@@ -810,3 +810,14 @@ Quick View Styles
     height: 20px;
     border-radius: 10px;
 }
+@media screen and (min-width: 470px){
+    .content_prices .tab-price-cel-first {
+        width: 65px;
+    }
+    .content_prices .tab-price-cel {
+        width: 52px;
+    }
+}
+.tab-price-cel-first {
+    background: #eee;
+}

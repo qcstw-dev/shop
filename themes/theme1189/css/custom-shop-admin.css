@@ -1,5 +1,8 @@
+.border {
+    border-radius: 3px;
+}
 .confirm, .saving {
-   position: absolute;
+    position: absolute;
     top: 38%;
     margin-left: auto;
     margin-right: auto;
@@ -64,8 +67,8 @@
     height: 20px;
 }
 .upload-btn {
-    width: 11.42vw;
-    height: 11.42vw;
+    width: 11vw;
+    height: 11vw;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -76,20 +79,42 @@
     right: 15px;
     padding: 5px;
     background: #fff;
-    border: 1px solid #ddd;
     cursor: pointer;
     z-index: 1;
 }
 .color-green {
     color: #5cb85c;
 }
-.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+.btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default{
     background: #337ab7;
     color: #fff;
 }
 .btn.active, .btn:active {
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+.slick-prev {
+    left: 0;
+    z-index: 1;
+}
+.slick-next {
+    right: 0;
+    z-index: 1;
+}
+.slick-prev:before {
+    content: "\e079";
+}
+.slick-next:before {
+    content: "\e080";
+}
+.slick-prev:before, .slick-next:before {
+    color: #777;
+    font-family: 'Glyphicons Halflings';
+}
+/************************** LAYOUT MAKER PART **************/
+.list-picture {
+    max-height: 130px;
+    overflow: auto;
 }
 /* Custom, iPhone Retina */ 
 @media only screen and (min-width : 320px) {
@@ -113,7 +138,7 @@
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
-    .block-picture {
-        /*width: 300px*/
+    .container {
+        width: 1170px;
     }
 }

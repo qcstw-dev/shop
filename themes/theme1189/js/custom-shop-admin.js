@@ -27,7 +27,7 @@ function loading_hide() {
 function popupError(error) {
     $.magnificPopup.open({
         items: [{
-                src: $('<div class="white-popup bold font-size-15"><span class="glyphicon glyphicon-warning-sign font-size-20"></span> ' + error + '</div>'),
+                src: $('<div class="white-popup bold font-size-15"><span class="glyphicon glyphicon-warning-sign font-size-30 color-red"></span> ' + error + '</div>'),
                 type: 'inline'
             }]
     });

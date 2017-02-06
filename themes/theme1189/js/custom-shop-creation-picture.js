@@ -32,7 +32,7 @@ $(document).ready(function () {
         });
     });
     var globalTimeout = null;
-    $('.price, .picture-name').live('click', function () {
+    $('.price').live('click', function () {
         $(this).select();
     });
     $('.price').live('keyup', function () {
@@ -144,8 +144,10 @@ function fileuploadListener() {
         limitMultiFileUploads: limit
     }).on('fileuploadadd', function (e, data) {
         // loading GIF
-        saving();
+//        saving();
     }).on('fileuploadprocessalways', function (e, data) {
+        
+        saving();
         var index = data.index,
                 file = data.files[index],
                 node = $(data.context);

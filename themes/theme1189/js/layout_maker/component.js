@@ -295,7 +295,7 @@ var resizeableImage = function (image_target, customizable) {
         var crop_canvas;
         crop_canvas = capture($('.overlay'));
 
-        $('.add-to-cart').data('custom-picture', crop_canvas.toDataURL("image/png"));
+        $('.add-to-cart, .add-creation').data('custom-picture', crop_canvas.toDataURL("image/png"));
 
         if (customizable) {
             $('.add-to-cart').data('original-picture', $('.hidden-original-picture').attr('src'));
@@ -324,7 +324,7 @@ var resizeableImage = function (image_target, customizable) {
                         type: 'inline'
                     }]
             });
-            $('#add-to-cart').clone(true).appendTo($('.add-to-cart-area'));
+            $('#add-to-cart, .add-creation').clone(true).appendTo($('.add-to-cart-area'));
             $('.export-image').on('click', function () {
                 // atob to base64_decode the data-URI
                 var image_data = atob(crop_canvas.toDataURL("image/png").split(',')[1]);

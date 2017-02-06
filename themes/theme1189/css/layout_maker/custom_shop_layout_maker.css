@@ -1,0 +1,50 @@
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+}
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .btn-cart {
+        top: 135px;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .overlay-top {
+        height: 56px;
+    }
+    .overlay-bottom {
+        height: 52px;
+    }
+    .overlay-left {
+        width: 302px;
+    }
+    .overlay-right {
+        width: 104px;
+    }
+    .custom-margin-left {
+        margin-left: 22%;
+    }
+    .btn-rotate {
+        right: 17px;
+    }
+}
+.item-list-picture.dashed {
+    padding: 0;
+}
+.btn-add-creation, .change-color-product-block {
+    position: absolute;
+    z-index: 100;
+    max-width: 250px;
+}
