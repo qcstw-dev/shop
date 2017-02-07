@@ -52,23 +52,22 @@ class CustomShopDesignCore extends ObjectModel {
         $this->price = $iPrice;
         return $this;
     }
+
     public function delete() {
         return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
     }
+
     public function save() {
+        $aData = [
+            'price' => pSQL($this->price),
+            'picture' => pSQL($this->picture),
+            'name' => pSQL($this->name),
+            'id_shop' => pSQL($this->id_shop)
+        ];
         if ($this->id) {
-            return Db::getInstance()->update(self::$definition['table'], [
-                        'price' => pSQL($this->price),
-                        'picture' => pSQL($this->picture),
-                        'name' => pSQL($this->name),
-                        'id_shop' => pSQL($this->id_shop)], 'id = ' . pSQL($this->id));
+            return Db::getInstance()->update(self::$definition['table'], $aData, 'id = ' . pSQL($this->id));
         } else {
-            if (!Db::getInstance()->insert(self::$definition['table'], [
-                        'price' => pSQL($this->price),
-                        'picture' => pSQL($this->picture),
-                        'name' => pSQL($this->name),
-                        'id_shop' => pSQL($this->id_shop),
-                    ])) {
+            if (!Db::getInstance()->insert(self::$definition['table'], $aData)) {
                 return false;
             } else {
                 $this->id = Db::getInstance()->Insert_ID();

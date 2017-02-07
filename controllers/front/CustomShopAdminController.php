@@ -18,6 +18,8 @@ class CustomShopAdminControllerCore extends CustomShopControllerCore {
 //            }
 //            $this->custom_shop = new CustomShop($this->context->cookie->custom_shop_id);
             $this->custom_shop = new CustomShop(CustomShop::getShopByName(Tools::getValue('shop_name'))->id);
+            $this->context->smarty->assign('id_shop', $this->custom_shop->id);
+            $this->context->smarty->assign('name_shop', $this->custom_shop->name);
         } else {
             $bRedirection = true;
         }

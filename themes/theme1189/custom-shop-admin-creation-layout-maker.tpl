@@ -44,14 +44,14 @@
             <div class="col-xs-6">
                 Item size:
             </div>
-            <div class="col-xs-6 background-white info-item-size"></div>
+            <div class="col-xs-6 background-white padding-0 info-item-size"></div>
         </div>
         <div class="clearfix"></div>
         <div class="col-xs-12 col-sm-4 col-lg-12 padding-0 border text-center margin-bottom-10 background-dark-grey block-design-size" style="display: none">
             <div class="col-xs-6">
                 Design size:
             </div>
-            <div class="col-xs-6 background-white info-design-size"></div>
+            <div class="col-xs-6 background-white padding-0 info-design-size"></div>
         </div>
         <div class="preview-color" style="display: none">
             <div class="col-xs-12 padding-0 border overflow-auto">

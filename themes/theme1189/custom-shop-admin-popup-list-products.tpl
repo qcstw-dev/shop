@@ -8,13 +8,14 @@
                 <div class="col-xs-4 padding-0">
                     <div class="btn btn-default quick-view col-xs-12" data-url="{$base_uri}product-popup?id_product={$product.id_product}"><span class="glyphicon glyphicon-info-sign"></span> Info</div>
                 </div>
-                <div class="col-xs-12 slick-pictures-product-list">
+                <div class="col-xs-12 slick-pictures-product-list margin-bottom-0">
                     {foreach from=$product.images item=image name=images}
                         <div class="thumbnail border-none margin-bottom-0 cursor-pointer quick-view" data-url="{$base_uri}product-popup?id_product={$product.id_product}" data-id="{$product.id_product}">
                             <img class="picture" src="{$link->getImageLink($product.link_rewrite, $image.id_image, 'large_default')|escape:'html':'UTF-8'}" />
                         </div>
                     {/foreach}
                 </div>
+                <div class="font-size-15 bold">{convertPrice price=$product.prices.10}</div>
                 <div class="btn btn-success col-xs-12 btn-select-product" data-id-product="{$product.id_product}">Select</div>
             </div>
         </div>

@@ -6,7 +6,7 @@
         <a href="{$base_uri}{$custom_shop_name}/admin/creation/layout-maker" class="btn btn-default{if $page_name == 'customshopadmincreationlayoutmaker'} active{/if}">
             <span class="glyphicon glyphicon-pencil"></span> Place pictures on products
         </a>
-        <a href="{$base_uri}" class="btn btn-default{if $page_name == 'customshopadmincreationsummary'} active{/if}">
+        <a href="{$base_uri}{$custom_shop_name}/admin/creation/summary" class="btn btn-default{if $page_name == 'customshopadmincreationsummary'} active{/if}">
             <span class="glyphicon glyphicon-list-alt"></span> Your creations summay
         </a>
     </div>

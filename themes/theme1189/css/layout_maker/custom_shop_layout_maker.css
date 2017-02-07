@@ -40,8 +40,8 @@
         right: 17px;
     }
 }
-.item-list-picture.dashed {
-    padding: 0;
+.item-list-picture.selected {
+    border: 1px dashed #ddd;
 }
 .btn-add-creation, .change-color-product-block {
     position: absolute;

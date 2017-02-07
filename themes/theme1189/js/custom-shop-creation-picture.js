@@ -87,7 +87,7 @@ $(document).ready(function () {
 function deletePicture(db_id, id) {
     $.ajax({
         type: 'POST',
-        url: baseDir + 'index.php?controller=ajaxcustomshop&action=deletePicture&ajax=true&id_picture=' + db_id,
+        url: baseDir + 'index.php?controller=ajaxcustomshop&action=deletePicture&ajax=true&id_design=' + db_id,
         cache: false,
         dataType: 'json',
         processData: false, // Don't process the files
@@ -160,6 +160,7 @@ function fileuploadListener() {
             formData.append(file.name, file);
             formData.append('controller', 'ajaxcustomshop');
             formData.append('action', 'savepicture');
+            formData.append('shop', id_shop);
             if ($(this).data('db-id')) {
                 formData.append('db_id', $(this).data('db-id'));
             }

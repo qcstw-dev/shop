@@ -44,6 +44,7 @@
     <title>{$meta_title}</title>
 </head>
 <body>
+    <div class="shop hidden" data-id-shop="{$id_shop}" data-name-shop="{$name_shop}"></div>
     <div class="panel panel-default col-md-2 vertical-center shadow saving" style="display: none;">
         <div class="thumbnail border-none margin-0">
             <img src="{$base_uri}/img/loader.gif" title="Loading" alt="Loading"/> 

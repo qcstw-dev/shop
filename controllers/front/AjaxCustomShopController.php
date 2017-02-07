@@ -2,8 +2,21 @@
 
 class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
 
+    public function displayAjaxSaveCreation() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('id_product') && Tools::getValue('id_design') && Tools::getValue('custom_picture') && Tools::getValue('shop')) {
+            $oCreation = new CustomShopProduct(null, ['id_product' => Tools::getValue('id_product'), 'id_design' => Tools::getValue('id_design'), 'id_shop' => Tools::getValue('shop')]);
+            $sImgPath = $oCreation->saveCreationPicture(Tools::getValue('custom_picture'));
+            $oCreation->save();
+            $result['image'] = $sImgPath;
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Impossible to save the creation, information missing';
+        }
+        echo json_encode($result);
+    }
     public function displayAjaxLoadProducts() {
-
         global $smarty;
 
         $aProducts = Product::getProducts($this->context->language->id, 0, -1, 'date_add', 'DESC', '45', true, $this->context);
@@ -26,11 +39,6 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
         
         $rendered_content = $smarty->fetch(_PS_THEME_DIR_.'custom-shop-admin-popup-list-products.tpl');
         echo Media::minifyHTML($rendered_content);
-
-//        $sHtml = '<div class="white-popup">';
-//        $sHtml .= 'toto';
-//        $sHtml .= '</div>';
-//        echo $sHtml;
     }
 
     public function displayAjaxLoadPictureBlocks() {
@@ -69,8 +77,8 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
     public function displayAjaxDeletePicture() {
         $result = [];
         $result['success'] = false;
-        if (Tools::getValue('id_picture')) {
-            $oCustomShopDesign = new CustomShopDesign(Tools::getValue('id_picture'));
+        if (Tools::getValue('id_design')) {
+            $oCustomShopDesign = new CustomShopDesign(Tools::getValue('id_design'));
             $sFolder = 'img/custom_shop/picture/';
             unlink($sFolder . $oCustomShopDesign->picture);
             if ($oCustomShopDesign->delete()) {
@@ -88,7 +96,6 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
                 $oDesign = new CustomShopDesign(Tools::getValue('db_id'));
                 $oDesign->setPrice(Tools::getValue('price'));
             } else {
-//                $oDesign = new CustomShopDesign(null, ['price' => Tools::getValue('price'), 'id_shop' => $this->custom_shop->id]);
                 $result['success'] = false;
             }
             if (!$oDesign->save()) {
@@ -109,7 +116,6 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
             $oDesign = new CustomShopDesign(Tools::getValue('db_id'));
             $oDesign->setName(Tools::getValue('picture_name'));
         } else {
-//                $oDesign = new CustomShopDesign(null, ['name' => Tools::getValue('picture_name'), 'id_shop' => $this->custom_shop->id]);
             $result['success'] = false;
         }
         if (!$oDesign->save()) {
@@ -138,7 +144,7 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
                     $oCustomShopDesign->setName($result['image_title']);
                     $oCustomShopDesign->setPicture($sName);
                 } else {
-                    $oCustomShopDesign = new CustomShopDesign(null, ['picture' => $sName, 'name' => $result['image_title'], 'id_shop' => $this->custom_shop->id]);
+                    $oCustomShopDesign = new CustomShopDesign(null, ['picture' => $sName, 'name' => $result['image_title'], 'id_shop' => Tools::getValue('shop')]);
                 }
                 if (!$oCustomShopDesign->save()) {
                     $result['success'] = false;
