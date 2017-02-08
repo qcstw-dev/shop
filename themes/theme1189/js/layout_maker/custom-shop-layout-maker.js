@@ -15,7 +15,7 @@ $(function () {
             popupError('Please select a product and a picture');
         }
     });
-
+    
     $('.item-list-picture').live('click', function () {
         $('.item-list-picture').removeClass('selected');
         $(this).addClass('selected');
@@ -111,15 +111,15 @@ function saveCreation(id_product, id_design, custom_picture) {
                     items: [{
                             src: $('<div class="white-popup">\n\
                             <div class="font-size-15 bold">Your Product is saved</div>\n\
-                            <div><img src="'+baseDir+json.image+'" /></div>\n\
+                            <div><img src="' + baseDir + json.image + '" /></div>\n\
                             <div class="btn btn-success continue pull-left">Continue creating</div>\n\
-                            <a href="'+baseDir+name_shop+'/admin/creation/summary" class="btn btn-primary pull-right">Creation summary</a>\n\
+                            <a href="' + baseDir + name_shop + '/admin/creation/summary" class="btn btn-primary pull-right">Creation summary</a>\n\
                             </div>'),
                             type: 'inline'
                         }]
                 });
                 $('.continue').on('click', function () {
-                   $.magnificPopup.close(); 
+                    $.magnificPopup.close();
                 });
             } else {
                 popupError(json.error);
@@ -127,7 +127,7 @@ function saveCreation(id_product, id_design, custom_picture) {
             console.log(json);
         }
     });
-    
+
 }
 function displayProduct(id_product) {
     $('.add-creation').data('id-product', id_product);

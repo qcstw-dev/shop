@@ -16,6 +16,23 @@ class CustomShopControllerCore extends FrontController {
         $this->display_column_right = false;
         $this->display_header = false;
         $this->display_footer = false;
+        
+        $bRedirection = false;
+        if (Tools::getValue('shop_name')) {
+            $this->custom_shop = CustomShop::getShopByName(Tools::getValue('shop_name'));
+            $this->context->smarty->assign('id_shop', $this->custom_shop['id']);
+            $this->context->smarty->assign('name_shop', $this->custom_shop['name']);
+        } else {
+            $bRedirection = true;
+        }
+        if ($this->custom_shop) {
+            $this->custom_shop_account = CustomShopAccount::getAccountById($this->custom_shop['id_account']);
+        } else {
+            $bRedirection = true;
+        }
+        if ($bRedirection) {
+            header('Location :'.$this->base_uri.'custom-shop-registration');
+        }
     }
 
     public function initContent() {

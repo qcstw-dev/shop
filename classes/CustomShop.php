@@ -8,6 +8,8 @@ class CustomShopCore extends ObjectModel {
     public $motto;
     public $logo;
     public $header;
+    public $facebook;
+    public $twitter;
     public $id_account;
     public static $definition = array(
         'table' => 'custom_shop',
@@ -26,6 +28,16 @@ class CustomShopCore extends ObjectModel {
         }
     }
 
+    public function setLogo($sLogo) {
+        $this->logo = $sLogo;
+        return $this;
+    }
+
+    public function setHeader($sHeader) {
+        $this->header = $sHeader;
+        return $this;
+    }
+
     public static function getShopById($iId) {
         return Db::getInstance()->getRow('
 		SELECT *
@@ -34,21 +46,32 @@ class CustomShopCore extends ObjectModel {
     }
 
     public static function getShopByName($sName) {
-        return new CustomShop(Db::getInstance()->getValue('
-		SELECT id
+        return Db::getInstance()->getRow('
+		SELECT *
 		FROM `' . _DB_PREFIX_ . 'custom_shop`
-		WHERE `name` = \'' . pSQL($sName) . '\''));
+		WHERE `name` = \'' . pSQL($sName) . '\'');
     }
 
     public function save() {
-        if (!Db::getInstance()->insert('custom_shop', [
-                    'name' => $this->name,
-                    'id_account' => $this->id_account
-                ])) {
-            return false;
+        $aData = [
+            'name' => pSQL($this->name),
+            'title' => pSQL($this->title),
+            'motto' => pSQL($this->motto),
+            'logo' => pSQL($this->logo),
+            'header' => pSQL($this->header),
+            'facebook' => pSQL($this->facebook),
+            'twitter' => pSQL($this->twitter),
+            'id_account' => pSQL($this->id_account)
+        ];
+        if ($this->id) {
+            return Db::getInstance()->update(self::$definition['table'], $aData, 'id = ' . pSQL($this->id));
         } else {
-            $this->id = Db::getInstance()->Insert_ID();
-            return true;
+            if (!Db::getInstance()->insert(self::$definition['table'], $aData)) {
+                return false;
+            } else {
+                $this->id = Db::getInstance()->Insert_ID();
+                return true;
+            }
         }
     }
 

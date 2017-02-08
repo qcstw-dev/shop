@@ -33,6 +33,17 @@
 {if in_array($page_name, ['customshopadmincreationsummary'])}
     <script type="text/javascript" src="{$js_dir}custom-shop-summary.js"></script>
 {/if}
+{if in_array($page_name, ['customshopadminshopedit'])}
+    <script type="text/javascript" src="{$js_dir}fileupload/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="{$js_dir}fileupload/canvas-to-blob.min.js"></script>
+    <script type="text/javascript" src="{$js_dir}fileupload/load-image.all.min.js"></script>
+    <script type="text/javascript" src="{$js_dir}fileupload/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="{$js_dir}fileupload/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="{$js_dir}fileupload/jquery.fileupload-process.js"></script>
+    <script type="text/javascript" src="{$js_dir}fileupload/jquery.fileupload-validate.js"></script>
+    <script type="text/javascript" src="{$js_dir}fileupload/jquery.fileupload-image.js"></script>
+    <script type="text/javascript" src="{$js_dir}custom-shop-edit.js"></script>
+{/if}
 {if $page_name == 'customshopregister'}
 <script type="text/javascript" src="{$js_dir}custom-shop-register.js"></script>
 {/if}

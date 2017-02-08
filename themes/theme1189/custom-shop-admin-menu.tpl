@@ -5,7 +5,10 @@
         'customshopadmincreationlayoutmaker',
         'customshopadmincreationsummary'
        ])} active{/if}">Creation zone</a>
-    <a href="#" class="list-group-item">Shop</a>
+    <a href="{$base_uri}{$custom_shop_name}/admin/shop" class="list-group-item{if in_array($page_name, [
+        'customshopadminshop',
+        'customshopadminshopedit'
+       ])} active{/if}">Shop</a>
     <a href="#" class="list-group-item">Dashboard</a>
     <a href="#" class="list-group-item">User account</a>
     <a href="#" class="list-group-item">Contact</a>
