@@ -35,10 +35,9 @@
                            data-db-id="{$db_id}" 
                            data-id="{$counter}" 
                            type="number" min="1" max="5" 
-                           placeholder="0" 
+                           placeholder="0"
                            {if !$db_id}disabled{/if}
-                           {if $db_id && $pictures.$counter.price}value="{$pictures.$counter.price}"{/if}
-                           />
+                           {if $db_id && $pictures.$counter.price}value="{$pictures.$counter.price}"{/if} />
                 </div>
             </div>
             <div class="clearfix"></div>

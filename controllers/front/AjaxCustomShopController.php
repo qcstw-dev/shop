@@ -2,6 +2,31 @@
 
 class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
 
+    public function displayAjaxDeleteCreation() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('id_creation')) {
+            $oCreation = new CustomShopProduct(Tools::getValue('id_creation'));
+            $oCreation->delete();
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Impossible to remove, information missing';
+        }
+        echo json_encode($result);
+    }
+    public function displayAjaxPublish() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('published') && Tools::getValue('id_creation')) {
+            $oCreation = new CustomShopProduct(Tools::getValue('id_creation'));
+            $oCreation->setPublished((Tools::getValue('published') === 'true' ? true : false));
+            $oCreation->save();
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Impossible to modify the status, information missing';
+        }
+        echo json_encode($result);
+    }
     public function displayAjaxSaveCreation() {
         $result = [];
         $result['success'] = true;
@@ -79,8 +104,6 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
         $result['success'] = false;
         if (Tools::getValue('id_design')) {
             $oCustomShopDesign = new CustomShopDesign(Tools::getValue('id_design'));
-            $sFolder = 'img/custom_shop/picture/';
-            unlink($sFolder . $oCustomShopDesign->picture);
             if ($oCustomShopDesign->delete()) {
                 $result['success'] = true;
             }
@@ -105,10 +128,24 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
             }
         } else {
             $result['success'] = false;
+            $result['error'] = 'Price must be minimum 1 and maximum 5';
         }
         echo json_encode($result);
     }
 
+    public function displayAjaxSaveCreationName() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('id_creation')) {
+            $oCreation = new CustomShopProduct(Tools::getValue('id_creation'));
+            $oCreation->setProductName(Tools::getValue('product_name'));
+            $oCreation->save();
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Impossible to save creation\'s name, information missing';
+        }
+        echo json_encode($result);
+    }
     public function displayAjaxSavePictureName() {
         $result = [];
         $result['success'] = true;
@@ -138,18 +175,19 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
                     $oCustomShopDesign = new CustomShopDesign(Tools::getValue('db_id'));
                     unlink($sFolder . $oCustomShopDesign->picture);
                 }
+                $sImageTitle = str_replace(['.jpg', '.png', '.gif'], '', $file['name']);
                 $result['image_name'] = $sName;
-                $result['image_title'] = str_replace(['.jpg', '.png', '.gif'], '', $file['name']);
                 if (isset($oCustomShopDesign)) {
-                    $oCustomShopDesign->setName($result['image_title']);
                     $oCustomShopDesign->setPicture($sName);
                 } else {
-                    $oCustomShopDesign = new CustomShopDesign(null, ['picture' => $sName, 'name' => $result['image_title'], 'id_shop' => Tools::getValue('shop')]);
+                    $oCustomShopDesign = new CustomShopDesign(null, ['picture' => $sName, 'name' => $sImageTitle, 'price' => 1,'id_shop' => Tools::getValue('shop')]);
                 }
                 if (!$oCustomShopDesign->save()) {
                     $result['success'] = false;
                 }
                 $result['id'] = $oCustomShopDesign->id;
+                $result['image_title'] = $oCustomShopDesign->name;
+                $result['price'] = $oCustomShopDesign->price;
             } else {
                 $result['success'] = false;
             }

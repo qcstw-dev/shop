@@ -43,7 +43,7 @@ class CustomShopAdminControllerCore extends CustomShopControllerCore {
     public function initContent() {
         parent::initContent();
         $this->context->smarty->assign([
-           'menu' => _PS_THEME_DIR_ . 'custom-shop-menu.tpl' 
+           'menu' => _PS_THEME_DIR_ . 'custom-shop-admin-menu.tpl' 
         ]);
     }
 

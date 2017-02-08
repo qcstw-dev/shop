@@ -30,6 +30,9 @@
     <script type="text/javascript" src="{$js_dir}layout_maker/component.js"></script>
     <script type="text/javascript" src="{$js_dir}layout_maker/custom-shop-layout-maker.js"></script>
 {/if}
+{if in_array($page_name, ['customshopadmincreationsummary'])}
+    <script type="text/javascript" src="{$js_dir}custom-shop-summary.js"></script>
+{/if}
 {if $page_name == 'customshopregister'}
 <script type="text/javascript" src="{$js_dir}custom-shop-register.js"></script>
 {/if}

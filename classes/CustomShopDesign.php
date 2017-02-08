@@ -24,6 +24,13 @@ class CustomShopDesignCore extends ObjectModel {
         }
     }
 
+    public static function getPrice($iId) {
+        return Db::getInstance()->getValue('
+		SELECT `price`
+		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '`
+		WHERE `id` = ' . pSQL($iId));
+    }
+
     public static function getDesignById($iId) {
         return Db::getInstance()->getRow('
 		SELECT *
@@ -54,7 +61,18 @@ class CustomShopDesignCore extends ObjectModel {
     }
 
     public function delete() {
+        $aCreations = CustomShopProduct::getProductsByDesign($this->id);
+        foreach ($aCreations as $aCreation) {
+            $oCreation = new CustomShopProduct($aCreation['id']);
+            $oCreation->delete();
+        }
+        $this->deletePicture();
         return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
+    }
+
+    public function deletePicture() {
+        $sFolder = 'img/custom_shop/picture/';
+        unlink($sFolder . $this->picture);
     }
 
     public function save() {

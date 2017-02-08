@@ -11,7 +11,15 @@ $(document).ready(function () {
     });
     $('.trash').live('click', function () {
         if ($(this).data('db-id')) {
-            deletePicture($(this).data('db-id'), $(this).data('id'));
+            var db_id = $(this).data('db-id');
+            var id = $(this).data('id');
+            popupChoice('<div>Every products with this picture will be also deleted</div>', {
+                'function_name': 'deletePicture',
+                'arguments': {
+                    'db_id': db_id,
+                    'id': id
+                }
+            });
         }
     });
     $('.block-picture-add').on('click', function () {
@@ -55,18 +63,19 @@ $(document).ready(function () {
         saving();
         $.ajax({
             type: 'POST',
-            url: baseDir + 'index.php?controller=ajaxcustomshop&action=savepicturename&ajax=true&'+name+'='
+            url: baseDir + 'index.php?controller=ajaxcustomshop&action=' + (name === 'price' ? 'saveprice' : 'savepicturename') + '&ajax=true&' + name + '='
                     + element.val() + (element.data('db-id') ? '&db_id=' + element.data('db-id') : ''),
             cache: false,
             dataType: 'json',
-            processData: false, // Don't process the files
-            contentType: false,
             async: true,
             success: function (json) {
                 if (json.success) {
                     element.blur();
                     saving_hide();
                     confirm();
+                } else {
+                    saving_hide();
+                    popupError(json.error);
                 }
             }
         });
@@ -84,49 +93,30 @@ $(document).ready(function () {
         }, 1000);
     });
 });
-function deletePicture(db_id, id) {
+function deletePicture(aArg) {
     $.ajax({
         type: 'POST',
-        url: baseDir + 'index.php?controller=ajaxcustomshop&action=deletePicture&ajax=true&id_design=' + db_id,
+        url: baseDir + 'index.php?controller=ajaxcustomshop&action=deletePicture&ajax=true&id_design=' + aArg['db_id'],
         cache: false,
         dataType: 'json',
         processData: false, // Don't process the files
         contentType: false,
         async: true,
+        beforeSend: function () {
+            loading();
+        },
         success: function (json) {
+            loading_hide();
             if (json.success) {
-                $('.block-picture-container-' + id).fadeOut(300, function () {
+                $('.block-picture-container-' + aArg['id']).fadeOut(300, function () {
                     $(this).remove();
                 });
+            } else {
+                popupError(json.error);
             }
         }
     });
 }
-//function loadPictureBlocks(offset, nbr) {
-//    $.ajax({
-//        type: 'POST',
-//        url: baseDir + 'index.php?controller=ajaxcustomshop&action=loadpictureblocks&ajax=true'
-//                + (offset ? '&offset=' + offset : '') + (nbr ? '&nbr=' + nbr : ''),
-//        cache: false,
-//        dataType: 'html',
-//        processData: false, // Don't process the files
-//        contentType: false,
-//        async: true,
-//        beforeSend: function () {
-//            loading();
-//        },
-//        complete: function () {
-//            loading_hide();
-//        },
-//        success: function (html) {
-//            if (html) {
-//                $('.block-picture-container:last').after(html);
-//                fileuploadListener();
-//            }
-//        }
-//    });
-//}
-
 function fileuploadListener() {
     limit = 1;
     $('.fileupload').fileupload({
@@ -146,7 +136,7 @@ function fileuploadListener() {
         // loading GIF
 //        saving();
     }).on('fileuploadprocessalways', function (e, data) {
-        
+
         saving();
         var index = data.index,
                 file = data.files[index],
@@ -187,6 +177,7 @@ function fileuploadListener() {
                         saving_hide();
                         confirm();
                         $('.block-picture-container-' + data.idUpload).find('.price, .picture-name').prop('disabled', false);
+                        $('.block-picture-container-' + data.idUpload).find('.price').val(json.price);
                     } else {
                         if (json.error) {
                             popupError(json.error);

@@ -7,6 +7,7 @@ class CustomShopProductCore extends ObjectModel {
     public $id_design;
     public $custom_img;
     public $product_name;
+    public $published;
     public $id_shop;
     public static $definition = array(
         'table' => 'custom_shop_customized_prod',
@@ -23,6 +24,16 @@ class CustomShopProductCore extends ObjectModel {
                 $this->{$key} = $field;
             }
         }
+    }
+
+    public function setPublished($iStatus) {
+        $this->published = $iStatus;
+        return $this;
+    }
+
+    public function setProductName($sProductName) {
+        $this->product_name = $sProductName;
+        return $this;
     }
 
     public function setCustomImg($sCustomImg) {
@@ -56,11 +67,29 @@ class CustomShopProductCore extends ObjectModel {
 		WHERE `id` = ' . pSQL($iId));
     }
 
-    public static function getProductsByShopId($iShopId) {
+    public static function getProductsByDesign($iDesignId) {
         return Db::getInstance()->executeS('
 		SELECT *
 		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '`
-		WHERE `id_shop` = ' . pSQL($iShopId));
+		WHERE `id_design` = ' . pSQL($iDesignId));
+    }
+
+    public static function getProducts($iShopId, $bOnlyPublished = true) {
+        return Db::getInstance()->executeS('
+		SELECT *
+		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '`
+		WHERE `id_shop` = ' . pSQL($iShopId)
+                        . ($bOnlyPublished ? ' AND `published` = 1' : ''));
+    }
+
+    public function delete() {
+        $this->deleteCustomImage();
+        return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
+    }
+
+    public function deleteCustomImage() {
+        $sFolder = 'img/custom_shop/creation/';
+        unlink($sFolder . $this->custom_img);
     }
 
     public function save() {
@@ -69,6 +98,7 @@ class CustomShopProductCore extends ObjectModel {
             'id_design' => pSQL($this->id_design),
             'custom_img' => pSQL($this->custom_img),
             'product_name' => pSQL($this->product_name),
+            'published' => pSQL($this->published),
             'id_shop' => pSQL($this->id_shop)
         ];
         if ($this->id) {

@@ -2,7 +2,8 @@
     <a href="{$base_uri}{$custom_shop_name}/admin/creation" class="list-group-item{if in_array($page_name, [
         'customshopadmincreation',
         'customshopadmincreationpicture',
-        'customshopadmincreationlayoutmaker'
+        'customshopadmincreationlayoutmaker',
+        'customshopadmincreationsummary'
        ])} active{/if}">Creation zone</a>
     <a href="#" class="list-group-item">Shop</a>
     <a href="#" class="list-group-item">Dashboard</a>
