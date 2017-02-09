@@ -1,0 +1,104 @@
+.header {
+    width: 100%;
+    height: 300px;
+}
+.header-label {
+    font-weight: bold;
+    position: absolute;
+    margin-top: -45px;
+    margin-left: 23%;
+}
+.logo {
+    width: 150px;
+    z-index: 1;
+    position: absolute;
+    margin-top: -49px;
+    margin-left: 8%;
+}
+.logo img {
+    max-width: 100%;
+}
+.shop-title, .shop-motto {
+    font-size: 30px;
+    float: left;
+}
+.shop-title {
+    margin-right: 20px;
+}
+.shop-motto {
+    font-style: italic;
+    font-size: 20px;
+    float: left;
+    padding-top: 10px;
+}
+.navbar-nav {
+    margin-left: 249px;
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    .shop-title {
+        font-size: 17px;
+    }
+    .shop-motto {
+        font-size: 15px;
+        padding-top: 0;
+    }
+    .header-label {
+        margin-left: 30%;
+        margin-top: -30px;
+    }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+    .header {
+        background-image: none !important;
+        height: 0;
+    }
+    .header-label {
+        font-weight: bold;
+        margin-top: 0;
+        position: initial;
+        margin-left: 0;
+    }
+    .shop-title, .shop-motto {
+        font-size: 15px;
+        float: none;
+        text-align: center;
+    }
+    .logo {
+        width: 150px;
+        float: none;
+        margin-right: 0;
+        margin: auto;
+        margin-top: 5px;
+        position: initial;
+    }
+    .shop-motto {
+        font-style: italic;
+        font-size: 13px;
+        float: left;
+        padding-top: 5px;
+    }
+    .navbar-nav {
+        margin: 7.5px -15px;
+    }
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+
+}

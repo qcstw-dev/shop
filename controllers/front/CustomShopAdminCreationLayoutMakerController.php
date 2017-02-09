@@ -13,7 +13,7 @@ class CustomShopAdminCreationLayoutMakerControllerCore extends CustomShopAdminCo
     public function initContent() {
         parent::initContent();
         
-        $aPictures = CustomShopDesign::getPicturesByShopId($this->custom_shop->id);
+        $aPictures = CustomShopDesign::getPicturesByShopId($this->custom_shop['id']);
         $this->context->smarty->assign([
                 'pictures' => $aPictures,
                 'layout_maker' => 'true',

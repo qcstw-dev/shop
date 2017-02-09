@@ -37,13 +37,13 @@ class CustomShopControllerCore extends FrontController {
 
     public function initContent() {
         parent::initContent();
+
         $this->context->smarty->assign(array(
+            'shop' => $this->custom_shop ,
             'logo_gift' => $this->context->link->getMediaLink(_PS_IMG_ . Configuration::get('PS_LOGO')),
             'shop_name' => $this->context->shop->name,
             'custom_shop_name' => Tools::getValue('shop_name') ? : '',
             'shop_title' => Configuration::get('PS_SHOP_NAME'),
-            'header' => _PS_THEME_DIR_ . 'custom-shop-header.tpl',
-            'footer' => _PS_THEME_DIR_ . 'custom-shop-footer.tpl',
             'display_top_logo' => $this->bDisplayTopLogo,
             'picture_dir' => 'img/custom_shop/picture/'
         ));

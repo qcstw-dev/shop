@@ -10,7 +10,7 @@
             </div>
         </a>
     </div>
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-4 margin-bottom-20">
         <a href="{$base_uri}{$custom_shop_name}/admin/creation/layout-maker" class="text-decoration-none">
             <div class="border creation-block">
                 <span class="glyphicon glyphicon-pencil font-size-44"></span>
@@ -18,7 +18,7 @@
             </div>
         </a>
     </div>
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-4 margin-bottom-20">
         <a href="{$base_uri}{$custom_shop_name}/admin/creation/summary" class="text-decoration-none">
             <div class="border creation-block">
                 <span class="glyphicon glyphicon-list-alt font-size-44"></span>

@@ -10,7 +10,7 @@
             </div>
             <div class="col-xs-12">
                 <div class="thumbnail margin-bottom-0">
-                    <img class="cursor-pointer popup-picture" src="{$base_dir}img/custom_shop/creation/{$creation.custom_img}" alt="" title="" />
+                    <img class="popup-picture" src="{$base_dir}img/custom_shop/creation/{$creation.custom_img}" alt="" title="" />
                 </div>
             </div>
             <div class="price bold font-size-15 text-center">Sell price: {convertPrice price=$creation.price}*</div>

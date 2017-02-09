@@ -17,7 +17,10 @@ class CustomShopAdminControllerCore extends CustomShopControllerCore {
     public function initContent() {
         parent::initContent();
         $this->context->smarty->assign([
-           'menu' => _PS_THEME_DIR_ . 'custom-shop-admin-menu.tpl' 
+            'side' => 'back',
+            'header' => _PS_THEME_DIR_ . 'custom-shop-header-back.tpl',
+            'footer' => _PS_THEME_DIR_ . 'custom-shop-footer-back.tpl',
+            'menu' => _PS_THEME_DIR_ . 'custom-shop-admin-menu.tpl'
         ]);
     }
 

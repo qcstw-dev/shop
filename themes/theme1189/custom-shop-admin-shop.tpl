@@ -11,7 +11,7 @@
         </a>
     </div>
     <div class="col-xs-12 col-md-4">
-        <a href="{$base_uri}{$custom_shop_name}" target="_blank" class="text-decoration-none">
+        <a href="{$base_uri}shop/{$custom_shop_name}" target="_blank" class="text-decoration-none">
             <div class="border creation-block">
                 <span class="glyphicon glyphicon-globe font-size-44"></span>
                 Visit your shop
@@ -19,5 +19,6 @@
         </a>
     </div>
 </div>
+<div class="clearfix"></div>
 
 {include file=$footer}

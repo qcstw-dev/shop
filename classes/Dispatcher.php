@@ -56,7 +56,7 @@ class DispatcherCore
             'keywords' => array(),
         ),
         'custom_shop' => array(
-            'controller' =>    'customshop',
+            'controller' =>    'customshopfronthome',
             'rule' =>        'shop/{shop_name}',
             'keywords' => array(
                 'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')

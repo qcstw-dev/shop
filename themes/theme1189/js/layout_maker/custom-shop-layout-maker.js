@@ -54,44 +54,6 @@ $(function () {
             }
         }
     });
-    $(document).on('click', '.quick-view', function (e) {
-        e.preventDefault();
-        var url = $(this).data('url');
-        var anchor = '';
-
-        if (url.indexOf('#') != -1) {
-            anchor = url.substring(url.indexOf('#'), url.length);
-            url = url.substring(0, url.indexOf('#'));
-        }
-        if (url.indexOf('?') != -1)
-            url += '&';
-        else
-            url += '?';
-
-        if (!!$.prototype.fancybox) {
-            $.fancybox({
-                'padding': 0,
-                'width': 900,
-                'height': 'auto',
-                'type': 'ajax',
-                'autoSize': false,
-                'href': url + 'content_only=1' + anchor + '&admin=true',
-                ajax: {
-                    complete: function () {
-                        $('.jqzoom').jqzoom({
-                            zoomType: 'innerzoom', //innerzoom/standard/reverse/drag
-                            zoomWidth: 458, //zooming div default width(default width value is 200)
-                            zoomHeight: 458, //zooming div default width(default height value is 200)
-                            xOffset: 21, //zooming div default offset(default offset value is 10)
-                            yOffset: 0,
-                            title: false
-                        });
-                    }
-
-                }
-            });
-        }
-    });
 });
 function saveCreation(id_product, id_design, custom_picture) {
     $.ajax({

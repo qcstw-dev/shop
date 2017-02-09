@@ -1,4 +1,4 @@
-<div class="col-xs-12 margin-bottom-10">
+<div class="col-xs-12 margin-bottom-10 visible-lg">
     <div class="btn-group btn-group-justified shadow" role="group">
         <a href="{$base_uri}{$custom_shop_name}/admin/creation/picture" class="btn btn-default{if $page_name == 'customshopadmincreationpicture'} active{/if}">
             <span class="glyphicon glyphicon-upload"></span> Upload you pictures and set your comission

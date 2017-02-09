@@ -1,12 +1,14 @@
 <div class="white-popup">
     {foreach from=$products item='product'}
-        <div class="col-md-4 margin-bottom-10">
+        <div class="col-xs-12 col-md-4 margin-bottom-10">
             <div class="col-xs-12 padding-0 padding-10 border shadow">
                 <div class="col-xs-8 font-size-13 padding-0 margin-top-10 bold product-name">
                     {$product.name|truncate:15:'...'|escape:'html':'UTF-8'}
                 </div>
                 <div class="col-xs-4 padding-0">
-                    <div class="btn btn-default quick-view col-xs-12" data-url="{$base_uri}product-popup?id_product={$product.id_product}"><span class="glyphicon glyphicon-info-sign"></span> Info</div>
+                    <div class="btn btn-default quick-view col-xs-12" data-url="{$base_uri}product-popup?id_product={$product.id_product}">
+                        <span class="glyphicon glyphicon-info-sign"></span> Info
+                    </div>
                 </div>
                 <div class="col-xs-12 slick-pictures-product-list margin-bottom-0">
                     {foreach from=$product.images item=image name=images}
@@ -15,7 +17,7 @@
                         </div>
                     {/foreach}
                 </div>
-                <div class="font-size-15 bold">{convertPrice price=$product.prices.10}</div>
+                <div class="col-xs-12 font-size-15 bold">{convertPrice price=$product.prices.10}</div>
                 <div class="btn btn-success col-xs-12 btn-select-product" data-id-product="{$product.id_product}">Select</div>
             </div>
         </div>

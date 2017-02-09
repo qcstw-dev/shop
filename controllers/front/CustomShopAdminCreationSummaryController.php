@@ -12,7 +12,7 @@ class CustomShopAdminCreationSummaryControllerCore extends CustomShopAdminContro
 
     public function initContent() {
         parent::initContent();
-        $aCreations = CustomShopProduct::getProducts($this->custom_shop->id, false);
+        $aCreations = CustomShopProduct::getProducts($this->custom_shop['id'], false);
         foreach ($aCreations as &$aCreation) {
             $iDesignPrice = CustomShopDesign::getPrice($aCreation['id_design']);
             $fProductPrice = Product::getPriceStatic((int) $aCreation['id_product'], true, null, 2, null, false, true, 1);

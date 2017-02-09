@@ -4,7 +4,7 @@
         padding: 4em;
         position: relative;
         /*border: 3px solid #E8E8E8;*/
-        max-width: 100%;
+        width: 100%;
         overflow: hidden;
         margin: 0 auto;
     }
@@ -172,7 +172,7 @@
         width: 7%;
     }
     .overlay-right {
-        width: 13%;
+        width: 10%;
     }
     .custom-margin-left {
         margin-left: -2%;
@@ -234,7 +234,7 @@
 }
 @media screen and (max-width: 414px){
     .component {
-        height: 369px;
+        height: 310px;
     }
 }
 @media screen and (max-width: 375px){
@@ -244,15 +244,17 @@
         margin-top: -30px;
     }
     .component {
-        height: 336px;
+        height: 276px;
     }
     .overlay {
         height: 315px;
     }
-    .overlay-top,
+    .overlay-top {
+        height: 10px;
+    }
     .overlay-bottom
     {
-        height: 11px;
+        height: 19px;
     }
 }
 @media screen and (max-width: 360px){
@@ -268,10 +270,10 @@
         height: 68px;
     }
     .component {
-        height: 288px;
+        height: 229px;
     }
     .overlay {
-        height: 268px;
+        height: 208px;
     }
     .title-block-products {
         margin-bottom: 0;

@@ -11,7 +11,7 @@
     {if isset($pictures.$counter.id)}
         {assign var='db_id' value=$pictures.$counter.id}
     {/if}
-    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container block-picture-container-{$counter}">
+    <div class="col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container block-picture-container-{$counter}">
         <div class="trash border" data-id="{$counter}" data-db-id="{$db_id}"><span class="glyphicon glyphicon-trash"></span></div>
         <div class="border shadow block-picture" data-id="{$counter}">
             <div class="col-xs-10 margin-auto input-group-sm">
@@ -44,14 +44,15 @@
         </div>
     </div>
 {/for}
-<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-10">
+<div class="col-sm-4 col-lg-3 margin-bottom-10">
     <div class="cursor-pointer dashed block-picture block-picture-add">
         <div class="thumbnail border-none margin-0 padding-0 margin-top-lg-30 margin-bottom-lg-30">
             <img src="{$base_uri}img/plus-icon.jpg" title="upload" alt="upload" />
         </div>
     </div>
 </div>
-{*<div class="clearfix"></div>
+<div class="clearfix"></div>
+{*
 <div class="col-xs-12">
 <div class="panel panel-default shadow text-center font-size-20 cursor-pointer btn-add-more-pictures">
 <span class="glyphicon glyphicon-plus"></span>

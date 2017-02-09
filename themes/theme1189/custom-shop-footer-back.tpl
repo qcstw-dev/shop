@@ -11,6 +11,7 @@
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="{$js_dir}autoload/10-bootstrap.min.js"></script>
 <script type="text/javascript" src="{$js_dir}autoload/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="{$js_dir}custom-shop.js"></script>
 <script type="text/javascript" src="{$js_dir}custom-shop-admin.js"></script>
 {if in_array($page_name, ['customshopadmincreationpicture'])}
     <script type="text/javascript" src="{$js_dir}fileupload/jquery.ui.widget.js"></script>

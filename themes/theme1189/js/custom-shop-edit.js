@@ -53,9 +53,9 @@ function fileuploadListener() {
                         // append PICTURE
                         saving_hide();
                         confirm();
-                        $('.'+type).remove();
-                        $('.' + type +'-area').append(
-                            '<img class="'+type+' popup-picture cursor-pointer" src="' + baseUri + 'img/custom_shop/'+type+'/' + json.image_name + '" />'
+                        $('.form-preview-'+type).remove();
+                        $('.form-' + type +'-area').append(
+                            '<img class="form-preview-'+type+' popup-picture" src="' + baseUri + 'img/custom_shop/'+type+'/' + json.image_name + '" />'
                         );
                     } else {
                         if (json.error) {
