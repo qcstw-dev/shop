@@ -46,12 +46,17 @@
                     {/if}
                     {if $have_image}
                         <span id="view_full_size">
+                            {if isset($smarty.get.side) && $smarty.get.side == 'front'}
+                                {assign var='cover_url' value=$cover.cover}
+                            {else}
+                                {assign var='cover_url' value=$link->getImageLink($product->link_rewrite, $cover.id_image, 'tm_large_default')|escape:'html':'UTF-8'}
+                            {/if}
                             {if $jqZoomEnabled && $have_image}
-                                <a class="jqzoom" title="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" rel="gal1" href="{$link->getImageLink($product->link_rewrite, $cover.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" itemprop="url">
-                                    <img id="bigpic" itemprop="image" src="{$link->getImageLink($product->link_rewrite, $cover.id_image, 'tm_large_default')|escape:'html':'UTF-8'}" title="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" alt="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}"/>
+                                <a class="jqzoom" title="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" rel="gal1" href="{$cover_url}" itemprop="url">
+                                    <img id="bigpic" itemprop="image" src="{$cover_url}" title="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" alt="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}"/>
                                 </a>
                             {else}
-                                <img id="bigpic" itemprop="image" src="{$link->getImageLink($product->link_rewrite, $cover.id_image, 'tm_large_default')|escape:'html':'UTF-8'}" title="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" alt="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" width="{$largeSize.width}" height="{$largeSize.height}"/>
+                                <img id="bigpic" itemprop="image" src="{$cover_url}" title="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" alt="{if !empty($cover.legend)}{$cover.legend|escape:'html':'UTF-8'}{else}{$product->name|escape:'html':'UTF-8'}{/if}" width="{$largeSize.width}" height="{$largeSize.height}"/>
                                 {if !$content_only}
                                     <span class="span_link no-print">{l s='View larger'}</span>
                                 {/if}
@@ -88,15 +93,32 @@
                                             <li id="thumbnail_{$image.id_image}"{if $smarty.foreach.thumbnails.last} class="last"{/if}>
                                                 <a 
                                                     {if $jqZoomEnabled && $have_image}
+                                                        {if isset($smarty.get.side) && $smarty.get.side == 'front' && $image.cover}
+                                                            {assign var='img_url_small' value=$image.cover}
+                                                            {assign var='img_url_large' value=$image.cover}
+                                                        {else}
+                                                            {assign var='img_url_small' value=$link->getImageLink($product->link_rewrite, $imageIds, 'tm_large_default')|escape:'html':'UTF-8'}
+                                                            {assign var='img_url_large' value=$link->getImageLink($product->link_rewrite, $imageIds, 'tm_large_default')|escape:'html':'UTF-8'}
+                                                        {/if}
                                                         href="javascript:void(0);"
-                                                        rel="{literal}{{/literal}gallery: 'gal1', smallimage: '{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_large_default')|escape:'html':'UTF-8'}',largeimage: '{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_thickbox_default')|escape:'html':'UTF-8'}'{literal}}{/literal}"
+                                                        rel="{literal}{{/literal}gallery: 'gal1', smallimage: '{$img_url_small}',largeimage: '{$img_url_large}'{literal}}{/literal}"
                                                     {else}
-                                                        href="{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_thickbox_default')|escape:'html':'UTF-8'}"
+                                                        {if isset($smarty.get.side) && $smarty.get.side == 'front' && $image.cover}
+                                                            {assign var='img_url' value=$image.cover}
+                                                        {else}
+                                                            {assign var='img_url' value=$link->getImageLink($product->link_rewrite, $imageIds, 'tm_thickbox_default')|escape:'html':'UTF-8'}
+                                                        {/if}
+                                                        href="{$img_url}"
                                                         data-fancybox-group="other-views"
                                                         class="fancybox{if $image.id_image == $cover.id_image} shown{/if}"
                                                     {/if}
                                                     title="{$imageTitle}">
-                                                    <img class="img-responsive" id="thumb_{$image.id_image}" src="{$link->getImageLink($product->link_rewrite, $imageIds, 'tm_cart_default')|escape:'html':'UTF-8'}" alt="{$imageTitle}" title="{$imageTitle}" height="{$cartSize.height}" width="{$cartSize.width}" itemprop="image" />
+                                                    {if isset($smarty.get.side) && $smarty.get.side == 'front' && $image.cover}
+                                                        {assign var='mini_img_url' value=$image.cover}
+                                                    {else}
+                                                        {assign var='mini_img_url' value=$link->getImageLink($product->link_rewrite, $imageIds, 'tm_cart_default')|escape:'html':'UTF-8'}
+                                                    {/if}
+                                                        <img class="img-responsive" id="thumb_{$image.id_image}" src="{$mini_img_url}" alt="{$imageTitle}" title="{$imageTitle}" height="{$cartSize.height}" width="{$cartSize.width}" itemprop="image" />
                                                 </a>
                                             </li>
                                         {/if}
@@ -152,7 +174,7 @@
                             <div class="clearfix"></div>
                         </div>
                     {/if}
-                    {if $colors}
+                    {if $colors && (!isset($smarty.get.side) || (isset($smarty.get.side) && $smarty.get.side != 'front'))}
                         <div class="border-bottom">
                             <div class="pull-left bold">{l s='Colors available'}: </div>
                             <div class="pull-left">
@@ -183,7 +205,7 @@
                         </div>
                         <div class="clear"></div>
                     </div> <!-- end content_prices -->
-                    {if $product->category != 'designs' && !isset($smarty.get.admin)}
+                    {if $product->category != 'designs' && (!isset($smarty.get.side) || (isset($smarty.get.side) && $smarty.get.side != 'admin')) }
                         <div class="pull-left">
                             <p class="our_price_display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                 {strip}
@@ -195,7 +217,7 @@
                             <p>{l s='*price for 10 pieces'}</p>
                         </div>
                     {/if}
-                    {if !isset($smarty.get.admin)}
+                    {if !isset($smarty.get.side) || (isset($smarty.get.side) && $smarty.get.side != 'admin' && $smarty.get.side != 'front')}
                         <div class="product_attributes pull-right">
                             {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
                             <div class="btn btn-default selection margin-bottom-10 product-{$product->id}"

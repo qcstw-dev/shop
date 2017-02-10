@@ -20,7 +20,7 @@ $(function () {
                 'height': 'auto',
                 'type': 'ajax',
                 'autoSize': false,
-                'href': url + 'content_only=1' + anchor + '&admin=true',
+                'href': url + 'content_only=1' + anchor + '&side=' + $('.shop').data('side') + ($(this).data('id-creation') ? '&id_creation=' + $(this).data('id-creation') : '') + ($(this).data('id-design') ? '&id_design=' + $(this).data('id-design') : ''),
                 ajax: {
                     complete: function () {
                         $('.jqzoom').jqzoom({
