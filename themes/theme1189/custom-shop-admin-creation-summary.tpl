@@ -30,6 +30,6 @@
         </div>
     </a>
 </div>
-<div class="clearfix"></div>
 <div class="col-xs-12 font-size-13 bold">* based on product price and your picture price</div>
+<div class="clearfix"></div>
 {include file=$footer}
