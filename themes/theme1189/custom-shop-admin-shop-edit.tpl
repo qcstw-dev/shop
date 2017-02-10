@@ -23,6 +23,15 @@
         </div>
         <div class="form-row">
             <div class="form-label">
+                <label>Shop description</label>
+            </div>
+            <div class="form-input">
+                <textarea class="form-control" name="description" placeholder="Short description" >{$shop.description}</textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
                 <label>Shop logo*</label>
                 <div class="font-size-10">*Perfect match size 100px x 100px</div>
             </div>
@@ -47,10 +56,10 @@
                 <div class="font-size-10">*Perfect match size 1110px x 300px</div>
             </div>
             <div class="form-input">
-                <div class="col-sm-5">
+                <div class="col-sm-12 margin-bottom-10">
                     <div class="btn btn-warning form-upload-btn" data-type="header"><span class="glyphicon glyphicon-upload"></span> Upload</div>
                 </div>
-                <div class="col-sm-7 thumbnail margin-bottom-0 border-none form-header-area">
+                <div class="col-sm-12 thumbnail margin-bottom-0 border-none form-header-area">
                     {if $shop.header}
                         <img class="form-preview-header popup-picture" src="{$base_dir}img/custom_shop/header/{$shop.header}" />
                     {/if}

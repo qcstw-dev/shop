@@ -2,6 +2,22 @@
 
 class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
 
+    public function displayAjaxloadTerms() {
+        global $smarty;
+        $oCms = new CMS(3, $this->context->language->id);
+        if (Validate::isLoadedObject($oCms)) {
+            $this->context->smarty->assign('cms_page_html', $oCms->content);
+        }
+        $rendered_content = $smarty->fetch(_PS_THEME_DIR_ . 'custom-shop-cms-content.tpl');
+        echo Media::minifyHTML($rendered_content);
+    }
+
+    public function displayAjaxloadContactUs() {
+        include_once(_PS_FRONT_CONTROLLER_DIR_."/CustomShopFrontContactUsController.php");
+        $rendered_content = $this->context->smarty->fetch(_PS_THEME_DIR_ . 'custom-shop-front-contract-us.tpl');
+        echo Media::minifyHTML($rendered_content);
+    }
+
     public function displayAjaxSaveShopImage() {
         $result = [];
         $result['success'] = true;

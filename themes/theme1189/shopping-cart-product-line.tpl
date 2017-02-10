@@ -5,18 +5,18 @@
         </div>
     </td>
     <td class="cart_description" data-title="{l s='Description'}" colspan="7">
-            {capture name=sep} : {/capture}
-            {capture}{l s=' : '}{/capture}
-            <p class="product-name">
-                <a class="quick-view-bis"  href="{$base_uri}product-popup?id_product={$product.id_product}">{$product.name|escape:'html':'UTF-8'}</a>
-            </p>
-            {if $product.reference}<small class="cart_ref">{l s='SKU'}{$smarty.capture.default}{$product.reference|escape:'html':'UTF-8'}</small>{/if}
-            {if isset($product.attributes) && $product.attributes}
-                <small>
-                    <a href="{$link->getProductLink($product.id_product, $product.link_rewrite, $product.category, null, null, $product.id_shop, $product.id_product_attribute)|escape:'html':'UTF-8'}">{$product.attributes|@replace: $smarty.capture.sep:$smarty.capture.default|escape:'html':'UTF-8'}</a>
-                </small>
-            {/if}
-    </td>
+        {capture name=sep} : {/capture}
+    {capture}{l s=' : '}{/capture}
+    <p class="product-name">
+        <a class="quick-view-bis"  href="{$base_uri}product-popup?id_product={$product.id_product}">{$product.name|escape:'html':'UTF-8'}</a>
+    </p>
+    {if $product.reference}<small class="cart_ref">{l s='SKU'}{$smarty.capture.default}{$product.reference|escape:'html':'UTF-8'}</small>{/if}
+    {if isset($product.attributes) && $product.attributes}
+        <small>
+            <a href="{$link->getProductLink($product.id_product, $product.link_rewrite, $product.category, null, null, $product.id_shop, $product.id_product_attribute)|escape:'html':'UTF-8'}">{$product.attributes|@replace: $smarty.capture.sep:$smarty.capture.default|escape:'html':'UTF-8'}</a>
+        </small>
+    {/if}
+</td>
 {if $PS_STOCK_MANAGEMENT}
     <td class="cart_avail" rowspan="4"><span class="label{if $product.quantity_available <= 0 && isset($product.allow_oosp) && !$product.allow_oosp} label-danger{elseif $product.quantity_available <= 0} label-warning{else} label-success{/if}">{if $product.quantity_available <= 0}{if isset($product.allow_oosp) && $product.allow_oosp}{if isset($product.available_later) && $product.available_later}{$product.available_later}{else}{l s='In Stock'}{/if}{else}{l s='Out of stock'}{/if}{else}{if isset($product.available_now) && $product.available_now}{$product.available_now}{else}{l s='In Stock'}{/if}{/if}</span>{hook h="displayProductDeliveryTime" product=$product}</td>
     {/if}
@@ -117,11 +117,9 @@
 {if !isset($noDeleteButton) || !$noDeleteButton}
     <td class="cart_delete text-center" rowspan="4">
         {if (!isset($customizedDatas.$productId.$productAttributeId) OR $quantityDisplayed > 0) && empty($product.gift)}
-            <div class="margin-bottom-10">
-                <a rel="nofollow" title="{l s='Delete'}" class="cart_quantity_delete" data-custom-picture="{$product.custom_picture}" data-original-picture="{$product.original_picture}" id="{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}_{$product.custom_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery|intval}&amp;token={$token_cart}&amp;custom_picture={$product.custom_picture}")|escape:'html':'UTF-8'}"><i class="fa fa-trash-o"></i></a>
-            </div>
+            <a rel="nofollow" title="{l s='Delete'}" class="cart_quantity_delete" data-custom-picture="{$product.custom_picture}" data-original-picture="{$product.original_picture}" id="{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}_{$product.custom_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery|intval}&amp;token={$token_cart}&amp;custom_picture={$product.custom_picture}")|escape:'html':'UTF-8'}"><i class="fa fa-trash-o"></i></a>
             <a class="ajax_cart_block_remove_link" data-modify="true" data-id-product="{$product.id_product}" data-id-design="{$product.id_design}" data-custom-product="{$product.custom_picture}" data-original-product="{$product.original_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={$product.custom_picture}")|escape:'html':'UTF-8'}" rel="nofollow"><span class="glyphicon glyphicon-pencil font-size-15"></span></a>
-        {else}
+            {else}
 
         {/if}
     </td>
