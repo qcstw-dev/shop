@@ -13,7 +13,7 @@
         {assign var='productPriceWithoutReduction' value=$product->getPriceWithoutReduct(true, $smarty.const.NULL, $priceDisplayPrecision)}
     {/if}
     <div itemscope itemtype="http://schema.org/Product">
-        <div class="primary_block one-column product-popup">	
+        <div class="primary_block one-column product-popup padding-top-10">
             {if isset($adminActionDisplay) && $adminActionDisplay}
                 <div id="admin-action">
                     <p>{l s='This product is not visible to your customers.'}
@@ -189,7 +189,7 @@
                     {/if}
                     <div class="content_prices">
                         <!-- prices -->
-                        <div class="col-xs-12 padding-top-5 padding-left-0 margin-bottom-20">
+                        <div class="col-xs-12 padding-top-5 padding-left-0 margin-bottom-10">
                             <div class="col-xs-6 col-sm-12 border padding-0">
                                 <div class="tab-price-cel-first col-sm-2 padding-0 text-center padding-0">Quantity</div>
                                 {foreach from=$prices key=quantity item=price}
@@ -207,14 +207,14 @@
                     </div> <!-- end content_prices -->
                     {if $product->category != 'designs' && (!isset($smarty.get.side) || (isset($smarty.get.side) && $smarty.get.side != 'admin')) }
                         <div class="pull-left">
-                            <p class="our_price_display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <div class="our_price_display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                 {strip}
                                     <span id="our_price_display" itemprop="price">{convertPrice price=$prices.10}*</span>
                                     <meta itemprop="priceCurrency" content="{$currency->iso_code}" />
                                     {hook h="displayProductPriceBlock" product=$product type="price"}
                                 {/strip}
-                            </p>
-                            <p>{l s='*price for 10 pieces'}</p>
+                            </div>
+                            <div>{l s='*price for 10 pieces'}</div>
                         </div>
                     {/if}
                     {if !isset($smarty.get.side) || (isset($smarty.get.side) && $smarty.get.side != 'admin' && $smarty.get.side != 'front')}
@@ -231,6 +231,7 @@
                 </div>
             </div>
             <!-- end center infos-->
+            <div class="clearfix"></div>
         </div> <!-- end primary_block -->
     </div> <!-- itemscope product wrapper -->
 {/if}
