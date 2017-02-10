@@ -144,11 +144,6 @@
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-
-}
-
-/* Extra Small Devices, Phones */ 
-@media only screen and (max-width : 480px) {
     .admin-menu {
         position: initial;
         width: auto;
@@ -157,6 +152,10 @@
         width: auto;
         height: auto;
     }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
 }
 
 /* Custom, iPhone Retina */ 

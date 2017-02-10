@@ -1,4 +1,4 @@
-<div class="list-group col-sm-1 padding-right-0 shadow admin-menu">
+<div class="list-group admin-menu col-md-1 padding-right-0 shadow">
     <a href="{$base_uri}{$custom_shop_name}/admin/creation" class="list-group-item{if in_array($page_name, [
         'customshopadmincreation',
         'customshopadmincreationpicture',
@@ -14,4 +14,4 @@
     <a href="#" class="list-group-item">Contact</a>
     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
 </div>
-<div class="col-sm-offset-1 col-sm-11 border shadow content-admin{if $page_name == 'customshopadmincreation'} vertical-center{/if}">
+<div class="col-md-offset-1 col-md-11 border shadow content-admin{if $page_name == 'customshopadmincreation'} vertical-center{/if}">

@@ -304,8 +304,8 @@ var resizeableImage = function (image_target, customizable) {
             var sDownloadButton = '';
             if (!isMobile) {
                 sDownloadButton =
-                        '<div class="padding-0 pull-left">' +
-                        '<div class="export-image btn btn-primary col-xs-12 col-sm-2 col-sm-auto margin-bottom-10">' +
+                        '<div class="padding-0 pull-left col-xs-12 col-sm-3">' +
+                        '<div class="export-image btn btn-primary col-xs-12 margin-bottom-10">' +
                         '<span class="glyphicon glyphicon-download-alt"></span> Download layout</div>' +
                         '</div>' +
                         '</div>';
@@ -318,7 +318,7 @@ var resizeableImage = function (image_target, customizable) {
                                 '</div>' +
                                 '<div class="popup-btns">' +
                                 sDownloadButton +
-                                '<div class="add-to-cart-area padding-0 col-xs-12 col-sm-auto pull-right"></div>' +
+                                '<div class="add-to-cart-area padding-0 col-xs-12 col-sm-2 pull-right"></div>' +
                                 '<div class="clearfix"></div>' +
                                 '</div>'),
                         type: 'inline'

@@ -81,7 +81,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-row">
-            <input class="btn btn-primary pull-right col-xs-12" type="submit" value="Save" />
+            <input class="btn btn-primary pull-right col-xs-12 col-lg-4" type="submit" value="Save" />
         </div>
     </form>
     <div class="clearfix"></div>

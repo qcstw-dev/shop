@@ -3,8 +3,7 @@
     overflow: auto;
 }
 .item-list-picture.selected {
-    border: 2px dashed #ddd;
-    padding: 0;
+    border: 1px dashed #ddd;
 }
 .btn-add-creation, .change-color-product-block {
     position: absolute;
@@ -48,15 +47,15 @@
     .btn-cart {
         top: 135px;
     }
-}
-/* Extra Small Devices, Phones */ 
-@media only screen and (max-width : 480px) {
     .btn-add-creation, .change-color-product-block {
         position: initial;
         max-width: none;
         width: 100%;
         margin-left: 0;
     }
+}
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
 }
 /* Custom, iPhone Retina */ 
 @media only screen and (max-width : 320px) {

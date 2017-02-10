@@ -1,6 +1,6 @@
 <div class="white-popup">
     {foreach from=$products item='product'}
-        <div class="col-xs-12 col-md-4 margin-bottom-10">
+        <div class="col-xs-12 col-sm-4 margin-bottom-10">
             <div class="col-xs-12 padding-0 padding-10 border shadow">
                 <div class="col-xs-8 font-size-13 padding-0 margin-top-10 bold product-name">
                     {$product.name|truncate:15:'...'|escape:'html':'UTF-8'}
