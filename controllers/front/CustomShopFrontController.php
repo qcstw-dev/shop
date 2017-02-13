@@ -251,8 +251,8 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
                     $this->context->smarty->assign('confirmation', 1);
                 }
             }
+            $this->context->smarty->assign('show_contact_popup', true);
         }
-        $this->context->smarty->assign('show_contact_popup', true);
     }
 
     public function setMedia() {

@@ -27,7 +27,7 @@ class CustomShopFrontHomeControllerCore extends CustomShopFrontControllerCore {
             $aQuantities = [1, 5, 10, 25, 50, 100];
             $aPrices = [];
             foreach ($aQuantities as $iQuantity) {
-                $aPrices[$iQuantity] = Product::getPriceStatic((int) $aCustomProduct['id_product'], true, null, 2, null, false, true, $iQuantity) + CustomShopDesign::getPrice($aCustomProduct['id']);
+                $aPrices[$iQuantity] = Product::getPriceStatic((int) $aCustomProduct['id_product'], true, null, 2, null, false, true, $iQuantity) + CustomShopDesign::getPrice($aCustomProduct['id_design']);
             }
             $aCustomProduct['prices'] = $aPrices;
         }

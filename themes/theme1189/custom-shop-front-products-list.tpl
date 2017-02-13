@@ -17,7 +17,7 @@
                 {/if}
             </div>
             <div class="col-xs-12 padding-0 margin-top-10">
-                <div class="thumbnail">
+                <div class="thumbnail margin-bottom-0">
                     <img src="{$base_dir}img/custom_shop/creation/{$product.custom_img}" class="big-picture-{$product.id} popup-picture" alt="{$shop.title}" title="{$shop.title}" />
                 </div>
                 <div class="col-xs-4 padding-5">
