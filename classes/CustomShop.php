@@ -6,6 +6,7 @@ class CustomShopCore extends ObjectModel {
     public $name;
     public $title;
     public $motto;
+    public $description;
     public $logo;
     public $header;
     public $facebook;
@@ -57,6 +58,7 @@ class CustomShopCore extends ObjectModel {
             'name' => pSQL($this->name),
             'title' => pSQL($this->title),
             'motto' => pSQL($this->motto),
+            'description' => pSQL($this->description),
             'logo' => pSQL($this->logo),
             'header' => pSQL($this->header),
             'facebook' => pSQL($this->facebook),

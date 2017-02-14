@@ -225,9 +225,6 @@
             <div class="visible-sm font-size-30 margin-top-20">{l s='Personalized gifts for unique memories'}</div>
         </div>
     </div>
-
     {include file=$menu_mobile}
-    {*    {$currencies|@var_dump}*}
-    {*    {$cookie|@var_dump}*}
 </div>
 <div id="mobile-content" class="row">

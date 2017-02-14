@@ -2,6 +2,31 @@
 
 class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
 
+    public function displayAjaxAddToCartCustomProduct() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('id_creation')) {
+            if (!$this->context->cart->id) {
+                if (Context::getContext()->cookie->id_guest) {
+                    $guest = new Guest(Context::getContext()->cookie->id_guest);
+                    $this->context->cart->mobile_theme = $guest->mobile_theme;
+                }
+                $this->context->cart->add();
+                if ($this->context->cart->id) {
+                    $this->context->cookie->id_cart = (int) $this->context->cart->id;
+                }
+            }
+
+            $oCreation = new CustomShopProduct(Tools::getValue('id_creation'));
+
+            $this->context->cart->updateQty('1', $oCreation->id_product, null, null, 'up', null, null, null, null, null, null, $oCreation->id);
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Impossible to add product to cart, information missing';
+        }
+        echo json_encode($result);
+    }
+
     public function displayAjaxloadTerms() {
         global $smarty;
         $oCms = new CMS(3, $this->context->language->id);
@@ -13,7 +38,7 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
     }
 
     public function displayAjaxloadContactUs() {
-        include_once(_PS_FRONT_CONTROLLER_DIR_."/CustomShopFrontContactUsController.php");
+        include_once(_PS_FRONT_CONTROLLER_DIR_ . "/CustomShopFrontContactUsController.php");
         $rendered_content = $this->context->smarty->fetch(_PS_THEME_DIR_ . 'custom-shop-front-contract-us.tpl');
         echo Media::minifyHTML($rendered_content);
     }

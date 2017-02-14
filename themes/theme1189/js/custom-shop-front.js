@@ -1,4 +1,19 @@
 $(function () {
+    $('.add-creation').on('click', function () {
+       $.ajax({
+            type: 'POST',
+            url: baseDir + 'index.php?controller=ajaxcustomshop&action=addtocartcustomproduct&ajax=true&id_creation='+ $(this).data('id-creation'),
+            cache: false,
+            dataType: 'json',
+            success: function (json) {
+                if (json.success) {
+                    console.log('added');
+                } else {
+                    popupError(json.error);
+                }
+            }
+        });
+    });
     $('.mini-picture').on('click', function () {
         $('.big-picture-' + $(this).data('id-creation')).attr('src', $(this).attr('src'));
     });

@@ -2,7 +2,7 @@
     <div class="col-xs-12 col-sm-6 col-lg-3 margin-bottom-10">
         <div class="col-xs-12 padding-20 border shadow">
             <div class="col-xs-8 col-sm-8 col-md-7 padding-left-0">
-                <div class="btn btn-primary col-xs-12"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</div>
+                <div class="btn btn-primary add-creation col-xs-12" data-id-creation="{$product.id}"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</div>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-5 padding-right-0">
                 <div class="btn btn-default col-xs-12 quick-view" data-url="{$base_uri}product-popup?id_product={$product.id_product}" data-id-creation="{$product.id}" data-id-design="{$product.id_design}">

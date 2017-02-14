@@ -9,9 +9,9 @@ class FrontController extends FrontControllerCore {
         $this->mobile_detect = new Mobile_Detect();
         if ($this->mobile_detect->isMobile() || $this->mobile_detect->isTablet()) {
             if (strpos($_SERVER['REQUEST_URI'], 'order-history') !== false) {
-                header('Location: '.__PS_BASE_URI__.'mobile-order-history');
+                header('Location: ' . __PS_BASE_URI__ . 'mobile-order-history');
             } else {
-                header('Location: '.__PS_BASE_URI__.'mobile');
+                header('Location: ' . __PS_BASE_URI__ . 'mobile');
             }
         }
         self::$smarty->assign('currentController', get_class($this));
@@ -85,10 +85,13 @@ class FrontController extends FrontControllerCore {
         $base_uri = $protocol_content . Tools::getHttpHost() . __PS_BASE_URI__ . (!Configuration::get('PS_REWRITING_SETTINGS') ? 'index.php' : '');
         $this->context->smarty->assign(array(
             'custom_picture_path' => 'img/layout_maker/custom_pictures/',
+            'creation_picture_path' => 'img/custom_shop/creation/',
             'temp_custom_picture_path' => 'img/layout_maker/temp/',
             'original_picture_path' => 'img/layout_maker/original_picture/',
             'custom_picture_uri' => $base_uri . 'img/layout_maker/custom_pictures/',
-            'original_picture_uri' => $base_uri . 'img/layout_maker/original_picture/'));
+            'original_picture_uri' => $base_uri . 'img/layout_maker/original_picture/',
+            'link' => $this->context->link
+        ));
     }
 
     public function setMedia() {

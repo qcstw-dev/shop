@@ -1,6 +1,5 @@
 <div class="col-xs-12">
     <div id="HOOK_TOP_PAYMENT">{$HOOK_TOP_PAYMENT}</div>
-{*        {$summary|@var_dump}*}
     {foreach $summary.products as $key => $product}
         <div class="row padding">
             <div class="col-xs-4 thumbnail border-none">

@@ -15,9 +15,9 @@ class CustomShopProductCore extends ObjectModel {
     );
 
     public function __construct($id = null, $option = []) {
-        parent::__construct($id);
         if ($id) {
-            $option = self::getProductById($id);
+            parent::__construct($id);
+//            $option = self::getProductById($id);
         }
         if ($option) {
             foreach ($option as $key => $field) {
@@ -25,6 +25,33 @@ class CustomShopProductCore extends ObjectModel {
             }
         }
     }
+
+//    public static function getCart($id_cart) {
+//        return Db::getInstance()->executeS('
+//		SELECT *
+//		FROM `' . _DB_PREFIX_ . 'custom_shop_cart_customized_prod`
+//		WHERE `id_cart` = ' . pSQL($id_cart));
+//    }
+
+//    public static function updateCart($id_cart, $id_creation, $operator) {
+//        $oCreation = new CustomShopProduct($id_creation);
+//        $aCart = self::getCart($id_cart);
+//        if ($aCart) {
+//            Db::getInstance()->update(
+//                    _DB_PREFIX_.'custom_shop_cart_customized_prod',
+//                    [
+//                        ''
+//                    ], 
+//                    'id = ' . pSQL($this->id)
+//            );
+//        } else {
+//            Db::getInstance()->insert(_DB_PREFIX_.'custom_shop_cart_customized_prod', [
+//                'id_cart' => $id_cart,
+//                'id_customized_prod' => $id_creation,
+//                'registration_date' => $this->registration_date
+//            ]);
+//        }
+//    }
 
     public function setPublished($iStatus) {
         $this->published = $iStatus;
@@ -58,6 +85,10 @@ class CustomShopProductCore extends ObjectModel {
             $this->setCustomImg($sName);
         }
         return $sImgFinalPath;
+    }
+
+    public function getPrice($iQty) {
+        return (float) Product::getPriceStatic((int) $this->id_product, null, null, 2, null, null, null, $iQty) + (float) CustomShopDesign::getPrice($this->id_design);
     }
 
     public static function getProductById($iId) {

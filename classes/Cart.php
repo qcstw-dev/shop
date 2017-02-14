@@ -508,7 +508,7 @@ class CartCore extends ObjectModel
         $sql = new DbQuery();
 
         // Build SELECT
-        $sql->select('cp.`id_product_attribute`, cp.`id_product`, cp.`id_design`, cp.`quantity` AS cart_quantity, cp.id_shop, cp.`custom_picture`, cp.`original_picture`, pl.`name`, p.`is_virtual`,
+        $sql->select('cp.`id_product_attribute`, cp.`id_product`, cp.`id_design`, cp.`quantity` AS cart_quantity, cp.id_shop, cp.`custom_picture`, cp.`original_picture`, cp.`id_customized_prod`, pl.`name`, p.`is_virtual`,
 						pl.`description_short`, pl.`available_now`, pl.`available_later`, product_shop.`id_category_default`, p.`id_supplier`,
 						p.`id_manufacturer`, product_shop.`on_sale`, product_shop.`ecotax`, product_shop.`additional_shipping_cost`,
 						product_shop.`available_for_order`, product_shop.`price`, product_shop.`active`, product_shop.`unity`, product_shop.`unit_price_ratio`,
@@ -582,7 +582,6 @@ class CartCore extends ObjectModel
         $sql->leftJoin('image_lang', 'il', 'il.`id_image` = image_shop.`id_image` AND il.`id_lang` = '.(int)$this->id_lang);
 
         $result = Db::getInstance()->executeS($sql);
-
         // Reset the cache before the following return, or else an empty cart will add dozens of queries
         $products_ids = array();
         $pa_ids = array();
@@ -596,8 +595,10 @@ class CartCore extends ObjectModel
                 } else {
                     $reduction_type_row = array('reduction_type' => 0);
                 }
-
                 $result[$key] = array_merge($row, $reduction_type_row);
+                if (isset($result[$key]['id_customized_prod']) && $result[$key]['id_customized_prod']) {
+                    $result[$key]['customized_prod'] = CustomShopProduct::getProductById($result[$key]['id_customized_prod']);
+                }
             }
         }
         // Thus you can avoid one query per product, because there will be only one query for all the products of the cart
@@ -923,9 +924,9 @@ class CartCore extends ObjectModel
      * @param string $operator Indicate if quantity must be increased or decreased
      */
     public function updateQty($quantity, $id_product, $id_product_attribute = null, $id_customization = false,
-        $operator = 'up', $id_address_delivery = 0, Shop $shop = null, $auto_add_cart_rule = true, $id_design = null, $custom_picture, $original_picture)
+        $operator = 'up', $id_address_delivery = 0, Shop $shop = null, $auto_add_cart_rule = true, $id_design = null, $custom_picture, $original_picture, $id_creation = null)
     {
-
+        
         if (!$shop) {
             $shop = Context::getContext()->shop;
         }
@@ -1034,7 +1035,7 @@ class CartCore extends ObjectModel
 						SET `quantity` = `quantity` '.$qty.', `date_add` = NOW()
 						WHERE `id_product` = '.(int)$id_product.'
                                                 AND `custom_picture` = "'.$custom_picture.'"'.
-                        (!empty($id_product_attribute) ? ' AND `id_product_attribute` = '.(int)$id_product_attribute : '').'
+                                                (!empty($id_product_attribute) ? ' AND `id_product_attribute` = '.(int)$id_product_attribute : '').'
 						AND `id_cart` = '.(int)$this->id.(Configuration::get('PS_ALLOW_MULTISHIPPING') && $this->isMultiAddressDelivery() ? ' AND `id_address_delivery` = '.(int)$id_address_delivery : '').'
 						LIMIT 1'
                     );
@@ -1065,19 +1066,26 @@ class CartCore extends ObjectModel
                     return -1;
                 }
                 
-                $result_add = Db::getInstance()->insert('cart_product', array(
-                    'id_product' =>            (int)$id_product,
-                    'id_product_attribute' =>    (int)$id_product_attribute,
-                    'id_cart' =>                (int)$this->id,
-                    'id_address_delivery' =>    (int)$id_address_delivery,
-                    'id_shop' =>                $shop->id,
-                    'quantity' =>                (int)$quantity,
-                    'date_add' =>                date('Y-m-d H:i:s'),
-                    'id_design' =>            (int)$id_design,
-                    'custom_picture' =>          $custom_picture,
-                    'original_picture' =>        $original_picture
-                ));
-
+                $aData = [
+                    'id_product' => (int) $id_product,
+                    'id_product_attribute' => (int) $id_product_attribute,
+                    'id_cart' => (int) $this->id,
+                    'id_address_delivery' => (int) $id_address_delivery,
+                    'id_shop' => $shop->id,
+                    'quantity' => (int) $quantity,
+                    'date_add' => date('Y-m-d H:i:s'),
+                    'id_design' => (int) $id_design,
+                    'custom_picture' => $custom_picture,
+                    'original_picture' => $original_picture,
+                ];
+                if ($id_creation && $oCreation = new CustomShopProduct($id_creation)) {
+                    $oCreation = new CustomShopProduct($id_creation);
+                    $aData['id_customized_prod'] = $oCreation->id;
+                    $aData['design_price'] = CustomShopDesign::getPrice($oCreation->id_design);
+                    $aData['product_price'] = Product::getPriceStatic($oCreation->id_product);
+                }
+                $result_add = Db::getInstance()->insert('cart_product', $aData);
+                
                 if (!$result_add) {
                     return false;
                 }

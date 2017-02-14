@@ -14,7 +14,6 @@
                 <div class="address_delivery form-group selector1">
                     <label for="id_address_delivery">{if $cart->isVirtualCart()}{l s='Choose a billing address:'}{else}{l s='Choose a delivery address:'}{/if}</label>
                     <select name="id_address_delivery" id="id_address_delivery" class="address_select form-control">
-                        {$addresses|@var_dump}
                         {foreach from=$addresses key=k item=address}
                             <option value="{$address.id_address|intval}"{if $address.id_address == $cart->id_address_delivery} selected="selected"{/if}>
                                 {$address.alias|escape:'html':'UTF-8'}
