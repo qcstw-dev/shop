@@ -35,6 +35,7 @@ class CartControllerCore extends FrontController
     protected $customization_id;
     protected $custom_picture;
     protected $original_picture;
+    protected $id_customized_prod;
     protected $ref_design;
     protected $qty;
     public $ssl = true;
@@ -68,6 +69,7 @@ class CartControllerCore extends FrontController
         $this->id_design = (int)Tools::getValue('id_design');
         $this->custom_picture = Tools::getValue('custom_picture');
         $this->original_picture = (Tools::getValue('original_picture') ?: null);
+        $this->id_customized_prod = Tools::getValue('id_creation');
         $this->qty = abs(Tools::getValue('qty', 1));
         $this->id_address_delivery = (int)Tools::getValue('id_address_delivery');
     }
@@ -139,7 +141,15 @@ class CartControllerCore extends FrontController
             }
         }
 
-        if ($this->context->cart->deleteProduct($this->id_product, $this->id_product_attribute, $this->customization_id, $this->id_address_delivery, $this->custom_picture, $this->original_picture)) {
+        if ($this->context->cart->deleteProduct(
+                $this->id_product, 
+                $this->id_product_attribute, 
+                $this->customization_id, 
+                $this->id_address_delivery, 
+                $this->custom_picture, 
+                $this->original_picture,
+                $this->id_customized_prod
+                )) {
             Hook::exec('actionAfterDeleteProductInCart', array(
                 'id_cart' => (int)$this->context->cart->id,
                 'id_product' => (int)$this->id_product,
@@ -147,7 +157,8 @@ class CartControllerCore extends FrontController
                 'customization_id' => (int)$this->customization_id,
                 'id_address_delivery' => (int)$this->id_address_delivery,
                 'custom_picture' => $this->custom_picture,
-                'original_picture' => $this->original_picture
+                'original_picture' => $this->original_picture,
+                'id_customized_prod' => $this->id_customized_prod
             ));
 
             if (!Cart::getNbProducts((int)$this->context->cart->id)) {
@@ -312,8 +323,20 @@ class CartControllerCore extends FrontController
                     $sCustomPictureName = $this->custom_picture;
                     $sOriginalPictureName = $this->original_picture;
                 }
-                
-                $update_quantity = $this->context->cart->updateQty($this->qty, $this->id_product, $this->id_product_attribute, $this->customization_id, Tools::getValue('op', 'up'), $this->id_address_delivery, null, null, $this->id_design, $sCustomPictureName, $sOriginalPictureName);
+                $update_quantity = $this->context->cart->updateQty(
+                        $this->qty, 
+                        $this->id_product, 
+                        $this->id_product_attribute, 
+                        $this->customization_id, 
+                        Tools::getValue('op', 'up'), 
+                        $this->id_address_delivery, 
+                        null, 
+                        null, 
+                        $this->id_design, 
+                        $sCustomPictureName, 
+                        $sOriginalPictureName, 
+                        ($this->id_customized_prod ?: 0)
+                );
                 
                 if ($update_quantity < 0) {
                     // If product has attribute, minimal quantity is set with minimal quantity of attribute

@@ -41,6 +41,20 @@ $(function () {
         popupMessage('<div class="thumbnail"><img src="' + $(this).attr('src') + '" /></div>');
     });
 });
+function loading(custom_message) {
+    $.magnificPopup.open({
+        items: [{
+                src: $('<div class="white-popup">' +
+                        '<div class="margin-auto bold">' +
+                        '<img src="' + baseUri + '/img/loader.gif" /> ' +
+                        (custom_message ? custom_message : 'Loading...') +
+                        '</div>' +
+                        '</div>'),
+                type: 'inline'
+            }],
+        showCloseBtn: false
+    });
+}
 function popupError(error) {
     popupMessage('<div class="glyphicon glyphicon-warning-sign font-size-30 color-red"></div><div>' + error + '</div>');
 }
@@ -71,8 +85,8 @@ function popupMessage(html) {
     });
 }
 function popupConfirm(custom_text) {
-    popupMessage('<div class="glyphicon glyphicon-ok font-size-30"></div><div class="font-size-20 bold">' + (custom_text ? custom_text : 'Success') + '</div>');
+    popupMessage('<span class="glyphicon glyphicon-ok color-green font-size-20"></span> ' + (custom_text ? custom_text : 'Success') );
     setTimeout(function () {
         $.magnificPopup.close();
-    }, 500);
+    }, 700);
 }

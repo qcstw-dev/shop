@@ -18,16 +18,23 @@
                                 {foreach from=$products item='product' name='myLoop'}
                                     {assign var='productId' value=$product.id_product}
                                     {assign var='productAttributeId' value=$product.id_product_attribute}
-                                    <dt data-id="cart_block_product_{$product.id_product|intval}_{if $product.id_product_attribute}{$product.id_product_attribute|intval}{else}0{/if}_{if $product.id_address_delivery}{$product.id_address_delivery|intval}{else}0{/if}_{$product.custom_picture}" class="{if $smarty.foreach.myLoop.first}first_item{elseif $smarty.foreach.myLoop.last}last_item{else}item{/if}">
+                                    <dt data-id="cart_block_product_{$product.id_product|intval}_{if $product.id_product_attribute}{$product.id_product_attribute|intval}{else}0{/if}_{if $product.id_address_delivery}{$product.id_address_delivery|intval}{else}0{/if}_{$product.custom_picture}_{$product.id_customized_prod|intval}" 
+                                        class="{if $smarty.foreach.myLoop.first}first_item{elseif $smarty.foreach.myLoop.last}last_item{else}item{/if}">
                                         <div class="col-md-6 thumbnail">
-                                            <img class="popup" src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" />
+                                            <img class="popup" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" />
                                         </div>
                                         <div class="cart-info col-md-6">
                                             <div class="product-name">
                                                 <span class="quantity-formated">
                                                     <span class="quantity">{$product.cart_quantity}</span>&nbsp;x&nbsp;
                                                 </span>
-                                                <a class="cart_block_product_name quick-view-bis" href="{$base_uri}product-popup?id_product={$product.id_product}" title="{$product.name|escape:'html':'UTF-8'}">{$product.name|truncate:13:'...'|escape:'html':'UTF-8'}</a>
+                                                <a class="cart_block_product_name quick-view" 
+                                                   href="{$base_uri}product-popup?id_product={$product.id_product}" 
+                                                   title="{$product.name|escape:'html':'UTF-8'}"
+                                                   data-id-creation="{$product.id_customized_prod}"
+                                                   data-id-design="{if isset($product.customized_prod.id_design)}{$product.customized_prod.id_design}{/if}">
+                                                    {$product.name|truncate:13:'...'|escape:'html':'UTF-8'}
+                                                </a>
                                             </div>
                                             {if isset($product.attributes_small)}
                                                 <div class="product-atributes">
@@ -41,11 +48,31 @@
                                             {l s='Free!' mod='blockcart'}
                                         {/if}
                                     </span>
-                                    <a class="btn btn-default ajax_cart_block_remove_link padding-5" data-modify="true" data-id-product="{$product.id_product}" data-id-design="{$product.id_design}" data-custom-product="{$product.custom_picture}" data-original-product="{$product.original_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}" rel="nofollow"><span class="glyphicon glyphicon-pencil font-size-15"></span> {l s='Modify'}</a>
+                                    {if !$product.id_customized_prod}
+                                        <a class="btn btn-default ajax_cart_block_remove_link padding-5" 
+                                           data-modify="true" 
+                                           data-id-product="{$product.id_product}" 
+                                           data-id-customized-prod="{$product.id_customized_prod}" 
+                                           data-id-design="{$product.id_design}" 
+                                           data-custom-product="{$product.custom_picture}" 
+                                           data-original-product="{$product.original_picture}" 
+                                           href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}" 
+                                           rel="nofollow">
+                                            <span class="glyphicon glyphicon-pencil font-size-15"></span> {l s='Modify'}
+                                        </a>
+                                    {/if}
                                 </div>
                                 <span class="remove_link">
                                     {if !isset($customizedDatas.$productId.$productAttributeId) && (!isset($product.is_gift) || !$product.is_gift)}
-                                        <a class="ajax_cart_block_remove_link" data-custom-product="{$product.custom_picture}" data-id-product="{$product.id_product}" data-id-design="{$product.id_design}" data-original-product="{$product.original_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}" rel="nofollow" title="{l s='remove this product from my cart' mod='blockcart'}">&nbsp;</a>
+                                        <a class="ajax_cart_block_remove_link" 
+                                           data-custom-product="{$product.custom_picture}" 
+                                           data-id-customized-prod="{$product.id_customized_prod}" 
+                                           data-id-product="{$product.id_product}" 
+                                           data-id-design="{$product.id_design}" 
+                                           data-original-product="{$product.original_picture}" 
+                                           href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}" 
+                                           rel="nofollow" 
+                                           title="{l s='remove this product from my cart' mod='blockcart'}">&nbsp;</a>
                                     {/if}
                                 </span>
                             </dt>

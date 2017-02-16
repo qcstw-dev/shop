@@ -56,7 +56,6 @@ function addRemoveToSelection(element) {
             });
         },
         success: function (json) {
-            console.log(json);
             $.fancybox.hideLoading();
             if (json.success === true) {
                 if (json.type === 'remove') {

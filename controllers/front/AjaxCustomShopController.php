@@ -19,7 +19,10 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
 
             $oCreation = new CustomShopProduct(Tools::getValue('id_creation'));
 
-            $this->context->cart->updateQty('1', $oCreation->id_product, null, null, 'up', null, null, null, null, null, null, $oCreation->id);
+            if (!$this->context->cart->updateQty('1', $oCreation->id_product, null, null, 'up', null, null, null, null, null, null, $oCreation->id)) {
+                $result['success'] = false;
+                $result['error'] = 'Impossible to add product to cart';
+            }
         } else {
             $result['success'] = false;
             $result['error'] = 'Impossible to add product to cart, information missing';

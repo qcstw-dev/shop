@@ -1,13 +1,14 @@
 $(function () {
     $('.add-creation').on('click', function () {
-       $.ajax({
+        loading('Adding to cart...');
+        $.ajax({
             type: 'POST',
-            url: baseDir + 'index.php?controller=ajaxcustomshop&action=addtocartcustomproduct&ajax=true&id_creation='+ $(this).data('id-creation'),
+            url: baseDir + 'index.php?controller=ajaxcustomshop&action=addtocartcustomproduct&ajax=true&id_creation=' + $(this).data('id-creation'),
             cache: false,
             dataType: 'json',
             success: function (json) {
                 if (json.success) {
-                    console.log('added');
+                    popupConfirm('Added !');
                 } else {
                     popupError(json.error);
                 }
@@ -45,6 +46,14 @@ $(function () {
             }
         });
     });
+//    $('.gallery-container').each(function (index) {
+//        $('.gallery-container-'+index).magnificPopup({
+//            delegate: 'a', // child items selector, by clicking on it popup will open
+//            type: 'image',
+//            gallery: {enabled: true}
+//        });
+//        
+//    });
 });
 function contactFormPopup() {
     $.magnificPopup.open({

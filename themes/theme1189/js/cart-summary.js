@@ -26,15 +26,15 @@
 $(document).ready(function () {
     $('.cart_quantity_up').off('click').on('click', function (e) {
         e.preventDefault();
-        upQuantity($(this).attr('id').replace('cart_quantity_up_', ''));
+        upQuantity($(this).attr('id').replace('cart_quantity_up_', ''), 1, {'type' : $(this).data('prod-type'), 'id' : $(this).data('prod-id')});
     });
     $('.cart_quantity_down').off('click').on('click', function (e) {
         e.preventDefault();
-        downQuantity($(this).attr('id').replace('cart_quantity_down_', ''));
+        downQuantity($(this).attr('id').replace('cart_quantity_down_', ''), null, {'type' : $(this).data('prod-type'), 'id' : $(this).data('prod-id')});
     });
     $('.cart_quantity_delete').off('click').on('click', function (e) {
         e.preventDefault();
-        deleteProductFromSummary($(this).attr('id'), $(this).data('custom-picture'), $(this).data('original-picture'));
+        deleteProductFromSummary($(this).attr('id'), $(this).data('original-picture'));
     });
     $('.cart_address_delivery').on('change', function (e) {
         changeAddressDelivery($(this));
@@ -360,13 +360,15 @@ function updateQty(val, cart, el)
         getCarrierListAndUpdate();
 }
 
-function deleteProductFromSummary(id, custom_picture, original_picture)
+function deleteProductFromSummary(id, original_picture)
 {
     var customizationId = 0;
     var productId = 0;
     var productAttributeId = 0;
     var id_address_delivery = 0;
     var ids = 0;
+    var custom_picture = 0;
+    var id_customized_prod = 0;
     ids = id.split('_');
     productId = parseInt(ids[0]);
     if (typeof (ids[1]) !== 'undefined')
@@ -375,6 +377,11 @@ function deleteProductFromSummary(id, custom_picture, original_picture)
         customizationId = parseInt(ids[2]);
     if (typeof (ids[3]) !== 'undefined')
         id_address_delivery = parseInt(ids[3]);
+    if (typeof (ids[4]) !== 'undefined' && parseInt(ids[4]) !== 0) {
+        custom_picture = parseInt(ids[4])+'_'+ids[5];
+    } else {
+        id_customized_prod = parseInt(ids[5]);
+    }
     $.ajax({
         type: 'POST',
         headers: {"cache-control": "no-cache"},
@@ -391,7 +398,8 @@ function deleteProductFromSummary(id, custom_picture, original_picture)
                 + '&token=' + static_token
                 + '&allow_refresh=1'
                 + '&custom_picture=' + custom_picture
-                + '&original_picture=' + original_picture,
+                + '&original_picture=' + original_picture
+                + '&id_creation=' + id_customized_prod,
         success: function (jsonData)
         {
             if (jsonData.hasError)
@@ -530,7 +538,7 @@ function refreshOddRow()
     $('.cart_item:last-child, .customization:last-child').addClass('last_item');
 }
 
-function upQuantity(id, qty)
+function upQuantity(id, qty, prod_data)
 {
     if (typeof (qty) == 'undefined' || !qty)
         qty = 1;
@@ -540,6 +548,7 @@ function upQuantity(id, qty)
     var id_address_delivery = 0;
     var ids = 0;
     var custom_picture = 0;
+    var id_customized_prod = 0;
     ids = id.split('_');
     productId = parseInt(ids[0]);
     if (typeof (ids[1]) !== 'undefined')
@@ -548,10 +557,11 @@ function upQuantity(id, qty)
         customizationId = parseInt(ids[2]);
     if (typeof (ids[3]) !== 'undefined')
         id_address_delivery = parseInt(ids[3]);
-    if (typeof (ids[4]) !== 'undefined')
-        custom_picture = parseInt(ids[4]);
-    if (typeof (ids[5]) !== 'undefined')
-        custom_picture = custom_picture+'_'+parseInt(ids[5]);
+    if (typeof (ids[4]) !== 'undefined' && parseInt(ids[4]) !== 0) {
+        custom_picture = parseInt(ids[4])+'_'+parseInt(ids[5]);
+    } else {
+        id_customized_prod = parseInt(ids[5]);
+    }
 
     $.ajax({
         type: 'POST',
@@ -573,7 +583,9 @@ function upQuantity(id, qty)
                 + '&op=up'
                 + '&token=' + static_token
                 + '&allow_refresh=1'
-                + '&custom_picture=' + custom_picture,
+                + '&custom_picture=' + custom_picture 
+                + '&id_creation=' + id_customized_prod,
+        
         success: function (jsonData)
         {
             if (jsonData.hasError)
@@ -636,23 +648,29 @@ function upQuantity(id, qty)
     });
 }
 
-function downQuantity(id, qty)
+function downQuantity(id, qty, prod_data)
 {
+    console.log(id);
+    console.log(qty);
     var val = $('input[name=quantity_' + id + ']').val();
     var newVal = val;
     if (typeof (qty) == 'undefined' || !qty)
     {
+        console.log('toto');
         qty = 1;
         newVal = val - 1;
     } else if (qty < 0)
+        console.log('titi');
         qty = -qty;
 
+        console.log(newVal);
     var customizationId = 0;
     var productId = 0;
     var productAttributeId = 0;
     var id_address_delivery = 0;
     var ids = 0;
     var custom_picture = 0;
+    var id_customized_prod = 0;
     
     ids = id.split('_');
     productId = parseInt(ids[0]);
@@ -662,10 +680,11 @@ function downQuantity(id, qty)
         customizationId = parseInt(ids[2]);
     if (typeof (ids[3]) !== 'undefined')
         id_address_delivery = parseInt(ids[3]);
-    if (typeof (ids[4]) !== 'undefined')
-        custom_picture = parseInt(ids[4]);
-    if (typeof (ids[5]) !== 'undefined')
-        custom_picture = custom_picture+'_'+parseInt(ids[5]);
+    if (typeof (ids[4]) !== 'undefined' && parseInt(ids[4]) !== 0) {
+        custom_picture = parseInt(ids[4])+'_'+ids[5];
+    } else {
+        id_customized_prod = parseInt(ids[5]);
+    }
     
     if (newVal > 0 || $('#product_' + id + '_gift').length)
     {
@@ -689,7 +708,8 @@ function downQuantity(id, qty)
                     + '&qty=' + qty
                     + '&token=' + static_token
                     + '&allow_refresh=1'
-                    + '&custom_picture=' + custom_picture,
+                    + '&custom_picture=' + custom_picture
+                    + '&id_creation=' + id_customized_prod,
             success: function (jsonData)
             {
                 if (jsonData.hasError)
@@ -743,7 +763,7 @@ function downQuantity(id, qty)
 
     } else
     {
-        deleteProductFromSummary(id, $('#'+id).data('custom-picture'), $('#'+id).data('original-picture'));
+        deleteProductFromSummary(id, $('#'+id).data('original-picture'));
     }
 }
 
@@ -824,9 +844,8 @@ function updateCartSummary(json)
             }
         }
 
-        var key_for_blockcart = product_list[i].id_product + '_' + product_list[i].id_product_attribute + '_' + product_list[i].id_address_delivery + '_' + product_list[i].custom_picture;
-        var key_for_blockcart_nocustom = product_list[i].id_product + '_' + product_list[i].id_product_attribute + '_' + ((product_list[i].id_customization && product_list[i].quantity_without_customization != product_list[i].quantity) ? 'nocustom' : '0') + '_' + product_list[i].id_address_delivery+ '_' +product_list[i].custom_picture;
-
+        var key_for_blockcart = product_list[i].id_product + '_' + product_list[i].id_product_attribute + '_' + product_list[i].id_address_delivery + '_' + (product_list[i].custom_picture ? product_list[i].custom_picture : 0) + '_' + (product_list[i].id_customized_prod ? product_list[i].id_customized_prod : 0);
+        var key_for_blockcart_nocustom = product_list[i].id_product + '_' + product_list[i].id_product_attribute + '_' + ((product_list[i].id_customization && product_list[i].quantity_without_customization != product_list[i].quantity) ? 'nocustom' : '0') + '_' + product_list[i].id_address_delivery+ '_' +(product_list[i].custom_picture ? product_list[i].custom_picture : 0) + '_' + (product_list[i].id_customized_prod ? product_list[i].id_customized_prod : 0);
         $('#product_price_' + key_for_blockcart).html('<li class="' + current_price_class + '">' + current_price + '</li>' + initial_price_text);
         if (typeof (product_list[i].customizationQuantityTotal) !== 'undefined' && product_list[i].customizationQuantityTotal > 0)
             $('#total_product_price_' + key_for_blockcart).html(formatCurrency(product_customization_total, currencyFormat, currencySign, currencyBlank));

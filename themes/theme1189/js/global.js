@@ -204,7 +204,7 @@ function quick_view()
                 'height': 'auto',
                 'type': 'ajax',
                 'autoSize': false,
-                'href': url + 'content_only=1' + anchor,
+                'href': url + 'content_only=1' + anchor + ($(this).data('id-creation') ? '&id_creation=' + $(this).data('id-creation') + '&side=front' : '') + ($(this).data('id-design') ? '&id_design=' + $(this).data('id-design') : ''),
                 afterClose: function () {
                     window.history.pushState({path: currentUrl}, '', currentUrl);
                 },

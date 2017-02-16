@@ -484,6 +484,9 @@ ol, ul {
 .color-red {
     color: #ce1f21;
 }
+.color-green {
+    color: #38B15D;
+}
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
     margin-left: 0;
 }

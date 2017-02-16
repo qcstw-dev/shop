@@ -86,7 +86,6 @@ function saveCreation(id_product, id_design, custom_picture) {
             } else {
                 popupError(json.error);
             }
-            console.log(json);
         }
     });
 

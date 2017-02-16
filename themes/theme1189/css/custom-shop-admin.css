@@ -82,9 +82,6 @@
     cursor: pointer;
     z-index: 1;
 }
-.color-green {
-    color: #5cb85c;
-}
 .btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default{
     background: #337ab7;
     color: #fff;

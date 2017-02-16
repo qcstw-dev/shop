@@ -887,7 +887,7 @@ class CartCore extends ObjectModel
         return true;
     }
 
-    public function containsProduct($id_product, $id_product_attribute = 0, $id_customization = 0, $id_address_delivery = 0, $custom_picture = '')
+    public function containsProduct($id_product, $id_product_attribute = 0, $id_customization = 0, $id_address_delivery = 0, $custom_picture = '', $id_creation = 0)
     {
         $sql = 'SELECT cp.`quantity` FROM `'._DB_PREFIX_.'cart_product` cp';
 
@@ -902,8 +902,9 @@ class CartCore extends ObjectModel
         $sql .= '
 			WHERE cp.`id_product` = '.(int)$id_product.'
 			AND cp.`id_product_attribute` = '.(int)$id_product_attribute.'
-			AND cp.`id_cart` = '.(int)$this->id.'
-                        AND cp.`custom_picture` = "'.$custom_picture.'"';
+			AND cp.`id_cart` = '.(int)$this->id.
+                        ($id_creation ? ' AND cp.`id_customized_prod` = '.$id_creation : '').
+                        ($custom_picture ? ' AND cp.`custom_picture` = "'.$custom_picture.'"' : '');
         if (Configuration::get('PS_ALLOW_MULTISHIPPING') && $this->isMultiAddressDelivery()) {
             $sql .= ' AND cp.`id_address_delivery` = '.(int)$id_address_delivery;
         }
@@ -924,9 +925,8 @@ class CartCore extends ObjectModel
      * @param string $operator Indicate if quantity must be increased or decreased
      */
     public function updateQty($quantity, $id_product, $id_product_attribute = null, $id_customization = false,
-        $operator = 'up', $id_address_delivery = 0, Shop $shop = null, $auto_add_cart_rule = true, $id_design = null, $custom_picture, $original_picture, $id_creation = null)
+        $operator = 'up', $id_address_delivery = 0, Shop $shop = null, $auto_add_cart_rule = true, $id_design = null, $custom_picture = null, $original_picture = null, $id_creation = null)
     {
-        
         if (!$shop) {
             $shop = Context::getContext()->shop;
         }
@@ -990,15 +990,15 @@ class CartCore extends ObjectModel
             return false;
         } else {
             /* Check if the product is already in the cart */
-            $result = $this->containsProduct($id_product, $id_product_attribute, (int)$id_customization, (int)$id_address_delivery, $custom_picture);
+            $result = $this->containsProduct($id_product, $id_product_attribute, (int)$id_customization, (int)$id_address_delivery, $custom_picture, $id_creation);
 
             /* Update quantity if product already exist */
             if ($result) {
                 if ($operator == 'up') {
                     $sql = 'SELECT stock.out_of_stock, IFNULL(stock.quantity, 0) as quantity
-							FROM '._DB_PREFIX_.'product p
-							'.Product::sqlStock('p', $id_product_attribute, true, $shop).'
-							WHERE p.id_product = '.$id_product;
+                            FROM '._DB_PREFIX_.'product p
+                            '.Product::sqlStock('p', $id_product_attribute, true, $shop).'
+                            WHERE p.id_product = '.$id_product;
 
                     $result2 = Db::getInstance()->getRow($sql);
                     $product_qty = (int)$result2['quantity'];
@@ -1026,18 +1026,18 @@ class CartCore extends ObjectModel
 
                 /* Delete product from cart */
                 if ($new_qty <= 0) {
-                    return $this->deleteProduct((int)$id_product, (int)$id_product_attribute, (int)$id_customization, $custom_picture, $original_picture);
+                    return $this->deleteProduct((int)$id_product, (int)$id_product_attribute, (int)$id_customization, null, $custom_picture, $original_picture, $id_creation);
                 } elseif ($new_qty < $minimal_quantity) {
                     return -1;
                 } else {
                     Db::getInstance()->execute('
-						UPDATE `'._DB_PREFIX_.'cart_product`
-						SET `quantity` = `quantity` '.$qty.', `date_add` = NOW()
-						WHERE `id_product` = '.(int)$id_product.'
-                                                AND `custom_picture` = "'.$custom_picture.'"'.
-                                                (!empty($id_product_attribute) ? ' AND `id_product_attribute` = '.(int)$id_product_attribute : '').'
-						AND `id_cart` = '.(int)$this->id.(Configuration::get('PS_ALLOW_MULTISHIPPING') && $this->isMultiAddressDelivery() ? ' AND `id_address_delivery` = '.(int)$id_address_delivery : '').'
-						LIMIT 1'
+                        UPDATE `'._DB_PREFIX_.'cart_product`
+                        SET `quantity` = `quantity` '.$qty.', `date_add` = NOW()
+                        WHERE `id_product` = '.(int)$id_product.
+                        ($id_creation ? ' AND `id_customized_prod` = '.$id_creation : ' AND `custom_picture` = "'.$custom_picture.'"').
+                        (!empty($id_product_attribute) ? ' AND `id_product_attribute` = '.(int)$id_product_attribute : '').'
+                        AND `id_cart` = '.(int)$this->id.(Configuration::get('PS_ALLOW_MULTISHIPPING') && $this->isMultiAddressDelivery() ? ' AND `id_address_delivery` = '.(int)$id_address_delivery : '').'
+                        LIMIT 1'
                     );
                 }
             }
@@ -1045,9 +1045,9 @@ class CartCore extends ObjectModel
             /* Add product to the cart */
             elseif ($operator == 'up') {
                 $sql = 'SELECT stock.out_of_stock, IFNULL(stock.quantity, 0) as quantity
-						FROM '._DB_PREFIX_.'product p
-						'.Product::sqlStock('p', $id_product_attribute, true, $shop).'
-						WHERE p.id_product = '.$id_product;
+                        FROM '._DB_PREFIX_.'product p
+                        '.Product::sqlStock('p', $id_product_attribute, true, $shop).'
+                        WHERE p.id_product = '.$id_product;
 
                 $result2 = Db::getInstance()->getRow($sql);
 
@@ -1074,13 +1074,13 @@ class CartCore extends ObjectModel
                     'id_shop' => $shop->id,
                     'quantity' => (int) $quantity,
                     'date_add' => date('Y-m-d H:i:s'),
-                    'id_design' => (int) $id_design,
+                    'id_design' => $id_design,
                     'custom_picture' => $custom_picture,
                     'original_picture' => $original_picture,
+                    'id_customized_prod' => ($id_creation ?: 0)
                 ];
-                if ($id_creation && $oCreation = new CustomShopProduct($id_creation)) {
+                if ($id_creation) {
                     $oCreation = new CustomShopProduct($id_creation);
-                    $aData['id_customized_prod'] = $oCreation->id;
                     $aData['design_price'] = CustomShopDesign::getPrice($oCreation->id_design);
                     $aData['product_price'] = Product::getPriceStatic($oCreation->id_product);
                 }
@@ -1275,7 +1275,7 @@ class CartCore extends ObjectModel
      * @param int $id_customization Customization id
      * @return bool result
      */
-    public function deleteProduct($id_product, $id_product_attribute = null, $id_customization = null, $id_address_delivery = 0, $custom_picture = "", $original_picture = "")
+    public function deleteProduct($id_product, $id_product_attribute = null, $id_customization = null, $id_address_delivery = 0, $custom_picture = "", $original_picture = "", $id_customized_prod = "")
     {
         if (isset(self::$_nbProducts[$this->id])) {
             unset(self::$_nbProducts[$this->id]);
@@ -1291,8 +1291,8 @@ class CartCore extends ObjectModel
                         FROM `'._DB_PREFIX_.'cart_product`
                         WHERE `id_product` = '.(int)$id_product.'
                         AND `id_cart` = '.(int)$this->id.'
-                        AND `id_product_attribute` = '.(int)$id_product_attribute.'
-				AND `custom_picture` = "'.$custom_picture.'"');
+                        AND `id_product_attribute` = '.(int)$id_product_attribute.
+                    ($custom_picture ? ' AND `custom_picture` = "'.$custom_picture.'"' : ' AND `id_customized_prod` = '.$id_customized_prod));
 
             $customization_quantity = (int)Db::getInstance()->getValue('
 			SELECT `quantity`
@@ -1308,7 +1308,7 @@ class CartCore extends ObjectModel
 
             // refresh cache of self::_products
             $this->_products = $this->getProducts(true);
-            return ($customization_quantity == $product_total_quantity && $this->deleteProduct((int)$id_product, (int)$id_product_attribute, null, (int)$id_address_delivery, $custom_picture, $original_picture));
+            return ($customization_quantity == $product_total_quantity && $this->deleteProduct((int)$id_product, (int)$id_product_attribute, null, (int)$id_address_delivery, $custom_picture, $original_picture, $id_customized_prod));
         }
 
         /* Get customization quantity */
@@ -1342,15 +1342,19 @@ class CartCore extends ObjectModel
 		'.(!is_null($id_product_attribute) ? ' AND `id_product_attribute` = '.(int)$id_product_attribute : '').'
 		AND `id_cart` = '.(int)$this->id.'
 		'.((int)$id_address_delivery ? 'AND `id_address_delivery` = '.(int)$id_address_delivery : '')
-                .' AND `custom_picture` = "'.$custom_picture.'"');
-        $sPathToCustomImage = _PS_IMG_DIR_.'layout_maker/custom_pictures/'.$custom_picture.'.png';
-            if (file_exists($sPathToCustomImage)) {
-                unlink($sPathToCustomImage);
-            }
-        if ($original_picture) {
-            $sPathToOriginalImage = _PS_IMG_DIR_.'layout_maker/original_pictures/'.$original_picture.'.png';
-            if (file_exists($sPathToOriginalImage)) {
-                unlink($sPathToOriginalImage);
+                .($custom_picture ? ' AND `custom_picture` = "'.$custom_picture.'"' : '') 
+                .($id_customized_prod ? ' AND `id_customized_prod` = '.$id_customized_prod : ''));
+        
+        if ($custom_picture) {
+            $sPathToCustomImage = _PS_IMG_DIR_.'layout_maker/custom_pictures/'.$custom_picture.'.png';
+                if (file_exists($sPathToCustomImage)) {
+                    unlink($sPathToCustomImage);
+                }
+            if ($original_picture) {
+                $sPathToOriginalImage = _PS_IMG_DIR_.'layout_maker/original_pictures/'.$original_picture.'.png';
+                if (file_exists($sPathToOriginalImage)) {
+                    unlink($sPathToOriginalImage);
+                }
             }
         }
         
