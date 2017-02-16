@@ -731,9 +731,13 @@ class CartCore extends ObjectModel
             
             $aPrices = [];
             $aQuantities = [1, 5, 10, 25, 50, 100];
-
+            $iDesignPrice = (isset($row['customized_prod']) && $row['customized_prod'] ? CustomShopDesign::getPrice($row['customized_prod']['id_design']) : 0 );
+            if ($iDesignPrice) {
+                $row['price_wt'] += $iDesignPrice;
+                $row['total_wt'] += $iDesignPrice * (int)$row['cart_quantity'];
+            }
             foreach ($aQuantities as $iQuantity) {
-                $aPrices[$iQuantity] = Product::getPriceStatic($row['id_product'], true, null, 2, null, false, true, $iQuantity);
+                $aPrices[$iQuantity] = Product::getPriceStatic($row['id_product'], true, null, 2, null, false, true, $iQuantity) + $iDesignPrice;
             }
 
             $row['prices'] = $aPrices;
@@ -1610,19 +1614,21 @@ class CartCore extends ObjectModel
                 $products_total[$id_tax_rules_group.'_'.$id_address] = 0;
             }
 
+            $iDesignPrice = (isset($product['customized_prod']) && $product['customized_prod'] ? CustomShopDesign::getPrice($product['customized_prod']['id_design']) : 0 );
+            
             switch ($ps_round_type) {
                 case Order::ROUND_TOTAL:
-                    $products_total[$id_tax_rules_group.'_'.$id_address] += $price * (int)$product['cart_quantity'];
+                    $products_total[$id_tax_rules_group.'_'.$id_address] += $price * (int)$product['cart_quantity'] + $iDesignPrice * (int)$product['cart_quantity'];
                     break;
 
                 case Order::ROUND_LINE:
-                    $product_price = $price * $product['cart_quantity'];
+                    $product_price = $price * $product['cart_quantity'] + $iDesignPrice * (int)$product['cart_quantity'];
                     $products_total[$id_tax_rules_group] += Tools::ps_round($product_price, $compute_precision);
                     break;
 
                 case Order::ROUND_ITEM:
                 default:
-                    $product_price = /*$with_taxes ? $tax_calculator->addTaxes($price) : */$price;
+                    $product_price = /*$with_taxes ? $tax_calculator->addTaxes($price) : */$price + $iDesignPrice * (int)$product['cart_quantity'];
                     $products_total[$id_tax_rules_group] += Tools::ps_round($product_price, $compute_precision) * (int)$product['cart_quantity'];
                     break;
             }
