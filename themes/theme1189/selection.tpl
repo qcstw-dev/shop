@@ -1,5 +1,5 @@
 {assign var='bDisplayProducts' value=$page_name == 'category' && ($category->name == "Products" || $category->id_parent == "45")}
-{assign var='bDisplayDesigns' value=($page_name == 'category' && $category->name == "Pictures") || $page_name == 'design'}
+{assign var='bDisplayDesigns' value=($page_name == 'category' && ($category->name == "Pictures" || $category->id_parent == "46")) || $page_name == 'design'}
 {assign var='bDisplayLayoutMaker' value=$page_name == 'layoutmaker'}
 
 <ul class="row nav nav-tabs margin-top-10">

@@ -467,7 +467,7 @@ abstract class PaymentModuleCore extends Module
                             'price' => Tools::displayPrice($product_price * $product['quantity'], $this->context->currency, false),
                             'quantity' => $product['quantity'],
                             'customization' => array(),
-                            'custom_picture' => _PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/custom_pictures/'.$product['custom_picture'].'.png',
+                            'custom_picture' => _PS_BASE_URL_.__PS_BASE_URI__.($product['custom_picture'] ? 'img/layout_maker/custom_pictures/'.$product['custom_picture'].'.png' : 'img/custom_shop/creation/'.$product['customized_prod']['custom_img']),
                             'original_picture' => ($product['original_picture'] ? _PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/original_pictures/'.$product['original_picture'].'.png' : ''),
                             'thumbnail_custom_picture' => '<img src="'._PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/custom_pictures/'.$product['custom_picture'].'.png" style="width: 100px" />',
                         );

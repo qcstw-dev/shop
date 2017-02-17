@@ -24,7 +24,7 @@
 *}
 
 {if $smarty.const._PS_VERSION_ >= 1.6}
-    {if $mobile}
+    {if false}
         <a class="btn btn-primary col-xs-12 col-sm-4 pull-right" href="javascript:void(0)" id="paypal_process_payment" title="{l s='Pay with PayPal' mod='paypal'}"><span class="fa fa-credit-card"></span> {l s='Proceed payment'}</a>
     {else}
         <div class="row">

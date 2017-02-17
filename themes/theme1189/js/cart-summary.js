@@ -25,6 +25,7 @@
 
 $(document).ready(function () {
     $('.cart_quantity_up').off('click').on('click', function (e) {
+        console.log('toto');
         e.preventDefault();
         upQuantity($(this).attr('id').replace('cart_quantity_up_', ''), 1, {'type' : $(this).data('prod-type'), 'id' : $(this).data('prod-id')});
     });
@@ -650,20 +651,15 @@ function upQuantity(id, qty, prod_data)
 
 function downQuantity(id, qty, prod_data)
 {
-    console.log(id);
-    console.log(qty);
     var val = $('input[name=quantity_' + id + ']').val();
     var newVal = val;
     if (typeof (qty) == 'undefined' || !qty)
     {
-        console.log('toto');
         qty = 1;
         newVal = val - 1;
     } else if (qty < 0)
-        console.log('titi');
         qty = -qty;
 
-        console.log(newVal);
     var customizationId = 0;
     var productId = 0;
     var productAttributeId = 0;

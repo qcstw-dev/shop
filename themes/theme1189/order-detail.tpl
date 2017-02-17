@@ -6,7 +6,7 @@
                 <input type="hidden" value="" name="submitReorder"/>
 
                 <a href="#" onclick="$(this).closest('form').submit();
-                                        return false;" class="btn btn-default btn-md icon-right pull-right"><span>{l s='Reorder'}</span></a>
+                        return false;" class="btn btn-default btn-md icon-right pull-right"><span>{l s='Reorder'}</span></a>
                 <p class="dark">
                     <strong>{l s='Order Reference %s - placed on' sprintf=$order->getUniqReference()} {dateFormat date=$order->date_add full=0}</strong>
                 </p>
@@ -261,8 +261,8 @@
                         {if $product.product_quantity > $product.customizationQuantityTotal}
                             <tr class="item">
                                 <td>
-                                    <div class="thumbnail border-none">
-                                        <img src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.product_name|escape:'html':'UTF-8'}" />
+                                    <div class="thumbnail border-none col-xs-6">
+                                        <img src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.product_name|escape:'html':'UTF-8'}" />
                                     </div>
                                 </td>
                                 {if $return_allowed}<td class="order_cb"><input type="checkbox" id="cb_{$product.id_order_detail|intval}" name="ids_order_detail[{$product.id_order_detail|intval}]" value="{$product.id_order_detail|intval}" /></td>{/if}
@@ -449,5 +449,5 @@
     </form>
 {else}
     <p class="alert alert-info"><i class="fa fa-info-sign"></i>{l s='You cannot return merchandise with a guest account'}</p>
-{/if}
+    {/if}
 {/if}

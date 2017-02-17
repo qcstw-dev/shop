@@ -247,7 +247,7 @@ class OrderInvoiceCore extends ObjectModel
             $row['unit_price_tax_incl_including_ecotax'] = $row['unit_price_tax_incl'];
             $row['total_price_tax_excl_including_ecotax'] = $row['total_price_tax_excl'];
             $row['total_price_tax_incl_including_ecotax'] = $row['total_price_tax_incl'];
-            $row['custom_picture'] = _PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/custom_pictures/'.$row['custom_picture'].'.png';
+            $row['custom_picture'] = _PS_BASE_URL_.__PS_BASE_URI__.($row['custom_picture'] ? 'img/layout_maker/custom_pictures/'.$row['custom_picture'].'.png' : 'img/custom_shop/creation/'.CustomShopProduct::getProductById($row['id_customized_prod'])['custom_img']);
             /* Stock product */
             $result_array[(int)$row['id_order_detail']] = $row;
         }

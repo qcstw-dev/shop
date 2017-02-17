@@ -166,7 +166,13 @@ class OrderDetailControllerCore extends FrontController
                     $this->context->smarty->assign('total_old', (float)$order->total_paid - $order->total_discounts);
                 }
                 $products = $order->getProducts();
-
+                
+                foreach ($products as $key => &$product) {
+                    if ($product['id_customized_prod']) {
+                        $product['customized_prod'] = CustomShopProduct::getProductById($product['id_customized_prod']);
+                    }
+                }
+                
                 /* DEPRECATED: customizedDatas @since 1.5 */
                 $customizedDatas = Product::getAllCustomizedDatas((int)$order->id_cart);
                 Product::addCustomizationPrice($products, $customizedDatas);

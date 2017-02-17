@@ -15,7 +15,7 @@ class LayoutMakerControllerCore extends FrontController
         $this->context->controller->addJS(_THEME_JS_DIR_ . 'layout_maker/custom.js', 'all');
 
         $this->context->controller->addCSS(_THEME_CSS_DIR_ . 'layout_maker/component.css', 'all');
-        $this->context->controller->addCSS(_THEME_CSS_DIR_ . 'layout_maker/custom.css', 'all');
+        $this->context->controller->addCSS(_THEME_CSS_DIR_ . 'layout_maker/custom_giftattitude_layout_maker.css', 'all');
         $this->context->controller->addCSS(_THEME_CSS_DIR_ . 'layout_maker/demo.css', 'all');
         $this->context->controller->addCSS(_THEME_CSS_DIR_ . 'layout_maker/jquery-ui.css', 'all');
         $this->context->controller->addCSS(_THEME_CSS_DIR_ . 'layout_maker/normalize.css', 'all');

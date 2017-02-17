@@ -87,7 +87,8 @@ $(function () {
         var idProduct = $(this).data('id-product');
         var customPicture = $(this).data('custom-picture');
         var originalPicture = $(this).data('original-picture');
-        ajaxCartRemove(idProduct, customPicture, originalPicture, this);
+        var id_customized_prod = $(this).data('id-customized-prod');
+        ajaxCartRemove(idProduct, customPicture, originalPicture, id_customized_prod, this);
     });
     $('body').on('click', '.add-to-cart', function () {
         crop();
@@ -131,7 +132,7 @@ function loading() {
     });
 }
 
-function ajaxCartRemove(idProduct, customPicture, originalPicture, callerElement) {
+function ajaxCartRemove(idProduct, customPicture, originalPicture, id_customized_prod, callerElement) {
     $.ajax({
         type: 'POST',
         headers: {"cache-control": "no-cache"},
@@ -139,7 +140,13 @@ function ajaxCartRemove(idProduct, customPicture, originalPicture, callerElement
         async: true,
         cache: false,
         dataType: "json",
-        data: 'controller=cart&delete=1&id_product=' + idProduct + '&token=' + static_token + '&ajax=true' + '&custom_picture=' + customPicture + '&original_picture=' + customPicture,
+        data: 'controller=cart&delete=1&id_product=' + idProduct 
+                + '&token='
+                + static_token
+                + '&ajax=true'
+                + '&custom_picture=' + customPicture
+                + '&original_picture=' + customPicture
+                + '&id_creation=' + id_customized_prod,
         success: function (jsonData) {
             if (!jsonData.hasError) {
                 if ($('.block-cart-element').length === 1) {
@@ -149,7 +156,7 @@ function ajaxCartRemove(idProduct, customPicture, originalPicture, callerElement
                         $(this).remove();
                     });
                 }
-                $('.block-cart-element-' + idProduct + '-' + customPicture).fadeOut('slow', function () {
+                $('.block-cart-element-' + idProduct + '-' + (id_customized_prod ? id_customized_prod : customPicture)).fadeOut('slow', function () {
                     $(this).remove();
                     if (!$('.block-cart-element').length) {
                         $('.empty-cart-message').removeClass('hidden');

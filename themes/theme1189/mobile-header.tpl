@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{$css_dir}mobile-style.css" media="all">
     {if isset($layout_maker) && $layout_maker}
         <link rel="stylesheet" href="{$css_dir}layout_maker/component.css" media="all">
-        <link rel="stylesheet" href="{$css_dir}layout_maker/custom.css" media="all">
+        <link rel="stylesheet" href="{$css_dir}layout_maker/custom_giftattitude_layout_maker.css" media="all">
     {/if}
     {if isset($mobile_payment)}
         <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-1.11.0.min.js"></script>
@@ -168,9 +168,10 @@
                     <hr>
                     {if $cart_products}
                         {foreach from=$cart_products item=product name=cart_products}
-                            <div class="col-xs-12 padding-0 block-cart-element block-cart-element-{$product.id_product|intval}-{$product.custom_picture}" data-id="cart_block_product_{$product.id_product|intval}_{$product.custom_picture}">
+                            <div class="col-xs-12 padding-0 block-cart-element block-cart-element-{$product.id_product|intval}-{if $product.id_customized_prod}{$product.id_customized_prod}{else}{$product.custom_picture}{/if}" 
+                                 data-id="cart_block_product_{$product.id_product|intval}_{$product.custom_picture}">
                                 <div class="col-xs-6 col-sm-4 thumbnail">
-                                    <img class="popup" src="{$base_uri}{$custom_picture_path}{$product.custom_picture}.png" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
+                                    <img class="popup" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
                                 </div>
                                 <div class="col-xs-6 col-sm-8 padding-right-0">
                                     <div>
@@ -190,20 +191,23 @@
                             </div>
                             <div class="btn btn-danger remove-from-cart margin-bottom-10 pull-left margin-right-10" 
                                  data-custom-picture="{$product.custom_picture}" 
+                                 data-id-customized-prod="{$product.id_customized_prod}" 
                                  data-id-product="{$product.id_product}" 
                                  data-id-design="{$product.id_design}" 
                                  data-original-product="{$product.original_picture}" 
-                                 href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}"
+                                 href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}&id_customized_prod={$product.id_customized_prod}")|escape:'html':'UTF-8'}"
                                  title="{l s='remove this product from my cart' mod='blockcart'}">
                                 <span class="glyphicon glyphicon-trash"></span> {l s='Remove'}
                             </div>
-                            <a href="{$base_uri}mobile-layout-maker?preselect_design={$product.id_design}&preselect_product={$product.id_product}&custom_picture={$product.custom_picture}{if $product.original_picture}&original_picture={$product.original_picture}{/if}" class="btn btn-primary pull-left">
-                                <span class="glyphicon glyphicon-pencil"></span> {l s='Modify'}
-                            </a>
+                            {if !isset($product.customized_prod)}
+                                <a href="{$base_uri}mobile-layout-maker?preselect_design={$product.id_design}&preselect_product={$product.id_product}&custom_picture={$product.custom_picture}{if $product.original_picture}&original_picture={$product.original_picture}{/if}" class="btn btn-primary pull-left">
+                                    <span class="glyphicon glyphicon-pencil"></span> {l s='Modify'}
+                                </a>
+                            {/if}
                         </div>
+                        <div class="clearfix"></div>
+                        <hr>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr>
                 {/foreach}
                 <div class="col-xs-12 bold font-size-20 block-cart-total">
                     <div class="col-xs-6 col-sm-2 col-sm-offset-4">

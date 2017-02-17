@@ -318,7 +318,7 @@ var resizeableImage = function (image_target, customizable) {
                                 '</div>' +
                                 '<div class="popup-btns">' +
                                 sDownloadButton +
-                                '<div class="add-to-cart-area padding-0 col-xs-12 col-sm-2 pull-right"></div>' +
+                                '<div class="add-to-cart-area padding-0 col-xs-12 col-md-2 pull-right"></div>' +
                                 '<div class="clearfix"></div>' +
                                 '</div>'),
                         type: 'inline'

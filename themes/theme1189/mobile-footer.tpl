@@ -44,7 +44,7 @@
     <script type="text/javascript" src="{$js_dir}fileupload/jquery.fileupload-image.js"></script>
     <script type="text/javascript" src="{$js_dir}fileupload/mobile-custom.js"></script>
 {/if}
-{if isset($layout_maker)}
+{if isset($layout_maker) && !isset($smarty.get.add_to_cart_success)}
     <script type="text/javascript" src="{$js_dir}layout_maker/component.js"></script>
     <script type="text/javascript" src="{$js_dir}layout_maker/mobile-custom.js"></script>
 {/if}
@@ -78,6 +78,16 @@
 {/if}
 {if isset($mobile_identity) || isset($mobile_contact)}
     <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
+{/if}
+{if (isset($checkout) && isset($checkout_step) && $checkout_step == 5)}
+    {literal}
+        <script>
+            $('.radio-payment').on('change', function () {
+                $('.hidden-payment').addClass('hidden');
+                $('.hidden-' + $(this).attr('id')).removeClass('hidden');
+            });
+        </script>
+    {/literal}
 {/if}
 <!-- id mobile-->
 </body>
