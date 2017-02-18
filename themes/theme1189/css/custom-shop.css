@@ -17,3 +17,6 @@
     background: #fff;
     z-index: 9;
 }
+a:hover {
+   text-decoration: none;
+}

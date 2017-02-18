@@ -1,8 +1,8 @@
 {foreach from=$products key=index item='product'}
-    <div class="col-xs-12 col-sm-6 col-lg-3 margin-bottom-10">
-        <div class="col-xs-12 padding-20 border shadow">
+    <div class="col-xs-6 col-lg-3 margin-bottom-10">
+        <div class="col-xs-12 padding-10 border shadow">
             <div class="col-xs-7 padding-left-0">
-                <div class="btn btn-primary add-creation col-xs-12" data-id-creation="{$product.id}"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</div>
+                <div class="btn btn-primary add-creation col-xs-12" data-id-creation="{$product.id}"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="hidden-xs">Add to cart</span></div>
             </div>
             <div class="col-xs-5 padding-right-0">
                 <div class="btn btn-default col-xs-12 quick-view" data-url="{$base_uri}product-popup?id_product={$product.id_product}" data-id-creation="{$product.id}" data-id-design="{$product.id_design}">
@@ -13,7 +13,7 @@
                 {if $product.product_name}
                     {$product.product_name|truncate:15:'...'|escape:'html':'UTF-8'}
                 {else}
-                    Product of {$shop.title|truncate:15:'...'|escape:'html':'UTF-8'}
+                    {'Product of'|cat:$shop.title|truncate:15:'...'|escape:'html':'UTF-8'}
                 {/if}
             </div>
             <div class="col-xs-12 padding-0 margin-top-10">

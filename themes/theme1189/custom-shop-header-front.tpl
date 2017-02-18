@@ -60,7 +60,11 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <div class="cart-icon-mobile padding-10 pull-right visible-xs">
+                    <span class="ajax_cart_quantity" {if !$cart_products}style="display: none"{/if}>{$cart_qties}</span>
+                    <span class="glyphicon glyphicon-shopping-cart font-size-24 pull-right"></span>
+                </div>
+                <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -75,7 +79,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="margin-right-20">
-                        <div class="cart-icon padding-10">
+                        <div class="cart-icon-desk padding-10 hidden-xs">
                             <span class="ajax_cart_quantity" {if !$cart_products}style="display: none"{/if}>{$cart_qties}</span>
                             <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
                             <div class="cart cart-desk">

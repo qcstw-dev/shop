@@ -21,10 +21,13 @@ $(function () {
             }
         });
     });
-    $('.cart-icon').on('hover', function () {
+    $('.cart-icon-mobile').on('click', function () {
+        popupMessage($('.cart').html());
+    });
+    $('.cart-icon-desk').on('hover', function () {
         $(this).find('.cart').stop().slideDown();
     });
-    $('.cart-icon').on('mouseleave', function () {
+    $('.cart-icon-desk').on('mouseleave', function () {
         $(this).find('.cart').stop().slideUp();
     });
     $('.add-creation').on('click', function () {
