@@ -33,7 +33,7 @@
                             <span class="price font-size-15 visible-xs">
                                 {convertPrice price=$product.prices.10}
                             </span>
-                            <span class="font-size-20 visible-sm">
+                            <span class="font-size-20 hidden-xs">
                                 {convertPrice price=$product.prices.10}
                             </span>
                         </a>

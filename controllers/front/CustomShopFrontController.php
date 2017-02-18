@@ -49,7 +49,13 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
             'message' => html_entity_decode(Tools::getValue('message')),
         ));
 
+        $aProducts = $this->context->cart->getProducts(true, null, null, true);
+        $cart_qties = $this->context->cart->nbProducts(true);
         $this->context->smarty->assign([
+            'cart_qties' => $cart_qties,
+            'meta_title' => $this->custom_shop['title'],
+            'token' => Tools::getToken(false),
+            'cart_products' => $aProducts,
             'side' => 'front',
             'header' => _PS_THEME_DIR_ . 'custom-shop-header-front.tpl',
             'footer' => _PS_THEME_DIR_ . 'custom-shop-footer-front.tpl',
@@ -87,7 +93,7 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
                 '::1'
             );
             $bIsLocal = true;
-            if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+            if (!in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
                 $bIsLocal = false;
             }
             if (!$bIsLocal && (!$server_output || !$server_output->success)) {

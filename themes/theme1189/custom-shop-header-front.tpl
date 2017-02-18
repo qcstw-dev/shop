@@ -35,6 +35,14 @@
 </head>
 <body>
     <div class="shop hidden" data-id-shop="{$id_shop}" data-name-shop="{$name_shop}" data-side="front"></div>
+    <div class="panel panel-default col-md-2 vertical-center shadow loading" style="display: none;">
+        <div class="thumbnail border-none margin-0">
+            <img src="{$base_uri}/img/loader.gif" title="Loading" alt="Loading"/> 
+        </div>
+        <span class="text">Loading...</span></div>
+    <div class="panel panel-success col-md-2 vertical-center shadow confirm" style="display: none;">
+        <span class="glyphicon glyphicon-ok font-size-40 color-green"></span> <span class="text">Added !</span>
+    </div>
     <img class="hidden" src="{$base_uri}img/loader.gif" />
     <div class="container">
         <div class="col-xs-12">
@@ -48,7 +56,7 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default border-left-0 border-right-0">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -66,10 +74,19 @@
                     <li class="active"><a href="#">Home</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="margin-right-20"><a href="#" class="padding-10"><span class="glyphicon glyphicon-shopping-cart font-size-24"></span></a></li>
+                    <li class="margin-right-20">
+                        <div class="cart-icon padding-10">
+                            <span class="ajax_cart_quantity" {if !$cart_products}style="display: none"{/if}>{$cart_qties}</span>
+                            <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
+                            <div class="cart cart-desk">
+                                {include file="./custom-shop-front-cart-products.tpl" products=$cart_products}
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
     <div class="container">
-        <div class="col-xs-12 margin-top-50 padding-0">
+        <div class="margin-top-50 visible-sm visible-md visible-lg"></div>
+        <div class="col-xs-12 padding-0">

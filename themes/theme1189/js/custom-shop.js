@@ -1,7 +1,7 @@
 $(function () {
     $(document).on('click', '.quick-view', function (e) {
         e.preventDefault();
-        var url = $(this).data('url');
+        var url = ($(this).data('url') ? $(this).data('url') : ($(this).attr('href') ? $(this).attr('href') : ''));
         var anchor = '';
 
         if (url.indexOf('#') != -1) {
@@ -32,7 +32,6 @@ $(function () {
                             title: false
                         });
                     }
-
                 }
             });
         }
@@ -41,7 +40,7 @@ $(function () {
         popupMessage('<div class="thumbnail"><img src="' + $(this).attr('src') + '" /></div>');
     });
 });
-function loading(custom_message) {
+function loading_popup(custom_message) {
     $.magnificPopup.open({
         items: [{
                 src: $('<div class="white-popup">' +
@@ -89,4 +88,21 @@ function popupConfirm(custom_text) {
     setTimeout(function () {
         $.magnificPopup.close();
     }, 700);
+}
+function confirm(text) {
+    $('.confirm').find('.text').text(text);
+    $('.confirm').fadeIn('slow');
+    setTimeout(function () {
+        $('.confirm').fadeOut('slow');
+    }, 500);
+}
+function loading(text) {
+    $('.loading').find('.text').text(text);
+    $('.loading').fadeIn('slow');
+}
+function loading_hide() {
+    $('.loading').fadeOut('slow');
+}
+function loading_popup_hide() {
+    $.magnificPopup.close();
 }

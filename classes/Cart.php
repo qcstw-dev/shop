@@ -485,7 +485,7 @@ class CartCore extends ObjectModel
      *
      * @result array Products
      */
-    public function getProducts($refresh = false, $id_product = false, $id_country = null)
+    public function getProducts($refresh = false, $id_product = false, $id_country = null, $bCreationOnly = false)
     {
         if (!$this->id) {
             return array();
@@ -519,6 +519,7 @@ class CartCore extends ObjectModel
 
         // Build FROM
         $sql->from('cart_product', 'cp');
+        $sql->leftJoin('custom_shop_customized_prod', 'cs', 'cp.`id_customized_prod` = cs.`id`');
 
         // Build JOIN
         $sql->leftJoin('product', 'p', 'p.`id_product` = cp.`id_product`');
@@ -544,7 +545,12 @@ class CartCore extends ObjectModel
             $sql->where('cp.`id_product` = '.(int)$id_product);
         }
         $sql->where('p.`id_product` IS NOT NULL');
-
+        $sql->where('(cp.`id_customized_prod` = 0 OR cp.`id_customized_prod` = cs.`id`)');
+        
+        if ($bCreationOnly) {
+            $sql->where('cp.`id_customized_prod` != 0');
+        }
+        
         // Build ORDER BY
         $sql->orderBy('cp.`date_add`, cp.`id_product`, cp.`id_product_attribute` ASC');
 
@@ -819,19 +825,19 @@ class CartCore extends ObjectModel
      *
      * @result integer Products quantity
      */
-    public function nbProducts()
+    public function nbProducts($bCreationOnly = false)
     {
         if (!$this->id) {
             return 0;
         }
 
-        return Cart::getNbProducts($this->id);
+        return Cart::getNbProducts($this->id, $bCreationOnly);
     }
 
-    public static function getNbProducts($id)
+    public static function getNbProducts($id, $bCreationOnly = false)
     {
         // Must be strictly compared to NULL, or else an empty cart will bypass the cache and add dozens of queries
-        if (isset(self::$_nbProducts[$id]) && self::$_nbProducts[$id] !== null) {
+        if (isset(self::$_nbProducts[$id]) && self::$_nbProducts[$id] !== null && !$bCreationOnly) {
             return self::$_nbProducts[$id];
         }
 
@@ -839,6 +845,7 @@ class CartCore extends ObjectModel
 			SELECT SUM(`quantity`)
 			FROM `'._DB_PREFIX_.'cart_product`
 			WHERE `id_cart` = '.(int)$id
+                        .($bCreationOnly ? ' AND `id_customized_prod` != 0' : '')
         );
 
         return self::$_nbProducts[$id];

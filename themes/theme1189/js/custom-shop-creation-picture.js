@@ -103,10 +103,10 @@ function deletePicture(aArg) {
         contentType: false,
         async: true,
         beforeSend: function () {
-            loading();
+            loading_popup('Deleting...');
         },
         success: function (json) {
-            loading_hide();
+            loading_popup_hide();
             if (json.success) {
                 $('.block-picture-container-' + aArg['id']).fadeOut(300, function () {
                     $(this).remove();

@@ -2,6 +2,32 @@
 
 class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
 
+    public function displayAjaxLoadCartProducts() {
+        global $smarty;
+        $aProducts = $this->context->cart->getProducts(true, null, null, true);
+        $this->context->smarty->assign('products', $aProducts);
+        $rendered_content = $smarty->fetch(_PS_THEME_DIR_ . 'custom-shop-front-cart-products.tpl');
+        echo Media::minifyHTML($rendered_content);
+    }
+
+    public function displayAjaxRemoveFromCart() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('id_creation')) {
+            $aProduct = CustomShopProduct::getProductById(Tools::getValue('id_creation'));
+            if ($this->context->cart->deleteProduct($aProduct['id_product'], null, null, null, null, null, Tools::getValue('id_creation'))) {
+                $result['nb_products'] = $result['nb_products'] = $this->context->cart->nbProducts(true);
+            } else {
+                $result['success'] = false;
+                $result['error'] = 'Impossible to remove product from cart, please try again or contact us';
+            }
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Impossible to remove product from cart, information missing';
+        }
+        echo json_encode($result);
+    }
+
     public function displayAjaxAddToCartCustomProduct() {
         $result = [];
         $result['success'] = true;
@@ -19,7 +45,9 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
 
             $oCreation = new CustomShopProduct(Tools::getValue('id_creation'));
 
-            if (!$this->context->cart->updateQty('1', $oCreation->id_product, null, null, 'up', null, null, null, null, null, null, $oCreation->id)) {
+            if ($this->context->cart->updateQty('1', $oCreation->id_product, null, null, 'up', null, null, null, null, null, null, $oCreation->id)) {
+                $result['nb_products'] = $this->context->cart->nbProducts(true);
+            } else {
                 $result['success'] = false;
                 $result['error'] = 'Impossible to add product to cart';
             }
