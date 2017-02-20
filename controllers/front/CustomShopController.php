@@ -9,6 +9,7 @@ class CustomShopControllerCore extends FrontController {
     public $bDisplayTopLogo = true;
     public $custom_shop;
     public $custom_shop_account;
+    public $bRedirection = false;
 
     public function init() {
         parent::init();
@@ -17,21 +18,17 @@ class CustomShopControllerCore extends FrontController {
         $this->display_header = false;
         $this->display_footer = false;
         
-        $bRedirection = false;
         if (Tools::getValue('shop_name')) {
             $this->custom_shop = CustomShop::getShopByName(Tools::getValue('shop_name'));
             $this->context->smarty->assign('id_shop', $this->custom_shop['id']);
             $this->context->smarty->assign('name_shop', $this->custom_shop['name']);
         } else {
-            $bRedirection = true;
+            $this->bRedirection = true;
         }
         if ($this->custom_shop) {
             $this->custom_shop_account = CustomShopAccount::getAccountById($this->custom_shop['id_account']);
         } else {
-            $bRedirection = true;
-        }
-        if ($bRedirection) {
-            header('Location :'.$this->base_uri.'custom-shop-registration');
+            $this->bRedirection = true;
         }
     }
 
@@ -39,7 +36,7 @@ class CustomShopControllerCore extends FrontController {
         parent::initContent();
 
         $this->context->smarty->assign(array(
-            'shop' => $this->custom_shop ,
+            'shop' => $this->custom_shop,
             'logo_gift' => $this->context->link->getMediaLink(_PS_IMG_ . Configuration::get('PS_LOGO')),
             'shop_name' => $this->context->shop->name,
             'custom_shop_name' => Tools::getValue('shop_name') ? : '',

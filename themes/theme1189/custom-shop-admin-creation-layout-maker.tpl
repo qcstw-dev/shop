@@ -5,6 +5,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">Pictures selection</div>
         <div class="panel-body list-picture padding-0 padding-top-10">
+            {if $pictures}
             {foreach from=$pictures item='picture'}
                 <div class="col-xs-6 col-sm-4 col-md-3">
                     <div class="thumbnail cursor-pointer item-list-picture" data-id-picture="{$picture.id}">
@@ -12,6 +13,11 @@
                     </div>
                 </div>
             {/foreach}
+            {else}
+                <div class="col-xs-12">
+                    <div class="alert alert-info text-center">No pictures available</div>
+                </div>
+            {/if}
         </div>
     </div>
 </div>

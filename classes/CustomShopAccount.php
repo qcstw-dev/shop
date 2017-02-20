@@ -25,7 +25,7 @@ class CustomShopAccountCore extends ObjectModel {
 
     public function login() {
         $context = Context::getContext();
-        $context->cookie->__set('custom_shop_loggedin', true);
+        $context->cookie->__set('custom_shop_loggedin', $this->id);
     }
 
     public function save() {
@@ -77,5 +77,11 @@ class CustomShopAccountCore extends ObjectModel {
 		FROM `' . _DB_PREFIX_ . 'custom_shop_account`
 		WHERE `email` = \'' . pSQL($sEmail) . '\'');
     }
+//    public static function isOwner ($iShopId, $iAccountId) {
+//        return (bool) Db::getInstance()->getValue('
+//		SELECT `id`
+//		FROM `' . _DB_PREFIX_ . 'custom_shop`
+//		WHERE `id_account` = \'' . pSQL($sEmail) . '\'');
+//    }
 
 }

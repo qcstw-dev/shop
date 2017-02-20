@@ -134,10 +134,8 @@ function fileuploadListener() {
         limitMultiFileUploads: limit
     }).on('fileuploadadd', function (e, data) {
         // loading GIF
-//        saving();
+        loading('Uploading...');
     }).on('fileuploadprocessalways', function (e, data) {
-
-        saving();
         var index = data.index,
                 file = data.files[index],
                 node = $(data.context);
@@ -163,7 +161,6 @@ function fileuploadListener() {
                 dataType: 'json',
                 processData: false, // Don't process the files
                 contentType: false,
-                async: false,
                 success: function (json) {
                     if (json.success === true) {
                         // append PICTURE
@@ -174,7 +171,7 @@ function fileuploadListener() {
                         $('.upload-picture-' + data.idUpload).replaceWith(
                                 '<img class="upload-picture upload-picture-' + data.idUpload + '" src="' + baseUri + 'img/custom_shop/picture/' + json.image_name + '" />'
                                 );
-                        saving_hide();
+                        loading_hide();
                         confirm();
                         $('.block-picture-container-' + data.idUpload).find('.price, .picture-name').prop('disabled', false);
                         $('.block-picture-container-' + data.idUpload).find('.price').val(json.price);

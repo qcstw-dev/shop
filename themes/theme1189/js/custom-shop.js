@@ -94,7 +94,7 @@ function confirm(text) {
     $('.confirm').fadeIn('slow');
     setTimeout(function () {
         $('.confirm').fadeOut('slow');
-    }, 500);
+    }, 1000);
 }
 function loading(text) {
     $('.loading').find('.text').text(text);

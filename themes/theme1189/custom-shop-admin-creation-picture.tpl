@@ -12,12 +12,12 @@
         {assign var='db_id' value=$pictures.$counter.id}
     {/if}
     <div class="col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container block-picture-container-{$counter}">
-        <div class="trash border" data-id="{$counter}" data-db-id="{$db_id}"><span class="glyphicon glyphicon-trash"></span></div>
-        <div class="border shadow block-picture" data-id="{$counter}">
+        <div class="border shadow" data-id="{$counter}">
+            <div class="trash" data-id="{$counter}" data-db-id="{$db_id}"><span class="glyphicon glyphicon-trash"></span></div>
             <div class="col-xs-10 margin-auto input-group-sm">
                 <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-{$counter}" data-db-id="{$db_id}" placeholder="Picture name" value="{if $db_id}{$pictures.$counter.name}{/if}" {if !$db_id}disabled{/if}/>
             </div>
-            <div class="col-xs-12 thumbnail margin-bottom-0 cursor-pointer upload-btn" data-id="{$counter}">
+            <div class="col-xs-12 thumbnail margin-bottom-0 margin-auto block-picture cursor-pointer upload-btn" data-id="{$counter}">
                 {if isset($pictures.$counter)}
                     <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}{$picture_dir}{$pictures.$counter.picture}" title="upload" alt="upload" />
                 {else}

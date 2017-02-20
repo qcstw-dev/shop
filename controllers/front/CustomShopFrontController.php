@@ -53,7 +53,7 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
         $cart_qties = $this->context->cart->nbProducts(true);
         $this->context->smarty->assign([
             'cart_qties' => $cart_qties,
-            'meta_title' => $this->custom_shop['title'],
+            'meta_title' => $this->custom_shop['title'] ?: $this->custom_shop['name'],
             'token' => Tools::getToken(false),
             'cart_products' => $aProducts,
             'side' => 'front',

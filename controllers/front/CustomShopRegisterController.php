@@ -44,7 +44,7 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
                             $oCustomShop = new CustomShop(null, ['name' => Tools::getValue('shop_name'), 'id_account' => $oCustomShopAccount->id]);
                             $oCustomShop->save();
                             $oCustomShopAccount->login();
-                            header('Location: '.$this->base_uri.$oCustomShop->name.'/creation');
+                            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . $oCustomShop->name . '/admin/creation');
                         }
                     } else {
                         $aErrors['account_exist'] = 'Account already exist';
@@ -52,13 +52,13 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
                 } else {
                     $aErrors['shop_exist'] = 'Shop name already used';
                 }
-            } else {
+            } else if (Tools::getValue('type') === "login") {
                 if (CustomShopAccount::emailExists(Tools::getValue('email'))) {
                     if (CustomShopAccount::checkPassword(Tools::getValue('email'), Tools::getValue('password'))) {
                         $oCustomShopAccount = CustomShopAccount::getAccountByEmail(Tools::getValue('email'));
                         $oCustomShopAccount->login();
-                        $oCustomShop = $oCustomShopAccount->getShop();
-                        header('Location: '.$this->base_uri.$oCustomShop->name.'/creation');
+                        $aCustomShop = $oCustomShopAccount->getShop();
+                        header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . $aCustomShop['name'] . '/admin/creation');
                     } else {
                         $aErrors['wrong_password'] = 'Wrong password';
                     }
@@ -73,6 +73,9 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
         ]);
 
         $this->context->smarty->assign([
+            'side' => 'back',
+            'header' => _PS_THEME_DIR_ . 'custom-shop-header-back.tpl',
+            'footer' => _PS_THEME_DIR_ . 'custom-shop-footer-back.tpl',
             'submit' => Tools::getValue('type')? : false,
             'shop_name' => Tools::getValue('shop_name') ? : false,
             'email' => Tools::getValue('email')? : false,

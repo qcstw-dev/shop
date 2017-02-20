@@ -12,9 +12,9 @@ class CustomShopFrontHomeControllerCore extends CustomShopFrontControllerCore {
 
     public function initContent() {
         parent::initContent();
-        
+
         $aCustomProducts = CustomShopProduct::getProducts($this->custom_shop['id']);
-        
+
         foreach ($aCustomProducts as $key => &$aCustomProduct) {
             $oPrestashopProduct = new Product($aCustomProduct['id_product']);
             if ($oPrestashopProduct->active) {
@@ -35,8 +35,10 @@ class CustomShopFrontHomeControllerCore extends CustomShopFrontControllerCore {
                 unset($aCustomProducts[$key]);
             }
         }
-        
+
         $this->context->smarty->assign([
+            'logo_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_logo.jpg',
+            'header_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_header.jpg',
             'products' => $aCustomProducts,
             'front_products_list' => _PS_THEME_DIR_ . 'custom-shop-front-products-list.tpl'
         ]);

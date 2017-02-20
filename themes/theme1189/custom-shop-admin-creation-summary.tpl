@@ -4,7 +4,7 @@
 {foreach from=$creations item=creation}
     <div class="col-md-3 margin-bottom-10 block-creation-{$creation.id}">
         <div class="border shadow">
-            <div class="trash border" data-id-creation="{$creation.id}"><span class="glyphicon glyphicon-trash"></span></div>
+            <div class="trash" data-id-creation="{$creation.id}"><span class="glyphicon glyphicon-trash"></span></div>
             <div class="col-xs-10 margin-auto input-group-sm">
                 <input class="creation-name form-control margin-top-5 margin-bottom-5 text-center" data-id-creation="{$creation.id}" placeholder="Product name" value="{if $creation.product_name}{$creation.product_name}{/if}"/>
             </div>

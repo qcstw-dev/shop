@@ -30,7 +30,7 @@
             ga('send', 'pageview');
         </script>
     {/literal}
-    <meta property="og:image" content="{if $shop.logo}{$shop.logo}{else}{$logo_gift}{/if}" />
+    <meta property="og:image" content="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_gift}{/if}" />
     <title>{$meta_title}</title>
 </head>
 <body>
@@ -46,13 +46,13 @@
     <img class="hidden" src="{$base_uri}img/loader.gif" />
     <div class="container">
         <div class="col-xs-12">
-            <div class="header" style="background-image: url('{if $shop.header}{$base_dir}img/custom_shop/header/{$shop.header}{else}{$base_dir}img/custom_shop_default_header.jpg{/if}')"></div>
+            <div class="header" style="background-image: url('{if $shop.header}{$base_dir}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
             <div class="logo">
-                <img src="{$base_dir}img/custom_shop/logo/{$shop.logo}" alt="{$shop.title}" title="{$shop.title}" />
+                <img src="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
             </div>
             <div class="header-label">
-                <div class="shop-title">{$shop.title}</div>
-                <div class="shop-motto">"{$shop.motto}"</div>
+                <div class="shop-title">{if $shop.title}{$shop.title}{else}{$shop.name}{/if}</div>
+                <div class="shop-motto">"{if $shop.motto}{$shop.motto}{else}Your shop motto{/if}"</div>
             </div>
         </div>
     </div>

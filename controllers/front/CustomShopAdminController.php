@@ -6,11 +6,14 @@ class CustomShopAdminControllerCore extends CustomShopControllerCore {
      * Assign template vars related to page content
      * @see FrontController::initContent()
      */
+
     public function init() {
         parent::init();
-        $bRedirection = false;
-        if (!$this->context->cookie->__get('custom_shop_loggedin')) {
-            $bRedirection = true;
+        if (Tools::getValue('disconnect')) {
+            $this->context->cookie->__set('custom_shop_loggedin', false);
+        }
+        if (!$this->context->cookie->__get('custom_shop_loggedin') || $this->custom_shop['id_account'] != $this->context->cookie->__get('custom_shop_loggedin')) {
+            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'custom-shop-register');
         }
     }
 

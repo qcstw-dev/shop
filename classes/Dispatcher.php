@@ -55,6 +55,11 @@ class DispatcherCore
             'rule' =>        'shop',
             'keywords' => array(),
         ),
+        'custom_shop_register' => array(
+            'controller' =>    'customshopregister',
+            'rule' =>        'custom-shop-register',
+            'keywords' => array(),
+        ),
         'custom_shop' => array(
             'controller' =>    'customshopfronthome',
             'rule' =>        'shop/{shop_name}',
