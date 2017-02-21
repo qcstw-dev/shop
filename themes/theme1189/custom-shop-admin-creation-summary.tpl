@@ -2,7 +2,7 @@
 {include file=$menu}
 {include file=$menu_creation}
 {foreach from=$creations item=creation}
-    <div class="col-md-3 margin-bottom-10 block-creation-{$creation.id}">
+    <div class="col-sm-4 col-md-3 margin-bottom-10 block-creation-{$creation.id}">
         <div class="border shadow">
             <div class="trash" data-id-creation="{$creation.id}"><span class="glyphicon glyphicon-trash"></span></div>
             <div class="col-xs-10 margin-auto input-group-sm">
@@ -21,7 +21,7 @@
         </div>
     </div>
 {/foreach}
-<div class="col-md-3 margin-bottom-10">
+<div class="col-sm-4 col-md-3 margin-bottom-10">
     <a href="{$base_dir}{$custom_shop_name}/admin/creation/layout-maker">
         <div class="cursor-pointer dashed">
             <div class="thumbnail border-none margin-0 padding-0 margin-top-lg-30 margin-bottom-lg-30">

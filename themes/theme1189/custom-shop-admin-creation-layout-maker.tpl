@@ -56,7 +56,7 @@
             data-id-product=""
             data-id-design=""
             data-custom-picture="">{l s='Add to my shop'}</button>
-    <button class="btn btn-default preview-layout margin-top-10 col-xs-12"><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
+    <button class="btn btn-default preview margin-top-10 col-xs-12"><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
     <div class="clearfix"></div>
 </div>
 <div class="change-color-product-block background-white border padding-10" style="display: none">

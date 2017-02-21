@@ -15,7 +15,13 @@ $(function () {
             popupError('Please select a product and a picture');
         }
     });
-    
+    $('.preview').live('click', function () {
+        if ($(this).data('id-product') && $(this).data('id-picture')) {
+            crop(true);
+        } else {
+            popupError('Please select a product and a picture');
+        }
+    });
     $('.item-list-picture').live('click', function () {
         $('.item-list-picture').removeClass('selected');
         $(this).addClass('selected');

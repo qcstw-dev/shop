@@ -40,6 +40,9 @@
         {if $display_top_logo}
             <div class="col-xs-12 logo-top-container">
                 <img src="{$logo_gift}" title="{$shop_title}" alt="{$shop_title}" />
+                <div class="slogan">
+                    <span class="primary-color">"</span>{l s='Personalized gifts'}<br /> {l s='for unique memories'}<span class="primary-color">"</span>
+                </div>
             </div>
         {/if}
         <div class="col-xs-12 padding-top-10">
