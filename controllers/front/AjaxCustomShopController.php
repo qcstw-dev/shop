@@ -2,6 +2,10 @@
 
 class AjaxCustomShopControllerCore extends FrontController {
 
+    public function displayAjaxProductlist() {
+        echo 'toto';
+    }
+
     public function displayAjaxLoadCartProducts() {
         global $smarty;
         $aProducts = $this->context->cart->getProducts(true, null, null, true);
@@ -151,9 +155,7 @@ class AjaxCustomShopControllerCore extends FrontController {
     }
 
     public function displayAjaxLoadProducts() {
-        global $smarty;
-
-        $aProducts = Product::getProducts($this->context->language->id, 0, -1, 'date_add', 'DESC', '45', true, $this->context);
+        $aProducts = Product::getProducts($this->context->language->id, (Tools::getValue('last_range') ?: 0), (Tools::getValue('nb_products') ?: 12), 'date_add', 'DESC', '45', true, $this->context);
         foreach ($aProducts as &$aProduct) {
             $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($this->context->language->id);
             foreach ($aProduct['images'] as $key => $image) {
@@ -169,9 +171,13 @@ class AjaxCustomShopControllerCore extends FrontController {
             }
             $aProduct['prices'] = $aPrices;
         }
-        $this->context->smarty->assign('products', $aProducts);
+        $this->context->smarty->assign([
+            'products' => $aProducts,
+            'bLoadJs'=> (Tools::getValue('last_range') == 0),
+            'first_item_id' => (Tools::getValue('last_range') ?: 0) + 1
+        ]);
 
-        $rendered_content = $smarty->fetch(_PS_THEME_DIR_ . 'custom-shop-admin-popup-list-products.tpl');
+        $rendered_content = $this->context->smarty->fetch(_PS_THEME_DIR_ . 'custom-shop-admin-popup-list-products.tpl');
         echo Media::minifyHTML($rendered_content);
     }
 

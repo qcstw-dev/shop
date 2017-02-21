@@ -53,6 +53,7 @@ $(function () {
     });
     $('.btn-product-selection').magnificPopup({
         type: 'ajax',
+        mainClass: 'popup-prod-list',
         ajax: {
             settings: {
                 dataType: 'html',
