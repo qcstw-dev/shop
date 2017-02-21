@@ -80,7 +80,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="margin-right-20">
                         <div class="cart-icon-desk padding-10 hidden-xs">
-                            <span class="ajax_cart_quantity" {if !$cart_products}style="display: none"{/if}>{$cart_qties}</span>
+                            <span class="ajax_cart_quantity">{$cart_qties}</span>
                             <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
                             <div class="cart cart-desk">
                                 {include file="./custom-shop-front-cart-products.tpl" products=$cart_products}

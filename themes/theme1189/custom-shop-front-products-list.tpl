@@ -16,7 +16,7 @@
                     {'Product of'|cat:$shop.title|truncate:15:'...'|escape:'html':'UTF-8'}
                 {/if}
             </div>
-            <div class="col-xs-12 padding-0 margin-top-10">
+            <div class="col-xs-12 padding-0">
                 <div class="thumbnail margin-bottom-0">
                     <img src="{$base_dir}img/custom_shop/creation/{$product.custom_img}" class="big-picture-{$product.id} popup-picture" alt="{$product.product_name}" title="{$product.product_name}"/>
                 </div>
@@ -33,7 +33,7 @@
                     </div>
                 {/foreach}
             </div>
-            <div class="col-xs-12 font-size-20 margin-top-10 text-center bold">{convertPrice price=$product.prices.10}</div>
+            <div class="col-xs-12 font-size-20 text-center bold">{convertPrice price=$product.prices.10}</div>
         </div>
     </div>
 {/foreach}

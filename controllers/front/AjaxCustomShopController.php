@@ -1,6 +1,6 @@
 <?php
 
-class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
+class AjaxCustomShopControllerCore extends FrontController {
 
     public function displayAjaxLoadCartProducts() {
         global $smarty;
@@ -182,13 +182,13 @@ class AjaxCustomShopControllerCore extends CustomShopAdminControllerCore {
         $iNumberEnd = $iOffset + $iNbrItem;
         for ($i = $iOffset + 1; $i <= $iNumberEnd; $i++) {
             $sHtml .= '
-                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container block-picture-container-' . $i . '">
+                <div class="col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container block-picture-container-' . $i . '">
                     <div class="trash border" data-id="' . $i . '"  data-db-id=""><span class="glyphicon glyphicon-trash"></span></div>
                     <div class="border shadow block-picture" data-id="' . $i . '">
                         <div class="col-xs-10 margin-auto">
                             <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-' . $i . '" data-db-id="" placeholder="Picture name" disabled/>
                         </div>
-                        <div class="col-xs-12 thumbnail margin-bottom-0 padding-0 cursor-pointer upload-btn" data-id="' . $i . '">
+                        <div class="col-xs-12 thumbnail border-none margin-bottom-0 padding-0 cursor-pointer upload-btn" data-id="' . $i . '">
                             <img class="upload-picture upload-picture-' . $i . '" src="' . __PS_BASE_URI__ . 'img/upload-icon.jpg" title="upload" alt="upload" />
                             <div class="hidden-uploader">
                                 <input class="fileupload hidden-fileupload-' . $i . '" data-db-id="" data-id-upload="' . $i . '" type="file" name="files[]">

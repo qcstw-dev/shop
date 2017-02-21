@@ -88,6 +88,11 @@ hr {
 .form-control {
     border-radius: 0;
 }
+.input-group-sm>.form-control,
+.input-group-sm>.input-group-addon,
+.input-group-sm>.input-group-btn>.btn {
+    border-radius: 0;
+}
 ol, ul {
     margin-bottom: 0;
 }

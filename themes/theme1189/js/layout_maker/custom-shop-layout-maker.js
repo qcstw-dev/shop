@@ -65,7 +65,7 @@ function saveCreation(id_product, id_design, custom_picture) {
                 + '&custom_picture=' + custom_picture,
         dataType: 'json',
         beforeSend: function () {
-            loading();
+            loading_popup();
         },
         success: function (json) {
             if (json.success) {

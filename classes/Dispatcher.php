@@ -50,11 +50,6 @@ class DispatcherCore
             'rule' =>        'mobile',
             'keywords' => array(),
         ),
-        'shop' => array(
-            'controller' =>    'shop',
-            'rule' =>        'shop',
-            'keywords' => array(),
-        ),
         'custom_shop_register' => array(
             'controller' =>    'customshopregister',
             'rule' =>        'custom-shop-register',
@@ -62,11 +57,18 @@ class DispatcherCore
         ),
         'custom_shop' => array(
             'controller' =>    'customshopfronthome',
-            'rule' =>        'shop/{shop_name}',
+            'rule' =>        'custom-shop/{shop_name}',
             'keywords' => array(
                 'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
             ),
         ),
+//        'custom_shop' => array(
+//            'controller' =>    'customshopfronthome',
+//            'rule' =>        'shop/{shop_name}',
+//            'keywords' => array(
+//                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
+//            ),
+//        ),
         'custom_shop_admin' => array(
             'controller' =>    'customshopadmincreation',
             'rule' =>        '{shop_name}/admin',

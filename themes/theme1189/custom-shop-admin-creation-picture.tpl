@@ -17,7 +17,7 @@
             <div class="col-xs-10 margin-auto input-group-sm">
                 <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-{$counter}" data-db-id="{$db_id}" placeholder="Picture name" value="{if $db_id}{$pictures.$counter.name}{/if}" {if !$db_id}disabled{/if}/>
             </div>
-            <div class="col-xs-12 thumbnail margin-bottom-0 margin-auto block-picture cursor-pointer upload-btn" data-id="{$counter}">
+            <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-auto block-picture cursor-pointer upload-btn" data-id="{$counter}">
                 {if isset($pictures.$counter)}
                     <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}{$picture_dir}{$pictures.$counter.picture}" title="upload" alt="upload" />
                 {else}
