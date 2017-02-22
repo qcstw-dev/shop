@@ -28,7 +28,6 @@ function loadProducts(reset) {
         },
         success: function (html) {
             loading_hide();
-            $('.loading-ajax').addClass('hidden');
             if (html) {
                 firstTime = 0;
                 if (reset) {

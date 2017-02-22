@@ -1,5 +1,5 @@
 {foreach from=$products key=index item='product'}
-    <div class="col-xs-6 col-lg-3 margin-bottom-10">
+    <div class="col-xs-12 col-lg-3 margin-bottom-10">
         <div class="col-xs-12 padding-10 border shadow">
             <div class="col-xs-7 padding-left-0">
                 <div class="btn btn-primary add-creation col-xs-12" data-id-creation="{$product.id}"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="hidden-xs">Add to cart</span></div>

@@ -35,7 +35,7 @@
 </head>
 <body>
     <div class="shop hidden" data-id-shop="{$id_shop}" data-name-shop="{$name_shop}" data-side="front"></div>
-    <div class="panel panel-default col-md-2 vertical-center shadow loading" style="display: none;">
+    <div class="panel panel-default col-md-2 vertical-center shadow loading-ajax" style="display: none;">
         <div class="thumbnail border-none margin-0">
             <img src="{$base_uri}/img/loader.gif" title="Loading" alt="Loading"/> 
         </div>
@@ -51,8 +51,8 @@
                 <img src="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
             </div>
             <div class="header-label">
-                <div class="shop-title">{if $shop.title}{$shop.title}{else}{$shop.name}{/if}</div>
-                <div class="shop-motto">"{if $shop.motto}{$shop.motto}{else}Your shop motto{/if}"</div>
+                <span class="shop-title">{if $shop.title}{$shop.title|truncate:15:'...'|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
+                <span class="shop-motto">"{if $shop.motto}{$shop.motto|truncate:68:'...'|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
             </div>
         </div>
     </div>

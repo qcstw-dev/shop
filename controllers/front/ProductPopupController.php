@@ -243,7 +243,8 @@ class ProductPopupControllerCore extends FrontController {
                 'display_discount_price' => Configuration::get('PS_DISPLAY_DISCOUNT_PRICE'),
                 'selection' => $selection,
                 'colors' => $this->product->getColors($this->context->language->id),
-                'prices' => $aPrices
+                'prices' => $aPrices,
+                'id_creation' => Tools::getValue('id_creation') ?: null
             ));
         }
         if ($this->product->category == 'products') {

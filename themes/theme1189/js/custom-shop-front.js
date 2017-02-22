@@ -33,7 +33,7 @@ $(function () {
     $('.cart-icon-desk').on('mouseleave', function () {
         $(this).find('.cart').stop().slideUp();
     });
-    $('.add-creation').on('click', function () {
+    $('.add-creation').live('click', function () {
         loading('Adding to cart...');
         var id_creation = $(this).data('id-creation');
         $.ajax({

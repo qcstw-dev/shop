@@ -217,6 +217,9 @@
                             <div>{l s='*price for 10 pieces'}</div>
                         </div>
                     {/if}
+                    {if (isset($smarty.get.side) && $smarty.get.side == 'front' && $id_creation)}
+                        <div class="btn btn-primary add-creation margin-top-20 margin-left-20" data-id-creation="{$id_creation}"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</div>
+                    {/if}
                     {if !isset($smarty.get.side) || (isset($smarty.get.side) && $smarty.get.side != 'admin' && $smarty.get.side != 'front')}
                         <div class="product_attributes pull-right">
                             {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}

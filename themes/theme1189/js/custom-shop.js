@@ -97,11 +97,11 @@ function confirm(text) {
     }, 1000);
 }
 function loading(text) {
-    $('.loading').find('.text').text(text);
-    $('.loading').fadeIn('slow');
+    $('.loading-ajax').find('.text').text(text);
+    $('.loading-ajax').fadeIn('slow');
 }
 function loading_hide() {
-    $('.loading').fadeOut('slow');
+    $('.loading-ajax').fadeOut('slow');
 }
 function loading_popup_hide() {
     $.magnificPopup.close();

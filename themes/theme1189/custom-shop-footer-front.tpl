@@ -33,8 +33,8 @@
         <div class="col-sm-3 text-center padding-top-10">
             <div class="btn-contact cursor-pointer" data-page="contactus">Contact us</div>
         </div>
-        <div class="col-sm-2 text-center padding-top-10">
-            ????
+        <div class="col-sm-2 text-center">
+            <div class="col-xs-6 padding-top-10">Shipping:</div><div class="col-xs-6 thumbnail margin-bottom-0 border-none"><img src="{$base_dir}img/EMS.jpg" alt="EMS - Express mail service" title="EMS - Express mail service" /></div>
         </div>
     </div>
 </div>
