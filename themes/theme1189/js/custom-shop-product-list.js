@@ -1,5 +1,5 @@
+var issetMoreProducts = true;
 $(document).ready(function () {
-    var issetMoreProducts = true;
     $('.popup-prod-list').scroll(function () {
         if (issetMoreProducts) {
             // End of the document reached?
@@ -12,9 +12,10 @@ $(document).ready(function () {
                     data: 'controller=ajaxcustomshop&action=loadproducts&ajax=true&last_range=' + nbrProducts + '&nb_products=' + nbProductsToDisplay,
                     dataType: 'html',
                     beforeSend: function () {
-                        $('.loading-ajax').removeClass('hidden');
+                        loading('Loading...');
                     },
                     success: function (html) {
+                        loading_hide();
                         $('.loading-ajax').addClass('hidden');
                         if (html) {
                             $('.white-popup').append(html);
