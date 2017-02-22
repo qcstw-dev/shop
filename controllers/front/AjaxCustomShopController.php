@@ -155,7 +155,7 @@ class AjaxCustomShopControllerCore extends FrontController {
     }
 
     public function displayAjaxLoadProducts() {
-        $aProducts = Product::getProducts($this->context->language->id, (Tools::getValue('last_range') ?: 0), (Tools::getValue('nb_products') ?: 12), 'date_add', 'DESC', '45', true, $this->context);
+        $aProducts = Product::getProducts($this->context->language->id, (Tools::getValue('last_range') ?: 0), (Tools::getValue('nb_products') ?: 12), 'date_add', 'DESC', (Tools::getValue('id_category') ?: '45'), true, $this->context);
         foreach ($aProducts as &$aProduct) {
             $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($this->context->language->id);
             foreach ($aProduct['images'] as $key => $image) {
@@ -173,9 +173,17 @@ class AjaxCustomShopControllerCore extends FrontController {
         }
         $this->context->smarty->assign([
             'products' => $aProducts,
-            'bLoadJs'=> (Tools::getValue('last_range') == 0),
+            'bLoadJs'=> (Tools::getValue('first_time') == 1),
             'first_item_id' => (Tools::getValue('last_range') ?: 0) + 1
         ]);
+        if (Tools::getValue('last_range') == 0) {
+            $aCategories = [];
+            foreach (array_values(Category::getCategories($this->context->language->id, true, true, 'AND `id_parent` = '. pSQL('45')))[0] as $key => $aCategory) {
+                $aCategories[$key] = $aCategory['infos'];
+            }
+            $this->context->smarty->assign('categories', $aCategories);
+            $this->context->smarty->assign('products_categories', Category::getCategoryInformations(['45']));
+        }
 
         $rendered_content = $this->context->smarty->fetch(_PS_THEME_DIR_ . 'custom-shop-admin-popup-list-products.tpl');
         echo Media::minifyHTML($rendered_content);

@@ -5,6 +5,20 @@ hr {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.dropdown-menu>li>div {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+.dropdown-menu>li>div:focus,.dropdown-menu>li>div:hover{
+    color:#262626;
+    text-decoration:none;
+    background-color:#f5f5f5
+}
 .vertical-center {
     display: flex;
     flex-direction: column;

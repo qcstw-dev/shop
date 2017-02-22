@@ -57,7 +57,7 @@ $(function () {
         ajax: {
             settings: {
                 dataType: 'html',
-                url: baseDir + 'index.php?controller=ajaxcustomshop&action=loadproducts&ajax=true'
+                url: baseDir + 'index.php?controller=ajaxcustomshop&action=loadproducts&ajax=true&first_time=1'
             }
         }
     });
