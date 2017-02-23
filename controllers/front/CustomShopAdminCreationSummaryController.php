@@ -14,6 +14,7 @@ class CustomShopAdminCreationSummaryControllerCore extends CustomShopAdminContro
         parent::initContent();
         $aCreations = CustomShopProduct::getProducts($this->custom_shop['id'], false);
         foreach ($aCreations as &$aCreation) {
+            $aCreation['is_active'] = (new Product($aCreation['id_product']))->active;
             $iDesignPrice = CustomShopDesign::getPrice($aCreation['id_design']);
             $aQuantities = [1, 5, 10, 25, 50, 100];
             $aPrices = [];

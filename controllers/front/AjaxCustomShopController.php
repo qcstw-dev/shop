@@ -2,10 +2,6 @@
 
 class AjaxCustomShopControllerCore extends FrontController {
 
-    public function displayAjaxProductlist() {
-        echo 'toto';
-    }
-
     public function displayAjaxLoadCartProducts() {
         global $smarty;
         $aProducts = $this->context->cart->getProducts(true, null, null, true);

@@ -5,19 +5,27 @@
     <div class="col-sm-4 col-md-3 margin-bottom-10 block-creation-{$creation.id}">
         <div class="border shadow">
             <div class="trash" data-id-creation="{$creation.id}"><span class="glyphicon glyphicon-trash"></span></div>
-            <div class="col-xs-10 margin-auto input-group-sm">
-                <input class="creation-name form-control margin-top-5 margin-bottom-5 text-center" data-id-creation="{$creation.id}" placeholder="Product name" value="{if $creation.product_name}{$creation.product_name}{/if}"/>
-            </div>
-            <div class="col-xs-12">
-                <div class="thumbnail margin-bottom-0">
-                    <img class="popup-picture" src="{$base_dir}img/custom_shop/creation/{$creation.custom_img}" alt="" title="" />
+                {if !$creation.is_active}
+                <div class="product-disabled vertical-center">
+                    <div class="text-center bold color-red">
+                        Product currently not available
+                        <div><a class="underline" href="{$base_dir}{$shop_name}/admin/contact" title="Contact us">Contact us</a></div>
+                    </div>
                 </div>
-            </div>
-            <div class="price bold font-size-15 text-center">Sell price: {convertPrice price=$creation.prices.10}*</div>
-            <div class="text-center font-size-13">
-                <label class="cursor-pointer" for="published-{$creation.id}">Published</label>
-                <input type="checkbox" class="published cursor-pointer" id="published-{$creation.id}" data-id-creation="{$creation.id}" name="published" {if $creation.published}checked{/if}/>
-            </div>
+                {/if}
+                <div class="col-xs-10 margin-auto input-group-sm">
+                    <input class="creation-name form-control margin-top-5 margin-bottom-5 text-center" data-id-creation="{$creation.id}" placeholder="Product name" value="{if $creation.product_name}{$creation.product_name}{/if}"/>
+                </div>
+                <div class="col-xs-12">
+                    <div class="thumbnail margin-bottom-0">
+                        <img class="popup-picture" src="{$base_dir}img/custom_shop/creation/{$creation.custom_img}" alt="" title="" />
+                    </div>
+                </div>
+                <div class="price bold font-size-15 text-center">Sell price: {convertPrice price=$creation.prices.10}*</div>
+                <div class="text-center font-size-13">
+                    <label class="cursor-pointer" for="published-{$creation.id}">Published</label>
+                    <input type="checkbox" class="published cursor-pointer" id="published-{$creation.id}" data-id-creation="{$creation.id}" name="published" {if $creation.published}checked{/if}/>
+                </div>
         </div>
     </div>
 {/foreach}
