@@ -128,7 +128,7 @@ class AjaxCustomShopControllerCore extends FrontController {
     public function displayAjaxPublish() {
         $result = [];
         $result['success'] = true;
-        if (Tools::getValue('published') && Tools::getValue('id_creation')) {
+        if (Tools::getValue('published') !== null && Tools::getValue('id_creation')) {
             $oCreation = new CustomShopProduct(Tools::getValue('id_creation'));
             $oCreation->setPublished((Tools::getValue('published') === 'true' ? true : false));
             $oCreation->save();
