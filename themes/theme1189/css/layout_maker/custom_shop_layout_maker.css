@@ -16,6 +16,9 @@
 .change-color-product-block {
     top: 450px;
 }
+.overlay {
+    left: 27%;
+}
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
     .overlay-top {
@@ -25,16 +28,16 @@
         height: 48px;
     }
     .overlay-left {
-        width: 299px;
+        width: 268px;
     }
     .overlay-right {
-        width: 97px;
+        width: 126px;
     }
     .custom-margin-left {
         margin-left: 22%;
     }
     .btn-rotate {
-        right: 17px;
+        right: 23px;
     }
 }
 
@@ -53,11 +56,46 @@
         width: 100%;
         margin-left: 0;
     }
+    .overlay {
+        left: 7%;
+    }
+    .overlay-bottom {
+        height: 58px;
+    }
+    .overlay-right {
+        width: 42px;
+    }
+    .component {
+        height: 713px;
+    }
 }
 /* Extra Small Devices, Phones */ 
 @media only screen and (max-width : 480px) {
+    .overlay-right {
+        width: 9%;
+    }
+    .component {
+        height: 317px;
+    }
+    .overlay {
+        height: 297px;
+    }
+    .overlay-bottom {
+        height: 42px;
+    }
+}
+@media only screen and (max-width : 414px) {
+    .overlay-bottom {
+        height: 10px;
+    }
 }
 /* Custom, iPhone Retina */ 
-@media only screen and (max-width : 320px) {
+@media only screen and (max-width : 375px) {
+    .component {
+        height: 285px;
+    }
+    .overlay {
+        height: 265px;
+    }
 }
 

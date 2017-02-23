@@ -1,3 +1,9 @@
+body, .btn-default {
+    color: #555;
+}
+.border {
+    border-radius: 5px;
+}
 .popup-picture {
     cursor: zoom-in;
 }

@@ -16,7 +16,7 @@ $(function () {
         }
     });
     $('.preview').live('click', function () {
-        if ($(this).data('id-product') && $(this).data('id-picture')) {
+        if ($('.add-creation').data('id-product') && $('.add-creation').data('id-picture')) {
             crop(true);
         } else {
             popupError('Please select a product and a picture');

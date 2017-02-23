@@ -27,7 +27,7 @@
 </head>
 <body>
     <div class="shop hidden" data-id-shop="{$id_shop}" data-name-shop="{$name_shop}" data-side="admin"></div>
-    <div class="panel panel-default col-md-2 vertical-center shadow loading" style="display: none;">
+    <div class="panel panel-default col-md-2 vertical-center shadow loading-ajax" style="display: none;">
         <div class="thumbnail border-none margin-0">
             <img src="{$base_uri}/img/loader.gif" title="Loading" alt="Loading"/> 
         </div>

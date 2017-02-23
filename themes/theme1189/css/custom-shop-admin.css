@@ -10,9 +10,10 @@
     margin-top: 55px;
     font-size: 25px;
     font-style: italic;
-    float: left;
-    margin-left: 20px;
+    float: left; 
+    margin-left: 10px;
     color: #555;
+    font-weight: bold;
 }
 .admin-menu {
     width: 93px;
@@ -43,6 +44,7 @@
     min-height: 727px;
     border: 2px solid #337ab7;
     margin-bottom: 20px;
+    border-radius: 0 5px 5px 0;
 }
 .creation-block:hover {
     color: #fff;
@@ -170,20 +172,29 @@
     .admin-menu {
         position: initial;
         width: 100%;
+        padding: 15px;
+    }
+    .admin-menu a:first-child {
+        border-top-right-radius: 5px;
+    }
+    .admin-menu a:last-child {
+        border-bottom-right-radius: 5px;
     }
     .admin-menu a {
         min-height: fit-content;
         display: block;
     }
     .creation-block {
-        font-size: 15px;
-        min-height: fit-content;
+        font-size: 20px;
+        min-height: 200px;;
     }
     .creation-block .glyphicon {
         font-size: 30px;
     }
     .content-admin {
         min-height: fit-content;
+        border: none;
+        padding: 0;
     }
     .form-label {
         padding: 7px 0 0 0;
@@ -202,7 +213,7 @@
     .slogan {
         margin-top: 25px;
         font-size: 1.3em;
-        margin-left: 30px;
+        margin-left: 20px;
     }
     .form-label, .form-input {
         width: 100%;
