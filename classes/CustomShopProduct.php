@@ -17,7 +17,6 @@ class CustomShopProductCore extends ObjectModel {
     public function __construct($id = null, $option = []) {
         if ($id) {
             parent::__construct($id);
-//            $option = self::getProductById($id);
         }
         if ($option) {
             foreach ($option as $key => $field) {
@@ -25,33 +24,6 @@ class CustomShopProductCore extends ObjectModel {
             }
         }
     }
-
-//    public static function getCart($id_cart) {
-//        return Db::getInstance()->executeS('
-//		SELECT *
-//		FROM `' . _DB_PREFIX_ . 'custom_shop_cart_customized_prod`
-//		WHERE `id_cart` = ' . pSQL($id_cart));
-//    }
-
-//    public static function updateCart($id_cart, $id_creation, $operator) {
-//        $oCreation = new CustomShopProduct($id_creation);
-//        $aCart = self::getCart($id_cart);
-//        if ($aCart) {
-//            Db::getInstance()->update(
-//                    _DB_PREFIX_.'custom_shop_cart_customized_prod',
-//                    [
-//                        ''
-//                    ], 
-//                    'id = ' . pSQL($this->id)
-//            );
-//        } else {
-//            Db::getInstance()->insert(_DB_PREFIX_.'custom_shop_cart_customized_prod', [
-//                'id_cart' => $id_cart,
-//                'id_customized_prod' => $id_creation,
-//                'registration_date' => $this->registration_date
-//            ]);
-//        }
-//    }
 
     public function setPublished($iStatus) {
         $this->published = $iStatus;
@@ -115,12 +87,20 @@ class CustomShopProductCore extends ObjectModel {
 
     public function delete() {
         $this->deleteCustomImage();
+        Db::getInstance()->execute('
+               DELETE cp FROM ' . _DB_PREFIX_ . 'cart_product cp 
+                LEFT JOIN ' . _DB_PREFIX_ . 'orders orders ON orders.id_cart = cp.id_cart 
+                WHERE orders.id_cart IS NULL
+                AND cp.id_customized_prod = '. pSQL($this->id)
+        );
         return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
     }
 
     public function deleteCustomImage() {
         $sFolder = 'img/custom_shop/creation/';
-        unlink($sFolder . $this->custom_img);
+        if (file_exists($sFolder . $this->custom_img)) {
+            unlink($sFolder . $this->custom_img);
+        }
     }
 
     public function save() {

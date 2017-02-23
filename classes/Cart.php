@@ -843,9 +843,10 @@ class CartCore extends ObjectModel
 
         self::$_nbProducts[$id] = (int)Db::getInstance()->getValue('
 			SELECT SUM(`quantity`)
-			FROM `'._DB_PREFIX_.'cart_product`
-			WHERE `id_cart` = '.(int)$id
-                        .($bCreationOnly ? ' AND `id_customized_prod` != 0' : '')
+			FROM `'._DB_PREFIX_.'cart_product` cp'.($bCreationOnly ? ' , `'._DB_PREFIX_.'custom_shop_customized_prod` as cscp' : '')
+			.' WHERE cp.`id_cart` = '.(int)$id
+                        .($bCreationOnly ? ' AND cp.`id_customized_prod` = cscp.`id` AND cp.`id_customized_prod` != 0' : '')
+                        
         );
 
         return self::$_nbProducts[$id];
