@@ -25,8 +25,11 @@ class CustomShopProductCore extends ObjectModel {
         }
     }
 
-    public function setPublished($iStatus) {
-        $this->published = $iStatus;
+    public function setPublished($bStatus) {
+        $this->published = $bStatus;
+        if (!$bStatus) {
+            $this->deleteFromCart();
+        }
         return $this;
     }
 
@@ -87,13 +90,16 @@ class CustomShopProductCore extends ObjectModel {
 
     public function delete() {
         $this->deleteCustomImage();
+        $this->deleteFromCart();
+        return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
+    }
+    public function deleteFromCart() {
         Db::getInstance()->execute('
                DELETE cp FROM ' . _DB_PREFIX_ . 'cart_product cp 
                 LEFT JOIN ' . _DB_PREFIX_ . 'orders orders ON orders.id_cart = cp.id_cart 
                 WHERE orders.id_cart IS NULL
                 AND cp.id_customized_prod = '. pSQL($this->id)
         );
-        return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
     }
 
     public function deleteCustomImage() {
