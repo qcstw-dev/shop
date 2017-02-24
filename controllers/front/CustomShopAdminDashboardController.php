@@ -1,0 +1,42 @@
+<?php
+
+class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCore {
+
+    /**
+     * Assign template vars related to page content
+     * @see FrontController::initContent()
+     */
+    public function init() {
+        parent::init();
+    }
+
+    public function initContent() {
+        parent::initContent();
+
+        $aOrders = CustomShop::getOrders($this->custom_shop['id']);
+        $iTotalProductsSold = 0;
+        $fTotalSalesAmount = 0;
+        $fTotalComission = 0;
+        $aNbOrders = ['ids' => [], 'nbr' => 0];
+        foreach ($aOrders as &$aOrder) {
+            $iTotalProductsSold += $aOrder['quantity'];
+            $fTotalSalesAmount += $aOrder['product_price'] * $aOrder['quantity'];
+            $fTotalComission += $aOrder['design_price'] * $aOrder['quantity'];
+            if (!in_array($aOrder['id_order'], $aNbOrders['ids'])) {
+                $aNbOrders['ids'][] = $aOrder['id_order']; 
+                $aNbOrders['nbr']++; 
+            }
+        }
+        $this->context->smarty->assign([
+            'orders' => $aOrders,
+            'next_date_payment' => date('Y-m-d', strtotime('+1 month', strtotime(date('Y-m').'-05'))),
+            'nb_orders' => $aNbOrders['nbr'],
+            'nb_products_sold' => $iTotalProductsSold,
+            'total_sales_amount' => $fTotalSalesAmount,
+            'total_commission' => $fTotalComission,
+        ]);
+
+        $this->setTemplate(_PS_THEME_DIR_ . 'custom-shop-admin-dashboard.tpl');
+    }
+
+}

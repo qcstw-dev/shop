@@ -29,6 +29,37 @@ class CustomShopCore extends ObjectModel {
         }
     }
 
+    public static function getOrders($iId) {
+        $aOrders = Db::getInstance()->executeS('
+		SELECT o.*, cp.*
+		FROM `' . _DB_PREFIX_ . 'orders` o, `' . _DB_PREFIX_ . 'cart_product` cp, `' . _DB_PREFIX_ . 'custom_shop_customized_prod` cscp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND cscp.`id` = cp.`id_customized_prod`
+		AND cscp.`id_shop` = ' . pSQL($iId)
+                . ' GROUP BY cscp.`id`'
+                . ' ORDER BY o.`id_order` DESC');
+
+        foreach ($aOrders as &$aOrder) {
+            $aOrder['product_prestashop'] = Db::getInstance()->getRow('
+		SELECT *
+		FROM `' . _DB_PREFIX_ . 'product`
+		WHERE `id_product` = ' . pSQL($aOrder['id_product']));
+            $aOrder['product_creation'] = CustomShopProduct::getProductById($aOrder['id_customized_prod']);
+            $aOrder['product_creation']['design'] = CustomShopDesign::getDesignById($aOrder['product_creation']['id_design']);
+            $aOrder['customer'] = Db::getInstance()->getRow('
+		SELECT *
+		FROM `' . _DB_PREFIX_ . 'customer`
+		WHERE `id_customer` = ' . pSQL($aOrder['id_customer']));
+            $aOrder['address_delivery'] = Db::getInstance()->getRow('
+		SELECT *
+		FROM `' . _DB_PREFIX_ . 'address` 
+		WHERE `id_address` = ' . pSQL($aOrder['id_address_delivery']));
+            $aOrder['address_delivery']['country_name'] = Country::getNameById(Context::getContext()->language->id, $aOrder['address_delivery']['id_country']);
+        }
+
+        return $aOrders;
+    }
+
     public function setLogo($sLogo) {
         $this->logo = $sLogo;
         return $this;

@@ -10,13 +10,16 @@
     z-index: 100;
     max-width: 250px;
     top: 350px;
-    margin-left: 30px;
+    margin-left: 20px;
     left: 0;
 }
 .change-color-product-block {
     top: 450px;
 }
 .overlay {
+    left: 27%;
+}
+.resize-container {
     left: 27%;
 }
 /* Large Devices, Wide Screens */

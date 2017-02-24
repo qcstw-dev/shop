@@ -163,6 +163,42 @@
     background: rgba(221, 221, 221, 0.74);
     z-index: 2;
 }
+
+/*********************** DASHBOARD ********************/
+.key-stats-container {
+    margin: auto;
+    width: 61%;
+    font-size: 12px;
+}
+.key-stats-block {
+    width: 130px;
+    border: 3px dashed #337ab7;
+    border-radius: 85px;
+    text-align: center;
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    float: left;
+    color: #337ab7;
+    margin-right: 20px;
+    font-weight: bold;
+    padding: 11px;
+    font-size: 11px;
+}
+.key-stats-block:last-child {
+    margin-right: 0;
+}
+.key-stats-number {
+    font-size: 20px;
+}
+.dashboard-table>tbody>tr>td,
+.dashboard-table>thead>tr>th {
+    font-size: 11px;
+    text-align: center;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+}
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
     .container {
@@ -208,6 +244,9 @@
         padding: 7px 0 0 0;
         font-size: 13px;
     }
+    .key-stats-container {
+        width: 87%;
+    }
 }
 
 /* Extra Small Devices, Phones */ 
@@ -227,6 +266,16 @@
         width: 100%;
         float: none;
     }
+    .key-stats-container {
+        width: 87%;
+    }
+    .key-stats-block {
+        width: 116px;
+        margin-bottom: 10px;
+        min-height: 110px;
+        margin-left: 15px;
+        margin-right: 0;
+    }
 }
 
 /* Custom, iPhone Retina */ 
@@ -235,6 +284,12 @@
         margin-top: 25px;
         font-size: 1em;
         margin-left: 0px;
+    }
+    .key-stats-container {
+        width: 100%;
+    }
+    .key-stats-block {
+        width: 110px;
     }
 }
 

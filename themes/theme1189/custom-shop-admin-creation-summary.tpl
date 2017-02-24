@@ -9,7 +9,7 @@
                 <div class="product-disabled vertical-center">
                     <div class="text-center bold color-red">
                         Product currently not available
-                        <div><a class="underline" href="{$base_dir}{$shop_name}/admin/contact" title="Contact us">Contact us</a></div>
+                        <div><a class="underline" href="{$base_dir}{$custom_shop_name}/admin/contact" title="Contact us">Contact us</a></div>
                     </div>
                 </div>
                 {/if}

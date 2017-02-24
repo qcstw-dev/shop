@@ -55,20 +55,20 @@ class DispatcherCore
             'rule' =>        'custom-shop-register',
             'keywords' => array(),
         ),
-        'custom_shop' => array(
+        'custom_shop_prod' => array(
             'controller' =>    'customshopfronthome',
             'rule' =>        'custom-shop/{shop_name}',
             'keywords' => array(
                 'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
             ),
         ),
-//        'custom_shop' => array(
-//            'controller' =>    'customshopfronthome',
-//            'rule' =>        'shop/{shop_name}',
-//            'keywords' => array(
-//                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
-//            ),
-//        ),
+        'custom_shop_local' => array(
+            'controller' =>    'customshopfronthome',
+            'rule' =>        'shop/{shop_name}',
+            'keywords' => array(
+                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
+            ),
+        ),
         'custom_shop_admin' => array(
             'controller' =>    'customshopadmincreation',
             'rule' =>        '{shop_name}/admin',
@@ -116,6 +116,13 @@ class DispatcherCore
             'rule' =>        '{shop_name}/admin/shop/edit',
             'keywords' => array(
                 'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name'),
+            ),
+        ),
+        'custom_shop_admin_dashboard' => array(
+            'controller' =>    'customshopadmindashboard',
+            'rule' =>        '{shop_name}/admin/dashboard',
+            'keywords' => array(
+                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
             ),
         ),
         'category_rule' => array(
