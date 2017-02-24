@@ -1003,7 +1003,15 @@ class CartCore extends ObjectModel
         } else {
             /* Check if the product is already in the cart */
             $result = $this->containsProduct($id_product, $id_product_attribute, (int)$id_customization, (int)$id_address_delivery, $custom_picture, $id_creation);
-
+            
+            $fDesignPrice = 0;
+            $fProductPrice = 0;
+            if ($id_creation) {
+                $oCreation = new CustomShopProduct($id_creation);
+                $fDesignPrice = CustomShopDesign::getPrice($oCreation->id_design);
+                $fProductPrice = Product::getPriceStatic($oCreation->id_product, null, null, 6, null, null, null, (int) $quantity);
+            }
+            
             /* Update quantity if product already exist */
             if ($result) {
                 if ($operator == 'up') {
@@ -1020,7 +1028,7 @@ class CartCore extends ObjectModel
                     }
                     $new_qty = (int)$result['quantity'] + (int)$quantity;
                     $qty = '+ '.(int)$quantity;
-
+                    
                     if (!Product::isAvailableWhenOutOfStock((int)$result2['out_of_stock'])) {
                         if ($new_qty > $product_qty) {
                             return false;
@@ -1044,11 +1052,12 @@ class CartCore extends ObjectModel
                 } else {
                     Db::getInstance()->execute('
                         UPDATE `'._DB_PREFIX_.'cart_product`
-                        SET `quantity` = `quantity` '.$qty.', `date_add` = NOW()
-                        WHERE `id_product` = '.(int)$id_product.
+                        SET `quantity` = `quantity` '.$qty.', `date_add` = NOW() '.($id_creation ? ', `design_price` = '.$fDesignPrice.', `product_price` = '.$fProductPrice : '').
+                        ' WHERE `id_product` = '.(int)$id_product.
                         ($id_creation ? ' AND `id_customized_prod` = '.$id_creation : ' AND `custom_picture` = "'.$custom_picture.'"').
                         (!empty($id_product_attribute) ? ' AND `id_product_attribute` = '.(int)$id_product_attribute : '').'
-                        AND `id_cart` = '.(int)$this->id.(Configuration::get('PS_ALLOW_MULTISHIPPING') && $this->isMultiAddressDelivery() ? ' AND `id_address_delivery` = '.(int)$id_address_delivery : '').'
+                        AND `id_cart` = '.(int)$this->id.
+                            (Configuration::get('PS_ALLOW_MULTISHIPPING') && $this->isMultiAddressDelivery() ? ' AND `id_address_delivery` = '.(int)$id_address_delivery : '').'
                         LIMIT 1'
                     );
                 }
@@ -1092,9 +1101,8 @@ class CartCore extends ObjectModel
                     'id_customized_prod' => ($id_creation ?: 0)
                 ];
                 if ($id_creation) {
-                    $oCreation = new CustomShopProduct($id_creation);
-                    $aData['design_price'] = CustomShopDesign::getPrice($oCreation->id_design);
-                    $aData['product_price'] = Product::getPriceStatic($oCreation->id_product);
+                    $aData['design_price'] = $fDesignPrice;
+                    $aData['product_price'] = $fProductPrice;
                 }
                 $result_add = Db::getInstance()->insert('cart_product', $aData);
                 

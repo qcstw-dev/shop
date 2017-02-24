@@ -25,7 +25,6 @@
 
 $(document).ready(function () {
     $('.cart_quantity_up').off('click').on('click', function (e) {
-        console.log('toto');
         e.preventDefault();
         upQuantity($(this).attr('id').replace('cart_quantity_up_', ''), 1, {'type' : $(this).data('prod-type'), 'id' : $(this).data('prod-id')});
     });
