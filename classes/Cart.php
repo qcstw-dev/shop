@@ -957,7 +957,15 @@ class CartCore extends ObjectModel
         $id_product = (int)$id_product;
         $id_product_attribute = (int)$id_product_attribute;
         $product = new Product($id_product, false, Configuration::get('PS_LANG_DEFAULT'), $shop->id);
+        $fDesignPrice = 0;
+        $fProductPrice = 0;
 
+        if ($id_creation) {
+            $oCreation = new CustomShopProduct($id_creation);
+            $fDesignPrice = CustomShopDesign::getPrice($oCreation->id_design);
+            $fProductPrice = Product::getPriceStatic($oCreation->id_product, null, null, 6, null, null, null, (int) $quantity);
+        }
+        
         if ($id_product_attribute) {
             $combination = new Combination((int)$id_product_attribute);
             if ($combination->id_product != $id_product) {
@@ -1004,14 +1012,6 @@ class CartCore extends ObjectModel
             /* Check if the product is already in the cart */
             $result = $this->containsProduct($id_product, $id_product_attribute, (int)$id_customization, (int)$id_address_delivery, $custom_picture, $id_creation);
             
-            $fDesignPrice = 0;
-            $fProductPrice = 0;
-            if ($id_creation) {
-                $oCreation = new CustomShopProduct($id_creation);
-                $fDesignPrice = CustomShopDesign::getPrice($oCreation->id_design);
-                $fProductPrice = Product::getPriceStatic($oCreation->id_product, null, null, 6, null, null, null, (int) $quantity);
-            }
-            
             /* Update quantity if product already exist */
             if ($result) {
                 if ($operator == 'up') {
@@ -1050,6 +1050,9 @@ class CartCore extends ObjectModel
                 } elseif ($new_qty < $minimal_quantity) {
                     return -1;
                 } else {
+                    if ($id_creation) {
+                        $fProductPrice = Product::getPriceStatic($oCreation->id_product, null, null, 6, null, null, null, (int) $new_qty);
+                    }
                     Db::getInstance()->execute('
                         UPDATE `'._DB_PREFIX_.'cart_product`
                         SET `quantity` = `quantity` '.$qty.', `date_add` = NOW() '.($id_creation ? ', `design_price` = '.$fDesignPrice.', `product_price` = '.$fProductPrice : '').
