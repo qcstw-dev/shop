@@ -21,8 +21,7 @@
 </div>
 <div class="font-size-20 text-center margin-top-20">Order summary</div>
 <div class="margin-top-10 margin-bottom-10">Next payment of comission on: <span class="bold">{$next_date_payment}</span> (or when <span class="bold">{convertPrice price=300}</span> is reached)</div>
-{*{$orders|@var_dump}*}
-<table class="table dashboard-table border-top"> 
+<table class="table dashboard-table"> 
     <thead> 
         <tr class="text-center">
             <th>Date</th>
@@ -51,9 +50,9 @@
                 <td>{convertPrice price=$order.product_price}</td>
                 <td>{$order.quantity}</td>
                 <td>{convertPrice price=$order.total_shipping}</td>
-                <td> - </td>
+                <td>{if $order.tracking}{$order.tracking}{else} - {/if}</td>
                 <td>{convertPrice price=$order.product_creation.design.price*$order.quantity}</td>
-                <td> - </td>
+                <td>{if $order.status}{$status[$order.status]}{else}{$status[1]}{/if}</td>
             </tr>
         {/foreach}
     </tbody>

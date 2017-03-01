@@ -1,14 +1,14 @@
 {include file=$header}
 {include file=$menu}
 <div class="col-lg-6 margin-auto">
-    <div class="font-size-20 bold text-center margin-bottom-10">Your shop Information</div>
+    <div class="font-size-20 bold text-center margin-top-10 margin-bottom-20">Your shop Information</div>
     <form method="post">
         <div class="form-row">
             <div class="form-label">
                 <label>Shop title</label>
             </div>
             <div class="form-input">
-                <input class="form-control" type="text" name="title" value="{$shop.title}" placeholder="15 characters max" />
+                <input class="form-control" type="text" name="title" value="{$shop.title}" placeholder="15 characters max" autocomplete="off"/>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -18,15 +18,6 @@
             </div>
             <div class="form-input">
                 <textarea class="form-control" name="motto" placeholder="30 characters max" >{$shop.motto}</textarea>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="form-row">
-            <div class="form-label">
-                <label>Shop description</label>
-            </div>
-            <div class="form-input">
-                <textarea class="form-control" name="description" placeholder="Short description" >{$shop.description}</textarea>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -86,7 +77,7 @@
                 <label>Facebook</label>
             </div>
             <div class="form-input">
-                <input type="text" class="form-control" name="facebook" value="{$shop.facebook}" placeholder="" ></textarea>
+                <input type="text" class="form-control" name="facebook" value="{$shop.facebook}" placeholder="" autocomplete="off">
             </div>
             <div class="clearfix"></div>
         </div>
@@ -95,7 +86,7 @@
                 <label>Twitter</label>
             </div>
             <div class="form-input">
-                <input type="text" class="form-control" name="twitter" value="{$shop.twitter}" placeholder="" ></textarea>
+                <input type="text" class="form-control" name="twitter" value="{$shop.twitter}" placeholder="" autocomplete="off">
             </div>
             <div class="clearfix"></div>
         </div>

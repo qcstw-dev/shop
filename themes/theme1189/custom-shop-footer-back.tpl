@@ -46,6 +46,11 @@
     <script type="text/javascript" src="{$js_dir}custom-shop-edit.js"></script>
 {/if}
 {if $page_name == 'customshopregister'}
-<script type="text/javascript" src="{$js_dir}custom-shop-register.js"></script>
+    <script type="text/javascript" src="{$js_dir}custom-shop-form-valid.js"></script>
+    <script type="text/javascript" src="{$js_dir}custom-shop-register.js"></script>
+{/if}
+{if $page_name == 'customshopadminuseraccount'}
+    <script type="text/javascript" src="{$js_dir}custom-shop-form-valid.js"></script>
+    <script type="text/javascript" src="{$js_dir}custom-shop-user-account.js"></script>
 {/if}
 </body>

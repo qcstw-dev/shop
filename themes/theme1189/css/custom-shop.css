@@ -26,3 +26,13 @@ body, .btn-default {
 a:hover, a:focus {
     text-decoration: none;
 }
+.dropdown-block-title {
+    padding: 10px;
+    background: #eee;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.dropdown-block {
+    /*display: none;*/
+}

@@ -13,6 +13,13 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
     public function initContent() {
         parent::initContent();
 
+        $aStatus = [
+          1 => 'New',  
+          2 => 'Cancelled',  
+          3 => 'Shipped',  
+          4 => 'Received',  
+          5 => 'Comission paid'
+        ];
         $aOrders = CustomShop::getOrders($this->custom_shop['id']);
         $iTotalProductsSold = 0;
         $fTotalSalesAmount = 0;
@@ -29,6 +36,7 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
         }
         $this->context->smarty->assign([
             'orders' => $aOrders,
+            'status' => $aStatus,
             'next_date_payment' => date('Y-m-d', strtotime('+1 month', strtotime(date('Y-m').'-05'))),
             'nb_orders' => $aNbOrders['nbr'],
             'nb_products_sold' => $iTotalProductsSold,

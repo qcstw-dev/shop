@@ -6,6 +6,21 @@ class CustomShopAccountCore extends ObjectModel {
     public $email;
     public $passwd;
     public $registration_date;
+    public $firstname;
+    public $lastname;
+    public $company;
+    public $address;
+    public $zip;
+    public $city;
+    public $country;
+    public $phone;
+    public $newsletter;
+    public $account_holder;
+    public $account_number;
+    public $bank_name;
+    public $bank_address;
+    public $swift;
+    public $paypal_email;
     public static $definition = array(
         'table' => 'custom_shop_account',
         'primary' => 'id'
@@ -29,15 +44,33 @@ class CustomShopAccountCore extends ObjectModel {
     }
 
     public function save() {
-        if (!Db::getInstance()->insert('custom_shop_account', [
-                    'email' => $this->email,
-                    'passwd' => $this->passwd,
-                    'registration_date' => $this->registration_date
-                ])) {
-            return false;
+        $aData = [
+            'email' => pSQL($this->email),
+            'passwd' => pSQL($this->passwd),
+            'registration_date' => pSQL($this->registration_date),
+            'firstname' => pSQL($this->firstname),
+            'lastname' => pSQL($this->lastname),
+            'address' => pSQL($this->address),
+            'zip' => pSQL($this->zip),
+            'country' => pSQL($this->country),
+            'phone' => pSQL($this->phone),
+            'newsletter' => pSQL($this->newsletter),
+            'account_holder' => pSQL($this->account_holder),
+            'account_number' => pSQL($this->account_number),
+            'bank_name' => pSQL($this->bank_name),
+            'bank_address' => pSQL($this->bank_address),
+            'swift' => pSQL($this->swift),
+            'paypal_email' => pSQL($this->paypal_email),
+        ];
+        if ($this->id) {
+            return Db::getInstance()->update(self::$definition['table'], $aData, 'id = ' . pSQL($this->id));
         } else {
-            $this->id = Db::getInstance()->Insert_ID();
-            return true;
+            if (!Db::getInstance()->insert(self::$definition['table'], $aData)) {
+                return false;
+            } else {
+                $this->id = Db::getInstance()->Insert_ID();
+                return true;
+            }
         }
     }
 
@@ -77,11 +110,11 @@ class CustomShopAccountCore extends ObjectModel {
 		FROM `' . _DB_PREFIX_ . 'custom_shop_account`
 		WHERE `email` = \'' . pSQL($sEmail) . '\'');
     }
+
 //    public static function isOwner ($iShopId, $iAccountId) {
 //        return (bool) Db::getInstance()->getValue('
 //		SELECT `id`
 //		FROM `' . _DB_PREFIX_ . 'custom_shop`
 //		WHERE `id_account` = \'' . pSQL($sEmail) . '\'');
 //    }
-
 }

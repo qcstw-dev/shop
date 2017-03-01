@@ -164,6 +164,11 @@
     z-index: 2;
 }
 
+/*********************** USER ACCOUNT ********************/
+.payment-block {
+    display: none;
+}
+.form-user-account {}
 /*********************** DASHBOARD ********************/
 .key-stats-container {
     margin: auto;
@@ -196,7 +201,7 @@
 .dashboard-table>thead>tr>th {
     font-size: 11px;
     text-align: center;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
     vertical-align: middle;
 }
 /* Large Devices, Wide Screens */
@@ -241,7 +246,7 @@
         padding: 0;
     }
     .form-label {
-        padding: 7px 0 0 0;
+        padding: 7px 7px 0 0;
         font-size: 13px;
     }
     .key-stats-container {

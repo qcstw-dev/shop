@@ -125,6 +125,13 @@ class DispatcherCore
                 'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
             ),
         ),
+        'custom_shop_admin_user_account' => array(
+            'controller' =>    'customshopadminuseraccount',
+            'rule' =>        '{shop_name}/admin/user-account',
+            'keywords' => array(
+                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
+            ),
+        ),
         'category_rule' => array(
             'controller' =>    'category',
             'rule' =>        '{id}-{rewrite}',
