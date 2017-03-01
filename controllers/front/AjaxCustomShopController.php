@@ -126,8 +126,13 @@ class AjaxCustomShopControllerCore extends FrontController {
         $result['success'] = true;
         if (Tools::getValue('published') !== null && Tools::getValue('id_creation')) {
             $oCreation = new CustomShopProduct(Tools::getValue('id_creation'));
-            $oCreation->setPublished((Tools::getValue('published') === 'true' ? true : false));
-            $oCreation->save();
+            if ($oCreation->product_name) {
+                $oCreation->setPublished((Tools::getValue('published') === 'true' ? true : false));
+                $oCreation->save();
+            } else {
+                $result['success'] = false;
+                $result['error'] = 'You have to set a product name to publish the product';
+            }
         } else {
             $result['success'] = false;
             $result['error'] = 'Impossible to modify the status, information missing';

@@ -24,7 +24,7 @@
                 <div class="price bold font-size-15 text-center">Sell price: {convertPrice price=$creation.prices.10}*</div>
                 <div class="text-center font-size-13">
                     <label class="cursor-pointer" for="published-{$creation.id}">Published</label>
-                    <input type="checkbox" class="published cursor-pointer" id="published-{$creation.id}" data-id-creation="{$creation.id}" name="published" {if $creation.published}checked{/if}/>
+                    <input type="checkbox" class="published cursor-pointer" id="published-{$creation.id}" data-id-creation="{$creation.id}" name="published" {if $creation.published && $creation.product_name}checked{/if}/>
                 </div>
         </div>
     </div>

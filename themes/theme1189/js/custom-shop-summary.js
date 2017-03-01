@@ -7,7 +7,13 @@ $(function () {
         }
         globalTimeout = setTimeout(function () {
             globalTimeout = null;
-            if (element.val()) {
+            var valid = true;
+            $('.creation-name').each(function () {
+                if ($(this).val() === element.val() && $(this).data('id-creation') !== element.data('id-creation')) {
+                    valid = false;
+                }
+            });
+            if (valid) {
                 $.ajax({
                     type: 'POST',
                     url: baseDir + 'index.php?controller=ajaxcustomshop&action=savecreationname&ajax=true&product_name=' + element.val() + '&id_creation=' + element.data('id-creation'),
@@ -25,8 +31,11 @@ $(function () {
                         }
                     }
                 });
+            } else {
+                $('input[data-id-creation="' + element.data('id-creation') + '"]').prop('checked', false);
+                popupError('You have to set a different name for each product');
             }
-        }, 1000);
+        }, 500);
     });
     $('.trash').on('click', function () {
         var id_creation = $(this).data('id-creation');
@@ -51,37 +60,28 @@ $(function () {
     $('.published').on('change', function () {
         var id_creation = $(this).data('id-creation');
         var current_title = $('input[data-id-creation="' + id_creation + '"]').val();
-        if ($('input[data-id-creation="' + id_creation + '"]').val()) {
-            var valid = true;
-            $('.creation-name').each(function () {
-                if ($(this).val() === current_title && $(this).data('id-creation') !== id_creation) {
-                    valid = false;
+        if (current_title) {
+            $.ajax({
+                url: baseDir + 'index.php',
+                data: 'controller=ajaxcustomshop&action=publish&ajax=true&published=' + $(this).is(':checked') + '&id_creation=' + $(this).data('id-creation'),
+                dataType: 'json',
+                beforeSend: function () {
+                    saving();
+                },
+                success: function (json) {
+                    saving_hide();
+                    if (json.success) {
+                        confirm();
+                    } else {
+                        saving_hide();
+                        popupError(json.error);
+                    }
                 }
             });
-            if (valid) {
-                $.ajax({
-                    url: baseDir + 'index.php',
-                    data: 'controller=ajaxcustomshop&action=publish&ajax=true&published=' + $(this).is(':checked') + '&id_creation=' + $(this).data('id-creation'),
-                    dataType: 'json',
-                    beforeSend: function () {
-                        saving();
-                    },
-                    success: function (json) {
-                        saving_hide();
-                        if (json.success) {
-                            confirm();
-                        } else {
-                            saving_hide();
-                            popupError(json.error);
-                        }
-                    }
-                });
-            } else {
-                $(this).attr('checked', false);
-                popupError('You have to set different name for each products');
-            }
         } else {
-            $(this).attr('checked', false);
+            if ($(this).is(':checked')) {
+                $(this).prop('checked', false);
+            }
             popupError('You have to set a name for this product before you publish it');
         }
     });
