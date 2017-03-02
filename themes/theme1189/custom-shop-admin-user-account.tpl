@@ -2,20 +2,24 @@
 {include file=$menu}
 <div class="font-size-20 text-center margin-top-20">User account</div>
 <div class="bold margin-bottom-10">User ID: {$account.id}</div>
-<form method="post" class="user-account-form">
-    {$errors|@var_dump}
-    <div class="alert alert-danger error-message error-message-custom" {if $errors}style="display"{/if}>
-        {foreach from=$errors item='error'}
-            <li>{$error}</li>
-            {/foreach}
+{if !$form_errors && $submitted}
+    <div class="alert alert-success text-center">
+        User account information updated !
     </div>
-    <div class="alert alert-danger error-message error-message-email">Please enter a valid email address</div>
-    <div class="alert alert-danger error-message error-message-shopname">Please do not enter special charateres in shopname</div>
-    <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="perso">
-        <span class="glyphicon glyphicon-chevron-down"></span> Personal information
-    </div>
-    <div class="clearfix"></div>
-    <div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-perso">
+{/if}
+<div class="alert alert-danger error-message error-message-custom  text-center" {if $form_errors}style="display: block"{/if}>
+    {foreach from=$form_errors item='error'}
+        <li>{$error}</li>
+        {/foreach}
+</div>
+<div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="perso">
+    <span class="chevron glyphicon glyphicon-{if $forms_status['personal-info-form']}chevron-right{else}chevron-down{/if}"></span> Personal information
+    {if $forms_status['personal-info-form']}<span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>{/if}
+</div>
+<div class="clearfix"></div>
+<div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-perso" {if $forms_status['personal-info-form']}style="display: none;"{/if}>
+    <form method="post" class="personal-info-form">
+        <input type="hidden" name="form_type" value="personal-info-form">
         <div class="form-row">
             <div class="form-label">
                 <label>First name</label>
@@ -84,7 +88,7 @@
                 <label>Phone</label>
             </div>
             <div class="form-input">
-                <input class="form-control" type="text" name="phone" value="" autocomplete="off"/>
+                <input class="form-control" type="text" name="phone" value="{$account.phone}" autocomplete="off"/>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -97,18 +101,25 @@
             </div>
             <div class="clearfix"></div>
         </div>
-    </div>
-    <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="public">
-        <span class="glyphicon glyphicon-chevron-down"></span> Public information
-    </div>
-    <div class="clearfix"></div>
-    <div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-public">
+        <div class="col-xs-12 margin-bottom-20">
+            <input type="submit" class="btn btn-primary pull-right"/>
+        </div>
+    </form>
+</div>
+<div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="public">
+    <span class="chevron glyphicon glyphicon-{if $forms_status['public-info-form']}chevron-right{else}chevron-down{/if}"></span> Public information
+    {if $forms_status['public-info-form']}<span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>{/if}
+</div>
+<div class="clearfix"></div>
+<div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-public" {if $forms_status['public-info-form']}style="display: none;"{/if}>
+    <form method="post" class="public-info-form">
+        <input type="hidden" name="form_type" value="public-info-form">
         <div class="form-row">
             <div class="form-label">
                 <label>Website</label>
             </div>
             <div class="form-input">
-                <input class="form-control" type="text" name="website" value="" autocomplete="off"/>
+                <input class="form-control" type="text" name="website" value="{$shop.website}" autocomplete="off"/>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -121,50 +132,23 @@
             </div>
             <div class="clearfix"></div>
         </div>
-    </div>
-    <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="password">
-        <span class="glyphicon glyphicon-chevron-down"></span> Password change
-    </div>
-    <div class="clearfix"></div>
-    <div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-password">
-        <div class="alert alert-danger error-message error-message-password">Confirmation password different</div>
-        <div class="alert alert-danger error-message error-message-password-length">Password must be at least 6 characters long</div>
-        <div class="form-row">
-            <div class="form-label">
-                <label>Current password</label>
-            </div>
-            <div class="form-input">
-                <input class="form-control" type="text" name="current_password" value="" autocomplete="off"/>
-            </div>
-            <div class="clearfix"></div>
+        <div class="col-xs-12 margin-bottom-20">
+            <input type="submit" class="btn btn-primary pull-right"/>
         </div>
-        <div class="form-row">
-            <div class="form-label">
-                <label>New password</label>
-            </div>
-            <div class="form-input">
-                <input class="form-control password" type="text" name="new_password" value="" autocomplete="off"/>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="form-row">
-            <div class="form-label">
-                <label>Confirm new password</label>
-            </div>
-            <div class="form-input">
-                <input class="form-control confirm_password" type="text" name="confirm_new_password" value="" autocomplete="off"/>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="bank">
-        <span class="glyphicon glyphicon-chevron-down"></span> Bank detail
-    </div>
-    <div class="clearfix"></div>
-    <div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-bank">
+    </form>
+</div>
+<div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="bank">
+    <span class="chevron glyphicon glyphicon-{if $forms_status['bank-detail-form']}chevron-right{else}chevron-down{/if}"></span> Bank detail
+    {if $forms_status['bank-detail-form']}<span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>{/if}
+</div>
+<div class="clearfix"></div>
+<div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-bank" {if $forms_status['bank-detail-form']}style="display: none;"{/if}>
+    <form method="post" class="bank-detail-form">
+        <input type="hidden" name="form_type" value="bank-detail-form">
+        <div class="alert alert-danger error-message error-message-email  text-center">Please enter a valid email address</div>
         <p class="bold">Needed to pay your comission</p>
         <div class="border padding-10">
-            <label for="bank" class="cursor-pointer padding-10 col-xs-11">Credit card</label> <div class="col-xs-1 padding-10"><input type="radio" id="bank" name="payment" class="payment" data-payment="bank" {if $account.account_number}checked{/if}/></div>
+            <label for="bank" class="cursor-pointer padding-10 col-xs-11">Credit card</label> <div class="col-xs-1 padding-10"><input type="radio" id="bank" name="payment" value="bank" class="payment" data-payment="bank" {if $account.account_number}checked{/if}/></div>
             <div class="payment-block payment-bank" {if $account.account_number}style="display:block"{/if}>
                 <div class="form-row">
                     <div class="form-label">
@@ -215,7 +199,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="border padding-10 margin-top-20">
-            <label for="paypal" class="cursor-pointer padding-10 col-xs-11">Paypal</label> <div class="col-xs-1 padding-10"><input type="radio" id="paypal" name="payment" class="payment" data-payment="paypal" {if $account.paypal_email}checked{/if}/></div>
+            <label for="paypal" class="cursor-pointer padding-10 col-xs-11">Paypal</label> <div class="col-xs-1 padding-10"><input type="radio" id="paypal" name="payment" value="paypal" class="payment" data-payment="paypal" {if $account.paypal_email}checked{/if}/></div>
             <div class="payment-block payment-paypal" {if $account.paypal_email}style="display:block"{/if}>
                 <div class="form-row">
                     <div class="form-label">
@@ -238,9 +222,66 @@
             </div>
             <div class="clearfix"></div>
         </div>
-    </div>
-    <div class="col-xs-12 col-lg-6 margin-auto margin-top-20">
-        <input type="submit" class="btn btn-primary pull-right" />
-    </div>
-</form>
+        <div class="col-xs-12 margin-top-20 margin-bottom-20">
+            <input type="submit" class="btn btn-primary pull-right"/>
+        </div>
+    </form>
+</div>
+<div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="payment">
+    <span class="chevron glyphicon glyphicon-{if $forms_status['minimum-to-reach-form']}chevron-right{else}chevron-down{/if}"></span> Payment settings
+    {if $forms_status['minimum-to-reach-form']}<span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>{/if}
+</div>
+<div class="clearfix"></div>
+<div class="col-xs-12 padding-bottom-10 margin-auto dropdown-block dropdown-block-payment" {if $forms_status['minimum-to-reach-form']}style="display: none;"{/if}>
+    <form method="post" class="minimum-to-reach-form">
+        <div class="alert alert-danger error-message error-message-minimum text-center">Minimum amount to reach cannot be below $300</div>
+        <input type="hidden" name="form_type" value="minimum-to-reach-form">
+        <li>Payment release level minimum: <span class="input-group-sm btn-group-sm bold">$<input type="number" class="minimum" name="minimum" min="300" value="{if $shop.minimum_to_reach}{$shop.minimum_to_reach}{else}300{/if}"/><input type="submit" class="btn btn-primary margin-left-10"/></span></li>
+        <li>Every payment through wire transfer is subject to a $___ fix charge.</li>
+        <li>Every payment through PayPal is subject to a ___% charge on the total transfered amount.</li>
+        <li>Payment frequency will be done weekly as far as payment release level is met</li>
+    </form>
+</div>
+<div class="clearfix"></div>
+<div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="password">
+    <span class="chevron glyphicon glyphicon-chevron-right"></span> Password change
+</div>
+<div class="clearfix"></div>
+<div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-password" style="display: none;">
+    <form method="post" class="password-change-form">
+        <input type="hidden" name="form_type" value="password-change-form">
+        <div class="alert alert-danger error-message error-message-password text-center">Confirmation password different</div>
+        <div class="alert alert-danger error-message error-message-password-length text-center">Password must be at least 6 characters long</div>
+        <div class="form-row">
+            <div class="form-label">
+                <label>Current password</label>
+            </div>
+            <div class="form-input">
+                <input class="form-control {if isset($form_errors['password'])}form-control-danger{/if}" type="password" name="current_password" value="" autocomplete="off"/>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                <label>New password</label>
+            </div>
+            <div class="form-input">
+                <input class="form-control password {if isset($form_errors['password'])}form-control-danger{/if}" type="password" name="new_password" value="" autocomplete="off"/>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                <label>Confirm new password</label>
+            </div>
+            <div class="form-input">
+                <input class="form-control confirm_password {if isset($form_errors['password'])}form-control-danger{/if}" type="password" name="confirm_new_password" value="" autocomplete="off"/>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-xs-12 margin-bottom-20">
+            <input type="submit" class="btn btn-primary pull-right"/>
+        </div>
+    </form>
+</div>
 {include file=$footer}

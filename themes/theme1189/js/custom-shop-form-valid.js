@@ -98,6 +98,18 @@ function formSubmitValidator(form) {
             valid = false;
         }
     }
+    if (form.find('.email').length) {
+        if (form.find('.email').val()) {
+            if (isEmail(form.find('.email').val())) {
+                form.find('.email').removeClass('form-control-danger');
+                form.find('.error-message-email').slideUp();
+            } else {
+                form.find('.email').addClass('form-control-danger');
+                form.find('.error-message-email').slideDown();
+                valid = false;
+            }
+        }
+    }
     if (!valid) {
         form.find('.error-message-general').slideDown();
         return false;

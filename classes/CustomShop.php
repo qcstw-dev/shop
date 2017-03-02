@@ -9,8 +9,10 @@ class CustomShopCore extends ObjectModel {
     public $description;
     public $logo;
     public $header;
+    public $website;
     public $facebook;
     public $twitter;
+    public $minimum_to_reach;
     public $id_account;
     public static $definition = array(
         'table' => 'custom_shop',
@@ -92,8 +94,10 @@ class CustomShopCore extends ObjectModel {
             'description' => pSQL($this->description),
             'logo' => pSQL($this->logo),
             'header' => pSQL($this->header),
+            'website' => pSQL($this->website),
             'facebook' => pSQL($this->facebook),
             'twitter' => pSQL($this->twitter),
+            'minimum_to_reach' => pSQL($this->minimum_to_reach),
             'id_account' => pSQL($this->id_account)
         ];
         if ($this->id) {

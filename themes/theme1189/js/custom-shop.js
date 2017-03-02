@@ -40,12 +40,12 @@ $(function () {
         popupMessage('<div class="thumbnail"><img src="' + $(this).attr('src') + '" /></div>');
     });
     $('.dropdown-block-title').on('click', function () {
-        if ($(this).find('span').hasClass('glyphicon-chevron-right')) {
-            $(this).find('span').removeClass('glyphicon-chevron-right');
-            $(this).find('span').addClass('glyphicon-chevron-down');
+        if ($(this).find('.chevron').hasClass('glyphicon-chevron-right')) {
+            $(this).find('.chevron').removeClass('glyphicon-chevron-right');
+            $(this).find('.chevron').addClass('glyphicon-chevron-down');
         } else {
-            $(this).find('span').removeClass('glyphicon-chevron-down');
-            $(this).find('span').addClass('glyphicon-chevron-right');
+            $(this).find('.chevron').removeClass('glyphicon-chevron-down');
+            $(this).find('.chevron').addClass('glyphicon-chevron-right');
         }
         $('.dropdown-block-' + $(this).data('id-dropdown-block')).slideToggle();
     });
