@@ -244,10 +244,10 @@
 </div>
 <div class="clearfix"></div>
 <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="password">
-    <span class="chevron glyphicon glyphicon-chevron-right"></span> Password change
+    <span class="chevron glyphicon glyphicon-{if !isset($form_errors['password'])}chevron-right{else}chevron-down{/if}"></span> Password change
 </div>
 <div class="clearfix"></div>
-<div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-password" style="display: none;">
+<div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-password" {if !isset($form_errors['password'])}style="display: none;"{/if}>
     <form method="post" class="password-change-form">
         <input type="hidden" name="form_type" value="password-change-form">
         <div class="alert alert-danger error-message error-message-password text-center">Confirmation password different</div>
