@@ -234,12 +234,12 @@
 <div class="clearfix"></div>
 <div class="col-xs-12 padding-bottom-10 margin-auto dropdown-block dropdown-block-payment" {if $forms_status['minimum-to-reach-form']}style="display: none;"{/if}>
     <form method="post" class="minimum-to-reach-form">
-        <div class="alert alert-danger error-message error-message-minimum text-center">Minimum amount to reach cannot be below $300</div>
+        <div class="alert alert-danger error-message error-message-minimum text-center">Minimum amount to reach cannot be below $50</div>
         <input type="hidden" name="form_type" value="minimum-to-reach-form">
-        <li>Payment release level minimum: <span class="input-group-sm btn-group-sm bold">$<input type="number" class="minimum" name="minimum" min="300" value="{if $shop.minimum_to_reach}{$shop.minimum_to_reach}{else}300{/if}"/><input type="submit" class="btn btn-primary margin-left-10"/></span></li>
-        <li>Every payment through wire transfer is subject to a $___ fix charge.</li>
-        <li>Every payment through PayPal is subject to a ___% charge on the total transfered amount.</li>
-        <li>Payment frequency will be done weekly as far as payment release level is met</li>
+        <p>- Payment release level minimum: <span class="input-group-sm btn-group-sm bold">$<input type="number" class="minimum" name="minimum" min="50" value="{if $shop.minimum_to_reach}{$shop.minimum_to_reach}{else}300{/if}"/><input type="submit" class="btn btn-primary margin-left-10"/></span></p>
+        <p>- Every payment through wire transfer is subject to a $___ fix charge.</p>
+        <p>- Every payment through PayPal is subject to a ___% charge on the total transfered amount.</p>
+        <p>- Payment frequency will be done weekly as far as payment release level is met</p>
     </form>
 </div>
 <div class="clearfix"></div>

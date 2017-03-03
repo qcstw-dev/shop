@@ -20,8 +20,7 @@ $(function () {
             });
     $(document).on('click', '.minimum-to-reach-form input[type="submit"]', function () {
         event.preventDefault();
-        console.log(parseInt($('.minimum').val()));
-        if (parseInt($('.minimum').val()) >= 300) {
+        if (parseInt($('.minimum').val()) >= 50) {
             $(this).parents('form').submit();
         } else {
             $(this).addClass('.form-control-danger');

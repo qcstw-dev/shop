@@ -36,6 +36,7 @@ class PDFCore
     public $send_bulk_flag = false;
 
     const TEMPLATE_INVOICE = 'Invoice';
+    const TEMPLATE_CUSTOM_SHOP_INVOICE = 'InvoiceCustomShop';
     const TEMPLATE_ORDER_RETURN = 'OrderReturn';
     const TEMPLATE_ORDER_SLIP = 'OrderSlip';
     const TEMPLATE_DELIVERY_SLIP = 'DeliverySlip';

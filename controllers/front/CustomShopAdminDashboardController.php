@@ -28,12 +28,15 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
         foreach ($aOrders as &$aOrder) {
             $iTotalProductsSold += $aOrder['quantity'];
             $fTotalSalesAmount += $aOrder['product_price'] * $aOrder['quantity'];
-            $fTotalComission += $aOrder['design_price'] * $aOrder['quantity'];
+            $fTotalComission += ($aOrder['design_price'] * $aOrder['quantity']);
             if (!in_array($aOrder['id_order'], $aNbOrders['ids'])) {
                 $aNbOrders['ids'][] = $aOrder['id_order']; 
                 $aNbOrders['nbr']++; 
             }
         }
+        
+        $aBills = CustomShopBillingHistory::getAllBilling($this->custom_shop['id']);
+        
         $this->context->smarty->assign([
             'orders' => $aOrders,
             'status' => $aStatus,
@@ -42,6 +45,7 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
             'nb_products_sold' => $iTotalProductsSold,
             'total_sales_amount' => $fTotalSalesAmount,
             'total_commission' => $fTotalComission,
+            'bills' => $aBills
         ]);
 
         $this->setTemplate(_PS_THEME_DIR_ . 'custom-shop-admin-dashboard.tpl');

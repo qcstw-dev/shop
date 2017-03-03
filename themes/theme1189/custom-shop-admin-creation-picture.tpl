@@ -27,10 +27,10 @@
                     <input class="fileupload hidden-fileupload-{$counter}" data-db-id="{$db_id}" data-id-upload="{$counter}" type="file" name="files[]">
                 </div>
             </div>
-            <div class="col-xs-12 margin-top-5 margin-bottom-5">
-                <div class="col-xs-5 margin-top-10">Price:</div>
-                <div class="col-xs-1 margin-top-10 padding-0">$</div>
-                <div class="col-xs-5 input-group-sm padding-0">
+            <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5">
+                <div class="col-xs-7 padding-right-0 font-size-13 margin-top-10">Comission price:</div>
+                <div class="col-xs-1 padding-0 margin-top-10 padding-0">$</div>
+                <div class="col-xs-3 input-group-sm padding-0">
                     <input class="form-control margin-0 margin-top-5 price" 
                            data-db-id="{$db_id}" 
                            data-id="{$counter}" 

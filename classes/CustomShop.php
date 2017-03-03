@@ -38,9 +38,7 @@ class CustomShopCore extends ObjectModel {
                 WHERE cp.`id_cart` = o.`id_cart`
                 AND cscp.`id` = cp.`id_customized_prod`
 		AND cscp.`id_shop` = ' . pSQL($iId)
-                . ' GROUP BY cscp.`id`'
                 . ' ORDER BY o.`id_order` DESC');
-
         foreach ($aOrders as &$aOrder) {
             $aOrder['product_prestashop'] = Db::getInstance()->getRow('
 		SELECT *

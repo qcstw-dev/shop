@@ -20,7 +20,7 @@
     <div class="clearfix"></div>
 </div>
 <div class="font-size-20 text-center margin-top-20">Order summary</div>
-<div class="margin-top-10 margin-bottom-10">Next payment of comission on: <span class="bold">{$next_date_payment}</span> (or when <span class="bold">{convertPrice price=300}</span> is reached)</div>
+<div class="margin-top-10 margin-bottom-10">Next payment of comission on: <span class="bold">{$next_date_payment}</span> (or when <span class="bold">{if $shop.minimum_to_reach}{convertPrice price=$shop.minimum_to_reach}{else}{convertPrice price=300}{/if}</span> is reached)</div>
 <table class="table dashboard-table"> 
     <thead> 
         <tr class="text-center">
@@ -51,10 +51,16 @@
                 <td>{$order.quantity}</td>
                 <td>{convertPrice price=$order.total_shipping}</td>
                 <td>{if $order.tracking}{$order.tracking}{else} - {/if}</td>
-                <td>{convertPrice price=$order.product_creation.design.price*$order.quantity}</td>
+                <td>{convertPrice price=$order.design_price*$order.quantity}</td>
                 <td>{if $order.status}{$status[$order.status]}{else}{$status[1]}{/if}</td>
             </tr>
         {/foreach}
     </tbody>
 </table>
+<div class="col-xs-12">
+    <div class="bold">Bills History</div>
+    {foreach from=$bills item='bill'}
+        <li>{$bill.date} - <a href="{$base_dir}index.php?controller=customshoppdfbill&id_bill={$bill.id}" target="_blank" title="Download bill"><span class="fa fa-file-pdf-o"></span> Download</a></li>
+    {/foreach}
+</div>
 {include file=$footer}

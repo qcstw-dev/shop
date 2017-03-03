@@ -66,10 +66,10 @@ class CustomShopAdminUserAccountControllerCore extends CustomShopAdminController
         }
         
         if (Tools::getValue('form_type') == 'minimum-to-reach-form') {
-            if (Tools::getValue('minimum') >= 300) {
+            if (Tools::getValue('minimum') >= 50) {
                 $oCustomShop->minimum_to_reach = Tools::getValue('minimum');
             } else {
-                $aErrors['minimum'] = 'Minimum amount to reach cannot be below $300';
+                $aErrors['minimum'] = 'Minimum amount to reach cannot be below $50';
             }
             $bFormSubmitted = true;
         }
