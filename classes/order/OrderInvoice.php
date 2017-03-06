@@ -144,10 +144,10 @@ class OrderInvoiceCore extends ObjectModel
 		ON p.id_product = od.product_id
 		LEFT JOIN `'._DB_PREFIX_.'product_shop` ps ON (ps.id_product = p.id_product AND ps.id_shop = od.id_shop)
                 LEFT JOIN `'._DB_PREFIX_.'orders` o ON (o.id_order = od.id_order AND o.id_shop = od.id_shop)
-                LEFT JOIN `'._DB_PREFIX_.'cart_product` cp ON (o.id_cart = cp.id_cart and od.product_quantity = cp.quantity)
+                LEFT JOIN (SELECT * FROM `'._DB_PREFIX_.'cart_product` GROUP BY `custom_picture`) cp ON (o.id_cart = cp.id_cart and od.product_quantity = cp.quantity and od.product_id = cp.id_product)
 		WHERE od.`id_order` = '.(int)$this->id_order.'
 		'.($this->id && $this->number ? ' AND od.`id_order_invoice` = '.(int)$this->id : '').' '
-                . ' GROUP BY od.product_quantity, cp.custom_picture'
+                . ' GROUP BY cp.`custom_picture`'
                 . ' ORDER BY od.`product_name`');
     }
 
@@ -249,13 +249,13 @@ class OrderInvoiceCore extends ObjectModel
             $row['total_price_tax_incl_including_ecotax'] = $row['total_price_tax_incl'];
             $row['custom_picture'] = _PS_BASE_URL_.__PS_BASE_URI__.($row['custom_picture'] ? 'img/layout_maker/custom_pictures/'.$row['custom_picture'].'.png' : 'img/custom_shop/creation/'.CustomShopProduct::getProductById($row['id_customized_prod'])['custom_img']);
             /* Stock product */
-            $result_array[(int)$row['id_order_detail']] = $row;
+            $result_array[(int)$row['id_order_detail'].'_'.$row['custom_picture']] = $row;
         }
-
+        
         if ($customized_datas) {
             Product::addCustomizationPrice($result_array, $customized_datas);
         }
-
+        
         return $result_array;
     }
 
