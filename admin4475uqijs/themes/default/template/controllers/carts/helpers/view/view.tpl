@@ -60,6 +60,8 @@
 				</div>
 			{else}
 				<h2>{l s='Guest not registered'}</h2>
+                                <div>IP: {$guest->ip}</div>
+                                <div>Country: {$guest->country_name}</div>
 			{/if}
 		</div>
 	</div>
@@ -145,7 +147,19 @@
 
 					{if !isset($product.customizationQuantityTotal) || $product.cart_quantity > $product.customizationQuantityTotal}
 						<tr>
-							<td>{$product.image}</td>
+                                                    <td class="text-center">
+                                                        {if $product.custom_picture}
+                                                            <a href="{$base_url}img/layout_maker/custom_pictures/{$product.custom_picture}.png" target="_blank">
+                                                                <img width="200" src="{$base_url}img/layout_maker/custom_pictures/{$product.custom_picture}.png" alt="{$product.name}" title="{$product.name}" />
+                                                            </a>
+                                                            <a href="{$base_url}img/layout_maker/custom_pictures/{$product.custom_picture}.png" target="_blank" download>Download custom picture</a>
+                                                            {if $product.original_picture}
+                                                                <a href="{$base_url}img/layout_maker/original_pictures/{$product.original_picture}.png" target="_blank" download>Download original picture</a>
+                                                            {/if}
+                                                        {else}
+                                                            {$product.picture}
+                                                        {/if}
+                                                    </td>
 							<td>
 								<a href="{$link->getAdminLink('AdminProducts')|escape:'html':'UTF-8'}&amp;id_product={$product.id_product}&amp;updateproduct">
 									<span class="productName">{$product.name}</span>{if isset($product.attributes)}<br />{$product.attributes}{/if}<br />

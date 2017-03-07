@@ -32,9 +32,11 @@
 {if ($product['product_quantity'] > $product['customized_product_quantity'])}
     <tr class="product-line-row">
         <td style="text-align: center"><a href="{$base_url}img/layout_maker/custom_pictures/{$product.custom_picture}.png" target="_blank" download>{if isset($product.image) && $product.image->id}{$product.image_tag}{/if}</a>
-            <div>
-                <a href="{$base_url}img/layout_maker/custom_pictures/{$product.custom_picture}.png" target="_blank" download>Download custom picture</a>
-            </div>
+            {if $product.custom_picture}
+                <div>
+                    <a href="{$base_url}img/layout_maker/custom_pictures/{$product.custom_picture}.png" target="_blank" download>Download custom picture</a>
+                </div>
+            {/if}
             {if $product.original_picture}
                 <div>
                     <a href="{$base_url}img/layout_maker/original_pictures/{$product.original_picture}.png" target="_blank" download>Download original picture</a>

@@ -41,6 +41,8 @@ class GuestCore extends ObjectModel
     public $windows_media;
     public $accept_language;
     public $mobile_theme;
+    public $ip;
+    public $country;
 
     /**
      * @see ObjectModel::$definition
@@ -64,6 +66,8 @@ class GuestCore extends ObjectModel
             'windows_media' =>            array('type' => self::TYPE_BOOL, 'validate' => 'isBool'),
             'accept_language' =>        array('type' => self::TYPE_STRING, 'validate' => 'isGenericName', 'size' => 8),
             'mobile_theme' =>            array('type' => self::TYPE_BOOL, 'validate' => 'isBool'),
+            'ip' =>                     array('type' => self::TYPE_STRING),
+            'country' =>                     array('type' => self::TYPE_STRING),
         ),
     );
 
@@ -81,6 +85,27 @@ class GuestCore extends ObjectModel
         $this->id_operating_system = $this->getOs($userAgent);
         $this->id_web_browser = $this->getBrowser($userAgent);
         $this->mobile_theme = Context::getContext()->getMobileDevice();
+        if ($_SERVER["HTTP_HOST"] != 'localhost') {
+            if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR']) {
+                $this->ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            } else {
+                $this->ip = $_SERVER['REMOTE_ADDR'];
+            }
+
+            $url = "http://ip2c.org/" . $this->ip;
+
+            set_time_limit(10);
+
+            $data = file_get_contents($url);
+            $reply = explode(';',$data);
+
+            if (isset($reply[1]) && $reply[1]) {
+                $this->country = $reply[1];
+            }
+        } else {
+            $this->ip = 'localhost';
+            $this->country = 'TW';
+        }
     }
 
     protected function getLanguage($acceptLanguage)

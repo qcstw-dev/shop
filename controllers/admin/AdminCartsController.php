@@ -207,6 +207,11 @@ class AdminCartsControllerCore extends AdminController
             return;
         }
         $customer = new Customer($cart->id_customer);
+        $guest = new Guest($cart->id_guest);
+        if ($guest) {
+            $id_country = Country::getByIso($guest->country);
+            $guest->country_name = Country::getNameById($this->context->language->id, $id_country);
+        }
         $currency = new Currency($cart->id_currency);
         $this->context->cart = $cart;
         $this->context->currency = $currency;
@@ -280,6 +285,7 @@ class AdminCartsControllerCore extends AdminController
             'cart' => $cart,
             'currency' => $currency,
             'customer' => $customer,
+            'guest' => $guest,
             'customer_stats' => $customer->getStats(),
             'total_products' => $total_products,
             'total_discounts' => $total_discounts,
