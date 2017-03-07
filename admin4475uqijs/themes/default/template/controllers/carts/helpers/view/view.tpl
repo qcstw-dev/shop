@@ -60,8 +60,12 @@
 				</div>
 			{else}
 				<h2>{l s='Guest not registered'}</h2>
-                                <div>IP: {$guest->ip}</div>
-                                <div>Country: {$guest->country_name}</div>
+                                {if $guest->ip}
+                                    <div>IP: {$guest->ip}</div>
+                                {/if}
+                                {if $guest->country}
+                                    <div>Country: {$guest->country_name}</div>
+                                {/if}
 			{/if}
 		</div>
 	</div>
