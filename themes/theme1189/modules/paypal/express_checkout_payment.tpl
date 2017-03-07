@@ -29,7 +29,7 @@
     {else}
         <div class="row">
             <div class="col-xs-12">
-                <div class="font-size-20 bold margin-bottom-10">
+                {*<div class="font-size-20 bold margin-bottom-10">
                     <input type="radio" id="payment-pp" name="radio-payment" class="radio-payment"/> <label for="payment-pp" class="cursor-pointer">{l s='PayPal'}</label>
                     <div class="pull-right">
                         <img src="{$module_dir}paypal.png" alt="{l s='Pay with PayPal' mod='paypal'}" />
@@ -40,6 +40,20 @@
                         <a href="javascript:void(0)" onclick="" id="paypal_process_payment" class="btn btn-primary border-none" title="{l s='Pay with PayPal' mod='paypal'}">
                         {else}
                             <a href="javascript:void(0)" onclick="$('#paypal_payment_form').submit();" class="btn btn-primary border-none" title="{l s='Pay with PayPal' mod='paypal'}">
+                            {/if}
+                            {l s='Pay with PayPal' mod='paypal'}
+                        </a>
+                </div>*}
+                <div class="font-size-20 bold margin-bottom-10">
+                    <div class="pull-right">
+                        <img src="{$module_dir}paypal.png" alt="{l s='Pay with PayPal' mod='paypal'}" />
+                    </div>
+                </div>
+                <div class="btn-group-lg">
+                    {if $use_paypal_in_context}
+                        <a href="javascript:void(0)" onclick="" id="paypal_process_payment" class="btn btn-primary" title="{l s='Pay with PayPal' mod='paypal'}">
+                        {else}
+                            <a href="javascript:void(0)" onclick="$('#paypal_payment_form').submit();" class="btn btn-primary" title="{l s='Pay with PayPal' mod='paypal'}">
                             {/if}
                             {l s='Pay with PayPal' mod='paypal'}
                         </a>
