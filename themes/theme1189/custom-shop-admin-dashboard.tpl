@@ -15,7 +15,7 @@
     </div>
     <div class="key-stats-block">
         Total comission
-        <div class="key-stats-number">{convertPrice price=$total_commission}</div>
+        <div class="key-stats-number">{convertPrice price=$total_comission}</div>
     </div>
     <div class="clearfix"></div>
 </div>

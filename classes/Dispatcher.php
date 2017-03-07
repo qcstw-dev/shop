@@ -69,6 +69,11 @@ class DispatcherCore
                 'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
             ),
         ),
+        'custom_shop_super_admin' => array(
+            'controller' =>    'customshopsuperadmin',
+            'rule' =>        'custom-shop-admin',
+            'keywords' => array(),
+        ),
         'custom_shop_admin' => array(
             'controller' =>    'customshopadmincreation',
             'rule' =>        '{shop_name}/admin',

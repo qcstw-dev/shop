@@ -44,7 +44,7 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
             'nb_orders' => $aNbOrders['nbr'],
             'nb_products_sold' => $iTotalProductsSold,
             'total_sales_amount' => $fTotalSalesAmount,
-            'total_commission' => $fTotalComission,
+            'total_comission' => $fTotalComission,
             'bills' => $aBills
         ]);
 

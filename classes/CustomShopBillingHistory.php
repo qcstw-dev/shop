@@ -39,29 +39,30 @@ class CustomShopBillingHistoryCore extends ObjectModel {
 		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '`
 		WHERE `id_shop` = ' . pSQL($iIdShop));
     }
-
-    public static function getBillingById($iId) {
-        $aBills = Db::getInstance()->executeS('
+    public static function getBillingById($iId, $sIdType = 'bill') {
+        $aBill = Db::getInstance()->getRow('
 		SELECT *
 		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '`
-		WHERE `id` = ' . pSQL($iId));
+		WHERE '.($sIdType == 'shop' ? '`id_shop` = ' . pSQL($iId) .' ORDER BY `date` DESC' : '`id` = ' . pSQL($iId)));
         $aFormattedBills = [];
-        foreach ($aBills as $aBill) {
+        if ($aBill) {
             $aOrders = CustomShopBillingHistory::getOrdersByBillId($aBill['id']);
             $aFormattedBills['date'] = $aBill['date'];
-            $aFormattedBills['total'] = 0;
-            $fComission = 0;
+            $aFormattedBills['total'] = $fComission = 0;
+            $aFormattedBills['quantity'] = $iQuantity = 0;
             foreach ($aOrders as $aOrder) {
                 $fComission = ($aOrder['design_price'] * $aOrder['quantity']);
+                $iQuantity += $aOrder['quantity'];
                 $aFormattedBills['orders'][$aOrder['id_order']] = [
                     'id' => $aOrder['id_order'],
                     'date' => $aOrder['date_add'],
-                    'comission' => (isset($aFormattedBills['orders'][$aOrder['id_order']]) ? $aFormattedBills['orders'][$aOrder['id_order']]['comission'] + $fComission : $fComission)
+                    'comission' => (isset($aFormattedBills['orders'][$aOrder['id_order']]) ? $aFormattedBills['orders'][$aOrder['id_order']]['comission'] + $fComission : $fComission),
+                    'quantity' => ($iQuantity ? $iQuantity + $aOrder['quantity'] : $aOrder['quantity'])
                 ];
                 $aFormattedBills['total'] += $fComission;
+                $aFormattedBills['quantity'] += $iQuantity;
             }
         }
         return $aFormattedBills;
     }
-
 }

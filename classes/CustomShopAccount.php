@@ -84,6 +84,11 @@ class CustomShopAccountCore extends ObjectModel {
         return CustomShop::getShopByName($sShopName);
     }
 
+    public static function getAllAccounts() {
+        return Db::getInstance()->getRow('
+		SELECT *
+		FROM `' . _DB_PREFIX_ . 'custom_shop_account`');
+    }
     public static function getAccountById($iId) {
         return Db::getInstance()->getRow('
 		SELECT *

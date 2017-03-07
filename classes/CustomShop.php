@@ -31,6 +31,21 @@ class CustomShopCore extends ObjectModel {
         }
     }
 
+    public static function getAllShops() {
+        return Db::getInstance()->executeS('
+		SELECT *
+		FROM `' . _DB_PREFIX_ . 'custom_shop` ORDER BY `id` DESC');
+    }
+    public static function getCurrentSituation($iId) {
+        return Db::getInstance()->getRow('
+		SELECT SUM(cp.`design_price` * cp.`quantity`) as total_comission, SUM(cp.`quantity`) as quantity
+		FROM `' . _DB_PREFIX_ . 'orders` o, `' . _DB_PREFIX_ . 'cart_product` cp, `' . _DB_PREFIX_ . 'custom_shop_customized_prod` cscp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND cscp.`id` = cp.`id_customized_prod`
+                AND o.`id_billing` = 0
+		AND cscp.`id_shop` = ' . pSQL($iId)
+                . ' ORDER BY o.`id_order` DESC');
+    }
     public static function getOrders($iId) {
         $aOrders = Db::getInstance()->executeS('
 		SELECT o.*, cp.*
