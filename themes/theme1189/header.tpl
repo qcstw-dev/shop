@@ -16,7 +16,7 @@
         <meta name="generator" content="PrestaShop" />
         <meta name="robots" content="{if isset($nobots)}no{/if}index,{if isset($nofollow) && $nofollow}no{/if}follow" />
         <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0" /> 
-{*        <meta name="viewport" content="width=1024">*}
+        {*        <meta name="viewport" content="width=1024">*}
         <meta name="apple-mobile-web-app-capable" content="yes" /> 
         <link rel="icon" type="image/vnd.microsoft.icon" href="{$favicon_url}?{$img_update_time}" />
         <link rel="shortcut icon" type="image/x-icon" href="{$favicon_url}?{$img_update_time}" />
@@ -47,13 +47,20 @@
         <script src='https://www.google.com/recaptcha/api.js'></script>
         {literal} 
             <script>
-              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-              ga('create', 'UA-85358221-1', 'auto');
-              ga('send', 'pageview');
+            ga('create', 'UA-85358221-1', 'auto');
+            ga('send', 'pageview');
 
             </script>
         {/literal}
@@ -70,24 +77,27 @@
     {/if}
     <body{if isset($page_name)} id="{$page_name|escape:'html':'UTF-8'}"{/if} class="{if isset($page_name)}{$page_name|escape:'html':'UTF-8'}{/if}{if isset($body_classes) && $body_classes|@count} {implode value=$body_classes separator=' '}{/if}{if $hide_left_column} hide-left-column{/if}{if $hide_right_column} hide-right-column{/if}{if isset($content_only) && $content_only} content_only{/if} lang_{$lang_iso} {if !$content_only}{if $columns == 2} two-columns{elseif $columns == 3} three-columns{else} one-column{/if}{/if}"
                                 {if $smarty.server.HTTP_HOST != 'localhost'} oncontextmenu="return false" {/if}>
-        <!-- Google Code for Adwords added tag - Gift attitude Conversion Page --> 
+        <!-- Google Code for Adwords added tag - Gift attitude Conversion Page -->
         <script type="text/javascript">
             /* <![CDATA[ */
             var google_conversion_id = 1062791147;
             var google_conversion_language = "en";
             var google_conversion_format = "3";
             var google_conversion_color = "ffffff";
-            var google_conversion_label = "DbqgCLzXum0Q68_j-gM"; var google_conversion_value = 10.00; var google_conversion_currency = "USD"; var google_remarketing_only = false;
+            var google_conversion_label = "DbqgCLzXum0Q68_j-gM";
+            var google_conversion_value = 10.00;
+            var google_conversion_currency = "USD";
+            var google_remarketing_only = false;
             /* ]]> */
         </script>
         <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
         </script>
         <noscript>
-            <div style="display:inline;">
-                <img height="1" width="1" style="border-style:none;" alt=""  
-                src="//www.googleadservices.com/pagead/conversion/1062791147/?value=10.00&amp;currency_code=USD&amp;label=DbqgCLzXum0Q68_j-gM&amp;guid=ON&amp;script=0"/>
-            </div>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1062791147/?value=10.00&amp;currency_code=USD&amp;label=DbqgCLzXum0Q68_j-gM&amp;guid=ON&amp;script=0"/>
+        </div>
         </noscript>
+
 
         {if !isset($content_only) || !$content_only}
             <!--[if IE 8]>
@@ -135,21 +145,21 @@
                             </div>
                     </header>
                 </div>
-            <div class="columns-container">
-                <div id="columns" class="container">
-                    {if $page_name == 'category'
+                <div class="columns-container">
+                    <div id="columns" class="container">
+                        {if $page_name == 'category'
                         || $page_name =='design'
                         || $page_name =='layoutmaker'
-                    }
-                    {include file="./selection.tpl" selection=$selection}
-                {/if}
-                {if $page_name !='index' 
+                        }
+                        {include file="./selection.tpl" selection=$selection}
+                    {/if}
+                    {if $page_name !='index' 
                     && $page_name !='pagenotfound'
                     && $page_name !='layoutmaker' 
                     && $page_name !='design'
                     && $page_name !='category'
                     && $page_name !='shop'
-                }
+                    }
                     {include file="$tpl_dir./breadcrumb.tpl"}
                 {/if}
                 <div id="slider_row" class="row">
@@ -157,13 +167,13 @@
                 </div>
                 <div class="row">
                     <div class="large-left
-                        {if $page_name =='layoutmaker' 
+                         {if $page_name =='layoutmaker' 
                             || $page_name =='design'
                             || $page_name =='category'}
-                            bordered-page
-                        {/if}
-                    col-sm-{12 - $right_column_size}">
-                        <div class="row">
-                            <div id="center_column" class="center_column col-xs-12 col-sm-{12 - $left_column_size}">
-                                {/if}
-            {/if}
+                         bordered-page
+                         {/if}
+                             col-sm-{12 - $right_column_size}">
+                             <div class="row">
+                                 <div id="center_column" class="center_column col-xs-12 col-sm-{12 - $left_column_size}">
+                                     {/if}
+                                         {/if}
