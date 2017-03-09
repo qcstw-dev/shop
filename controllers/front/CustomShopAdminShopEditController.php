@@ -16,7 +16,15 @@ class CustomShopAdminShopEditControllerCore extends CustomShopAdminControllerCor
         if (isset($_POST)) {
             $oCustomShop = new CustomShop($this->custom_shop['id']);
             foreach ($_POST as $key => $value) {
-                $oCustomShop->{$key} = $value;
+                if ($key == 'deactivated') {
+                    $oCustomShop->{$key} = $value == 'on' ? 1 : 0;
+                } else {
+                    $oCustomShop->{$key} = $value;
+                }
+            }
+            if (!isset($_POST['deactivated'])) {
+                $oCustomShop->deactivated = 0;
+                
             }
             $oCustomShop->save();
             // refresh info

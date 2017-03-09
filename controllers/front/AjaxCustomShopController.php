@@ -2,6 +2,20 @@
 
 class AjaxCustomShopControllerCore extends FrontController {
     
+    public function displayAjaxActivateDeactivateShop() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getIsset('deactivated') && Tools::getValue('shop')) {
+            $oShop = new CustomShop(Tools::getValue('shop'));
+            $oShop->deactivated = Tools::getValue('deactivated');
+            $oShop->save();
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Information missing';
+            
+        }
+        echo json_encode($result);
+    }
     public function displayAjaxSaveStatus() {
         $result = [];
         $result['success'] = true;
@@ -10,7 +24,7 @@ class AjaxCustomShopControllerCore extends FrontController {
             $oOrder->status = Tools::getValue('status');
             $oOrder->save();
         } else {
-            $result['success'] = true;
+            $result['success'] = false;
             $result['error'] = 'Information missing';
             
         }
@@ -24,7 +38,7 @@ class AjaxCustomShopControllerCore extends FrontController {
             $oOrder->tracking = Tools::getValue('tracking');
             $oOrder->save();
         } else {
-            $result['success'] = true;
+            $result['success'] = false;
             $result['error'] = 'Information missing';
             
         }

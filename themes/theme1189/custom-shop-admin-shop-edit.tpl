@@ -91,6 +91,12 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-row">
+            <label class="cursor-pointer font-size-10 pull-right" for="deactivate">
+                <input id="deactivate" name="deactivated" type="checkbox" {if $shop.deactivated}checked{/if}> Shop deactivated
+            </label>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
             <input class="btn btn-primary pull-right col-xs-12 col-lg-4" type="submit" value="Save" />
         </div>
     </form>

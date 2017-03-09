@@ -44,53 +44,55 @@
         <span class="glyphicon glyphicon-ok font-size-40 color-green"></span> <span class="text">Added !</span>
     </div>
     <img class="hidden" src="{$base_uri}img/loader.gif" />
-    <div class="container">
-        <div class="col-xs-12">
-            <div class="header" style="background-image: url('{if $shop.header}{$base_dir}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
-            <div class="logo">
-                <img src="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
-            </div>
-            <div class="header-label">
-                <span class="shop-title">{if $shop.title}{$shop.title|truncate:15:'...'|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
-                <span class="shop-motto">"{if $shop.motto}{$shop.motto|truncate:68:'...'|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
+    {if !$shop.deactivated}
+        <div class="container">
+            <div class="col-xs-12">
+                <div class="header" style="background-image: url('{if $shop.header}{$base_dir}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
+                <div class="logo">
+                    <img src="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
+                </div>
+                <div class="header-label">
+                    <span class="shop-title">{if $shop.title}{$shop.title|truncate:15:'...'|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
+                    <span class="shop-motto">"{if $shop.motto}{$shop.motto|truncate:68:'...'|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
+                </div>
             </div>
         </div>
-    </div>
-    <nav class="navbar navbar-default border-left-0 border-right-0">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <div class="cart-icon-mobile padding-10 pull-right visible-xs">
-                    <span class="ajax_cart_quantity" {if !$cart_products}style="display: none"{/if}>{$cart_qties}</span>
-                    <span class="glyphicon glyphicon-shopping-cart font-size-24 pull-right"></span>
+        <nav class="navbar navbar-default border-left-0 border-right-0">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <div class="cart-icon-mobile padding-10 pull-right visible-xs">
+                        <span class="ajax_cart_quantity" {if !$cart_products}style="display: none"{/if}>{$cart_qties}</span>
+                        <span class="glyphicon glyphicon-shopping-cart font-size-24 pull-right"></span>
+                    </div>
+                    <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-                <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="margin-right-20">
-                        <div class="cart-icon-desk padding-10 hidden-xs">
-                            <span class="ajax_cart_quantity">{$cart_qties}</span>
-                            <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
-                            <div class="cart cart-desk">
-                                {include file="./custom-shop-front-cart-products.tpl" products=$cart_products}
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="margin-right-20">
+                            <div class="cart-icon-desk padding-10 hidden-xs">
+                                <span class="ajax_cart_quantity">{$cart_qties}</span>
+                                <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
+                                <div class="cart cart-desk">
+                                    {include file="./custom-shop-front-cart-products.tpl" products=$cart_products}
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    {/if}
     <div class="container">
         <div class="margin-top-50 visible-sm visible-md visible-lg"></div>
         <div class="col-xs-12 padding-0">

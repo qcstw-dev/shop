@@ -13,6 +13,7 @@ class CustomShopCore extends ObjectModel {
     public $facebook;
     public $twitter;
     public $minimum_to_reach;
+    public $deactivated;
     public $id_account;
     public static $definition = array(
         'table' => 'custom_shop',
@@ -135,6 +136,7 @@ class CustomShopCore extends ObjectModel {
             'facebook' => pSQL($this->facebook),
             'twitter' => pSQL($this->twitter),
             'minimum_to_reach' => pSQL($this->minimum_to_reach),
+            'deactivated' => pSQL($this->deactivated),
             'id_account' => pSQL($this->id_account)
         ];
         if ($this->id) {
@@ -149,6 +151,13 @@ class CustomShopCore extends ObjectModel {
         }
     }
 
+    public static function isShopDeactivatedByEmail($sEmail) {
+        return (bool) Db::getInstance()->getValue('
+		SELECT cs.`deactivated`
+		FROM `' . _DB_PREFIX_ . 'custom_shop` cs, `' . _DB_PREFIX_ . 'custom_shop_account` csa
+                WHERE cs.`id_account` = csa.`id`
+		AND csa.`email` = \'' . pSQL($sEmail) . '\'');
+    }
     public static function nameExists($sName) {
         return (bool) Db::getInstance()->getValue('
 		SELECT `id`

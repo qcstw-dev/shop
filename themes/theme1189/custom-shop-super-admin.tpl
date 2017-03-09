@@ -1,7 +1,7 @@
 {include file=$header}
 <div class="text-center bold font-size-24">Customers' management</div>
-{if !$connected}
-    <div class="col-xs-12 col-lg-4 margin-auto margin-top-20">
+{if !$is_super_admin}
+    <div class="col-xs-12 col-lg-3 margin-auto margin-top-20">
         {if $error_message}
             <div class="alert alert-warning">{$error_message}</div>
         {/if}
@@ -20,9 +20,6 @@
         </form>
     </div>
 {else}
-    <div class="col-xs-12">
-        <form method="post"><input type="hidden" name="disconnect"><button class="btn btn-danger pull-right" type="submit"><span class="glyphicon glyphicon-log-out"></span> Log out</button></form>
-    </div>
     <table class="table dashboard-table"> 
         <thead> 
             <tr class="text-center">

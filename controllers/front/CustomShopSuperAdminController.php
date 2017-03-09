@@ -17,14 +17,12 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
     public function initContent() {
         parent::initContent();
         
-        $bConnected = false;
         $sErrorMessage = '';
         $sLogin = 'qcsasia';
         $sPassword = 'ab119955CD';
         if (!$this->context->cookie->__get('custom_shop_loggedin_super')) {
             if (Tools::getIsset('login') && Tools::getIsset('password')) {
                 if (Tools::getValue('login') == $sLogin && Tools::getValue('password') == $sPassword) {
-                    $bConnected = true;
                     $this->context->cookie->__set('custom_shop_loggedin_super', true);
                 } else if (Tools::getValue('login') != $sLogin) {
                     $sErrorMessage = 'Wrong login';
@@ -32,12 +30,10 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
                     $sErrorMessage = 'Wrong password';
                 }
             }
-        } else {
-            $bConnected = true;
         }
         
         $aShops = [];
-        if ($bConnected) {
+        if ($this->context->cookie->__get('custom_shop_loggedin_super')) {
             $aShops = CustomShop::getAllShops();
             foreach ($aShops as &$aShop) {
                 $aShop['customer'] = CustomShopAccount::getAccountById($aShop['id_account']);
@@ -54,9 +50,9 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
         $this->context->smarty->assign([
             'shops' => $aShops,
             'side' => 'back',
+            'is_super_admin' => $this->context->cookie->__get('custom_shop_loggedin_super'),
             'header' => _PS_THEME_DIR_ . 'custom-shop-header-back.tpl',
             'footer' => _PS_THEME_DIR_ . 'custom-shop-footer-back.tpl',
-            'connected' => $bConnected,
             'error_message' => $sErrorMessage
         ]);
         

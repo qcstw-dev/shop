@@ -1,3 +1,25 @@
+$('.checkbox-deactivate').on('change', function () {
+    var deactivated = $(this).is(":checked") ? 1 : 0;
+    var id_shop = $(this).data('id-shop');
+    $.ajax({
+        type: 'POST',
+        url: baseDir + 'index.php?controller=ajaxcustomshop&action=activatedeactivateshop&ajax=true&deactivated=' + deactivated + '&shop=' + id_shop,
+        cache: false,
+        dataType: 'json',
+        async: true,
+        beforeSend: function () {
+            loading('Please wait...');
+        },
+        success: function (json) {
+            if (json.success) {
+                loading_hide();
+                confirm('Done !');
+            } else {
+                popupError(json.error);
+            }
+        }
+    });
+});
 $('.btn-pay').on('click', function () {
     var id = $(this).data('id-shop');
     $.ajax({
@@ -7,7 +29,7 @@ $('.btn-pay').on('click', function () {
         dataType: 'json',
         async: true,
         beforeSend: function () {
-            loading('please wait');
+            loading('Please wait...');
         },
         success: function (json) {
             if (json.success) {
@@ -32,11 +54,11 @@ $('.select-status').on('change', function () {
         dataType: 'json',
         async: true,
         beforeSend: function () {
-            saving();
+            loading('Saving...');
         },
         success: function (json) {
             if (json.success) {
-                saving_hide();
+                loading_hide();
                 confirm();
                 $('.select-status-' + id_order).val(status);
             } else {
@@ -56,11 +78,11 @@ $('.btn-save-tracking').on('click', function () {
             dataType: 'json',
             async: true,
             beforeSend: function () {
-                saving();
+                loading();
             },
             success: function (json) {
                 if (json.success) {
-                    saving_hide();
+                    loading_hide();
                     confirm();
                     $('.tracking-order-' + id_order).val(tracking);
                 } else {

@@ -54,14 +54,18 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
                 }
             } else if (Tools::getValue('type') === "login") {
                 if (CustomShopAccount::emailExists(Tools::getValue('email'))) {
-                    if (CustomShopAccount::checkPassword(Tools::getValue('email'), Tools::getValue('password'))) {
-                        $oCustomShopAccount = CustomShopAccount::getAccountByEmail(Tools::getValue('email'));
-                        $oCustomShopAccount->login();
-                        $aCustomShop = $oCustomShopAccount->getShop();
-                        header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . $aCustomShop['name'] . '/admin/creation');
-                    } else {
-                        $aErrors['wrong_password'] = 'Wrong password';
-                    }
+//                    if (!CustomShop::isShopDeactivatedByEmail(Tools::getValue('email'))) {
+                        if (CustomShopAccount::checkPassword(Tools::getValue('email'), Tools::getValue('password'))) {
+                            $oCustomShopAccount = CustomShopAccount::getAccountByEmail(Tools::getValue('email'));
+                            $oCustomShopAccount->login();
+                            $aCustomShop = $oCustomShopAccount->getShop();
+                            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . $aCustomShop['name'] . '/admin/creation');
+                        } else {
+                            $aErrors['wrong_password'] = 'Wrong password';
+                        }
+//                    } else {
+//                        $aErrors['shop_deactivated'] = 'Your shop has been deactivated';
+//                    }
                 } else {
                     $aErrors['account_exist'] = 'Account does not exist';
                 }
@@ -74,6 +78,7 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
 
         $this->context->smarty->assign([
             'side' => 'back',
+            'is_super_admin' => false,
             'header' => _PS_THEME_DIR_ . 'custom-shop-header-back.tpl',
             'footer' => _PS_THEME_DIR_ . 'custom-shop-footer-back.tpl',
             'submit' => Tools::getValue('type')? : false,

@@ -37,7 +37,7 @@
     </div>
     <img class="hidden" src="{$base_uri}img/loader.gif" />
     <div class="container">
-        {if $display_top_logo}
+        {if $display_top_logo && $page_name != 'customshopsuperadmin'}
             <div class="col-xs-12 logo-top-container">
                 <img src="{$logo_gift}" title="{$shop_title}" alt="{$shop_title}" />
                 <div class="slogan">
@@ -45,6 +45,16 @@
                 </div>
             </div>
         {/if}
+        {if $is_super_admin && $page_name == 'customshopsuperadmin'}
+            <div class="col-xs-12 margin-top-10">
+                <form method="post"><input type="hidden" name="disconnect"><button class="btn btn-danger pull-right" type="submit"><span class="glyphicon glyphicon-log-out"></span> Log out</button></form>
+            </div>
+        {/if}
     </div>
     <div class="{if $page_name != 'customshopsuperadmin'}container{/if}">
+        {if $is_super_admin && $page_name != 'customshopsuperadmin'}
+            <div class="pull-right"><label class="cursor-pointer" for="deactivate"><input id="deactivate" class="checkbox-deactivate" data-id-shop="{$shop.id}" type="checkbox" {if $shop.deactivated}checked{/if}> Shop deactivated</label></div>
+            <div class="clearfix"></div>
+        {/if}
+        <div class="alert alert-danger text-center margin-bottom-10 {if !$shop.deactivated}hidden{/if}">Your shop is currently deactivated</div>
         <div class="col-xs-12 padding-0 padding-top-10">
