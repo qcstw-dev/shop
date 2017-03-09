@@ -1,0 +1,72 @@
+$('.btn-pay').on('click', function () {
+    var id = $(this).data('id-shop');
+    $.ajax({
+        type: 'POST',
+        url: baseDir + 'index.php?controller=ajaxcustomshop&action=payshop&ajax=true&shop=' + id,
+        cache: false,
+        dataType: 'json',
+        async: true,
+        beforeSend: function () {
+            loading('please wait');
+        },
+        success: function (json) {
+            if (json.success) {
+                loading_hide();
+                confirm('Bill generated');
+                $('.quantity-row-' + id + ', .total-sales-row-' + id + ', .total-comission-row-' + id).text('0');
+                $('.btn-pay-' + id).removeClass('btn-pay');
+                $('.btn-pay-' + id).addClass('disabled');
+            } else {
+                popupError(json.error);
+            }
+        }
+    });
+});
+$('.select-status').on('change', function () {
+    var id_order = $(this).data('id-order');
+    var status = $(this).find(":selected").val();
+    $.ajax({
+        type: 'POST',
+        url: baseDir + 'index.php?controller=ajaxcustomshop&action=savestatus&ajax=true&status=' + status + '&id_order=' + id_order,
+        cache: false,
+        dataType: 'json',
+        async: true,
+        beforeSend: function () {
+            saving();
+        },
+        success: function (json) {
+            if (json.success) {
+                saving_hide();
+                confirm();
+                $('.select-status-' + id_order).val(status);
+            } else {
+                popupError(json.error);
+            }
+        }
+    });
+});
+$('.btn-save-tracking').on('click', function () {
+    var tracking = $('.tracking-field-' + $(this).data('id-item')).val();
+    var id_order = $('.tracking-field-' + $(this).data('id-item')).data('id-order');
+    if (tracking) {
+        $.ajax({
+            type: 'POST',
+            url: baseDir + 'index.php?controller=ajaxcustomshop&action=savetracking&ajax=true&tracking=' + tracking + '&id_order=' + id_order,
+            cache: false,
+            dataType: 'json',
+            async: true,
+            beforeSend: function () {
+                saving();
+            },
+            success: function (json) {
+                if (json.success) {
+                    saving_hide();
+                    confirm();
+                    $('.tracking-order-' + id_order).val(tracking);
+                } else {
+                    popupError(json.error);
+                }
+            }
+        });
+    }
+});

@@ -22,7 +22,23 @@ class CustomShopBillingHistoryCore extends ObjectModel {
             }
         }
     }
-
+    public function save() {
+        $aData = [
+            'date' => pSQL($this->date),
+            'amount' => pSQL($this->amount),
+            'id_shop' => pSQL($this->id_shop),
+        ];
+        if ($this->id) {
+            return Db::getInstance()->update(self::$definition['table'], $aData, 'id = ' . pSQL($this->id));
+        } else {
+            if (!Db::getInstance()->insert(self::$definition['table'], $aData)) {
+                return false;
+            } else {
+                $this->id = Db::getInstance()->Insert_ID();
+                return true;
+            }
+        }
+    }
     public static function getOrdersByBillId($iBillingId) {
         $aOrders = Db::getInstance()->executeS('
 		SELECT o.*, cp.*

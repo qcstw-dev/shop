@@ -8,7 +8,7 @@
             {if $pictures}
             {foreach from=$pictures item='picture'}
                 <div class="col-xs-6 col-sm-4 col-md-3">
-                    <div class="thumbnail cursor-pointer item-list-picture" data-id-picture="{$picture.id}">
+                    <div class="thumbnail cursor-pointer item-list-picture vertical-center" data-id-picture="{$picture.id}">
                         <img src="{$base_uri}{$picture_dir}{$picture.picture}" title="{$picture.name}" alt="{$picture.name}" />
                     </div>
                 </div>

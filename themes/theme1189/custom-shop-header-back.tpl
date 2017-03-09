@@ -45,4 +45,6 @@
                 </div>
             </div>
         {/if}
-        <div class="col-xs-12 padding-top-10">
+    </div>
+    <div class="{if $page_name != 'customshopsuperadmin'}container{/if}">
+        <div class="col-xs-12 padding-0 padding-top-10">

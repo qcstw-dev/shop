@@ -17,7 +17,7 @@
         'customshopadminuseraccount'
        ])} active{/if}">User account</a>
         <a href="#" class="list-group-item">Contact</a>
-        <a href="?disconnect=true" class="list-group-item"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
+        <a href="?disconnect" class="list-group-item"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
     </div>
 </div>
 <div class="col-xs-12 col-md-11 border content-admin{if in_array($page_name, ['customshopadmincreation', 'customshopadminshop'])} vertical-center{/if}">

@@ -21,12 +21,17 @@
                             {$product.name|truncate:30:'...'|escape:'html':'UTF-8'}
                         </div>
                     </a>
-                    <div class="col-xs-12 border-bottom slick-pictures-product-list slick-pictures-product-list-{$id_item}">
+                    <div class="col-xs-12 border-bottom">
+                        <div class="thumbnail border-none margin-bottom-0 popup-product" data-id="{$product.id_product}">
+                            <img class="picture" src="{$link->getImageLink($product.link_rewrite, $product.images.0.id_image, 'large_default')|escape:'html':'UTF-8'}" />
+                        </div>
+                        {*<div class="col-xs-12 border-bottom slick-pictures-product-list slick-pictures-product-list-{$id_item}">
                         {foreach from=$product.images item=image name=images}
-                            <div class="thumbnail border-none margin-bottom-0 popup-product" data-id="{$product.id_product}">
-                                <img class="picture" src="{$link->getImageLink($product.link_rewrite, $image.id_image, 'large_default')|escape:'html':'UTF-8'}" />
-                            </div>
+                        <div class="thumbnail border-none margin-bottom-0 popup-product" data-id="{$product.id_product}">
+                        <img class="picture" src="{$link->getImageLink($product.link_rewrite, $image.id_image, 'large_default')|escape:'html':'UTF-8'}" />
+                        </div>
                         {/foreach}
+                        </div>*}
                     </div>
                     <div class="col-xs-12 text-center bold">
                         <a href="{$base_uri}mobile-product-page?id_product={$product.id_product}">

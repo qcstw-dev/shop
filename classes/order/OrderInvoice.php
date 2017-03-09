@@ -137,6 +137,18 @@ class OrderInvoiceCore extends ObjectModel
 
     public function getProductsDetail()
     {
+//        print_r('
+//		SELECT *
+//		FROM `'._DB_PREFIX_.'order_detail` od
+//		LEFT JOIN `'._DB_PREFIX_.'product` p
+//		ON p.id_product = od.product_id
+//		LEFT JOIN `'._DB_PREFIX_.'product_shop` ps ON (ps.id_product = p.id_product AND ps.id_shop = od.id_shop)
+//                LEFT JOIN `'._DB_PREFIX_.'orders` o ON (o.id_order = od.id_order AND o.id_shop = od.id_shop)
+//                LEFT JOIN (SELECT * FROM `'._DB_PREFIX_.'cart_product` GROUP BY `custom_picture`) cp ON (o.id_cart = cp.id_cart and od.product_quantity = cp.quantity and od.product_id = cp.id_product)
+//		WHERE od.`id_order` = '.(int)$this->id_order.'
+//		'.($this->id && $this->number ? ' AND od.`id_order_invoice` = '.(int)$this->id : '').' '
+//                . ' GROUP BY cp.`custom_picture`'
+//                . ' ORDER BY od.`product_name`');
         return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('
 		SELECT *
 		FROM `'._DB_PREFIX_.'order_detail` od
@@ -144,10 +156,10 @@ class OrderInvoiceCore extends ObjectModel
 		ON p.id_product = od.product_id
 		LEFT JOIN `'._DB_PREFIX_.'product_shop` ps ON (ps.id_product = p.id_product AND ps.id_shop = od.id_shop)
                 LEFT JOIN `'._DB_PREFIX_.'orders` o ON (o.id_order = od.id_order AND o.id_shop = od.id_shop)
-                LEFT JOIN (SELECT * FROM `'._DB_PREFIX_.'cart_product` GROUP BY `custom_picture`) cp ON (o.id_cart = cp.id_cart and od.product_quantity = cp.quantity and od.product_id = cp.id_product)
+                LEFT JOIN `'._DB_PREFIX_.'cart_product` cp ON (o.id_cart = cp.id_cart and od.product_quantity = cp.quantity and od.product_id = cp.id_product)
 		WHERE od.`id_order` = '.(int)$this->id_order.'
 		'.($this->id && $this->number ? ' AND od.`id_order_invoice` = '.(int)$this->id : '').' '
-                . ' GROUP BY cp.`custom_picture`'
+//                . ' GROUP BY cp.`custom_picture`'
                 . ' ORDER BY od.`product_name`');
     }
 
@@ -183,11 +195,11 @@ class OrderInvoiceCore extends ObjectModel
         if (!$products) {
             $products = $this->getProductsDetail();
         }
-
         $order = new Order($this->id_order);
         $customized_datas = Product::getAllCustomizedDatas($order->id_cart);
 
         $result_array = array();
+//            print_r($products);
         foreach ($products as $row) {
             // Change qty if selected
             if ($selected_qty) {

@@ -156,6 +156,10 @@ class OrderCore extends ObjectModel
     /** @var string Object last modification date */
     public $date_upd;
 
+    public $tracking;
+    
+    public $status;
+    
     /**
      * @var string Order reference, this reference is not unique, but unique for a payment
      */
@@ -223,6 +227,8 @@ class OrderCore extends ObjectModel
             'reference' =>                    array('type' => self::TYPE_STRING),
             'date_add' =>                    array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
             'date_upd' =>                    array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
+            'tracking' =>                    array('type' => self::TYPE_STRING),
+            'status' =>                    array('type' => self::TYPE_INT),
         ),
     );
 

@@ -24,43 +24,72 @@
 <table class="table dashboard-table"> 
     <thead> 
         <tr class="text-center">
-            <th>Date</th>
-            <th>Order N°</th>
+            <th class="visible-lg">Date</th>
+            <th class="visible-lg">Order N°</th>
             <th>Product name</th>
-            <th>Client name</th> 
-            <th>Client address</th> 
-            <th>Client phone</th> 
-            <th>Product cost</th> 
+            <th class="visible-lg">Client name</th> 
+            <th class="visible-lg">Client address</th> 
+            <th class="visible-lg">Client phone</th> 
+            <th class="visible-lg">Product cost</th> 
             <th>Quantity</th> 
-            <th>Shipping cost</th> 
+            <th class="visible-lg">Shipping cost</th> 
             <th>Tracking N°</th> 
             <th>Comission</th> 
-            <th>Status</th> 
+            <th>Status</th>
         </tr> 
     </thead> 
     <tbody>
-        {foreach from=$orders item=order}
+        {foreach from=$orders key=key item=order}
             <tr>
-                <td>{date('Y-m-d', strtotime($order.date_add))}</td>
-                <td>{$order.id_order}</td>
+                <td class="visible-lg">{date('Y-m-d', strtotime($order.date_add))}</td>
+                <td class="visible-lg">{$order.id_order}</td>
                 <td>{$order.product_creation.product_name|escape:'html':'UTF-8'}</td>
-                <td>{$order.customer.firstname|escape:'html':'UTF-8'} {$order.customer.lastname|escape:'html':'UTF-8'}</td>
-                <td>{$order.address_delivery.address1|escape:'html':'UTF-8'} {$order.address_delivery.address2|escape:'html':'UTF-8'} {$order.address_delivery.city|escape:'html':'UTF-8'} {$order.address_delivery.country_name|escape:'html':'UTF-8'}</td>
-                <td>{$order.address_delivery.phone|escape:'html':'UTF-8'} {if $order.address_delivery.phone_mobile != $order.address_delivery.phone}{$order.address_delivery.phone_mobile|escape:'html':'UTF-8'}{/if}</td>
-                <td>{convertPrice price=$order.product_price}</td>
+                <td class="visible-lg">{$order.customer.firstname|escape:'html':'UTF-8'} {$order.customer.lastname|escape:'html':'UTF-8'}</td>
+                <td class="visible-lg">{$order.address_delivery.address1|escape:'html':'UTF-8'} {$order.address_delivery.address2|escape:'html':'UTF-8'} {$order.address_delivery.city|escape:'html':'UTF-8'} {$order.address_delivery.country_name|escape:'html':'UTF-8'}</td>
+                <td class="visible-lg">{$order.address_delivery.phone|escape:'html':'UTF-8'} {if $order.address_delivery.phone_mobile != $order.address_delivery.phone}{$order.address_delivery.phone_mobile|escape:'html':'UTF-8'}{/if}</td>
+                <td class="visible-lg">{convertPrice price=$order.product_price}</td>
                 <td>{$order.quantity}</td>
-                <td>{convertPrice price=$order.total_shipping}</td>
-                <td>{if $order.tracking}{$order.tracking}{else} - {/if}</td>
+                <td class="visible-lg">{convertPrice price=$order.total_shipping}</td>
+                <td>
+                    {if !$is_super_admin}
+                        {if $order.tracking}
+                            {$order.tracking}
+                        {else} - {/if}
+                    {else}
+                        <div class="col-xs-7 padding-right-0 input-group-sm">
+                            <input class="form-control tracking-field-{$key} tracking-order-{$order.id_order}" data-id-order="{$order.id_order}" value="{$order.tracking}" type="text" />
+                        </div>
+                        <div class="col-xs-5 btn-group-sm">
+                            <div class="btn btn-success btn-save-tracking" data-id-item="{$key}">Save</div>
+                        </div>
+                    {/if}
+                </td>
                 <td>{convertPrice price=$order.design_price*$order.quantity}</td>
-                <td>{if $order.status}{$status[$order.status]}{else}{$status[1]}{/if}</td>
+                <td>
+                    {if !$is_super_admin}
+                        {if $order.status}
+                            {$status[$order.status]}
+                        {else}
+                            {$status[1]}
+                        {/if}
+                    {else}
+                        <select class="form-control select-status select-status-{$order.id_order}" data-id-order="{$order.id_order}">
+                            {foreach from=$status key='key' item='status_label'}
+                                <option value="{$key}" {if $key == $order.status || ($order.status == 0 && $key == 1)}selected{/if}>{$status_label}</option>
+                            {/foreach}
+                        </select>
+                    {/if}
+                </td>
             </tr>
         {/foreach}
     </tbody>
 </table>
-<div class="col-xs-12">
-    <div class="bold">Bills History</div>
-    {foreach from=$bills item='bill'}
-        <li>{$bill.date} - <a href="{$base_dir}index.php?controller=customshoppdfbill&id_bill={$bill.id}" target="_blank" title="Download bill"><span class="fa fa-file-pdf-o"></span> Download</a></li>
-    {/foreach}
-</div>
+{if $bills}
+    <div class="col-xs-12">
+        <div class="bold">Bills History</div>
+        {foreach from=$bills item='bill'}
+            <li>{$bill.date} - <a href="{$base_dir}index.php?controller=customshoppdfbill&id_bill={$bill.id}" target="_blank" title="Download bill"><span class="fa fa-file-pdf-o"></span> Download</a></li>
+            {/foreach}
+    </div>
+{/if}
 {include file=$footer}

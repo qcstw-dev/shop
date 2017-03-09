@@ -305,7 +305,7 @@
 </div> <!-- end order-detail-content -->
 {/if}
 {if $opc}<div id="opc_payment_methods-content">{/if}
-    <div class="col-xs-8">
+    <div class="col-xs-12">
         <div class="panel panel-default">
             <div class="font-size-20 panel-heading">
                 <div><span class="glyphicon glyphicon-lock"></span> {l s='Payment'}</div>

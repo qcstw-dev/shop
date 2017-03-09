@@ -16,7 +16,7 @@
     font-weight: bold;
 }
 .admin-menu {
-    width: 93px;
+    width: 95px;
 }
 .fixed {
     position: fixed;
@@ -40,7 +40,7 @@
     border-right: 0;
 }
 .content-admin {
-    padding: 10px;
+    padding: 15px;
     min-height: 727px;
     border: 2px solid #337ab7;
     margin-bottom: 20px;

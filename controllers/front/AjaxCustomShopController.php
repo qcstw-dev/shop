@@ -1,7 +1,58 @@
 <?php
 
 class AjaxCustomShopControllerCore extends FrontController {
-
+    
+    public function displayAjaxSaveStatus() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('status') && Tools::getValue('id_order')) {
+            $oOrder = new Order(Tools::getValue('id_order'));
+            $oOrder->status = Tools::getValue('status');
+            $oOrder->save();
+        } else {
+            $result['success'] = true;
+            $result['error'] = 'Information missing';
+            
+        }
+        echo json_encode($result);
+    }
+    public function displayAjaxSaveTracking() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('tracking') && Tools::getValue('id_order')) {
+            $oOrder = new Order(Tools::getValue('id_order'));
+            $oOrder->tracking = Tools::getValue('tracking');
+            $oOrder->save();
+        } else {
+            $result['success'] = true;
+            $result['error'] = 'Information missing';
+            
+        }
+        echo json_encode($result);
+    }
+    public function displayAjaxPayShop() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('shop')) {
+            $aIdOrders = CustomShop::getNonPaidOrdersId(Tools::getValue('shop'));
+            if ($aIdOrders) {
+                $oBill = new CustomShopBillingHistory(null, ['id_shop' => Tools::getValue('shop'), 'date' => date('Y-m-d')]);
+                $oBill->save();
+                $oBill->amount = CustomShop::getCurrentSituation(Tools::getValue('shop'))['total_comission'];
+                $oBill->save();
+                DB::getInstance()->update('orders', ['id_billing' => $oBill->id, 'status' => 5], '`id_order` IN ('.implode(', ', array_column($aIdOrders, 'id_order')).')');
+                $result['bill'] = $oBill;
+            } else {
+                $result['success'] = false;
+                $result['error'] = 'No orders';
+            }
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Shop id missing';
+        }
+        echo json_encode($result);
+    }
+    
     public function displayAjaxLoadCartProducts() {
         global $smarty;
         $aProducts = $this->context->cart->getProducts(true, null, null, true);

@@ -36,14 +36,38 @@ class CustomShopCore extends ObjectModel {
 		SELECT *
 		FROM `' . _DB_PREFIX_ . 'custom_shop` ORDER BY `id` DESC');
     }
-    public static function getCurrentSituation($iId) {
+    public static function getResultsFromAllTimes($iShopId) {
         return Db::getInstance()->getRow('
-		SELECT SUM(cp.`design_price` * cp.`quantity`) as total_comission, SUM(cp.`quantity`) as quantity
+		SELECT SUM(cp.`design_price` * cp.`quantity`) as total_comission, SUM(cp.`quantity`) as quantity, SUM(o.`total_paid`) as total_sales
 		FROM `' . _DB_PREFIX_ . 'orders` o, `' . _DB_PREFIX_ . 'cart_product` cp, `' . _DB_PREFIX_ . 'custom_shop_customized_prod` cscp
                 WHERE cp.`id_cart` = o.`id_cart`
                 AND cscp.`id` = cp.`id_customized_prod`
+                AND o.`valid` = 1
+                AND o.`id_billing` != 0
+		AND cscp.`id_shop` = ' . pSQL($iShopId)
+                . ' ORDER BY o.`id_order` DESC');
+    }
+    public static function getCurrentSituation($iShopId) {
+        return Db::getInstance()->getRow('
+		SELECT SUM(cp.`design_price` * cp.`quantity`) as total_comission, SUM(cp.`quantity`) as quantity, SUM(o.`total_paid`) as total_sales
+		FROM `' . _DB_PREFIX_ . 'orders` o, `' . _DB_PREFIX_ . 'cart_product` cp, `' . _DB_PREFIX_ . 'custom_shop_customized_prod` cscp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND cscp.`id` = cp.`id_customized_prod`
+                AND o.`valid` = 1
                 AND o.`id_billing` = 0
-		AND cscp.`id_shop` = ' . pSQL($iId)
+		AND cscp.`id_shop` = ' . pSQL($iShopId)
+                . ' ORDER BY o.`id_order` DESC');
+    }
+    public static function getNonPaidOrdersId($iShopId) {
+        return Db::getInstance()->executeS('
+		SELECT o.`id_order`
+		FROM `' . _DB_PREFIX_ . 'orders` o, `' . _DB_PREFIX_ . 'cart_product` cp, `' . _DB_PREFIX_ . 'custom_shop_customized_prod` cscp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND cscp.`id` = cp.`id_customized_prod`
+                AND o.`valid` = 1
+                AND o.`id_billing` = 0
+		AND cscp.`id_shop` = ' . pSQL($iShopId)
+                . ' GROUP BY o.`id_order`'
                 . ' ORDER BY o.`id_order` DESC');
     }
     public static function getOrders($iId) {

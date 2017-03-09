@@ -46,7 +46,9 @@
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-
+    .resize-container {
+        left: 7%;
+    }
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
@@ -66,7 +68,7 @@
         height: 58px;
     }
     .overlay-right {
-        width: 42px;
+        width: 71px;
     }
     .component {
         height: 713px;
@@ -78,14 +80,15 @@
         width: 9%;
     }
     .component {
-        height: 317px;
+        height: 343px;
     }
     .overlay {
-        height: 297px;
+        height: 323px;
     }
     .overlay-bottom {
         height: 42px;
     }
+
 }
 @media only screen and (max-width : 414px) {
     .overlay-bottom {
@@ -95,10 +98,18 @@
 /* Custom, iPhone Retina */ 
 @media only screen and (max-width : 375px) {
     .component {
-        height: 285px;
+        height: 310px;
     }
     .overlay {
-        height: 265px;
+        height: 290px;
+    }
+}
+@media only screen and (max-width : 320px) {
+    .component {
+        height: 264px;
+    }
+    .overlay {
+        height: 244px;
     }
 }
 
