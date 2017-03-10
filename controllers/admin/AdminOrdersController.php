@@ -2656,7 +2656,11 @@ class AdminOrdersControllerCore extends AdminController
             if ($product['image'] != null) {
                 $name = 'product_mini_'.(int)$product['product_id'].(isset($product['product_attribute_id']) ? '_'.(int)$product['product_attribute_id'] : '').(isset($product['custom_picture'])? '_'.$product['custom_picture'] : '').'.jpg';
                 // generate image cache, only for back office
-                if (isset($product['custom_picture']) && $product['custom_picture']) {
+                if (isset($product['id_customized_prod']) && $product['id_customized_prod']) {
+                    $product['customized_prod'] = CustomShopProduct::getProductById($product['id_customized_prod']);
+                    $product['design'] = CustomShopDesign::getDesignById($product['customized_prod']['id_design']);
+                    $product['image_tag'] = ImageManager::thumbnail(_PS_IMG_DIR_.'custom_shop/creation/'.$product['customized_prod']['custom_img'], $name, 100, 'png', true, true);
+                } elseif (isset($product['custom_picture']) && $product['custom_picture']) {
                     $product['image_tag'] = ImageManager::thumbnail(_PS_IMG_DIR_.'layout_maker/custom_pictures/'.$product['custom_picture'].'.png', $name, 100, 'png', true, true);
                 } elseif (isset($product['customized_prod']) && $product['customized_prod']) {
                     $product['image_tag'] = ImageManager::thumbnail(_PS_IMG_DIR_.'custom_shop/creation/'.$product['customized_prod']['custom_img'], $name, 100, 'png', true, true);

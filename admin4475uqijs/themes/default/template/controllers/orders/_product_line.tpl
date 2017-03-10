@@ -31,7 +31,28 @@
 {/if}
 {if ($product['product_quantity'] > $product['customized_product_quantity'])}
     <tr class="product-line-row">
-        <td style="text-align: center"><a href="{$base_url}img/layout_maker/custom_pictures/{$product.custom_picture}.png" target="_blank" download>{if isset($product.image) && $product.image->id}{$product.image_tag}{/if}</a>
+        <td style="text-align: center">
+            {if $product.id_customized_prod}
+                <a href="{$base_url}img/custom_shop/creation/{$product.customized_prod.custom_img}" target="_blank" download>
+                    {if isset($product.image) && $product.image->id}
+                        {$product.image_tag}
+                    {/if}
+                </a>
+            {else}
+                <a href="{$base_url}img/layout_maker/custom_pictures/{$product.custom_picture}.png" target="_blank" download>
+                    {if isset($product.image) && $product.image->id}
+                        {$product.image_tag}
+                    {/if}
+                </a>
+            {/if}
+            {if $product.id_customized_prod}
+                <div>
+                    <a href="{$base_url}img/custom_shop/creation/{$product.customized_prod.custom_img}" target="_blank" download>Download custom picture</a>
+                </div>
+                <div>
+                    <a href="{$base_url}img/custom_shop/picture/{$product.design.picture}" target="_blank" download>Download original picture</a>
+                </div>
+            {/if}
             {if $product.custom_picture}
                 <div>
                     <a href="{$base_url}img/layout_maker/custom_pictures/{$product.custom_picture}.png" target="_blank" download>Download custom picture</a>
@@ -220,34 +241,34 @@
                 {/if}
             </td>
             <!--<td class="product_action text-right">
-                {* edit/delete controls *}
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default edit_product_change_link">
-                        <i class="icon-pencil"></i>
-                        {l s='Edit'}
-                    </button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="#" class="delete_product_line">
-                                <i class="icon-trash"></i>
-                                {l s='Delete'}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                {* Update controls *}
-                <button type="button" class="btn btn-default submitProductChange" style="display: none;">
-                    <i class="icon-ok"></i>
-                    {l s='Update'}
-                </button>
-                <button type="button" class="btn btn-default cancel_product_change_link" style="display: none;">
-                    <i class="icon-remove"></i>
-                    {l s='Cancel'}
-                </button>
-            </td>-->
+            {* edit/delete controls *}
+            <div class="btn-group">
+                <button type="button" class="btn btn-default edit_product_change_link">
+                    <i class="icon-pencil"></i>
+            {l s='Edit'}
+        </button>
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a href="#" class="delete_product_line">
+                    <i class="icon-trash"></i>
+            {l s='Delete'}
+        </a>
+    </li>
+</ul>
+</div>
+            {* Update controls *}
+            <button type="button" class="btn btn-default submitProductChange" style="display: none;">
+                <i class="icon-ok"></i>
+            {l s='Update'}
+        </button>
+        <button type="button" class="btn btn-default cancel_product_change_link" style="display: none;">
+            <i class="icon-remove"></i>
+            {l s='Cancel'}
+        </button>
+    </td>-->
         {/if}
     </tr>
 {/if}
