@@ -45,6 +45,7 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
                 $aShop['total_sales'] = $aCurrentSituation['total_sales'];
                 $aShop['quantity'] = $aCurrentSituation['quantity'];
                 $aShop['bill'] = CustomShopBillingHistory::getBillingById($aShop['id'], 'shop');
+                $aShop['minimum_to_reach'] = $aShop['minimum_to_reach'] ? : 50;
             }
         }
         $this->context->smarty->assign([
