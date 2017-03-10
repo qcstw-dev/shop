@@ -604,6 +604,7 @@ class CartCore extends ObjectModel
                 $result[$key] = array_merge($row, $reduction_type_row);
                 if (isset($result[$key]['id_customized_prod']) && $result[$key]['id_customized_prod']) {
                     $result[$key]['customized_prod'] = CustomShopProduct::getProductById($result[$key]['id_customized_prod']);
+                    $result[$key]['design'] = CustomShopDesign::getDesignById($result[$key]['customized_prod']['id_design']);
                 }
             }
         }
