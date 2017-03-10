@@ -35,21 +35,21 @@
             {cycle values=["color_line_even", "color_line_odd"] assign=bgcolor_class}
             <tr class="product {$bgcolor_class}">
                 <td style="text-align: center;">
-                   {$order.id}
+                    {$order.id}
                 </td>
                 <td style="text-align: center;">
-                   {date('Y-m-d', strtotime($order.date))}
+                    {date('Y-m-d', strtotime($order.date))}
                 </td>
                 <td style="text-align: center;">
                     {displayPrice currency=1 price=$order.comission}
                 </td>
             </tr>
         {/foreach}
-            <tr class="product {$bgcolor_class}">
-                <td colspan="2" style="text-align: center; font-size: 1.5em;border-top: 2px solid #555; background-color: #eee;">{l s='Total' pdf='true'}</td>
-                <td style="text-align: center; font-size: 1.5em;border-top: 2px solid #555;">
-                    {displayPrice currency=1 price=$total}
-                </td>
-            </tr>
+        <tr class="product {$bgcolor_class}">
+            <td colspan="2" style="text-align: center; font-size: 1.5em;border-top: 2px solid #555; background-color: #eee;">{l s='Total' pdf='true'}</td>
+            <td style="text-align: center; font-size: 1.5em;border-top: 2px solid #555;">
+                {displayPrice currency=1 price=$total}
+            </td>
+        </tr>
     </tbody>
 </table>

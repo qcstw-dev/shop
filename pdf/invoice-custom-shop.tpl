@@ -24,11 +24,31 @@
 *}
 
 {$style_tab}
-
+<table id="addresses-tab" cellspacing="0" cellpadding="0">
+    <td width="33%"><span class="bold">QCS Asia Co., Ltd. All rights reserved.</span><br/><br/>
+        5F-8, NO. 63 HEPING E. RD, SEC 3., TAIPEI, TAIWAN<br/>
+        Ph: (886.2)27385787<br />
+        Fax : (886.2)27385816<br/>
+    </td>
+    <td width="33%">
+    </td>
+    <td width="33%"><span class="bold"></span>{$customer.firstname} {$customer.lastname}<br/><br/>
+        {$customer.address}<br/>
+        {$customer.zip} {$customer.city}<br/>
+        {$customer.country_name}<br/>
+        {$customer.phone}
+    </td>
+</tr>
+</table>
 <table width="100%" id="body" border="0" cellpadding="0" cellspacing="0" style="margin:0;">
     <tr>
         <td colspan="12">
             {$order_tab}
         </td>
+    </tr>
+</table>
+<table width="100%" id="body" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td colspan="12" style="text-align: right;"><img src="img/paid_stamp.jpg" width="200px" style="margin-top:20px" /></td>
     </tr>
 </table>

@@ -89,6 +89,13 @@ class CustomShopAccountCore extends ObjectModel {
 		SELECT *
 		FROM `' . _DB_PREFIX_ . 'custom_shop_account`');
     }
+    public static function getAccountByShopId($iShopId) {
+        return Db::getInstance()->getRow('
+		SELECT *
+		FROM `' . _DB_PREFIX_ . 'custom_shop_account` a, `' . _DB_PREFIX_ . 'custom_shop` s
+                    WHERE s.`id_account` = a.`id`
+		AND s.`id` = ' . pSQL($iShopId));
+    }
     public static function getAccountById($iId) {
         return Db::getInstance()->getRow('
 		SELECT *
@@ -118,10 +125,4 @@ class CustomShopAccountCore extends ObjectModel {
 		WHERE `email` = \'' . pSQL($sEmail) . '\'');
     }
 
-//    public static function isOwner ($iShopId, $iAccountId) {
-//        return (bool) Db::getInstance()->getValue('
-//		SELECT `id`
-//		FROM `' . _DB_PREFIX_ . 'custom_shop`
-//		WHERE `id_account` = \'' . pSQL($sEmail) . '\'');
-//    }
 }

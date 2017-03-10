@@ -71,7 +71,8 @@ class HTMLTemplateInvoiceCustomShopCore extends HTMLTemplate
         $data = array(
             'date' => $this->bill_info->date,
             'total' => $this->bill_info->total,
-            'orders' => $this->bill_info->orders
+            'orders' => $this->bill_info->orders,
+            'customer' => $this->bill_info->customer
         );
 
         $this->smarty->assign($data);
@@ -84,8 +85,7 @@ class HTMLTemplateInvoiceCustomShopCore extends HTMLTemplate
         $this->smarty->assign($tpls);
         
         if (Tools::getValue('debug')) {
-            print_r($this->smarty->fetch($this->getTemplate('invoice-custom-shop')));
-            die(json_encode($data));
+            die($this->smarty->fetch($this->getTemplate('invoice-custom-shop')));
         }
         return $this->smarty->fetch($this->getTemplate('invoice-custom-shop'));
     }

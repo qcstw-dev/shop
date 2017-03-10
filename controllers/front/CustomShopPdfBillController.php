@@ -37,6 +37,8 @@ class CustomShopPdfBillControllerCore extends FrontController {
 
     public function postProcess() {
         $oBillInfo = new CustomShopBillingHistory((int)Tools::getValue('id_bill'));
+        $oBillInfo->customer = CustomShopAccount::getAccountByShopId($oBillInfo->id_shop);
+        $oBillInfo->customer['country_name'] = Country::getNameById($this->context->language->id, $oBillInfo->customer['country']);
         $this->bill = $oBillInfo;
     }
 
