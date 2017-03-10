@@ -1,7 +1,31 @@
 <?php
 
 class AjaxCustomShopControllerCore extends FrontController {
-    
+
+    public function displayAjaxSendPassword() {
+        $result = [];
+        $result['success'] = true;
+        if (CustomShopAccount::emailExists(Tools::getValue('email'))) {
+            $oCustomAccount = CustomShopAccount::getAccountByEmail(Tools::getValue('email'));
+            //send email
+            $data = array();
+            $data['{shop_name}'] = Tools::safeOutput(Configuration::get('PS_SHOP_NAME', null, null, null));
+            $data['{firstname}'] = $oCustomAccount->firstname;
+            $data['{lastname}'] = $oCustomAccount->lastname;
+            $data['{email}'] = $oCustomAccount->email;
+            $data['{passwd}'] = $oCustomAccount->passwd;
+            $mail = Mail::Send($this->context->language->id, 'custom_shop_password', 'Password request', $data, $oCustomAccount->email);
+            if ($mail) {
+                echo json_encode($result);
+            } else {
+                var_dump($mail);
+            }
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'No account exists with this email';
+        }
+    }
+
     public function displayAjaxActivateDeactivateShop() {
         $result = [];
         $result['success'] = true;
@@ -12,10 +36,10 @@ class AjaxCustomShopControllerCore extends FrontController {
         } else {
             $result['success'] = false;
             $result['error'] = 'Information missing';
-            
         }
         echo json_encode($result);
     }
+
     public function displayAjaxSaveStatus() {
         $result = [];
         $result['success'] = true;
@@ -26,10 +50,10 @@ class AjaxCustomShopControllerCore extends FrontController {
         } else {
             $result['success'] = false;
             $result['error'] = 'Information missing';
-            
         }
         echo json_encode($result);
     }
+
     public function displayAjaxSaveTracking() {
         $result = [];
         $result['success'] = true;
@@ -40,10 +64,10 @@ class AjaxCustomShopControllerCore extends FrontController {
         } else {
             $result['success'] = false;
             $result['error'] = 'Information missing';
-            
         }
         echo json_encode($result);
     }
+
     public function displayAjaxPayShop() {
         $result = [];
         $result['success'] = true;
@@ -54,7 +78,7 @@ class AjaxCustomShopControllerCore extends FrontController {
                 $oBill->save();
                 $oBill->amount = CustomShop::getCurrentSituation(Tools::getValue('shop'))['total_comission'];
                 $oBill->save();
-                DB::getInstance()->update('orders', ['id_billing' => $oBill->id, 'status' => 5], '`id_order` IN ('.implode(', ', array_column($aIdOrders, 'id_order')).')');
+                DB::getInstance()->update('orders', ['id_billing' => $oBill->id, 'status' => 5], '`id_order` IN (' . implode(', ', array_column($aIdOrders, 'id_order')) . ')');
                 $result['bill'] = $oBill;
             } else {
                 $result['success'] = false;
@@ -66,7 +90,7 @@ class AjaxCustomShopControllerCore extends FrontController {
         }
         echo json_encode($result);
     }
-    
+
     public function displayAjaxLoadCartProducts() {
         global $smarty;
         $aProducts = $this->context->cart->getProducts(true, null, null, true);
@@ -221,7 +245,7 @@ class AjaxCustomShopControllerCore extends FrontController {
     }
 
     public function displayAjaxLoadProducts() {
-        $aProducts = Product::getProducts($this->context->language->id, (Tools::getValue('last_range') ?: 0), (Tools::getValue('nb_products') ?: 12), 'date_add', 'DESC', (Tools::getValue('id_category') ?: '45'), true, $this->context);
+        $aProducts = Product::getProducts($this->context->language->id, (Tools::getValue('last_range') ? : 0), (Tools::getValue('nb_products') ? : 12), 'date_add', 'DESC', (Tools::getValue('id_category') ? : '45'), true, $this->context);
         foreach ($aProducts as &$aProduct) {
             $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($this->context->language->id);
             foreach ($aProduct['images'] as $key => $image) {
@@ -239,12 +263,12 @@ class AjaxCustomShopControllerCore extends FrontController {
         }
         $this->context->smarty->assign([
             'products' => $aProducts,
-            'bLoadJs'=> (Tools::getValue('first_time') == 1),
-            'first_item_id' => (Tools::getValue('last_range') ?: 0) + 1
+            'bLoadJs' => (Tools::getValue('first_time') == 1),
+            'first_item_id' => (Tools::getValue('last_range') ? : 0) + 1
         ]);
         if (Tools::getValue('last_range') == 0) {
             $aCategories = [];
-            foreach (array_values(Category::getCategories($this->context->language->id, true, true, 'AND `id_parent` = '. pSQL('45')))[0] as $key => $aCategory) {
+            foreach (array_values(Category::getCategories($this->context->language->id, true, true, 'AND `id_parent` = ' . pSQL('45')))[0] as $key => $aCategory) {
                 $aCategories[$key] = $aCategory['infos'];
             }
             $this->context->smarty->assign('categories', $aCategories);

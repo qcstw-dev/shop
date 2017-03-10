@@ -7474,6 +7474,9 @@ ul.step a:hover:after {
 .block-selection .thumbnail {
     margin-bottom: 10px;
 }
+.block-selection .thumbnail img {
+    max-height: 67px;
+}
 .block-selection .glyphicon-remove {
     top: 0px;
     right: 7px;

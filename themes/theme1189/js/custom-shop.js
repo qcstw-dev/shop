@@ -82,11 +82,13 @@ function popupChoice(html, aFunction) {
         window[aFunction['function_name']](aFunction['arguments']);
     });
 }
-function popupMessage(html) {
+function popupMessage(html, style) {
     $.magnificPopup.open({
         items: [{
-                src: $('<div class="white-popup bold font-size-15">' +
+                src: $('<div class="white-popup">' +
+                        (style ? '<div class="col-xs-12 margin-bottom-0 alert alert-' + style + '">' : '') +
                         html +
+                        (style ? '</div>' : '') +
                         '<div class="clearfix"></div>' +
                         '</div>'),
                 type: 'inline'

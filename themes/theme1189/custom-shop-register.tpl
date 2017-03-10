@@ -1,5 +1,5 @@
 {include file=$header}
-<div class="container">
+<div class="container padding-0">
     <div class="thumbnail border-none margin-auto">
         <img src="{$logo_gift}" title="{$shop_title}" alt="{$shop_title}" />
     </div>
@@ -13,7 +13,7 @@
                 <div class="alert alert-danger">
                     {foreach from=$form_error item=error}
                         <li>{$error}</li>
-                    {/foreach}
+                        {/foreach}
                 </div>
             {/if}
             <div class="block-switch register {if $submit != 'register' && $submit}hidden{/if}">
@@ -45,7 +45,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <input type="submit" class="btn btn-primary col-xs-12" value="Register" />
+                    <input type="submit" class="btn btn-primary col-xs-12 col-lg-6 pull-right" value="Register" />
                 </form>
             </div>
             <div class="block-switch login {if $submit != 'login'}hidden{/if}">
@@ -60,11 +60,27 @@
                     <div class="form-group margin-bottom-10">
                         <label class="margin-bottom-0">Password*</label>
                         <input type="password" class="required form-control {if $submit && !$password}form-control-danger{/if} password" name="password" placeholder="Password">
+                        <div  class="font-size-10 underline cursor-pointer margin-top-10 forgot-password">Forgot your password?</div>
                     </div>
-                    <input type="submit" class="btn btn-success col-xs-12" value="Login" />
+                    <input type="submit" class="btn btn-success col-xs-12 col-lg-6 pull-right" value="Log in" />
                 </form>
             </div>
         </div>
+    </div>
+</div>
+<div class="hidden">
+    <div class="forgot-password-form">
+        <div class="bold">Enter your account's email</div>
+        <div class="font-size-13">We will send you your password</div>
+        <div class="col-xs-12 col-lg-6 margin-auto padding-0 margin-bottom-10 margin-top-10">
+            <div class="col-xs-12">
+                <div class="alert alert-danger error-message error-message-email">Please enter a valid email address</div>
+                <div class="alert alert-danger error-message error-message-custom">Please enter a valid email address</div>
+            </div>
+            <div class="col-xs-12 col-sm-9 padding-right-0 margin-bottom-10"><input class="form-control textfield-email email" type="email" /></div>
+            <div class="col-xs-12 col-sm-3"><button class="btn btn-success send-password col-xs-12">Send</button></div>
+        </div>
+        <div class="clearfix"></div>
     </div>
 </div>
 {include file=$footer}
