@@ -15,15 +15,15 @@ class AjaxCustomShopControllerCore extends FrontController {
             $data['{email}'] = $oCustomAccount->email;
             $data['{passwd}'] = $oCustomAccount->passwd;
             $mail = Mail::Send($this->context->language->id, 'custom_shop_password', 'Password request', $data, $oCustomAccount->email);
-            if ($mail) {
-                echo json_encode($result);
-            } else {
-                var_dump($mail);
+            if (!$mail) {
+                $result['success'] = false;
+                $result['error'] = 'Email could not be sent successfully';
             }
         } else {
             $result['success'] = false;
             $result['error'] = 'No account exists with this email';
         }
+        echo json_encode($result);
     }
 
     public function displayAjaxActivateDeactivateShop() {
