@@ -16,7 +16,9 @@
         <a href="{$base_uri}{$custom_shop_name}/admin/user-account" class="list-group-item{if in_array($page_name, [
         'customshopadminuseraccount'
        ])} active{/if}">User account</a>
-        <a href="#" class="list-group-item">Contact</a>
+        <a href="{$base_uri}{$custom_shop_name}/admin/contact" class="list-group-item{if in_array($page_name, [
+        'customshopadmincontact'
+       ])} active{/if}">Contact</a>
         <a href="?disconnect" class="list-group-item"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
     </div>
 </div>

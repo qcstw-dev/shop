@@ -53,7 +53,7 @@
     </div>
     <div class="{if $page_name != 'customshopsuperadmin'}container{/if}">
         {if $is_super_admin && $page_name != 'customshopsuperadmin'}
-            <div class="pull-right"><label class="cursor-pointer" for="deactivate"><input id="deactivate" class="checkbox-deactivate" data-id-shop="{$shop.id}" type="checkbox" {if $shop.deactivated}checked{/if}> Shop deactivated</label></div>
+            <div class="pull-right"><label class="cursor-pointer" for="deactivate"><input id="deactivate" class="checkbox-deactivate" data-id-shop="{$shop.id}" type="checkbox" {if $shop.deactivated}checked{/if}> Deactivated the shop</label></div>
             <div class="clearfix"></div>
         {/if}
         <div class="alert alert-danger text-center margin-bottom-10 {if !$shop.deactivated}hidden{/if}">Your shop is currently deactivated</div>
