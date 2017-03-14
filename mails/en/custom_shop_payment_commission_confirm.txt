@@ -1,0 +1,13 @@
+
+[{shop_url}] 
+
+Hi {firstname} {lastname}, 
+
+ We just paid you your commission for your shop "{custom_shop_name}",
+
+INVOICE: {custom_shop_invoice_url}
+CONNECTION TO THE SHOP: {custom_shop_registration_url}
+SHOP URL: {custom_shop_url} 		 
+
+{shop_name} [{shop_url}]
+

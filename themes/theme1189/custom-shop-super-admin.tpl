@@ -3,7 +3,7 @@
 {if !$is_super_admin}
     <div class="col-xs-12 col-lg-3 margin-auto margin-top-20">
         {if $error_message}
-            <div class="alert alert-warning">{$error_message}</div>
+            <div class="alert alert-danger">{$error_message}</div>
         {/if}
         <form method="post">
             <div class="form-group">

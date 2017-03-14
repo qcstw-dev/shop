@@ -37,12 +37,25 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
             if (Tools::getValue('type') === "register") {
                 if (!CustomShop::nameExists(Tools::getValue('shop_name'))) {
                     if (!CustomShopAccount::emailExists(Tools::getValue('email'))) {
+                        // create account and shop
                         $oCustomShopAccount = new CustomShopAccount(null, ['email' => Tools::getValue('email'), 'passwd' => Tools::getValue('password'), 'registration_date' => date('Y-m-d')]);
                         if (!$oCustomShopAccount->save()) {
-                            $aErrors['database'] = 'Impossible to create you account, please contact us';
+                            $aErrors['database'] = 'Impossible to create your account, please contact us';
                         } else {
                             $oCustomShop = new CustomShop(null, ['name' => Tools::getValue('shop_name'), 'id_account' => $oCustomShopAccount->id]);
                             $oCustomShop->save();
+                            
+                            // send confirm email
+                            $data = array();
+                            $data['{shop_name}'] = Tools::safeOutput(Configuration::get('PS_SHOP_NAME', null, null, null));
+                            $data['{email}'] = $oCustomShopAccount->email;
+                            $data['{passwd}'] = $oCustomShopAccount->passwd;
+                            $data['{custom_shop_name}'] = $oCustomShop->name;
+                            $data['{custom_shop_url}'] = _PS_BASE_URL_.__PS_BASE_URI__.'shop/'.$oCustomShop->name;
+                            $data['{custom_shop_registration_url}'] = _PS_BASE_URL_.__PS_BASE_URI__.'custom-shop-registration';
+                            Mail::Send($this->context->language->id, 'custom_shop_registration_confirm', 'Registration confirmation', $data, $oCustomShopAccount->email);
+                            Mail::Send($this->context->language->id, 'custom_shop_registration_confirm_admin', 'Custom shop registration', $data, 'order@giftattitude.com');
+                            
                             $oCustomShopAccount->login();
                             header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . $oCustomShop->name . '/admin/creation');
                         }
@@ -54,18 +67,14 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
                 }
             } else if (Tools::getValue('type') === "login") {
                 if (CustomShopAccount::emailExists(Tools::getValue('email'))) {
-//                    if (!CustomShop::isShopDeactivatedByEmail(Tools::getValue('email'))) {
-                        if (CustomShopAccount::checkPassword(Tools::getValue('email'), Tools::getValue('password'))) {
-                            $oCustomShopAccount = CustomShopAccount::getAccountByEmail(Tools::getValue('email'));
-                            $oCustomShopAccount->login();
-                            $aCustomShop = $oCustomShopAccount->getShop();
-                            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . $aCustomShop['name'] . '/admin/creation');
-                        } else {
-                            $aErrors['wrong_password'] = 'Wrong password';
-                        }
-//                    } else {
-//                        $aErrors['shop_deactivated'] = 'Your shop has been deactivated';
-//                    }
+                    if (CustomShopAccount::checkPassword(Tools::getValue('email'), Tools::getValue('password'))) {
+                        $oCustomShopAccount = CustomShopAccount::getAccountByEmail(Tools::getValue('email'));
+                        $oCustomShopAccount->login();
+                        $aCustomShop = $oCustomShopAccount->getShop();
+                        header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . $aCustomShop['name'] . '/admin/creation');
+                    } else {
+                        $aErrors['wrong_password'] = 'Wrong password';
+                    }
                 } else {
                     $aErrors['account_exist'] = 'Account does not exist';
                 }

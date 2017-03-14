@@ -1,0 +1,13 @@
+
+[{shop_url}] 
+
+Hi {firstname} {lastname}, 
+
+E-MAIL ADDRESS: {email}
+
+PASSWORD: {passwd} 	
+	 
+SHOP URL: {custom_shop_url} 		 
+
+{shop_name} [{shop_url}]
+

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{$css_dir}product.css" media="all">
     <link rel="stylesheet" href="{$css_dir}custom-shop.css" media="all">
     <link rel="stylesheet" href="{$css_dir}custom-shop-front.css" media="all">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     {literal} 
         <script>
             (function (i, s, o, g, r, a, m) {

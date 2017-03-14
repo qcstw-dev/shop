@@ -27,8 +27,9 @@
 <script type="text/javascript" src="{$js_dir}autoload/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="{$js_dir}slick/slick.min.js"></script>
 
+<script type="text/javascript" src="{$js_dir}jquery.endless-scroll.js"></script>
+
 <script type="text/javascript" src="{$base_dir_ssl}js/tools.js"></script>
-{*<script type="text/javascript" src="{$base_dir_ssl}modules/tmheaderaccount/js/front.js"></script>*}
 
 <script type="text/javascript" src="{$js_dir}mobile-login.js"></script>
 <script type="text/javascript" src="{$js_dir}mobile-global.js"></script>

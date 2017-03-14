@@ -75,10 +75,23 @@ class AjaxCustomShopControllerCore extends FrontController {
             $aIdOrders = CustomShop::getNonPaidOrdersId(Tools::getValue('shop'));
             if ($aIdOrders) {
                 $oBill = new CustomShopBillingHistory(null, ['id_shop' => Tools::getValue('shop'), 'date' => date('Y-m-d')]);
-                $oBill->save();
                 $oBill->amount = CustomShop::getCurrentSituation(Tools::getValue('shop'))['total_comission'];
                 $oBill->save();
                 DB::getInstance()->update('orders', ['id_billing' => $oBill->id, 'status' => 5], '`id_order` IN (' . implode(', ', array_column($aIdOrders, 'id_order')) . ')');
+
+                // send email
+                $aCustomShopAccount = CustomShopAccount::getAccountByShopId(Tools::getValue('shop'));
+                $aCustomShop = CustomShop::getShopById(Tools::getValue('shop'));
+                $data = array();
+                $data['{shop_name}'] = Tools::safeOutput(Configuration::get('PS_SHOP_NAME', null, null, null));
+                $data['{firstname}'] = $aCustomShopAccount['firstname'];
+                $data['{lastname}'] = $aCustomShopAccount['lastname'];
+                $data['{custom_shop_name}'] = $aCustomShop['name'];
+                $data['{custom_shop_registration_url}'] = _PS_BASE_URL_.__PS_BASE_URI__.'custom-shop-registration';
+                $data['{custom_shop_url}'] = _PS_BASE_URL_ . __PS_BASE_URI__ . 'shop/' . $aCustomShop['name'];
+                $data['{custom_shop_invoice_url}'] = _PS_BASE_URL_ . __PS_BASE_URI__ . 'index.php?controller=customshoppdfbill&id_bill='.$oBill->id;
+                $result['mail_sent'] = Mail::Send($this->context->language->id, 'custom_shop_payment_commission_confirm', 'Confirmation commission payment', $data, $aCustomShopAccount['email']);
+                
                 $result['bill'] = $oBill;
             } else {
                 $result['success'] = false;
