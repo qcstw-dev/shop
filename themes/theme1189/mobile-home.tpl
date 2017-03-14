@@ -9,5 +9,7 @@
             <div class="col-xs-6 bold">Loading...</div>
         </div>
     </div>
+    <div class="clearfix"></div>
 </div>
+<div id="waypoint">&nbsp;</div>
 {include file=$footer_mobile}

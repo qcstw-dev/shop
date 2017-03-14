@@ -28,6 +28,7 @@
 <script type="text/javascript" src="{$js_dir}slick/slick.min.js"></script>
 
 <script type="text/javascript" src="{$js_dir}jquery.endless-scroll.js"></script>
+<script type="text/javascript" src="{$js_dir}noframework.waypoints.min.js"></script>
 
 <script type="text/javascript" src="{$base_dir_ssl}js/tools.js"></script>
 
