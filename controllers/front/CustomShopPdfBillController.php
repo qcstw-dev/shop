@@ -36,10 +36,14 @@ class CustomShopPdfBillControllerCore extends FrontController {
     public $bill;
 
     public function postProcess() {
-        $oBillInfo = new CustomShopBillingHistory((int)Tools::getValue('id_bill'));
-        $oBillInfo->customer = CustomShopAccount::getAccountByShopId($oBillInfo->id_shop);
-        $oBillInfo->customer['country_name'] = Country::getNameById($this->context->language->id, $oBillInfo->customer['country']);
-        $this->bill = $oBillInfo;
+        if (($this->context->cookie->__get('custom_shop_loggedin') && CustomShopAccount::isOwner($this->context->cookie->__get('custom_shop_loggedin'), Tools::getValue('id_bill')) ) || $this->context->cookie->__get('custom_shop_loggedin_super')) {
+            $oBillInfo = new CustomShopBillingHistory((int)Tools::getValue('id_bill'));
+            $oBillInfo->customer = CustomShopAccount::getAccountByShopId($oBillInfo->id_shop);
+            $oBillInfo->customer['country_name'] = Country::getNameById($this->context->language->id, $oBillInfo->customer['country']);
+            $this->bill = $oBillInfo;
+        } else {
+            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'custom-shop-register');
+        }
     }
 
     public function display() {

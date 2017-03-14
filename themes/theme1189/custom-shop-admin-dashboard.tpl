@@ -20,7 +20,7 @@
     <div class="clearfix"></div>
 </div>
 <div class="font-size-20 text-center margin-top-20">Order summary</div>
-<div class="margin-top-10 margin-bottom-10">Next payment of comission on: <span class="bold">{$next_date_payment}</span> (or when <span class="bold">{if $shop.minimum_to_reach}{convertPrice price=$shop.minimum_to_reach}{else}{convertPrice price=300}{/if}</span> is reached)</div>
+<div class="margin-top-10 margin-bottom-10">Next payment of comission on: <span class="bold">{$next_date_payment}</span> (if the minimum of <span class="bold">{if $shop.minimum_to_reach}{convertPrice price=$shop.minimum_to_reach}{else}{convertPrice price=50}{/if}</span> is reached)</div>
 <table class="table dashboard-table"> 
     <thead> 
         <tr class="text-center">

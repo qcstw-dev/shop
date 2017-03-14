@@ -125,4 +125,10 @@ class CustomShopAccountCore extends ObjectModel {
 		WHERE `email` = \'' . pSQL($sEmail) . '\'');
     }
 
+    public static function isOwner ($iAccountId, $iShopId) {
+        return $iShopId == Db::getInstance()->getValue('
+		SELECT `id`
+		FROM `' . _DB_PREFIX_ . 'custom_shop`
+		WHERE `id_account` = \'' . pSQL($iAccountId) . '\'');
+    }
 }
