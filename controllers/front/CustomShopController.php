@@ -20,8 +20,12 @@ class CustomShopControllerCore extends FrontController {
         
         if (Tools::getValue('shop_name')) {
             $this->custom_shop = CustomShop::getShopByName(Tools::getValue('shop_name'));
-            $this->context->smarty->assign('id_shop', $this->custom_shop['id']);
-            $this->context->smarty->assign('name_shop', $this->custom_shop['name']);
+            if ($this->custom_shop) {
+                $this->context->smarty->assign('id_shop', $this->custom_shop['id']);
+                $this->context->smarty->assign('name_shop', $this->custom_shop['name']);
+            } else {
+                $this->bRedirection = true;
+            }
         } else {
             $this->bRedirection = true;
         }

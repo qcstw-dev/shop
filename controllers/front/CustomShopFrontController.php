@@ -11,8 +11,10 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
      */
     public function init() {
         parent::init();
-        $bRedirection = false;
         // redirect if shop desactivated
+        if ($this->bRedirection || $this->custom_shop['deactivated']) {
+            Tools::redirect(_PS_BASE_URL_ . __PS_BASE_URI__);
+        }
     }
 
     public function initContent() {
@@ -53,7 +55,7 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
         $cart_qties = $this->context->cart->nbProducts(true);
         $this->context->smarty->assign([
             'cart_qties' => $cart_qties,
-            'meta_title' => $this->custom_shop['title'] ?: $this->custom_shop['name'],
+            'meta_title' => $this->custom_shop['title'] ? : $this->custom_shop['name'],
             'token' => Tools::getToken(false),
             'cart_products' => $aProducts,
             'side' => 'front',
