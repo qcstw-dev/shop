@@ -12,9 +12,13 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
     public function init() {
         parent::init();
         // redirect if shop desactivated
-        if ($this->bRedirection || $this->custom_shop['deactivated']) {
-            Tools::redirect(_PS_BASE_URL_ . __PS_BASE_URI__);
-        }
+        $totalToPay = $this->context->cart->getOrderTotal(false);
+        
+        $this->context->smarty->assign(array(
+            'logo_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_logo.jpg',
+            'header_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_header.jpg',
+            'total_cart' => Tools::displayPrice($totalToPay),
+        ));
     }
 
     public function initContent() {

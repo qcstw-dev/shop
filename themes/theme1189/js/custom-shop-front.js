@@ -89,7 +89,7 @@ $(function () {
 function loadCart() {
     $.ajax({
         type: 'POST',
-        url: baseDir + 'index.php?controller=ajaxcustomshop&action=loadcartproducts&ajax=true',
+        url: baseDir + 'index.php?controller=ajaxcustomshop&action=loadcartproducts&ajax=true&custom_shop_name='+custom_shop_name,
         cache: false,
         dataType: 'html',
         success: function (html) {

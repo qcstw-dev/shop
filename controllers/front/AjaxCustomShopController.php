@@ -108,6 +108,7 @@ class AjaxCustomShopControllerCore extends FrontController {
         global $smarty;
         $aProducts = $this->context->cart->getProducts(true, null, null, true);
         $this->context->smarty->assign('products', $aProducts);
+        $this->context->smarty->assign('custom_shop_name', Tools::getValue('custom_shop_name'));
         $rendered_content = $smarty->fetch(_PS_THEME_DIR_ . 'custom-shop-front-cart-products.tpl');
         echo Media::minifyHTML($rendered_content);
     }

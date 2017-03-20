@@ -34,6 +34,9 @@ class CustomShopControllerCore extends FrontController {
         } else {
             $this->bRedirection = true;
         }
+        if ($this->bRedirection) {
+            Tools::redirect(_PS_BASE_URL_ . __PS_BASE_URI__);
+        }
     }
 
     public function initContent() {

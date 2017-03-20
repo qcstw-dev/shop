@@ -54,9 +54,9 @@ class MobileLayoutMakerControllerCore extends MobileController {
             ));
             $this->setTemplate(_PS_THEME_DIR_ . 'mobile-layout-maker.tpl');
         } elseif (!$this->context->cookie->selected_product) {
-            header('Location: ' . Tools::getHttpHost() . __PS_BASE_URI__ . 'mobile');
+            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile');
         } else {
-            header('Location: ' . Tools::getHttpHost() . __PS_BASE_URI__ . 'mobile-designs');
+            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-designs');
         }
     }
 

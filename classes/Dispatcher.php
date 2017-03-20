@@ -57,14 +57,21 @@ class DispatcherCore
         ),
         'custom_shop_prod' => array(
             'controller' =>    'customshopfronthome',
-            'rule' =>        'custom-shop/{shop_name}',
+            'rule' =>        'shop/{shop_name}',
             'keywords' => array(
                 'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
             ),
         ),
-        'custom_shop_local' => array(
+        'custom_shop_front_home' => array(
             'controller' =>    'customshopfronthome',
             'rule' =>        'shop/{shop_name}',
+            'keywords' => array(
+                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
+            ),
+        ),
+        'custom_shop_front_checkout' => array(
+            'controller' =>    'customshopfrontcheckout',
+            'rule' =>        'shop/{shop_name}/checkout',
             'keywords' => array(
                 'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
             ),

@@ -1,3 +1,6 @@
+a, a:hover {
+    color: inherit;
+}
 .header {
     width: 100%;
     height: 300px;
@@ -51,6 +54,7 @@
     position: absolute;
     right: 0;
 }
+
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
     .container {
@@ -113,11 +117,14 @@
         width: 100%;
         padding-left: 0;
         text-align: center;
+        width: 50%;
+        margin: auto;
     }
     .shop-title, .shop-motto {
         font-size: 15px;
         float: none;
         text-align: center;
+        width: 100%;
     }
     .logo {
         width: 150px;
@@ -141,4 +148,83 @@
 /* Custom, iPhone Retina */ 
 @media only screen and (max-width : 320px) {
 
+}
+/************************ CHECKOUT ***************/
+.title-block {
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+}
+.title-block.disabled {
+    color: #ccc;
+}
+.cart_quantity {
+    font-size: 20px;
+    float: left;
+    margin: 0 4px 0 4px;
+    cursor: pointer;
+}
+.input-qty {
+    width: 35px;
+    text-align: center;
+    float: left;
+}
+#custom-shop-checkout .tab-price-cel,
+#custom-shop-checkout .tab-price-cel-first {
+    border-radius: 0;
+}
+.block-checkout {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+#custom-shop-checkout li {
+    list-style: none;
+    padding-right: 10px; 
+    padding-left: 10px; 
+}
+.address_title {
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+#address_delivery, #address_invoice {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+.selector span {
+    display: none;
+}
+.required {
+    color: #f13340;
+}
+
+@media (min-width: 320px) {
+    #custom-shop-checkout .tab-price-cel-first {
+        min-width: 46px;
+    }
+    #custom-shop-checkout .tab-price-cel {
+        min-width: 35px;
+    }
+    #custom-shop-checkout .tab-price-cel-first, #custom-shop-checkout .tab-price-cel {
+        font-size: 10px;
+    }
+}
+@media (min-width: 375px) {
+    #custom-shop-checkout .tab-price-cel-first, #custom-shop-checkout .tab-price-cel {
+        font-size: 12px;
+    }
+    #custom-shop-checkout .tab-price-cel-first {
+        min-width: 55px;
+    }
+    #custom-shop-checkout .tab-price-cel {
+        min-width: 43px;
+    }
 }

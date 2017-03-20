@@ -27,7 +27,7 @@
 {if in_array($page_name, ['customshopadmincreationlayoutmaker'])}
     <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/fancybox/jquery.fancybox.js"></script>
     <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jqzoom/jquery.jqzoom.js"></script>
-{*    <script type="text/javascript" src="{$js_dir}slick/slick.min.js"></script>*}
+    <script type="text/javascript" src="{$js_dir}noframework.waypoints.min.js"></script>
     <script type="text/javascript" src="{$js_dir}layout_maker/component.js"></script>
     <script type="text/javascript" src="{$js_dir}layout_maker/custom-shop-layout-maker.js"></script>
 {/if}

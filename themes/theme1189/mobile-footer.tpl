@@ -27,12 +27,9 @@
 <script type="text/javascript" src="{$js_dir}autoload/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="{$js_dir}slick/slick.min.js"></script>
 
-<script type="text/javascript" src="{$js_dir}jquery.endless-scroll.js"></script>
-<script type="text/javascript" src="{$js_dir}noframework.waypoints.min.js"></script>
-
 <script type="text/javascript" src="{$base_dir_ssl}js/tools.js"></script>
 
-<script type="text/javascript" src="{$js_dir}mobile-login.js"></script>
+<script type="text/javascript" src="{$js_dir}login.js"></script>
 <script type="text/javascript" src="{$js_dir}mobile-global.js"></script>
 
 {if isset($upload)}
@@ -51,11 +48,12 @@
     <script type="text/javascript" src="{$js_dir}layout_maker/mobile-custom.js"></script>
 {/if}
 {if isset($product_list)}
+    <script type="text/javascript" src="{$js_dir}noframework.waypoints.min.js"></script>
     <script type="text/javascript" src="{$js_dir}mobile-product-list.js"></script>
 {/if}
 {if isset($checkout)}
     <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jquery.typewatch.js"></script>
-    <script type="text/javascript" src="{$js_dir}mobile-checkout.js"></script>
+    <script type="text/javascript" src="{$js_dir}checkout.js"></script>
 {/if}
 {if isset($checkout) && isset($checkout_step) && $checkout_step == 2}
     <script type="text/javascript" src="{$js_dir}mobile-authentication.js"></script>

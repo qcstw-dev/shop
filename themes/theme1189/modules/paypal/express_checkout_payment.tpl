@@ -88,13 +88,7 @@
 {if $use_paypal_in_context}
     <input type="hidden" id="in_context_checkout_enabled" value="1">
 {else}
-    <script>
-        $(document).ready(function () {
-            $('#paypal_process_payment').click(function () {
-                $('#paypal_payment_form').submit();
-            })
-        });
-    </script>
+    {assign }
 {/if}
 <form id="paypal_payment_form" action="{$base_dir_ssl|escape:'htmlall':'UTF-8'}modules/paypal/express_checkout/payment.php" data-ajax="false" title="{l s='Pay with PayPal' mod='paypal'}" method="post">
     <input type="hidden" name="express_checkout" value="{$PayPal_payment_type|escape:'htmlall':'UTF-8'}"/>

@@ -57,7 +57,7 @@
                     </td>
                     <td>
                         <div>
-                            <a href="{$base_dir}{if $smarty.server.HTTP_HOST == 'localhost'}custom-{/if}shop/{$shop.name}" target="_blank">
+                            <a href="{$base_dir}shop/{$shop.name}" target="_blank">
                                 <span class="glyphicon glyphicon-globe"></span>&nbsp;Visit&nbsp;shop
                             </a>
                         </div>

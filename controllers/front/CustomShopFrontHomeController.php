@@ -37,8 +37,6 @@ class CustomShopFrontHomeControllerCore extends CustomShopFrontControllerCore {
         }
 
         $this->context->smarty->assign([
-            'logo_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_logo.jpg',
-            'header_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_header.jpg',
             'products' => $aCustomProducts,
             'front_products_list' => _PS_THEME_DIR_ . 'custom-shop-front-products-list.tpl'
         ]);

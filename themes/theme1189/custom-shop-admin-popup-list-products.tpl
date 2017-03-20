@@ -49,9 +49,9 @@
                             <img class="picture" src="{$link->getImageLink($product.link_rewrite, $product.images.0.id_image, 'large_default')|escape:'html':'UTF-8'}" />
                         </div>
                         {*{foreach from=$product.images item=image name=images}
-                            <div class="thumbnail border-none margin-bottom-0 cursor-pointer quick-view" data-url="{$base_uri}product-popup?id_product={$product.id_product}" data-id="{$product.id_product}">
-                                <img class="picture" src="{$link->getImageLink($product.link_rewrite, $image.id_image, 'large_default')|escape:'html':'UTF-8'}" />
-                            </div>
+                        <div class="thumbnail border-none margin-bottom-0 cursor-pointer quick-view" data-url="{$base_uri}product-popup?id_product={$product.id_product}" data-id="{$product.id_product}">
+                        <img class="picture" src="{$link->getImageLink($product.link_rewrite, $image.id_image, 'large_default')|escape:'html':'UTF-8'}" />
+                        </div>
                         {/foreach}*}
                     </div>
                     <div class="col-xs-12 font-size-15 bold">{convertPrice price=$product.prices.10}</div>
@@ -60,16 +60,17 @@
             </div>
             {assign var=id_item value=$id_item+1}
         {/foreach}
-        <div class="clearfix"></div>
+            <div class="clearfix"></div>
         {if $bLoadJs}
         </div>
+        <div id="waypoint">&nbsp;</div>
         {*<script>
-            $('.slick-pictures-product-list').slick({
-                infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                responsive: []
-            });
+        $('.slick-pictures-product-list').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: []
+        });
         </script>*}
         <script type="text/javascript" src="{$js_dir}custom-shop-product-list.js"></script>
     {/if}
