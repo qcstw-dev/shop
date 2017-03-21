@@ -11,6 +11,9 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
      */
     public function init() {
         parent::init();
+        if ($this->bRedirection) {
+            Tools::redirect(_PS_BASE_URL_ . __PS_BASE_URI__);
+        }
         // redirect if shop desactivated
         $totalToPay = $this->context->cart->getOrderTotal(false);
         

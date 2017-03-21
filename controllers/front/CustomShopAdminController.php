@@ -9,6 +9,9 @@ class CustomShopAdminControllerCore extends CustomShopControllerCore {
 
     public function init() {
         parent::init();
+        if ($this->bRedirection) {
+            Tools::redirect(_PS_BASE_URL_ . __PS_BASE_URI__);
+        }
         if (Tools::getIsset('disconnect')) {
             $this->context->cookie->__set('custom_shop_loggedin', false);
         }
