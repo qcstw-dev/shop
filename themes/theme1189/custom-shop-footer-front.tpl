@@ -90,10 +90,10 @@
 {if (isset($checkout) && isset($checkout_step) && $checkout_step == 5)}
     {literal}
         <script>
-            $('.radio-payment').on('change', function () {
-                $('.hidden-payment').addClass('hidden');
-                $('.hidden-' + $(this).attr('id')).removeClass('hidden');
-            });
+    $('.radio-payment').on('change', function () {
+        $('.hidden-payment').addClass('hidden');
+        $('.hidden-' + $(this).attr('id')).removeClass('hidden');
+    });
         </script>
     {/literal}
 {/if}
@@ -102,8 +102,8 @@
         <script>
             $(document).ready(function () {
                 $('#paypal_process_payment').click(function () {
-                    $('#paypal_payment_form').submit();
-                });
+                    $('#paypal_payment_form_payment').submit();
+                })
             });
         </script>
     {/literal}

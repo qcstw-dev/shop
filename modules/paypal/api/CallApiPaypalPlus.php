@@ -1,6 +1,6 @@
 <?php
 /**
- * 2007-2016 PrestaShop
+ * 2007-2017 PrestaShop
  *
  * NOTICE OF LICENSE
  *
@@ -19,7 +19,7 @@
  * needs please refer to http://www.prestashop.com for more information.
  *
  *  @author    PrestaShop SA <contact@prestashop.com>
- *  @copyright 2007-2016 PrestaShop SA
+ *  @copyright 2007-2017 PrestaShop SA
  *  @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  *  International Registered Trademark & Property of PrestaShop SA
  */
@@ -128,7 +128,7 @@ class CallApiPaypalPlus extends ApiPaypalPlus
     }
     
     
-    public function patch($id_payment,$address)
+    public function patch($id_payment, $address)
     {
         /*
         $totalCartWithTax = $cart->getOrderTotal(true);
@@ -204,7 +204,7 @@ class CallApiPaypalPlus extends ApiPaypalPlus
             'Content-Type:application/json',
             'Authorization:Bearer '.$accessToken,
         );
-        $body = str_replace('\/transactions\/0\/item_list\/shipping_address', '/transactions/0/item_list/shipping_address',Tools::jsonEncode($payment) );
+        $body = str_replace('\/transactions\/0\/item_list\/shipping_address', '/transactions/0/item_list/shipping_address', Tools::jsonEncode($payment));
         return $this->sendByCURL(URL_PPP_PATCH.$id_payment, $body, $header, false, 'PATCH');
     }
 }

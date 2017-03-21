@@ -1,6 +1,6 @@
 <?php
 /**
- * 2007-2016 PrestaShop
+ * 2007-2017 PrestaShop
  *
  * NOTICE OF LICENSE
  *
@@ -19,7 +19,7 @@
  * needs please refer to http://www.prestashop.com for more information.
  *
  *  @author    PrestaShop SA <contact@prestashop.com>
- *  @copyright 2007-2016 PrestaShop SA
+ *  @copyright 2007-2017 PrestaShop SA
  *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  *  International Registered Trademark & Property of PrestaShop SA
  */
@@ -274,14 +274,14 @@ if ($request_type && $ppec->type) {
 
         /* Create Order */
         if ($customer->id && $address->id) {
-            if($ppec->type != 'payment_cart') {
+            if ($ppec->type != 'payment_cart') {
                 $ppec->context->cart->id_customer = $customer->id;
-                if(version_compare(_PS_VERSION_, '1.5', '<')){
+                if (version_compare(_PS_VERSION_, '1.5', '<')) {
                     $ppec->context->cart->id_address_delivery = $address->id;
                     $ppec->context->cart->id_address_invoice = $address->id;
-                }else{
-                    $ppec->context->cart->updateAddressId($ppec->context->cart->id_address_delivery,$address->id);
-                    $ppec->context->cart->updateAddressId($ppec->context->cart->id_address_invoice,$address->id);
+                } else {
+                    $ppec->context->cart->updateAddressId($ppec->context->cart->id_address_delivery, $address->id);
+                    $ppec->context->cart->updateAddressId($ppec->context->cart->id_address_invoice, $address->id);
                 }
                 
                 $ppec->context->cart->id_guest = $ppec->context->cookie->id_guest;

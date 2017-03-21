@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 2007-2016 PrestaShop
+ * 2007-2017 PrestaShop
  *
  * NOTICE OF LICENSE
  *
@@ -20,7 +20,7 @@
  * needs please refer to http://www.prestashop.com for more information.
  *
  *  @author    PrestaShop SA <contact@prestashop.com>
- *  @copyright 2007-2016 PrestaShop SA
+ *  @copyright 2007-2017 PrestaShop SA
  *  @version  Release: $Revision: 13573 $
  *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  *  International Registered Trademark & Property of PrestaShop SA
@@ -96,7 +96,23 @@ class PayPalSubmitModuleFrontController extends ModuleFrontController {
 
         $this->module->assignCartSummary();
 
-        if ($this->context->isMobile() || $this->context->isTablet()) {
+        $aProducts = (new Cart(Tools::getValue('id_cart')))->getProducts(true);
+        $bIsCustomShop = false;
+        $aCustomShop = [];
+        foreach ($aProducts as $aProduct) {
+            if ($aProduct['customized_prod']) {
+                $bIsCustomShop = true;
+                $aCustomShop = CustomShop::getShopById($aProduct['customized_prod']['id_shop']);
+                break;
+            }
+        }
+        if ($aCustomShop) {
+            Tools::redirect(_PS_BASE_URL_ . __PS_BASE_URI__ . 'shop/' . $aCustomShop['name'] . '/checkout?step=order-confirmation'
+                    . '&key=' . Tools::getValue('key')
+                    . '&id_module=' . Tools::getValue('id_module')
+                    . '&id_cart=' . Tools::getValue('id_cart')
+                    . '&id_order=' . Tools::getValue('id_order'));
+        } else if ($this->context->isMobile() || $this->context->isTablet()) {
             Tools::redirect('mobile-checkout?step=order-confirmation'
                     . '&key=' . Tools::getValue('key')
                     . '&id_module=' . Tools::getValue('id_module')

@@ -6,7 +6,7 @@
             </div>
             <div class="margin-bottom-10">
                 <div class="col-xs-4 col-lg-2 thumbnail">
-                    <img class="popup" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
+                    <img class="popup-picture" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
                 </div>
                 <div class="col-xs-8 col-lg-10 padding-right-0">
                     <div class="underline bold">{l s="Description"}:</div>
@@ -101,5 +101,5 @@
         <div class="col-xs-6 cart_total">{$total_cart}</div>
     </div>
     <div class="clearfix"></div>
-        <a class="btn btn-primary margin-top-10 col-xs-12 col-sm-2 pull-right" href="{$base_uri}shop/{$custom_shop_name}/checkout?step={if $isLogged}3{else}2{/if}" >{l s="Next"} <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <a class="btn btn-primary margin-top-10 col-xs-12 col-sm-4 col-lg-2 pull-right" href="{$base_uri}shop/{$custom_shop_name}/checkout?step={if $isLogged}3{else}2{/if}" >{l s="Next"} <span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>

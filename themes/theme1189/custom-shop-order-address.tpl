@@ -71,7 +71,7 @@
     {if !$opc}
         <p class="cart_navigation clearfix">
             <input type="hidden" name="back" value="{$back}" />
-            <button type="submit" name="processAddress" class="btn btn-primary col-xs-12 col-sm-4 pull-right">
+            <button type="submit" name="processAddress" class="btn btn-primary col-xs-12 col-sm-4 col-lg-2 pull-right">
                 {l s='Next'} <span class="glyphicon glyphicon-chevron-right"></span>
             </button>
         </p>

@@ -6,7 +6,7 @@
                     <td width="10">&nbsp;</td>
                     <td style="text-align: center">
                         <div>{$product['thumbnail_custom_picture']}</div>
-                        <div><a href="{$product['custom_picture']}" download>Customized product picture</a></div>
+                        <div><a href="{$product['custom_picture']}" download>Download picture</a></div>
                     </td>
                     <td width="10">&nbsp;</td>
                 </tr>

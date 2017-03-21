@@ -61,12 +61,13 @@
             </div>
         </div>
     {/if}
+    {literal}
     <style>
-        p.payment_module.paypal a 
-        {ldelim}
-        padding-left:17px;
-        {rdelim}
+        p.payment_module.paypal a {
+            padding-left:17px;
+        }
     </style>
+    {/literal}
 {else}
     <p class="payment_module">
         <a href="javascript:void(0)" id="paypal_process_payment" title="{l s='Pay with PayPal' mod='paypal'}">
@@ -88,7 +89,7 @@
 {if $use_paypal_in_context}
     <input type="hidden" id="in_context_checkout_enabled" value="1">
 {else}
-    {assign }
+    {assign var='paypal' value='true'}
 {/if}
 <form id="paypal_payment_form" action="{$base_dir_ssl|escape:'htmlall':'UTF-8'}modules/paypal/express_checkout/payment.php" data-ajax="false" title="{l s='Pay with PayPal' mod='paypal'}" method="post">
     <input type="hidden" name="express_checkout" value="{$PayPal_payment_type|escape:'htmlall':'UTF-8'}"/>

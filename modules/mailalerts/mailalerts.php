@@ -304,10 +304,14 @@ class MailAlerts extends Module
 			}
 
 			$url = $context->link->getProductLink($product['product_id']);
+                        $customized_prod = [];
+                        if ($product['id_customized_prod']) {
+                            $customized_prod = CustomShopProduct::getProductById($product['id_customized_prod']);
+                        }
 			$items_table .=
 				'<tr style="background-color:'.($key % 2 ? '#DDE2E6' : '#EBECEE').';">
 					<td style="padding:0.6em 0.4em;">
-                                            <div><img style="width: 100px" src="'._PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/custom_pictures/'.$product['custom_picture'].'.png" />
+                                            <div><img style="width: 100px" src="'._PS_BASE_URL_.__PS_BASE_URI__.'img/'.($product['id_customized_prod'] ? 'custom_shop/creation/'.$customized_prod['custom_img'] : 'layout_maker/custom_pictures/'.$product['custom_picture'].'.png').'" />
                                             <div><a href="'._PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/custom_pictures/'.$product['custom_picture'].'.png">Customized product picture</a></div>
                                             '.(isset($product['original_picture']) && $product['original_picture'] ? '<div><a href="'._PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/original_pictures/'.$product['original_picture'].'.png">Original picture</a></div>' : '').'
                                         </td>

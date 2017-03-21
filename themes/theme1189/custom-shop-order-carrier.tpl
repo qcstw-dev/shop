@@ -57,13 +57,13 @@
     {/foreach}
     <div class="col-xs-12">
         <div class="font-size-15 bold margin-top-10">{l s='Terms of service'}</div>
-        <label for="cgv">
+        <label for="cgv" class="cursor-pointer">
             <input type="checkbox" name="cgv" id="cgv" value="1" {if $checkedTOS}checked="checked"{/if} />
             {l s='I agree to the terms of service and will adhere to them unconditionally.'}
             <a href="{$base_uri}shop/{$custom_shop_name}/information?select=terms" class="underline" rel="nofollow">{l s='(Read the Terms of Service)'}</a>
         </label>
         {if isset($delivery_option_list) && !empty($delivery_option_list)}
-            <button type="submit" name="processCarrier" class="btn btn-primary col-xs-12 col-sm-4 pull-right">
+            <button type="submit" name="processCarrier" class="btn btn-primary col-xs-12 col-sm-4 col-lg-2 pull-right">
                 {l s='Next'} <span class="glyphicon glyphicon-chevron-right"></span>
             </button>
             <div class="clearfix"></div>

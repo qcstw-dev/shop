@@ -2,8 +2,8 @@
     <div id="HOOK_TOP_PAYMENT">{$HOOK_TOP_PAYMENT}</div>
     {foreach $summary.products as $key => $product}
         <div class="row padding">
-            <div class="col-xs-4 col-lg-2 thumbnail border-none">
-                <img class="popup" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
+            <div class="col-xs-4 col-lg-1 thumbnail border-none">
+                <img class="popup-picture" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
             </div>
             <div class="col-xs-8 padding-0">
                 <div class="underline bold">{l s="Description"}:</div>

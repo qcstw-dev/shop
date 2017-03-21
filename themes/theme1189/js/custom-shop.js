@@ -36,7 +36,7 @@ $(function () {
             });
         }
     });
-    $('.popup-picture').live('click', function () {
+    $('.popup-picture, .popup').live('click', function () {
         popupMessage('<div class="thumbnail"><img src="' + $(this).attr('src') + '" /></div>');
     });
     $('.dropdown-block-title').on('click', function () {
