@@ -25,6 +25,8 @@ class CustomShopAdminCreationSummaryControllerCore extends CustomShopAdminContro
             $aCreation['prices'] = $aPrices;
         }
         $this->context->smarty->assign('creations', $aCreations);
+        $aPictures = CustomShopDesign::getPicturesByShopId($this->custom_shop['id']);
+        $this->context->smarty->assign('pictures', $aPictures);
         $this->context->smarty->assign('menu_creation', _PS_THEME_DIR_ . 'custom-shop-admin-menu-creation.tpl');
         $this->setTemplate(_PS_THEME_DIR_ . 'custom-shop-admin-creation-summary.tpl');
     }

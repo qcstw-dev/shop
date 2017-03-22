@@ -11,20 +11,28 @@
         </a>
     </div>
     <div class="col-xs-12 col-sm-4 margin-bottom-20">
-        <a href="{$base_uri}{$custom_shop_name}/admin/creation/layout-maker" class="text-decoration-none">
-            <div class="border creation-block">
+        {if $pictures}
+            <a href="{$base_uri}{$custom_shop_name}/admin/creation/layout-maker" class="text-decoration-none">
+        {/if}
+            <div class="border creation-block {if !$pictures}disabled{/if}">
                 <span class="glyphicon glyphicon-pencil"></span>
                 Place pictures on products
             </div>
-        </a>
+        {if $pictures}
+            </a>
+        {/if}
     </div>
     <div class="col-xs-12 col-sm-4 margin-bottom-20">
-        <a href="{$base_uri}{$custom_shop_name}/admin/creation/summary" class="text-decoration-none">
-            <div class="border creation-block">
+        {if $creations}
+            <a href="{$base_uri}{$custom_shop_name}/admin/creation/summary" class="text-decoration-none">
+        {/if}
+            <div class="border creation-block {if !$creations}disabled{/if}">
                 <span class="glyphicon glyphicon-list-alt"></span>
                 Your creation summary
             </div>
-        </a>
+        {if $creations}
+            </a>
+        {/if}
     </div>
 </div>
 

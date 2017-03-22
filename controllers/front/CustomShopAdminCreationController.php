@@ -12,6 +12,14 @@ class CustomShopAdminCreationControllerCore extends CustomShopAdminControllerCor
 
     public function initContent() {
         parent::initContent();
+
+        $aPictures = CustomShopDesign::getPicturesByShopId($this->custom_shop['id']);
+        $aCreations = CustomShopProduct::getProducts($this->custom_shop['id'], false);
+        $this->context->smarty->assign([
+            'pictures' => $aPictures,
+            'creations' => $aCreations
+        ]);
+
         $this->setTemplate(_PS_THEME_DIR_ . 'custom-shop-admin-creation.tpl');
     }
 

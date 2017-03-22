@@ -96,7 +96,7 @@ $(document).ready(function () {
 function deletePicture(aArg) {
     $.ajax({
         type: 'POST',
-        url: baseDir + 'index.php?controller=ajaxcustomshop&action=deletePicture&ajax=true&id_design=' + aArg['db_id'],
+        url: baseDir + 'index.php?controller=ajaxcustomshop&action=deletePicture&ajax=true'+ '&shop=' + id_shop + '&id_design=' + aArg['db_id'] ,
         cache: false,
         dataType: 'json',
         processData: false, // Don't process the files
@@ -110,6 +110,9 @@ function deletePicture(aArg) {
             if (json.success) {
                 $('.block-picture-container-' + aArg['id']).fadeOut(300, function () {
                     $(this).remove();
+                    if (json.count === 0) {
+                        $('.menu-item-picture').addClass('disabled');
+                    }
                 });
             } else {
                 popupError(json.error);
@@ -175,6 +178,7 @@ function fileuploadListener() {
                         confirm();
                         $('.block-picture-container-' + data.idUpload).find('.price, .picture-name').prop('disabled', false);
                         $('.block-picture-container-' + data.idUpload).find('.price').val(json.price);
+                        $('.menu-item-picture').removeClass('disabled');
                     } else {
                         if (json.error) {
                             popupError(json.error);

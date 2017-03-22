@@ -90,6 +90,7 @@ function saveCreation(id_product, id_design, custom_picture) {
                 $('.continue').on('click', function () {
                     $.magnificPopup.close();
                 });
+                $('.menu-item-summary').removeClass('disabled');
             } else {
                 popupError(json.error);
             }

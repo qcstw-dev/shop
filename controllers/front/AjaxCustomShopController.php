@@ -333,6 +333,7 @@ class AjaxCustomShopControllerCore extends FrontController {
             $oCustomShopDesign = new CustomShopDesign(Tools::getValue('id_design'));
             if ($oCustomShopDesign->delete()) {
                 $result['success'] = true;
+                $result['count'] = count(CustomShopDesign::getPicturesByShopId(Tools::getValue('shop')));
             }
         }
         echo json_encode($result);

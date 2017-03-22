@@ -69,6 +69,12 @@
 .creation-block .glyphicon {
     font-size: 44px;
 }
+.creation-block.disabled {
+    background: #f5f5f5;
+    cursor: not-allowed;
+    color: #ccc;
+    border: 1px solid #ccc;
+}
 .block-picture {
     display: flex;
     flex-direction: column;
