@@ -10,16 +10,26 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-popup-list-prod">
                         <li>
-                            <div class="filter-category cursor-pointer" data-id-category="45">
-                                <img src="{$link->getCatImageLink($products_categories[45]['link_rewrite'], 45, 'tm_cart_default')}" class="margin-right-20" alt="{$products_categories.45.name}" title="{$products_categories.45.name}" />
-                                ALL
+                            <div class="filter-category cursor-pointer padding-10" data-id-category="45">
+                                <div class="col-xs-3 thumbnail margin-bottom-0">
+                                    <img src="{$link->getCatImageLink($products_categories[45]['link_rewrite'], 45, 'tm_cart_default')}" class="" alt="{$products_categories.45.name}" title="{$products_categories.45.name}" />
+                                </div>
+                                <div class="col-xs-8 padding-top-20 font-size-13 bold">
+                                    ALL
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
                         </li>
                         {foreach from=$categories item='category'}
                             <li>
-                                <div class="filter-category cursor-pointer" data-id-category="{$category.id_category}">
-                                    <img src="{$link->getCatImageLink($category['link_rewrite'], $category['id_category'], 'tm_cart_default')}" class="margin-right-20" alt="{$category.name}" title="{$category.name}" />
-                                    {$category.name}
+                                <div class="filter-category cursor-pointer padding-10" data-id-category="{$category.id_category}">
+                                    <div class="col-xs-3 thumbnail margin-bottom-0">
+                                        <img src="{$link->getCatImageLink($category['link_rewrite'], $category['id_category'], 'tm_cart_default')}" class="" alt="{$category.name}" title="{$category.name}" />
+                                    </div>
+                                    <div class="col-xs-8 padding-top-20 font-size-13 bold">
+                                        {$category.name}
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
                             </li>
                         {/foreach}
