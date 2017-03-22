@@ -84,4 +84,7 @@
     <div class="clearfix"></div>
 </div>
 <div class="clearfix"></div>
+<div class="col-xs-12">
+    <a href="{$base_uri}{$custom_shop_name}/admin/creation/summary" class="btn btn-primary pull-right {if !$creations}disabled{/if} menu-item-summary">To creation summary <span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
 {include file=$footer}

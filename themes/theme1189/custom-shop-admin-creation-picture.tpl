@@ -57,4 +57,7 @@
 <span class="glyphicon glyphicon-plus"></span>
 </div>
 </div>*}
+<div class="col-xs-12">
+    <a href="{$base_uri}{$custom_shop_name}/admin/creation/layout-maker" class="btn btn-primary pull-right {if !$pictures}disabled{/if} menu-item-picture">To place picture on products <span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
 {include file=$footer}
