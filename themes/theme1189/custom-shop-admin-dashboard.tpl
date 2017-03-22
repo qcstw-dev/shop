@@ -14,7 +14,7 @@
         <div class="key-stats-number">{convertPrice price=$total_sales_amount}</div>
     </div>
     <div class="key-stats-block">
-        Total comission
+        Total commission
         <div class="key-stats-number">{convertPrice price=$total_comission}</div>
     </div>
     <div class="clearfix"></div>
@@ -34,7 +34,7 @@
             <th>Quantity</th> 
             <th class="visible-lg">Shipping cost</th> 
             <th>Tracking N°</th> 
-            <th>Comission</th> 
+            <th>Commission</th> 
             <th>Status</th>
         </tr> 
     </thead> 

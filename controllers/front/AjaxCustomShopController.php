@@ -409,7 +409,7 @@ class AjaxCustomShopControllerCore extends FrontController {
                 if (isset($oCustomShopDesign)) {
                     $oCustomShopDesign->setPicture($sName);
                 } else {
-                    $oCustomShopDesign = new CustomShopDesign(null, ['picture' => $sName, 'name' => $sImageTitle, 'price' => 1, 'id_shop' => Tools::getValue('shop')]);
+                    $oCustomShopDesign = new CustomShopDesign(null, ['picture' => $sName, 'name' => $sImageTitle, 'price' => '1.00', 'id_shop' => Tools::getValue('shop')]);
                 }
                 if (!$oCustomShopDesign->save()) {
                     $result['success'] = false;

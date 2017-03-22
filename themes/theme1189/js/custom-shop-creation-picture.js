@@ -1,7 +1,9 @@
 $(document).ready(function () {
     fileuploadListener();
     $('.upload-btn').live('click', function (e) {
-        $('.hidden-fileupload-' + $(this).data('id')).trigger('click');
+        $('.hidden-fileupload').data('db-id', $(this).data('db-id'));
+        $('.hidden-fileupload').data('id-upload', $(this).data('id'));
+        $('.hidden-fileupload').trigger('click');
     });
     $("input[type=file]").live("click", function (e) {
         e.stopPropagation();
@@ -43,7 +45,7 @@ $(document).ready(function () {
     $('.price').live('click', function () {
         $(this).select();
     });
-    $('.price').live('keyup', function () {
+    $('.price').live('change', function () {
         var element = $(this);
         if (globalTimeout !== null) {
             clearTimeout(globalTimeout);
@@ -96,7 +98,7 @@ $(document).ready(function () {
 function deletePicture(aArg) {
     $.ajax({
         type: 'POST',
-        url: baseDir + 'index.php?controller=ajaxcustomshop&action=deletePicture&ajax=true'+ '&shop=' + id_shop + '&id_design=' + aArg['db_id'] ,
+        url: baseDir + 'index.php?controller=ajaxcustomshop&action=deletePicture&ajax=true' + '&shop=' + id_shop + '&id_design=' + aArg['db_id'],
         cache: false,
         dataType: 'json',
         processData: false, // Don't process the files
@@ -167,17 +169,17 @@ function fileuploadListener() {
                 success: function (json) {
                     if (json.success === true) {
                         // append PICTURE
-                        if (!$('.block-picture-container-' + data.idUpload).find('.trash').data('db-id')) {
-                            $('.block-picture-container-' + data.idUpload).find('.trash, .fileupload, .price, .picture-name').data('db-id', json.id);
+                        if (!$('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.trash').data('db-id')) {
+                            $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.trash, .price, .picture-name, .upload-btn').data('db-id', json.id);
                         }
-                        $('.picture-name-' + data.idUpload).val(json.image_title);
-                        $('.upload-picture-' + data.idUpload).replaceWith(
-                                '<img class="upload-picture upload-picture-' + data.idUpload + '" src="' + baseUri + 'img/custom_shop/picture/' + json.image_name + '" />'
-                                );
+                        $('.picture-name-' + $('.fileupload').data('id-upload')).val(json.image_title);
+                        $('.upload-picture-' + $('.fileupload').data('id-upload')).replaceWith(
+                            '<img class="upload-picture upload-picture-' + $('.fileupload').data('id-upload') + '" src="' + baseUri + 'img/custom_shop/picture/' + json.image_name + '" />'
+                        );
                         loading_hide();
                         confirm();
-                        $('.block-picture-container-' + data.idUpload).find('.price, .picture-name').prop('disabled', false);
-                        $('.block-picture-container-' + data.idUpload).find('.price').val(json.price);
+                        $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.price, .picture-name').prop('disabled', false);
+                        $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.price').val(json.price);
                         $('.menu-item-picture').removeClass('disabled');
                     } else {
                         if (json.error) {

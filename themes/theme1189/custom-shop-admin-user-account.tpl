@@ -146,7 +146,7 @@
     <form method="post" class="bank-detail-form">
         <input type="hidden" name="form_type" value="bank-detail-form">
         <div class="alert alert-danger error-message error-message-email  text-center">Please enter a valid email address</div>
-        <p class="bold">Needed to pay your comission</p>
+        <p class="bold">Needed to pay your commission</p>
         <div class="border padding-10">
             <label for="bank" class="cursor-pointer padding-10 col-xs-11">Credit card</label> <div class="col-xs-1 padding-10"><input type="radio" id="bank" name="payment" value="bank" class="payment" data-payment="bank" {if $account.account_number}checked{/if}/></div>
             <div class="payment-block payment-bank" {if $account.account_number}style="display:block"{/if}>

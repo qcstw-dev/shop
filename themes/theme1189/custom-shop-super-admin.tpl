@@ -30,9 +30,9 @@
                 <th>Last payment</th>
                 <th>Number<br /> sold products</th>
                 <th>Total sales<br /> from all times</th>
-                <th>Total comission<br /> from all times</th>
+                <th>Total commission<br /> from all times</th>
                 <th>Total sales<br /> since last payment</th>
-                <th>Total comission<br /> since last payment</th>
+                <th>Total commission<br /> since last payment</th>
                 <th>Minimum to reach</th>
             </tr> 
         </thead> 

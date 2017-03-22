@@ -17,18 +17,15 @@
             <div class="col-xs-10 margin-auto input-group-sm">
                 <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-{$counter}" data-db-id="{$db_id}" placeholder="Picture name" value="{if $db_id}{$pictures.$counter.name}{/if}" {if !$db_id}disabled{/if}/>
             </div>
-            <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-auto block-picture cursor-pointer upload-btn" data-id="{$counter}">
+            <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-auto block-picture cursor-pointer upload-btn" data-db-id="{$db_id}" data-id="{$counter}">
                 {if isset($pictures.$counter)}
                     <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}{$picture_dir}{$pictures.$counter.picture}" title="upload" alt="upload" />
                 {else}
                     <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}img/upload-icon.jpg" title="upload" alt="upload" />
                 {/if}
-                <div class="hidden-uploader">
-                    <input class="fileupload hidden-fileupload-{$counter}" data-db-id="{$db_id}" data-id-upload="{$counter}" type="file" name="files[]">
-                </div>
             </div>
             <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5">
-                <div class="col-xs-7 padding-right-0 font-size-13 margin-top-10">Comission price:</div>
+                <div class="col-xs-7 padding-right-0 font-size-13 margin-top-10">Commission price:</div>
                 <div class="col-xs-1 padding-0 margin-top-10 padding-0">$</div>
                 <div class="col-xs-3 input-group-sm padding-0">
                     <input class="form-control margin-0 margin-top-5 price" 
@@ -44,6 +41,9 @@
         </div>
     </div>
 {/for}
+    <div class="hidden-uploader">
+        <input class="fileupload hidden-fileupload" data-id-upload="" type="file" name="files[]">
+    </div>
 <div class="col-sm-4 col-lg-3 margin-bottom-10">
     <div class="cursor-pointer dashed block-picture block-picture-add">
         <div class="thumbnail border-none margin-0 padding-0 margin-top-lg-30 margin-bottom-lg-30">
