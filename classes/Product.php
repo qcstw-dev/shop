@@ -2778,7 +2778,7 @@ class ProductCore extends ObjectModel
     public static function getPriceStatic($id_product, $usetax = true, $id_product_attribute = null, $decimals = 6, $divisor = null,
         $only_reduc = false, $usereduc = true, $quantity = 1, $force_associated_tax = false, $id_customer = null, $id_cart = null,
         $id_address = null, &$specific_price_output = null, $with_ecotax = true, $use_group_reduction = true, Context $context = null,
-        $use_customer_price = true)
+        $use_customer_price = true, $custom_picture = null, $customized_prod = null)
     {
         if (!$context) {
             $context = Context::getContext();
@@ -2826,7 +2826,9 @@ class ProductCore extends ObjectModel
             if (!Cache::isStored($cache_id) || ($cart_quantity = Cache::retrieve($cache_id) != (int)$quantity)) {
                 $sql = 'SELECT SUM(`quantity`)
 				FROM `'._DB_PREFIX_.'cart_product`
-				WHERE `id_product` = '.(int)$id_product.'
+				WHERE `id_product` = '.(int)$id_product.
+                                ($custom_picture ? ' AND `custom_picture` = \''. $custom_picture. '\'' : '').
+                                ($customized_prod ? ' AND `id_customized_prod` = \''. $customized_prod. '\'' : '').'
 				AND `id_cart` = '.(int)$id_cart;
                 $cart_quantity = (int)Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue($sql);
                 Cache::store($cache_id, $cart_quantity);
