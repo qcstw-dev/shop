@@ -72,17 +72,18 @@ function saveCreation(id_product, id_design, custom_picture) {
                 + '&custom_picture=' + custom_picture,
         dataType: 'json',
         beforeSend: function () {
-            loading_popup();
+            loading('Loading...');
         },
         success: function (json) {
             if (json.success) {
+                loading_hide();
                 $.magnificPopup.open({
                     items: [{
                             src: $('<div class="white-popup">\n\
                             <div class="font-size-15 bold">Your Product is saved</div>\n\
                             <div><img src="' + baseDir + json.image + '" /></div>\n\
-                            <div class="btn btn-success continue pull-left">Continue creating</div>\n\
-                            <a href="' + baseDir + name_shop + '/admin/creation/summary" class="btn btn-primary pull-right">Creation summary</a>\n\
+                            <div class="btn btn-success continue pull-left"><span class="glyphicon glyphicon-chevron-left"></span> Create another product</div>\n\
+                            <a href="' + baseDir + name_shop + '/admin/creation/summary" class="btn btn-primary pull-right">Creation summary <span class="glyphicon glyphicon-chevron-right"></span></a>\n\
                             </div>'),
                             type: 'inline'
                         }]
@@ -106,7 +107,7 @@ function displayProduct(id_product) {
         data: 'controller=ajax&action=layoutmakerselect&ajax=true' + '&id_product=' + id_product,
         dataType: 'json',
         beforeSend: function () {
-            loading();
+            loading('Loading...');
         },
         success: function (json) {
             loading_hide();

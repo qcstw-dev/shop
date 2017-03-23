@@ -1,9 +1,10 @@
 var issetMoreProducts = true;
 var category = '45';
 var nbProductsToDisplay = 12;
+var loading_products = false;
 $(function () {
     $('.popup-prod-list').scroll(function () {
-        if (isScrolledIntoView($('#waypoint'))) {
+        if (isScrolledIntoView($('#waypoint')) && !loading_products && issetMoreProducts) {
             loadProducts();
         }
     });
@@ -34,6 +35,7 @@ $(function () {
         category = $(this).data('id-category');
         loadProducts(true);
         issetMoreProducts = true;
+        $('.title-category').text($(this).text());
     });
 });
 function isScrolledIntoView(elem) {
@@ -52,8 +54,10 @@ function loadProducts(reset) {
         url: baseDir,
         data: 'controller=ajaxcustomshop&action=loadproducts&ajax=true&last_range=' + (reset ? 0 : nbrProducts) + '&nb_products=' + nbProductsToDisplay + '&id_category=' + category,
         dataType: 'html',
+        async: true,
         beforeSend: function () {
             loading('Loading...');
+            loading_products = true;
         },
         success: function (html) {
             loading_hide();
@@ -66,9 +70,9 @@ function loadProducts(reset) {
             } else {
                 issetMoreProducts = false;
             }
-            console.log('enable');
+            loading_products = false;
 //            waypoint.enable();
-            Waypoint.refreshAll();
+//            Waypoint.refreshAll();
         }
     });
 }

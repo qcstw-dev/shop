@@ -24,7 +24,23 @@ class CustomShopProductCore extends ObjectModel {
             }
         }
     }
-
+    
+    public static function publishAll($iShopId) {
+        $aIdProductsPublished = [];
+        $aProducts = Db::getInstance()->executeS('
+		SELECT *
+		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '`
+		WHERE `id_shop` = ' . pSQL($iShopId));
+        foreach ($aProducts as $aProduct) {
+            if ($aProduct['product_name']) {
+                $oProduct = new CustomShopProduct($aProduct['id']);
+                $oProduct->setPublished(true);
+                $oProduct->save();
+                $aIdProductsPublished[] = $aProduct['id'];
+            }
+        }
+        return $aIdProductsPublished;
+    }
     public function setPublished($bStatus) {
         $this->published = $bStatus;
         if (!$bStatus) {

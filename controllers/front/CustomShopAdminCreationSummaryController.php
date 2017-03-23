@@ -14,13 +14,14 @@ class CustomShopAdminCreationSummaryControllerCore extends CustomShopAdminContro
         parent::initContent();
         $aCreations = CustomShopProduct::getProducts($this->custom_shop['id'], false);
         foreach ($aCreations as &$aCreation) {
+            $aCreation['original_product_name'] = Product::getProductName($aCreation['id_product']);
+            $aCreation['design'] = CustomShopDesign::getDesignById($aCreation['id_design']);
             $aCreation['is_active'] = (new Product($aCreation['id_product']))->active;
-            $iDesignPrice = CustomShopDesign::getPrice($aCreation['id_design']);
             $aQuantities = [1, 5, 10, 25, 50, 100];
             $aPrices = [];
             foreach ($aQuantities as $iQuantity) {
                 $fProductPrice = Product::getPriceStatic((int) $aCreation['id_product'], true, null, 2, null, false, true, $iQuantity);
-                $aPrices[$iQuantity] = $fProductPrice + $iDesignPrice;
+                $aPrices[$iQuantity] = $fProductPrice ;
             }
             $aCreation['prices'] = $aPrices;
         }

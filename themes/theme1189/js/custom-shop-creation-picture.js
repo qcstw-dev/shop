@@ -70,13 +70,14 @@ $(document).ready(function () {
             cache: false,
             dataType: 'json',
             async: true,
+            beforeSend: function () {
+                loading('Saving...');
+            },
             success: function (json) {
+                loading_hide();
                 if (json.success) {
-                    element.blur();
-                    saving_hide();
                     confirm();
                 } else {
-                    saving_hide();
                     popupError(json.error);
                 }
             }
@@ -92,7 +93,16 @@ $(document).ready(function () {
             if (element.val()) {
                 saveField(element, 'picture_name');
             }
-        }, 1000);
+        }, 5000);
+    });
+    $('.picture-name').live('focusout', function () {
+        if (globalTimeout !== null) {
+            clearTimeout(globalTimeout);
+        }
+        var element = $(this);
+        if (element.val()) {
+            saveField(element, 'picture_name');
+        }
     });
 });
 function deletePicture(aArg) {
@@ -105,10 +115,10 @@ function deletePicture(aArg) {
         contentType: false,
         async: true,
         beforeSend: function () {
-            loading_popup('Deleting...');
+            loading('Deleting...');
         },
         success: function (json) {
-            loading_popup_hide();
+            loading_hide();
             if (json.success) {
                 $('.block-picture-container-' + aArg['id']).fadeOut(300, function () {
                     $(this).remove();
@@ -174,8 +184,8 @@ function fileuploadListener() {
                         }
                         $('.picture-name-' + $('.fileupload').data('id-upload')).val(json.image_title);
                         $('.upload-picture-' + $('.fileupload').data('id-upload')).replaceWith(
-                            '<img class="upload-picture upload-picture-' + $('.fileupload').data('id-upload') + '" src="' + baseUri + 'img/custom_shop/picture/' + json.image_name + '" />'
-                        );
+                                '<img class="upload-picture upload-picture-' + $('.fileupload').data('id-upload') + '" src="' + baseUri + 'img/custom_shop/picture/' + json.image_name + '" />'
+                                );
                         loading_hide();
                         confirm();
                         $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.price, .picture-name').prop('disabled', false);

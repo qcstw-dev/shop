@@ -224,11 +224,18 @@ class AjaxCustomShopControllerCore extends FrontController {
         echo json_encode($result);
     }
 
+    public function displayAjaxPublishAll() {
+        $aIdProductsPublished = CustomShopProduct::publishAll(Tools::getValue('shop'));
+        echo json_encode($aIdProductsPublished);
+    }
+    
     public function displayAjaxPublish() {
         $result = [];
         $result['success'] = true;
         if (Tools::getValue('published') !== null && Tools::getValue('id_creation')) {
             $oCreation = new CustomShopProduct(Tools::getValue('id_creation'));
+            $oCreation->setProductName(Tools::getValue('product_name'));
+            $oCreation->save();
             if ($oCreation->product_name) {
                 $oCreation->setPublished((Tools::getValue('published') === 'true' ? true : false));
                 $oCreation->save();

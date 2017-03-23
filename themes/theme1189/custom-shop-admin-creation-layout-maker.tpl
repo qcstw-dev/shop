@@ -3,7 +3,7 @@
 {include file=$menu_creation}
 <div class="col-sm-9">
     <div class="panel panel-default">
-        <div class="panel-heading">Pictures selection</div>
+        <div class="panel-heading bold"><span class="font-size-15">Pictures selection</span> <span class="font-size-13">(Click on the picture to place it)</span></div>
         <div class="panel-body list-picture padding-0 padding-top-10">
             {if $pictures}
             {foreach from=$pictures item='picture'}
@@ -51,12 +51,12 @@
 <div class="clearfix"></div>
 <div class="btn-add-creation margin-bottom-10">
     <button class="btn btn-warning rotate hidden-lg col-xs-12 margin-bottom-10"><span class="glyphicon glyphicon-repeat"></span> Rotate</button>
-    <button class="btn btn-primary add-creation col-xs-12" 
+    <button class="btn btn-primary btn-lg add-creation col-xs-12" 
             rel="nofollow" title="{l s='Add to my shop'}"
             data-id-product=""
             data-id-design=""
-            data-custom-picture="">{l s='Add to my shop'}</button>
-    <button class="btn btn-default preview margin-top-10 col-xs-12"><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
+            data-custom-picture=""><span class="glyphicon glyphicon-ok font-size-15"></span> {l s='Add to my shop'}</button>
+    <button class="btn btn-warning preview margin-top-10 col-xs-12"><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
     <div class="clearfix"></div>
 </div>
 <div class="change-color-product-block background-white border padding-10" style="display: none">

@@ -109,7 +109,7 @@ function updateQty(id, op, qty) {
                 var price = jsonData.summary.products[key]['price_wt'].toFixed(2);
                 var unit_price_element = $('.unit_product_' + id);
                 unit_price_element.html(price);
-                $('.total_product_' + id).text(product['price_wt']);
+                $('.total_product_' + id).text(product['price']);
             });
             $('.ajax_cart_quantity').text(jsonData.nbTotalProducts);
             $('.cart_total').text(jsonData.total);

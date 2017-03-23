@@ -57,7 +57,7 @@ $(function () {
                             $('.btn-block-selection').removeClass('disabled');
                             if (!isLayoutMaker) {
                                 $('.designs-list').prepend('\
-                                    <div class="col-xs-1 thumbnail border-none margin-bottom-10 margin-top-10 list-item list-item-design list-item-custom-image id_' + json.image_name + ' cursor-pointer" data-original-picture="' + json.image_name + '">\n\
+                                    <div class="col-xs-1 thumbnail border-none list-item list-item-design list-item-custom-image id_' + json.image_name + ' cursor-pointer" data-original-picture="' + json.image_name + '">\n\
                                         <img class="' + (isLayoutMaker ? 'img-product' : 'popup') + ' border" src="' + dataURL + '" />\n\
                                         <span class="delete_cutom_picture cursor-pointer glyphicon glyphicon-remove" data-file-name="' + json.image_name + '" title="Remove from selection"></span>\n\
                                     </div>');

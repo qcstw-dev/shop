@@ -15,7 +15,7 @@
                                     <img src="{$link->getCatImageLink($products_categories[45]['link_rewrite'], 45, 'tm_cart_default')}" class="" alt="{$products_categories.45.name}" title="{$products_categories.45.name}" />
                                 </div>
                                 <div class="col-xs-8 padding-top-20 font-size-13 bold">
-                                    ALL
+                                    All
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -36,6 +36,7 @@
                     </ul>
                 </div>
             </div>
+            <div class="col-xs-12 font-size-15 margin-bottom-20 bold padding-bottom-5 border-bottom title-category"></div>
             <div class="clearfix"></div>
         {/if}
         {if isset($first_item_id)}
@@ -64,7 +65,7 @@
                         </div>
                         {/foreach}*}
                     </div>
-                    <div class="col-xs-12 font-size-15 bold">{convertPrice price=$product.prices.10}</div>
+                        <div class="col-xs-12 font-size-13 bold padding-bottom-5">Excluding commission: <span class="font-size-15">{convertPrice price=$product.prices.10}</span></div>
                     <div class="btn btn-success col-xs-12 btn-select-product" data-id-product="{$product.id_product}">Select</div>
                 </div>
             </div>
