@@ -34,6 +34,7 @@
             <div class="pb-left-column col-sm-6 col-md-6 col-lg-6">
                 <!-- product img-->        
                 <div id="image-block" class="clearfix{if isset($images) && count($images) > 0} is_caroucel{/if}">
+                    <div class="col-xs-12 font-size-13 margin-top-10 hidden bold product-picture-message">*Not for sell. For reference only</div>
                     {if $product->new}
                         <span class="new-box no-print">
                             <span class="new-label">{l s='New'}</span>
@@ -80,7 +81,8 @@
                         <div id="thumbs_list">
                             <ul id="thumbs_list_frame">
                                 {if isset($images)}
-                                    {foreach from=$images item=image name=thumbnails}
+                                    {assign var='counter' value=1}
+                                    {foreach from=$images key=k item=image name=thumbnails}
                                         {if preg_match('/^[0-9]+$/', $image.legend) || $image.legend == 'recess'}
                                             {continue}
                                         {else}
@@ -100,6 +102,10 @@
                                                             {assign var='img_url_small' value=$link->getImageLink($product->link_rewrite, $imageIds, 'tm_large_default')|escape:'html':'UTF-8'}
                                                             {assign var='img_url_large' value=$link->getImageLink($product->link_rewrite, $imageIds, 'tm_large_default')|escape:'html':'UTF-8'}
                                                         {/if}
+                                                        {if $counter==1}
+                                                            class="first-thumb"
+                                                        {/if}
+                                                        {$counter++}
                                                         href="javascript:void(0);"
                                                         rel="{literal}{{/literal}gallery: 'gal1', smallimage: '{$img_url_small}',largeimage: '{$img_url_large}'{literal}}{/literal}"
                                                     {else}

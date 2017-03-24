@@ -9,9 +9,9 @@
                     <span class="glyphicon glyphicon-info-sign"></span><span class="hidden-xs hidden-sm"> Info</span>
                 </div>
             </div>
-            <div class="col-xs-12 font-size-15 padding-0 margin-top-10 bold text-center">
+            <div class="col-xs-12 font-size-15 padding-0 margin-top-10 bold text-center vertical-center product-title">
                 {if $product.product_name}
-                    {$product.product_name|truncate:15:'...'|escape:'html':'UTF-8'}
+                    {$product.product_name|escape:'html':'UTF-8'}
                 {else}
                     {'Product of'|cat:$shop.title|truncate:15:'...'|escape:'html':'UTF-8'}
                 {/if}

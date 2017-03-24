@@ -20,7 +20,7 @@
                 <input class="creation-name form-control margin-top-5 margin-bottom-5 text-center" 
                        data-id-creation="{$creation.id}" 
                        placeholder="Product name" 
-                       value="{if $creation.product_name}{$creation.product_name}{else}{$creation.original_product_name}{/if}"/>
+                       value="{if $creation.product_name}{$creation.product_name}{else}{$creation.design.name} {$creation.original_product_name}{/if}"/>
             </div>
             <div class="col-xs-12">
                 <div class="thumbnail margin-bottom-0">

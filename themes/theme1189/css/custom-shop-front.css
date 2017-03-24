@@ -54,7 +54,10 @@ a, a:hover {
     position: absolute;
     right: 0;
 }
-
+.product-title {
+    height: 50px;
+    overflow: hidden;
+}
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
     .container {
