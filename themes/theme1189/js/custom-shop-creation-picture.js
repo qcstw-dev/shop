@@ -15,7 +15,7 @@ $(document).ready(function () {
         if ($(this).data('db-id')) {
             var db_id = $(this).data('db-id');
             var id = $(this).data('id');
-            popupChoice('<div>Every products with this picture will be also deleted</div>', {
+            popupChoice('Every products with this picture will be also deleted', {
                 'function_name': 'deletePicture',
                 'arguments': {
                     'db_id': db_id,

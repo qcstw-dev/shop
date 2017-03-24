@@ -1,30 +1,50 @@
 $(function () {
     fileuploadListener();
+    $('.deactivated').on('change', function (e) {
+        var deactivated = $(this).is(":checked") ? 1 : 0;
+        if (deactivated) {
+            popupChoice('Are you sure to deactivate your shop?',
+                    {
+                        'function_name': 'checkDeactivate',
+                        'arguments': true
+                    },
+                    {
+                        'function_name': 'checkDeactivate',
+                        'arguments': false
+                    });
+        } else {
+            $(this).prop('checked', false);
+        }
+    });
     $('.form-remove-btn').live('click', function () {
         var type = $(this).data('type');
         var img_name = $('.form-preview-' + type).data('img-name');
         $.ajax({
-        type: 'POST',
-        url: baseDir + 'index.php?controller=ajaxcustomshop&action=removeLogoOrHeader&ajax=true&type=' +type+ '&img_name='+ img_name + '&shop=' + id_shop,
-        cache: false,
-        dataType: 'json',
-        async: true,
-        beforeSend: function () {
-            loading('Please wait...');
-        },
-        success: function (json) {
-            if (json.success) {
-                loading_hide();
-                $('.form-preview-' + type).remove();
-                $('.default-'+type).removeClass('hidden');
-                $('.form-remove-btn[data-type="'+type+'"]').addClass('hidden');
-            } else {
-                popupError(json.error);
+            type: 'POST',
+            url: baseDir + 'index.php?controller=ajaxcustomshop&action=removeLogoOrHeader&ajax=true&type=' + type + '&img_name=' + img_name + '&shop=' + id_shop,
+            cache: false,
+            dataType: 'json',
+            async: true,
+            beforeSend: function () {
+                loading('Please wait...');
+            },
+            success: function (json) {
+                if (json.success) {
+                    loading_hide();
+                    $('.form-preview-' + type).remove();
+                    $('.default-' + type).removeClass('hidden');
+                    $('.form-remove-btn[data-type="' + type + '"]').addClass('hidden');
+                } else {
+                    popupError(json.error);
+                }
             }
-        }
-    });
+        });
     });
 });
+
+function checkDeactivate(value) {
+    $('.deactivated').prop('checked', value);
+}
 function fileuploadListener() {
     $('.form-upload-btn').live('click', function (e) {
         $('.fileupload-' + $(this).data('type')).trigger('click');
@@ -77,9 +97,9 @@ function fileuploadListener() {
                         loading_popup_hide();
                         confirm();
                         $('.form-preview-' + type).remove();
-                        $('.form-' + type + '-area').append('<img class="form-preview-' + type + ' popup-picture" data-img-name="'+json.image_name+'" src="' + baseUri + 'img/custom_shop/' + type + '/' + json.image_name + '" />');
-                        $('.form-remove-btn[data-type="'+type+'"]').removeClass('hidden');
-                        $('.default-'+type).addClass('hidden');
+                        $('.form-' + type + '-area').append('<img class="form-preview-' + type + ' popup-picture" data-img-name="' + json.image_name + '" src="' + baseUri + 'img/custom_shop/' + type + '/' + json.image_name + '" />');
+                        $('.form-remove-btn[data-type="' + type + '"]').removeClass('hidden');
+                        $('.default-' + type).addClass('hidden');
                     } else {
                         if (json.error) {
                             popupError(json.error);

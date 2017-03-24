@@ -65,10 +65,10 @@ function loading_popup(custom_message) {
     });
 }
 function popupError(error) {
-    popupMessage('<div class="glyphicon glyphicon-warning-sign font-size-30 color-red"></div><div>' + error + '</div>');
+    popupMessage('<div class="glyphicon glyphicon-warning-sign font-size-30 color-red"></div><div class="bold">' + error + '</div>');
 }
-function popupChoice(html, aFunction) {
-    html = '<div class="glyphicon glyphicon-warning-sign font-size-30 color-red"></div><div>' + html + '</div>';
+function popupChoice(html, aFunction, aFunctionCancel) {
+    html = '<div class="glyphicon glyphicon-warning-sign font-size-30 color-red"></div><div class="bold">' + html + '</div>';
     html += '<div class="col-xs-6 margin-top-10 margin-auto">\n\
                 <div class="btn btn-default pull-left cancel">Cancel</div>\n\
                 <div class="btn btn-primary pull-right confirm-btn">Confirm</div>\n\
@@ -76,6 +76,9 @@ function popupChoice(html, aFunction) {
     popupMessage(html);
     $('.cancel').click(function () {
         $.magnificPopup.close();
+        if(aFunctionCancel) {
+            window[aFunctionCancel['function_name']](aFunctionCancel['arguments']);
+        }
     });
     $('.confirm-btn').click(function () {
         $.magnificPopup.close();

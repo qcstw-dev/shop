@@ -146,7 +146,7 @@
                     </header>
                 </div>
                 <div class="columns-container">
-                    <div id="columns" class="margin-auto" style="width: 80%">
+                    <div id="columns" class="container padding-bottom-0">
                         {if $page_name == 'category'
                         || $page_name =='design'
                         || $page_name =='layoutmaker'
@@ -162,9 +162,12 @@
                     }
                     {include file="$tpl_dir./breadcrumb.tpl"}
                 {/if}
-                <div id="slider_row" class="row">
-                    <div id="top_column" class="center_column col-xs-12">{hook h="displayTopColumn"}</div>
-                </div>
+            </div>
+            <div id="slider_row" class="">
+                <div id="top_column" class="center_column col-xs-12">{hook h="displayTopColumn"}</div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="columns" class="container">
                 <div class="row">
                     <div class="large-left
                          {if $page_name =='layoutmaker' 

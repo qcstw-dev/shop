@@ -33,7 +33,7 @@
         </div>
         <span class="text">Saving</span></div>
     <div class="panel panel-success col-md-2 vertical-center shadow confirm" style="display: none;">
-        <span class="glyphicon glyphicon-ok font-size-40 color-green"></span> <span class="text">Saved</span>
+        <span class="glyphicon glyphicon-ok font-size-30 color-green"></span> <span class="text">Saved</span>
     </div>
     <img class="hidden" src="{$base_uri}img/loader.gif" />
     <div class="container">

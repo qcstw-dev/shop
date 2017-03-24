@@ -56,7 +56,7 @@
                 </div>
                 <div class="header-label">
                     <span class="shop-title">{if $shop.title}{$shop.title|truncate:15:'...'|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
-                    <span class="shop-motto">"{if $shop.motto}{$shop.motto|truncate:68:'...'|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
+                    <span class="shop-motto">"{if $shop.motto}{$shop.motto|truncate:113:'...'|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
                 </div>
             </div>
         </div>

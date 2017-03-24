@@ -102,7 +102,7 @@
         </div>
         <div class="form-row">
             <label class="cursor-pointer font-size-10 pull-right" for="deactivate-shop">
-                <input id="deactivate-shop" name="deactivated" type="checkbox" {if $shop.deactivated}checked{/if}> Shop deactivated
+                <input id="deactivate-shop" name="deactivated" class="deactivated" type="checkbox" {if $shop.deactivated}checked{/if}> Shop deactivated
             </label>
             <div class="clearfix"></div>
         </div>

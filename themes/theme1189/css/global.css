@@ -688,7 +688,10 @@ pre {
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll; }
-
+#slider_row {
+    width: 80%;
+    margin: auto;
+}
 .container {
   margin-right: auto;
   margin-left: auto;

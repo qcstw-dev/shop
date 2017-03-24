@@ -260,6 +260,9 @@ ol, ul {
 .padding-right-50 {
     padding-right: 50px !important;
 }
+.padding-bottom-0 {
+    padding-bottom: 0 !important;
+}
 .padding-bottom-5 {
     padding-bottom: 5px !important;
 }
