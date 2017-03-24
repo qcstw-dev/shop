@@ -35,7 +35,7 @@
     <div class="alert alert-info margin-bottom-0 text-center empty-cart-message" {if $products}style="display: none"{/if}>
         {l s='Your cart is empty'}
     </div>
-    <a class="btn btn-primary checkout-btn col-xs-12" {if !$products}style="display: none"{/if} href="{$base_dir}shop/{$custom_shop_name}/checkout" title="">{l s='Checkout'} <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a class="btn btn-success checkout-btn col-xs-12" {if !$products}style="display: none"{/if} href="{$base_dir}shop/{$custom_shop_name}/checkout" title="">{l s='Checkout'} <span class="glyphicon glyphicon-chevron-right"></span></a>
     <div class="clearfix"></div>
 </div>
 <div class="clearfix"></div>

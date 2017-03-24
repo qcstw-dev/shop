@@ -1,6 +1,7 @@
 {include file=$header}
 {include file=$menu}
 <div class="font-size-20 text-center margin-top-20">User account</div>
+<div class="alert alert-warning font-size-13 bold text-center margin-top-10"><span class="glyphicon glyphicon-warning-sign"></span> To be able to pay your commissions, we need you to fill in all the following details</div>
 <div class="bold margin-bottom-10">User ID: {$account.id}</div>
 {if !$form_errors && $submitted}
     <div class="alert alert-success text-center">
@@ -106,7 +107,7 @@
         </div>
     </form>
 </div>
-<div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="public">
+{*<div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="public">
     <span class="chevron glyphicon glyphicon-{if $forms_status['public-info-form']}chevron-right{else}chevron-down{/if}"></span> Public information
     {if $forms_status['public-info-form']}<span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>{/if}
 </div>
@@ -136,7 +137,7 @@
             <input type="submit" class="btn btn-primary pull-right"/>
         </div>
     </form>
-</div>
+</div>*}
 <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="bank">
     <span class="chevron glyphicon glyphicon-{if $forms_status['bank-detail-form']}chevron-right{else}chevron-down{/if}"></span> Bank detail
     {if $forms_status['bank-detail-form']}<span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>{/if}
@@ -146,7 +147,6 @@
     <form method="post" class="bank-detail-form">
         <input type="hidden" name="form_type" value="bank-detail-form">
         <div class="alert alert-danger error-message error-message-email  text-center">Please enter a valid email address</div>
-        <p class="bold">Needed to pay your commission</p>
         <div class="border padding-10">
             <label for="bank" class="cursor-pointer padding-10 col-xs-11">Credit card</label> <div class="col-xs-1 padding-10"><input type="radio" id="bank" name="payment" value="bank" class="payment" data-payment="bank" {if $account.account_number}checked{/if}/></div>
             <div class="payment-block payment-bank" {if $account.account_number}style="display:block"{/if}>

@@ -23,6 +23,24 @@
         </div>
         <div class="form-row">
             <div class="form-label">
+                <label>Website</label>
+            </div>
+            <div class="form-input">
+                <input class="form-control" type="text" name="website" value="{$shop.website}" autocomplete="off"/>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                <label>Shop description</label>
+            </div>
+            <div class="form-input">
+                <textarea class="form-control" name="description" placeholder="" >{$shop.description}</textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
                 <label>Shop logo*</label>
                 <div class="font-size-10">*Perfect match size 100px x 100px</div>
             </div>

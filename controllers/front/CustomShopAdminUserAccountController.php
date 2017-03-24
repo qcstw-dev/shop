@@ -30,11 +30,11 @@ class CustomShopAdminUserAccountControllerCore extends CustomShopAdminController
             $oCustomShopAccount->newsletter = (Tools::getValue('newsletter') == 'on' ? 1 : 0);
             $bFormSubmitted = true;
         }
-        if (Tools::getValue('form_type') == 'public-info-form') {
-            $oCustomShop->website = Tools::getValue('website');
-            $oCustomShop->description = Tools::getValue('description');
-            $bFormSubmitted = true;
-        }
+//        if (Tools::getValue('form_type') == 'public-info-form') {
+//            $oCustomShop->website = Tools::getValue('website');
+//            $oCustomShop->description = Tools::getValue('description');
+//            $bFormSubmitted = true;
+//        }
         if (Tools::getValue('form_type') == 'password-change-form') {
             if (Tools::getValue('current_password')) {
                 if (Tools::getValue('current_password') == $this->custom_shop_account['passwd']) {

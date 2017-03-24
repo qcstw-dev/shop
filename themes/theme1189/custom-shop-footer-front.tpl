@@ -3,6 +3,11 @@
 <div class="col-xs-12 margin-top-20 border-top border-bottom padding-10 background-light">
     <div class="container background-light">
         <div class="col-xs-11">
+            {if $shop.website}
+                <div>
+                    <span class="bold">Website:</span> <a href="{$shop.website}" target="_blank" title="{$shop.title}">{$shop.website}</a>
+                </div>
+            {/if}
             <div class="bold">
                 Website short description:
             </div>
