@@ -177,6 +177,22 @@ class AjaxCustomShopControllerCore extends FrontController {
         echo Media::minifyHTML($rendered_content);
     }
 
+    public function displayAjaxRemoveLogoOrHeader() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('type') && Tools::getValue('img_name') && Tools::getValue('shop')) {
+            $oShop = new CustomShop(Tools::getValue('shop'));
+            $sFolder = 'img/custom_shop/' . Tools::getValue('type') . '/';
+            if (unlink($sFolder . $oShop->{Tools::getValue('type')})) {
+                $oShop->{Tools::getValue('type')} = '';
+                $oShop->save();
+            }
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Information missing';
+        }
+        echo json_encode($result);
+    }
     public function displayAjaxSaveShopImage() {
         $result = [];
         $result['success'] = true;

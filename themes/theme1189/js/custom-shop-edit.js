@@ -1,9 +1,33 @@
 $(function () {
     fileuploadListener();
+    $('.form-remove-btn').live('click', function () {
+        var type = $(this).data('type');
+        var img_name = $('.form-preview-' + type).data('img-name');
+        $.ajax({
+        type: 'POST',
+        url: baseDir + 'index.php?controller=ajaxcustomshop&action=removeLogoOrHeader&ajax=true&type=' +type+ '&img_name='+ img_name + '&shop=' + id_shop,
+        cache: false,
+        dataType: 'json',
+        async: true,
+        beforeSend: function () {
+            loading('Please wait...');
+        },
+        success: function (json) {
+            if (json.success) {
+                loading_hide();
+                $('.form-preview-' + type).remove();
+                $('.default-'+type).removeClass('hidden');
+                $('.form-remove-btn[data-type="'+type+'"]').addClass('hidden');
+            } else {
+                popupError(json.error);
+            }
+        }
+    });
+    });
 });
 function fileuploadListener() {
     $('.form-upload-btn').live('click', function (e) {
-        $('.fileupload-'+$(this).data('type')).trigger('click');
+        $('.fileupload-' + $(this).data('type')).trigger('click');
     });
     limit = 1;
     $('.fileupload').fileupload({
@@ -21,9 +45,8 @@ function fileuploadListener() {
         limitMultiFileUploads: limit
     }).on('fileuploadadd', function (e, data) {
         // loading GIF
-        saving();
+        loading_popup('Uploading...');
     }).on('fileuploadprocessalways', function (e, data) {
-        saving();
         var index = data.index,
                 file = data.files[index],
                 node = $(data.context);
@@ -51,12 +74,12 @@ function fileuploadListener() {
                 success: function (json) {
                     if (json.success === true) {
                         // append PICTURE
-                        saving_hide();
+                        loading_popup_hide();
                         confirm();
-                        $('.form-preview-'+type).remove();
-                        $('.form-' + type +'-area').append(
-                            '<img class="form-preview-'+type+' popup-picture" src="' + baseUri + 'img/custom_shop/'+type+'/' + json.image_name + '" />'
-                        );
+                        $('.form-preview-' + type).remove();
+                        $('.form-' + type + '-area').append('<img class="form-preview-' + type + ' popup-picture" data-img-name="'+json.image_name+'" src="' + baseUri + 'img/custom_shop/' + type + '/' + json.image_name + '" />');
+                        $('.form-remove-btn[data-type="'+type+'"]').removeClass('hidden');
+                        $('.default-'+type).addClass('hidden');
                     } else {
                         if (json.error) {
                             popupError(json.error);

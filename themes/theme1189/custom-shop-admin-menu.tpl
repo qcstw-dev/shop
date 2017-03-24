@@ -9,7 +9,7 @@
         <a href="{$base_uri}{$custom_shop_name}/admin/shop" class="list-group-item{if in_array($page_name, [
         'customshopadminshop',
         'customshopadminshopedit'
-       ])} active{/if}">Shop</a>
+       ])} active{/if}">Your shop</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/dashboard" class="list-group-item{if in_array($page_name, [
         'customshopadmindashboard'
        ])} active{/if}">Dashboard</a>

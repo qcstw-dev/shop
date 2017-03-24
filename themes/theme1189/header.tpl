@@ -146,7 +146,7 @@
                     </header>
                 </div>
                 <div class="columns-container">
-                    <div id="columns" class="container">
+                    <div id="columns" class="margin-auto" style="width: 80%">
                         {if $page_name == 'category'
                         || $page_name =='design'
                         || $page_name =='layoutmaker'

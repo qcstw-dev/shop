@@ -42,6 +42,8 @@ class CustomShopControllerCore extends FrontController {
         $this->context->smarty->assign(array(
             'shop' => $this->custom_shop,
             'account' => $this->custom_shop_account,
+            'logo_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_logo.jpg',
+            'header_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_header.jpg',
             'logo_gift' => $this->context->link->getMediaLink(_PS_IMG_ . Configuration::get('PS_LOGO')),
             'shop_name' => $this->context->shop->name,
             'custom_shop_name' => Tools::getValue('shop_name') ? : '',

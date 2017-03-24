@@ -96,7 +96,7 @@ function popupMessage(html, style) {
     });
 }
 function popupConfirm(custom_text) {
-    popupMessage('<span class="glyphicon glyphicon-ok color-green font-size-20"></span> ' + (custom_text ? custom_text : 'Success') );
+    popupMessage('<span class="glyphicon glyphicon-ok color-green font-size-20"></span> ' + (custom_text ? custom_text : 'Success'));
     setTimeout(function () {
         $.magnificPopup.close();
     }, 700);

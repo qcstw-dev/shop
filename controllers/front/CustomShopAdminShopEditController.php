@@ -24,7 +24,6 @@ class CustomShopAdminShopEditControllerCore extends CustomShopAdminControllerCor
             }
             if (!isset($_POST['deactivated'])) {
                 $oCustomShop->deactivated = 0;
-                
             }
             $oCustomShop->save();
             // refresh info

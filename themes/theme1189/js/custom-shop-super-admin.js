@@ -1,6 +1,5 @@
 $('.checkbox-deactivate').on('change', function () {
     var deactivated = $(this).is(":checked") ? 1 : 0;
-    var id_shop = $(this).data('id-shop');
     $.ajax({
         type: 'POST',
         url: baseDir + 'index.php?controller=ajaxcustomshop&action=activatedeactivateshop&ajax=true&deactivated=' + deactivated + '&shop=' + id_shop,
