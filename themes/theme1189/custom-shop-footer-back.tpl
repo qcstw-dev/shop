@@ -53,6 +53,7 @@
 {if $page_name == 'customshopadminuseraccount'}
     <script type="text/javascript" src="{$js_dir}custom-shop-form-valid.js"></script>
     <script type="text/javascript" src="{$js_dir}custom-shop-user-account.js"></script>
+    <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
 {/if}
 {if $is_super_admin}
     <script type="text/javascript" src="{$js_dir}custom-shop-super-admin.js"></script>

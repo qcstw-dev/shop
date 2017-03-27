@@ -92,7 +92,7 @@ class CustomShopAdminUserAccountControllerCore extends CustomShopAdminController
 
         $aFormsStatus = [
             'personal-info-form' => (
-            $this->custom_shop_account['firstname'] && $this->custom_shop_account['lastname'] && $this->custom_shop_account['company'] && $this->custom_shop_account['address'] && $this->custom_shop_account['zip'] && $this->custom_shop_account['city'] && $this->custom_shop_account['country'] && $this->custom_shop_account['phone']),
+            $this->custom_shop_account['firstname'] && $this->custom_shop_account['lastname'] && $this->custom_shop_account['address'] && $this->custom_shop_account['city'] && $this->custom_shop_account['country'] && $this->custom_shop_account['phone']),
             'public-info-form' => (
             $this->custom_shop['website'] && $this->custom_shop['description']),
             'bank-detail-form' => (

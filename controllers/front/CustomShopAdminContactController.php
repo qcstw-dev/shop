@@ -38,7 +38,7 @@ class CustomShopAdminContactControllerCore extends CustomShopAdminControllerCore
             }
         } else if ((Tools::getValue('subject') && !Tools::getValue('message')) || (!Tools::getValue('subject') && Tools::getValue('message'))) {
             $aSubmission['success'] = false;
-            $aSubmission['error'] = 'Please fill both subject and message';
+            $aSubmission['error'] = 'Please fill both subject and message fields';
         }
         $this->context->smarty->assign([
             'submission' => $aSubmission,

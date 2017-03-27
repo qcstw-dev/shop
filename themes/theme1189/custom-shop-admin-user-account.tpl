@@ -15,27 +15,32 @@
 </div>
 <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="perso">
     <span class="chevron glyphicon glyphicon-{if $forms_status['personal-info-form']}chevron-right{else}chevron-down{/if}"></span> Personal information
-    {if $forms_status['personal-info-form']}<span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>{/if}
+    {if $forms_status['personal-info-form']}
+        <span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>
+    {else}
+        <span class="glyphicon glyphicon-remove-circle font-size-20 pull-right bold color-red"></span>
+    {/if}
 </div>
 <div class="clearfix"></div>
 <div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-perso" {if $forms_status['personal-info-form']}style="display: none;"{/if}>
     <form method="post" class="personal-info-form">
         <input type="hidden" name="form_type" value="personal-info-form">
+        <div class="alert alert-danger error-message error-message-empty-field">Please fill the required fields</div>
         <div class="form-row">
             <div class="form-label">
-                <label>First name</label>
+                <label>First name*</label>
             </div>
             <div class="form-input">
-                <input class="form-control" type="text" name="firstname" value="{$account.firstname}" autocomplete="off"/>
+                <input class="form-control required" type="text" name="firstname" value="{$account.firstname}" autocomplete="off"/>
             </div>
             <div class="clearfix"></div>
         </div>
         <div class="form-row">
             <div class="form-label">
-                <label>Last name</label>
+                <label>Last name*</label>
             </div>
             <div class="form-input">
-                <input class="form-control" type="text" name="lastname" value="{$account.lastname}" autocomplete="off"/>
+                <input class="form-control required" type="text" name="lastname" value="{$account.lastname}" autocomplete="off"/>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -50,10 +55,10 @@
         </div>
         <div class="form-row">
             <div class="form-label">
-                <label>Street address</label>
+                <label>Street address*</label>
             </div>
             <div class="form-input">
-                <textarea class="form-control" name="address">{$account.address}</textarea>
+                <textarea class="form-control required" name="address">{$account.address}</textarea>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -68,28 +73,28 @@
         </div>
         <div class="form-row">
             <div class="form-label">
-                <label>City</label>
+                <label>City*</label>
             </div>
             <div class="form-input">
-                <input class="form-control" type="text" name="city" value="{$account.city}" autocomplete="off"/>
+                <input class="form-control required" type="text" name="city" value="{$account.city}" autocomplete="off"/>
             </div>
             <div class="clearfix"></div>
         </div>
         <div class="form-row">
             <div class="form-label">
-                <label>Country</label>
+                <label>Country*</label>
             </div>
             <div class="form-input">
-                <select id="id_country" class="form-control" name="country">{$countries_list}</select>
+                <select id="id_country" class="form-control required" name="country">{$countries_list}</select>
             </div>
             <div class="clearfix"></div>
         </div>
         <div class="form-row">
             <div class="form-label">
-                <label>Phone</label>
+                <label>Phone*</label>
             </div>
             <div class="form-input">
-                <input class="form-control" type="text" name="phone" value="{$account.phone}" autocomplete="off"/>
+                <input class="form-control required" type="text" name="phone" value="{$account.phone}" autocomplete="off"/>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -107,40 +112,13 @@
         </div>
     </form>
 </div>
-{*<div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="public">
-    <span class="chevron glyphicon glyphicon-{if $forms_status['public-info-form']}chevron-right{else}chevron-down{/if}"></span> Public information
-    {if $forms_status['public-info-form']}<span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>{/if}
-</div>
-<div class="clearfix"></div>
-<div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-public" {if $forms_status['public-info-form']}style="display: none;"{/if}>
-    <form method="post" class="public-info-form">
-        <input type="hidden" name="form_type" value="public-info-form">
-        <div class="form-row">
-            <div class="form-label">
-                <label>Website</label>
-            </div>
-            <div class="form-input">
-                <input class="form-control" type="text" name="website" value="{$shop.website}" autocomplete="off"/>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="form-row">
-            <div class="form-label">
-                <label>Shop description</label>
-            </div>
-            <div class="form-input">
-                <textarea class="form-control" name="description" placeholder="" >{$shop.description}</textarea>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="col-xs-12 margin-bottom-20">
-            <input type="submit" class="btn btn-primary pull-right"/>
-        </div>
-    </form>
-</div>*}
 <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="bank">
     <span class="chevron glyphicon glyphicon-{if $forms_status['bank-detail-form']}chevron-right{else}chevron-down{/if}"></span> Bank detail
-    {if $forms_status['bank-detail-form']}<span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>{/if}
+    {if $forms_status['bank-detail-form']}
+        <span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>
+    {else}
+        <span class="glyphicon glyphicon-remove-circle font-size-20 pull-right bold color-red"></span>
+    {/if}
 </div>
 <div class="clearfix"></div>
 <div class="col-xs-12 col-lg-6 margin-auto dropdown-block dropdown-block-bank" {if $forms_status['bank-detail-form']}style="display: none;"{/if}>
@@ -229,7 +207,11 @@
 </div>
 <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="payment">
     <span class="chevron glyphicon glyphicon-{if $forms_status['minimum-to-reach-form']}chevron-right{else}chevron-down{/if}"></span> Payment settings
-    {if $forms_status['minimum-to-reach-form']}<span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>{/if}
+    {if $forms_status['minimum-to-reach-form']}
+        <span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>
+    {else}
+        <span class="glyphicon glyphicon-remove-circle font-size-20 pull-right bold color-red"></span>
+    {/if}
 </div>
 <div class="clearfix"></div>
 <div class="col-xs-12 padding-bottom-10 margin-auto dropdown-block dropdown-block-payment" {if $forms_status['minimum-to-reach-form']}style="display: none;"{/if}>
@@ -242,7 +224,7 @@
         </p>
         <p>- Every payment through wire transfer is subject to a $___ fix charge.</p>
         <p>- Every payment through PayPal is subject to a ___% charge on the total transfered amount.</p>
-        <p>- Payment frequency will be done weekly as far as payment release level is met</p>
+        <p>- Commission payment will be done on 15th every month as far as Payment release level is met</p>
     </form>
 </div>
 <div class="clearfix"></div>
