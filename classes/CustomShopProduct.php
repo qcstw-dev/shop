@@ -96,12 +96,14 @@ class CustomShopProductCore extends ObjectModel {
 		WHERE `id_design` = ' . pSQL($iDesignId));
     }
 
-    public static function getProducts($iShopId, $bOnlyPublished = true) {
+    public static function getProducts($iShopId, $bOnlyPublished = true, $aCategories = []) {
         return Db::getInstance()->executeS('
 		SELECT *
-		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '`
+		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '` csp '.($aCategories ? ', '. _DB_PREFIX_ .'category_product as cp' : '') .'
 		WHERE `id_shop` = ' . pSQL($iShopId)
-                        . ($bOnlyPublished ? ' AND `published` = 1' : ''));
+                        . ($bOnlyPublished ? ' AND csp.`published` = 1' : '')
+                        . ($aCategories ? ' AND csp.`id_product` = cp.`id_product` AND cp.`id_category` IN ('.  implode(',', $aCategories).')' : '')
+                );
     }
 
     public function delete() {

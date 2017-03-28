@@ -57,9 +57,10 @@ class DispatcherCore
         ),
         'custom_shop_prod' => array(
             'controller' =>    'customshopfronthome',
-            'rule' =>        'shop/{shop_name}',
+            'rule' =>        'shop/{shop_name}/{cat}',
             'keywords' => array(
-                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name')
+                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name'),
+                'cat' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'cat')
             ),
         ),
         'custom_shop_front_home' => array(

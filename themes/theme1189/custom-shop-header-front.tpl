@@ -73,7 +73,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">Home</a></li>
+                        <li class="{if !$cat}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">Home</a></li>
+                        {foreach from=$categories item='category'}
+                            <li class="{if $cat == $category.link_rewrite}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}/{$category.link_rewrite}" title="{$category.name}">{$category.name}</a></li>
+                        {/foreach}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="margin-right-20">
