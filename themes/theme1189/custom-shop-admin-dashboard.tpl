@@ -3,22 +3,22 @@
 <div class="key-stats-container">
     <div class="key-stats-block">
         Total number of orders
-        <div class="key-stats-number">{$current_situation.orders}</div>
-        <div class="key-stats-number-all-times">Since shop opening: {convertPrice price=$nb_orders}</div>
+        <div class="key-stats-number">{if $current_situation.orders}{$current_situation.orders}{else}0{/if}</div>
+        <div class="key-stats-number-all-times">Since shop opening: {$nb_orders}</div>
     </div>
     <div class="key-stats-block">
         Total products sold
-        <div class="key-stats-number">{$current_situation.quantity}</div>
+        <div class="key-stats-number">{if $current_situation.quantity}{$current_situation.quantity}{else}0{/if}</div>
         <div class="key-stats-number-all-times">Since shop opening: {$nb_products_sold}</div>
     </div>
     <div class="key-stats-block">
         Total sales amount
-        <div class="key-stats-number">{convertPrice price=$current_situation.total_sales}</div>
+        <div class="key-stats-number">{if $current_situation.total_sales}{convertPrice price=$current_situation.total_sales}{else}{convertPrice price=0}{/if}</div>
         <div class="key-stats-number-all-times">Since shop opening: {convertPrice price=$total_sales_amount}</div>
     </div>
     <div class="key-stats-block">
         Total commission
-        <div class="key-stats-number">{convertPrice price=$current_situation.total_comission}</div>
+        <div class="key-stats-number">{if $current_situation.total_comission}{convertPrice price=$current_situation.total_comission}{else}{convertPrice price=0}{/if}</div>
         <div class="key-stats-number-all-times">Since shop opening: {convertPrice price=$total_comission}</div>
     </div>
     <div class="clearfix"></div>
@@ -86,12 +86,4 @@
         {/foreach}
     </tbody>
 </table>
-{if $bills}
-    <div class="col-xs-12">
-        <div class="bold">Bills History</div>
-        {foreach from=$bills item='bill'}
-            <li>{$bill.date} - <a href="{$base_dir}index.php?controller=customshoppdfbill&id_bill={$bill.id}" target="_blank" title="Download bill"><span class="fa fa-file-pdf-o"></span> Download</a></li>
-            {/foreach}
-    </div>
-{/if}
 {include file=$footer}

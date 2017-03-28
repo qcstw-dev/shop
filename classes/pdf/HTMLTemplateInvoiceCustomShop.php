@@ -69,6 +69,7 @@ class HTMLTemplateInvoiceCustomShopCore extends HTMLTemplate
     {
         
         $data = array(
+            'id_bill' => $this->bill_info->id,
             'date' => $this->bill_info->date,
             'total' => $this->bill_info->total,
             'orders' => $this->bill_info->orders,
@@ -98,7 +99,7 @@ class HTMLTemplateInvoiceCustomShopCore extends HTMLTemplate
      */
     public function getBulkFilename()
     {
-        return $this->bill_info['date'].'-giftattitude-'.'bill.pdf';
+        return $this->bill_info->date.'-'. $this->bill_info->id .'-'. $this->bill_info->amount .'.pdf';
     }
 
     /**
@@ -108,6 +109,6 @@ class HTMLTemplateInvoiceCustomShopCore extends HTMLTemplate
      */
     public function getFilename()
     {
-        return $this->bill_info->date.'-giftattitude-'.'bill.pdf';
+        return $this->bill_info->date.'-'. $this->bill_info->id .'-'. $this->bill_info->amount .'.pdf';
     }
 }

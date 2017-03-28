@@ -6,7 +6,6 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
      * Assign template vars related to page content
      * @see FrontController::initContent()
      */
-
     public function init() {
         parent::init();
         if (Tools::getIsset('disconnect')) {
@@ -16,7 +15,7 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
 
     public function initContent() {
         parent::initContent();
-        
+
         $sErrorMessage = '';
         $sLogin = 'qcsasia';
         $sPassword = 'ab119955CD';
@@ -31,19 +30,32 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
                 }
             }
         }
-        
+
         $aShops = [];
         if ($this->context->cookie->__get('custom_shop_loggedin_super')) {
             $aShops = CustomShop::getAllShops();
             foreach ($aShops as &$aShop) {
                 $aShop['customer'] = CustomShopAccount::getAccountById($aShop['id_account']);
                 $aCurrentSituation = CustomShop::getCurrentSituation($aShop['id']);
-                $aResultsFromAllTimes = CustomShop::getResultsFromAllTimes($aShop['id']);
-                $aShop['total_comission_from_all_times'] = $aResultsFromAllTimes['total_comission'];
+                $aOrders = CustomShop::getOrders($aShop['id']);
+                $iTotalProductsSold = 0;
+                $fTotalSalesAmount = 0;
+                $fTotalComission = 0;
+                $aNbOrders = ['ids' => [], 'nbr' => 0];
+                foreach ($aOrders as &$aOrder) {
+                    $iTotalProductsSold += $aOrder['quantity'];
+                    $fTotalSalesAmount += $aOrder['product_price'] * $aOrder['quantity'];
+                    $fTotalComission += ($aOrder['design_price'] * $aOrder['quantity']);
+                    if (!in_array($aOrder['id_order'], $aNbOrders['ids'])) {
+                        $aNbOrders['ids'][] = $aOrder['id_order'];
+                        $aNbOrders['nbr'] ++;
+                    }
+                }
+                $aShop['total_comission_from_all_times'] = $fTotalComission;
                 $aShop['total_comission'] = $aCurrentSituation['total_comission'];
-                $aShop['total_sales_from_all_times'] = $aResultsFromAllTimes['total_sales'];
+                $aShop['total_sales_from_all_times'] = $fTotalSalesAmount;
                 $aShop['total_sales'] = $aCurrentSituation['total_sales'];
-                $aShop['quantity'] = $aCurrentSituation['quantity'];
+                $aShop['quantity'] = $iTotalProductsSold;
                 $aShop['bill'] = CustomShopBillingHistory::getBillingById($aShop['id'], 'shop');
                 $aShop['minimum_to_reach'] = $aShop['minimum_to_reach'] ? : 50;
             }
@@ -56,7 +68,7 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
             'footer' => _PS_THEME_DIR_ . 'custom-shop-footer-back.tpl',
             'error_message' => $sErrorMessage
         ]);
-        
+
         $this->setTemplate(_PS_THEME_DIR_ . 'custom-shop-super-admin.tpl');
     }
 

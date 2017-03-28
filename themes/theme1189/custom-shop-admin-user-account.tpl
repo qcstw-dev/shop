@@ -206,7 +206,7 @@
     </form>
 </div>
 <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="payment">
-    <span class="chevron glyphicon glyphicon-{if $forms_status['minimum-to-reach-form']}chevron-right{else}chevron-down{/if}"></span> Payment settings
+    <span class="chevron glyphicon glyphicon-{if $forms_status['minimum-to-reach-form']}chevron-right{else}chevron-down{/if}"></span> Payment settings & billing
     {if $forms_status['minimum-to-reach-form']}
         <span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>
     {else}
@@ -226,6 +226,18 @@
         <p>- Every payment through PayPal is subject to a ___% charge on the total transfered amount.</p>
         <p>- Commission payment will be done on 15th every month as far as Payment release level is met</p>
     </form>
+    {if $bills}
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="bold">Bills History</div>
+            {foreach from=$bills item='bill'}
+                <li>{$bill.date} - 
+                    <a href="{$base_dir}index.php?controller=customshoppdfbill&id_bill={$bill.id}" target="_blank" title="Download bill">
+                        <span class="fa fa-file-pdf-o"></span> Download
+                    </a>
+                </li>
+            {/foreach}
+        </div>
+    {/if}
 </div>
 <div class="clearfix"></div>
 <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="password">

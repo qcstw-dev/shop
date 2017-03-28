@@ -100,7 +100,8 @@ class CustomShopAdminUserAccountControllerCore extends CustomShopAdminController
             'minimum-to-reach-form' => $this->custom_shop['minimum_to_reach']
         ];
 
-
+        $aBills = CustomShopBillingHistory::getAllBilling($this->custom_shop['id']);
+        
         // Assign vars
         $this->context->smarty->assign([
             'countries_list' => $list,
@@ -108,7 +109,8 @@ class CustomShopAdminUserAccountControllerCore extends CustomShopAdminController
             'account' => $this->custom_shop_account,
             'form_errors' => $aErrors,
             'submitted' => $bFormSubmitted,
-            'forms_status' => $aFormsStatus
+            'forms_status' => $aFormsStatus,
+            'bills' => $aBills
         ]);
 
         $this->setTemplate(_PS_THEME_DIR_ . 'custom-shop-admin-user-account.tpl');

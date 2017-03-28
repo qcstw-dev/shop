@@ -28,7 +28,7 @@
                 <th>Email</th>
                 <th>Owner</th>
                 <th>Last payment</th>
-                <th>Number<br /> sold products</th>
+                <th>Number<br /> sold products from all times</th>
                 <th>Total sales<br /> from all times</th>
                 <th>Total commission<br /> from all times</th>
                 <th>Total sales<br /> since last payment</th>

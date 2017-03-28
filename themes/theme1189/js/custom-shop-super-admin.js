@@ -34,7 +34,7 @@ $('.btn-pay').on('click', function () {
             if (json.success) {
                 loading_hide();
                 confirm('Bill generated');
-                $('.quantity-row-' + id + ', .total-sales-row-' + id + ', .total-comission-row-' + id).text('0');
+                $('.total-sales-row-' + id + ', .total-comission-row-' + id).text('0');
                 $('.btn-pay-' + id).removeClass('btn-pay');
                 $('.btn-pay-' + id).addClass('disabled');
             } else {

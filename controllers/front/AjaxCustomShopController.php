@@ -77,7 +77,11 @@ class AjaxCustomShopControllerCore extends FrontController {
                 $oBill = new CustomShopBillingHistory(null, ['id_shop' => Tools::getValue('shop'), 'date' => date('Y-m-d')]);
                 $oBill->amount = CustomShop::getCurrentSituation(Tools::getValue('shop'))['total_comission'];
                 $oBill->save();
-                DB::getInstance()->update('orders', ['id_billing' => $oBill->id, 'status' => 5], '`id_order` IN (' . implode(', ', array_column($aIdOrders, 'id_order')) . ')');
+                $aFormattedIdOrders = [];
+                foreach ($aIdOrders as $aIdOrder) {
+                    $aFormattedIdOrders[] = $aIdOrder['id_order'];
+                }
+                DB::getInstance()->update('orders', ['id_billing' => $oBill->id, 'status' => 5], '`id_order` IN (' . implode(', ', $aFormattedIdOrders) . ')');
 
                 // send email
                 $aCustomShopAccount = CustomShopAccount::getAccountByShopId(Tools::getValue('shop'));
@@ -103,7 +107,7 @@ class AjaxCustomShopControllerCore extends FrontController {
         }
         echo json_encode($result);
     }
-
+    
     public function displayAjaxLoadCartProducts() {
         global $smarty;
         $aProducts = $this->context->cart->getProducts(true, null, null, true);
