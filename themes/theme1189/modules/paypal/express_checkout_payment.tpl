@@ -30,43 +30,47 @@
         <div class="row">
             <div class="col-xs-12">
                 {*<div class="font-size-20 bold margin-bottom-10">
-                    <input type="radio" id="payment-pp" name="radio-payment" class="radio-payment"/> <label for="payment-pp" class="cursor-pointer">{l s='PayPal'}</label>
-                    <div class="pull-right">
-                        <img src="{$module_dir}paypal.png" alt="{l s='Pay with PayPal' mod='paypal'}" />
-                    </div>
+                <input type="radio" id="payment-pp" name="radio-payment" class="radio-payment"/> <label for="payment-pp" class="cursor-pointer">{l s='PayPal'}</label>
+                <div class="pull-right">
+                <img src="{$module_dir}paypal.png" alt="{l s='Pay with PayPal' mod='paypal'}" />
+                </div>
                 </div>
                 <div class="hidden hidden-payment hidden-payment-pp">
-                    {if $use_paypal_in_context}
-                        <a href="javascript:void(0)" onclick="" id="paypal_process_payment" class="btn btn-primary border-none" title="{l s='Pay with PayPal' mod='paypal'}">
-                        {else}
-                            <a href="javascript:void(0)" onclick="$('#paypal_payment_form').submit();" class="btn btn-primary border-none" title="{l s='Pay with PayPal' mod='paypal'}">
-                            {/if}
-                            {l s='Pay with PayPal' mod='paypal'}
-                        </a>
+                {if $use_paypal_in_context}
+                <a href="javascript:void(0)" onclick="" id="paypal_process_payment" class="btn btn-primary border-none" title="{l s='Pay with PayPal' mod='paypal'}">
+                {else}
+                <a href="javascript:void(0)" onclick="$('#paypal_payment_form').submit();" class="btn btn-primary border-none" title="{l s='Pay with PayPal' mod='paypal'}">
+                {/if}
+                {l s='Pay with PayPal' mod='paypal'}
+                </a>
                 </div>*}
-                <div class="font-size-20 bold margin-bottom-10">
+                {*<div class="font-size-20 bold margin-bottom-10">
                     <div class="pull-right">
                         <img src="{$module_dir}paypal.png" alt="{l s='Pay with PayPal' mod='paypal'}" />
                     </div>
                 </div>
-                <div class="btn-group-lg">
+                <div class="clearfix"></div>*}
+                <div class="alert alert-info bold margin-bottom-10 margin-top-10 text-center">
+                    <span class="glyphicon glyphicon-alert"></span> You can pay by paypal using your credit card – You don’t need to have an existing paypal account
+                </div>
+                <div class="btn-group-lg text-center">
                     {if $use_paypal_in_context}
                         <a href="javascript:void(0)" onclick="" id="paypal_process_payment" class="btn btn-primary" title="{l s='Pay with PayPal' mod='paypal'}">
                         {else}
                             <a href="javascript:void(0)" onclick="$('#paypal_payment_form').submit();" class="btn btn-primary" title="{l s='Pay with PayPal' mod='paypal'}">
                             {/if}
-                            {l s='Pay with PayPal' mod='paypal'}
+                            <img src="{$module_dir}paypal_transparent.png" alt="{l s='Pay with PayPal' mod='paypal'}" />
                         </a>
                 </div>
             </div>
         </div>
     {/if}
     {literal}
-    <style>
-        p.payment_module.paypal a {
-            padding-left:17px;
-        }
-    </style>
+        <style>
+            p.payment_module.paypal a {
+                padding-left:17px;
+            }
+        </style>
     {/literal}
 {else}
     <p class="payment_module">

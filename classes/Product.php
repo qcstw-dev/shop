@@ -2973,7 +2973,7 @@ class ProductCore extends ObjectModel
             $id_cart,
             $real_quantity
         );
-
+        
         if (isset(self::$_prices[$cache_id])) {
             /* Affect reference before returning cache */
             if (isset($specific_price['price']) && $specific_price['price'] > 0) {
@@ -3055,7 +3055,7 @@ class ProductCore extends ObjectModel
         if ($use_tax) {
             $price = $product_tax_calculator->addTaxes($price);
         }
-
+        
         // Eco Tax
         if (($result['ecotax'] || isset($result['attribute_ecotax'])) && $with_ecotax) {
             $ecotax = $result['ecotax'];
@@ -3123,7 +3123,7 @@ class ProductCore extends ObjectModel
         if ($only_reduc) {
             return Tools::ps_round($specific_price_reduction, $decimals);
         }
-
+        
         $price = Tools::ps_round($price, $decimals);
 
         if ($price < 0) {

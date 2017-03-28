@@ -37,6 +37,8 @@
     background: #eee;
     border: 1px solid #ddd;
     border-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 .content-admin {
     padding: 15px;
@@ -182,7 +184,7 @@
 }
 .key-stats-block {
     width: 130px;
-    border: 3px dashed #337ab7;
+    border: 2px dashed #4267b1;
     border-radius: 85px;
     text-align: center;
     min-height: 130px;
@@ -190,10 +192,10 @@
     flex-direction: column;
     justify-content: center;
     float: left;
-    color: #337ab7;
+    color: #4267b1;
     margin-right: 20px;
     font-weight: bold;
-    padding: 11px;
+    padding: 19px;
     font-size: 11px;
 }
 .key-stats-block:last-child {
@@ -201,6 +203,10 @@
 }
 .key-stats-number {
     font-size: 20px;
+}
+.key-stats-number-all-times {
+    font-size: 10px;
+    color: #777;
 }
 .dashboard-table>tbody>tr>td,
 .dashboard-table>thead>tr>th {
@@ -280,7 +286,7 @@
         width: 87%;
     }
     .key-stats-block {
-        width: 116px;
+        width: 128px;
         margin-bottom: 10px;
         min-height: 110px;
         margin-left: 15px;

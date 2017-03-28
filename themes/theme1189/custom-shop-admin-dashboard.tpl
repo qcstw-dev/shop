@@ -3,24 +3,28 @@
 <div class="key-stats-container">
     <div class="key-stats-block">
         Total number of orders
-        <div class="key-stats-number">{$nb_orders}</div>
+        <div class="key-stats-number">{$current_situation.orders}</div>
+        <div class="key-stats-number-all-times">Since shop opening: {convertPrice price=$nb_orders}</div>
     </div>
     <div class="key-stats-block">
         Total products sold
-        <div class="key-stats-number">{$nb_products_sold}</div>
+        <div class="key-stats-number">{$current_situation.quantity}</div>
+        <div class="key-stats-number-all-times">Since shop opening: {$nb_products_sold}</div>
     </div>
     <div class="key-stats-block">
         Total sales amount
-        <div class="key-stats-number">{convertPrice price=$total_sales_amount}</div>
+        <div class="key-stats-number">{convertPrice price=$current_situation.total_sales}</div>
+        <div class="key-stats-number-all-times">Since shop opening: {convertPrice price=$total_sales_amount}</div>
     </div>
     <div class="key-stats-block">
         Total commission
-        <div class="key-stats-number">{convertPrice price=$total_comission}</div>
+        <div class="key-stats-number">{convertPrice price=$current_situation.total_comission}</div>
+        <div class="key-stats-number-all-times">Since shop opening: {convertPrice price=$total_comission}</div>
     </div>
     <div class="clearfix"></div>
 </div>
 <div class="font-size-20 text-center margin-top-20">Order summary</div>
-<div class="margin-top-10 margin-bottom-10">Next payment of comission on: <span class="bold">{$next_date_payment}</span> (if the minimum of <span class="bold">{if $shop.minimum_to_reach}{convertPrice price=$shop.minimum_to_reach}{else}{convertPrice price=50}{/if}</span> is reached)</div>
+<div class="margin-top-10 margin-bottom-10">Next payment of commission on: <span class="bold">{$next_date_payment}</span> (if the minimum of <span class="bold">{if $shop.minimum_to_reach}{convertPrice price=$shop.minimum_to_reach}{else}{convertPrice price=50}{/if}</span> is reached)</div>
 <table class="table dashboard-table"> 
     <thead> 
         <tr class="text-center">
@@ -32,7 +36,6 @@
             <th class="visible-lg">Client phone</th> 
             <th class="visible-lg">Product cost</th> 
             <th>Quantity</th> 
-            <th class="visible-lg">Shipping cost</th> 
             <th>Tracking N°</th> 
             <th>Commission</th> 
             <th>Status</th>
@@ -49,7 +52,6 @@
                 <td class="visible-lg">{$order.address_delivery.phone|escape:'html':'UTF-8'} {if $order.address_delivery.phone_mobile != $order.address_delivery.phone}{$order.address_delivery.phone_mobile|escape:'html':'UTF-8'}{/if}</td>
                 <td class="visible-lg">{convertPrice price=$order.product_price}</td>
                 <td>{$order.quantity}</td>
-                <td class="visible-lg">{convertPrice price=$order.total_shipping}</td>
                 <td>
                     {if !$is_super_admin}
                         {if $order.tracking}

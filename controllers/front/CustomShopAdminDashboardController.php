@@ -34,7 +34,7 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
                 $aNbOrders['nbr']++; 
             }
         }
-        
+        $aCurrentSituation = CustomShop::getCurrentSituation($this->custom_shop['id']);
         $aBills = CustomShopBillingHistory::getAllBilling($this->custom_shop['id']);
         
         $this->context->smarty->assign([
@@ -45,6 +45,7 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
             'nb_products_sold' => $iTotalProductsSold,
             'total_sales_amount' => $fTotalSalesAmount,
             'total_comission' => $fTotalComission,
+            'current_situation' => $aCurrentSituation,
             'bills' => $aBills
         ]);
 

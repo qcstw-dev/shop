@@ -329,6 +329,12 @@ class ParentOrderControllerCore extends FrontController
                 true,
                 $cart_product_context);
 
+            if ($product['id_customized_prod']) {
+                $aCustomProduct = CustomShopProduct::getProductById($product['id_customized_prod']);
+                $fDesignPrice = CustomShopDesign::getPrice($aCustomProduct['id_design']);
+                $product['price_without_specific_price'] += $fDesignPrice;
+            }
+            
             if (Product::getTaxCalculationMethod()) {
                 $product['is_discounted'] = Tools::ps_round($product['price_without_specific_price'], _PS_PRICE_COMPUTE_PRECISION_) != Tools::ps_round($product['price'], _PS_PRICE_COMPUTE_PRECISION_);
             } else {

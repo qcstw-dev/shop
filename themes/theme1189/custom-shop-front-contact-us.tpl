@@ -17,6 +17,7 @@
         {else}
             {include file="$tpl_dir./errors.tpl"}
             <form action="{$request_uri}" method="post" class="contact-form-box" enctype="multipart/form-data">
+                <input type="hidden" name="custom_shop_id" value="{$shop.id}" />
                 <fieldset>
                     <div class="clearfix">
                         <div class="col-xs-12 col-md-6">

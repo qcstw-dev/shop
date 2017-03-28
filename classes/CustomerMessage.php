@@ -37,6 +37,7 @@ class CustomerMessageCore extends ObjectModel
     public $date_add;
     public $date_upd;
     public $read;
+    public $custom_shop_id;
 
     /**
      * @see ObjectModel::$definition
@@ -54,7 +55,8 @@ class CustomerMessageCore extends ObjectModel
             'private' =>            array('type' => self::TYPE_INT),
             'date_add' =>            array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
             'date_upd' =>            array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
-            'read' =>                array('type' => self::TYPE_BOOL, 'validate' => 'isBool')
+            'read' =>                array('type' => self::TYPE_BOOL, 'validate' => 'isBool'),
+            'custom_shop_id' =>        array('type' => self::TYPE_INT)
         ),
     );
 

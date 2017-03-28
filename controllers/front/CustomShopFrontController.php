@@ -206,6 +206,7 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
                         $cm = new CustomerMessage();
                         $cm->id_customer_thread = $ct->id;
                         $cm->message = $message;
+                        $cm->custom_shop_id = Tools::getValue('custom_shop_id');
                         if (isset($file_attachment['rename']) && !empty($file_attachment['rename']) && rename($file_attachment['tmp_name'], _PS_UPLOAD_DIR_ . basename($file_attachment['rename']))) {
                             $cm->file_name = $file_attachment['rename'];
                             @chmod(_PS_UPLOAD_DIR_ . basename($file_attachment['rename']), 0664);
@@ -221,12 +222,15 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
                 }
 
                 if (!count($this->errors)) {
+                    $aCustomShop = CustomShop::getShopById(Tools::getValue('custom_shop_id'));
                     $var_list = array(
                         '{order_name}' => '-',
                         '{attached_file}' => '-',
                         '{message}' => Tools::nl2br(stripslashes($message)),
                         '{email}' => $from,
                         '{product_name}' => '',
+                        '{custom_shop_link}' => _PS_BASE_URL_.__PS_BASE_URI__.'shop/'.$aCustomShop['name'],
+                        '{custom_shop_title}' => $aCustomShop['title'],
                     );
 
                     if (isset($file_attachment['name'])) {

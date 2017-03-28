@@ -38,7 +38,7 @@ class ContactCore extends ObjectModel
     public $description;
 
     public $customer_service;
-
+    
     /**
      * @see ObjectModel::$definition
      */

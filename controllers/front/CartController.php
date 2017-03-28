@@ -475,6 +475,12 @@ class CartControllerCore extends FrontController
             $result['HOOK_SHOPPING_CART_EXTRA'] = Hook::exec('displayShoppingCart', $result['summary']);
 
             foreach ($result['summary']['products'] as $key => &$product) {
+                if ($product['customized_prod']) {
+                    $aCustomProduct = CustomShopProduct::getProductById($product['id_customized_prod']);
+                    $fDesignPrice = CustomShopDesign::getPrice($aCustomProduct['id_design']);
+                    $product['price_without_reduction'] += $fDesignPrice;
+                    $product['price_without_quantity_discount'] += $fDesignPrice;
+                }
                 $product['quantity_without_customization'] = $product['quantity'];
                 if ($result['customizedDatas'] && isset($result['customizedDatas'][(int)$product['id_product']][(int)$product['id_product_attribute']])) {
                     foreach ($result['customizedDatas'][(int)$product['id_product']][(int)$product['id_product_attribute']] as $addresses) {
