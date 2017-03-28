@@ -570,7 +570,10 @@ class AdminCustomerThreadsControllerCore extends AdminController
 
         $messages = CustomerThread::getMessageCustomerThreads($id_customer_thread);
 
-        foreach ($messages as $key => $mess) {
+        foreach ($messages as $key => &$mess) {
+            if($mess['custom_shop_id']) {
+                $mess['custom_shop'] = CustomShop::getShopById($mess['custom_shop_id']);
+            }
             if ($mess['id_employee']) {
                 $employee = new Employee($mess['id_employee']);
                 $messages[$key]['employee_image'] = $employee->getImage();
@@ -687,7 +690,7 @@ class AdminCustomerThreadsControllerCore extends AdminController
                 $contact = $c['name'];
             }
         }
-
+        
         $this->tpl_view_vars = array(
             'id_customer_thread' => $id_customer_thread,
             'thread' => $thread,
@@ -730,7 +733,7 @@ class AdminCustomerThreadsControllerCore extends AdminController
                 $content .= '<br/>'.$this->l('Product: ').'<span class="label label-info">'.$product->name.'</span><br/><br/>';
             }
             $content .= Tools::safeOutput($message['message']);
-
+            
             $timeline[$message['date_add']][] = array(
                 'arrow' => 'left',
                 'background_color' => '',
@@ -795,7 +798,7 @@ class AdminCustomerThreadsControllerCore extends AdminController
         if (!Validate::isLoadedObject($order)) {
             $is_valid_order_id = false;
         }
-
+        
         $tpl->assign(array(
             'thread_url' => Tools::getAdminUrl(basename(_PS_ADMIN_DIR_).'/'.
                 $this->context->link->getAdminLink('AdminCustomerThreads').'&amp;id_customer_thread='
