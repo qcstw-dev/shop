@@ -137,12 +137,10 @@
                                         <div class="slogan">
                                             <span class="primary-color">"</span>{l s='Personalized gifts'}<br /> {l s='for unique memories'}<span class="primary-color">"</span>
                                         </div>
-                                        <div class="icons">
-                                        {if isset($HOOK_TOP)}{$HOOK_TOP}{/if}
-                                        {*                                    </div>*}
-                                    </div>
+                                    {if isset($HOOK_TOP)}{$HOOK_TOP}{/if}
                                 </div>
                             </div>
+                        </div>
                     </header>
                 </div>
                 <div class="columns-container">
@@ -159,11 +157,12 @@
                     && $page_name !='design'
                     && $page_name !='category'
                     && $page_name !='shop'
+                    && $page_name !='customshopintroduction'
                     }
                     {include file="$tpl_dir./breadcrumb.tpl"}
                 {/if}
             </div>
-            <div id="slider_row" class="">
+            <div id="slider_row" class="container">
                 <div id="top_column" class="center_column col-xs-12">{hook h="displayTopColumn"}</div>
                 <div class="clearfix"></div>
             </div>

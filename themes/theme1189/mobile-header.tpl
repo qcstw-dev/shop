@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="{$css_dir}slick/slick.css" media="all">
     <link rel="stylesheet" href="{$css_dir}slick/slick-theme.css" media="all">
     <link rel="stylesheet" href="{$css_dir}mobile-style.css" media="all">
+    {if isset($mobile_custom_shop_intro)}
+        <link rel="stylesheet" href="{$css_dir}custom-shop-intro.css" media="all">
+    {/if}
     {if isset($layout_maker) && $layout_maker}
         <link rel="stylesheet" href="{$css_dir}layout_maker/component.css" media="all">
         <link rel="stylesheet" href="{$css_dir}layout_maker/custom_giftattitude_layout_maker.css" media="all">

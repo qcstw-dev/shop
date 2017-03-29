@@ -32,7 +32,7 @@
       .stickUpTop:before, .stickUpTop:after {
         display: none; } }
   .stickUpTop:before {
-    left: -99%; }
+    left: -98%; }
   .stickUpTop:after {
     right: -99%; }
   .stickUpTop.isStuck:before {

@@ -1,0 +1,21 @@
+.intro-block-picture, .intro-block-picture-square {
+    border: 3px solid #eee;
+    border-radius: 150px;
+    padding: 30px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: #eee;
+}
+.intro-block-picture-square {
+    border-radius: 0;
+    background: #fff;
+    text-align: center;
+    border: 0;
+    padding: 0;
+}
+.intro-block-picture img {
+    width: 100%;
+}
+.intro-quote {
+    margin-top: 10%;
+}

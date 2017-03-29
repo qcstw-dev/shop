@@ -50,6 +50,16 @@ class DispatcherCore
             'rule' =>        'mobile',
             'keywords' => array(),
         ),
+        'mobile_custom_shop_introduction' => array(
+            'controller' =>    'mobilecustomshopintroduction',
+            'rule' =>        'mobile-custom-shop-introduction',
+            'keywords' => array(),
+        ),
+        'custom_shop_introduction' => array(
+            'controller' =>    'customshopintroduction',
+            'rule' =>        'custom-shop-introduction',
+            'keywords' => array(),
+        ),
         'custom_shop_register' => array(
             'controller' =>    'customshopregister',
             'rule' =>        'custom-shop-register',

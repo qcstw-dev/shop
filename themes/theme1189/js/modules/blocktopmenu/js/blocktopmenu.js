@@ -174,7 +174,7 @@ $(document).ready(function(){
             var stickMenu = true;
             var docWidth= $('body').find('.container').width();
             if(stickMenu && docWidth > 780) {
-                    $('body').find('#block_top_menu').wrapInner('<div class="stickUpTop"><div class="stickUpHolder container">');
+                    $('body').find('#block_top_menu').wrapInner('<div class="stickUpTop padding padding-right-0"><div class="stickUpHolder">');
                     $('.stickUpTop').tmStickUp();
             }
         }

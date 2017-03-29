@@ -1,4 +1,5 @@
 <!-- Block currencies module -->
+<div class="icons">
 {if count($currencies) > 1}
     <div class="clearfix">
         <div id="currencies-block-top" class="icon icon-currency current">
