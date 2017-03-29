@@ -75,7 +75,7 @@ class AjaxCustomShopControllerCore extends FrontController {
             $aIdOrders = CustomShop::getNonPaidOrdersId(Tools::getValue('shop'));
             if ($aIdOrders) {
                 $oBill = new CustomShopBillingHistory(null, ['id_shop' => Tools::getValue('shop'), 'date' => date('Y-m-d')]);
-                $oBill->amount = CustomShop::getCurrentSituation(Tools::getValue('shop'))['total_comission'];
+                $oBill->amount = CustomShop::getCurrentSituation(Tools::getValue('shop'))['total_commission'];
                 $oBill->save();
                 $aFormattedIdOrders = [];
                 foreach ($aIdOrders as $aIdOrder) {

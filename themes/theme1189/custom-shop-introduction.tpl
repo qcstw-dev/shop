@@ -115,7 +115,9 @@
     </div>
 </div>
 <div class="col-xs-12 text-center margin-top-50">
-    <a class="btn btn-primary btn-lg font-size-20 uppercase" href="{$base_uri}custom-shop-register" title="Create your shop">Create your shop</a>
+    <a class="btn btn-primary btn-lg font-size-20 uppercase" href="{$base_uri}custom-shop-register" title="Create your shop">
+        <span class="glyphicon glyphicon-chevron-right"></span> Create your shop <span class="glyphicon glyphicon-chevron-left"></span> 
+    </a>
 </div>
 {if isset($mobile)}
     {include file=$footer_mobile}

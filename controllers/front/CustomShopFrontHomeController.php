@@ -63,7 +63,6 @@ class CustomShopFrontHomeControllerCore extends CustomShopFrontControllerCore {
             'categories' => $aCategories,
             'cat' => Tools::getValue('cat')
         ]);
-
         $this->setTemplate(_PS_THEME_DIR_ . 'custom-shop-front-home.tpl');
     }
 

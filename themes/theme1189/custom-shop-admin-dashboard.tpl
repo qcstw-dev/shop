@@ -3,7 +3,7 @@
 <div class="key-stats-container">
     <div class="key-stats-block">
         Total number of orders
-        <div class="key-stats-number">{if $current_situation.orders}{$current_situation.orders}{else}0{/if}</div>
+        <div class="key-stats-number">{if $current_situation.quantity}{$current_situation.quantity}{else}0{/if}</div>
         <div class="key-stats-number-all-times">Since shop opening: {$nb_orders}</div>
     </div>
     <div class="key-stats-block">
@@ -18,8 +18,8 @@
     </div>
     <div class="key-stats-block">
         Total commission
-        <div class="key-stats-number">{if $current_situation.total_comission}{convertPrice price=$current_situation.total_comission}{else}{convertPrice price=0}{/if}</div>
-        <div class="key-stats-number-all-times">Since shop opening: {convertPrice price=$total_comission}</div>
+        <div class="key-stats-number">{if $current_situation.total_commission}{convertPrice price=$current_situation.total_commission}{else}{convertPrice price=0}{/if}</div>
+        <div class="key-stats-number-all-times">Since shop opening: {convertPrice price=$total_commission}</div>
     </div>
     <div class="clearfix"></div>
 </div>

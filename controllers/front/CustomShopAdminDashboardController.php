@@ -20,18 +20,20 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
           4 => 'Received',  
           5 => 'Comission paid'
         ];
-        $aOrders = CustomShop::getOrders($this->custom_shop['id']);
+        $aOrders = CustomShop::getOrders($this->custom_shop['id'], false);
         $iTotalProductsSold = 0;
         $fTotalSalesAmount = 0;
-        $fTotalComission = 0;
+        $fTotalCommission = 0;
         $aNbOrders = ['ids' => [], 'nbr' => 0];
-        foreach ($aOrders as &$aOrder) {
-            $iTotalProductsSold += $aOrder['quantity'];
-            $fTotalSalesAmount += $aOrder['product_price'] * $aOrder['quantity'];
-            $fTotalComission += ($aOrder['design_price'] * $aOrder['quantity']);
-            if (!in_array($aOrder['id_order'], $aNbOrders['ids'])) {
-                $aNbOrders['ids'][] = $aOrder['id_order']; 
-                $aNbOrders['nbr']++; 
+        if ($aOrders) {
+            foreach ($aOrders as &$aCommissionPaidOrder) {
+                $iTotalProductsSold += $aCommissionPaidOrder['quantity'];
+                $fTotalSalesAmount += $aCommissionPaidOrder['total_products'];
+                $fTotalCommission += ($aCommissionPaidOrder['design_price'] * $aCommissionPaidOrder['quantity']);
+                if (!in_array($aCommissionPaidOrder['id_order'], $aNbOrders['ids'])) {
+                    $aNbOrders['ids'][] = $aCommissionPaidOrder['id_order']; 
+                    $aNbOrders['nbr']++; 
+                }
             }
         }
         $aCurrentSituation = CustomShop::getCurrentSituation($this->custom_shop['id']);
@@ -44,7 +46,7 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
             'nb_orders' => $aNbOrders['nbr'],
             'nb_products_sold' => $iTotalProductsSold,
             'total_sales_amount' => $fTotalSalesAmount,
-            'total_comission' => $fTotalComission,
+            'total_commission' => $fTotalCommission,
             'current_situation' => $aCurrentSituation,
             'bills' => $aBills
         ]);

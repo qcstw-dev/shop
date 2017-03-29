@@ -46,7 +46,7 @@
                     <td>{if $shop.bill}{$shop.bill.date}{else} - {/if}</td>
                     <td class="quantity-row-{$shop.id}">{if $shop.quantity}{$shop.quantity}{else}0{/if}</td>
                     <td class="total-sales-alltime-row-{$shop.id}">{if $shop.total_sales_from_all_times}{convertPrice price=$shop.total_sales_from_all_times}{else}0{/if}</td>
-                    <td class="total-comission-alltime-row-{$shop.id}">{if $shop.total_comission_from_all_times}{convertPrice price=$shop.total_comission_from_all_times}{else}0{/if}</td>
+                    <td class="total-comission-alltime-row-{$shop.id}">{if $shop.total_commission_from_all_times}{convertPrice price=$shop.total_commission_from_all_times}{else}0{/if}</td>
                     <td class="total-sales-row-{$shop.id}">{if $shop.total_sales}{convertPrice price=$shop.total_sales}{else}0{/if}</td>
                     <td class="total-comission-row-{$shop.id}">{if $shop.total_comission}{convertPrice price=$shop.total_comission}{else}0{/if}</td>
                     <td>{convertPrice price=$shop.minimum_to_reach}</td>

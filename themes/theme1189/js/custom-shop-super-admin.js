@@ -34,9 +34,7 @@ $('.btn-pay').on('click', function () {
             if (json.success) {
                 loading_hide();
                 confirm('Bill generated');
-                $('.total-sales-row-' + id + ', .total-comission-row-' + id).text('0');
-                $('.btn-pay-' + id).removeClass('btn-pay');
-                $('.btn-pay-' + id).addClass('disabled');
+                window.location.replace(baseUri+'custom-shop-admin');
             } else {
                 popupError(json.error);
             }
