@@ -55,6 +55,7 @@ class CustomShopFrontCheckoutControllerCore extends CustomShopFrontControllerCor
                 $cart_product['prices'] = $aPrices;
             }
             $aSummary = $this->context->cart->getSummaryDetails(null, true);
+//            var_dump($aSummary);
             $available_cart_rules = CartRule::getCustomerCartRules($this->context->language->id, (isset($this->context->customer->id) ? $this->context->customer->id : 0), true, true, true, $this->context->cart, false, true);
 
             $this->context->smarty->assign(array(
@@ -216,14 +217,14 @@ class CustomShopFrontCheckoutControllerCore extends CustomShopFrontControllerCor
             if ($cart_product_context->shop->id != $product['id_shop']) {
                 $cart_product_context->shop = new Shop((int) $product['id_shop']);
             }
-            $product['price_without_specific_price'] = Product::getPriceStatic(
-                            $product['id_product'], !Product::getTaxCalculationMethod(), $product['id_product_attribute'], 6, null, false, false, 1, false, null, null, null, $null, true, true, $cart_product_context);
-
-            if (Product::getTaxCalculationMethod()) {
-                $product['is_discounted'] = Tools::ps_round($product['price_without_specific_price'], _PS_PRICE_COMPUTE_PRECISION_) != Tools::ps_round($product['price'], _PS_PRICE_COMPUTE_PRECISION_);
-            } else {
-                $product['is_discounted'] = Tools::ps_round($product['price_without_specific_price'], _PS_PRICE_COMPUTE_PRECISION_) != Tools::ps_round($product['price_wt'], _PS_PRICE_COMPUTE_PRECISION_);
-            }
+//            $product['price_without_specific_price'] = Product::getPriceStatic(
+//                            $product['id_product'], !Product::getTaxCalculationMethod(), $product['id_product_attribute'], 6, null, false, false, 1, false, null, null, null, $null, true, true, $cart_product_context, null, $product['custom_picture'], $product['id_customized_prod']);
+//
+//            if (Product::getTaxCalculationMethod()) {
+//                $product['is_discounted'] = Tools::ps_round($product['price_without_specific_price'], _PS_PRICE_COMPUTE_PRECISION_) != Tools::ps_round($product['price'], _PS_PRICE_COMPUTE_PRECISION_);
+//            } else {
+//                $product['is_discounted'] = Tools::ps_round($product['price_without_specific_price'], _PS_PRICE_COMPUTE_PRECISION_) != Tools::ps_round($product['price_wt'], _PS_PRICE_COMPUTE_PRECISION_);
+//            }
         }
 
         // Get available cart rules and unset the cart rules already in the cart

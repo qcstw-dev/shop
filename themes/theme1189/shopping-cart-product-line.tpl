@@ -141,12 +141,21 @@
                class="cart_quantity_delete" 
                data-custom-picture="{if $product.custom_picture}{$product.custom_picture}{else}0{/if}" 
                data-original-picture="{$product.original_picture}" 
-               id="{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}_{if $product.custom_picture}{$product.custom_picture}{else}0{/if}_{$product.id_customized_prod|intval}" 
+               id="{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}_{if $product.custom_picture}{$product.custom_picture}{else}0{/if}_{$product.id_customized_prod|intval}"
                href="{$link->getPageLink('cart', true, NULL, "delete=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery|intval}&amp;token={$token_cart}&amp;custom_picture={if $product.custom_picture}{$product.custom_picture}{else}0{/if}")|escape:'html':'UTF-8'}">
-                <i class="fa fa-trash-o"></i>
+                <i class="glyphicon glyphicon-trash"></i>
             </a>
             {if !$product.id_customized_prod}
-                <a class="ajax_cart_block_remove_link" data-modify="true" data-id-product="{$product.id_product}" data-id-design="{$product.id_design}" data-custom-product="{if $product.custom_picture}{$product.custom_picture}{else}0{/if}" data-original-product="{$product.original_picture}" href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={if $product.custom_picture}{$product.custom_picture}{else}0{/if}")|escape:'html':'UTF-8'}" rel="nofollow"><span class="glyphicon glyphicon-pencil font-size-15"></span></a>
+                <a rel="nofollow"
+                   class="ajax_cart_block_remove_link"
+                   data-modify="true" 
+                   data-id-product="{$product.id_product}" 
+                   data-id-design="{$product.id_design}" 
+                   data-custom-product="{if $product.custom_picture}{$product.custom_picture}{else}0{/if}" 
+                   data-original-product="{$product.original_picture}" 
+                   href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={if $product.custom_picture}{$product.custom_picture}{else}0{/if}")|escape:'html':'UTF-8'}">
+                    <span class="glyphicon glyphicon-pencil font-size-15"></span>
+                </a>
                 {/if}
             {else}
 

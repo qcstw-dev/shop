@@ -2875,7 +2875,7 @@ class ProductCore extends ObjectModel
         if (is_null($id_customer) && Validate::isLoadedObject($context->customer)) {
             $id_customer = $context->customer->id;
         }
-
+        
         $return = Product::priceCalculation(
             $context->shop->id,
             $id_product,
@@ -2898,7 +2898,11 @@ class ProductCore extends ObjectModel
             $id_cart,
             $cart_quantity
         );
-
+        if ($customized_prod) {
+            $aCustomProduct = CustomShopProduct::getProductById($customized_prod);
+            $fDesignPrice = CustomShopDesign::getPrice($aCustomProduct['id_design']);
+            $return += $fDesignPrice;
+        }
         return $return;
     }
 

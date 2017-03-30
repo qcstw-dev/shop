@@ -425,8 +425,7 @@
                         <td class="cart_delete text-center">
                             {if isset($cannotModify) AND $cannotModify == 1}
                             {else}
-                                <a
-                                    id="{$product.id_product}_{$product.id_product_attribute}_{$id_customization}_{$product.id_address_delivery|intval}"
+                                <a  id="{$product.id_product}_{$product.id_product_attribute}_{$id_customization}_{$product.id_address_delivery|intval}_{if $product.custom_picture}{$product.custom_picture}{else}0{/if}_{$product.id_customized_prod|intval}"
                                     class="cart_quantity_delete"
                                     href="{$link->getPageLink('cart', true, NULL, "delete=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_customization={$id_customization}&amp;id_address_delivery={$product.id_address_delivery}&amp;token={$token_cart}&amp;custom_picture={$product.custom_picture}")|escape:'html':'UTF-8'}"
                                     rel="nofollow"

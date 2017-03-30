@@ -689,10 +689,7 @@ class CartCore extends ObjectModel
                 $specific_price_output,
                 true,
                 true,
-                $cart_shop_context,
-                null,
-                $row['custom_picture'],
-                $row['id_customized_prod']
+                $cart_shop_context
             );
 
             $row['price'] = $row['price_with_reduction_without_tax'] = Product::getPriceStatic(
@@ -3219,7 +3216,19 @@ class CartCore extends ObjectModel
                 6,
                 null,
                 false,
-                false
+                false,
+                null,
+                null,
+                null,
+                null,
+                null,
+                $toto,
+                null,
+                null,
+                null,
+                null,
+                $product['custom_picture'],
+                $product['id_customized_prod']
             );
 
             if ($product['reduction_type'] == 'amount') {
