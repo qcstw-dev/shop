@@ -65,14 +65,6 @@ class DispatcherCore
             'rule' =>        'custom-shop-register',
             'keywords' => array(),
         ),
-        'custom_shop_prod' => array(
-            'controller' =>    'customshopfronthome',
-            'rule' =>        'shop/{shop_name}/{cat}',
-            'keywords' => array(
-                'shop_name' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'shop_name'),
-                'cat' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'cat')
-            ),
-        ),
         'custom_shop_front_home' => array(
             'controller' =>    'customshopfronthome',
             'rule' =>        'shop/{shop_name}',

@@ -56,6 +56,24 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
             'message' => html_entity_decode(Tools::getValue('message')),
         ));
 
+        $aCustomProducts = CustomShopProduct::getProducts($this->custom_shop['id']);
+        $aIdCategories = [];
+        foreach ($aCustomProducts as $key => &$aCustomProduct) {
+            $oPrestashopProduct = new Product($aCustomProduct['id_product']);
+            if ($oPrestashopProduct->active) {
+                foreach ($oPrestashopProduct->getCategories() as $sIdCategory) {
+                    if ($sIdCategory != '45') {
+                        $aIdCategories[] = $sIdCategory;
+                    }
+                }
+            }
+        }
+
+        $aCategories = [];
+        foreach (array_values(Category::getCategories($this->context->language->id, true, true, 'AND c.`id_parent` = ' . pSQL('45') . ' AND c.`id_category` IN (' . implode(',', $aIdCategories) . ')'))[0] as $key => $aCategory) {
+            $aCategories[$key] = $aCategory['infos'];
+        }
+        
         $aProducts = $this->context->cart->getProducts(true, null, null, true);
         $cart_qties = $this->context->cart->nbProducts(true);
         $this->context->smarty->assign([
@@ -67,6 +85,8 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
             'header' => _PS_THEME_DIR_ . 'custom-shop-header-front.tpl',
             'footer' => _PS_THEME_DIR_ . 'custom-shop-footer-front.tpl',
             'contact_form' => _PS_THEME_DIR_ . 'custom-shop-front-contact-us.tpl',
+            'categories' => $aCategories,
+            'cat' => Tools::getValue('category')
         ]);
     }
 

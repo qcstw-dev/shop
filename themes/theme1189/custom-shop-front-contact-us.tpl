@@ -103,7 +103,7 @@
                                 <label for="message">{l s='Message'}</label>
                                 <textarea class="form-control" id="message" name="message">{if isset($message)}{$message|escape:'html':'UTF-8'|stripslashes}{/if}</textarea>
                             </div>
-                            {if $smarty.server.HTTP_HOST != 'localhost'}
+                            {if $smarty.server.HTTP_HOST != 'localhost' && $smarty.server.HTTP_HOST != 'pimpyourkeys.com'}
                                 <div class="g-recaptcha" data-sitekey="6LdWFwwUAAAAABxzvt7l89l6Wm_ZH_aGGI1t8ru9"></div>
                             {/if}
                             <div class="submit margin-top-10">

@@ -71,8 +71,6 @@ function loadProducts(reset) {
                 issetMoreProducts = false;
             }
             loading_products = false;
-//            waypoint.enable();
-//            Waypoint.refreshAll();
         }
     });
 }
