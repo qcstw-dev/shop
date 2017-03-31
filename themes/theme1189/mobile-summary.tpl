@@ -26,11 +26,14 @@
                     <div class="row margin-top-5">
                         <div class="col-xs-6 padding-right-0 col-sm-3 bold underline">{l s="Unit price"}:</div>
                         <div class="col-xs-5 padding-0 unit_product_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}">
-                            {if $product.price != $product.price_without_reduction}
-                                <del>{displayWtPrice p="`$product.price_without_reduction`"}</del> <span class="color-red">{displayWtPrice p="`$product.price_wt`"}</span>
-                            {else}
+                            <del class="price_without_quantity_discount">
+                                {if $product.price != $product.price_without_reduction}
+                                    {displayWtPrice p="`$product.price_without_reduction`"}
+                                {/if}
+                            </del> 
+                            <span class="price{if $product.price != $product.price_without_reduction} color-red{/if}">
                                 {displayWtPrice p="`$product.price_wt`"}
-                            {/if}
+                            </span>
                         </div>
                     </div>
                 </div>

@@ -17,6 +17,10 @@
     var static_token = '{$token}';
     var hasDeliveryAddress = '';
     var toBeDetermined = true;
+    var currencyFormat = {$currency->format};
+    var currencySign = '{$currency->sign}';
+    var currencyBlank = {$currency->blank};
+    var priceDisplayPrecision = {$roundMode};
 </script>
 {if !isset($mobile_payment)}
     {* call in header*}

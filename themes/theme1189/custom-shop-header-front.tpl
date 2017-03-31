@@ -86,10 +86,10 @@
                                 <a href="{$base_dir}shop/{$custom_shop_name}/checkout">
                                     <span class="ajax_cart_quantity">{$cart_qties}</span>
                                     <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
-                                    <div class="cart cart-desk">
-                                        {include file="./custom-shop-front-cart-products.tpl" products=$cart_products}
-                                    </div>
                                 </a>
+                                <div class="cart cart-desk">
+                                    {include file="./custom-shop-front-cart-products.tpl" products=$cart_products}
+                                </div>
                             </div>
                         </li>
                     </ul>

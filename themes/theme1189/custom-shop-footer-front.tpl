@@ -51,6 +51,10 @@
     var hasDeliveryAddress = '';
     var toBeDetermined = true;
     var custom_shop_name = '{$custom_shop_name}';
+    var currencyFormat = {$currency->format};
+    var currencySign = '{$currency->sign}';
+    var currencyBlank = {$currency->blank};
+    var priceDisplayPrecision = {$roundMode};
 </script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-migrate-1.2.1.min.js"></script>

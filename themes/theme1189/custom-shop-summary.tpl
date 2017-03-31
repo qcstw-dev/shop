@@ -23,11 +23,14 @@
                     <div class="row margin-top-5">
                         <div class="col-xs-6 padding-right-0 col-sm-3 bold underline">{l s="Unit price"}:</div>
                         <div class="col-xs-5 padding-0 unit_product_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}">
-                            {if $product.price != $product.price_without_reduction}
-                                <del>{displayWtPrice p="`$product.price_without_reduction`"}</del> <span class="color-red">{displayWtPrice p="`$product.price_wt`"}</span>
-                            {else}
+                            <del class="price_without_quantity_discount">
+                                {if $product.price != $product.price_without_reduction}
+                                    {displayWtPrice p="`$product.price_without_reduction`"}
+                                {/if}
+                            </del> 
+                            <span class="price{if $product.price != $product.price_without_reduction} color-red{/if}">
                                 {displayWtPrice p="`$product.price_wt`"}
-                            {/if}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -93,7 +96,7 @@
         {if $summary['total_discounts']}
             <div class="col-xs-6">{l s='Vouchers'}</div>
             <div class="col-xs-6">-<span class="total_voucher">{convertPrice price=$summary['total_discounts']}</span></div>
-        {/if}
+            {/if}
     </div>
     <div class="clearfix"></div>
     <div class="font-size-20 bold text-center margin-top-10 pull-right">
@@ -101,5 +104,5 @@
         <div class="col-xs-6 cart_total">{$total_cart}</div>
     </div>
     <div class="clearfix"></div>
-        <a class="btn btn-primary margin-top-10 col-xs-12 col-sm-4 col-lg-2 pull-right" href="{$base_uri}shop/{$custom_shop_name}/checkout?step={if $isLogged}3{else}2{/if}" >{l s="Next"} <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a class="btn btn-primary margin-top-10 col-xs-12 col-sm-4 col-lg-2 pull-right" href="{$base_uri}shop/{$custom_shop_name}/checkout?step={if $isLogged}3{else}2{/if}" >{l s="Next"} <span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
