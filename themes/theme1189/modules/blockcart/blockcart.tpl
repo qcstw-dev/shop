@@ -23,6 +23,21 @@
                                         <div class="col-md-6 thumbnail">
                                             <img class="popup" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" />
                                         </div>
+                                        <div class="col-md-6 text-right">
+                                            {if !isset($customizedDatas.$productId.$productAttributeId) && (!isset($product.is_gift) || !$product.is_gift)}
+                                                <a class="ajax_cart_block_remove_link" 
+                                                   data-custom-product="{$product.custom_picture}" 
+                                                   data-id-customized-prod="{$product.id_customized_prod}" 
+                                                   data-id-product="{$product.id_product}" 
+                                                   data-id-design="{$product.id_design}" 
+                                                   data-original-product="{$product.original_picture}" 
+                                                   href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}" 
+                                                   rel="nofollow" 
+                                                   title="{l s='remove this product from my cart' mod='blockcart'}">
+                                                    <span class="fa fa-trash-o font-size-20"></span>
+                                                </a>
+                                            {/if}
+                                        </div>
                                         <div class="cart-info col-md-6">
                                             <div class="product-name">
                                                 <span class="quantity-formated">
@@ -62,19 +77,6 @@
                                         </a>
                                     {/if}
                                 </div>
-                                <span class="remove_link">
-                                    {if !isset($customizedDatas.$productId.$productAttributeId) && (!isset($product.is_gift) || !$product.is_gift)}
-                                        <a class="ajax_cart_block_remove_link" 
-                                           data-custom-product="{$product.custom_picture}" 
-                                           data-id-customized-prod="{$product.id_customized_prod}" 
-                                           data-id-product="{$product.id_product}" 
-                                           data-id-design="{$product.id_design}" 
-                                           data-original-product="{$product.original_picture}" 
-                                           href="{$link->getPageLink('cart', true, NULL, "delete=1&id_product={$product.id_product|intval}&id_address_delivery={$product.id_address_delivery|intval}&token={$static_token}&custom_picture={$product.custom_picture}&original_picture={$product.original_picture}")|escape:'html':'UTF-8'}" 
-                                           rel="nofollow" 
-                                           title="{l s='remove this product from my cart' mod='blockcart'}">&nbsp;</a>
-                                    {/if}
-                                </span>
                             </dt>
                             {if isset($product.attributes_small)}
                                 <dd data-id="cart_block_combination_of_{$product.id_product|intval}{if $product.id_product_attribute}_{$product.id_product_attribute|intval}{/if}_{$product.id_address_delivery|intval}" class="{if $smarty.foreach.myLoop.first}first_item{elseif $smarty.foreach.myLoop.last}last_item{else}item{/if}">
@@ -257,49 +259,49 @@
                 {/if}
                 <div class="layer_cart_row">
                     <strong class="dark{if $shipping_cost_float == 0 && (!isset($cart->id_address_delivery) || !$cart->id_address_delivery)} unvisible{/if}">
-                {l s='Total shipping' mod='blockcart'}
+                        {l s='Total shipping' mod='blockcart'}
+                    </strong>
+                    <span class="ajax_cart_shipping_cost{if $shipping_cost_float == 0 && (!isset($cart->id_address_delivery) || !$cart->id_address_delivery)} unvisible{/if}">
+                        {if $shipping_cost_float == 0}
+                    {if (!isset($cart->id_address_delivery) || !$cart->id_address_delivery)}{l s='To be determined' mod='blockcart'}{else}{l s='Free shipping!' mod='blockcart'}{/if}
+                {else}
+                    {$shipping_cost}
+                {/if}
+            </span>
+        </div>
+        {if $show_tax && isset($tax_cost)}
+            <div class="layer_cart_row">
+                <strong class="dark">{l s='Tax' mod='blockcart'}</strong>
+                <span class="price cart_block_tax_cost ajax_cart_tax_cost">{$tax_cost}</span>
+            </div>
+        {/if}
+        <div class="layer_cart_row">	
+            <strong class="dark">
+                {l s='Total' mod='blockcart'}
             </strong>
-            <span class="ajax_cart_shipping_cost{if $shipping_cost_float == 0 && (!isset($cart->id_address_delivery) || !$cart->id_address_delivery)} unvisible{/if}">
-                {if $shipping_cost_float == 0}
-            {if (!isset($cart->id_address_delivery) || !$cart->id_address_delivery)}{l s='To be determined' mod='blockcart'}{else}{l s='Free shipping!' mod='blockcart'}{/if}
-        {else}
-            {$shipping_cost}
-        {/if}
-    </span>
-</div>
-{if $show_tax && isset($tax_cost)}
-    <div class="layer_cart_row">
-        <strong class="dark">{l s='Tax' mod='blockcart'}</strong>
-        <span class="price cart_block_tax_cost ajax_cart_tax_cost">{$tax_cost}</span>
+            <span class="ajax_block_cart_total">
+                {if $cart_qties > 0}
+                    {if $priceDisplay == 1}
+                        {convertPrice price=$cart->getOrderTotal(false)}
+                    {else}
+                        {convertPrice price=$cart->getOrderTotal(true)}
+                    {/if}
+                {/if}
+            </span>
+        </div>
+        <div class="button-container">	
+            <span class="continue btn btn-default btn-md icon-left" title="{l s='Continue shopping' mod='blockcart'}">
+                <span>
+                    {l s='Continue shopping' mod='blockcart'}
+                </span>
+            </span>
+            <a class="btn btn-default btn-md icon-right" href="{$link->getPageLink("$order_process", true)|escape:"html":"UTF-8"}" title="{l s='Proceed to checkout' mod='blockcart'}" rel="nofollow">
+                <span>
+                    {l s='Proceed to checkout' mod='blockcart'}
+                </span>
+            </a>	
+        </div>
     </div>
-{/if}
-<div class="layer_cart_row">	
-    <strong class="dark">
-        {l s='Total' mod='blockcart'}
-    </strong>
-    <span class="ajax_block_cart_total">
-        {if $cart_qties > 0}
-            {if $priceDisplay == 1}
-                {convertPrice price=$cart->getOrderTotal(false)}
-            {else}
-                {convertPrice price=$cart->getOrderTotal(true)}
-            {/if}
-        {/if}
-    </span>
-</div>
-<div class="button-container">	
-    <span class="continue btn btn-default btn-md icon-left" title="{l s='Continue shopping' mod='blockcart'}">
-        <span>
-            {l s='Continue shopping' mod='blockcart'}
-        </span>
-    </span>
-    <a class="btn btn-default btn-md icon-right" href="{$link->getPageLink("$order_process", true)|escape:"html":"UTF-8"}" title="{l s='Proceed to checkout' mod='blockcart'}" rel="nofollow">
-        <span>
-            {l s='Proceed to checkout' mod='blockcart'}
-        </span>
-    </a>	
-</div>
-</div>
 </div>
 <div class="crossseling"></div>
 </div> <!-- #layer_cart -->

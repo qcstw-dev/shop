@@ -143,7 +143,7 @@
                data-original-picture="{$product.original_picture}" 
                id="{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}_{if $product.custom_picture}{$product.custom_picture}{else}0{/if}_{$product.id_customized_prod|intval}"
                href="{$link->getPageLink('cart', true, NULL, "delete=1&amp;id_product={$product.id_product|intval}&amp;ipa={$product.id_product_attribute|intval}&amp;id_address_delivery={$product.id_address_delivery|intval}&amp;token={$token_cart}&amp;custom_picture={if $product.custom_picture}{$product.custom_picture}{else}0{/if}")|escape:'html':'UTF-8'}">
-                <i class="glyphicon glyphicon-trash"></i>
+                <span class="fa fa-trash-o"></span>
             </a>
             {if !$product.id_customized_prod}
                 <a rel="nofollow"
