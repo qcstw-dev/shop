@@ -70,8 +70,10 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
         }
 
         $aCategories = [];
-        foreach (array_values(Category::getCategories($this->context->language->id, true, true, 'AND c.`id_parent` = ' . pSQL('45') . ' AND c.`id_category` IN (' . implode(',', $aIdCategories) . ')'))[0] as $key => $aCategory) {
-            $aCategories[$key] = $aCategory['infos'];
+        if ($aIdCategories) {
+            foreach (array_values(Category::getCategories($this->context->language->id, true, true, 'AND c.`id_parent` = ' . pSQL('45'). (implode(',', $aIdCategories) ? ' AND c.`id_category` IN (' . implode(',', $aIdCategories) . ')' : '') ))[0] as $key => $aCategory) {
+                $aCategories[$key] = $aCategory['infos'];
+            }
         }
         
         $aProducts = $this->context->cart->getProducts(true, null, null, true);

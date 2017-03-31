@@ -39,12 +39,12 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
                 $aCurrentSituation = CustomShop::getCurrentSituation($aShop['id']);
                 $aOrders = CustomShop::getOrders($aShop['id'], true);
                 $iTotalProductsSold = 0;
-                $fTotalSalesAmount = 0;
+                $aTotalSalesAmount = [];
                 $fTotalCommission = 0;
                 $aNbOrders = ['ids' => [], 'nbr' => 0];
                 foreach ($aOrders as &$aOrder) {
                     $iTotalProductsSold += $aOrder['quantity'];
-                    $fTotalSalesAmount += $aOrder['total_products'];
+                    $aTotalSalesAmount[$aOrder['id_order']] = $aOrder['total_products'];
                     $fTotalCommission += ($aOrder['design_price'] * $aOrder['quantity']);
                     if (!in_array($aOrder['id_order'], $aNbOrders['ids'])) {
                         $aNbOrders['ids'][] = $aOrder['id_order'];
@@ -53,7 +53,7 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
                 }
                 $aShop['total_commission_from_all_times'] = $fTotalCommission;
                 $aShop['total_comission'] = $aCurrentSituation['total_commission'];
-                $aShop['total_sales_from_all_times'] = $fTotalSalesAmount;
+                $aShop['total_sales_from_all_times'] = array_sum($aTotalSalesAmount);
                 $aShop['total_sales'] = $aCurrentSituation['total_sales'];
                 $aShop['quantity'] = $iTotalProductsSold;
                 $aShop['bill'] = CustomShopBillingHistory::getBillingById($aShop['id'], 'shop');

@@ -22,13 +22,13 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
         ];
         $aOrders = CustomShop::getOrders($this->custom_shop['id'], false);
         $iTotalProductsSold = 0;
-        $fTotalSalesAmount = 0;
+        $aTotalSalesAmount = [];
         $fTotalCommission = 0;
         $aNbOrders = ['ids' => [], 'nbr' => 0];
         if ($aOrders) {
             foreach ($aOrders as &$aCommissionPaidOrder) {
                 $iTotalProductsSold += $aCommissionPaidOrder['quantity'];
-                $fTotalSalesAmount += $aCommissionPaidOrder['total_products'];
+                $aTotalSalesAmount[$aCommissionPaidOrder['id_order']] = $aCommissionPaidOrder['total_products'];
                 $fTotalCommission += ($aCommissionPaidOrder['design_price'] * $aCommissionPaidOrder['quantity']);
                 if (!in_array($aCommissionPaidOrder['id_order'], $aNbOrders['ids'])) {
                     $aNbOrders['ids'][] = $aCommissionPaidOrder['id_order']; 
@@ -36,6 +36,7 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
                 }
             }
         }
+        
         $aCurrentSituation = CustomShop::getCurrentSituation($this->custom_shop['id']);
         $aBills = CustomShopBillingHistory::getAllBilling($this->custom_shop['id']);
         
@@ -45,7 +46,7 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
             'next_date_payment' => date('Y-m-d', strtotime('+1 month', strtotime(date('Y-m').'-05'))),
             'nb_orders' => $aNbOrders['nbr'],
             'nb_products_sold' => $iTotalProductsSold,
-            'total_sales_amount' => $fTotalSalesAmount,
+            'total_sales_amount' => array_sum($aTotalSalesAmount),
             'total_commission' => $fTotalCommission,
             'current_situation' => $aCurrentSituation,
             'bills' => $aBills

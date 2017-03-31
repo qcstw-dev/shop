@@ -37,6 +37,7 @@ class CustomShopCore extends ObjectModel {
 		SELECT *
 		FROM `' . _DB_PREFIX_ . 'custom_shop` ORDER BY `id` DESC');
     }
+
     public static function getResultsFromAllTimes($iShopId) {
         return Db::getInstance()->getRow('
 		SELECT SUM(cp.`design_price` * cp.`quantity`) as total_comission, SUM(cp.`quantity`) as quantity, SUM(o.`total_paid`) as total_sales
@@ -46,11 +47,12 @@ class CustomShopCore extends ObjectModel {
                 AND o.`valid` = 1
                 AND o.`id_billing` != 0
 		AND cscp.`id_shop` = ' . pSQL($iShopId)
-                . ' ORDER BY o.`id_order` DESC');
+                        . ' ORDER BY o.`id_order` DESC');
     }
+
     public static function getCurrentSituation($iShopId) {
         $aOrders = Db::getInstance()->executeS('
-		SELECT cp.`design_price`, cp.`quantity`, o.`total_products`
+		SELECT cp.`design_price`, cp.`quantity`, o.`total_products`, o.`id_order`
 		FROM `' . _DB_PREFIX_ . 'orders` o, `' . _DB_PREFIX_ . 'cart_product` cp, `' . _DB_PREFIX_ . 'custom_shop_customized_prod` cscp
                 WHERE cp.`id_cart` = o.`id_cart`
                 AND cscp.`id` = cp.`id_customized_prod`
@@ -59,13 +61,16 @@ class CustomShopCore extends ObjectModel {
 		AND cscp.`id_shop` = ' . pSQL($iShopId)
                 . ' ORDER BY o.`id_order` DESC');
         $aCurrentSituation = ['total_commission' => 0, 'total_sales' => 0, 'quantity' => 0];
+        $aTotalSalesAmount = [];
         foreach ($aOrders as $aOrder) {
             $aCurrentSituation['total_commission'] += $aOrder['design_price'] * $aOrder['quantity'];
-            $aCurrentSituation['total_sales'] += $aOrder['total_products'];
+            $aTotalSalesAmount[$aOrder['id_order']] = $aOrder['total_products'];
             $aCurrentSituation['quantity'] += $aOrder['quantity'];
         }
+        $aCurrentSituation['total_sales'] = array_sum($aTotalSalesAmount);
         return $aCurrentSituation;
     }
+
     public static function getNonPaidOrdersId($iShopId) {
         return Db::getInstance()->executeS('
 		SELECT o.`id_order`
@@ -75,16 +80,17 @@ class CustomShopCore extends ObjectModel {
                 AND o.`valid` = 1
                 AND o.`id_billing` = 0
 		AND cscp.`id_shop` = ' . pSQL($iShopId)
-                . ' GROUP BY o.`id_order`'
-                . ' ORDER BY o.`id_order` DESC');
+                        . ' GROUP BY o.`id_order`'
+                        . ' ORDER BY o.`id_order` DESC');
     }
+
     public static function getOrders($iId, $bCommissionPaid = false) {
         $aOrders = Db::getInstance()->executeS('
 		SELECT o.*, cp.*
 		FROM `' . _DB_PREFIX_ . 'orders` o, `' . _DB_PREFIX_ . 'cart_product` cp, `' . _DB_PREFIX_ . 'custom_shop_customized_prod` cscp
                 WHERE cp.`id_cart` = o.`id_cart`
                 AND o.`valid` = 1'
-                .($bCommissionPaid ? ' AND o.`id_billing` != 0' : '').'
+                . ($bCommissionPaid ? ' AND o.`id_billing` != 0' : '') . '
                 AND cscp.`id` = cp.`id_customized_prod`
 		AND cscp.`id_shop` = ' . pSQL($iId)
                 . ' ORDER BY o.`id_order` DESC');
@@ -167,6 +173,7 @@ class CustomShopCore extends ObjectModel {
                 WHERE cs.`id_account` = csa.`id`
 		AND csa.`email` = \'' . pSQL($sEmail) . '\'');
     }
+
     public static function nameExists($sName) {
         return (bool) Db::getInstance()->getValue('
 		SELECT `id`
