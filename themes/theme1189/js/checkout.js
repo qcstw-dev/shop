@@ -98,17 +98,18 @@ function updateQty(id, op, qty) {
                 + '&id_product=' + productId
                 + '&qty=' + qty
                 + '&op=' + op
-                + '&token=' + static_token
+                + '&token=' + static_token 
                 + '&allow_refresh=1'
                 + '&custom_picture=' + custom_picture
                 + '&id_creation=' + id_customized_prod,
         success: function (jsonData) {
             $.each(jsonData.products, function (key, product) {
-                $('.cart_quantity_input_' + id).val(product['quantity']);
-                $('.cart_quantity_input_' + id + '_hidden').val(product['quantity']);
+                var id_element = product['id'] + '_' + (custom_picture ? custom_picture : '') + '_' + (product['id_customized_prod'] ? product['id_customized_prod'] : '');
+                $('.cart_quantity_input_' + id_element ).val(product['quantity']);
+                $('.cart_quantity_input_' + id_element + '_hidden').val(product['quantity']);
                 var price = formatCurrency(jsonData.summary.products[key]['price_wt'].toFixed(2), currencyFormat, currencySign, currencyBlank);
                 var price_without_quantity_discount = formatCurrency(jsonData.summary.products[key]['price_without_quantity_discount'].toFixed(2), currencyFormat, currencySign, currencyBlank);
-                var unit_price_element = $('.unit_product_' + id);
+                var unit_price_element = $('.unit_product_' + id_element);
                 if (price !== price_without_quantity_discount) {
                     unit_price_element.find('.price').addClass('color-red').text(price);
                     unit_price_element.find('.price_without_quantity_discount').text(price_without_quantity_discount);
@@ -116,7 +117,7 @@ function updateQty(id, op, qty) {
                     unit_price_element.find('.price').removeClass('color-red').text(price);
                     unit_price_element.find('.price_without_quantity_discount').text('');
                 }
-                $('.total_product_' + id).text(product['price']);
+                $('.total_product_' + id_element).text(product['price']);
             });
             $('.ajax_cart_quantity').text(jsonData.nbTotalProducts);
             $('.cart_total').text(jsonData.total);
