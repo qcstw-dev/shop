@@ -967,12 +967,6 @@ class CartCore extends ObjectModel
         $fDesignPrice = 0;
         $fProductPrice = 0;
 
-        if ($id_creation) {
-            $oCreation = new CustomShopProduct($id_creation);
-            $fDesignPrice = CustomShopDesign::getPrice($oCreation->id_design);
-            $fProductPrice = Product::getPriceStatic($oCreation->id_product, null, null, 6, null, null, null, (int) $quantity);
-        }
-        
         if ($id_product_attribute) {
             $combination = new Combination((int)$id_product_attribute);
             if ($combination->id_product != $id_product) {
@@ -1051,15 +1045,18 @@ class CartCore extends ObjectModel
                     return false;
                 }
 
+                if ($id_creation) {
+                    $oCreation = new CustomShopProduct($id_creation);
+                    $fDesignPrice = CustomShopDesign::getPrice($oCreation->id_design);
+                    $fProductPrice = Product::getPriceStatic($oCreation->id_product, null, null, 6, null, null, true, $new_qty);
+                }
+                
                 /* Delete product from cart */
                 if ($new_qty <= 0) {
                     return $this->deleteProduct((int)$id_product, (int)$id_product_attribute, (int)$id_customization, null, $custom_picture, $original_picture, $id_creation);
                 } elseif ($new_qty < $minimal_quantity) {
                     return -1;
                 } else {
-                    if ($id_creation) {
-                        $fProductPrice = Product::getPriceStatic($oCreation->id_product, null, null, 6, null, null, null, (int) $new_qty);
-                    }
                     Db::getInstance()->execute('
                         UPDATE `'._DB_PREFIX_.'cart_product`
                         SET `quantity` = `quantity` '.$qty.', `date_add` = NOW() '.($id_creation ? ', `design_price` = '.$fDesignPrice.', `product_price` = '.$fProductPrice : '').
