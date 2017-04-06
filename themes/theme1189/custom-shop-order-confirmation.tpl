@@ -38,7 +38,7 @@
     
 
     {if $order}
-        <p>{l s='Total of the transaction (taxes incl.) :' mod='paypal'} <span class="bold">{$price|escape:'htmlall':'UTF-8'}</span></p>
+        <p>{l s='Total of the transaction :' mod='paypal'} <span class="bold">{$price|escape:'htmlall':'UTF-8'}</span></p>
         <p>{l s='Your order ID is :' mod='paypal'} 
             <span class="bold">
                 {if $smarty.const._PS_VERSION_ >= 1.5}

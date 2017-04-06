@@ -64,7 +64,7 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <div class="cart-icon-mobile padding-10 pull-right visible-xs">
+                    <div class="cart-icon-mobile padding-10 pull-right visible-xs visible-sm">
                         <span class="ajax_cart_quantity">{$cart_qties}</span>
                         <span class="glyphicon glyphicon-shopping-cart font-size-24 pull-right"></span>
                     </div>
@@ -82,7 +82,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="margin-right-20">
-                            <div class="cart-icon-desk padding-10 hidden-xs">
+                            <div class="cart-icon-desk padding-10 hidden-xs hidden-sm">
                                 <a href="{$base_dir}shop/{$custom_shop_name}/checkout">
                                     <span class="ajax_cart_quantity">{$cart_qties}</span>
                                     <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
