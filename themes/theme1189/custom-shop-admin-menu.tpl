@@ -5,7 +5,7 @@
         'customshopadmincreationpicture',
         'customshopadmincreationlayoutmaker',
         'customshopadmincreationsummary'
-       ])} active{/if}">Creation zone</a>
+       ])} active{/if}">Creation<br />zone</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/shop" class="list-group-item{if in_array($page_name, [
         'customshopadminshop',
         'customshopadminshopedit'
@@ -15,7 +15,7 @@
        ])} active{/if}">Dashboard</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/user-account" class="list-group-item{if in_array($page_name, [
         'customshopadminuseraccount'
-       ])} active{/if}">User account</a>
+       ])} active{/if}">User<br />account</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/contact" class="list-group-item{if in_array($page_name, [
         'customshopadmincontact'
        ])} active{/if}">Contact</a>
