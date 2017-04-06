@@ -55,7 +55,6 @@ class CustomShopFrontCheckoutControllerCore extends CustomShopFrontControllerCor
                 $cart_product['prices'] = $aPrices;
             }
             $aSummary = $this->context->cart->getSummaryDetails(null, true);
-//            var_dump($aSummary);
             $available_cart_rules = CartRule::getCustomerCartRules($this->context->language->id, (isset($this->context->customer->id) ? $this->context->customer->id : 0), true, true, true, $this->context->cart, false, true);
 
             $this->context->smarty->assign(array(
@@ -80,7 +79,7 @@ class CustomShopFrontCheckoutControllerCore extends CustomShopFrontControllerCor
                     $customer = $this->context->customer;
                     $customerAddresses = $customer->getAddresses($this->context->language->id);
                     if (!$customerAddresses) {
-                        header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'index.php?controller=custom-shop-address&shop_name='.$this->custom_shop['name'].'&back='._PS_BASE_URL_.__PS_BASE_URI__.$this->custom_shop['name'].'/checkout%3Fstep=3');
+                        header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'index.php?controller=custom-shop-address&shop_name='.$this->custom_shop['name'].'&back='._PS_BASE_URL_.__PS_BASE_URI__.'shop/'.$this->custom_shop['name'].'/checkout%3Fstep=3');
                     }
                     // Getting a list of formated address fields with associated values
                     $formatedAddressFieldsValuesList = array();
@@ -133,7 +132,7 @@ class CustomShopFrontCheckoutControllerCore extends CustomShopFrontControllerCor
                     $cgv = Tools::getValue('cgv') || $this->context->cookie->check_cgv;
 
                     if (Configuration::get('PS_CONDITIONS') && (!Validate::isBool($cgv) || $cgv == false)) {
-                        Tools::redirect('custom-shop-checkout?step=4');
+                        Tools::redirect('shop/' .$this->custom_shop['name'].'/checkout?step=4');
                     }
 
                     // assign some informations to display cart

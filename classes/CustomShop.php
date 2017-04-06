@@ -52,7 +52,7 @@ class CustomShopCore extends ObjectModel {
 
     public static function getCurrentSituation($iShopId) {
         $aOrders = Db::getInstance()->executeS('
-		SELECT cp.`design_price`, cp.`quantity`, o.`total_products`, o.`id_order`
+		SELECT cp.`design_price`, cp.`quantity`, o.*
 		FROM `' . _DB_PREFIX_ . 'orders` o, `' . _DB_PREFIX_ . 'cart_product` cp, `' . _DB_PREFIX_ . 'custom_shop_customized_prod` cscp
                 WHERE cp.`id_cart` = o.`id_cart`
                 AND cscp.`id` = cp.`id_customized_prod`
@@ -62,12 +62,15 @@ class CustomShopCore extends ObjectModel {
                 . ' ORDER BY o.`id_order` DESC');
         $aCurrentSituation = ['total_commission' => 0, 'total_sales' => 0, 'quantity' => 0];
         $aTotalSalesAmount = [];
+        $aNbOrders = [];
         foreach ($aOrders as $aOrder) {
             $aCurrentSituation['total_commission'] += $aOrder['design_price'] * $aOrder['quantity'];
             $aTotalSalesAmount[$aOrder['id_order']] = $aOrder['total_products'];
+            $aNbOrders[$aOrder['id_order']] = 1;
             $aCurrentSituation['quantity'] += $aOrder['quantity'];
         }
         $aCurrentSituation['total_sales'] = array_sum($aTotalSalesAmount);
+        $aCurrentSituation['nb_orders'] = array_sum($aNbOrders);
         return $aCurrentSituation;
     }
 
@@ -111,7 +114,6 @@ class CustomShopCore extends ObjectModel {
 		WHERE `id_address` = ' . pSQL($aOrder['id_address_delivery']));
             $aOrder['address_delivery']['country_name'] = Country::getNameById(Context::getContext()->language->id, $aOrder['address_delivery']['id_country']);
         }
-
         return $aOrders;
     }
 

@@ -135,15 +135,15 @@ class CustomShopAddressControllerCore extends CustomShopFrontController {
                 $this->errors[] = Tools::displayError('This country is not active.');
             }
 
-            $postcode = Tools::getValue('postcode');
-            /* Check zip code format */
-            if ($country->zip_code_format && !$country->checkZipCode($postcode)) {
-                $this->errors[] = sprintf(Tools::displayError('The Zip/Postal code you\'ve entered is invalid. It must follow this format: %s'), str_replace('C', $country->iso_code, str_replace('N', '0', str_replace('L', 'A', $country->zip_code_format))));
-            } elseif (empty($postcode) && $country->need_zip_code) {
-                $this->errors[] = Tools::displayError('A Zip/Postal code is required.');
-            } elseif ($postcode && !Validate::isPostCode($postcode)) {
-                $this->errors[] = Tools::displayError('The Zip/Postal code is invalid.');
-            }
+//            $postcode = Tools::getValue('postcode');
+//            /* Check zip code format */
+//            if ($country->zip_code_format && !$country->checkZipCode($postcode)) {
+//                $this->errors[] = sprintf(Tools::displayError('The Zip/Postal code you\'ve entered is invalid. It must follow this format: %s'), str_replace('C', $country->iso_code, str_replace('N', '0', str_replace('L', 'A', $country->zip_code_format))));
+//            } elseif (empty($postcode) && $country->need_zip_code) {
+//                $this->errors[] = Tools::displayError('A Zip/Postal code is required.');
+//            } elseif ($postcode && !Validate::isPostCode($postcode)) {
+//                $this->errors[] = Tools::displayError('The Zip/Postal code is invalid.');
+//            }
 
             // Check country DNI
             if ($country->isNeedDni() && (!Tools::getValue('dni') || !Validate::isDniLite(Tools::getValue('dni')))) {
@@ -231,7 +231,7 @@ class CustomShopAddressControllerCore extends CustomShopFrontController {
                     Tools::redirect(html_entity_decode($back));
                 }
                 $mod = Tools::getValue('mod');
-                Tools::redirect('index.php?controller=' . $back . ($mod ? '&back=' . $mod : ''));
+                Tools::redirect('index.php?controller=' . $back . ($mod ? '&back=' . $mod : ''). '&shop_name='. Tools::getValue('shop_name'));
             } else {
                 Tools::redirect('index.php?controller=custom-shop-addresses');
             }

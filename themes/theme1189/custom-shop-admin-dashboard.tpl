@@ -2,22 +2,22 @@
 {include file=$menu}
 <div class="key-stats-container">
     <div class="key-stats-block">
-        Total number of orders
-        <div class="key-stats-number">{if $current_situation.quantity}{$current_situation.quantity}{else}0{/if}</div>
+        Total number of orders since last payment
+        <div class="key-stats-number">{if $current_situation.nb_orders}{$current_situation.nb_orders}{else}0{/if}</div>
         <div class="key-stats-number-all-times">Since shop opening: {$nb_orders}</div>
     </div>
     <div class="key-stats-block">
-        Total products sold
+        Total products sold since last payment
         <div class="key-stats-number">{if $current_situation.quantity}{$current_situation.quantity}{else}0{/if}</div>
         <div class="key-stats-number-all-times">Since shop opening: {$nb_products_sold}</div>
     </div>
     <div class="key-stats-block">
-        Total sales amount
+        Total sales amount since last payment
         <div class="key-stats-number">{if $current_situation.total_sales}{convertPrice price=$current_situation.total_sales}{else}{convertPrice price=0}{/if}</div>
         <div class="key-stats-number-all-times">Since shop opening: {convertPrice price=$total_sales_amount}</div>
     </div>
     <div class="key-stats-block">
-        Total commission
+        Total commission since last payment
         <div class="key-stats-number">{if $current_situation.total_commission}{convertPrice price=$current_situation.total_commission}{else}{convertPrice price=0}{/if}</div>
         <div class="key-stats-number-all-times">Since shop opening: {convertPrice price=$total_commission}</div>
     </div>
@@ -50,7 +50,7 @@
                 <td class="visible-lg">{$order.customer.firstname|escape:'html':'UTF-8'} {$order.customer.lastname|escape:'html':'UTF-8'}</td>
                 <td class="visible-lg">{$order.address_delivery.address1|escape:'html':'UTF-8'} {$order.address_delivery.address2|escape:'html':'UTF-8'} {$order.address_delivery.city|escape:'html':'UTF-8'} {$order.address_delivery.country_name|escape:'html':'UTF-8'}</td>
                 <td class="visible-lg">{$order.address_delivery.phone|escape:'html':'UTF-8'} {if $order.address_delivery.phone_mobile != $order.address_delivery.phone}{$order.address_delivery.phone_mobile|escape:'html':'UTF-8'}{/if}</td>
-                <td class="visible-lg">{convertPrice price=$order.product_price}</td>
+                <td class="visible-lg">{convertPrice price=$order.product_price+$order.design_price}</td>
                 <td>{$order.quantity}</td>
                 <td>
                     {if !$is_super_admin}

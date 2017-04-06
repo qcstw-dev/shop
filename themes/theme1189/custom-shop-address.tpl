@@ -20,7 +20,7 @@
     {include file="$tpl_dir./errors.tpl"}
 
     <p class="required"><sup>*</sup>{l s='Required field'}</p>
-    <form action="{$link->getPageLink('mobile-address', true)|escape:'html':'UTF-8'}" method="post" class="std" id="add_address">
+    <form action="{$link->getPageLink('custom-shop-address', true, null, ['shop_name' => $smarty.get.shop_name, 'back' => $smarty.get.back])|escape:'html':'UTF-8'}" method="post" class="std" id="add_address">
         {assign var="stateExist" value=false}
         {assign var="postCodeExist" value=false}
         {assign var="dniExist" value=false}
@@ -72,16 +72,16 @@
                 </div>
             {/if}
             {if $field_name eq 'address2'}
-                <div class="required form-group">
-                    <label for="address2">{l s='Address (Line 2)'}{if in_array($field_name, $required_fields)} <sup>*</sup>{/if}</label>
+                <div class="form-group">
+                    <label for="address2">{l s='Address (Line 2)'}{if in_array($field_name, $required_fields)} <sup></sup>{/if}</label>
                     <input class="validate form-control" data-validate="{$address_validation.$field_name.validate}" type="text" id="address2" name="address2" value="{if isset($smarty.post.address2)}{$smarty.post.address2}{else}{if isset($address->address2)}{$address->address2|escape:'html':'UTF-8'}{/if}{/if}" />
                 </div>
             {/if}
             {if $field_name eq 'postcode'}
                 {assign var="postCodeExist" value=true}
-                <div class="required postcode form-group unvisible">
-                    <label for="postcode">{l s='Zip/Postal Code'} <sup>*</sup></label>
-                    <input class="is_required validate form-control" data-validate="{$address_validation.$field_name.validate}" type="text" id="postcode" name="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{else}{if isset($address->postcode)}{$address->postcode|escape:'html':'UTF-8'}{/if}{/if}" />
+                <div class="postcode form-group unvisible">
+                    <label for="postcode">{l s='Zip/Postal Code'} <sup></sup></label>
+                    <input class="validate form-control" data-validate="{$address_validation.$field_name.validate}" type="text" id="postcode" name="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{else}{if isset($address->postcode)}{$address->postcode|escape:'html':'UTF-8'}{/if}{/if}" />
                 </div>
             {/if}
             {if $field_name eq 'city'}
@@ -112,11 +112,6 @@
                     <label for="phone">{l s='Home phone'}{if isset($one_phone_at_least) && $one_phone_at_least} <sup>**</sup>{/if}</label>
                     <input class="{if isset($one_phone_at_least) && $one_phone_at_least}is_required{/if} validate form-control" data-validate="{$address_validation.phone.validate}" type="tel" id="phone" name="phone" value="{if isset($smarty.post.phone)}{$smarty.post.phone}{else}{if isset($address->phone)}{$address->phone|escape:'html':'UTF-8'}{/if}{/if}"  />
                 </div>
-                {if isset($one_phone_at_least) && $one_phone_at_least}
-                    {assign var="atLeastOneExists" value=true}
-                    <p class="inline-infos required">** {l s='You must register at least one phone number.'}</p>
-                {/if}
-                <div class="clearfix"></div>
             {/if}
             {if $field_name eq 'phone_mobile'}
                 {assign var="mobilePhoneExist" value=true}
@@ -124,13 +119,18 @@
                     <label for="phone_mobile">{l s='Mobile phone'}{if isset($one_phone_at_least) && $one_phone_at_least} <sup>**</sup>{/if}</label>
                     <input class="validate form-control" data-validate="{$address_validation.phone_mobile.validate}" type="tel" id="phone_mobile" name="phone_mobile" value="{if isset($smarty.post.phone_mobile)}{$smarty.post.phone_mobile}{else}{if isset($address->phone_mobile)}{$address->phone_mobile|escape:'html':'UTF-8'}{/if}{/if}" />
                 </div>
+                {if isset($one_phone_at_least) && $one_phone_at_least}
+                    {assign var="atLeastOneExists" value=true}
+                    <p class="inline-infos required">** {l s='You must register at least one phone number.'}</p>
+                {/if}
+                <div class="clearfix"></div>
             {/if}
         {/foreach}
 
         {if !$postCodeExist}
-            <div class="required postcode form-group unvisible">
-                <label for="postcode">{l s='Zip/Postal Code'} <sup>*</sup></label>
-                <input class="is_required validate form-control" data-validate="{$address_validation.postcode.validate}" type="text" id="postcode" name="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{else}{if isset($address->postcode)}{$address->postcode|escape:'html':'UTF-8'}{/if}{/if}" />
+            <div class="postcode form-group unvisible">
+                <label for="postcode">{l s='Zip/Postal Code'} <sup></sup></label>
+                <input class="validate form-control" data-validate="{$address_validation.postcode.validate}" type="text" id="postcode" name="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{else}{if isset($address->postcode)}{$address->postcode|escape:'html':'UTF-8'}{/if}{/if}" />
             </div>
         {/if}		
         {if !$stateExist}

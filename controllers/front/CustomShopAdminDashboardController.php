@@ -18,7 +18,7 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
           2 => 'Cancelled',  
           3 => 'Shipped',  
           4 => 'Received',  
-          5 => 'Comission paid'
+          5 => 'Commission paid'
         ];
         $aOrders = CustomShop::getOrders($this->custom_shop['id'], false);
         $iTotalProductsSold = 0;
@@ -36,10 +36,10 @@ class CustomShopAdminDashboardControllerCore extends CustomShopAdminControllerCo
                 }
             }
         }
-        
+
         $aCurrentSituation = CustomShop::getCurrentSituation($this->custom_shop['id']);
         $aBills = CustomShopBillingHistory::getAllBilling($this->custom_shop['id']);
-        
+
         $this->context->smarty->assign([
             'orders' => $aOrders,
             'status' => $aStatus,

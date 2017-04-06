@@ -66,7 +66,7 @@ function loadProducts(reset) {
                 if (reset) {
                     $('.block-product').remove();
                 }
-                $('.white-popup').append(html);
+                $('.product-list').append(html);
             } else {
                 issetMoreProducts = false;
             }

@@ -73,8 +73,8 @@ $(function () {
                                 $('.btn-block-selection').removeClass('blink');
                             }
                             // if it's layout maker page
-                            if (isLayoutMaker && data.files.length === index + 1) {
-                                $('.id_'+json.image_name).trigger('click');
+                            if (data.files.length === index + 1) {
+//                                $('.id_'+json.image_name).trigger('click');
                                 if (file.preview.attributes.width.value <= 500 || file.preview.attributes.height.value <= 500) {
                                     $.magnificPopup.open({
                                         items: [{
@@ -87,12 +87,12 @@ $(function () {
                                             }]
                                     });
                                 }
-                                if ($('.list-item-product').length && $('.list-item-design').length) {
-                                    $('.add-to-cart').data('id-product', $('.list-item-product').data('id'));
-                                    $('.add-to-cart').show();
-                                    $('.preview-layout').show();
-                                    $('.slider-vertical').show();
-                                }
+//                                if ($('.list-item-product').length && $('.list-item-design').length) {
+//                                    $('.add-to-cart').data('id-product', $('.list-item-product').data('id'));
+//                                    $('.add-to-cart').show();
+//                                    $('.preview-layout').show();
+//                                    $('.slider-vertical').show();
+//                                }
                             }
                         }
                     }

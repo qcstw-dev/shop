@@ -200,8 +200,8 @@
                             </div>
                         {elseif $field_name eq "postcode"}
                             {assign var='postCodeExist' value=true}
-                            <div class="required postcode form-group">
-                                <label for="postcode">{l s='Zip/Postal Code'} <sup>*</sup></label>
+                            <div class="postcode form-group">
+                                <label for="postcode">{l s='Zip/Postal Code'} <sup></sup></label>
                                 <input type="text" class="form-control" name="postcode" id="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{/if}" onkeyup="$('#postcode').val($('#postcode').val().toUpperCase());" />
                             </div>
                         {elseif $field_name eq "city"}
@@ -238,8 +238,8 @@
                         </div>
                     {/if}
                     {if $postCodeExist eq false}
-                        <div class="required postcode unvisible form-group">
-                            <label for="postcode">{l s='Zip/Postal Code'} <sup>*</sup></label>
+                        <div class="postcode unvisible form-group">
+                            <label for="postcode">{l s='Zip/Postal Code'} <sup></sup></label>
                             <input type="text" class="form-control" name="postcode" id="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{/if}" onkeyup="$('#postcode').val($('#postcode').val().toUpperCase());" />
                         </div>
                     {/if}
@@ -309,8 +309,8 @@
                                 </div>
                             {elseif $field_name eq "postcode"}
                                 {$postCodeExist = true}
-                                <div class="required postcode_invoice form-group">
-                                    <label for="postcode_invoice">{l s='Zip/Postal Code'} <sup>*</sup></label>
+                                <div class="postcode_invoice form-group">
+                                    <label for="postcode_invoice">{l s='Zip/Postal Code'} <sup></sup></label>
                                     <input type="text" class="form-control" name="postcode_invoice" id="postcode_invoice" value="{if isset($smarty.post.postcode_invoice) && $smarty.post.postcode_invoice}{$smarty.post.postcode_invoice}{/if}" onkeyup="$('#postcode_invoice').val($('#postcode_invoice').val().toUpperCase());" />
                                 </div>
                             {elseif $field_name eq "city"}
@@ -339,8 +339,8 @@
                             {/if}
                         {/foreach}
                         {if !$postCodeExist}
-                            <div class="required postcode_invoice form-group unvisible">
-                                <label for="postcode_invoice">{l s='Zip/Postal Code'} <sup>*</sup></label>
+                            <div class="postcode_invoice form-group unvisible">
+                                <label for="postcode_invoice">{l s='Zip/Postal Code'} <sup></sup></label>
                                 <input type="text" class="form-control" name="postcode_invoice" id="postcode_invoice" value="{if isset($smarty.post.postcode_invoice) && $smarty.post.postcode_invoice}{$smarty.post.postcode_invoice}{/if}" onkeyup="$('#postcode').val($('#postcode').val().toUpperCase());" />
                             </div>
                         {/if}					
@@ -567,8 +567,8 @@
                     </p>
                 {elseif $field_name eq "postcode"}
                     {assign var='postCodeExist' value=true}
-                    <p class="required postcode form-group">
-                        <label for="postcode">{l s='Zip/Postal Code'} <sup>*</sup></label>
+                    <p class="postcode form-group">
+                        <label for="postcode">{l s='Zip/Postal Code'} <sup></sup></label>
                         <input type="text" class="form-control" name="postcode" id="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{/if}" onkeyup="$('#postcode').val($('#postcode').val().toUpperCase());" />
                     </p>
                 {elseif $field_name eq "city"}
@@ -598,8 +598,8 @@
                 {/if}
             {/foreach}
             {if $postCodeExist eq false}
-                <p class="required postcode form-group unvisible">
-                    <label for="postcode">{l s='Zip/Postal Code'} <sup>*</sup></label>
+                <p class="postcode form-group unvisible">
+                    <label for="postcode">{l s='Zip/Postal Code'} <sup></sup></label>
                     <input type="text" class="form-control" name="postcode" id="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{/if}" onkeyup="$('#postcode').val($('#postcode').val().toUpperCase());" />
                 </p>
             {/if}		

@@ -523,15 +523,15 @@ class CustomShopAuthenticationControllerCore extends FrontController {
                     $this->errors[] = Tools::displayError('This country is not active.');
                 }
 
-                $postcode = $$addresses_type->postcode;
-                /* Check zip code format */
-                if ($country->zip_code_format && !$country->checkZipCode($postcode)) {
-                    $this->errors[] = sprintf(Tools::displayError('The Zip/Postal code you\'ve entered is invalid. It must follow this format: %s'), str_replace('C', $country->iso_code, str_replace('N', '0', str_replace('L', 'A', $country->zip_code_format))));
-                } elseif (empty($postcode) && $country->need_zip_code) {
-                    $this->errors[] = Tools::displayError('A Zip / Postal code is required.');
-                } elseif ($postcode && !Validate::isPostCode($postcode)) {
-                    $this->errors[] = Tools::displayError('The Zip / Postal code is invalid.');
-                }
+//                $postcode = $$addresses_type->postcode;
+//                /* Check zip code format */
+//                if ($country->zip_code_format && !$country->checkZipCode($postcode)) {
+//                    $this->errors[] = sprintf(Tools::displayError('The Zip/Postal code you\'ve entered is invalid. It must follow this format: %s'), str_replace('C', $country->iso_code, str_replace('N', '0', str_replace('L', 'A', $country->zip_code_format))));
+//                } elseif (empty($postcode) && $country->need_zip_code) {
+//                    $this->errors[] = Tools::displayError('A Zip / Postal code is required.');
+//                } elseif ($postcode && !Validate::isPostCode($postcode)) {
+//                    $this->errors[] = Tools::displayError('The Zip / Postal code is invalid.');
+//                }
 
                 if ($country->need_identification_number && (!Tools::getValue('dni') || !Validate::isDniLite(Tools::getValue('dni')))) {
                     $this->errors[] = Tools::displayError('The identification number is incorrect or has already been used.');

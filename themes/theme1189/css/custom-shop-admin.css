@@ -179,11 +179,11 @@
 /*********************** DASHBOARD ********************/
 .key-stats-container {
     margin: auto;
-    width: 61%;
+    width: 64%;
     font-size: 12px;
 }
 .key-stats-block {
-    width: 130px;
+    width: 140px;
     border: 2px dashed #4267b1;
     border-radius: 85px;
     text-align: center;

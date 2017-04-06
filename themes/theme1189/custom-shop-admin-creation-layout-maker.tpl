@@ -50,13 +50,17 @@
 </div>
 <div class="clearfix"></div>
 <div class="btn-add-creation margin-bottom-10">
-    <button class="btn btn-warning rotate hidden-lg col-xs-12 margin-bottom-10"><span class="glyphicon glyphicon-repeat"></span> Rotate</button>
-    <button class="btn btn-primary btn-lg add-creation col-xs-12" 
+    <div class="col-xs-6 col-sm-12">
+        <button class="btn btn-info rotate hidden-lg col-xs-12 margin-bottom-10"><span class="glyphicon glyphicon-repeat"></span> Rotate 90°</button>
+    </div>
+    <div class="col-xs-6 col-sm-12">
+        <button class="btn btn-warning preview col-xs-12"><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
+    </div>
+    <button class="btn btn-primary btn-lg add-creation margin-top-10 col-xs-12" 
             rel="nofollow" title="{l s='Add to my shop'}"
             data-id-product=""
             data-id-design=""
             data-custom-picture=""><span class="glyphicon glyphicon-ok font-size-15"></span> {l s='Add to my shop'}</button>
-    <button class="btn btn-warning preview margin-top-10 col-xs-12"><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
     <div class="clearfix"></div>
 </div>
 <div class="change-color-product-block background-white border padding-10" style="display: none">
