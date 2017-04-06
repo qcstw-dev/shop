@@ -146,7 +146,8 @@ function fileuploadListener() {
         previewCrop: false,
         imageCrop: false,
         singleFileUploads: false,
-        limitMultiFileUploads: limit
+        limitMultiFileUploads: limit,
+        dropZone : false
     }).on('fileuploadadd', function (e, data) {
         // loading GIF
         loading('Uploading...');
@@ -198,7 +199,6 @@ function fileuploadListener() {
                     }
                 }
             });
-
         }
         if (file.error) {
             error.push(file.error);
