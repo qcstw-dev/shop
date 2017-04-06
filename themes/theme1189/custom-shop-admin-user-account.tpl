@@ -231,7 +231,7 @@
             <div class="bold">Bills History</div>
             {foreach from=$bills item='bill'}
                 <li>{$bill.date} - 
-                    <a href="{$base_dir}index.php?controller=customshoppdfbill&id_bill={$bill.id}" target="_blank" title="Download bill">
+                    <a href="{$base_dir}index.php?controller=customshoppdfbill&id_bill={$bill.id}&shop_name={$custom_shop_name}" target="_blank" title="Download bill">
                         <span class="fa fa-file-pdf-o"></span> Download
                     </a>
                 </li>
