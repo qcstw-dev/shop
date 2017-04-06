@@ -34,7 +34,7 @@
                 <label class="margin-top-20">Message*</label>
                 <textarea class="form-control" style="height: 100px;" name="message">{$message}</textarea>
                 <div class="margin-top-20">
-                    <input class="btn btn-primary pull-right col-xs-12 col-lg-4" type="submit" value="Send"/>
+                    <button class="btn btn-primary pull-right col-xs-12 col-lg-4" type="submit"><span class="glyphicon glyphicon-send"></span> Send</button>
                 </div>
             </form>
         {/if}

@@ -5,21 +5,21 @@
         'customshopadmincreationpicture',
         'customshopadmincreationlayoutmaker',
         'customshopadmincreationsummary'
-       ])} active{/if}">Creation<br />zone</a>
+       ])} active{/if}"><span class="glyphicon glyphicon-pencil font-size-20 margin-bottom-10"></span> Creation<br />zone</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/shop" class="list-group-item{if in_array($page_name, [
         'customshopadminshop',
         'customshopadminshopedit'
-       ])} active{/if}">Your shop</a>
+       ])} active{/if}"><span class="glyphicon glyphicon-globe font-size-20 margin-bottom-10"></span> Your shop</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/dashboard" class="list-group-item{if in_array($page_name, [
         'customshopadmindashboard'
-       ])} active{/if}">Dashboard</a>
+       ])} active{/if}"><span class="glyphicon glyphicon-list-alt font-size-20 margin-bottom-10"></span> Dashboard</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/user-account" class="list-group-item{if in_array($page_name, [
         'customshopadminuseraccount'
-       ])} active{/if}">User<br />account</a>
+       ])} active{/if}"><span class="glyphicon glyphicon-user font-size-20 margin-bottom-10"></span> User<br />account</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/contact" class="list-group-item{if in_array($page_name, [
         'customshopadmincontact'
-       ])} active{/if}">Contact</a>
-        <a href="?disconnect" class="list-group-item"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
+       ])} active{/if}"><span class="glyphicon glyphicon-envelope font-size-20 margin-bottom-10"></span> Contact</a>
+        <a href="?disconnect" class="list-group-item"><span class="glyphicon glyphicon-log-out font-size-20 margin-bottom-10"></span> Log out</a>
     </div>
 </div>
 <div class="col-xs-12 col-md-11 border content-admin{if in_array($page_name, ['customshopadmincreation', 'customshopadminshop'])} vertical-center{/if}">
