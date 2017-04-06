@@ -99,7 +99,7 @@ class HTMLTemplateInvoiceCustomShopCore extends HTMLTemplate
      */
     public function getBulkFilename()
     {
-        return $this->bill_info->date.'-'. $this->bill_info->id .'-'. $this->bill_info->amount .'.pdf';
+        return $this->bill_info->date.'-order'. (count(array_keys($this->bill_info->orders)) > 1 ? 's' : '').'_'. implode('_', array_keys($this->bill_info->orders)) .'-'. $this->bill_info->amount .'.pdf';
     }
 
     /**
@@ -109,6 +109,6 @@ class HTMLTemplateInvoiceCustomShopCore extends HTMLTemplate
      */
     public function getFilename()
     {
-        return $this->bill_info->date.'-'. $this->bill_info->id .'-'. $this->bill_info->amount .'.pdf';
+        return $this->bill_info->date.'-order'. (count(array_keys($this->bill_info->orders)) > 1 ? 's' : '').'_'. implode('_', array_keys($this->bill_info->orders)) .'-'. $this->bill_info->amount .'.pdf';
     }
 }
