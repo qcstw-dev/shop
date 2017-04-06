@@ -25,7 +25,7 @@
  *  International Registered Trademark & Property of PrestaShop SA
  */
 
-class CustomShopPdfBillControllerCore extends FrontController {
+class CustomShopPdfBillControllerCore extends CustomShopAdminControllerCore {
 
     public $php_self = 'pdf-custom-shop-bill';
     protected $display_header = false;
@@ -36,7 +36,7 @@ class CustomShopPdfBillControllerCore extends FrontController {
     public $bill;
 
     public function postProcess() {
-        if (($this->context->cookie->__get('custom_shop_loggedin') && CustomShopAccount::isOwner($this->context->cookie->__get('custom_shop_loggedin'), Tools::getValue('id_bill')) ) || $this->context->cookie->__get('custom_shop_loggedin_super')) {
+        if ($this->context->cookie->__get('custom_shop_loggedin_super') || ($this->context->cookie->__get('custom_shop_loggedin') && CustomShopAccount::isOwner($this->context->cookie->__get('custom_shop_loggedin'), $this->custom_shop['id']))) {
             $oBillInfo = new CustomShopBillingHistory((int)Tools::getValue('id_bill'));
             $oBillInfo->customer = CustomShopAccount::getAccountByShopId($oBillInfo->id_shop);
             $oBillInfo->customer['country_name'] = Country::getNameById($this->context->language->id, $oBillInfo->customer['country']);

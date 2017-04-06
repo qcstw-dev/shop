@@ -126,9 +126,10 @@ class CustomShopAccountCore extends ObjectModel {
     }
 
     public static function isOwner ($iAccountId, $iShopId) {
-        return $iShopId == Db::getInstance()->getValue('
+        return Db::getInstance()->getValue('
 		SELECT `id`
 		FROM `' . _DB_PREFIX_ . 'custom_shop`
-		WHERE `id_account` = \'' . pSQL($iAccountId) . '\'');
+                    WHERE `id` = \'' . pSQL($iShopId) . '\'
+		AND `id_account` = \'' . pSQL($iAccountId) . '\'');
     }
 }
