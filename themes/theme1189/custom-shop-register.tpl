@@ -5,8 +5,16 @@
     </div>
     <div class="col-sm-5 margin-auto">
         <ul class="nav nav-tabs">
-            <li role="presentation" class="col-xs-6 padding-0 text-center cursor-pointer bold btn-switch {if $submit == 'register' || !$submit}active{/if}" data-id="register"><a><span class="glyphicon glyphicon-edit"></span> Register</a></li>
-            <li role="presentation" class="col-xs-6 padding-0 text-center cursor-pointer bold btn-switch {if $submit == 'login'}active{/if}" data-id="login"><a><span class="glyphicon glyphicon-user"></span> Login</a></li>
+            <li role="presentation" class="col-xs-6 padding-0 text-center cursor-pointer bold btn-switch {if $submit == 'register' || (!$submit && !$preselect)}active{/if}" data-id="register">
+                <a class="color-danger">
+                    <span class="glyphicon glyphicon-edit"></span> Register
+                </a>
+            </li>
+            <li role="presentation" class="col-xs-6 padding-0 text-center cursor-pointer bold btn-switch {if $submit == 'login' || $preselect == 'login'}active{/if}" data-id="login">
+                <a class="color-success">
+                    <span class="glyphicon glyphicon-user"></span> Login
+                </a>
+            </li>
         </ul>
         <div class="col-xs-12 border border-top-0 padding-top-10 padding-bottom-10">
             {if isset($form_error)}
@@ -16,7 +24,7 @@
                         {/foreach}
                 </div>
             {/if}
-            <div class="block-switch register {if $submit != 'register' && $submit}hidden{/if}">
+            <div class="block-switch register {if $submit != 'register' && ($submit || $preselect)}hidden{/if}">
                 <form action="" method="post" class="register-form">
                     <div class="alert alert-danger error-message error-message-custom"></div>
                     <div class="alert alert-danger error-message error-message-password">Confirmation password different</div>
@@ -45,10 +53,10 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <input type="submit" class="btn btn-primary col-xs-12 col-lg-6 pull-right" value="Register" />
+                    <input type="submit" class="btn btn-danger col-xs-12 col-lg-6 pull-right" value="Register" />
                 </form>
             </div>
-            <div class="block-switch login {if $submit != 'login'}hidden{/if}">
+            <div class="block-switch login {if $submit != 'login' && $preselect != 'login'}hidden{/if}">
                 <form action="" method="post" class="login-form">
                     <div class="alert alert-danger error-message error-message-empty-field">Please fill the required fields</div>
                     <div class="alert alert-danger error-message error-message-email">Please enter a valid email address</div>

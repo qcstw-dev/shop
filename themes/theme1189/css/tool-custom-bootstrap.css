@@ -24,7 +24,13 @@ hr {
     flex-direction: column;
     justify-content: center;
 }
+
+.background-orange {
+    color: #fff;
+    background: #f0ad4e;
+}
 .background-grey {
+    color: #fff;
     background: #eee;
 }
 .background-white {
@@ -516,13 +522,16 @@ ol, ul {
     background: #ededed;
 }
 .color-primary {
-    color: #4267b1;
+    color: #4267b1 !important;
 }
-.color-red {
-    color: #ce1f21;
+.color-warning {
+    color: #ff9800 !important;
 }
-.color-green {
-    color: #38B15D;
+.color-red, .color-danger {
+    color: #ce1f21 !important;
+}
+.color-green, .color-success {
+    color: #38B15D !important;
 }
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
     margin-left: 0;

@@ -1941,7 +1941,7 @@ select[multiple].input-lg,
 
 .btn-success {
   color: white;
-  background-color: #5cb85c;
+  background-color: #449d44;
   border-color: #4cae4c; }
   .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open > .btn-success.dropdown-toggle {
     color: white;
@@ -7407,12 +7407,12 @@ ul.step a:hover:after {
   border-color: #888 !important; }
 
 .btn-success {
-  background: #4267b2;
+  background: #449d44;
   border: none;
   color: #fff;
   @includw transition(.3s); }
   .btn-success:hover, .btn-success:active, .btn-success:active:focus, .btn-success:focus {
-    background: #4267b2; }
+    background: #449d44; }
 
 .label-danger {
   background: #595959;

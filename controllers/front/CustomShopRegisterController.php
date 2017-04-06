@@ -91,6 +91,7 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
             'header' => _PS_THEME_DIR_ . 'custom-shop-header-back.tpl',
             'footer' => _PS_THEME_DIR_ . 'custom-shop-footer-back.tpl',
             'submit' => Tools::getValue('type')? : false,
+            'preselect' => Tools::getValue('preselect') ? : false, 
             'shop_name' => Tools::getValue('shop_name') ? : false,
             'email' => Tools::getValue('email')? : false,
             'password' => Tools::getValue('password') ? true : false,
