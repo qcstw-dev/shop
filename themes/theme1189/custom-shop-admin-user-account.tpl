@@ -113,7 +113,7 @@
     </form>
 </div>
 <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="bank">
-    <span class="chevron glyphicon glyphicon-{if $forms_status['bank-detail-form']}chevron-right{else}chevron-down{/if}"></span> Bank detail
+    <span class="chevron glyphicon glyphicon-{if $forms_status['bank-detail-form']}chevron-right{else}chevron-down{/if}"></span> Paypal account details
     {if $forms_status['bank-detail-form']}
         <span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>
     {else}
@@ -125,7 +125,7 @@
     <form method="post" class="bank-detail-form">
         <input type="hidden" name="form_type" value="bank-detail-form">
         <div class="alert alert-danger error-message error-message-email  text-center">Please enter a valid email address</div>
-        <div class="border padding-10">
+        {*<div class="border padding-10">
             <label for="bank" class="cursor-pointer padding-10 col-xs-11">Credit card</label> <div class="col-xs-1 padding-10"><input type="radio" id="bank" name="payment" value="bank" class="payment" data-payment="bank" {if $account.account_number}checked{/if}/></div>
             <div class="payment-block payment-bank" {if $account.account_number}style="display:block"{/if}>
                 <div class="form-row">
@@ -175,10 +175,10 @@
                 </div>
             </div>
             <div class="clearfix"></div>
-        </div>
-        <div class="border padding-10 margin-top-20">
-            <label for="paypal" class="cursor-pointer padding-10 col-xs-11">Paypal</label> <div class="col-xs-1 padding-10"><input type="radio" id="paypal" name="payment" value="paypal" class="payment" data-payment="paypal" {if $account.paypal_email}checked{/if}/></div>
-            <div class="payment-block payment-paypal" {if $account.paypal_email}style="display:block"{/if}>
+        </div>*}
+        <div class="{*border*} padding-10 margin-top-20">
+{*            <label for="paypal" class="cursor-pointer padding-10 col-xs-11">Paypal account details</label> <div class="col-xs-1 padding-10"><input type="radio" id="paypal" name="payment" value="paypal" class="payment" data-payment="paypal" {if $account.paypal_email}checked{/if}/></div>*}
+            <div class="payment-block payment-paypal" {*{if $account.paypal_email}*}style="display:block"{*{/if}*}>
                 <div class="form-row">
                     <div class="form-label">
                         <label>Account holder</label>
@@ -200,13 +200,13 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="col-xs-12 margin-top-20 margin-bottom-20">
+        <div class="col-xs-12 margin-bottom-20">
             <input type="submit" class="btn btn-primary pull-right"/>
         </div>
     </form>
 </div>
 <div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="payment">
-    <span class="chevron glyphicon glyphicon-{if $forms_status['minimum-to-reach-form']}chevron-right{else}chevron-down{/if}"></span> Payment settings & billing
+    <span class="chevron glyphicon glyphicon-{if $forms_status['minimum-to-reach-form']}chevron-right{else}chevron-down{/if}"></span> Payment settings
     {if $forms_status['minimum-to-reach-form']}
         <span class="glyphicon glyphicon-ok-circle font-size-20 pull-right bold color-green"></span>
     {else}
@@ -216,19 +216,22 @@
 <div class="clearfix"></div>
 <div class="col-xs-12 padding-bottom-10 margin-auto dropdown-block dropdown-block-payment" {if $forms_status['minimum-to-reach-form']}style="display: none;"{/if}>
     <form method="post" class="minimum-to-reach-form">
-        <div class="alert alert-danger error-message error-message-minimum text-center">Minimum amount to reach cannot be below $50</div>
+        <div class="alert alert-danger error-message error-message-minimum text-center">Minimum amount to reach cannot be below $20</div>
         <input type="hidden" name="form_type" value="minimum-to-reach-form">
         <p>
-            - Payment release level minimum: <span class="input-group-sm btn-group-sm bold">$<input type="number" class="minimum" name="minimum" min="50" value="{if $shop.minimum_to_reach}{$shop.minimum_to_reach}{/if}"/><input type="submit" class="btn btn-primary margin-left-10"/></span><br />
-            <span class="font-size-10 bold">*Minimum and default amount is $50</span>
+            - Payment release level minimum: <span class="input-group-sm btn-group-sm bold">$<input type="number" class="minimum" name="minimum" min="20" value="{if $shop.minimum_to_reach}{$shop.minimum_to_reach}{/if}"/><input type="submit" class="btn btn-primary margin-left-10"/></span><br />
+            <span class="font-size-10 bold">*Minimum and default amount is $20</span>
         </p>
-        <p>- Every payment through wire transfer is subject to a $___ fix charge.</p>
-        <p>- Every payment through PayPal is subject to a ___% charge on the total transfered amount.</p>
         <p>- Commission payment will be done on 15th every month as far as Payment release level is met</p>
     </form>
+</div>
+<div class="col-xs-12 dropdown-block-title" data-id-dropdown-block="record">
+    <span class="chevron glyphicon glyphicon-chevron-right"></span> Payment records
+</div>
+<div class="clearfix"></div>
+<div class="col-xs-12 padding-bottom-10 margin-auto dropdown-block dropdown-block-record"style="display: none;">
     {if $bills}
         <div class="col-xs-12 margin-bottom-10">
-            <div class="bold">Bills History</div>
             {foreach from=$bills item='bill'}
                 <li>{$bill.date} - 
                     <a href="{$base_dir}index.php?controller=customshoppdfbill&id_bill={$bill.id}&shop_name={$custom_shop_name}" target="_blank" title="Download bill">
@@ -237,6 +240,8 @@
                 </li>
             {/foreach}
         </div>
+    {else}
+        <div class="alert alert-info margin-bottom-0">No records available yet</div>
     {/if}
 </div>
 <div class="clearfix"></div>

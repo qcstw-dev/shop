@@ -24,8 +24,9 @@
         <div class="col-xs-12 border padding-bottom-10">
             <div class="font-size-15 text-center margin-top-md-10 bold"><span class="glyphicon glyphicon-lock"></span> {l s="Already registered"}</div>
             <hr>
-            <form action="{$base_dir}login" method="post">
+            <form action="{$base_dir}shop/{$custom_shop_name}/login" method="post">
                 <div id="create_header_account_error" class="alert alert-danger" style="display:none;"></div>
+                <input type="hidden" name="back" value="{$base_dir}shop/{$custom_shop_name}/checkout?step=3">
                 <div class="col-xs-12 padding-left-0 bold">
                     {l s="Email"}:
                 </div>

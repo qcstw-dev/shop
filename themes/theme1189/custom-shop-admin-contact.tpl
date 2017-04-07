@@ -18,7 +18,7 @@
     <div class="alert alert-warning">
         <div class="col-xs-12">
             {if isset($submission.success) && $submission.success}
-                <div class="alert alert-success bold text-center">
+                <div class="alert alert-success margin-bottom-0 bold text-center">
                     Your message has been successfully sent. We will contact you very soon!
                 </div>
             {else if isset($submission.success) && !$submission.success}

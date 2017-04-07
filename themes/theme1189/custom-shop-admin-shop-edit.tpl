@@ -1,7 +1,7 @@
 {include file=$header}
 {include file=$menu}
 <div class="col-lg-6 margin-auto">
-    <div class="font-size-20 bold text-center margin-top-10 margin-bottom-20">Your shop Information</div>
+    <div class="font-size-20 bold text-center margin-top-10 margin-bottom-20">My shop Information</div>
     <form method="post">
         <div class="form-row">
             <div class="form-label">
@@ -33,9 +33,10 @@
         <div class="form-row">
             <div class="form-label">
                 <label>Shop description</label>
+                <div class="font-size-10">This description will show in the footer of your shop. We will also use this desription as your shop "description" snippet for search engines.</div>
             </div>
             <div class="form-input">
-                <textarea class="form-control" name="description" placeholder="" >{$shop.description}</textarea>
+                <textarea class="form-control height-150" name="description" placeholder="" >{$shop.description}</textarea>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -99,7 +100,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="form-row bold font-size-15">Social media embed</div>
+        <div class="form-row bold font-size-15">Social media link</div>
         <div class="form-row">
             <div class="form-label">
                 <label>Facebook</label>
@@ -119,8 +120,35 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-row">
+            <div class="form-label">
+                <label>Instagram</label>
+            </div>
+            <div class="form-input">
+                <input type="text" class="form-control" name="instagram" value="{$shop.instagram}" placeholder="" autocomplete="off">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                <label>Linkedin</label>
+            </div>
+            <div class="form-input">
+                <input type="text" class="form-control" name="linkedin" value="{$shop.linkedin}" placeholder="" autocomplete="off">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                <label>Pinterest</label>
+            </div>
+            <div class="form-input">
+                <input type="text" class="form-control" name="pinterest" value="{$shop.pinterest}" placeholder="" autocomplete="off">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
             <label class="cursor-pointer font-size-10 pull-right" for="deactivate-shop">
-                <input id="deactivate-shop" name="deactivated" class="deactivated" type="checkbox" {if $shop.deactivated}checked{/if}> Shop deactivated
+                <input id="deactivate-shop" name="deactivated" class="deactivated" type="checkbox" {if $shop.deactivated}checked{/if}> I want to deactivate my shop
             </label>
             <div class="clearfix"></div>
         </div>

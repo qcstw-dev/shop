@@ -2,10 +2,10 @@
 </div><!-- container -->
 <div class="col-xs-12 margin-top-20 border-top border-bottom padding-10 background-light">
     <div class="container background-light">
-        <div class="col-xs-11">
+        <div class="col-xs-10">
             {if $shop.website}
                 <div>
-                    <span class="bold">Website:</span> <a href="{$shop.website}" target="_blank" title="{$shop.title}">{$shop.website}</a>
+                    <span class="bold">Website:</span> <a href="{if !(strpos($shop['website'], 'http') == false || strpos($shop['website'], 'https') == false)}http://{/if}{$shop.website}" class="underline" target="_blank" title="{$shop.title}">{$shop.website}</a>
                 </div>
             {/if}
             <div class="bold">
@@ -15,12 +15,21 @@
                 {$shop.description}
             </div>
         </div>
-        <div class="col-xs-1 padding-0">
+        <div class="col-xs-2 padding-0">
             {if $shop.facebook}
                 <div class="pull-left margin-right-10"><a href="{$shop.facebook}" target="_blank" class="fa fa-facebook-square font-size-30"></a></div>
                 {/if}
                 {if $shop.twitter}
                 <div class="pull-left margin-right-10"><a href="{$shop.twitter}" target="_blank" class="fa fa-twitter-square font-size-30"></a></div>
+                {/if}
+                {if $shop.instagram}
+                <div class="pull-left margin-right-10"><a href="{$shop.instagram}" target="_blank" class="fa fa-instagram font-size-30"></a></div>
+                {/if}
+                {if $shop.linkedin}
+                <div class="pull-left margin-right-10"><a href="{$shop.linkedin}" target="_blank" class="fa fa-linkedin-square font-size-30"></a></div>
+                {/if}
+                {if $shop.pinterest}
+                <div class="pull-left margin-right-10"><a href="{$shop.pinterest}" target="_blank" class="fa fa-pinterest-square font-size-30"></a></div>
                 {/if}
         </div>
     </div>
@@ -75,6 +84,7 @@
 {if isset($checkout) && isset($checkout_step) && $checkout_step == 2}
     <script type="text/javascript" src="{$js_dir}login.js"></script>
     <script type="text/javascript" src="{$js_dir}custom-shop-authentication.js"></script>
+    <script type="text/javascript" src="{$base_dir_ssl}js/validate.js"></script>
 {/if}
 {if (isset($checkout) && isset($checkout_step) && $checkout_step == 3) || isset($custom_shop_address)}
     <script type="text/javascript" src="{$js_dir}autoload/15-jquery.uniform-modified.js"></script>

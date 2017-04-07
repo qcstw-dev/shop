@@ -10,7 +10,7 @@ a, a:hover {
 .header-label {
     font-weight: bold;
     position: absolute;
-    margin-top: -42px;
+    bottom: 0;
     width: 100%;
     padding-left: 73px;
     position: absolute;
@@ -32,7 +32,7 @@ a, a:hover {
     font-size: 30px;
 }
 .shop-title {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 .shop-motto {
     font-style: italic;
@@ -59,19 +59,40 @@ a, a:hover {
     display: none;
     min-height: auto !important;
 }
+.cart-icon-desk.active, .cart-icon-mobile.active {
+    background: #337ab7;
+}
+.cart-icon-desk.active .glyphicon-shopping-cart, .cart-icon-mobile.active .glyphicon-shopping-cart{
+    color: #fff;
+}
 .remove-from-cart {
     position: absolute;
     right: 0;
 }
 .product-title {
-    height: 50px;
+    height: 45px;
     overflow: hidden;
+}
+.picture-mention {
+    position: absolute;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.73);
+    font-size: 13px;
 }
 .fa-facebook-square, .fa-facebook-square:hover {
     color: #3b5998;
 }
 .fa-twitter-square, .fa-twitter-square:hover {
     color: #1da1f2;
+}
+.fa-instagram, .fa-instagram:hover {
+    color: #b033b0;
+}
+.fa-linkedin-square, .fa-linkedin-square:hover {
+    color: #007bb6;
+}
+.fa-pinterest-square, .fa-pinterest-square:hover {
+    color: #cb2027;
 }
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {

@@ -13,7 +13,7 @@
         </a>
     </div>
 </div>
-<div class="col-xs-12 font-size-24 text-center margin-top-10 margin-bottom-20 uppercase padding-top-20 padding-bottom-20 background-orange">You are a</div>
+<div class="col-xs-12 font-size-24 text-center margin-top-10 margin-bottom-20 uppercase padding-top-20 padding-bottom-20 intro-title">You are a</div>
 <div class="col-xs-12 margin-bottom-20">
     <div class="col-xs-6 col-md-3">
         <div class="intro-block-picture">
@@ -41,7 +41,7 @@
     </div>
 </div>
 <div class="col-xs-12 padding-0 padding-top-20">
-    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 padding-top-20 padding-bottom-20 background-orange">
+    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
         And you want to use your image / design to increase / create revenue
     </div>
     <div class="col-xs-12 text-center thumbnail border-none">
@@ -49,7 +49,7 @@
     </div>
 </div>
 <div class="col-xs-12 padding-0 padding-top-20">
-    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 padding-top-20 padding-bottom-20 background-orange">
+    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
         Create your personal shop with us today
     </div>
     <div class="col-xs-12">
@@ -63,7 +63,7 @@
     </div>
 </div>
 <div class="col-xs-12 padding-0">
-    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 padding-top-20 padding-bottom-20 background-orange">
+    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
         You can
     </div>
     <div class="col-xs-12 col-lg-4">
@@ -86,7 +86,7 @@
     </div>
 </div>
 <div class="col-xs-12 padding-0">
-    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 margin-top-20 padding-top-20 padding-bottom-20 background-orange">
+    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 margin-top-20 padding-top-20 padding-bottom-20 intro-title">
         We handle
     </div>
     <div class="col-xs-6 col-md-2">

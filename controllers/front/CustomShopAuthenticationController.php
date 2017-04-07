@@ -25,7 +25,7 @@
  *  International Registered Trademark & Property of PrestaShop SA
  */
 
-class CustomShopAuthenticationControllerCore extends FrontController {
+class CustomShopAuthenticationControllerCore extends CustomShopControllerCore {
 
     public $ssl = true;
     public $php_self = 'authentication';
@@ -45,7 +45,7 @@ class CustomShopAuthenticationControllerCore extends FrontController {
         parent::init();
 
         if (!Tools::getIsset('step') && $this->context->customer->isLogged() && !$this->ajax) {
-            Tools::redirect((($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'shop/'.Tools::getValue('shop_name')));
+            Tools::redirect((($this->authRedirection !== false) ? urlencode($this->authRedirection) : Tools::getValue('back')));
         }
 
         if (Tools::getValue('create_account')) {
@@ -324,7 +324,7 @@ class CustomShopAuthenticationControllerCore extends FrontController {
                 CartRule::autoAddToCart($this->context);
 
                 if (!$this->ajax) {
-                    $back = Tools::getValue('back', 'shop/'.Tools::getValue('shop_name').'/checkout?step=2');
+                    $back = Tools::getValue('back', _PS_BASE_URL_.__PS_BASE_URI__.'shop/'.Tools::getValue('shop_name').'/checkout?step=2');
 
                     if ($back == Tools::secureReferrer($back)) {
                         Tools::redirect(html_entity_decode($back));
@@ -484,7 +484,7 @@ class CustomShopAuthenticationControllerCore extends FrontController {
                         }
                         // else : redirection to the account
                         else {
-                            Tools::redirect((($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'shop/'.Tools::getValue('shop_name')));
+                            Tools::redirect((($this->authRedirection !== false) ? urlencode($this->authRedirection) : _PS_BASE_URL_.__PS_BASE_URI__.'shop/'.Tools::getValue('shop_name')));
                         }
                     } else {
                         $this->errors[] = Tools::displayError('An error occurred while creating your account.');
@@ -660,7 +660,7 @@ class CustomShopAuthenticationControllerCore extends FrontController {
                         }
                         // else : redirection to the account
                         else {
-                            Tools::redirect((($this->authRedirection !== false) ? urlencode($this->authRedirection) : 'shop/'.Tools::getValue('shop_name')));
+                            Tools::redirect((($this->authRedirection !== false) ? urlencode($this->authRedirection) : _PS_BASE_URL_.__PS_BASE_URI__.'shop/'.Tools::getValue('shop_name')));
                         }
                     }
                 }

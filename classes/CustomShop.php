@@ -12,6 +12,9 @@ class CustomShopCore extends ObjectModel {
     public $website;
     public $facebook;
     public $twitter;
+    public $instagram;
+    public $linkedin;
+    public $pinterest;
     public $minimum_to_reach;
     public $deactivated;
     public $id_account;
@@ -152,6 +155,9 @@ class CustomShopCore extends ObjectModel {
             'website' => pSQL($this->website),
             'facebook' => pSQL($this->facebook),
             'twitter' => pSQL($this->twitter),
+            'instagram' => pSQL($this->instagram),
+            'linkedin' => pSQL($this->linkedin),
+            'pinterest' => pSQL($this->pinterest),
             'minimum_to_reach' => pSQL($this->minimum_to_reach),
             'deactivated' => pSQL($this->deactivated),
             'id_account' => pSQL($this->id_account)

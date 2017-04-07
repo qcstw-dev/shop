@@ -40,9 +40,9 @@ class MobileCheckoutControllerCore extends MobileController {
 
         if ($cart_products || Tools::getValue('step') == 'order-confirmation') {
             $isLogged = $this->context->customer->isLogged();
-            if ($isLogged && Tools::getValue('step') == 2) {
-                header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-checkout?step=3');
-            }
+//            if ($isLogged && Tools::getValue('step') == 2) {
+//                header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-checkout?step=3');
+//            }
             if (!$isLogged && in_array(Tools::getValue('step'), ['3', '4', '5'])) {
                 header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . 'mobile-checkout?step=2');
             }

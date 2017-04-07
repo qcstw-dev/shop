@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <head>
-    <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0" /> 
     <link rel="icon" type="image/vnd.microsoft.icon" href="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$base_dir_ssl}/img/favicon.ico?{rand()}{/if}">
     <link rel="stylesheet" href="{$css_dir}bootstrap.min.css" media="all">
@@ -32,6 +31,7 @@
         </script>
     {/literal}
     <meta property="og:image" content="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_gift}{/if}" />
+    <meta name="description" content="{if $shop.description}{$shop.description|escape:'html':'UTF-8'}{/if}" />
     <title>{$meta_title}</title>
 </head>
 <body>
@@ -48,15 +48,15 @@
     {if !$shop.deactivated}
         <div class="container">
             <div class="col-xs-12">
+                <div class="header-label">
+                    <span class="shop-title">{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
+                    <span class="shop-motto">"{if $shop.motto}{$shop.motto|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
+                </div>
                 <div class="header" style="background-image: url('{if $shop.header}{$base_dir}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
                 <div class="logo">
                     <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
                         <img src="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
                     </a>
-                </div>
-                <div class="header-label">
-                    <span class="shop-title">{if $shop.title}{$shop.title|truncate:15:'...'|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
-                    <span class="shop-motto">"{if $shop.motto}{$shop.motto|truncate:113:'...'|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
                 </div>
             </div>
         </div>
@@ -64,8 +64,9 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <div class="cart-icon-mobile padding-10 pull-right visible-xs visible-sm">
-                        <span class="ajax_cart_quantity">{$cart_qties}</span>
+                    <div class="cart-icon-mobile {if isset($checkout)}active{/if} padding-10 pull-right margin-right-20 visible-xs visible-sm">
+                        <span class="ajax_cart_quantity margin-right-20 visible-xs">{$cart_qties}</span>
+                        <span class="ajax_cart_quantity margin-right-40 visible-sm">{$cart_qties}</span>
                         <span class="glyphicon glyphicon-shopping-cart font-size-24 pull-right"></span>
                     </div>
                 </div>
@@ -73,7 +74,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="{if !$cat}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">Home</a></li>
+                        <li class="{if !$cat && !isset($checkout)}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">Home</a></li>
                         {if $categories}
                             {foreach from=$categories item='category'}
                                 <li class="{if $cat == $category.link_rewrite}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}?category={$category.link_rewrite}" title="{$category.name}">{$category.name}</a></li>
@@ -82,7 +83,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="margin-right-20">
-                            <div class="cart-icon-desk padding-10 hidden-xs hidden-sm">
+                            <div class="cart-icon-desk {if isset($checkout)}active{/if} padding-10 hidden-xs hidden-sm">
                                 <a href="{$base_dir}shop/{$custom_shop_name}/checkout">
                                     <span class="ajax_cart_quantity">{$cart_qties}</span>
                                     <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>

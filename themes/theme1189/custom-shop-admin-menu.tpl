@@ -9,7 +9,7 @@
         <a href="{$base_uri}{$custom_shop_name}/admin/shop" class="list-group-item{if in_array($page_name, [
         'customshopadminshop',
         'customshopadminshopedit'
-       ])} active{/if}"><span class="glyphicon glyphicon-globe font-size-20 margin-bottom-10"></span> Your shop</a>
+       ])} active{/if}"><span class="glyphicon glyphicon-globe font-size-20 margin-bottom-10"></span> My shop</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/dashboard" class="list-group-item{if in_array($page_name, [
         'customshopadmindashboard'
        ])} active{/if}"><span class="glyphicon glyphicon-list-alt font-size-20 margin-bottom-10"></span> Dashboard</a>

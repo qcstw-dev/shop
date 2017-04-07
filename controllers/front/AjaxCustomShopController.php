@@ -276,6 +276,8 @@ class AjaxCustomShopControllerCore extends FrontController {
         if (Tools::getValue('id_product') && Tools::getValue('id_design') && Tools::getValue('custom_picture') && Tools::getValue('shop')) {
             $oCreation = new CustomShopProduct(null, ['id_product' => Tools::getValue('id_product'), 'id_design' => Tools::getValue('id_design'), 'id_shop' => Tools::getValue('shop')]);
             $sImgPath = $oCreation->saveCreationPicture(Tools::getValue('custom_picture'));
+            $oDesign = new CustomShopDesignCore(Tools::getValue('id_design'));
+            $oCreation->product_name = $oDesign->name.' - '.Product::getProductName(Tools::getValue('id_product'));
             $oCreation->save();
             $result['image'] = $sImgPath;
         } else {

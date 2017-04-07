@@ -89,13 +89,19 @@
             {/if}
         {/if}
     </div>
-    <div class="col-xs-12 padding-0">
-        <div class="col-xs-4 padding-left-0 bold">{l s='Shipping'}:</div>
-        <div class="col-xs-8 padding-0">{l s='Calculated when address keyed'}</div>
-    </div>
+    {if !$logged}
+        <div class="col-xs-12 padding-0">
+            <div class="col-xs-4 col-lg-1 padding-left-0 bold">{l s='Shipping'}:</div>
+            <div class="col-xs-8 col-lg-3 padding-0">{l s='Calculated when address keyed'}</div>
+        </div>
+    {/if}
     <div class="clearfix"></div>
     <hr>
     <div class="font-size-15 bold text-center margin-top-10">
+        {if $summary['total_shipping']}
+            <div class="col-xs-6">{l s='Shipping'}</div>
+            <div class="col-xs-6">{convertPrice price=$summary['total_shipping']}</div>
+        {/if}
         {if $summary['total_discounts']}
             <div class="col-xs-6">{l s='Vouchers'}</div>
             <div class="col-xs-6">-<span class="total_voucher">{convertPrice price=$summary['total_discounts']}</span></div>

@@ -20,3 +20,19 @@
     margin-top: 10%;
     color: #4267b2;
 }
+.intro-title {
+    background: #f0ad4e;
+    color: #fff;
+}
+.intro-title:before, .intro-title:after {
+    content: " ";
+    background: #f0ad4e;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 100%;
+}
+.intro-title:after {
+    left: 100%;
+}

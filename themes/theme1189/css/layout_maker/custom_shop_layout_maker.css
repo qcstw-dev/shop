@@ -14,13 +14,16 @@
     left: 0;
 }
 .change-color-product-block {
-    top: 450px;
+    top: 493px;
 }
 .overlay {
     left: 27%;
 }
 .resize-container {
     left: 27%;
+}
+.product-name {
+    height: 35px;
 }
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {

@@ -410,7 +410,7 @@
 </ol>
 </div>
 {/if}-->
-<form action="{$link->getPageLink('custom-shop-authentication', true)|escape:'html':'UTF-8'}" method="post" id="account-creation_form" class="std box">
+<form action="{$link->getPageLink('custom-shop-authentication', true, null, ['shop_name' => $custom_shop_name])|escape:'html':'UTF-8'}" method="post" id="account-creation_form" class="std box">
     {$HOOK_CREATE_ACCOUNT_TOP}
     <div class="account_creation">
         <div class="font-size-15 bold">{l s='Your personal information'}</div>

@@ -1,6 +1,6 @@
 {if $products}
     {if $bLoadJs}
-        <div class="white-popup padding-10">
+        <div class="white-popup">
             <div class="product-list">
                 <div class="col-xs-12 margin-bottom-20">
                     <div class="btn-group pull-left">
@@ -48,8 +48,8 @@
             {foreach from=$products item='product'}
                 <div class="col-xs-12 col-sm-4 margin-bottom-10 block-product">
                     <div class="col-xs-12 padding-0 padding-10 border shadow">
-                        <div class="col-xs-8 font-size-13 padding-0 margin-top-10 bold product-name">
-                            {$product.name|truncate:15:'...'|escape:'html':'UTF-8'}
+                        <div class="col-xs-8 font-size-13 padding-0 bold vertical-center product-name">
+                            {$product.name|truncate:40:'...'|escape:'html':'UTF-8'}
                         </div>
                         <div class="col-xs-4 padding-0">
                             <div class="btn btn-default quick-view col-xs-12" data-url="{$base_uri}product-popup?id_product={$product.id_product}">
@@ -74,8 +74,8 @@
             {/foreach}
             {if $bLoadJs}
             </div>
-            <div id="waypoint">&nbsp;</div>
             <div class="clearfix"></div>
+            <div id="waypoint">&nbsp;</div>
         </div>
         {*<script>
         $('.slick-pictures-product-list').slick({

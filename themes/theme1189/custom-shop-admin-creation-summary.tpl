@@ -29,7 +29,7 @@
             </div>
             <div class="col-xs-12 text-center">
                 <div class="price bold">Sale price: <span class="font-size-15">{convertPrice price=$creation.prices.10 + $creation.design.price}</span></div>
-                <div class="price bold font-size-13">Commission set: <span class="font-size-13">{convertPrice price=$creation.design.price}</span></div>
+                <div class="price bold font-size-10">include commission: {convertPrice price=$creation.design.price}</div>
                 <div class="font-size-13">
                     <label class="cursor-pointer" for="published-{$creation.id}">Publish</label>
                     <input type="checkbox" class="published cursor-pointer" id="published-{$creation.id}" data-id-creation="{$creation.id}" name="published" {if $creation.published && $creation.product_name}checked{/if}/>

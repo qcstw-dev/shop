@@ -25,7 +25,7 @@ function submitFunction()
             checkout: $('input[name=checkout]').val(),
             mobile: $('input[name=mobile]').val(),
             token: token,
-            custom_shop_name: custom_shop_name
+            shop_name: custom_shop_name
         },
         success: function (jsonData) {
             if (jsonData.hasError) {

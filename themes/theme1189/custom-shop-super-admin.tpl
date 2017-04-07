@@ -52,7 +52,9 @@
                     <td>{convertPrice price=$shop.minimum_to_reach}</td>
                     <td>
                         <div class="btn-group-sm">
-                            <div class="btn btn-{if $shop.total_comission >= $shop.minimum_to_reach}primary btn-pay btn-pay-{$shop.id}{else}default disabled{/if}" data-id-shop="{$shop.id}">Invoice</div>
+                            <div class="btn btn-{if $shop.total_comission >= $shop.minimum_to_reach}primary btn-pay btn-pay-{$shop.id}{else}default disabled{/if}" data-id-shop="{$shop.id}">
+                                Pay
+                            </div>
                         </div>
                     </td>
                     <td>

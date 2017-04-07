@@ -18,11 +18,12 @@
             </div>
             <div class="col-xs-12 padding-0">
                 <div class="thumbnail margin-bottom-0">
+                    <div class="picture-mention hidden" data-id-creation="{$product.id}">* Not for sell, for reference only</div>
                     <img src="{$base_dir}img/custom_shop/creation/{$product.custom_img}" class="big-picture-{$product.id} popup-picture" alt="{$product.product_name}" title="{$product.product_name}"/>
                 </div>
                 <div class="col-xs-4 padding-5">
                     <div class="thumbnail margin-bottom-0">
-                        <img class="mini-picture" src="{$base_dir}img/custom_shop/creation/{$product.custom_img}" data-id-creation="{$product.id}" alt="{$product.product_name}" title="{$product.product_name}" />
+                        <img class="mini-picture first-thumb" src="{$base_dir}img/custom_shop/creation/{$product.custom_img}" data-id-creation="{$product.id}" alt="{$product.product_name}" title="{$product.product_name}" />
                     </div>
                 </div>
                 {foreach from=$product.images item=image name=images}

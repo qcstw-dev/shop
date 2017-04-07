@@ -26,7 +26,7 @@ $(function () {
         $('.item-list-picture').removeClass('selected');
         $(this).addClass('selected');
         $('.add-creation').data('id-picture', $(this).data('id-picture'));
-
+        
         $('.resize-image').removeClass('custom-margin-left');
         $('.resize-image').attr('src', $(this).find('img').attr('src'));
         var newWidth = $('.overlay').width();
@@ -36,8 +36,8 @@ $(function () {
         $("<img/>") // Make in memory copy of image to avoid css issues
                 .attr("src", $(img).attr("src"))
                 .load(function () {
-                    pic_real_width = this.width;   // Note: $(this).width() will not
-                    pic_real_height = this.height;   // Note: $(this).width() will not
+                    pic_real_width = this.width;
+                    pic_real_height = this.height;
                     var ratio = newWidth / parseInt(pic_real_width);
                     var newHeight = parseInt(pic_real_height) * ratio;
                     resizeImage(newWidth, newHeight);

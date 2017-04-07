@@ -6,7 +6,7 @@
         <a href="{$base_uri}{$custom_shop_name}/admin/shop/edit" class="text-decoration-none">
             <div class="border creation-block">
                 <span class="glyphicon glyphicon-pencil"></span>
-                Edit your shop information
+                Edit my shop information
             </div>
         </a>
     </div>
@@ -14,7 +14,7 @@
         <a href="{$base_uri}shop/{$custom_shop_name}" target="_blank" class="text-decoration-none">
             <div class="border creation-block">
                 <span class="glyphicon glyphicon-globe"></span>
-                Visit your shop
+                Visit my shop
             </div>
         </a>
     </div>

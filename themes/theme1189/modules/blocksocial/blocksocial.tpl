@@ -64,6 +64,6 @@
 {if !isset($mobile)}
     <div class="pull-left margin-left-10 margin-top-20" style="width: 27%">
         <iframe width="100%" height="169" src="https://www.youtube.com/embed/4EF2lC8xEgE" frameborder="0" allowfullscreen></iframe>
-        <div class="padding-0 thumbnail border-none margin-top-20 margin-bottom-0 background-transparent"><img src="{$base_uri}modules/twocheckout/assets/credit-cards.png" title="Credit card" alt="Credit card" /></div>
+        <div class="padding-0 thumbnail border-none margin-top-20 margin-bottom-0 background-transparent"><img src="{$base_uri}img/credit-cards.png" title="Credit card" alt="Credit card" /></div>
     </div>
 {/if}

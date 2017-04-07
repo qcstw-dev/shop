@@ -1,18 +1,18 @@
 <div class="col-xs-12 block-checkout font-size-13">
     {foreach from=$cart_products item=product name=cart_products}
         <div class="block-product block_product_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}">
-            <div class="block-modify">
-                <div class="pull-right cursor-pointer font-size-20 delete" data-id="{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}"><span class="glyphicon glyphicon-trash"></span></div>
-            </div>
             <div class="margin-bottom-10">
                 <div class="col-xs-4 col-lg-2 thumbnail">
                     <img class="popup-picture" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
                 </div>
                 <div class="col-xs-8 col-lg-10 padding-right-0">
-                    <div class="underline bold">{l s="Description"}:</div>
-                    <div>{$product.name|truncate:20:'...'|escape:'html':'UTF-8'}</div>
+                    <div class="block-modify pull-right">
+                        <div class="cursor-pointer font-size-20 delete" data-id="{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}"><span class="glyphicon glyphicon-trash"></span></div>
+                    </div>
+                    <div class="col-xs-10 padding-0"><span class="underline bold">{l s="Description"}:</span> {$product.description_short}</div>
+                    <div class="clearfix"></div>
                     <div class="row margin-top-5">
-                        <div class="col-xs-4 col-sm-2 bold underline">{l s="Qty"}:</div>
+                        <div class="col-xs-4 col-sm-2 bold underline">{l s="Quantity"}:</div>
                         <div class="col-xs-8">
                             <div class="cart_quantity cart_quantity_down" data-id="{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}"><span class="glyphicon glyphicon-minus-sign"></span></div> 
                             <input type="hidden" value="{$product.quantity}" class="input-qty cart_quantity_input_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}_hidden" data-id="{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}" />
@@ -21,8 +21,8 @@
                         </div>
                     </div>
                     <div class="row margin-top-5">
-                        <div class="col-xs-6 padding-right-0 col-sm-3 bold underline">{l s="Unit price"}:</div>
-                        <div class="col-xs-5 padding-0 unit_product_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}">
+                        <div class="col-xs-6 padding-right-0 col-sm-2 bold underline">{l s="Unit price"}:</div>
+                        <div class="col-xs-5 padding-left-40 bold unit_product_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}">
                             <del class="price_without_quantity_discount">
                                 {if $product.price != $product.price_without_reduction}
                                     {displayWtPrice p="`$product.price_without_reduction`"}
@@ -86,17 +86,23 @@
             {/if}
         {/if}
     </div>
-    <div class="col-xs-12 padding-0">
-        <div class="col-xs-4 col-lg-1 padding-left-0 bold">{l s='Shipping'}:</div>
-        <div class="col-xs-8 col-lg-3 padding-0">{l s='Calculated when address keyed'}</div>
-    </div>
+    {if !$logged}
+        <div class="col-xs-12 padding-0">
+            <div class="col-xs-4 col-lg-1 padding-left-0 bold">{l s='Shipping'}:</div>
+            <div class="col-xs-8 col-lg-3 padding-0">{l s='Calculated when address keyed'}</div>
+        </div>
+    {/if}
     <div class="clearfix"></div>
     <hr>
     <div class="font-size-15 bold text-center margin-top-10 pull-right">
+        {if $summary['total_shipping']}
+            <div class="col-xs-6">{l s='Shipping'}</div>
+            <div class="col-xs-6">{convertPrice price=$summary['total_shipping']}</div>
+        {/if}
         {if $summary['total_discounts']}
             <div class="col-xs-6">{l s='Vouchers'}</div>
             <div class="col-xs-6">-<span class="total_voucher">{convertPrice price=$summary['total_discounts']}</span></div>
-            {/if}
+        {/if}
     </div>
     <div class="clearfix"></div>
     <div class="font-size-20 bold text-center margin-top-10 pull-right">

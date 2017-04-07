@@ -32,7 +32,7 @@
     </div>
 </div>
 <div id="component" class="component margin-bottom-10">
-    <div class="btn-rotate rotate visible-lg">
+    <div class="btn-rotate rotate visible-lg hidden">
         <div class="glyphicon glyphicon-repeat font-size-30"></div>
         <div class="bold margin-top-5">Rotate 90°</div>
     </div>
@@ -53,14 +53,14 @@
     <div class="col-xs-6 col-sm-12">
         <button class="btn btn-info rotate hidden-lg col-xs-12 margin-bottom-10"><span class="glyphicon glyphicon-repeat"></span> Rotate 90°</button>
     </div>
-    <div class="col-xs-6 col-sm-12">
+    <div class="col-xs-6 col-sm-12 padding-0">
         <button class="btn btn-warning preview col-xs-12"><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
     </div>
-    <button class="btn btn-primary btn-lg add-creation margin-top-10 col-xs-12" 
+    <button class="btn btn-primary btn-lg add-creation margin-top-10 col-xs-12 font-size-20" 
             rel="nofollow" title="{l s='Add to my shop'}"
             data-id-product=""
             data-id-design=""
-            data-custom-picture=""><span class="glyphicon glyphicon-ok font-size-15"></span> {l s='Add to my shop'}</button>
+            data-custom-picture=""><span class="glyphicon glyphicon-ok font-size-30"></span><br />Add to my shop</button>
     <div class="clearfix"></div>
 </div>
 <div class="change-color-product-block background-white border padding-10" style="display: none">
@@ -89,6 +89,6 @@
 </div>
 <div class="clearfix"></div>
 <div class="col-xs-12">
-    <a href="{$base_uri}{$custom_shop_name}/admin/creation/summary" class="btn btn-primary pull-right {if !$creations}disabled{/if} menu-item-summary">To creation summary <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="{$base_uri}{$custom_shop_name}/admin/creation/summary" class="btn btn-info pull-right {if !$creations}disabled{/if} menu-item-summary">To creation summary <span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
 {include file=$footer}
