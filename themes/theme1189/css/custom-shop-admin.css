@@ -30,7 +30,7 @@
 .admin-menu a{
     font-weight: bold;
     text-align: center;
-    min-height: 122px;
+    min-height: 130px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,6 +39,10 @@
     border-right: 0;
     padding-left: 0;
     padding-right: 0;
+}
+.admin-menu a.admin-menu-small-item {
+    display: block;
+    min-height: 40px;
 }
 .content-admin {
     padding: 15px;

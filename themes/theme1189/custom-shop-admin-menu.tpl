@@ -19,7 +19,10 @@
         <a href="{$base_uri}{$custom_shop_name}/admin/contact" class="list-group-item{if in_array($page_name, [
         'customshopadmincontact'
        ])} active{/if}"><span class="glyphicon glyphicon-envelope font-size-20 margin-bottom-10"></span> Contact</a>
-        <a href="?disconnect" class="list-group-item"><span class="glyphicon glyphicon-log-out font-size-20 margin-bottom-10"></span> Log out</a>
+        <a href="{$base_uri}{$custom_shop_name}/admin/questions-and-answers" class="admin-menu-small-item list-group-item{if in_array($page_name, [
+        'customshopadminquestionsandanswers'
+       ])} active{/if}"><span class="glyphicon glyphicon-question-sign font-size-15"></span> Q&A</a>
+        <a href="?disconnect" class="list-group-item admin-menu-small-item"><span class="glyphicon glyphicon-log-out font-size-15"></span> Log out</a>
     </div>
 </div>
 <div class="col-xs-12 col-md-11 border content-admin{if in_array($page_name, ['customshopadmincreation', 'customshopadminshop'])} vertical-center{/if}">

@@ -36,7 +36,7 @@
 </div>
 <div class="col-xs-12 margin-bottom-10 border-bottom bold">
     <div class="container">
-        <div class="col-sm-4 padding-0">
+        <div class="col-sm-2 padding-0">
             <div class="thumbnail padding-0 border-none margin-bottom-0">
                 <img src="{$base_dir}img/credit-cards.png" alt="payment logo" title="payment logo" />
             </div>
@@ -44,11 +44,14 @@
         <div class="col-sm-3 text-center padding-top-10">
             <div class="popup-cms-content cursor-pointer" data-page="terms">Terms & Conditions</div>
         </div>
-        <div class="col-sm-3 text-center padding-top-10">
+        <div class="col-sm-2 text-center padding-top-10">
             <div class="btn-contact cursor-pointer" data-page="contactus">Contact us</div>
         </div>
         <div class="col-sm-2 text-center">
             <div class="col-xs-6 padding-top-10">Shipping:</div><div class="col-xs-6 thumbnail margin-bottom-0 border-none"><img src="{$base_dir}img/EMS.jpg" alt="EMS - Express mail service" title="EMS - Express mail service" /></div>
+        </div>
+        <div class="col-sm-3 padding-0 text-center padding-top-10">
+            Website powered by Gift attitude
         </div>
     </div>
 </div>

@@ -34,7 +34,7 @@
             <div class="pb-left-column col-sm-6 col-md-6 col-lg-6">
                 <!-- product img-->        
                 <div id="image-block" class="clearfix{if isset($images) && count($images) > 0} is_caroucel{/if}">
-                    <div class="col-xs-12 font-size-13 margin-top-10 hidden bold product-picture-message">*Not for sell. For reference only</div>
+                    <div class="col-xs-12 font-size-13 margin-top-10 hidden bold color-danger product-picture-message">*Design not for sell. For reference only</div>
                     {if $product->new}
                         <span class="new-box no-print">
                             <span class="new-label">{l s='New'}</span>
