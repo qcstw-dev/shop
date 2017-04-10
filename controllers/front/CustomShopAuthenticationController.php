@@ -749,7 +749,9 @@ class CustomShopAuthenticationControllerCore extends CustomShopControllerCore {
                     '{custom_shop_url}' => _PS_BASE_URL_.__PS_BASE_URI__.'shop/'.$this->custom_shop['name'],
                     '{custom_shop_logo}' => _PS_BASE_URL_.__PS_BASE_URI__.'img/custom_shop/logo/'.$this->custom_shop['logo']),
                     $customer->email, 
-                    $customer->firstname . ' ' . $customer->lastname
+                    $customer->firstname . ' ' . $customer->lastname,
+                    null,
+                    ($this->custom_shop['title'] ?: $this->custom_shop['name'])
         );
     }
 
