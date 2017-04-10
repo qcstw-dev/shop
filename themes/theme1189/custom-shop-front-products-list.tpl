@@ -6,7 +6,10 @@
             </div>
             <div class="col-xs-5 padding-right-0">
                 <div class="btn btn-default col-xs-12 quick-view" data-url="{$base_uri}product-popup?id_product={$product.id_product}" data-id-creation="{$product.id}" data-id-design="{$product.id_design}">
-                    <span class="glyphicon glyphicon-info-sign"></span><span class="hidden-xs hidden-sm"> Info</span>
+                    <span class="glyphicon glyphicon-info-sign visible-xs visible-sm"></span>
+                    <span class="hidden-xs hidden-sm">
+                        <div class="glyphicon glyphicon-info-sign pull-left margin-top-2"></div> Info
+                    </span>
                 </div>
             </div>
             <div class="col-xs-12 font-size-15 padding-0 margin-top-10 bold text-center vertical-center product-title">
@@ -18,7 +21,7 @@
             </div>
             <div class="col-xs-12 padding-0">
                 <div class="thumbnail margin-bottom-0">
-                    <div class="picture-mention hidden" data-id-creation="{$product.id}">* Not for sell, for reference only</div>
+                    <div class="picture-mention hidden color-danger" data-id-creation="{$product.id}">*Design not for sell, for reference only</div>
                     <img src="{$base_dir}img/custom_shop/creation/{$product.custom_img}" class="big-picture-{$product.id} popup-picture" alt="{$product.product_name}" title="{$product.product_name}"/>
                 </div>
                 <div class="col-xs-4 padding-5">
