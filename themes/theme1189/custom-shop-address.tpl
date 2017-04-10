@@ -72,16 +72,16 @@
                 </div>
             {/if}
             {if $field_name eq 'address2'}
-                <div class="form-group">
-                    <label for="address2">{l s='Address (Line 2)'}{if in_array($field_name, $required_fields)} <sup></sup>{/if}</label>
+                <div class="required form-group">
+                    <label for="address2">{l s='Address (Line 2)'}{if in_array($field_name, $required_fields)} <sup>*</sup>{/if}</label>
                     <input class="validate form-control" data-validate="{$address_validation.$field_name.validate}" type="text" id="address2" name="address2" value="{if isset($smarty.post.address2)}{$smarty.post.address2}{else}{if isset($address->address2)}{$address->address2|escape:'html':'UTF-8'}{/if}{/if}" />
                 </div>
             {/if}
             {if $field_name eq 'postcode'}
                 {assign var="postCodeExist" value=true}
-                <div class="postcode form-group unvisible">
-                    <label for="postcode">{l s='Zip/Postal Code'} <sup></sup></label>
-                    <input class="validate form-control" data-validate="{$address_validation.$field_name.validate}" type="text" id="postcode" name="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{else}{if isset($address->postcode)}{$address->postcode|escape:'html':'UTF-8'}{/if}{/if}" />
+                <div class="required postcode form-group unvisible">
+                    <label for="postcode">{l s='Zip/Postal Code'} <sup>*</sup></label>
+                    <input class="is_required validate form-control" data-validate="{$address_validation.$field_name.validate}" type="text" id="postcode" name="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{else}{if isset($address->postcode)}{$address->postcode|escape:'html':'UTF-8'}{/if}{/if}" />
                 </div>
             {/if}
             {if $field_name eq 'city'}
@@ -128,9 +128,9 @@
         {/foreach}
 
         {if !$postCodeExist}
-            <div class="postcode form-group unvisible">
-                <label for="postcode">{l s='Zip/Postal Code'} <sup></sup></label>
-                <input class="validate form-control" data-validate="{$address_validation.postcode.validate}" type="text" id="postcode" name="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{else}{if isset($address->postcode)}{$address->postcode|escape:'html':'UTF-8'}{/if}{/if}" />
+            <div class="required postcode form-group unvisible">
+                <label for="postcode">{l s='Zip/Postal Code'} <sup>*</sup></label>
+                <input class="is_required validate form-control" data-validate="{$address_validation.postcode.validate}" type="text" id="postcode" name="postcode" value="{if isset($smarty.post.postcode)}{$smarty.post.postcode}{else}{if isset($address->postcode)}{$address->postcode|escape:'html':'UTF-8'}{/if}{/if}" />
             </div>
         {/if}		
         {if !$stateExist}

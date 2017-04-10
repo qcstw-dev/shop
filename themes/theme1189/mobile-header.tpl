@@ -231,7 +231,7 @@
                                 <span class="glyphicon glyphicon-trash"></span> {l s='Remove'}
                             </div>
                             {if !isset($product.customized_prod)}
-                                <a href="{$base_uri}mobile-layout-maker?preselect_design={$product.id_design}&preselect_product={$product.id_product}&custom_picture={$product.custom_picture}{if $product.original_picture}&original_picture={$product.original_picture}{/if}" class="btn btn-primary pull-left">
+                                <a href="{$base_uri}mobile-layout-maker?preselect_design={$product.id_design}&preselect_product={$product.id_product}&custom_picture={$product.custom_picture}{if $product.original_picture}&original_picture={$product.original_picture}{/if}" class="btn btn-warning pull-left">
                                     <span class="glyphicon glyphicon-pencil"></span> {l s='Modify'}
                                 </a>
                             {/if}
