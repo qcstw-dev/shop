@@ -48,12 +48,17 @@
     {if !$shop.deactivated}
         <div class="container">
             <div class="col-xs-12">
+                <div class="logo visible-xs visible-md">
+                    <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
+                        <img src="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
+                    </a>
+                </div>
                 <div class="header-label">
                     <span class="shop-title">{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
                     <span class="shop-motto">"{if $shop.motto}{$shop.motto|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
                 </div>
                 <div class="header" style="background-image: url('{if $shop.header}{$base_dir}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
-                <div class="logo">
+                <div class="logo hidden-xs hidden-sm">
                     <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
                         <img src="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
                     </a>
