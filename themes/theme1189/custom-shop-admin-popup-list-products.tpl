@@ -52,12 +52,12 @@
                             {$product.name|truncate:40:'...'|escape:'html':'UTF-8'}
                         </div>
                         <div class="col-xs-4 padding-0">
-                            <div class="btn btn-default quick-view col-xs-12" data-url="{$base_uri}product-popup?id_product={$product.id_product}">
+                            <div class="btn btn-default quick-view col-xs-12" data-id-product="{$product.id_product}">
                                 <span class="glyphicon glyphicon-info-sign"></span><span class="hidden-xs"> Info</span>
                             </div>
                         </div>
                         <div class="col-xs-12 slick-pictures-product-list slick-pictures-product-list-{$id_item} margin-bottom-0">
-                            <div class="thumbnail border-none margin-bottom-0 cursor-pointer quick-view" data-url="{$base_uri}product-popup?id_product={$product.id_product}" data-id="{$product.id_product}">
+                            <div class="thumbnail border-none margin-bottom-0 cursor-pointer quick-view" data-id-product="{$product.id_product}" data-id="{$product.id_product}">
                                 <img class="picture" src="{$link->getImageLink($product.link_rewrite, $product.images.0.id_image, 'large_default')|escape:'html':'UTF-8'}" />
                             </div>
                             {*{foreach from=$product.images item=image name=images}

@@ -5,7 +5,7 @@
                 <div class="btn btn-primary add-creation col-xs-12" data-id-creation="{$product.id}"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="hidden-xs">Add to cart</span></div>
             </div>
             <div class="col-xs-5 padding-right-0">
-                <div class="btn btn-default col-xs-12 quick-view" data-url="{$base_uri}product-popup?id_product={$product.id_product}" data-id-creation="{$product.id}" data-id-design="{$product.id_design}">
+                <div class="btn btn-default col-xs-12 quick-view" data-id-product="{$product.id_product}" data-id-creation="{$product.id}" data-id-design="{$product.id_design}">
                     <span class="glyphicon glyphicon-info-sign visible-xs visible-sm"></span>
                     <span class="hidden-xs hidden-sm">
                         <div class="glyphicon glyphicon-info-sign pull-left margin-top-2"></div> Info
