@@ -87,7 +87,7 @@ function updateQty(id, op, qty) {
         type: 'POST',
         headers: {"cache-control": "no-cache"},
         url: baseUri + '?rand=' + new Date().getTime(),
-        async: true,
+        async: false,
         cache: false,
         dataType: 'json',
         data: 'controller=cart'
