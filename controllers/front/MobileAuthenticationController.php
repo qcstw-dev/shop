@@ -740,7 +740,7 @@ class MobileAuthenticationControllerCore extends MobileController {
         }
 
         return Mail::Send(
-                        $this->context->language->id, 'account', Mail::l('Welcome!'), array(
+                    $this->context->language->id, 'account', Mail::l('Welcome!'), array(
                     '{firstname}' => $customer->firstname,
                     '{lastname}' => $customer->lastname,
                     '{email}' => $customer->email,
