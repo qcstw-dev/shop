@@ -788,7 +788,7 @@ abstract class PaymentModuleCore extends Module
                             if ($aCustomShop) {
                                 $data['{custom_shop_name}'] = $aCustomShop['title'] ?: $aCustomShop['name'];
                                 $data['{custom_shop_url}'] = _PS_BASE_URL_.__PS_BASE_URI__.'shop/'.$aCustomShop['name'];
-                                $data['{custom_shop_logo}'] = _PS_BASE_URL_.__PS_BASE_URI__.'img/custom_shop/logo/'.$aCustomShop['logo'];
+                                $data['{custom_shop_logo}'] = ($aCustomShop['logo'] ? _PS_BASE_URL_.__PS_BASE_URI__.'img/custom_shop/logo/'.$aCustomShop['logo'] : _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_logo.jpg');
                                 Mail::Send(
                                     (int)$order->id_lang,
                                     'custom_shop_order_conf',

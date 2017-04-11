@@ -483,7 +483,7 @@ class MailAlerts extends Module
                     if ($dir_mail) {
                         $template_vars['{custom_shop_name}'] = $aCustomShop['title'] ?: $aCustomShop['name'];
                         $template_vars['{custom_shop_url}'] = _PS_BASE_URL_.__PS_BASE_URI__.'shop/'.$aCustomShop['name'];
-                        $template_vars['{custom_shop_logo}'] = _PS_BASE_URL_.__PS_BASE_URI__.'img/custom_shop/logo/'.$aCustomShop['logo'];
+                        $template_vars['{custom_shop_logo}'] = ($aCustomShop['logo'] ? _PS_BASE_URL_.__PS_BASE_URI__.'img/custom_shop/logo/'.$aCustomShop['logo'] : _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_logo.jpg');
                         $aCustomShopAccount = CustomShopAccount::getAccountByShopId($aCustomShop['id']);
                             Mail::Send(
                                     $id_lang,
