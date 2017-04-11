@@ -23,7 +23,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 <div class="alert alert-info text-center"><span class="glyphicon glyphicon-warning-sign"></span> Order confirmation e-mail may take <b>up to 48h</b> to be sent</div>
-<p>{l s='Your order on' mod='paypal'} <span class="paypal-bold bold italic">{if $shop.title}{$shop.title}{else if $shop.name}{$shop.name|escape:'htmlall':'UTF-8'}{else}{$shop_name|escape:'htmlall':'UTF-8'}{/if}</span> {l s='is complete.' mod='paypal'}
+<p>{l s='Your order on' mod='paypal'} <span class="paypal-bold bold italic">{if isset($shop.title) && $shop.title}{$shop.title}{else if isset($shop.title) && $shop.name}{$shop.name|escape:'htmlall':'UTF-8'}{else}{$shop_name|escape:'htmlall':'UTF-8'}{/if}</span> {l s='is complete.' mod='paypal'}
 	<br /><br />
 	{l s='You have chosen the PayPal method.' mod='paypal'}
 	<br /><br /><span class="paypal-bold">{l s='Your order will be sent very soon.' mod='paypal'}</span>
