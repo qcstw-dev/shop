@@ -54,6 +54,5 @@ TOTAL PAID
 
 {message} 
 
-{custom_shop_name} [{custom_shop_url}] powered by
-PrestaShop(tm) [http://www.prestashop.com/] 
+{custom_shop_name} [{custom_shop_url}]
 

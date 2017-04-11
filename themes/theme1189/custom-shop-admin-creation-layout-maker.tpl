@@ -61,6 +61,11 @@
             data-id-product=""
             data-id-design=""
             data-custom-picture=""><span class="glyphicon glyphicon-ok font-size-30"></span><br />Add to my shop</button>
+    <button class="btn btn-primary add-creation add-creation-hidden hidden margin-top-10 col-xs-12" 
+            rel="nofollow" title="{l s='Add to my shop'}"
+            data-id-product=""
+            data-id-design=""
+            data-custom-picture=""><span class="glyphicon glyphicon-ok"></span> Add to my shop</button>
     <div class="clearfix"></div>
 </div>
 <div class="change-color-product-block background-white border padding-10" style="display: none">

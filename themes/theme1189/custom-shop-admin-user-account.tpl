@@ -8,7 +8,7 @@
         User account information updated !
     </div>
 {/if}
-<div class="alert alert-danger error-message error-message-custom  text-center" {if $form_errors}style="display: block"{/if}>
+<div class="alert alert-danger error-message error-message-custom text-center" {if $form_errors}style="display: block"{/if}>
     {foreach from=$form_errors item='error'}
         <li>{$error}</li>
         {/foreach}

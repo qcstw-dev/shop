@@ -83,7 +83,7 @@ function saveCreation(id_product, id_design, custom_picture) {
                             <div class="font-size-15 bold">Your Product is saved</div>\n\
                             <div><img src="' + baseDir + json.image + '" /></div>\n\
                             <div class="btn btn-success continue pull-left"><span class="glyphicon glyphicon-chevron-left"></span> Create another product</div>\n\
-                            <a href="' + baseDir + name_shop + '/admin/creation/summary" class="btn btn-primary pull-right">Creation summary <span class="glyphicon glyphicon-chevron-right"></span></a>\n\
+                            <a href="' + baseDir + name_shop + '/admin/creation/summary" class="btn btn-info pull-right">Creation summary <span class="glyphicon glyphicon-chevron-right"></span></a>\n\
                             </div>'),
                             type: 'inline'
                         }]

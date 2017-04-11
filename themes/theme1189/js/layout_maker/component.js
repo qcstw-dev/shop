@@ -324,7 +324,8 @@ var resizeableImage = function (image_target, customizable) {
                         type: 'inline'
                     }]
             });
-            $('#add-to-cart, .add-creation').clone(true).appendTo($('.add-to-cart-area'));
+            $('#add-to-cart, .add-creation-hidden').clone(true).appendTo($('.add-to-cart-area'));
+            $('.add-to-cart-area .add-creation-hidden').removeClass('hidden');
             $('.export-image').on('click', function () {
                 // atob to base64_decode the data-URI
                 var image_data = atob(crop_canvas.toDataURL("image/png").split(',')[1]);

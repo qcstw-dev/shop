@@ -50,18 +50,18 @@ class CustomShopAdminUserAccountControllerCore extends CustomShopAdminController
             $bFormSubmitted = true;
         }
         if (Tools::getValue('form_type') == 'bank-detail-form') {
-            if (Tools::getValue('payment') == 'bank') {
-                $oCustomShopAccount->account_holder = Tools::getValue('bank_account_holder');
-                $oCustomShopAccount->account_number = Tools::getValue('account_number');
-                $oCustomShopAccount->bank_name = Tools::getValue('bank_name');
-                $oCustomShopAccount->bank_address = Tools::getValue('bank_address');
-                $oCustomShopAccount->swift = Tools::getValue('swift');
-                $oCustomShopAccount->paypal_email = '';
-            } else if (Tools::getValue('payment') == 'paypal') {
+//            if (Tools::getValue('payment') == 'bank') {
+//                $oCustomShopAccount->account_holder = Tools::getValue('bank_account_holder');
+//                $oCustomShopAccount->account_number = Tools::getValue('account_number');
+//                $oCustomShopAccount->bank_name = Tools::getValue('bank_name');
+//                $oCustomShopAccount->bank_address = Tools::getValue('bank_address');
+//                $oCustomShopAccount->swift = Tools::getValue('swift');
+//                $oCustomShopAccount->paypal_email = '';
+//            } else if (Tools::getValue('payment') == 'paypal') {
                 $oCustomShopAccount->account_holder = Tools::getValue('paypal_account_holder');
                 $oCustomShopAccount->paypal_email = Tools::getValue('paypal_email');
                 $oCustomShopAccount->account_number = $oCustomShopAccount->bank_name = $oCustomShopAccount->bank_address = $oCustomShopAccount->swift = '';
-            }
+//            }
             $bFormSubmitted = true;
         }
         

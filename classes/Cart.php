@@ -1108,6 +1108,9 @@ class CartCore extends ObjectModel
                     'id_customized_prod' => ($id_creation ?: 0)
                 ];
                 if ($id_creation) {
+                    $oCreation = new CustomShopProduct($id_creation);
+                    $fDesignPrice = CustomShopDesign::getPrice($oCreation->id_design);
+                    $fProductPrice = Product::getPriceStatic($oCreation->id_product, null, null, 6, null, null, true, 1);
                     $aData['design_price'] = $fDesignPrice;
                     $aData['product_price'] = $fProductPrice;
                 }

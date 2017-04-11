@@ -106,3 +106,9 @@
     <div class="container">
         <div class="margin-top-50 visible-sm visible-md visible-lg"></div>
         <div class="col-xs-12 padding-0">
+    {if $shop.deactivated}
+        <div class="alert alert-info font-size-20 text-center top-50-percent">
+            <div>This shop is currently not available</div>
+            <div><a class="btn btn-primary margin-top-10" href="{$base_dir}">Visit main website</a></div>
+        </div>
+    {/if}
