@@ -451,9 +451,13 @@ abstract class PaymentModuleCore extends Module
                     // Construct order detail table for the email
                     $products_list = '';
                     $virtual_product = true;
-
+                    
+                    $aCustomShop = [];
                     $product_var_tpl_list = array();
                     foreach ($order->product_list as $product) {
+                        if ($product['customized_prod']) {
+                            $aCustomShop = CustomShop::getShopById($product['customized_prod']['id_shop']);
+                        }
                         $price = Product::getPriceStatic((int)$product['id_product'], false, ($product['id_product_attribute'] ? (int)$product['id_product_attribute'] : null), 6, null, false, true, $product['cart_quantity'], false, (int)$order->id_customer, (int)$order->id_cart, (int)$order->{Configuration::get('PS_TAX_ADDRESS_TYPE')});
                         $price_wt = Product::getPriceStatic((int)$product['id_product'], true, ($product['id_product_attribute'] ? (int)$product['id_product_attribute'] : null), 2, null, false, true, $product['cart_quantity'], false, (int)$order->id_customer, (int)$order->id_cart, (int)$order->{Configuration::get('PS_TAX_ADDRESS_TYPE')});
 
@@ -781,18 +785,42 @@ abstract class PaymentModuleCore extends Module
                         }
 
                         if (Validate::isEmail($this->context->customer->email)) {
-                            Mail::Send(
-                                (int)$order->id_lang,
-                                'order_conf',
-                                Mail::l('Order confirmation', (int)$order->id_lang),
-                                $data,
-                                $this->context->customer->email,
-                                $this->context->customer->firstname.' '.$this->context->customer->lastname,
-                                null,
-                                null,
-                                $file_attachement,
-                                null, _PS_MAIL_DIR_, false, (int)$order->id_shop
-                            );
+                            if ($aCustomShop) {
+                                $data['{custom_shop_name}'] = $aCustomShop['title'] ?: $aCustomShop['name'];
+                                $data['{custom_shop_url}'] = _PS_BASE_URL_.__PS_BASE_URI__.'shop/'.$aCustomShop['name'];
+                                $data['{custom_shop_logo}'] = _PS_BASE_URL_.__PS_BASE_URI__.'img/custom_shop/logo/'.$aCustomShop['logo'];
+                                Mail::Send(
+                                    (int)$order->id_lang,
+                                    'custom_shop_order_conf',
+                                    'Order confirmation',
+                                    $data,
+                                    $this->context->customer->email,
+                                    $this->context->customer->firstname.' '.$this->context->customer->lastname,
+                                    null,
+                                    $aCustomShop['title'] ?: $aCustomShop['name'],
+                                    null,
+                                    null,
+                                    _PS_MAIL_DIR_,
+                                    false, 
+                                    (int)$order->id_shop
+                                );
+                            } else {
+                                Mail::Send(
+                                    (int)$order->id_lang,
+                                    'order_conf',
+                                    Mail::l('Order confirmation', (int)$order->id_lang),
+                                    $data,
+                                    $this->context->customer->email,
+                                    $this->context->customer->firstname.' '.$this->context->customer->lastname,
+                                    null,
+                                    null,
+                                    $file_attachement,
+                                    null,
+                                    _PS_MAIL_DIR_,
+                                    false, 
+                                    (int)$order->id_shop
+                                );
+                            }
                         }
                     }
 

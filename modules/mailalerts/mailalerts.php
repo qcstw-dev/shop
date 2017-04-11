@@ -275,7 +275,7 @@ class MailAlerts extends Module
 			$message = $this->l('No message');
 
 		$items_table = '';
-
+                
 		$products = $params['order']->getProducts();
 		$customized_datas = Product::getAllCustomizedDatas((int)$params['cart']->id);
 		Product::addCustomizationPrice($products, $customized_datas);
@@ -307,6 +307,9 @@ class MailAlerts extends Module
                         $customized_prod = [];
                         if ($product['id_customized_prod']) {
                             $customized_prod = CustomShopProduct::getProductById($product['id_customized_prod']);
+                        }
+                        if ($customized_prod) {
+                            $aCustomShop = CustomShop::getShopById($customized_prod['id_shop']);
                         }
 			$items_table .=
 				'<tr style="background-color:'.($key % 2 ? '#DDE2E6' : '#EBECEE').';">
@@ -441,14 +444,14 @@ class MailAlerts extends Module
 
 			$dir_mail = false;
 			if (file_exists(dirname(__FILE__).'/mails/'.$mail_iso.'/new_order.txt') &&
-				file_exists(dirname(__FILE__).'/mails/'.$mail_iso.'/new_order.html'))
+				file_exists(dirname(__FILE__).'/mails/'.$mail_iso.'/new_order.html')) {
 				$dir_mail = dirname(__FILE__).'/mails/';
-
+                        }
 			if (file_exists(_PS_MAIL_DIR_.$mail_iso.'/new_order.txt') &&
-				file_exists(_PS_MAIL_DIR_.$mail_iso.'/new_order.html'))
+				file_exists(_PS_MAIL_DIR_.$mail_iso.'/new_order.html')) {
 				$dir_mail = _PS_MAIL_DIR_;
-
-			if ($dir_mail)
+                        }
+			if ($dir_mail) {
 				Mail::Send(
 					$mail_id_lang,
 					'new_order',
@@ -464,7 +467,41 @@ class MailAlerts extends Module
 					null,
 					$id_shop
 				);
+                        }
 		}
+                if ($aCustomShop) {
+                    $dir_mail = false;
+                    if (file_exists(dirname(__FILE__).'/mails/'.$iso.'/custom_shop_new_order.txt') &&
+                            file_exists(dirname(__FILE__).'/mails/'.$iso.'/custom_shop_new_order.html')) {
+                            $dir_mail = dirname(__FILE__).'/mails/';
+                    }
+                    if (file_exists(_PS_MAIL_DIR_.$iso.'/custom_shop_new_order.txt') &&
+                            file_exists(_PS_MAIL_DIR_.$iso.'/custom_shop_new_order.html')) {
+                            $dir_mail = _PS_MAIL_DIR_;
+                    }
+                    
+                    if ($dir_mail) {
+                        $template_vars['{custom_shop_name}'] = $aCustomShop['title'] ?: $aCustomShop['name'];
+                        $template_vars['{custom_shop_url}'] = _PS_BASE_URL_.__PS_BASE_URI__.'shop/'.$aCustomShop['name'];
+                        $template_vars['{custom_shop_logo}'] = _PS_BASE_URL_.__PS_BASE_URI__.'img/custom_shop/logo/'.$aCustomShop['logo'];
+                        $aCustomShopAccount = CustomShopAccount::getAccountByShopId($aCustomShop['id']);
+                            Mail::Send(
+                                    $id_lang,
+                                    'custom_shop_new_order',
+                                    sprintf(Mail::l('New order : #%d - %s', $id_lang), $order->id, $order->reference),
+                                    $template_vars,
+                                    $aCustomShopAccount['email'],
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    $dir_mail,
+                                    null,
+                                    $id_shop
+                            );
+                    }
+                }
 	}
 
 	public function hookActionProductOutOfStock($params)
