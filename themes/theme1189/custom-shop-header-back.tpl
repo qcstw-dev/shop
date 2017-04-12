@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="{$css_dir}register.css" media="all">
     <link rel="stylesheet" href="{$css_dir}custom-shop.css" media="all">
     <link rel="stylesheet" href="{$css_dir}custom-shop-admin.css" media="all">
+    {if $page_name == 'customshopsuperadmin' && $smarty.server.HTTP_HOST != 'localhost'}
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+    {/if}
     {if isset($register)}
         <script src='https://www.google.com/recaptcha/api.js'></script>
     {/if}

@@ -17,11 +17,39 @@ class CustomShopSuperAdminControllerCore extends CustomShopControllerCore {
         parent::initContent();
 
         $sErrorMessage = '';
-        $sLogin = 'qcsasia';
-        $sPassword = 'ab119955CD';
+        
         if (!$this->context->cookie->__get('custom_shop_loggedin_super')) {
+            $sLogin = 'qcsasia';
+            $sPassword = 'ab119955CD';
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($ch, CURLOPT_POST, 1);
+            $secret = '6LdWFwwUAAAAAPbbeLIplVLPTt0sJgqoPGUw4RWZ';
+            if ($_SERVER['HTTP_HOST'] == 'pimpyourkeys.com') {
+                $secret = '6LecpxwUAAAAAEaHnpzskXbRqgrFBdwhrQXjRmMH';
+            }
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
+                'response' => Tools::getValue('g-recaptcha-response'),
+                'secret' => $secret
+            )));
+
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            $server_output = json_decode(curl_exec($ch));
+            curl_close($ch);
+            
             if (Tools::getIsset('login') && Tools::getIsset('password')) {
-                if (Tools::getValue('login') == $sLogin && Tools::getValue('password') == $sPassword) {
+                $whitelist = array(
+                    '127.0.0.1',
+                    '::1'
+                );
+                $bIsLocal = true;
+                if (!in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
+                    $bIsLocal = false;
+                }
+                if (!$bIsLocal && (!$server_output || !$server_output->success)) {
+                    $sErrorMessage = Tools::displayError('Wrong reCAPTCHA. ');
+                } else if (Tools::getValue('login') == $sLogin && Tools::getValue('password') == $sPassword) {
                     $this->context->cookie->__set('custom_shop_loggedin_super', true);
                 } else if (Tools::getValue('login') != $sLogin) {
                     $sErrorMessage = 'Wrong login';

@@ -14,6 +14,13 @@
                 <label>Password</label>
                 <input class="form-control" type="password" name="password" />
             </div>
+            {if $smarty.server.HTTP_HOST != 'localhost'}
+                {if $smarty.server.HTTP_HOST == 'pimpyourkeys.com'}
+                    <div class="g-recaptcha" data-sitekey="6LecpxwUAAAAAG7ZSDy38lhkFMOZmHUrG3bHpKHH"></div>
+                {else}
+                    <div class="g-recaptcha" data-sitekey="6LdWFwwUAAAAABxzvt7l89l6Wm_ZH_aGGI1t8ru9"></div>
+                {/if}
+            {/if}
             <div class="form-group">
                 <input class="btn btn-success col-xs-12 col-lg-4 pull-right" type="submit" value="Log in" />
             </div>
