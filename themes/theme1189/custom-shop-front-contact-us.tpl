@@ -1,12 +1,15 @@
 {capture name=path}{l s='Contact'}{/capture}
-<div class="contact-form hidden {if isset($show_contact_popup)}auto-display{/if}">
+{if $smarty.server.HTTP_HOST != 'localhost'}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{/if}
+<div class="contact-form {if isset($show_contact_popup)}auto-display{/if}">
     <div class="col-xs-12 font-size-20 bold text-center">
     {l s='Customer service'} - {if isset($customerThread) && $customerThread}{l s='Your reply'}{else}{l s='Contact us'}{/if}
     <hr>
     </div>
     <div class="col-xs-12 padding-0">
         {if isset($confirmation)}
-            <p class="alert alert-success bold">{l s='Your message has been successfully sent to our team.'}</p>
+            <p class="alert alert-success bold text-center">{l s='Your message has been successfully sent to our team.'}</p>
         {elseif isset($alreadySent)}
             <p class="alert alert-warning">{l s='Your message has already been sent.'}</p>
             <div class="footer_links clearfix">
@@ -17,7 +20,7 @@
         {else}
             {include file="$tpl_dir./errors.tpl"}
             <form action="{$request_uri}" method="post" class="contact-form-box" enctype="multipart/form-data">
-                <input type="hidden" name="custom_shop_id" value="{$shop.id}" />
+                <input type="hidden" name="custom_shop_id" value="{$custom_shop_id}" />
                 <fieldset>
                     <div class="clearfix">
                         <div class="col-xs-12 col-md-6">
@@ -103,8 +106,12 @@
                                 <label for="message">{l s='Message'}</label>
                                 <textarea class="form-control" id="message" name="message">{if isset($message)}{$message|escape:'html':'UTF-8'|stripslashes}{/if}</textarea>
                             </div>
-                            {if $smarty.server.HTTP_HOST != 'localhost' && $smarty.server.HTTP_HOST != 'pimpyourkeys.com'}
-                                <div class="g-recaptcha" data-sitekey="6LdWFwwUAAAAABxzvt7l89l6Wm_ZH_aGGI1t8ru9"></div>
+                            {if $smarty.server.HTTP_HOST != 'localhost'}
+                                {if $smarty.server.HTTP_HOST == 'pimpyourkeys.com'}
+                                    <div class="g-recaptcha" data-sitekey="6LecpxwUAAAAAG7ZSDy38lhkFMOZmHUrG3bHpKHH"></div>
+                                {else}
+                                    <div class="g-recaptcha" data-sitekey="6LdWFwwUAAAAABxzvt7l89l6Wm_ZH_aGGI1t8ru9"></div>
+                                {/if}
                             {/if}
                             <div class="submit margin-top-10">
                                 <button type="submit" name="submitMessage" id="submitMessage" class="btn btn-primary col-xs-12 col-sm-4 pull-right">

@@ -94,6 +94,9 @@ a, a:hover {
 .fa-pinterest-square, .fa-pinterest-square:hover {
     color: #cb2027;
 }
+#message {
+    height: 225px;
+}
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
     .container {

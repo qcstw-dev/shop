@@ -792,7 +792,7 @@ abstract class PaymentModuleCore extends Module
                                 Mail::Send(
                                     (int)$order->id_lang,
                                     'custom_shop_order_conf',
-                                    'Order confirmation',
+                                    Mail::l('Order confirmation', (int)$order->id_lang),
                                     $data,
                                     $this->context->customer->email,
                                     $this->context->customer->firstname.' '.$this->context->customer->lastname,

@@ -7,6 +7,5 @@
             No products available yet for this shop
         </div>
     {/if}
-    {include file=$contact_form}
     {include file=$footer}
 {/if}

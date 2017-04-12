@@ -38,7 +38,7 @@
     <div class="container">
         <div class="col-sm-2 padding-0">
             <div class="thumbnail padding-0 border-none margin-bottom-0">
-                <img src="{$base_dir}img/credit-cards.png" alt="payment logo" title="payment logo" />
+                <img src="{$base_dir_ssl}img/credit-cards.png" alt="payment logo" title="payment logo" />
             </div>
         </div>
         <div class="col-sm-3 text-center padding-top-10">
@@ -48,7 +48,7 @@
             <div class="btn-contact cursor-pointer" data-page="contactus">Contact us</div>
         </div>
         <div class="col-sm-2 text-center">
-            <div class="col-xs-6 padding-top-10">Shipping:</div><div class="col-xs-6 thumbnail margin-bottom-0 border-none"><img src="{$base_dir}img/EMS.jpg" alt="EMS - Express mail service" title="EMS - Express mail service" /></div>
+            <div class="col-xs-6 padding-top-10">Shipping:</div><div class="col-xs-6 thumbnail margin-bottom-0 border-none"><img src="{$base_dir_ssl}img/EMS.jpg" alt="EMS - Express mail service" title="EMS - Express mail service" /></div>
         </div>
         <div class="col-sm-3 padding-0 text-center padding-top-10">
             Website powered by Gift attitude
@@ -62,7 +62,8 @@
     var static_token = '{$token}';
     var hasDeliveryAddress = '';
     var toBeDetermined = true;
-    var custom_shop_name = '{$custom_shop_name}';
+    var custom_shop_name = '{$shop.name}';
+    var custom_shop_id = '{$shop.id}';
     var currencyFormat = {$currency->format};
     var currencySign = '{$currency->sign}';
     var currencyBlank = {$currency->blank};
@@ -74,11 +75,14 @@
 <script type="text/javascript" src="{$js_dir}autoload/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/fancybox/jquery.fancybox.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jqzoom/jquery.jqzoom.js"></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript" src="{$js_dir}custom-shop.js"></script>
 <script type="text/javascript" src="{$js_dir}custom-shop-front.js"></script>
 
 <script type="text/javascript" src="{$base_dir_ssl}js/tools.js"></script>
+
+{*{if $smarty.server.HTTP_HOST != 'localhost'}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{/if}*}
 
 {if isset($checkout)}
     <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jquery.typewatch.js"></script>

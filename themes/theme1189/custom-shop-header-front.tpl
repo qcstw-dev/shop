@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0" /> 
-    <link rel="icon" type="image/vnd.microsoft.icon" href="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$base_dir_ssl}/img/favicon.ico?{rand()}{/if}">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$base_dir_ssl}/img/favicon.ico?{rand()}{/if}">
     <link rel="stylesheet" href="{$css_dir}bootstrap.min.css" media="all">
     <link rel="stylesheet" href="{$css_dir}tool-custom-bootstrap.css" media="all">
     <link rel="stylesheet" href="{$css_dir}autoload/magnific-popup.css" media="all">
@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{$css_dir}product.css" media="all">
     <link rel="stylesheet" href="{$css_dir}custom-shop.css" media="all">
     <link rel="stylesheet" href="{$css_dir}custom-shop-front.css" media="all">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     {literal} 
         <script>
             (function (i, s, o, g, r, a, m) {
@@ -30,7 +29,7 @@
             ga('send', 'pageview');
         </script>
     {/literal}
-    <meta property="og:image" content="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_gift}{/if}" />
+    <meta property="og:image" content="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_gift}{/if}" />
     <meta name="description" content="{if $shop.description}{$shop.description|escape:'html':'UTF-8'}{/if}" />
     <title>{$meta_title}</title>
 </head>
@@ -50,17 +49,17 @@
             <div class="col-xs-12">
                 <div class="logo visible-xs visible-md">
                     <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
-                        <img src="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
+                        <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
                     </a>
                 </div>
                 <div class="header-label">
                     <span class="shop-title">{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
                     <span class="shop-motto">"{if $shop.motto}{$shop.motto|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
                 </div>
-                <div class="header" style="background-image: url('{if $shop.header}{$base_dir}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
+                <div class="header" style="background-image: url('{if $shop.header}{$base_dir_ssl}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
                 <div class="logo hidden-xs hidden-sm">
                     <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
-                        <img src="{if $shop.logo}{$base_dir}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
+                        <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
                     </a>
                 </div>
             </div>
@@ -89,7 +88,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="margin-right-20">
                             <div class="cart-icon-desk {if isset($checkout)}active{/if} padding-10 hidden-xs hidden-sm">
-                                <a href="{$base_dir}shop/{$custom_shop_name}/checkout">
+                                <a href="{$base_dir_ssl}shop/{$custom_shop_name}/checkout">
                                     <span class="ajax_cart_quantity">{$cart_qties}</span>
                                     <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
                                 </a>
@@ -109,6 +108,6 @@
     {if $shop.deactivated}
         <div class="alert alert-info font-size-20 text-center top-50-percent">
             <div>This shop is currently not available</div>
-            <div><a class="btn btn-primary margin-top-10" href="{$base_dir}">Visit main website</a></div>
+            <div><a class="btn btn-primary margin-top-10" href="{$base_dir_ssl}">Visit main website</a></div>
         </div>
     {/if}
