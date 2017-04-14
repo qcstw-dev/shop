@@ -660,9 +660,6 @@ class AjaxCustomShopControllerCore extends FrontController {
                         </div>
                         <div class="col-xs-12 thumbnail border-none margin-bottom-0 padding-0 cursor-pointer upload-btn" data-id="' . $i . '">
                             <img class="upload-picture upload-picture-' . $i . '" src="' . __PS_BASE_URI__ . 'img/upload-icon.jpg" title="upload" alt="upload" />
-                            <div class="hidden-uploader">
-                                <input class="fileupload hidden-fileupload-' . $i . '" data-db-id="" data-id-upload="' . $i . '" type="file" name="files[]">
-                            </div>
                         </div>
                         <div class="col-xs-12 margin-top-5 margin-bottom-5">
                             <div class="col-xs-5 margin-top-10">Price:</div>

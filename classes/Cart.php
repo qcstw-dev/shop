@@ -1111,6 +1111,7 @@ class CartCore extends ObjectModel
                     $oCreation = new CustomShopProduct($id_creation);
                     $fDesignPrice = CustomShopDesign::getPrice($oCreation->id_design);
                     $fProductPrice = Product::getPriceStatic($oCreation->id_product, null, null, 6, null, null, true, 1);
+                    $aData['id_custom_shop'] = $oCreation->id_shop;
                     $aData['design_price'] = $fDesignPrice;
                     $aData['product_price'] = $fProductPrice;
                 }

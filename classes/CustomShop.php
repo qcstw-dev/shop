@@ -93,12 +93,11 @@ class CustomShopCore extends ObjectModel {
     public static function getOrders($iId, $bCommissionPaid = false) {
         $aOrders = Db::getInstance()->executeS('
 		SELECT o.*, cp.*
-		FROM `' . _DB_PREFIX_ . 'orders` o, `' . _DB_PREFIX_ . 'cart_product` cp, `' . _DB_PREFIX_ . 'custom_shop_customized_prod` cscp
+		FROM `' . _DB_PREFIX_ . 'orders` o, `' . _DB_PREFIX_ . 'cart_product` cp
                 WHERE cp.`id_cart` = o.`id_cart`
                 AND o.`valid` = 1'
                 . ($bCommissionPaid ? ' AND o.`id_billing` != 0' : '') . '
-                AND cscp.`id` = cp.`id_customized_prod`
-		AND cscp.`id_shop` = ' . pSQL($iId)
+		AND cp.`id_custom_shop` = ' . pSQL($iId)
                 . ' ORDER BY o.`id_order` DESC');
         foreach ($aOrders as &$aOrder) {
             $aOrder['product_prestashop'] = Db::getInstance()->getRow('

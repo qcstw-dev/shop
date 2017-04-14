@@ -35,14 +35,15 @@ class CustomShopDesignCore extends ObjectModel {
         return Db::getInstance()->getRow('
 		SELECT *
 		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '`
-		WHERE `id` = ' . pSQL($iId));
+                WHERE `id` = ' . pSQL($iId));
     }
 
     public static function getPicturesByShopId($iId) {
         return Db::getInstance()->executeS('
 		SELECT *
 		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '`
-		WHERE `id_shop` = ' . pSQL($iId));
+		WHERE `deleted` = 0
+		AND `id_shop` = ' . pSQL($iId));
     }
 
     public function setName($sName) {
@@ -66,8 +67,9 @@ class CustomShopDesignCore extends ObjectModel {
             $oCreation = new CustomShopProduct($aCreation['id']);
             $oCreation->delete();
         }
-        $this->deletePicture();
-        return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
+//        $this->deletePicture();
+//        return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
+        return Db::getInstance()->update(self::$definition['table'], ['deleted' => 1], 'id = ' . pSQL($this->id));
     }
 
     public function deletePicture() {

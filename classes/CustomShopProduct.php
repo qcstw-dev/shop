@@ -100,16 +100,18 @@ class CustomShopProductCore extends ObjectModel {
         return Db::getInstance()->executeS('
 		SELECT *
 		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '` csp '.($aCategories ? ', '. _DB_PREFIX_ .'category_product as cp' : '') .'
-		WHERE `id_shop` = ' . pSQL($iShopId)
+		WHERE `deleted` = 0
+		AND `id_shop` = ' . pSQL($iShopId)
                         . ($bOnlyPublished ? ' AND csp.`published` = 1' : '')
                         . ($aCategories ? ' AND csp.`id_product` = cp.`id_product` AND cp.`id_category` IN ('.  implode(',', $aCategories).')' : '')
                 );
     }
 
     public function delete() {
-        $this->deleteCustomImage();
+//        $this->deleteCustomImage();
         $this->deleteFromCart();
-        return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
+//        return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
+        return Db::getInstance()->update(self::$definition['table'], ['deleted' => 1], 'id = ' . pSQL($this->id));
     }
     public function deleteFromCart() {
         Db::getInstance()->execute('
