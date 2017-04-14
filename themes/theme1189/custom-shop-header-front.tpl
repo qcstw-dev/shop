@@ -30,8 +30,8 @@
         </script>
     {/literal}
     <meta property="og:image" content="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_gift}{/if}" />
-    <meta name="description" content="{if $shop.description}{$shop.description|escape:'html':'UTF-8'}{/if}" />
-    <title>{$meta_title}</title>
+    <meta name="description" content="{if $shop.description}{$shop.description|escape:'html':'UTF-8'}{else}Find keychain, bottle opener, coin keychain, menu holder and more with unbeatbale prices on \"{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}\" shop. Shipping worldwide{/if}" />
+    <title>{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if} shop – Gift Attitude</title>
 </head>
 <body>
     <div class="shop hidden" data-id-shop="{$id_shop}" data-name-shop="{$name_shop}" data-side="front"></div>
@@ -88,7 +88,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="margin-right-20">
                             <div class="cart-icon-desk {if isset($checkout)}active{/if} padding-10 hidden-xs hidden-sm">
-                                <a href="{$base_dir_ssl}shop/{$custom_shop_name}/checkout">
+                                <a href="{$base_dir_ssl}shop/{$custom_shop_name}/checkout" rel="no-follow">
                                     <span class="ajax_cart_quantity">{$cart_qties}</span>
                                     <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
                                 </a>
