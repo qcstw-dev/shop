@@ -50,6 +50,11 @@ hr {
 .btn {
     border-radius: 0;
 }
+.btn-sell {
+    border-radius: 30px;
+    padding: 8px;
+    font-weight: bold;
+}
 .thumbnail {
     border-radius: 0;
 }

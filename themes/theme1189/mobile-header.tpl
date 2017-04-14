@@ -255,9 +255,12 @@
                 {l s='Your cart is empty'}
             </div>
         </div>
-        <div class="col-xs-8 margin-top-5 bold text-center italic color-primary">
+        <div class="col-xs-5 padding-0 margin-top-20 font-size-13 bold italic text-center color-primary">
             <div class="visible-xs">{l s='Personalized gifts for unique memories'}</div>
-            <div class="visible-sm font-size-30 margin-top-20">{l s='Personalized gifts for unique memories'}</div>
+            <div class="visible-sm font-size-30">{l s='Personalized gifts for unique memories'}</div>
+        </div>
+        <div class="pull-right margin-right-10 margin-top-10">
+            <a href="{$base_dir_ssl}mobile-custom-shop-introduction" class="btn btn-success btn-sm margin-bottom-5 margin-top-10 col-xs-12 btn-sell">Sell <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
     {include file=$menu_mobile}

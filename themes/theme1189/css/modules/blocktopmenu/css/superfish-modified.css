@@ -183,6 +183,7 @@ ul.sf-menu li li li.sfHover ul {
     width: 25%;
     padding-right: 15px; 
     margin-bottom: 10px;
+    text-align: left;
 }
 @media (max-width: 767px) {
     .sf-menu > li > ul > li {

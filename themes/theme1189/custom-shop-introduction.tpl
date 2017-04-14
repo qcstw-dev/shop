@@ -2,18 +2,18 @@
     {include file=$header_mobile}
 {/if}
 <div class="col-xs-12 padding-0 margin-top-20 margin-bottom-20">
-    <div class="col-xs-6 text-center">
-        <a class="btn btn-danger btn-lg font-size-20 uppercase" href="{$base_uri}custom-shop-register" title="Create your shop">
+    <div class="col-xs-12 col-sm-6 margin-bottom-10 text-center">
+        <a class="btn btn-danger btn-lg font-size-20 uppercase btn-connect" href="{$base_uri}custom-shop-register" title="Create your shop">
             <span class="glyphicon glyphicon-edit"></span> Create your shop 
         </a>
     </div>
-    <div class="col-xs-6 text-center">
-        <a class="btn btn-success btn-lg font-size-20 uppercase" href="{$base_uri}custom-shop-register?preselect=login" title="Access to your shop">
-            <span class="glyphicon glyphicon-user"></span> Access to your shop 
+    <div class="col-xs-12 col-sm-6 margin-bottom-10 text-center">
+        <a class="btn btn-success btn-lg font-size-20 uppercase btn-connect" href="{$base_uri}custom-shop-register?preselect=login" title="Access to your shop">
+            <span class="glyphicon glyphicon-user"></span> I already have a shop 
         </a>
     </div>
 </div>
-<div class="col-xs-12 font-size-24 text-center margin-top-10 margin-bottom-20 uppercase padding-top-20 padding-bottom-20 intro-title">You are a</div>
+<div class="col-xs-12 text-center margin-top-10 margin-bottom-20 uppercase padding-top-20 padding-bottom-20 intro-title">You are a</div>
 <div class="col-xs-12 margin-bottom-20">
     <div class="col-xs-6 col-md-3">
         <div class="intro-block-picture">
@@ -41,7 +41,7 @@
     </div>
 </div>
 <div class="col-xs-12 padding-0 padding-top-20">
-    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
+    <div class="col-xs-12 text-center uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
         And you want to use your image / design to increase / create revenue
     </div>
     <div class="col-xs-12 text-center thumbnail border-none">
@@ -49,21 +49,21 @@
     </div>
 </div>
 <div class="col-xs-12 padding-0 padding-top-20">
-    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
+    <div class="col-xs-12 text-center uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
         Create your personal shop with us today
     </div>
     <div class="col-xs-12">
         <div class="col-xs-5 text-center thumbnail border-none">
             <img src="{$img_dir}custom-shop-intro/shop.png" alt="Personal shop" title="Personal shop" />
         </div>
-        <div class="col-xs-7 font-size-30 italic intro-quote">
+        <div class="col-xs-7 italic intro-quote">
             "It's completely free and will forever be"
         </div>
         <div class="clearfix"></div>
     </div>
 </div>
 <div class="col-xs-12 padding-0">
-    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
+    <div class="col-xs-12 text-center uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
         You can
     </div>
     <div class="col-xs-12 col-lg-4">
@@ -86,7 +86,7 @@
     </div>
 </div>
 <div class="col-xs-12 padding-0">
-    <div class="col-xs-12 text-center font-size-24 uppercase margin-bottom-20 margin-top-20 padding-top-20 padding-bottom-20 intro-title">
+    <div class="col-xs-12 text-center uppercase margin-bottom-20 margin-top-20 padding-top-20 padding-bottom-20 intro-title">
         We handle
     </div>
     <div class="col-xs-6 col-md-2">
@@ -126,15 +126,15 @@
         <div class="font-size-20 text-center">Customer service</div>
     </div>
 </div>
-<div class="col-xs-12 padding-0 margin-top-50 margin-bottom-20">
-    <div class="col-xs-6 text-center">
-        <a class="btn btn-danger btn-lg font-size-20 uppercase" href="{$base_uri}custom-shop-register" title="Create your shop">
+<div class="col-xs-12 padding-0 margin-top-20 margin-bottom-20">
+    <div class="col-xs-12 col-sm-6 margin-bottom-10 text-center">
+        <a class="btn btn-danger btn-lg font-size-20 uppercase btn-connect" href="{$base_uri}custom-shop-register" title="Create your shop">
             <span class="glyphicon glyphicon-edit"></span> Create your shop 
         </a>
     </div>
-    <div class="col-xs-6 text-center">
-        <a class="btn btn-success btn-lg font-size-20 uppercase" href="{$base_uri}custom-shop-register?preselect=login" title="Access to your shop">
-            <span class="glyphicon glyphicon-user"></span> Access to your shop 
+    <div class="col-xs-12 col-sm-6 margin-bottom-10 text-center">
+        <a class="btn btn-success btn-lg font-size-20 uppercase btn-connect" href="{$base_uri}custom-shop-register?preselect=login" title="Access to your shop">
+            <span class="glyphicon glyphicon-user"></span> I already have a shop 
         </a>
     </div>
 </div>

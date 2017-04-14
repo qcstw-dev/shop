@@ -5,7 +5,7 @@
         'customshopadmincreationpicture',
         'customshopadmincreationlayoutmaker',
         'customshopadmincreationsummary'
-       ])} active{/if}"><span class="glyphicon glyphicon-pencil font-size-20 margin-bottom-10"></span> Creation<br />zone</a>
+       ])} active{/if}"><span class="glyphicon glyphicon-pencil font-size-20 margin-bottom-10"></span> Creation <span class="visible-lg"></span>zone</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/shop" class="list-group-item{if in_array($page_name, [
         'customshopadminshop',
         'customshopadminshopedit'
@@ -15,7 +15,7 @@
        ])} active{/if}"><span class="glyphicon glyphicon-list-alt font-size-20 margin-bottom-10"></span> Dashboard</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/user-account" class="list-group-item{if in_array($page_name, [
         'customshopadminuseraccount'
-       ])} active{/if}"><span class="glyphicon glyphicon-user font-size-20 margin-bottom-10"></span> User<br />account</a>
+       ])} active{/if}"><span class="glyphicon glyphicon-user font-size-20 margin-bottom-10"></span> User <span class="visible-lg"></span>account</a>
         <a href="{$base_uri}{$custom_shop_name}/admin/contact" class="list-group-item{if in_array($page_name, [
         'customshopadmincontact'
        ])} active{/if}"><span class="glyphicon glyphicon-envelope font-size-20 margin-bottom-10"></span> Contact</a>
