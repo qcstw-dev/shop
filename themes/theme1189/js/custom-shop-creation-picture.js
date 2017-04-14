@@ -36,7 +36,6 @@ $(document).ready(function () {
             success: function (html) {
                 if (html) {
                     $('.block-picture-container:last').after(html);
-                    fileuploadListener();
                 }
             }
         });
