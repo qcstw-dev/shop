@@ -314,8 +314,8 @@ class MailAlerts extends Module
 			$items_table .=
 				'<tr style="background-color:'.($key % 2 ? '#DDE2E6' : '#EBECEE').';">
 					<td style="padding:0.6em 0.4em;">
-                                            <div><img style="width: 100px" src="'._PS_BASE_URL_.__PS_BASE_URI__.'img/'.($product['id_customized_prod'] ? 'custom_shop/creation/'.$customized_prod['custom_img'] : 'layout_maker/custom_pictures/'.$product['custom_picture'].'.png').'" />
-                                            <div><a href="'._PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/custom_pictures/'.$product['custom_picture'].'.png">Customized product picture</a></div>
+                                            <div><img width="200px" src="'._PS_BASE_URL_.__PS_BASE_URI__.'img/'.($product['id_customized_prod'] ? 'custom_shop/creation/'.$customized_prod['custom_img'] : 'layout_maker/custom_pictures/'.$product['custom_picture'].'.png').'" />
+                                            <div><a href="'._PS_BASE_URL_.__PS_BASE_URI__.'img/'.($product['id_customized_prod'] ? 'custom_shop/creation/'.$customized_prod['custom_img'] : 'layout_maker/custom_pictures/'.$product['custom_picture'].'.png').'">Customized product picture</a></div>
                                             '.(isset($product['original_picture']) && $product['original_picture'] ? '<div><a href="'._PS_BASE_URL_.__PS_BASE_URI__.'img/layout_maker/original_pictures/'.$product['original_picture'].'.png">Original picture</a></div>' : '').'
                                         </td>
 					<td style="padding:0.6em 0.4em;">'.$product['product_reference'].'</td>
