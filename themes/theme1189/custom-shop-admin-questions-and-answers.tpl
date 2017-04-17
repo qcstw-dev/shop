@@ -35,7 +35,7 @@
     </ul>
 </div>
 <div class="col-xs-12 dropdown-block-title font-size-15" data-id-dropdown-block="shop-owner-role">
-    <span class="chevron glyphicon glyphicon-chevron-right"></span> What do you have to handle?
+    <span class="chevron glyphicon glyphicon-chevron-right"></span> What do I have to handle?
 </div>
 <div class="col-xs-12 dropdown-block dropdown-block-shop-owner-role" style="display: none;">
     <p><strong>You handle:</strong></p>
@@ -89,7 +89,7 @@
     <span class="chevron glyphicon glyphicon-chevron-right"></span> When are my commission paid?
 </div>
 <div class="col-xs-12 dropdown-block dropdown-block-when-paid" style="display: none;">
-    <p>Gift Attitude pays cumulated commission amount on the 31st of each month as far as Payment release level is reached.</p>
+    <p>Gift Attitude pays cumulated commission amount on the 1st of each month (if working day) as far as Payment release level is reached.</p>
     <p>In other words, if I set $100 as my commission release level, and that on 31.03 I only accumulated $92.5, then payment won’t be release, but will be saved for the next month. If on 31.04, I accumulated $103 (including amount accumulated in February), then the full amount will be released.</p>
 </div>
 <div class="col-xs-12 dropdown-block-title font-size-15" data-id-dropdown-block="how-get-paid">
