@@ -17,19 +17,19 @@
         </div>
         <div class="col-xs-2 padding-0">
             {if $shop.facebook}
-                <div class="pull-left margin-right-10"><a href="{$shop.facebook}" target="_blank" class="fa fa-facebook-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{$shop.facebook}" target="_blank" class="fa fa-facebook-square font-size-30"></a></div>
                 {/if}
                 {if $shop.twitter}
-                <div class="pull-left margin-right-10"><a href="{$shop.twitter}" target="_blank" class="fa fa-twitter-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{$shop.twitter}" target="_blank" class="fa fa-twitter-square font-size-30"></a></div>
                 {/if}
                 {if $shop.instagram}
-                <div class="pull-left margin-right-10"><a href="{$shop.instagram}" target="_blank" class="fa fa-instagram font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{$shop.instagram}" target="_blank" class="fa fa-instagram font-size-30"></a></div>
                 {/if}
                 {if $shop.linkedin}
-                <div class="pull-left margin-right-10"><a href="{$shop.linkedin}" target="_blank" class="fa fa-linkedin-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{$shop.linkedin}" target="_blank" class="fa fa-linkedin-square font-size-30"></a></div>
                 {/if}
                 {if $shop.pinterest}
-                <div class="pull-left margin-right-10"><a href="{$shop.pinterest}" target="_blank" class="fa fa-pinterest-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{$shop.pinterest}" target="_blank" class="fa fa-pinterest-square font-size-30"></a></div>
                 {/if}
         </div>
     </div>

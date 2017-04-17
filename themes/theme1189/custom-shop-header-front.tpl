@@ -77,16 +77,8 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="{if !$cat && !isset($checkout)}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">Home</a></li>
-                        {if $categories}
-                            {foreach from=$categories item='category'}
-                                <li class="{if $cat == $category.link_rewrite}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}?category={$category.link_rewrite}" title="{$category.name}">{$category.name}</a></li>
-                            {/foreach}
-                        {/if}
-                    </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="margin-right-20">
+                        <li class="pull-right margin-right-10">
                             <div class="cart-icon-desk {if isset($checkout)}active{/if} padding-10 hidden-xs hidden-sm">
                                 <a href="{$base_dir_ssl}shop/{$custom_shop_name}/checkout" rel="no-follow">
                                     <span class="ajax_cart_quantity">{$cart_qties}</span>
@@ -97,6 +89,14 @@
                                 </div>
                             </div>
                         </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="{if !$cat && !isset($checkout)}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">Home</a></li>
+                        {if $categories}
+                            {foreach from=$categories item='category'}
+                                <li class="{if $cat == $category.link_rewrite}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}?category={$category.link_rewrite}" title="{$category.name}">{$category.name}</a></li>
+                            {/foreach}
+                        {/if}
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
