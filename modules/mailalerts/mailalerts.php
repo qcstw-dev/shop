@@ -312,7 +312,8 @@ class MailAlerts extends Module
                             $aCustomShop = CustomShop::getShopById($customized_prod['id_shop']);
                         }
 			$items_table .=
-				'<tr style="background-color:'.($key % 2 ? '#DDE2E6' : '#EBECEE').';">
+//				'<tr style="background-color:'.($key % 2 ? '#DDE2E6' : '#EBECEE').';">
+				'<tr>
 					<td style="padding:0.6em 0.4em;">
                                             <div><img width="200px" src="'._PS_BASE_URL_.__PS_BASE_URI__.'img/'.($product['id_customized_prod'] ? 'custom_shop/creation/'.$customized_prod['custom_img'] : 'layout_maker/custom_pictures/'.$product['custom_picture'].'.png').'" />
                                             <div><a href="'._PS_BASE_URL_.__PS_BASE_URI__.'img/'.($product['id_customized_prod'] ? 'custom_shop/creation/'.$customized_prod['custom_img'] : 'layout_maker/custom_pictures/'.$product['custom_picture'].'.png').'">Customized product picture</a></div>
