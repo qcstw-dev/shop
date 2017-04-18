@@ -3,33 +3,11 @@ var category = '45';
 var nbProductsToDisplay = 12;
 var loading_products = false;
 $(function () {
-    $('.popup-prod-list').scroll(function () {
-        if (isScrolledIntoView($('#waypoint')) && !loading_products && issetMoreProducts) {
+    $(window).scroll(function () {
+        if ($('.product-list').length && isScrolledIntoView($('#waypoint')) && !loading_products && issetMoreProducts) {
             loadProducts();
         }
     });
-//    $('.popup-prod-list').scroll(function () {
-//        if (issetMoreProducts) {
-//            // End of the document reached?
-//            if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight && $('.block-product').length >= nbProductsToDisplay && ($('.block-product').length % nbProductsToDisplay) === 0 ) {
-//                loadProducts();
-//            }
-//        }
-//    });
-//    waypoint = new Waypoint({
-//        element: document.getElementById('waypoint'),
-//        handler: function (direction) {
-//            console.log(direction);
-//            if (direction === 'down' && issetMoreProducts && $('.block-product').length >= nbProductsToDisplay && ($('.block-product').length % nbProductsToDisplay) === 0) {
-//                console.log('disable');
-//                waypoint.disable();
-//                loadProducts();
-//            }
-//        },
-//        offset: 'bottom-in-view'
-//    });
-
-
     
     $('.filter-category').on('click', function () {
         category = $(this).data('id-category');
@@ -66,7 +44,7 @@ function loadProducts(reset) {
                 if (reset) {
                     $('.block-product').remove();
                 }
-                $('.product-list').append(html);
+                $('#waypoint').before(html);
             } else {
                 issetMoreProducts = false;
             }

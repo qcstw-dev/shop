@@ -72,10 +72,10 @@
                 </div>
                 {assign var=id_item value=$id_item+1}
             {/foreach}
-            {if $bLoadJs}
-            </div>
             <div class="clearfix"></div>
+            {if $bLoadJs}
             <div id="waypoint">&nbsp;</div>
+            </div>
         </div>
         {*<script>
         $('.slick-pictures-product-list').slick({

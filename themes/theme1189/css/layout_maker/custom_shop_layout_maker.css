@@ -25,6 +25,10 @@
 .product-name {
     height: 35px;
 }
+.product-list {
+/*    height: 700px;
+    overflow: auto;*/
+}
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
     .overlay-top {
@@ -77,6 +81,14 @@
         height: 713px;
     }
 }
+@media only screen and (max-width : 600px) {
+    .component {
+        height: 592px;
+    }
+    .overlay-right {
+        width: 51px;
+    }
+}
 /* Extra Small Devices, Phones */ 
 @media only screen and (max-width : 480px) {
     .overlay-right {
@@ -95,7 +107,17 @@
 }
 @media only screen and (max-width : 414px) {
     .overlay-bottom {
-        height: 10px;
+        height: 23px;
+    }
+}
+@media only screen and (max-width : 412px) {
+    .overlay-bottom {
+        height: 12px;
+    }
+}
+@media only screen and (max-width : 384px) {
+    .overlay-bottom {
+        height: 36px;
     }
 }
 /* Custom, iPhone Retina */ 
@@ -105,6 +127,14 @@
     }
     .overlay {
         height: 290px;
+    }
+    .overlay-bottom {
+        height: 11px;
+    }
+}
+@media only screen and (max-width : 360px) {
+    .overlay-bottom {
+        height: 11px;
     }
 }
 @media only screen and (max-width : 320px) {
