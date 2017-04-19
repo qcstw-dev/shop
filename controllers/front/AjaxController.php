@@ -9,8 +9,8 @@ class AjaxControllerCore extends FrontController {
         $fTotalCart = $this->context->cart->getOrderTotal($this->context->cart->id);
         $fTotalCartWithShipping = $fShippingPrice + $fTotalCart;
         $aTablePrices = [
-            'shipping' => Tools::displayPrice($fShippingPrice, $this->context->currency),
-            'total_cart' => Tools::displayPrice($fTotalCartWithShipping, $this->context->currency)
+            'shipping' => Tools::displayPrice(Tools::convertPrice($fShippingPrice, $this->context->currency)),
+            'total_cart' => Tools::displayPrice(Tools::convertPrice($fTotalCartWithShipping, $this->context->currency))
         ];
         echo json_encode($aTablePrices);
     }

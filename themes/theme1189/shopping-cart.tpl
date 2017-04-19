@@ -273,7 +273,6 @@
                                     $(function () {
                                         $.fancybox.hideLoading();
                                     });
-                                    console.log(result);
                                     $('.shopping_price').text(result.shipping);
                                     $('#total_price').text(result.total_cart);
                                 }
