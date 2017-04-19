@@ -1,11 +1,26 @@
-$(function () {
+$(function () { 
+    $('.social-network-share').live('click', function (e) {
+        e.preventDefault();
+        window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 275) + ', left=' + ($(window).width() / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+        return false;
+    });
+    $('.share-btn').click(function () {
+        $.magnificPopup.open({
+            items: [{
+                    src: $('<div class="white-popup">' +
+                            $('.popup-share-' + $(this).data('id')).html() +
+                            '</div>'),
+                    type: 'inline'
+                }]
+        });
+    });
     if (getUrlParameter('contact')) {
         contactFormPopup();
     }
     $('#submitMessage').live('click', function (e) {
         e.preventDefault();
         var data = new FormData();
-            data.append('fileUpload', $('#fileUpload')[0].files[0]);
+        data.append('fileUpload', $('#fileUpload')[0].files[0]);
         $("input, select, textarea").each(function () {
             data.append($(this).attr('name'), $(this).val());
         });

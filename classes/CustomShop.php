@@ -12,6 +12,7 @@ class CustomShopCore extends ObjectModel {
     public $website;
     public $facebook;
     public $twitter;
+    public $googleplus;
     public $instagram;
     public $linkedin;
     public $pinterest;
@@ -154,6 +155,7 @@ class CustomShopCore extends ObjectModel {
             'website' => pSQL($this->website),
             'facebook' => pSQL($this->facebook),
             'twitter' => pSQL($this->twitter),
+            'googleplus' => pSQL($this->googleplus),
             'instagram' => pSQL($this->instagram),
             'linkedin' => pSQL($this->linkedin),
             'pinterest' => pSQL($this->pinterest),

@@ -8,12 +8,14 @@
                     <span class="bold">Website:</span> <a href="{if !(strpos($shop['website'], 'http') == false || strpos($shop['website'], 'https') == false)}http://{/if}{$shop.website}" class="underline" target="_blank" title="{$shop.title}">{$shop.website}</a>
                 </div>
             {/if}
-            <div class="bold">
-                Website short description:
-            </div>
-            <div>
-                {$shop.description}
-            </div>
+            {if $shop.description}
+                <div class="bold">
+                    Website short description:
+                </div>
+                <div>
+                    {$shop.description}
+                </div>
+            {/if}
         </div>
         <div class="col-xs-2 padding-0">
             {if $shop.facebook}
@@ -21,6 +23,9 @@
                 {/if}
                 {if $shop.twitter}
                 <div class="pull-right margin-right-10"><a href="{$shop.twitter}" target="_blank" class="fa fa-twitter-square font-size-30"></a></div>
+                {/if}
+                {if $shop.googleplus}
+                <div class="pull-right margin-right-10"><a href="{$shop.googleplus}" target="_blank" class="fa fa-google-plus-square font-size-30"></a></div>
                 {/if}
                 {if $shop.instagram}
                 <div class="pull-right margin-right-10"><a href="{$shop.instagram}" target="_blank" class="fa fa-instagram font-size-30"></a></div>
@@ -77,7 +82,7 @@
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jqzoom/jquery.jqzoom.js"></script>
 <script type="text/javascript" src="{$js_dir}custom-shop.js"></script>
 <script type="text/javascript" src="{$js_dir}custom-shop-front.js"></script>
-
+<script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/tools.js"></script>
 
 {*{if $smarty.server.HTTP_HOST != 'localhost'}

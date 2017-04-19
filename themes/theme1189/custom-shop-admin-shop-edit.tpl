@@ -121,6 +121,15 @@
         </div>
         <div class="form-row">
             <div class="form-label">
+                <label>Google+</label>
+            </div>
+            <div class="form-input">
+                <input type="text" class="form-control" name="googleplus" value="{$shop.googleplus}" placeholder="" autocomplete="off">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
                 <label>Instagram</label>
             </div>
             <div class="form-input">

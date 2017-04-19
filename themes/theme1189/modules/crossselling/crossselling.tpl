@@ -1,4 +1,4 @@
-{if isset($orderProducts) && count($orderProducts)}
+{*{if isset($orderProducts) && count($orderProducts)}
     <section id="crossselling" class="page-product-box">
     	<h3 class="productscategory_h2 page-product-heading">
             {if $page_name == 'product'}
@@ -29,4 +29,4 @@
             </ul>
         </div>
     </section>
-{/if}
+{/if}*}

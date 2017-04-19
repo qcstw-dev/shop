@@ -11,10 +11,10 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
      */
     public function init() {
         parent::init();
+        // redirect if shop desactivated
         if ($this->bRedirection) {
             Tools::redirect(_PS_BASE_URL_ . __PS_BASE_URI__);
         }
-        // redirect if shop desactivated
         $totalToPay = $this->context->cart->getOrderTotal(false);
         
         $this->context->smarty->assign(array(
@@ -24,7 +24,18 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
 
     public function initContent() {
         parent::initContent();
-
+        
+        // og:image
+        if (Tools::getValue('id_creation')) {
+            $aCustomProduct = CustomShopProduct::getProductById(Tools::getValue('id_creation'));
+            $oPrestashopProduct = new Product($aCustomProduct['id_product']);
+            $this->context->smarty->assign([
+                'og_image' => _PS_BASE_URL_ . __PS_BASE_URI__.'img/custom_shop/creation/'.$aCustomProduct['custom_img'],
+                'og_title' => $aCustomProduct['product_name'],
+                'og_description' => (isset($oPrestashopProduct->description_short[1]) ? strip_tags($oPrestashopProduct->description_short[1]) : '')
+            ]);
+        }
+        
         $aCustomProducts = CustomShopProduct::getProducts($this->custom_shop['id']);
         $aIdCategories = [];
         foreach ($aCustomProducts as $key => &$aCustomProduct) {

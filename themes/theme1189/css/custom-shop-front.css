@@ -80,19 +80,31 @@ a, a:hover {
     background-color: rgba(255, 255, 255, 0.73);
     font-size: 13px;
 }
-.fa-facebook-square, .fa-facebook-square:hover {
+.share-btn {
+    line-height: 12px;
+}
+.fa-google-plus-square, .fa-google-plus-square:hover,
+.color-googleplus {
+    color: #db4437;
+}
+.fa-facebook-square, .fa-facebook-square:hover,
+.color-facebook {
     color: #3b5998;
 }
-.fa-twitter-square, .fa-twitter-square:hover {
+.fa-twitter-square, .fa-twitter-square:hover,
+.color-twitter {
     color: #1da1f2;
 }
-.fa-instagram, .fa-instagram:hover {
+.fa-instagram, .fa-instagram:hover,
+.color-instagram {
     color: #b033b0;
 }
-.fa-linkedin-square, .fa-linkedin-square:hover {
+.fa-linkedin-square, .fa-linkedin-square:hover,
+.color-linkedin {
     color: #007bb6;
 }
-.fa-pinterest-square, .fa-pinterest-square:hover {
+.fa-pinterest-square, .fa-pinterest-square:hover,
+.color-pinterest {
     color: #cb2027;
 }
 #message {
