@@ -4,11 +4,12 @@ var nbProductsToDisplay = 12;
 var loading_products = false;
 $(function () {
     $(window).scroll(function () {
-        if ($('.product-list').length && isScrolledIntoView($('#waypoint')) && !loading_products && issetMoreProducts) {
-            loadProducts();
-        }
+        scrollPopup();
     });
-    
+    $('.popup-prod-list').scroll(function () {
+        scrollPopup();
+    });
+
     $('.filter-category').on('click', function () {
         category = $(this).data('id-category');
         loadProducts(true);
@@ -16,6 +17,11 @@ $(function () {
         $('.title-category').text($(this).text());
     });
 });
+function scrollPopup() {
+    if ($('.product-list').length && isScrolledIntoView($('#waypoint')) && !loading_products && issetMoreProducts) {
+        loadProducts();
+    }
+}
 function isScrolledIntoView(elem) {
     var docViewTop = $(window).scrollTop();
     var docViewBottom = docViewTop + $(window).height();
