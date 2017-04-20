@@ -2,7 +2,8 @@
 {include file=$menu}
 {include file=$menu_creation}
 <div class="col-xs-12 margin-bottom-10">
-    <div class="btn btn-success publish-all"><span class="glyphicon glyphicon-check"></span> Publish all</div>
+    <div class="btn btn-success pull-left publish-all"><span class="glyphicon glyphicon-check"></span> Publish all</div>
+    <a href="{$base_uri}shop/{$custom_shop_name}" target="_blank" class="btn btn-info pull-left margin-left-10"><span class="glyphicon glyphicon-globe"></span> Visit your shop</a>
 </div>
 {foreach from=$creations item=creation}
     <div class="col-sm-4 col-md-3 margin-bottom-10 block-creation block-creation-{$creation.id}">
@@ -24,7 +25,7 @@
             </div>
             <div class="col-xs-12">
                 <div class="thumbnail margin-bottom-0">
-                    <img class="popup-picture" src="{$base_dir}img/custom_shop/creation/{$creation.custom_img}" alt="{$creation.custom_img}" title="{$creation.custom_img}" />
+                    <img class="popup-picture" src="{$base_dir_ssl}img/custom_shop/creation/{$creation.custom_img}" alt="{$creation.custom_img}" title="{$creation.custom_img}" />
                 </div>
             </div>
             <div class="col-xs-12 text-center">
@@ -34,6 +35,28 @@
                     <label class="cursor-pointer" for="published-{$creation.id}">Publish</label>
                     <input type="checkbox" class="published cursor-pointer" id="published-{$creation.id}" data-id-creation="{$creation.id}" name="published" {if $creation.published && $creation.product_name}checked{/if}/>
                 </div>
+            </div>
+            <div class="col-xs-12 btn btn-default btn-sm text-center cursor-pointer color-primary btn-embed" data-id="{$creation.id}">
+                <span class="glyphicon glyphicon-chevron-left"></span>Embed<span class="glyphicon glyphicon-chevron-right"></span>
+            </div>
+            <div class="popup-embed-{$creation.id} hidden">
+                <div class="text-center bold margin-bottom-10">Copy this code and paste it in your web page:</div>
+                <textarea class="embed-textarea-{$creation.id} text-left" style="width:100%; height: 200px; font-size: 10px"></textarea>
+                <div class="embed-content-{$creation.id} hidden">
+<div style="display: inline-block; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; padding: 10px; width: 225px; border: 1px solid #eee;">
+<a href="{$base_dir_ssl}shop/{$custom_shop_name}?id_product={$creation.id_product}&id_creation={$creation.id}&id_design={$creation.id_design}" target="_blank" title="{if $creation.product_name}{$creation.product_name}{else}{$creation.design.name} {$creation.original_product_name}{/if}" style="text-decoration: none; color: #000;">
+<img src="{$base_dir_ssl}img/custom_shop/creation/{$creation.custom_img}" alt="{if $creation.product_name}{$creation.product_name}{else}{$creation.design.name} {$creation.original_product_name}{/if}" title="{if $creation.product_name}{$creation.product_name}{else}{$creation.design.name} {$creation.original_product_name}{/if}" width="200" height="200" style="margin-bottom: 10px; border: 1px solid #eee; padding: 10px;"/>
+<div>
+<img src="{$base_dir_ssl}img/custom_shop/creation/{$creation.custom_img}" alt="{if $creation.product_name}{$creation.product_name}{else}{$creation.design.name} {$creation.original_product_name}{/if}" title="{if $creation.product_name}{$creation.product_name}{else}{$creation.design.name} {$creation.original_product_name}{/if}" width="58" height="58" style="display: inline-block; border: 1px solid #eee; padding: 5px;"/>
+{foreach from=$creation.images item=image name=images}
+<img src="{$link->getImageLink($creation.link_rewrite, $image.id_image, 'large_default')|escape:'html':'UTF-8'}" alt="{if $creation.product_name}{$creation.product_name}{else}{$creation.design.name} {$creation.original_product_name}{/if}" title="{if $creation.product_name}{$creation.product_name}{else}{$creation.design.name} {$creation.original_product_name}{/if}" width="58" height="58" style="display: inline-block; border: 1px solid #eee; padding: 5px;"/>
+{/foreach}
+</div>
+<div class="embed-title-{$creation.id}" style="height: 30px; overflow: hidden; padding-top: 10px">{if $creation.product_name}{$creation.product_name|escape:'html':'UTF-8'}{else}{$creation.design.name|escape:'html':'UTF-8'} {$creation.original_product_name|escape:'html':'UTF-8'}{/if}</div>
+<div style="font-size: 20px; padding-top: 10px">{convertPrice price=$creation.prices.10 + $creation.design.price}</div>
+</a>
+</div>
+</div>
             </div>
             <div class="clearfix"></div>
         </div>

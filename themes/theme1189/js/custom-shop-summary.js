@@ -1,4 +1,24 @@
 $(function () {
+    $('textarea').live('focus', function () {
+       $(this).select(); 
+       document.execCommand("copy");
+       confirm('Copied to clipboard!');
+    });
+    $('.btn-embed').click(function () {
+        var title = $('.creation-name[data-id-creation="'+$(this).data('id')+'"').val();
+       $('.embed-title-' + $(this).data('id')).text(title);
+       $('.embed-content-' + $(this).data('id')).find('img').prop('title', title).prop('alt', title);
+       $('.embed-content-' + $(this).data('id')).find('a').prop('title', title);
+       $('.embed-textarea-' + $(this).data('id')).text($('.embed-content-' + $(this).data('id')).html());
+       $.magnificPopup.open({
+            items: [{
+                    src: $('<div class="white-popup">' +
+                            $('.popup-embed-' + $(this).data('id')).html() +
+                            '</div>'),
+                    type: 'inline'
+                }]
+        }); 
+    });
     var globalTimeout = null;
     $('.creation-name').live('keyup', function () {
         var element = $(this);
