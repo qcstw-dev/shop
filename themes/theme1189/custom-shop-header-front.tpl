@@ -32,6 +32,13 @@
     <meta property="og:title" content="{if isset($og_title)}{$og_title}{else}{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if} shop – Gift Attitude{/if}" />
     <meta property="og:description" content="{if isset($og_description)}{$og_description}{else}{if $shop.description}{$shop.description|escape:'html':'UTF-8'}{else}Find keychain, bottle opener, coin keychain, menu holder and more with unbeatbale prices on \"{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}\" shop. Shipping worldwide{/if}{/if}"/>
     <meta property="og:image" content="{if isset($og_image)}{$og_image}{else}{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_gift}{/if}{/if}" />
+    {if isset($og_image)}
+        <meta property="og:image:width" content="200" />
+        <meta property="og:image:height" content="200" />
+    {else}
+        <meta property="og:image:width" content="100" />
+        <meta property="og:image:height" content="100" />
+    {/if}
     <meta name="description" content="{if isset($og_description)}{$og_description}{else}{if $shop.description}{$shop.description|escape:'html':'UTF-8'}{else}Find keychain, bottle opener, coin keychain, menu holder and more with unbeatbale prices on \"{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}\" shop. Shipping worldwide{/if}{/if}"/>
     <title>{if isset($og_title)}{$og_title}{else}{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if} shop – Gift Attitude{/if}</title>
 </head>
