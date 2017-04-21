@@ -22,6 +22,11 @@
     {if $page_name == 'customshopsuperadmin' && $smarty.server.HTTP_HOST != 'localhost'}
         <script src='https://www.google.com/recaptcha/api.js'></script>
     {/if}
+    {if in_array($page_name, ['customshopadmincreationsummary'])}
+        <link rel="stylesheet" href="{$css_dir}jquery-ui.min.css" media="all">
+        <link rel="stylesheet" href="{$css_dir}jquery-ui.structure.min.css" media="all">
+        <link rel="stylesheet" href="{$css_dir}jquery-ui.theme.min.css" media="all">
+    {/if}
     {if isset($register)}
         <script src='https://www.google.com/recaptcha/api.js'></script>
     {/if}

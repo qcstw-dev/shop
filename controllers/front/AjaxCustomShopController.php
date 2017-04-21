@@ -2,6 +2,24 @@
 
 class AjaxCustomShopControllerCore extends FrontController {
 
+    public function displayAjaxSaveProductsOrder() {
+        $result = [];
+        $result['success'] = true;
+        
+        if (Tools::getValue('order') && Tools::getValue('shop')) {
+            foreach (Tools::getValue('order') as $sCreationId => $sOrderNumber) {
+                $oCreation = new CustomShopProduct($sCreationId);
+                if ($oCreation) {
+                    $oCreation->order_number = $sOrderNumber;
+                    $oCreation->save();
+                }
+            }
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Information missing';
+        }
+        echo json_encode($result);
+    }
     public function displayAjaxSendPassword() {
         $result = [];
         $result['success'] = true;

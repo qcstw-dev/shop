@@ -8,6 +8,7 @@ class CustomShopProductCore extends ObjectModel {
     public $custom_img;
     public $product_name;
     public $published;
+    public $order_number;
     public $id_shop;
     public static $definition = array(
         'table' => 'custom_shop_customized_prod',
@@ -103,7 +104,8 @@ class CustomShopProductCore extends ObjectModel {
 		WHERE `deleted` = 0
 		AND `id_shop` = ' . pSQL($iShopId)
                         . ($bOnlyPublished ? ' AND csp.`published` = 1' : '')
-                        . ($aCategories ? ' AND csp.`id_product` = cp.`id_product` AND cp.`id_category` IN ('.  implode(',', $aCategories).')' : '')
+                        . ($aCategories ? ' AND csp.`id_product` = cp.`id_product` AND cp.`id_category` IN ('.  implode(',', $aCategories).')' : '').'
+                ORDER BY `order_number`'
                 );
     }
 
@@ -136,6 +138,7 @@ class CustomShopProductCore extends ObjectModel {
             'custom_img' => pSQL($this->custom_img),
             'product_name' => pSQL($this->product_name),
             'published' => pSQL($this->published),
+            'order_number' => pSQL($this->order_number),
             'id_shop' => pSQL($this->id_shop)
         ];
         if ($this->id) {

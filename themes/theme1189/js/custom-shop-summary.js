@@ -1,23 +1,55 @@
 $(function () {
+    $('.sortable').sortable({
+        update: function (event, ui) {
+            //create the array that hold the positions...
+            var order = {};
+            //loop trought each li...
+            $('.block-creation').each(function (e) {
+                //add each li position to the array...     
+                // the +1 is for make it start from 1 instead of 0
+                order[$(this).attr('id')] = ($(this).index() + 1);
+            });
+            //use the variable as you need!
+            console.log(order);
+            $.ajax({
+                type: 'POST',
+                url: baseDir + 'index.php?controller=ajaxcustomshop&action=saveproductsorder&ajax=true&shop=' + id_shop,
+                cache: false,
+                dataType: 'json',
+                async: true,
+                data: {'order' : order},
+                beforeSend: function () {
+                    loading('Saving ...');
+                },
+                success: function (json) {
+                    if (json.success) {
+                        loading_hide();
+                        confirm();
+                    }
+                    return json.success;
+                }
+            });
+        }
+    }).disableSelection();
     $('textarea').live('focus', function () {
-       $(this).select(); 
-       document.execCommand("copy");
-       confirm('Copied to clipboard!');
+        $(this).select();
+        document.execCommand("copy");
+        confirm('Copied to clipboard!');
     });
     $('.btn-embed').click(function () {
-        var title = $('.creation-name[data-id-creation="'+$(this).data('id')+'"').val();
-       $('.embed-title-' + $(this).data('id')).text(title);
-       $('.embed-content-' + $(this).data('id')).find('img').prop('title', title).prop('alt', title);
-       $('.embed-content-' + $(this).data('id')).find('a').prop('title', title);
-       $('.embed-textarea-' + $(this).data('id')).text($('.embed-content-' + $(this).data('id')).html());
-       $.magnificPopup.open({
+        var title = $('.creation-name[data-id-creation="' + $(this).data('id') + '"').val();
+        $('.embed-title-' + $(this).data('id')).text(title);
+        $('.embed-content-' + $(this).data('id')).find('img').prop('title', title).prop('alt', title);
+        $('.embed-content-' + $(this).data('id')).find('a').prop('title', title);
+        $('.embed-textarea-' + $(this).data('id')).text($('.embed-content-' + $(this).data('id')).html());
+        $.magnificPopup.open({
             items: [{
                     src: $('<div class="white-popup">' +
                             $('.popup-embed-' + $(this).data('id')).html() +
                             '</div>'),
                     type: 'inline'
                 }]
-        }); 
+        });
     });
     var globalTimeout = null;
     $('.creation-name').live('keyup', function () {
@@ -95,28 +127,28 @@ $(function () {
             }
         });
     });
-    
+
     $('.publish-all').on('click', function () {
         $.ajax({
-                url: baseDir + 'index.php',
-                data: 'controller=ajaxcustomshop&action=publishall&ajax=true&shop=' + id_shop,
-                dataType: 'json',
-                beforeSend: function () {
-                    loading('Loading...');
-                },
-                success: function (list_ids) {
-                    loading_hide();
-                    console.log(list_ids);
-                    if (list_ids) {
-                        confirm();
-                        $.each(list_ids, function (index, value) {
-                            $('#published-'+value).prop('checked', true);
-                        });
-                    }
+            url: baseDir + 'index.php',
+            data: 'controller=ajaxcustomshop&action=publishall&ajax=true&shop=' + id_shop,
+            dataType: 'json',
+            beforeSend: function () {
+                loading('Loading...');
+            },
+            success: function (list_ids) {
+                loading_hide();
+                console.log(list_ids);
+                if (list_ids) {
+                    confirm();
+                    $.each(list_ids, function (index, value) {
+                        $('#published-' + value).prop('checked', true);
+                    });
                 }
-            });
+            }
+        });
     });
-    
+
     $('.published').on('change', function () {
         var id_creation = $(this).data('id-creation');
         var title_element = $('input[data-id-creation="' + id_creation + '"]');
