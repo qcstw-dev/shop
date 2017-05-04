@@ -46,8 +46,8 @@
                         <input type="password" name="confirm_password" class="required form-control {if $submit && !$confirm_password}form-control-danger{/if} confirm_password" placeholder="Password">
                     </div>
                     <div class="form-group margin-bottom-10">
-                        <label class="col-xs-4 padding-0 margin-bottom-0 padding-top-5">shop.giftattitude.com/</label>
-                        <div class="col-xs-8 padding-right-0 input-group-sm">
+                        <label class="col-xs-7 col-md-4 padding-0 margin-bottom-0 padding-top-5 font-size-13">giftattitude.com/shop/</label>
+                        <div class="col-xs-5 col-md-8 padding-right-0 input-group-sm">
                             <input type="text" name="shop_name" class="required form-control bold {if $submit && (!$shop_name || isset($form_error.shop_exist))}form-control-danger{/if} shop_name" placeholder="Name of your shop" value="{$shop_name}" autocomplete="off">
                             <div class="font-size-10">(No special charateres allowed)</div>
                         </div>
