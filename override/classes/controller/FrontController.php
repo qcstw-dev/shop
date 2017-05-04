@@ -10,6 +10,8 @@ class FrontController extends FrontControllerCore {
         if ($this->mobile_detect->isMobile() || $this->mobile_detect->isTablet()) {
             if (strpos($_SERVER['REQUEST_URI'], 'order-history') !== false) {
                 header('Location: ' . __PS_BASE_URI__ . 'mobile-order-history');
+            } else if (strpos($_SERVER['REQUEST_URI'], 'custom-shop-introduction') !== false) {
+                header('Location: ' . __PS_BASE_URI__ . 'mobile-custom-shop-introduction');
             } else {
                 header('Location: ' . __PS_BASE_URI__ . 'mobile');
             }
