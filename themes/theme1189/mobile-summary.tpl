@@ -1,8 +1,8 @@
 <div class="col-xs-12 block-checkout font-size-13">
     {foreach from=$cart_products item=product name=cart_products}
-        <div class="block-product block_product_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}">
+        <div class="block-product block_product_{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if}">
             <div class="block-modify">
-                <div class="pull-right font-size-20 delete" data-id="{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}"><span class="glyphicon glyphicon-trash"></span></div>
+                <div class="pull-right font-size-20 delete" data-id="{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if}"><span class="glyphicon glyphicon-trash"></span></div>
                 {if $product.custom_picture}
                     <a href="{$base_uri}mobile-layout-maker?preselect_design={$product.id_design}&preselect_product={$product.id_product}&custom_picture={$product.custom_picture}{if $product.original_picture}&original_picture={$product.original_picture}{/if}" class="pull-right margin-right-10 modify" data-id="{$product.id_product}_{$product.custom_picture}"><span class="glyphicon glyphicon-pencil font-size-20"></span></a>
                 {/if}
@@ -17,9 +17,9 @@
                     <div class="row margin-top-5">
                         <div class="col-xs-4 col-sm-2 bold underline">{l s="Qty"}:</div>
                         <div class="col-xs-8">
-                            <div class="cart_quantity cart_quantity_down" data-id="{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}"><span class="glyphicon glyphicon-minus-sign"></span></div> 
-                            <input type="hidden" value="{$product.quantity}" class="input-qty cart_quantity_input_{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if}_hidden" data-id="{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}" />
-                            <input type="text" value="{$product.quantity}" class="input-qty cart_quantity_input_{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if} cart_quantity_input" data-id="{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}" />
+                            <div class="cart_quantity cart_quantity_down" data-id="{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if}"><span class="glyphicon glyphicon-minus-sign"></span></div> 
+                            <input type="hidden" value="{$product.quantity}" class="input-qty cart_quantity_input_{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if}_hidden" data-id="{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if}" />
+                            <input type="text" value="{$product.quantity}" class="input-qty cart_quantity_input_{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if} cart_quantity_input" data-id="{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if}" />
                             <div class="cart_quantity cart_quantity_up" data-id="{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if}"><span class="glyphicon glyphicon-plus-sign"></span></div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
             <div class="clearfix"></div>
             <div class="font-size-15 bold margin-top-10 text-center">
                 <div class="col-xs-6">{l s='Total'}</div>
-                <div class="col-xs-6 total_product_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}">{displayWtPrice p="`$product.total_wt`"}</div>
+                <div class="col-xs-6 total_product_{$product.id_product}_{$product.custom_picture}_{if $product.id_customized_prod}{$product.id_customized_prod}{/if}">{displayWtPrice p="`$product.total_wt`"}</div>
                 <div class="clearfix"></div>
             </div>
             <hr>
