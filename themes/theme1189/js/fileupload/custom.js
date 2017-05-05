@@ -51,7 +51,7 @@ $(function () {
                     dataType: 'json',
                     processData: false, // Don't process the files
                     contentType: false,
-                    async: false,
+                    async: true,
                     success: function (json) {
                         if (json.success === true) {
                             $('.btn-block-selection').removeClass('disabled');

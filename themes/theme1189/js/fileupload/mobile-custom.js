@@ -40,10 +40,26 @@ $(function () {
                 dataType: 'json',
                 processData: false, // Don't process the files
                 contentType: false,
-                async: false,
+                async: true,
                 success: function (json) {
                     if (json.success === true) {
-                        document.location = baseUri+'mobile-layout-maker?id_design='+json.image_name;
+                        if ((file.preview.attributes.width.value <= 500 && file.preview.attributes.height.value <= 700)
+                                ||
+                                (file.preview.attributes.width.value <= 700 && file.preview.attributes.height.value <= 500)) {
+                            $.magnificPopup.open({
+                                items: [{
+                                    src: $('\
+                                            <div class="white-popup">' +
+                                            '<div class="text-center">The size of the file you uploaded will be too small for us to prepare your customized product, please upload a higher quality picture</div>' +
+                                            '<div class="text-center color-red margin-top-10"><span class="underline">Minimum size</span>: 700 pixels minimum width or 500 pixels minimum height, <span class="underline">Format accepted</span>: .jpg, .png. .gif</div>' +
+                                            '</div>'),
+                                    type: 'inline',
+                                    showCloseBtn: true
+                                    }]
+                            });
+                        } else {
+                            document.location = baseUri + 'mobile-layout-maker?id_design=' + json.image_name;
+                        }
                     }
                 }
             });
