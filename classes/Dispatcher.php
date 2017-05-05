@@ -50,6 +50,66 @@ class DispatcherCore
             'rule' =>        'mobile',
             'keywords' => array(),
         ),
+        'mobile_select_design' => array(
+            'controller' =>    'mobileselectdesign',
+            'rule' =>        'mobile-designs',
+            'keywords' => array(),
+        ),
+        'mobile_product_page' => array(
+            'controller' =>    'mobileproductpage',
+            'rule' =>        'mobile-product-page',
+            'keywords' => array(),
+        ),
+        'mobile_layout_maker' => array(
+            'controller' =>    'mobilelayoutmaker',
+            'rule' =>        'mobile-layout-maker',
+            'keywords' => array(),
+        ),
+        'mobile_checkout' => array(
+            'controller' =>    'mobilecheckout',
+            'rule' =>        'mobile-checkout',
+            'keywords' => array(),
+        ),
+        'mobile_history_order' => array(
+            'controller' =>    'mobilehistoryorder',
+            'rule' =>        'mobile-order-history',
+            'keywords' => array(),
+        ),
+        'mobile_search' => array(
+            'controller' =>    'mobilesearch',
+            'rule' =>        'mobile-search',
+            'keywords' => array(),
+        ),
+        'mobile_vouchers' => array(
+            'controller' =>    'mobilevouchers',
+            'rule' =>        'mobile-vouchers',
+            'keywords' => array(),
+        ),
+        'mobile_authentication' => array(
+            'controller' =>    'mobileauthentication',
+            'rule' =>        'mobile-authentication',
+            'keywords' => array(),
+        ),
+        'mobile_addresses' => array(
+            'controller' =>    'mobileaddresses',
+            'rule' =>        'mobile-addresses',
+            'keywords' => array(),
+        ),
+        'mobile_identity' => array(
+            'controller' =>    'mobileidentity',
+            'rule' =>        'mobile-identity',
+            'keywords' => array(),
+        ),
+        'mobile_contact_us' => array(
+            'controller' =>    'mobilecontactus',
+            'rule' =>        'mobile-contact-us',
+            'keywords' => array(),
+        ),
+        'mobile_information' => array(
+            'controller' =>    'mobileinformation',
+            'rule' =>        'mobile-information',
+            'keywords' => array(),
+        ),
         'mobile_custom_shop_introduction' => array(
             'controller' =>    'mobilecustomshopintroduction',
             'rule' =>        'mobile-custom-shop-introduction',
