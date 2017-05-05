@@ -98,12 +98,24 @@
                                 </div>
                             </div>
                         </li>
+                        {if $is_logged}
+                            <li class="pull-right margin-right-10">
+                                <a class="pull-right btn btn-default btn-sm padding-top-5 padding-bottom-5 margin-top-10" href="{$base_uri}shop/{$custom_shop_name}?mylogout" title="Sign out" rel="nofollow">
+                                    <span class="glyphicon glyphicon-log-out"></span>
+                                    Log out
+                                </a>
+                            </li>
+                        {/if}
                     </ul>
                     <ul class="nav navbar-nav navbar-left">
                         <li class="{if !$cat && !isset($checkout)}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">Home</a></li>
                         {if $categories}
                             {foreach from=$categories item='category'}
-                                <li class="{if $cat == $category.link_rewrite}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}?category={$category.link_rewrite}" title="{$category.name}">{$category.name}</a></li>
+                                <li class="{if $cat == $category.link_rewrite}active{/if}">
+                                    <a href="{$base_uri}shop/{$custom_shop_name}?category={$category.link_rewrite}" title="{$category.name}">
+                                        {$category.name}
+                                    </a>
+                                </li>
                             {/foreach}
                         {/if}
                     </ul>
