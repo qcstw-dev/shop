@@ -10,7 +10,9 @@
         <div class="col-sm-4 col-md-3 margin-bottom-10 block-creation block-creation-{$creation.id}" id="{$creation.id}">
             <div class="border shadow block-creation-content">
                 <div class="trash" data-id-creation="{$creation.id}"><span class="glyphicon glyphicon-trash"></span></div>
-                <div class="drag"><span class="fa fa-arrows"></span></div>
+                    {if !$is_mobile}
+                        <div class="drag"><span class="fa fa-arrows"></span></div>
+                    {/if}
                     {if !$creation.is_active}
                     <div class="product-disabled vertical-center">
                         <div class="text-center bold color-red">
