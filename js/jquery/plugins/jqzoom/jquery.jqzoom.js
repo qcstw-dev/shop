@@ -184,6 +184,11 @@
                         if($(this).hasClass('zoomThumbActive')){
                           return false;
                         }
+                        if (!$(this).hasClass('first-thumb')) {
+                            $('.product-picture-message').removeClass('hidden');
+                        } else {
+                            $('.product-picture-message').addClass('hidden');
+                        }
                         thumblist.each(function () {
                             $(this).removeClass('zoomThumbActive');
                         });
