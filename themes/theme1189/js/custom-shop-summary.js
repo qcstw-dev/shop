@@ -1,36 +1,38 @@
 $(function () {
-    $('.sortable').sortable({
-        update: function (event, ui) {
-            //create the array that hold the positions...
-            var order = {};
-            //loop trought each li...
-            $('.block-creation').each(function (e) {
-                //add each li position to the array...     
-                // the +1 is for make it start from 1 instead of 0
-                order[$(this).attr('id')] = ($(this).index() + 1);
-            });
-            //use the variable as you need!
-            console.log(order);
-            $.ajax({
-                type: 'POST',
-                url: baseDir + 'index.php?controller=ajaxcustomshop&action=saveproductsorder&ajax=true&shop=' + id_shop,
-                cache: false,
-                dataType: 'json',
-                async: true,
-                data: {'order' : order},
-                beforeSend: function () {
-                    loading('Saving ...');
-                },
-                success: function (json) {
-                    if (json.success) {
-                        loading_hide();
-                        confirm();
+    if(is_mobile || is_tablet) {
+        $('.sortable').sortable({
+            update: function (event, ui) {
+                //create the array that hold the positions...
+                var order = {};
+                //loop trought each li...
+                $('.block-creation').each(function (e) {
+                    //add each li position to the array...     
+                    // the +1 is for make it start from 1 instead of 0
+                    order[$(this).attr('id')] = ($(this).index() + 1);
+                });
+                //use the variable as you need!
+                console.log(order);
+                $.ajax({
+                    type: 'POST',
+                    url: baseDir + 'index.php?controller=ajaxcustomshop&action=saveproductsorder&ajax=true&shop=' + id_shop,
+                    cache: false,
+                    dataType: 'json',
+                    async: true,
+                    data: {'order' : order},
+                    beforeSend: function () {
+                        loading('Saving ...');
+                    },
+                    success: function (json) {
+                        if (json.success) {
+                            loading_hide();
+                            confirm();
+                        }
+                        return json.success;
                     }
-                    return json.success;
-                }
-            });
-        }
-    }).disableSelection();
+                });
+            }
+        }).disableSelection();
+    }
     $('textarea').live('focus', function () {
         $(this).select();
         document.execCommand("copy");

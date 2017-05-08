@@ -7,6 +7,8 @@
     var baseUri = '{$base_uri}';
     var baseDir = '{$content_dir}';
     var id_shop = '{$shop.id}';
+    var is_mobile = '{$is_mobile}';
+    var is_tablet = '{$is_tablet}';
 </script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-migrate-1.2.1.min.js"></script>
