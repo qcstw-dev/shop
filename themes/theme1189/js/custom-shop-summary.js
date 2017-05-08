@@ -1,5 +1,5 @@
 $(function () {
-    if(is_mobile || is_tablet) {
+    if(!is_mobile && !is_tablet) {
         $('.sortable').sortable({
             update: function (event, ui) {
                 //create the array that hold the positions...
