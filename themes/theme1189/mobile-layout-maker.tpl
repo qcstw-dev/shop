@@ -1,8 +1,8 @@
 {include file=$header_mobile}
 <div id="mobile-place-design-on-product">
     {if !isset($smarty.get.add_to_cart_success)}
-        <div class="col-xs-12 margin-bottom-10">
-            <div class="col-xs-6 col-sm-3">
+        <div class="col-xs-12 col-sm-6 margin-auto margin-bottom-10">
+            <div class="col-xs-6">
                 <button id="add-to-cart" class="btn btn-primary col-xs-12 add-to-cart ajax_add_to_cart_button" 
                         rel="nofollow" title="{l s='Add to cart'}"
                         data-id-product="{$product->id}"
@@ -12,11 +12,11 @@
                         data-original-picture="{($original_picture) ? $original_picture : ''}">
                     <span class="glyphicon glyphicon-shopping-cart"></span> {l s='Add to cart'}</button>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6">
                 <button class="btn btn-default col-xs-12 preview-layout" ><span class="glyphicon glyphicon-eye-open"></span> {l s='Preview'}</button>
             </div>
-        </div>
         <div class="clearfix"></div>
+        </div>
         <div id="component" class="component">
             <div class="overlay-top"></div>
             <div class="overlay-bottom"></div>
@@ -52,8 +52,8 @@
                 </div>
             </div>
         {/if}
-        <div class="col-xs-12">
-            <div class="col-xs-6 col-sm-3">
+        <div class="col-xs-12 col-sm-6 margin-auto">
+            <div class="col-xs-6">
                 <button class="btn btn-primary col-xs-12 add-to-cart ajax_add_to_cart_button" 
                         rel="nofollow" title="{l s='Add to cart'}"
                         data-id-product="{$product->id}"
@@ -63,7 +63,7 @@
                         data-original-picture="{($original_picture) ? $original_picture : ''}">
                     <span class="glyphicon glyphicon-shopping-cart"></span> {l s='Add to cart'}</button>
             </div>
-            <div class="col-xs-6 col-sm-3">
+            <div class="col-xs-6">
                 <button class="btn btn-default col-xs-12 preview-layout" ><span class="glyphicon glyphicon-eye-open"></span> {l s='Preview'}</button>
             </div>
         </div>

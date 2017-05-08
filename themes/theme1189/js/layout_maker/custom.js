@@ -5,18 +5,6 @@ $(function () {
         $('.overlay-img').show();
     });
 
-//    var drop = document.getElementById("component");
-//    drop.addEventListener("dragover", dashing_component, false);
-//    drop.addEventListener("dragleave", undashing_component, false);
-//    drop.addEventListener("drop", undashing_component, false);
-//
-//    function dashing_component() {
-//        drop.style.border = '3px dashed #ddd';
-//    }
-//    function undashing_component() {
-//        drop.style.border = '3px solid #ddd';
-//    }
-
     $('.list-item').live('click', function () {
         $('.list-item-'+$(this).data('type')).removeClass('selected');
         $(this).addClass('selected');
@@ -77,11 +65,23 @@ $(function () {
                             $('.change-color-product-block').show();
                         }
                         if (json.url) {
-                            $('.resize-image').removeClass('custom-margin-left');
                             $('.hidden-original-picture').attr('src', '');
                             $('.resize-image').attr('src', json.url);
                             resizeableImage($('.resize-image'), true);
                         }
+                        var newWidth = $('.overlay').width();
+                        var img = $('.resize-image')[0]; // Get my img elem
+                        var pic_real_width, pic_real_height;
+
+                        $("<img/>") // Make in memory copy of image to avoid css issues
+                                .attr("src", $(img).attr("src"))
+                                .load(function () {
+                                    pic_real_width = this.width;   // Note: $(this).width() will not
+                                    pic_real_height = this.height;   // Note: $(this).width() will not
+                                    var ratio = newWidth / parseInt(pic_real_width);
+                                    var newHeight = parseInt(pic_real_height) * ratio;
+                                    resizeImage(newWidth-40, newHeight-40);
+                                });
                     } else {
                         $.fancybox('\
                             <div class="text-center">\n\
@@ -98,7 +98,6 @@ $(function () {
             } else {
                 $('.hidden-original-picture').attr('src', '');
             }
-            $('.resize-image').removeClass('custom-margin-left');
             $('.resize-image').attr('src', $(this).find('img').attr('src'));
 
             var newWidth = $('.overlay').width();
@@ -112,7 +111,7 @@ $(function () {
                         pic_real_height = this.height;   // Note: $(this).width() will not
                         var ratio = newWidth / parseInt(pic_real_width);
                         var newHeight = parseInt(pic_real_height) * ratio;
-                        resizeImage(newWidth, newHeight);
+                        resizeImage(newWidth-40, newHeight-40);
                     });
             resizeableImage($('.resize-image'), true);
         }

@@ -15,7 +15,7 @@ $(function () {
             pic_real_height = this.height;   // Note: $(this).width() will not
             var ratio = newWidth / parseInt(pic_real_width);
             var newHeight = parseInt(pic_real_height) * ratio;
-            resizeImage(newWidth, newHeight);
+            resizeImage(newWidth-40, newHeight-40);
         });
     resizeableImage($('.resize-image'), true);
 });

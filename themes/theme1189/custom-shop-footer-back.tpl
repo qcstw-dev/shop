@@ -33,7 +33,7 @@
     <script type="text/javascript" src="{$js_dir}layout_maker/custom-shop-layout-maker.js"></script>
 {/if}
 {if in_array($page_name, ['customshopadmincreationsummary'])}
-    {if !$is_mobile}
+    {if !$is_mobile_or_tablet}
         <script type="text/javascript" src="{$js_dir}jquery-ui.min.js"></script>
     {/if}
     <script type="text/javascript" src="{$js_dir}custom-shop-summary.js"></script>

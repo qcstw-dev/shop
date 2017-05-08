@@ -1,9 +1,9 @@
-.component {
+/*.component {
     text-align: center;
     height: 703px;
     padding: 4em;
     position: relative;
-    /*border: 3px solid #E8E8E8;*/
+    border: 3px solid #E8E8E8;
     width: 100%;
     overflow: hidden;
     margin: 0 auto;
@@ -62,7 +62,7 @@
 .overlay-right {
     position: absolute;
     z-index: 100;
-    /*background: #f6f7f9;*/
+    background: #f6f7f9;
     background: #ddd;
     pointer-events: none;
 }
@@ -289,4 +289,4 @@
         width: 116%;
     }
 }
-
+*/

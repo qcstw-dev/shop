@@ -3,6 +3,8 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0" /> 
     <link rel="icon" type="image/vnd.microsoft.icon" href="{$base_dir_ssl}/img/favicon.ico?{rand()}">
+    <link rel="stylesheet" href="{$css_dir}bootstrap.min.css" media="all">
+    <link rel="stylesheet" href="{$css_dir}tool-custom-bootstrap.css" media="all">
     {if isset($layout_maker) && $layout_maker}
         <link rel="stylesheet" href="{$base_dir_ssl}js/jquery/plugins/fancybox/jquery.fancybox.css" media="all">
         <link rel="stylesheet" href="{$base_dir_ssl}js/jquery/plugins/jqzoom/jquery.jqzoom.css" media="all">
@@ -11,10 +13,9 @@
         <link rel="stylesheet" href="{$css_dir}slick/slick-theme.css" media="all">
         <link rel="stylesheet" href="{$css_dir}layout_maker/component.css" media="all">
         <link rel="stylesheet" href="{$css_dir}layout_maker/custom.css" media="all">
+        <link rel="stylesheet" href="{$css_dir}layout_maker/custom_giftattitude_layout_maker.css" media="all">
         <link rel="stylesheet" href="{$css_dir}layout_maker/custom_shop_layout_maker.css" media="all">
     {/if}
-    <link rel="stylesheet" href="{$css_dir}bootstrap.min.css" media="all">
-    <link rel="stylesheet" href="{$css_dir}tool-custom-bootstrap.css" media="all">
     <link rel="stylesheet" href="{$css_dir}autoload/magnific-popup.css" media="all">
     <link rel="stylesheet" href="{$css_dir}register.css" media="all">
     <link rel="stylesheet" href="{$css_dir}custom-shop.css" media="all">

@@ -304,7 +304,7 @@ var resizeableImage = function (image_target, customizable) {
             var sDownloadButton = '';
             if (!isMobile) {
                 sDownloadButton =
-                        '<div class="padding-0 pull-left col-xs-12 col-sm-3">' +
+                        '<div class="padding-0 pull-left col-xs-12 col-md-3">' +
                         '<div class="export-image btn btn-default col-xs-12 margin-bottom-10">' +
                         '<span class="glyphicon glyphicon-download-alt"></span> Download layout</div>' +
                         '</div>' +

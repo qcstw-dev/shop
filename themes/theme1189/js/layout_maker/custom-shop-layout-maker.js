@@ -27,7 +27,6 @@ $(function () {
         $(this).addClass('selected');
         $('.add-creation').data('id-picture', $(this).data('id-picture'));
         
-        $('.resize-image').removeClass('custom-margin-left');
         $('.resize-image').attr('src', $(this).find('img').attr('src'));
         var newWidth = $('.overlay').width();
         var img = $('.resize-image')[0]; // Get my img elem
@@ -40,7 +39,7 @@ $(function () {
                     pic_real_height = this.height;
                     var ratio = newWidth / parseInt(pic_real_width);
                     var newHeight = parseInt(pic_real_height) * ratio;
-                    resizeImage(newWidth, newHeight);
+                    resizeImage(newWidth-40, newHeight-40);
                 });
         resizeableImage($('.resize-image'), true);
     });
@@ -82,8 +81,9 @@ function saveCreation(id_product, id_design, custom_picture) {
                             src: $('<div class="white-popup">\n\
                             <div class="font-size-15 bold">Your Product is saved</div>\n\
                             <div><img src="' + baseDir + json.image + '" /></div>\n\
-                            <div class="btn btn-success continue pull-left"><span class="glyphicon glyphicon-chevron-left"></span> Create another product</div>\n\
-                            <a href="' + baseDir + name_shop + '/admin/creation/summary" class="btn btn-info pull-right">Creation summary <span class="glyphicon glyphicon-chevron-right"></span></a>\n\
+                            <div class="btn btn-success continue col-xs-12 col-sm-4 margin-top-10 pull-left"><span class="glyphicon glyphicon-chevron-left"></span> Create another product</div>\n\
+                            <a href="' + baseDir + name_shop + '/admin/creation/summary" class="btn btn-info col-xs-12 col-sm-4 margin-top-10 pull-right">Creation summary <span class="glyphicon glyphicon-chevron-right"></span></a>\n\
+                            <div class="clearfix"></div>\n\
                             </div>'),
                             type: 'inline'
                         }]
@@ -122,7 +122,7 @@ function displayProduct(id_product) {
 
                     for (var key in json.colors) {
                         $('.change-color-product-block .block-colors').append('\
-                                <div class="col-xs-4 col-sm-2 col-lg-6 block-color-product">\n\
+                                <div class="col-xs-4 col-sm-3 col-md-6 block-color-product">\n\
                                     <div class="thumbnail thumbnail-hover">\n\
                                         <img class="change-color-product" \n\
                                          data-id-color="' + json.colors[key]['name'] + '"\n\
@@ -150,7 +150,6 @@ function displayProduct(id_product) {
                     $('.change-color-product-block').show();
                 }
                 if (json.url) {
-                    $('.resize-image').removeClass('custom-margin-left');
                     $('.hidden-original-picture').attr('src', '');
                     $('.resize-image').attr('src', json.url);
                     resizeableImage($('.resize-image'), true);

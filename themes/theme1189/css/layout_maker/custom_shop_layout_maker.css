@@ -1,66 +1,13 @@
-.list-picture {
-    max-height: 130px;
-    overflow: auto;
-}
-.item-list-picture.selected {
-    border: 1px dashed #ddd;
-}
-.btn-add-creation, .change-color-product-block {
-    position: absolute;
-    z-index: 100;
-    max-width: 250px;
-    top: 350px;
-    margin-left: 20px;
-    left: 0;
-}
 .change-color-product-block {
-    top: 493px;
+    position: initial;
 }
-.overlay {
-    left: 27%;
+.btn-rotate {
+    right: 12px;
 }
-.resize-container {
-    left: 27%;
-}
-.product-name {
-    height: 35px;
-}
-.product-list {
-/*    height: 700px;
-    overflow: auto;*/
-}
-/* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-    .overlay-top {
-        height: 56px;
-    }
-    .overlay-bottom {
-        height: 48px;
-    }
-    .overlay-left {
-        width: 272px;
-    }
-    .overlay-right {
-        width: 139px;
-    }
-    .custom-margin-left {
-        margin-left: 15%;
-    }
-    .btn-rotate {
-        right: 23px;
-    }
-}
-
-/* Medium Devices, Desktops */
-@media only screen and (max-width : 992px) {
-    .resize-container {
-        left: 7%;
-    }
-}
-/* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-    .btn-cart {
-        top: 135px;
+    .resize-handle-ne, .resize-handle-se, .resize-handle-nw, .resize-handle-sw, .rotate-handle-ne, .rotate-handle-se, .rotate-handle-nw, .rotate-handle-sw {
+        width: 30px;
+        height: 30px;
     }
     .btn-add-creation, .change-color-product-block {
         position: initial;
@@ -68,81 +15,10 @@
         width: 100%;
         margin-left: 0;
     }
-    .overlay {
-        left: 7%;
-    }
-    .overlay-bottom {
-        height: 58px;
-    }
-    .overlay-right {
-        width: 71px;
-    }
-    .component {
-        height: 713px;
-    }
 }
 @media only screen and (max-width : 600px) {
-    .component {
-        height: 592px;
-    }
-    .overlay-right {
-        width: 51px;
+    .component, .overlay, .overlay img {
+        height: 300px;
+        width: 300px;
     }
 }
-/* Extra Small Devices, Phones */ 
-@media only screen and (max-width : 480px) {
-    .overlay-right {
-        width: 9%;
-    }
-    .component {
-        height: 343px;
-    }
-    .overlay {
-        height: 323px;
-    }
-    .overlay-bottom {
-        height: 42px;
-    }
-
-}
-@media only screen and (max-width : 414px) {
-    .overlay-bottom {
-        height: 23px;
-    }
-}
-@media only screen and (max-width : 412px) {
-    .overlay-bottom {
-        height: 12px;
-    }
-}
-@media only screen and (max-width : 384px) {
-    .overlay-bottom {
-        height: 36px;
-    }
-}
-/* Custom, iPhone Retina */ 
-@media only screen and (max-width : 375px) {
-    .component {
-        height: 310px;
-    }
-    .overlay {
-        height: 290px;
-    }
-    .overlay-bottom {
-        height: 11px;
-    }
-}
-@media only screen and (max-width : 360px) {
-    .overlay-bottom {
-        height: 11px;
-    }
-}
-@media only screen and (max-width : 320px) {
-    .component {
-        height: 264px;
-    }
-    .overlay {
-        height: 244px;
-    }
-}
-
