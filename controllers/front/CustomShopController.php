@@ -42,7 +42,9 @@ class CustomShopControllerCore extends FrontController {
         $oMobile = new Mobile_Detect();
         
         $this->context->smarty->assign(array(
-            'is_mobile' => $oMobile->isMobile() || $oMobile->isTablet(),
+            'is_mobile' => $oMobile->isMobile(),
+            'is_tablet' => $oMobile->isTablet(),
+            'is_mobile_or_tablet' => $oMobile->isMobile() || $oMobile->isTablet(),
             'shop' => $this->custom_shop,
             'account' => $this->custom_shop_account,
             'logo_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_logo.jpg',
