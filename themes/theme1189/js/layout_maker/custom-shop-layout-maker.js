@@ -80,7 +80,7 @@ function saveCreation(id_product, id_design, custom_picture) {
                     items: [{
                             src: $('<div class="white-popup">\n\
                             <div class="font-size-15 bold">Your Product is saved</div>\n\
-                            <div><img src="' + baseDir + json.image + '" /></div>\n\
+                            <div class="thumbnail border-none"><img src="' + baseDir + json.image + '" /></div>\n\
                             <div class="btn btn-success continue col-xs-12 col-sm-4 margin-top-10 pull-left"><span class="glyphicon glyphicon-chevron-left"></span> Create another product</div>\n\
                             <a href="' + baseDir + name_shop + '/admin/creation/summary" class="btn btn-info col-xs-12 col-sm-4 margin-top-10 pull-right">Creation summary <span class="glyphicon glyphicon-chevron-right"></span></a>\n\
                             <div class="clearfix"></div>\n\

@@ -147,7 +147,7 @@ function fileuploadListener() {
         imageCrop: false,
         singleFileUploads: false,
         limitMultiFileUploads: limit,
-        dropZone : false
+        dropZone: false
     }).on('fileuploadadd', function (e, data) {
         // loading GIF
         loading('Uploading...');
@@ -158,47 +158,64 @@ function fileuploadListener() {
         var error = [];
 
         if (file.preview && !file.error) {
-            var dataURL = file.preview.toDataURL();
+            if ((file.preview.attributes.width.value <= 500 && file.preview.attributes.height.value <= 700)
+                    ||
+                    (file.preview.attributes.width.value <= 700 && file.preview.attributes.height.value <= 500)
+                    ) {
+                loading_hide();
+                $.magnificPopup.open({
+                    items: [{
+                            src: $('\
+                                <div class="white-popup">' +
+                                    '<div class="text-center">The size of the file you uploaded will be too small for us to prepare your customized product, please upload a higher quality picture</div>' +
+                                    '<div class="text-center color-red margin-top-10"><span class="underline">Minimum size</span>: 700 pixels minimum width or 500 pixels minimum height, <span class="underline">Format accepted</span>: .jpg, .png. .gif</div>' +
+                                    '</div>'),
+                            type: 'inline'
+                        }]
+                });
+            } else {
+                var dataURL = file.preview.toDataURL();
 
-            var formData = new FormData();
-            formData.append(file.name, file);
-            formData.append('controller', 'ajaxcustomshop');
-            formData.append('action', 'savepicture');
-            formData.append('shop', id_shop);
-            if ($(this).data('db-id')) {
-                formData.append('db_id', $(this).data('db-id'));
-            }
-            formData.append('ajax', true);
-            $.ajax({
-                type: 'POST',
-                url: baseDir + 'index.php',
-                data: formData,
-                cache: false,
-                dataType: 'json',
-                processData: false, // Don't process the files
-                contentType: false,
-                success: function (json) {
-                    if (json.success === true) {
-                        // append PICTURE
-                        if (!$('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.trash').data('db-id')) {
-                            $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.trash, .price, .picture-name, .upload-btn').data('db-id', json.id);
-                        }
-                        $('.picture-name-' + $('.fileupload').data('id-upload')).val(json.image_title);
-                        $('.upload-picture-' + $('.fileupload').data('id-upload')).replaceWith(
-                                '<img class="upload-picture upload-picture-' + $('.fileupload').data('id-upload') + '" src="' + baseUri + 'img/custom_shop/picture/' + json.image_name + '" />'
-                                );
-                        loading_hide();
-                        confirm();
-                        $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.price, .picture-name').prop('disabled', false);
-                        $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.price').val(json.price);
-                        $('.menu-item-picture').removeClass('disabled');
-                    } else {
-                        if (json.error) {
-                            popupError(json.error);
+                var formData = new FormData();
+                formData.append(file.name, file);
+                formData.append('controller', 'ajaxcustomshop');
+                formData.append('action', 'savepicture');
+                formData.append('shop', id_shop);
+                if ($(this).data('db-id')) {
+                    formData.append('db_id', $(this).data('db-id'));
+                }
+                formData.append('ajax', true);
+                $.ajax({
+                    type: 'POST',
+                    url: baseDir + 'index.php',
+                    data: formData,
+                    cache: false,
+                    dataType: 'json',
+                    processData: false, // Don't process the files
+                    contentType: false,
+                    success: function (json) {
+                        if (json.success === true) {
+                            // append PICTURE
+                            if (!$('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.trash').data('db-id')) {
+                                $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.trash, .price, .picture-name, .upload-btn').data('db-id', json.id);
+                            }
+                            $('.picture-name-' + $('.fileupload').data('id-upload')).val(json.image_title);
+                            $('.upload-picture-' + $('.fileupload').data('id-upload')).replaceWith(
+                                    '<img class="upload-picture upload-picture-' + $('.fileupload').data('id-upload') + '" src="' + baseUri + 'img/custom_shop/picture/' + json.image_name + '" />'
+                                    );
+                            loading_hide();
+                            confirm();
+                            $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.price, .picture-name').prop('disabled', false);
+                            $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.price').val(json.price);
+                            $('.menu-item-picture').removeClass('disabled');
+                        } else {
+                            if (json.error) {
+                                popupError(json.error);
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         }
         if (file.error) {
             error.push(file.error);

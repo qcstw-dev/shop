@@ -99,7 +99,7 @@ function popupError(error) {
 }
 function popupChoice(html, aFunction, aFunctionCancel) {
     html = '<div class="glyphicon glyphicon-warning-sign font-size-30 color-red"></div><div class="bold">' + html + '</div>';
-    html += '<div class="col-xs-6 margin-top-10 margin-auto">\n\
+    html += '<div class="col-xs-12 col-sm-6 margin-top-10 margin-auto">\n\
                 <div class="btn btn-default pull-left cancel">Cancel</div>\n\
                 <div class="btn btn-primary pull-right confirm-btn">Confirm</div>\n\
             </div>';

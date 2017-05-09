@@ -172,6 +172,10 @@
 .upload-btn .upload-picture {
     max-height: 100%;
 }
+.list-picture {
+    max-height: 130px;
+    overflow: auto;
+}
 .item-list-picture {
     height: 111px;
 }
