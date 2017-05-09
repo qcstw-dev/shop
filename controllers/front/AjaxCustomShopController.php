@@ -671,7 +671,7 @@ class AjaxCustomShopControllerCore extends FrontController {
         for ($i = $iOffset + 1; $i <= $iNumberEnd; $i++) {
             $sHtml .= '
                 <div class="col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container block-picture-container-' . $i . '">
-                    <div class="trash border" data-id="' . $i . '"  data-db-id=""><span class="glyphicon glyphicon-trash"></span></div>
+                    <div class="trash" data-id="' . $i . '"  data-db-id=""><span class="glyphicon glyphicon-trash"></span></div>
                     <div class="border shadow block-picture" data-id="' . $i . '">
                         <div class="col-xs-10 margin-auto">
                             <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-' . $i . '" data-db-id="" placeholder="Picture name" disabled/>
