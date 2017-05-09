@@ -71,7 +71,8 @@ a, a:hover {
     right: 0;
 }
 .product-title {
-    height: 45px;
+    height: 55px;
+    margin-top: 5px;
     overflow: hidden;
 }
 .picture-mention {

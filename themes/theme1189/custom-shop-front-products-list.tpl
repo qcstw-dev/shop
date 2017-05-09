@@ -30,7 +30,7 @@
                 </a>
                 <div class="clearfix"></div>
             </div>
-            <div class="col-xs-12 font-size-13 padding-0 bold text-center vertical-center product-title">
+            <div class="col-xs-12 font-size-13 padding-0 bold text-center product-title">
                 {if $product.product_name}
                     {$product.product_name|escape:'html':'UTF-8'}
                 {else}

@@ -4,17 +4,17 @@
     <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0" /> 
     <link rel="icon" type="image/vnd.microsoft.icon" href="{$base_dir_ssl}/img/favicon.ico?{rand()}">
     <link rel="stylesheet" href="{$css_dir}bootstrap.min.css" media="all">
-    <link rel="stylesheet" href="{$css_dir}tool-custom-bootstrap.css" media="all">
+    <link rel="stylesheet" href="{$css_dir}tool-custom-bootstrap.css?{$var_cache}" media="all">
     <link rel="stylesheet" href="{$css_dir}autoload/magnific-popup.css" media="all">
     <link rel="stylesheet" href="{$css_dir}slick/slick.css" media="all">
     <link rel="stylesheet" href="{$css_dir}slick/slick-theme.css" media="all">
-    <link rel="stylesheet" href="{$css_dir}mobile-style.css" media="all">
+    <link rel="stylesheet" href="{$css_dir}mobile-style.css?{$var_cache}" media="all">
     {if isset($mobile_custom_shop_intro)}
-        <link rel="stylesheet" href="{$css_dir}custom-shop-intro.css" media="all">
+        <link rel="stylesheet" href="{$css_dir}custom-shop-intro.css?{$var_cache}" media="all">
     {/if}
     {if isset($layout_maker) && $layout_maker}
-        <link rel="stylesheet" href="{$css_dir}layout_maker/component.css" media="all">
-        <link rel="stylesheet" href="{$css_dir}layout_maker/custom_giftattitude_layout_maker.css" media="all">
+        <link rel="stylesheet" href="{$css_dir}layout_maker/component.css?{$var_cache}" media="all">
+        <link rel="stylesheet" href="{$css_dir}layout_maker/custom_giftattitude_layout_maker.css?{$var_cache}" media="all">
     {/if}
     {if isset($mobile_payment)}
         <script type="text/javascript" src="{$base_dir_ssl}js/jquery/jquery-1.11.0.min.js"></script>
@@ -23,9 +23,9 @@
         <script src='https://www.google.com/recaptcha/api.js'></script>
     {/if}
     {if isset($mobile_information)}
-        <link rel="stylesheet" href="{$css_dir}sitemap.css" media="all">
+        <link rel="stylesheet" href="{$css_dir}sitemap.css?{$var_cache}" media="all">
     {/if}
-    {*<link rel="stylesheet" href="{$modules_dir}tmheaderaccount/css/front.css" media="all">*}
+    {*<link rel="stylesheet" href="{$modules_dir}tmheaderaccount/css/front.css?{$var_cache}" media="all">*}
     {literal} 
         <script>
             (function (i, s, o, g, r, a, m) {

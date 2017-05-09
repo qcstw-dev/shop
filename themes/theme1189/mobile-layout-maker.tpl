@@ -13,7 +13,7 @@
                     <span class="glyphicon glyphicon-shopping-cart"></span> {l s='Add to cart'}</button>
             </div>
             <div class="col-xs-6">
-                <button class="btn btn-default col-xs-12 preview-layout" ><span class="glyphicon glyphicon-eye-open"></span> {l s='Preview'}</button>
+                <button class="btn btn-warning col-xs-12 preview-layout" ><span class="glyphicon glyphicon-eye-open"></span> {l s='Preview'}</button>
             </div>
         <div class="clearfix"></div>
         </div>
@@ -31,7 +31,7 @@
             <img class="hidden-original-picture hidden" scr="{($original_picture) ? $original_picture : ''}" />
         </div>
         <div class=" col-xs-6 margin-auto col-sm-3">
-            <button class="btn btn-default rotate col-xs-12 margin-top-10 margin-bottom-10"><span class="glyphicon glyphicon-repeat"></span> {l s='Rotate 90°'}</button>
+            <button class="btn btn-info rotate col-xs-12 margin-top-10 margin-bottom-10"><span class="glyphicon glyphicon-repeat"></span> {l s='Rotate 90°'}</button>
         </div>
         {if count($images_product) > 1}
             <div class="col-xs-12 padding-0">
@@ -64,7 +64,7 @@
                     <span class="glyphicon glyphicon-shopping-cart"></span> {l s='Add to cart'}</button>
             </div>
             <div class="col-xs-6">
-                <button class="btn btn-default col-xs-12 preview-layout" ><span class="glyphicon glyphicon-eye-open"></span> {l s='Preview'}</button>
+                <button class="btn btn-warning col-xs-12 preview-layout" ><span class="glyphicon glyphicon-eye-open"></span> {l s='Preview'}</button>
             </div>
         </div>
     {else}

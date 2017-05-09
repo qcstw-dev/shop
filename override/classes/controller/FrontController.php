@@ -62,6 +62,7 @@ class FrontController extends FrontControllerCore {
         }
         $cookie_video = new CookieCore('popup_video');
         $this->context->smarty->assign(array(
+            'var_cache' => '05092017',
             'selection' => $aSelectedItems,
             'aCustomDesigns' => $aCustomDesigns,
             'aSelectedDesigns' => $aSelectedDesigns,
