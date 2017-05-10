@@ -1,6 +1,10 @@
 {include file=$header}
 {include file=$menu}
 {include file=$menu_creation}
+{*<div class="col-xs-12 margin-bottom-10 visible-xs visible-sm">
+    <a href="{$base_uri}{$custom_shop_name}/admin/creation/layout-maker" class="btn btn-info pull-right {if !$pictures}disabled{/if} menu-item-picture">Place picture on products <span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+<div class="clearfix"></div>*}
 <div class="pictures-list"></div>
 {assign var='nbr_pic' value=6}
 {if count($pictures) >= 7}
@@ -17,7 +21,7 @@
             <div class="col-xs-10 margin-auto input-group-sm">
                 <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-{$counter}" data-db-id="{$db_id}" placeholder="Picture name" value="{if $db_id}{$pictures.$counter.name}{/if}" {if !$db_id}disabled{/if}/>
             </div>
-            <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-auto block-picture cursor-pointer upload-btn" data-db-id="{$db_id}" data-id="{$counter}">
+            <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-auto block-picture cursor-pointer {if !isset($pictures.$counter)}upload-btn{/if}" data-db-id="{$db_id}" data-id="{$counter}">
                 {if isset($pictures.$counter)}
                     <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}{$picture_dir}{$pictures.$counter.picture}" title="upload" alt="upload" />
                 {else}
@@ -58,6 +62,6 @@
 </div>
 </div>*}
 <div class="col-xs-12">
-    <a href="{$base_uri}{$custom_shop_name}/admin/creation/layout-maker" class="btn btn-info pull-right {if !$pictures}disabled{/if} menu-item-picture">To place picture on products <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="{$base_uri}{$custom_shop_name}/admin/creation/layout-maker" class="btn btn-info pull-right {if !$pictures}disabled{/if} menu-item-picture">Place picture on products <span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
 {include file=$footer}

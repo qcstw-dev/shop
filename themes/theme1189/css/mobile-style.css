@@ -31,6 +31,9 @@ body {
     font-size: 13px;
     padding: 2px;
 }
+.navbar-toggle {
+    border-radius: 0;
+}
 .btn-default {
     color: #777;
 }

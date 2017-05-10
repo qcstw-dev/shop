@@ -99,11 +99,9 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-row">
-            <div class="form-label">
-                <input type="checkbox" name="newsletter" id="newsletter" {if $account.newsletter}checked{/if}/>
-            </div>
+            <div class="form-label"></div>
             <div class="form-input margin-top-10">
-                <label class="cursor-pointer" for="newsletter">I accept to receive the newsletter from Gift Attitude</label>
+                <label class="cursor-pointer" for="newsletter"><input type="checkbox" name="newsletter" id="newsletter" {if $account.newsletter}checked{/if}/> I accept to receive the newsletter from Gift Attitude</label>
             </div>
             <div class="clearfix"></div>
         </div>

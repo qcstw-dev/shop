@@ -76,7 +76,7 @@ $(document).ready(function () {
             success: function (json) {
                 loading_hide();
                 if (json.success) {
-                    confirm();
+                    confirm('Saved!');
                 } else {
                     popupError(json.error);
                 }
@@ -204,7 +204,7 @@ function fileuploadListener() {
                                     '<img class="upload-picture upload-picture-' + $('.fileupload').data('id-upload') + '" src="' + baseUri + 'img/custom_shop/picture/' + json.image_name + '" />'
                                     );
                             loading_hide();
-                            confirm();
+                            confirm('Uploaded!');
                             $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.price, .picture-name').prop('disabled', false);
                             $('.block-picture-container-' + $('.fileupload').data('id-upload')).find('.price').val(json.price);
                             $('.menu-item-picture').removeClass('disabled');

@@ -25,7 +25,7 @@ $(function () {
                     success: function (json) {
                         if (json.success) {
                             loading_hide();
-                            confirm();
+                            confirm('Saved!');
                         }
                         return json.success;
                     }
@@ -97,7 +97,7 @@ $(function () {
                 success: function (json) {
                     if (json.success) {
                         loading_hide();
-                        confirm();
+                        confirm('Saved!');
                     }
                     return json.success;
                 }
@@ -142,7 +142,7 @@ $(function () {
                 loading_hide();
                 console.log(list_ids);
                 if (list_ids) {
-                    confirm();
+                    confirm('All products published!');
                     $.each(list_ids, function (index, value) {
                         $('#published-' + value).prop('checked', true);
                     });
@@ -165,7 +165,7 @@ $(function () {
                 success: function (json) {
                     loading_hide();
                     if (json.success) {
-                        confirm();
+                        confirm('Published!');
                     } else {
                         popupError(json.error);
                     }

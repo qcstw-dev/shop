@@ -95,7 +95,7 @@ function fileuploadListener() {
                     if (json.success === true) {
                         // append PICTURE
                         loading_popup_hide();
-                        confirm();
+                        confirm('Uploaded!');
                         $('.form-preview-' + type).remove();
                         $('.form-' + type + '-area').append('<img class="form-preview-' + type + ' popup-picture" data-img-name="' + json.image_name + '" src="' + baseUri + 'img/custom_shop/' + type + '/' + json.image_name + '" />');
                         $('.form-remove-btn[data-type="' + type + '"]').removeClass('hidden');

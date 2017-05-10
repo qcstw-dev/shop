@@ -1,6 +1,9 @@
 {include file=$header}
 {include file=$menu}
 {include file=$menu_creation}
+{*<div class="col-xs-12 margin-bottom-10 visible-xs visible-sm">
+    <a href="{$base_uri}{$custom_shop_name}/admin/creation/summary" class="btn btn-info pull-right {if !$creations}disabled{/if} menu-item-summary">To creation summary <span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>*}
 <div class="col-sm-9">
     <div class="panel panel-default">
         <div class="panel-heading bold"><span class="font-size-15">Pictures selection</span> <span class="font-size-13">(Click on the picture to place it)</span></div>

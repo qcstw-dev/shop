@@ -56,7 +56,7 @@ $('.select-status').on('change', function () {
         success: function (json) {
             if (json.success) {
                 loading_hide();
-                confirm();
+                confirm('Saved!');
                 $('.select-status-' + id_order).val(status);
             } else {
                 popupError(json.error);
@@ -80,7 +80,7 @@ $('.btn-save-tracking').on('click', function () {
             success: function (json) {
                 if (json.success) {
                     loading_hide();
-                    confirm();
+                    confirm('Saved!');
                     $('.tracking-order-' + id_order).val(tracking);
                 } else {
                     popupError(json.error);

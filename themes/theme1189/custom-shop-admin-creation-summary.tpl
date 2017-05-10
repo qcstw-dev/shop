@@ -5,6 +5,7 @@
     <div class="btn btn-success pull-left publish-all"><span class="glyphicon glyphicon-check"></span> Publish all</div>
     <a href="{$base_uri}shop/{$custom_shop_name}" target="_blank" class="btn btn-info pull-left margin-left-10"><span class="glyphicon glyphicon-globe"></span> Visit your shop</a>
 </div>
+<div class="clearfix"></div>
 <div class="sortable">
     {foreach from=$creations item=creation}
         <div class="col-sm-4 col-md-3 margin-bottom-10 block-creation block-creation-{$creation.id}" id="{$creation.id}">
