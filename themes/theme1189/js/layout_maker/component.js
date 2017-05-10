@@ -14,11 +14,10 @@ var resizeableImage = function (image_target, customizable) {
             image_target = $(image_target).get(0),
             image_overlay = $('.overlay-img').get(0),
             event_state = {},
-//            constrain = false,
             min_width = 20, // Change as required
             min_height = 20,
-            max_width = 2000, // Change as required
-            max_height = 1000,
+            max_width = 3000, // Change as required
+            max_height = 3000,
             resize_canvas = document.createElement('canvas');
     rotate_value = 0;
 
@@ -185,7 +184,7 @@ var resizeableImage = function (image_target, customizable) {
             }
             height = width / orig_src.width * orig_src.height;
         }
-
+        
         if (width > min_width && height > min_height && width < max_width && height < max_height) {
             // To improve performance you might limit how often resizeImage() is 
             resizeImage(width, height);

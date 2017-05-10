@@ -14,7 +14,7 @@
                     data-custom-picture=""
                     data-original-picture=""
                     style="display: none">{l s='Add to cart'}</button>
-            <button class="btn btn-default preview-layout margin-top-10 col-xs-12" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
+            <button class="btn btn-warning preview-layout margin-top-10 col-xs-12" style="display: none" ><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
             <div class="change-color-product-block text-left col-xs-12 background-white position-absolute border padding-10" style="display: none">
                 <div class="col-xs-12 col-sm-4 col-lg-12 padding-0 border text-center margin-bottom-10 background-dark-grey block-item-size" style="display: none">
                     <div class="col-xs-6">
