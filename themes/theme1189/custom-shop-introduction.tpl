@@ -15,25 +15,25 @@
 </div>
 <div class="col-xs-12 text-center margin-top-10 margin-bottom-20 uppercase padding-top-20 padding-bottom-20 intro-title">You are a</div>
 <div class="col-xs-12 margin-bottom-20">
-    <div class="col-xs-6 col-md-3">
+    <div class="col-xs-6 col-sm-3">
         <div class="intro-block-picture">
             <img src="{$img_dir}custom-shop-intro/charity.png" alt="charity" title="charity" />
         </div>
         <div class="font-size-20 text-center">Charity</div>
     </div>
-    <div class="col-xs-6 col-md-3">
+    <div class="col-xs-6 col-sm-3">
         <div class="intro-block-picture">
             <img src="{$img_dir}custom-shop-intro/club.png" alt="club association" title="club association" />
         </div>
         <div class="font-size-20 text-center">Club association</div>
     </div>
-    <div class="col-xs-6 col-md-3">
+    <div class="col-xs-6 col-sm-3">
         <div class="intro-block-picture">
             <img src="{$img_dir}custom-shop-intro/artist.png" alt="Artist" title="Artist" />
         </div>
         <div class="font-size-20 text-center">Artist</div>
     </div>
-    <div class="col-xs-6 col-md-3">
+    <div class="col-xs-6 col-sm-3">
         <div class="intro-block-picture">
             <img src="{$img_dir}custom-shop-intro/designer.png" alt="Designer" title="Designer" />
         </div>
@@ -54,13 +54,13 @@
     </div>
     <div class="col-xs-12">
         <div class="col-xs-5 text-center thumbnail border-none">
-        <img src="{$img_dir}custom-shop-intro/shop.png" alt="Personal shop" title="Personal shop" />
-    </div>
+            <img src="{$img_dir}custom-shop-intro/shop.png" alt="Personal shop" title="Personal shop" />
+        </div>
         <div class="col-xs-7 italic intro-quote">
-        "It's completely free and will forever be"
-    </div>
+            "It's completely free and will forever be"
+        </div>
         <div class="clearfix"></div>
-</div>
+    </div>
 </div>
 <div class="col-xs-12 padding-0">
     <div class="col-xs-12 text-center uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
@@ -89,42 +89,49 @@
     <div class="col-xs-12 text-center uppercase margin-bottom-20 margin-top-20 padding-top-20 padding-bottom-20 intro-title">
         We handle
     </div>
-    <div class="col-xs-6 col-md-2">
+    <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
             <img src="{$img_dir}custom-shop-intro/order-process.png" alt="Order process" title="Order process" />
         </div>
         <div class="font-size-20 text-center">Order process</div>
     </div>
-    <div class="col-xs-6 col-md-2">
+    <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
             <img src="{$img_dir}custom-shop-intro/payment.png" alt="Payment" title="Payment" />
         </div>
         <div class="font-size-20 text-center">Payment</div>
     </div>
-    <div class="col-xs-6 col-md-2">
+    <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
             <img src="{$img_dir}custom-shop-intro/stock.png" alt="Stock" title="Stock" />
         </div>
         <div class="font-size-20 text-center">Stock</div>
     </div>
-    <div class="col-xs-6 col-md-2">
+    <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
             <img src="{$img_dir}custom-shop-intro/personalization.png" alt="Personalization" title="Personalization" />
         </div>
         <div class="font-size-20 text-center">Personalization</div>
     </div>
-    <div class="col-xs-6 col-md-2">
+    <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
             <img src="{$img_dir}custom-shop-intro/shipping.png" alt="Shipping" title="Shipping" />
         </div>
         <div class="font-size-20 text-center">Shipping</div>
     </div>
-    <div class="col-xs-6 col-md-2">
+    <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
             <img src="{$img_dir}custom-shop-intro/customer-service.png" alt="Customer service" title="Customer service" />
         </div>
         <div class="font-size-20 text-center">Customer service</div>
     </div>
+</div>
+<div class="col-xs-12 padding-0">
+    <div class="col-xs-12 text-center uppercase margin-bottom-20 margin-top-20 padding-top-20 padding-bottom-20 intro-title">
+        3 minutes shop creation set-up process
+    </div>
+    <iframe class="center-block visible-lg" width="640" height="360" src="https://www.youtube.com/embed/cY3QGeOp6pI" frameborder="0" allowfullscreen></iframe>
+    <iframe class="center-block visible-xs visible-sm" width="90%" height="300" src="https://www.youtube.com/embed/cY3QGeOp6pI" frameborder="0" allowfullscreen></iframe>
 </div>
 <div class="col-xs-12 padding-0 margin-top-20 margin-bottom-20">
     <div class="col-xs-12 col-sm-6 margin-bottom-10 text-center">
