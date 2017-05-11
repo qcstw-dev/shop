@@ -7845,3 +7845,10 @@ ul.step a:hover:after {
     flex-direction: column;
     justify-content: center;
 }
+#order-detail-content {
+    overflow: visible;
+}
+.shipping-list-countries .dropdown-menu {
+    height: 150px;
+    overflow: auto;
+}

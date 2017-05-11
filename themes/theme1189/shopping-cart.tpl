@@ -248,21 +248,42 @@
             <tr class="cart_total_delivery">
                 <td colspan="{$col_span_subtotal}" class="text-right">{l s='Shipping estimate'}</td>
                 <td colspan="2">
-                        <div class="padding-left-0 col-xs-9">
-                            <select class="form-control shipping_list_countries">
+{*                        {$countries|var_dump}*}
+                        <div class="col-xs-9 padding-left-0">
+                            {*<select class="form-control shipping_list_countries">
                                 <option value="0">{l s='Select your delivery country'}</option>
                                 {foreach from=$countries item=country name=country}
                                     <option value="{$country.id_country}">{$country.name}</option>
                                 {/foreach}
-                            </select>
+                            </select>*}
+                            <div class="dropdown shipping-list-countries">
+                              <button class="btn btn-default dropdown-toggle height-40 padding-top-0 padding-bottom-0" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {l s='Select country'}
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                {foreach from=$countries item=country name=country}
+                                    {assign var='img_src' value=$tpl_dir|cat:'img/flags/'|cat:$country.iso_code|cat:'.png'}
+                                    <li>
+                                        <a class="country-element" data-country-id="{$country.id_country}" href="#">
+                                            {if file_exists($img_src)}
+                                                <img src="{$img_dir}flags/{$country.iso_code}.png" class="padding-right-10" alt="{$country.iso_code}" title="{$country.iso_code}"/>
+                                            {/if}
+                                            {$country.name}
+                                        </a>
+                                    </li>
+                                {/foreach}
+                              </ul>
+                            </div>
                         </div>
-                    <div class="col-xs-3 pull-right color-black bold font-size-20 padding-right-0 text-right shopping_price"></div>
+                    <div class="col-xs-3 pull-right color-black bold font-size-20 padding-left-0 margin-top-5 text-right shopping_price"></div>
                     <script>
-                        $('.shipping_list_countries').on('change', function () {
+                        $('.country-element').on('click', function () {
+                            var countryElement = $(this);
                             $.ajax({
                                 type: 'POST',
                                 url: baseDir,
-                                data: 'controller=ajax&action=getshippingcostbycountry&ajax=true&id_country=' + $(this).val(),
+                                data: 'controller=ajax&action=getshippingcostbycountry&ajax=true&id_country=' + $(this).data('country-id'),
                                 dataType: 'json',
                                 beforeSend: function () {
                                     $(function () {
@@ -273,6 +294,7 @@
                                     $(function () {
                                         $.fancybox.hideLoading();
                                     });
+                                    $('.shipping-list-countries .btn').html(countryElement.html()+' <span class="caret"></span>');
                                     $('.shopping_price').text(result.shipping);
                                     $('#total_price').text(result.total_cart);
                                 }

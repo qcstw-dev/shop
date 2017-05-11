@@ -22,13 +22,13 @@
         <link rel="shortcut icon" type="image/x-icon" href="{$favicon_url}?{$img_update_time}" />
         {if isset($css_files)}
             {foreach from=$css_files key=css_uri item=media}
-                <link rel="stylesheet" href="{$css_uri}" media="{$media}" />
+                <link rel="stylesheet" href="{$css_uri}?{$var_cache}" media="{$media}" />
             {/foreach}
         {/if}
         {if isset($js_defer) && !$js_defer && isset($js_files) && isset($js_def)}
             {$js_def}
             {foreach from=$js_files item=js_uri}
-                <script type="text/javascript" src="{$js_uri|escape:'html':'UTF-8'}"></script>
+                <script type="text/javascript" src="{$js_uri|escape:'html':'UTF-8'}?{$var_cache}"></script>
             {/foreach}
         {/if}
         {$HOOK_HEADER}

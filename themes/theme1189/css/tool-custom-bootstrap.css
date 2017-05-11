@@ -189,6 +189,12 @@ ol, ul {
 .font-size-150 {
     font-size: 150px;
 }
+.height-40 {
+    min-height: 40px !important;
+}
+.height-50 {
+    min-height: 50px !important;
+}
 .height-150 {
     min-height: 150px !important;
 }
@@ -225,6 +231,9 @@ ol, ul {
 }
 .padding-0 {
     padding: 0 !important;
+}
+.padding-top-0 {
+    padding-top: 0px !important;
 }
 .padding-top-5 {
     padding-top: 5px !important;
