@@ -3,7 +3,7 @@
         <div class="block-product block_product_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}">
             <div class="margin-bottom-10">
                 <div class="col-xs-4 col-lg-2 thumbnail">
-                    <img class="popup-picture" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
+                    <img class="popup-picture" data-text="*On this preview the picture might look pixelated. No worry! We use the original picture to produce." src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
                 </div>
                 <div class="col-xs-8 col-lg-10 padding-right-0">
                     <div class="block-modify pull-right">

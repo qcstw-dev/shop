@@ -312,8 +312,11 @@ var resizeableImage = function (image_target, customizable) {
             $.magnificPopup.open({
                 items: [{
                         src: $('<div class="white-popup">' +
-                                '<div class="thumbnail border-none">' +
+                                '<div class="thumbnail">' +
                                 '<img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" />' +
+                                '</div>' +
+                                '<div class="alert alert-info text-left">' +
+                                '*On this preview the picture might look pixelated. No worry! We use the original file (the one you uploaded) to produce so that final result will be as good as your original picture/design.'+
                                 '</div>' +
                                 '<div class="popup-btns">' +
                                 sDownloadButton +

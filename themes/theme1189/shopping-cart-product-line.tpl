@@ -1,7 +1,7 @@
 <tr id="product_{$product.id_product}_{$product.id_product_attribute}_{if $quantityDisplayed > 0}nocustom{else}0{/if}_{$product.id_address_delivery|intval}{if !empty($product.gift)}_gift{/if}_{if $product.custom_picture}{$product.custom_picture}{else}0{/if}_{$product.id_customized_prod|intval}" class="cart_item{if isset($productLast) && $productLast && (!isset($ignoreProductLast) || !$ignoreProductLast)} last_item{/if}{if isset($productFirst) && $productFirst} first_item{/if}{if isset($customizedDatas.$productId.$productAttributeId) AND $quantityDisplayed == 0} alternate_item{/if} address_{$product.id_address_delivery|intval} {if $odd}odd{else}even{/if}">
     <td class="cart_product" rowspan="4">
         <div class="thumbnail border-none">
-            <img class="popup" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" />
+            <img class="popup" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" data-text="*On this preview the picture might look pixelated. No worry! We use the original file (the one you uploaded) to produce so that final result will be as good as your original picture/design." alt="{$product.name|escape:'html':'UTF-8'}" />
         </div>
     </td>
     <td class="cart_description" data-title="{l s='Description'}" colspan="7">

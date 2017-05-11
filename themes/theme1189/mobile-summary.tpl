@@ -9,7 +9,7 @@
             </div>
             <div class="margin-bottom-10">
                 <div class="col-xs-4 thumbnail">
-                    <img class="popup" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
+                    <img class="popup" data-text="*On this preview the picture might look pixelated. No worry! We use the original file (the one you uploaded) to produce so that final result will be as good as your original picture/design." src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
                 </div>
                 <div class="col-xs-8 padding-right-0">
                     <div class="underline bold">{l s="Description"}:</div>

@@ -202,7 +202,7 @@
                             <div class="col-xs-12 padding-0 block-cart-element block-cart-element-{$product.id_product|intval}-{if $product.id_customized_prod}{$product.id_customized_prod}{else}{$product.custom_picture}{/if}" 
                                  data-id="cart_block_product_{$product.id_product|intval}_{$product.custom_picture}">
                                 <div class="col-xs-6 col-sm-4 thumbnail">
-                                    <img class="popup" src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
+                                    <img class="popup" data-text="*On this preview the picture might look pixelated. No worry! We use the original file (the one you uploaded) to produce so that final result will be as good as your original picture/design." src="{$base_uri}{if isset($product.customized_prod)}{$creation_picture_path}{$product.customized_prod.custom_img}{else}{$custom_picture_path}{$product.custom_picture}.png{/if}" alt="{$product.name|escape:'html':'UTF-8'}" title="{$product.name|escape:'html':'UTF-8'}" />
                                 </div>
                                 <div class="col-xs-6 col-sm-8 padding-right-0">
                                     <div>

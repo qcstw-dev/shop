@@ -7,7 +7,7 @@ $(function () {
         quickView($(this).data('id-product'), $(this).data('id-creation'), $(this).data('id-design'));
     });
     $('.popup-picture, .popup').live('click', function () {
-        popupMessage('<div class="thumbnail"><img src="' + $(this).attr('src') + '" /></div>');
+        popupMessage('<div class="thumbnail"><img src="' + $(this).attr('src') + '" /></div>'+($(this).data('text') ? '<div class="alert alert-info">'+$(this).data('text')+'</div>' : '' ));
     });
     $('.dropdown-block-title').on('click', function () {
         if ($(this).find('.chevron').hasClass('glyphicon-chevron-right')) {

@@ -531,6 +531,7 @@ $(window).load(function () {
             items: [{
                     src: $('<div class="white-popup">' +
                             '<div class="thumbnail"><img src="' + ($(this).data('src') ? $(this).data('src') : $(this).attr('src')) + '" /></div>' +
+                            ($(this).data('text') ? '<div class="alert alert-info">'+$(this).data('text')+'</div>' : '' ) +
                             '</div>'),
                     type: 'inline'
                 }]
