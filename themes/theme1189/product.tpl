@@ -197,14 +197,14 @@
                     {assign var="logoProcessDisplayed" value="false"}
                         <div class="margin-bottom-10 border-bottom">
                             <div class="col-md-6 padding-0">
-                                <p><span class="bold">{l s='Reference'}</span>: {$product->reference}</p>
+                                <p><span class="bold">{l s='Reference'}</span>: <span itemprop="gtin12">{$product->reference}</span></p>
                                 {foreach from=$features key=k item=feature}
                                     {if $k == 2}
                                         </div>
                                         <div class="col-md-6 padding-0">
                                     {/if}
                                     {if isset($feature.value)}
-                                        <p><span class="bold">{$feature.name|escape:'html':'UTF-8'}</span>: {$feature.value|escape:'html':'UTF-8'}</p>
+                                        <p><span class="bold">{$feature.name|escape:'html':'UTF-8'}</span>: <span itemprop="{if $feature.name == 'Material'}material{/if}">{$feature.value|escape:'html':'UTF-8'}</span></p>
                                         {if $feature.name == 'Logo process'}
                                             {assign var="logoProcessDisplayed" value="true"}
                                         {/if}
