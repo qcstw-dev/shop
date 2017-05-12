@@ -671,19 +671,18 @@ class AjaxCustomShopControllerCore extends FrontController {
         for ($i = $iOffset + 1; $i <= $iNumberEnd; $i++) {
             $sHtml .= '
                 <div class="col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container block-picture-container-' . $i . '">
-                    <div class="trash" data-id="' . $i . '"  data-db-id=""><span class="glyphicon glyphicon-trash"></span></div>
-                    <div class="border shadow block-picture" data-id="' . $i . '">
-                        <div class="col-xs-10 margin-auto">
-                            <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-' . $i . '" data-db-id="" placeholder="Picture name" disabled/>
+                    <div class="border shadow" data-id="' . $i . '" >
+                        <div class="trash" data-id="' . $i . '"  data-db-id=""><span class="glyphicon glyphicon-trash"></span></div>
+                        <div class="col-xs-10 margin-auto input-group-sm">
+                            <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-' . $i . '" data-db-id="" placeholder="Picture name" value="" disabled="">
                         </div>
-                        <div class="col-xs-12 thumbnail border-none margin-bottom-0 padding-0 cursor-pointer upload-btn" data-id="' . $i . '">
-                            <img class="upload-picture upload-picture-' . $i . '" src="' . __PS_BASE_URI__ . 'img/upload-icon.jpg" title="upload" alt="upload" />
-                        </div>
-                        <div class="col-xs-12 margin-top-5 margin-bottom-5">
-                            <div class="col-xs-5 margin-top-10">Price:</div>
-                            <div class="col-xs-1 margin-top-10 padding-0">$</div>
-                            <div class="col-xs-5 input-group-sm padding-0">
-                                <input class="form-control margin-0 margin-top-5 price" data-db-id="" data-id="' . $i . '" type="number" min="1" max="1" placeholder="0" disabled/>
+                        <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-auto block-picture cursor-pointer upload-btn" data-db-id="" data-id="' . $i . '" >
+                                                <img class="upload-picture upload-picture-' . $i . '" src="http://localhost/giftattitude/img/upload-icon.jpg" title="upload" alt="upload">
+                                        </div>
+                        <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5">
+                            <div class="col-xs-7 padding-right-0 padding-left-0 font-size-13 margin-top-10 text-right">Commission price: $</div>
+                            <div class="col-xs-4 margin-left-5 input-group-sm padding-0">
+                                <input class="form-control margin-0 margin-top-5 price" data-db-id="" data-id="' . $i . '" type="number" min="1.00" max="5" placeholder="0.00" disabled="">
                             </div>
                         </div>
                         <div class="clearfix"></div>
