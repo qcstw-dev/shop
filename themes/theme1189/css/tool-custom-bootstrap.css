@@ -98,12 +98,6 @@ hr {
 .border-bottom {
     border-bottom: 1px solid #ddd;
 }
-.border-top {
-    border-top: 1px solid #ddd;
-}
-.border-top-0 {
-    border-top: none;
-}
 .form-control {
     border-radius: 0;
 }
@@ -203,6 +197,12 @@ ol, ul {
 }
 .border-none {
     border: 0 !important;
+}
+.border-top {
+    border-top: 1px solid #ddd !important;
+}
+.border-top-0 {
+    border-top: none;
 }
 .border-left {
     border-left: 1px solid #ddd;

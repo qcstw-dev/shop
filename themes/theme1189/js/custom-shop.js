@@ -2,6 +2,9 @@ $(function () {
     if (getUrlParameter('id_product') && getUrlParameter('id_creation') && getUrlParameter('id_design')) {
         quickView(getUrlParameter('id_product'), getUrlParameter('id_creation'), getUrlParameter('id_design'));
     }
+    if (getUrlParameter('video_intro')) {
+        
+    }
     $(document).on('click', '.quick-view', function (e) {
         e.preventDefault();
         quickView($(this).data('id-product'), $(this).data('id-creation'), $(this).data('id-design'));

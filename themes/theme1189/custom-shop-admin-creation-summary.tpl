@@ -6,10 +6,10 @@
     <a href="{$base_uri}shop/{$custom_shop_name}" target="_blank" class="btn btn-info pull-left margin-left-10"><span class="glyphicon glyphicon-globe"></span> Visit your shop</a>
 </div>
 <div class="clearfix"></div>
-<div class="sortable">
+<ul class="sortable">
     {foreach from=$creations item=creation}
-        <div class="col-sm-4 col-md-3 margin-bottom-10 block-creation block-creation-{$creation.id}" id="{$creation.id}">
-            <div class="border shadow block-creation-content">
+        <li class="col-sm-4 col-md-3 block-creation block-creation-{$creation.id}" id="{$creation.id}" data-order="{$creation.order_number}">
+            <div class="padding-top-10 margin-top-10 block-creation-content">
                 <div class="trash" data-id-creation="{$creation.id}"><span class="glyphicon glyphicon-trash"></span></div>
                     {if !$is_mobile_or_tablet}
                         <div class="drag"><span class="fa fa-arrows"></span></div>
@@ -41,7 +41,7 @@
                         <input type="checkbox" class="published cursor-pointer" id="published-{$creation.id}" data-id-creation="{$creation.id}" name="published" {if $creation.published && $creation.product_name}checked{/if}/>
                     </div>
                 </div>
-                <div class="col-xs-12 btn btn-default btn-sm text-center cursor-pointer color-primary btn-embed" data-id="{$creation.id}">
+                <div class="col-xs-12 btn btn-default btn-sm border-none border-top text-center cursor-pointer color-primary btn-embed" data-id="{$creation.id}">
                     <span class="glyphicon glyphicon-chevron-left"></span>Embed<span class="glyphicon glyphicon-chevron-right"></span>
                 </div>
                 <div class="popup-embed-{$creation.id} hidden">
@@ -65,17 +65,17 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-        </div>
+        </li>
     {/foreach}
-</div>
-<div class="col-sm-4 col-md-3 margin-bottom-10">
-    <a href="{$base_dir}{$custom_shop_name}/admin/creation/layout-maker">
-        <div class="cursor-pointer dashed">
-            <div class="thumbnail border-none margin-0 padding-0 margin-top-lg-30 margin-bottom-lg-30">
-                <img src="{$base_uri}img/plus-icon.jpg" title="upload" alt="upload" />
+    <li class="col-sm-4 col-md-3 margin-top-10">
+        <a href="{$base_dir}{$custom_shop_name}/admin/creation/layout-maker">
+            <div class="cursor-pointer dashed">
+                <div class="thumbnail border-none margin-0 padding-0 margin-top-lg-30 margin-bottom-lg-30">
+                    <img src="{$base_uri}img/plus-icon.jpg" title="upload" alt="upload" />
+                </div>
             </div>
-        </div>
-    </a>
-</div>
+        </a>
+    </li>
+</ul>
 <div class="clearfix"></div>
 {include file=$footer}

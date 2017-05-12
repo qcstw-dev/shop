@@ -200,7 +200,18 @@
     background: rgba(221, 221, 221, 0.74);
     z-index: 2;
 }
-
+.block-creation>div {
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+}
+.sortable>li {
+    list-style: none;
+}
+/*.sortable-placeholder {
+    border: 2px dashed #bbb;
+    margin-top: 10px;
+    margin-left: 14px;
+}*/
 /*********************** USER ACCOUNT ********************/
 .payment-block {
     display: none;
