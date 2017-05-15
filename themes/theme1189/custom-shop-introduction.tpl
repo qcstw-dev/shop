@@ -40,26 +40,23 @@
         <div class="font-size-20 text-center">Designer</div>
     </div>
 </div>
-<div class="col-xs-12 padding-0 padding-top-20">
-    <div class="col-xs-12 text-center uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
-        And you want to use your image / design to increase / create revenue
+<div class="col-xs-6 padding-top-20">
+    <div class="col-xs-12 text-center uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title intro-title-twince-left">
+        And you want to use your <span class="hidden-xs">image / </span>design to <span class="hidden-xs">increase / </span> create revenue
     </div>
-    <div class="col-xs-12 text-center thumbnail border-none">
+    <div class="col-xs-12 text-center thumbnail border-none margin-top-20">
         <img src="{$img_dir}custom-shop-intro/money.png" alt="increase / create revenue" title="increase / create revenue" />
     </div>
 </div>
-<div class="col-xs-12 padding-0 padding-top-20">
-    <div class="col-xs-12 text-center uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title">
+<div class="col-xs-6 padding-top-20">
+    <div class="col-xs-12 text-center uppercase margin-bottom-20 padding-top-20 padding-bottom-20 intro-title intro-title-twince-right">
         Create your personal shop with us today
     </div>
-    <div class="col-xs-12">
-        <div class="col-xs-5 text-center thumbnail border-none">
-            <img src="{$img_dir}custom-shop-intro/shop.png" alt="Personal shop" title="Personal shop" />
-        </div>
-        <div class="col-xs-7 italic intro-quote">
-            "It's completely free and will forever be"
-        </div>
-        <div class="clearfix"></div>
+    <div class="col-xs-12 text-center thumbnail border-none">
+        <img src="{$img_dir}custom-shop-intro/shop.png" alt="Personal shop" title="Personal shop" />
+    </div>
+    <div class="col-xs-12 italic text-center margin-bottom-20 intro-quote">
+        "It's completely free and will forever be"
     </div>
 </div>
 <div class="col-xs-12 padding-0">
@@ -132,6 +129,45 @@
     </div>
     <iframe class="center-block visible-lg" width="640" height="360" src="https://www.youtube.com/embed/oty_aTG-rE4" frameborder="0" allowfullscreen></iframe>
     <iframe class="center-block visible-xs visible-sm" width="90%" height="300" src="https://www.youtube.com/embed/oty_aTG-rE4" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="col-xs-12 padding-0">
+    <div class="col-xs-12 text-center uppercase margin-bottom-20 margin-top-20 padding-top-20 padding-bottom-20 intro-title">
+        They trust us:
+    </div>
+    <div class="col-xs-12 padding-0 margin-bottom-20">
+        <div class="col-xs-6 col-sm-3">
+            <a target="_blank" href="https://www.giftattitude.com/shop/phoenixgear" title="phoenixgear shop Gift Attitude">
+                <div class="thumbnail margin-bottom-10">
+                    <img src="{$img_dir}custom-shop-intro/they-trust-us/phoenixgear-shop-Gift-Attitude.jpg" alt="phoenixgear shop Gift Attitude" title="phoenixgear shop Gift Attitude" />
+                </div>
+                <div class="font-size-20 text-center">Phoenix</div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <a target="_blank" href="https://www.giftattitude.com/shop/brazil" title="Bazil Goodies shop">
+                <div class="thumbnail margin-bottom-10">
+                    <img src="{$img_dir}custom-shop-intro/they-trust-us/Bazil-Goodies-shop-Gift-Attitude.jpg" alt="Bazil Goodies shop Gift Attitude" title="Bazil Goodies shop Gift Attitude" />
+                </div>
+                <div class="font-size-20 text-center">Brazil shop</div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <a target="_blank" href="https://www.giftattitude.com/shop/pimpmydog" title="P!MP My Dog shop Gift Attitude">
+                <div class="thumbnail margin-bottom-10">
+                    <img src="{$img_dir}custom-shop-intro/they-trust-us/PiMP-My-Dog-shop-Gift-Attitude.jpg" alt="P!MP My Dog shop Gift Attitude" title="P!MP My Dog shop Gift Attitude" />
+                </div>
+                <div class="font-size-20 text-center">P!MP My Dog</div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <a target="_blank" href="https://www.giftattitude.com/shop/cities-by-night" title="Cities by night shop Gift Attitude">
+                <div class="thumbnail margin-bottom-10">
+                    <img src="{$img_dir}custom-shop-intro/they-trust-us/Cities-by-night-shop-Gift-Attitude.jpg" alt="Cities by night shop Gift Attitude" title="Cities by night shop Gift Attitude" />
+                </div>
+                <div class="font-size-20 text-center">Cities by night</div>
+            </a>
+        </div>
+    </div>
 </div>
 <div class="col-xs-12 padding-0 margin-top-20 margin-bottom-20">
     <div class="col-xs-12 col-sm-6 margin-bottom-10 text-center">

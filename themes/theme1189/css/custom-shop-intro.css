@@ -17,14 +17,14 @@
     width: 100%;
 }
 .intro-quote {
-    margin-top: 10%;
     color: #4267b2;
-    font-size: 30px;
+    font-size: 20px;
 }
 .intro-title {
     background: #f0ad4e;
     color: #fff;
     font-size: 24px;
+    line-height: 25px;
 }
 .intro-title:before, .intro-title:after {
     content: " ";
@@ -34,6 +34,12 @@
     position: absolute;
     top: 0;
     right: 100%;
+}
+.intro-title-twince-right:before {
+    content: initial;
+}
+.intro-title-twince-left:after {
+    content: initial;
 }
 .intro-title:after {
     left: 100%;
