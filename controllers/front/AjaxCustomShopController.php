@@ -677,7 +677,7 @@ class AjaxCustomShopControllerCore extends FrontController {
                             <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-' . $i . '" data-db-id="" placeholder="Picture name" value="" disabled="">
                         </div>
                         <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-auto block-picture cursor-pointer upload-btn" data-db-id="" data-id="' . $i . '" >
-                                                <img class="upload-picture upload-picture-' . $i . '" src="http://localhost/giftattitude/img/upload-icon.jpg" title="upload" alt="upload">
+                                                <img class="upload-picture upload-picture-' . $i . '" src="' . __PS_BASE_URI__ . 'img/upload-icon.jpg" title="upload" alt="upload">
                                         </div>
                         <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5">
                             <div class="col-xs-7 padding-right-0 padding-left-0 font-size-13 margin-top-10 text-right">Commission price: $</div>
@@ -708,7 +708,7 @@ class AjaxCustomShopControllerCore extends FrontController {
     public function displayAjaxSavePrice() {
         $result = [];
         $result['success'] = true;
-        if (Tools::getValue('price') && Tools::getValue('price') <= 5) {
+        if ((Tools::getValue('price') && Tools::getValue('price') <= 5) || Tools::getValue('price') == 0) {
             if (Tools::getValue('db_id')) {
                 $oDesign = new CustomShopDesign(Tools::getValue('db_id'));
                 $oDesign->setPrice(Tools::getValue('price'));
@@ -722,7 +722,7 @@ class AjaxCustomShopControllerCore extends FrontController {
             }
         } else {
             $result['success'] = false;
-            $result['error'] = 'Price must be minimum 1 and maximum 5';
+            $result['error'] = 'Price must maximum $5';
         }
         echo json_encode($result);
     }
@@ -775,7 +775,7 @@ class AjaxCustomShopControllerCore extends FrontController {
                 if (isset($oCustomShopDesign)) {
                     $oCustomShopDesign->setPicture($sName);
                 } else {
-                    $oCustomShopDesign = new CustomShopDesign(null, ['picture' => $sName, 'name' => $sImageTitle, 'price' => '1.00', 'id_shop' => Tools::getValue('shop')]);
+                    $oCustomShopDesign = new CustomShopDesign(null, ['picture' => $sName, 'name' => $sImageTitle, 'price' => '0', 'id_shop' => Tools::getValue('shop')]);
                 }
                 if (!$oCustomShopDesign->save()) {
                     $result['success'] = false;

@@ -48,7 +48,7 @@
             {foreach from=$products item='product'}
                 <div class="col-xs-12 col-sm-4 margin-bottom-10 block-product">
                     <div class="col-xs-12 padding-0 padding-10 border shadow">
-                        <div class="col-xs-8 font-size-13 padding-0 bold vertical-center product-name">
+                        <div class="col-xs-8 font-size-13 padding-0 bold product-name">
                             {$product.name|truncate:40:'...'|escape:'html':'UTF-8'}
                         </div>
                         <div class="col-xs-4 padding-0">

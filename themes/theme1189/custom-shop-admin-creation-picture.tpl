@@ -34,10 +34,10 @@
                     <input class="form-control margin-0 margin-top-5 price" 
                            data-db-id="{$db_id}" 
                            data-id="{$counter}" 
-                           type="number" min="1.00" max="5" 
+                           type="number" min="0.00" max="5" 
                            placeholder="0.00"
                            {if !$db_id}disabled{/if}
-                           {if $db_id && $pictures.$counter.price}value="{$pictures.$counter.price}"{/if} />
+                           {if $db_id && $pictures.$counter.price != null}value="{$pictures.$counter.price}"{/if} />
                 </div>
             </div>
             <div class="clearfix"></div>

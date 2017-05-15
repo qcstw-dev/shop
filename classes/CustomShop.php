@@ -17,6 +17,7 @@ class CustomShopCore extends ObjectModel {
     public $linkedin;
     public $pinterest;
     public $minimum_to_reach;
+    public $currency;
     public $deactivated;
     public $id_account;
     public static $definition = array(
@@ -160,6 +161,7 @@ class CustomShopCore extends ObjectModel {
             'linkedin' => pSQL($this->linkedin),
             'pinterest' => pSQL($this->pinterest),
             'minimum_to_reach' => pSQL($this->minimum_to_reach),
+            'currency' => pSQL($this->currency),
             'deactivated' => pSQL($this->deactivated),
             'id_account' => pSQL($this->id_account)
         ];

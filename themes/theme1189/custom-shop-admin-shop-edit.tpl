@@ -23,6 +23,27 @@
         </div>
         <div class="form-row">
             <div class="form-label">
+                <label>Default currency</label>
+            </div>
+            <div class="form-input">
+                <select class="form-control" name="currency">
+                    <option value="0">Choose default currency</option>
+                    {foreach from=$currencies key=k item=f_currency}
+                        {if strpos($f_currency.name, '('|cat:$f_currency.iso_code:')') === false}
+                            {assign var="currency_name" value={l s='%s (%s)' sprintf=[$f_currency.name, $f_currency.sign]}}
+                        {else}
+                            {assign var="currency_name" value=$f_currency.name}
+                        {/if}
+                        <option value="{$f_currency.id_currency}" {if $shop.currency == $f_currency.id_currency}selected{/if}>
+                            {$currency_name}
+                        </option>
+                    {/foreach}
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
                 <label>Website</label>
             </div>
             <div class="form-input">
@@ -53,7 +74,7 @@
                 </div>
                 <div class="col-sm-7 thumbnail margin-bottom-0 border-none form-logo-area">
                     {if $shop.logo}
-                        <img class="form-preview-logo popup-picture" data-img-name="{$shop.logo}" src="{$base_dir}img/custom_shop/logo/{$shop.logo}" />
+                        <img class="form-preview-logo popup-picture" data-img-name="{$shop.logo}" src="{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}" />
                     {/if}
                     <img class="default-logo {if $shop.logo}hidden{/if}" src="{$logo_default}"/>
                 </div>
@@ -76,7 +97,7 @@
             <div class="form-input">
                 <div class="col-sm-12 thumbnail margin-bottom-0 border-none form-header-area">
                     {if $shop.header}
-                        <img class="form-preview-header popup-picture" data-img-name="{$shop.header}" src="{$base_dir}img/custom_shop/header/{$shop.header}" />
+                        <img class="form-preview-header popup-picture" data-img-name="{$shop.header}" src="{$base_dir_ssl}img/custom_shop/header/{$shop.header}" />
                     {/if}
                     <img class="default-header {if $shop.header}hidden{/if}" src="{$header_default}"/>
                 </div>

@@ -104,7 +104,7 @@ function popupMessage(html, style) {
     $.magnificPopup.open({
         items: [{
                 src: $('<div class="white-popup">' +
-                        '<div class="col-xs-12 alert ' + (style ? ' alert-' + style : 'alert-default') + '">' +
+                        '<div class="col-xs-12 ' + (style ? 'alert alert-' + style : 'alert alert-default') + '">' +
                         html +
                         '</div>' +
                         '<div class="clearfix"></div>' +

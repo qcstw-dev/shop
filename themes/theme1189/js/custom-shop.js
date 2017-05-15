@@ -3,8 +3,11 @@ $(function () {
         quickView(getUrlParameter('id_product'), getUrlParameter('id_creation'), getUrlParameter('id_design'));
     }
     if (getUrlParameter('video_intro')) {
-        
+        displayVideoIntro();
     }
+    $(document).on('click', '.open-video', function (e) {
+        displayVideoIntro();
+    });
     $(document).on('click', '.quick-view', function (e) {
         e.preventDefault();
         quickView($(this).data('id-product'), $(this).data('id-creation'), $(this).data('id-design'));
@@ -23,6 +26,10 @@ $(function () {
         $('.dropdown-block-' + $(this).data('id-dropdown-block')).slideToggle();
     });
 });
+function displayVideoIntro() {
+    popupMessage('<iframe class="hidden-xs hidden-sm" width="560" height="315" src="https://www.youtube.com/embed/oty_aTG-rE4?rel=0&amp;showinfo=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>\n\
+        <iframe class="visible-xs visible-sm" width="100%" height="200" src="https://www.youtube.com/embed/oty_aTG-rE4?rel=0&amp;showinfo=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>');
+}
 function quickView(id_product, id_creation, id_design) {
     var url = baseDir + 'product-popup';
     var anchor = '';

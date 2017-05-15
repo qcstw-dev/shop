@@ -79,6 +79,15 @@ $(function () {
     $('.cart-icon-desk').on('mouseleave', function () {
         $(this).find('.cart').stop().slideUp();
     });
+    $('.currency-btn-mobile, .currency-btn-desk').on('click', function () {
+        popupMessage($('.list-currency').html());
+    });
+//    $('.currency-btn-desk').on('hover', function () {
+//        $(this).find('.cart').stop().slideDown();
+//    });
+//    $('.currency-btn-desk').on('mouseleave', function () {
+//        $(this).find('.cart').stop().slideUp();
+//    });
     $('.add-creation').live('click', function () {
         loading('Adding to cart...');
         var id_creation = $(this).data('id-creation');

@@ -13,7 +13,7 @@ class CustomShopAdminShopEditControllerCore extends CustomShopAdminControllerCor
     public function initContent() {
         parent::initContent();
         
-        if (isset($_POST)) {
+        if (isset($_POST['title'])) {
             $oCustomShop = new CustomShop($this->custom_shop['id']);
             foreach ($_POST as $key => $value) {
                 if ($key == 'deactivated') {

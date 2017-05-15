@@ -9,7 +9,7 @@
 <ul class="sortable">
     {foreach from=$creations item=creation}
         <li class="col-sm-4 col-md-3 block-creation block-creation-{$creation.id}" id="{$creation.id}" data-order="{$creation.order_number}">
-            <div class="padding-top-10 margin-top-10 block-creation-content">
+            <div class="shadow padding-top-10 margin-top-10 block-creation-content">
                 <div class="trash" data-id-creation="{$creation.id}"><span class="glyphicon glyphicon-trash"></span></div>
                     {if !$is_mobile_or_tablet}
                         <div class="drag"><span class="fa fa-arrows"></span></div>

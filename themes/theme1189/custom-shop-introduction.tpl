@@ -130,8 +130,8 @@
     <div class="col-xs-12 text-center uppercase margin-bottom-20 margin-top-20 padding-top-20 padding-bottom-20 intro-title">
         3 minutes shop creation set-up process
     </div>
-    <iframe class="center-block visible-lg" width="640" height="360" src="https://www.youtube.com/embed/cY3QGeOp6pI" frameborder="0" allowfullscreen></iframe>
-    <iframe class="center-block visible-xs visible-sm" width="90%" height="300" src="https://www.youtube.com/embed/cY3QGeOp6pI" frameborder="0" allowfullscreen></iframe>
+    <iframe class="center-block visible-lg" width="640" height="360" src="https://www.youtube.com/embed/oty_aTG-rE4" frameborder="0" allowfullscreen></iframe>
+    <iframe class="center-block visible-xs visible-sm" width="90%" height="300" src="https://www.youtube.com/embed/oty_aTG-rE4" frameborder="0" allowfullscreen></iframe>
 </div>
 <div class="col-xs-12 padding-0 margin-top-20 margin-bottom-20">
     <div class="col-xs-12 col-sm-6 margin-bottom-10 text-center">

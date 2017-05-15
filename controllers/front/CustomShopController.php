@@ -17,7 +17,8 @@ class CustomShopControllerCore extends FrontController {
         $this->display_column_right = false;
         $this->display_header = false;
         $this->display_footer = false;
-        
+
+
         if (Tools::getValue('shop_name')) {
             $this->custom_shop = CustomShop::getShopByName(Tools::getValue('shop_name'));
             if ($this->custom_shop) {
@@ -25,6 +26,12 @@ class CustomShopControllerCore extends FrontController {
                 $this->context->smarty->assign('name_shop', $this->custom_shop['name']);
             } else {
                 $this->bRedirection = true;
+            }
+            if ($this->custom_shop['currency'] && !$this->context->cookie->currency_changed) {
+                $currency = new Currency((int) $this->custom_shop['currency']);
+                if (Validate::isLoadedObject($currency) && !$currency->deleted) {
+                    $this->context->cookie->id_currency = (int) $currency->id;
+                }
             }
         } else {
             $this->bRedirection = true;
@@ -38,17 +45,17 @@ class CustomShopControllerCore extends FrontController {
 
     public function initContent() {
         parent::initContent();
-        
+
         $oMobile = new Mobile_Detect();
-        
+
         $this->context->smarty->assign(array(
             'is_mobile' => $oMobile->isMobile(),
             'is_tablet' => $oMobile->isTablet(),
             'is_mobile_or_tablet' => $oMobile->isMobile() || $oMobile->isTablet(),
             'shop' => $this->custom_shop,
             'account' => $this->custom_shop_account,
-            'logo_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_logo.jpg',
-            'header_default' => _PS_BASE_URL_ . __PS_BASE_URI__ . 'img/custom_shop_default_header.jpg',
+            'logo_default' => _PS_BASE_URL_SSL_ . __PS_BASE_URI__ . 'img/custom_shop_default_logo.jpg',
+            'header_default' => _PS_BASE_URL_SSL_ . __PS_BASE_URI__ . 'img/custom_shop_default_header.jpg',
             'logo_gift' => $this->context->link->getMediaLink(_PS_IMG_ . Configuration::get('PS_LOGO')),
             'shop_name' => $this->context->shop->name,
             'custom_shop_name' => Tools::getValue('shop_name') ? : '',

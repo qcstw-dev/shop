@@ -75,6 +75,47 @@
         </div>
         <nav class="navbar navbar-default border-left-0 border-right-0">
             <div class="container">
+                <div class="header-icon">
+                        {foreach from=$currencies key=k item=f_currency}
+                            {if $cookie->id_currency == $f_currency.id_currency}
+                            <div class="visible-xs visible-sm icon-inner icon-inner-mobile icon-currency" data-block="currencies">
+                                <div class="currency-btn currency-btn-mobile">
+                                    <div class="icon-sign-{$f_currency.sign|count_characters}">
+                                        {$f_currency.sign}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden-xs hidden-sm icon-inner icon-inner-desk icon-currency" data-block="currencies">
+                                <div class="currency-btn currency-btn-desk">
+                                    <div class="icon-sign-{$f_currency.sign|count_characters}">
+                                        {$f_currency.sign}
+                                    </div>
+                                </div>
+                            </div>
+                            {/if}
+                        {/foreach}
+                </div>
+                <div class="list-currency hidden block-currencies">
+                    <div class="font-size-20 text-center bold">
+                        Choose your currencies
+                    </div>
+                    <hr>
+                    <div class="options text-center">
+                        {foreach from=$currencies key=k item=f_currency}
+                            {if strpos($f_currency.name, '('|cat:$f_currency.iso_code:')') === false}
+                                {assign var="currency_name" value={l s='%s (%s)' sprintf=[$f_currency.name, $f_currency.sign]}}
+                            {else}
+                                {assign var="currency_name" value=$f_currency.name}
+                            {/if}
+                            <div class="option {if $cookie->id_currency == $f_currency.id_currency}selected{/if}">
+                                <a href="javascript:setCurrency({$f_currency.id_currency});" rel="nofollow" title="{$currency_name}">
+                                    {$currency_name}
+                                </a>
+                            </div>
+                            <hr>
+                        {/foreach}
+                    </div>
+                </div>
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <div class="cart-icon-mobile {if isset($checkout)}active{/if} padding-10 pull-right margin-right-20 visible-xs visible-sm">
@@ -82,8 +123,13 @@
                         <span class="ajax_cart_quantity margin-right-40 visible-sm">{$cart_qties}</span>
                         <span class="glyphicon glyphicon-shopping-cart font-size-24 pull-right"></span>
                     </div>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
@@ -109,8 +155,8 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-left">
                         <li class="{if !$cat && !isset($checkout)}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">Home</a></li>
-                        {if $categories}
-                            {foreach from=$categories item='category'}
+                            {if $categories}
+                                {foreach from=$categories item='category'}
                                 <li class="{if $cat == $category.link_rewrite}active{/if}">
                                     <a href="{$base_uri}shop/{$custom_shop_name}?category={$category.link_rewrite}" title="{$category.name}">
                                         {$category.name}
@@ -126,9 +172,9 @@
     <div class="container">
         <div class="margin-top-50 visible-sm visible-md visible-lg"></div>
         <div class="col-xs-12 padding-0">
-    {if $shop.deactivated}
-        <div class="alert alert-info font-size-20 text-center top-50-percent">
-            <div>This shop is currently not available</div>
-            <div><a class="btn btn-primary margin-top-10" href="{$base_dir_ssl}">Visit main website</a></div>
-        </div>
-    {/if}
+            {if $shop.deactivated}
+                <div class="alert alert-info font-size-20 text-center top-50-percent">
+                    <div>This shop is currently not available</div>
+                    <div><a class="btn btn-primary margin-top-10" href="{$base_dir_ssl}">Visit main website</a></div>
+                </div>
+            {/if}

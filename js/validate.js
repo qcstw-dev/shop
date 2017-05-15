@@ -203,3 +203,12 @@ function validate_field(that)
 $(document).on('focusout, keyup', 'input.validate, textarea.validate', function() {
 	validate_field(this);
 });
+//$(document).on('submit', 'form', function() {
+//    event.preventDefault();
+//    $('input.validate, textarea.validate').each( function () {
+//        validate_field(this);
+//    });
+//    if (!$('.form_error').length) {
+//        $(this).submit();
+//    }    
+//});

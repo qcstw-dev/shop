@@ -70,7 +70,7 @@
     justify-content: center;
     padding: 20px;
     min-height: 250px;
-    border: 1px solid #337ab7;
+    border: 2px solid #337ab7;
     background: #337ab7;
     color: #fff;
 }
@@ -207,11 +207,10 @@
 .sortable>li {
     list-style: none;
 }
-/*.sortable-placeholder {
-    border: 2px dashed #bbb;
-    margin-top: 10px;
-    margin-left: 14px;
-}*/
+.product-name {
+    overflow: hidden;
+    height: 33px;
+}
 /*********************** USER ACCOUNT ********************/
 .payment-block {
     display: none;

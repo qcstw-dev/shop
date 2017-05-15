@@ -7,6 +7,40 @@ a, a:hover {
     background-size: cover;
     background-repeat: no-repeat;
 }
+.icon-inner {
+    float: left;
+    background: #fff;
+    text-align: center;
+    font-size: 1em;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    margin-top: 5px;
+}
+.icon-inner-desk {
+    margin-left: 30px;
+}
+.icon-inner-mobile {
+    margin-left: 20px;
+}
+.icon-inner.icon-currency {
+    font-weight: bold;
+    padding: 5px;
+}
+.header-icon .icon-sign-3,
+.header-icon .icon-sign-4 {
+    font-size: 13px;
+    padding: 5px 0px;
+}
+.header-icon .icon-sign-1,
+.header-icon .icon-sign-2{
+    font-size: 18px;
+    padding: 0px 7px;
+}
+.options{
+    height: 300px;
+    overflow: auto;
+}
 .header-label {
     font-weight: bold;
     position: absolute;

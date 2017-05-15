@@ -54,7 +54,7 @@ $(document).ready(function () {
             if (element.val()) {
                 if (element.val() > 5) {
                     popupError('Cannot be more than $5');
-                    element.val('');
+                    element.val('1');
                 } else {
                     saveField(element, 'price');
                 }

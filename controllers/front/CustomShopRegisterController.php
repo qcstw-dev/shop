@@ -57,7 +57,7 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
                             Mail::Send($this->context->language->id, 'custom_shop_registration_confirm_admin', 'Custom shop registration', $data, 'order@giftattitude.com');
                             
                             $oCustomShopAccount->login();
-                            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . $oCustomShop->name . '/admin/creation');
+                            header('Location: ' . _PS_BASE_URL_ . __PS_BASE_URI__ . $oCustomShop->name . '/admin/creation?video_intro=true');
                         }
                     } else {
                         $aErrors['account_exist'] = 'Account already exist';

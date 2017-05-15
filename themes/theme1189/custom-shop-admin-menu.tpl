@@ -1,3 +1,11 @@
+{if $is_super_admin && $page_name != 'customshopsuperadmin'}
+    <div class="pull-right"><label class="cursor-pointer" for="deactivate"><input id="deactivate" class="checkbox-deactivate" data-id-shop="{$shop.id}" type="checkbox" {if $shop.deactivated}checked{/if}> Deactivated the shop</label></div>
+    <div class="clearfix"></div>
+{/if}
+<div class="alert alert-danger text-center margin-bottom-10 pull-right {if !$shop.deactivated}hidden{/if}">Your shop is currently deactivated</div>
+<a href="{$base_uri}shop/{$custom_shop_name}" target="_blank" class="btn btn-warning pull-left"><span class="glyphicon glyphicon-globe"></span> Visit your shop</a>
+<div class="open-video pull-right color-primary bold cursor-pointer margin-top-10 margin-bottom-10 margin-left-20"><span class="glyphicon glyphicon-question-sign"></span> Need help ?</div>
+<div class="clearfix"></div>
 <div class="col-xs-12 col-md-1 padding-0 hidden-xs hidden-sm">
     <div class="list-group admin-menu">
         <a href="{$base_uri}{$custom_shop_name}/admin/creation" class="list-group-item{if in_array($page_name, [
