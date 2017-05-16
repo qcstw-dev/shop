@@ -18,7 +18,6 @@ class CustomShopControllerCore extends FrontController {
         $this->display_header = false;
         $this->display_footer = false;
 
-
         if (Tools::getValue('shop_name')) {
             $this->custom_shop = CustomShop::getShopByName(Tools::getValue('shop_name'));
             if ($this->custom_shop) {
@@ -31,6 +30,10 @@ class CustomShopControllerCore extends FrontController {
                 $currency = new Currency((int) $this->custom_shop['currency']);
                 if (Validate::isLoadedObject($currency) && !$currency->deleted) {
                     $this->context->cookie->id_currency = (int) $currency->id;
+                    $this->context->cookie->__set('id_currency', (int) $currency->id);
+                    $this->context->currency = $currency;
+                    $this->context->smarty->assign('currency', $currency);
+                    $this->context->smarty->assign('id_currency_cookie', $currency->id);
                 }
             }
         } else {
