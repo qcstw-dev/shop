@@ -26,25 +26,27 @@
         <link rel="stylesheet" href="{$css_dir}sitemap.css?{$var_cache}" media="all">
     {/if}
     {*<link rel="stylesheet" href="{$modules_dir}tmheaderaccount/css/front.css?{$var_cache}" media="all">*}
-    {literal} 
-        <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    {if !$is_local}
+        {literal} 
+            <script type="text/javascript">
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-            ga('create', 'UA-85358221-1', 'auto');
-            ga('send', 'pageview');
+                ga('create', 'UA-85358221-1', 'auto');
+                ga('send', 'pageview');
 
-        </script>
-    {/literal}
+            </script>
+        {/literal}
+    {/if}
     <meta property="og:image" content="{$logo_url}" />
     <title>{$meta_title}</title>
     {if isset($HOOK_HEADER_MOBILE)}

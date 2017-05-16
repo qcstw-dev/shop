@@ -11,24 +11,26 @@
     <link rel="stylesheet" href="{$css_dir}product.css?{$var_cache}" media="all">
     <link rel="stylesheet" href="{$css_dir}custom-shop.css?{$var_cache}" media="all">
     <link rel="stylesheet" href="{$css_dir}custom-shop-front.css?{$var_cache}" media="all">
-    {literal} 
-        <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    {if !$is_local}
+        {literal} 
+            <script type="text/javascript">
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-            ga('create', 'UA-85358221-1', 'auto');
-            ga('send', 'pageview');
-        </script>
-    {/literal}
+                ga('create', 'UA-85358221-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+        {/literal}
+    {/if}
     <meta property="og:title" content="{if isset($og_title)}{$og_title}{else}{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if} shop – Gift Attitude{/if}" />
     <meta property="og:description" content="{if isset($og_description)}{$og_description}{else}{if $shop.description}{$shop.description|escape:'html':'UTF-8'}{else}Find keychain, bottle opener, coin keychain, menu holder and more with unbeatbale prices on \"{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}\" shop. Shipping worldwide{/if}{/if}"/>
     <meta property="og:image" content="{if isset($og_image)}{$og_image}{else}{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_gift}{/if}{/if}" />
