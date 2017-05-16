@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.0, initial-scale=1.0" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/vnd.microsoft.icon" href="{$base_dir_ssl}/img/favicon.ico?{rand()}">
     <link rel="stylesheet" href="{$css_dir}bootstrap.min.css" media="all">
     <link rel="stylesheet" href="{$css_dir}tool-custom-bootstrap.css?{$var_cache}" media="all">
