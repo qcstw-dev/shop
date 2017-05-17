@@ -36,7 +36,7 @@
 </div>
 <div class="clearfix"></div>
 <div class="col-md-9 padding-0 {if !$is_mobile_or_tablet}pull-right{/if}">
-    <div id="component" class="component margin-bottom-10">
+    <div id="component" class="component margin-bottom-10 thumbnail padding-0">
         <div class="overlay">
             <div class="overlay-inner">
                 <img class="overlay-img" src="">
