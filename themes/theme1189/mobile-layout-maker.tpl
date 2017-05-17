@@ -17,7 +17,7 @@
             </div>
         <div class="clearfix"></div>
         </div>
-        <div id="component" class="component">
+        <div id="component" class="component" {if $is_mobile || $is_tablet}width="300" height="300" {else}width="600" height="600"{/if}>
             <div class="overlay-top"></div>
             <div class="overlay-bottom"></div>
             <div class="overlay-left"></div>

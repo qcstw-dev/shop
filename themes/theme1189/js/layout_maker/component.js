@@ -184,7 +184,7 @@ var resizeableImage = function (image_target, customizable) {
             }
             height = width / orig_src.width * orig_src.height;
         }
-        
+
         if (width > min_width && height > min_height && width < max_width && height < max_height) {
             // To improve performance you might limit how often resizeImage() is 
             resizeImage(width, height);
@@ -287,6 +287,8 @@ var resizeableImage = function (image_target, customizable) {
         var ctx = crop_canvas.getContext("2d");
         ctx.drawImage(image_target, left, top, width, height, 0, 0, width, height);
         ctx.drawImage(image_overlay, left_overlay, top_overlay, width, height);
+//        drawImageIOSFix(ctx, image_target, left, top, width, height, 0, 0, width, height);
+//        drawImageIOSFix(ctx, image_overlay, left_overlay, top_overlay, width, height, 0, 0, width, height);
 
         return crop_canvas;
     };
@@ -316,7 +318,7 @@ var resizeableImage = function (image_target, customizable) {
                                 '<img id="layout" src="' + crop_canvas.toDataURL("image/png") + '" />' +
                                 '</div>' +
                                 '<div class="alert alert-info text-left">' +
-                                '*On this preview the picture might look pixelated. No worry! We use the original file (the one you uploaded) to produce so that final result will be as good as your original picture/design.'+
+                                '*On this preview the picture might look pixelated. No worry! We use the original file (the one you uploaded) to produce so that final result will be as good as your original picture/design.' +
                                 '</div>' +
                                 '<div class="popup-btns">' +
                                 sDownloadButton +
@@ -377,3 +379,47 @@ $('.rotate').live('click', function () {
         rotate(null, 90, $('.resize-container').height(), $('.resize-container').width());
     }
 });
+/**
+ * Detecting vertical squash in loaded image.
+ * Fixes a bug which squash image vertically while drawing into canvas for some images.
+ * This is a bug in iOS6 devices. This function from https://github.com/stomita/ios-imagefile-megapixel
+ * 
+ */
+function detectVerticalSquash(img) {
+    var iw = img.naturalWidth, ih = img.naturalHeight;
+    var canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = ih;
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    var data = ctx.getImageData(0, 0, 1, ih).data;
+    // search image edge pixel position in case it is squashed vertically.
+    var sy = 0;
+    var ey = ih;
+    var py = ih;
+    while (py > sy) {
+        var alpha = data[(py - 1) * 4 + 3];
+        if (alpha === 0) {
+            ey = py;
+        } else {
+            sy = py;
+        }
+        py = (ey + sy) >> 1;
+    }
+    var ratio = (py / ih);
+    return (ratio === 0) ? 1 : ratio;
+}
+
+/**
+ * A replacement for context.drawImage
+ * (args are for source and destination).
+ */
+function drawImageIOSFix(ctx, img, sx, sy, sw, sh, dx, dy, dw, dh) {
+    var vertSquashRatio = detectVerticalSquash(img);
+    // Works only if whole image is displayed:
+    // ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh / vertSquashRatio);
+    // The following works correct also when only a part of the image is displayed:
+    ctx.drawImage(img, sx * vertSquashRatio, sy * vertSquashRatio,
+            sw * vertSquashRatio, sh * vertSquashRatio,
+            dx, dy, dw, dh);
+}

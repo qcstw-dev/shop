@@ -72,13 +72,16 @@ a, a:hover {
     font-style: italic;
     font-size: 13px;
     padding-top: 10px;
+    display: block;
+    width: 70%;
+    float: right;
 }
 .navbar {
     border-radius: 0;
 }
 .navbar-nav {
-    margin-left: 249px;
-    max-width: 760px;
+    margin-left: 196px;
+    max-width: 820px;
 }
 .navbar-nav.navbar-right {
     margin-left: 0;
@@ -184,14 +187,16 @@ a, a:hover {
         padding-left: 183px;
     }
     .logo {
-        margin-left: 3%;
+        margin-left: 9%;
     }
     .shop-title {
         font-size: 17px;
+        margin-left: 50px;
     }
     .shop-motto {
         font-size: 15px;
         padding-top: 0;
+        width: 63%;
     }
 }
 

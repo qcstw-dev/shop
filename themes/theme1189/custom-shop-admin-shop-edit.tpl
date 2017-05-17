@@ -64,7 +64,7 @@
         <div class="form-row">
             <div class="form-label">
                 <label>Shop logo*</label>
-                <div class="font-size-10">*Perfect match size 100px x 100px</div>
+                <div class="font-size-10">*Perfect match size 150px x 150px</div>
             </div>
             <div class="form-input">
                 <div class="col-sm-5 visible-lg">

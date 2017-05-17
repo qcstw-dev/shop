@@ -77,13 +77,15 @@
 .block-color-product .thumbnail {
     margin-bottom: 10px;
 }
+@media only screen and (max-width : 768px) {
+    .resize-handle-ne, .resize-handle-se, .resize-handle-nw, .resize-handle-sw, .rotate-handle-ne, .rotate-handle-se, .rotate-handle-nw, .rotate-handle-sw {
+        width: 30px;
+        height: 30px;
+    }
+}
 @media only screen and (max-width : 600px) {
     .component, .overlay, .overlay-inner img {
         height: 300px;
         width: 300px;
-    }
-    .resize-handle-ne, .resize-handle-se, .resize-handle-nw, .resize-handle-sw, .rotate-handle-ne, .rotate-handle-se, .rotate-handle-nw, .rotate-handle-sw {
-        width: 30px;
-        height: 30px;
     }
 }
