@@ -19,24 +19,24 @@
         </div>
         <div class="col-xs-2 padding-0">
             {if $shop.facebook}
-                <div class="pull-right margin-right-10"><a href="{if strpos($shop['website'], 'http') == false}http://{/if}{$shop.facebook}" target="_blank" class="fa fa-facebook-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{if strpos($shop['facebook'], 'http') == false}http://{/if}{$shop.facebook}" target="_blank" class="fa fa-facebook-square font-size-30"></a></div>
                 {/if}
                 {if $shop.twitter}
-                <div class="pull-right margin-right-10"><a href="{if strpos($shop['website'], 'http') == false}http://{/if}{$shop.twitter}" target="_blank" class="fa fa-twitter-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{if strpos($shop['twitter'], 'http') == false}http://{/if}{$shop.twitter}" target="_blank" class="fa fa-twitter-square font-size-30"></a></div>
                 {/if}
                 {if $shop.googleplus}
-                <div class="pull-right margin-right-10"><a href="{if strpos($shop['website'], 'http') == false}http://{/if}{$shop.googleplus}" target="_blank" class="fa fa-google-plus-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{if strpos($shop['googleplus'], 'http') == false}http://{/if}{$shop.googleplus}" target="_blank" class="fa fa-google-plus-square font-size-30"></a></div>
                 {/if}
                 {if $shop.instagram}
                 <div class="pull-right margin-right-10">
-                    <a href="{if strpos($shop['website'], 'instagram') == false}https://www.instagram.com/{/if}{$shop.instagram}" target="_blank" class="fa fa-instagram font-size-30"></a>
+                    <a href="{if strpos($shop['instagram'], 'instagram') == false}https://www.instagram.com/{/if}{$shop.instagram}" target="_blank" class="fa fa-instagram font-size-30"></a>
                 </div>
                 {/if}
                 {if $shop.linkedin}
-                <div class="pull-right margin-right-10"><a href="{if strpos($shop['website'], 'http') == false}http://{/if}{$shop.linkedin}" target="_blank" class="fa fa-linkedin-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{if strpos($shop['linkedin'], 'http') == false}http://{/if}{$shop.linkedin}" target="_blank" class="fa fa-linkedin-square font-size-30"></a></div>
                 {/if}
                 {if $shop.pinterest}
-                <div class="pull-right margin-right-10"><a href="{if strpos($shop['website'], 'http') == false}http://{/if}{$shop.pinterest}" target="_blank" class="fa fa-pinterest-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{if strpos($shop['pinterest'], 'http') == false}http://{/if}{$shop.pinterest}" target="_blank" class="fa fa-pinterest-square font-size-30"></a></div>
                 {/if}
         </div>
     </div>
