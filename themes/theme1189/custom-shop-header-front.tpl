@@ -58,7 +58,7 @@
     {if !$shop.deactivated}
         <div class="container">
             <div class="col-xs-12">
-                <div class="logo visible-xs visible-md">
+                <div class="logo thumbnail visible-xs">
                     <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
                         <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
                     </a>
@@ -68,7 +68,7 @@
                     <span class="shop-motto">"{if $shop.motto}{$shop.motto|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
                 </div>
                 <div class="header" style="background-image: url('{if $shop.header}{$base_dir_ssl}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
-                <div class="logo hidden-xs">
+                <div class="logo thumbnail hidden-xs">
                     <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
                         <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
                     </a>
@@ -120,9 +120,9 @@
                 </div>
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <div class="cart-icon-mobile {if isset($checkout)}active{/if} padding-10 pull-right margin-right-20 visible-xs visible-sm">
+                    <div class="cart-icon-mobile {if isset($checkout)}active{/if} padding-10 pull-right margin-right-20 visible-xs visible-sm visible-md">
                         <span class="ajax_cart_quantity margin-right-20 visible-xs">{$cart_qties}</span>
-                        <span class="ajax_cart_quantity margin-right-40 visible-sm">{$cart_qties}</span>
+                        <span class="ajax_cart_quantity margin-right-40 visible-sm visible-md">{$cart_qties}</span>
                         <span class="glyphicon glyphicon-shopping-cart font-size-24 pull-right"></span>
                     </div>
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -136,7 +136,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="pull-right margin-right-10">
-                            <div class="cart-icon-desk {if isset($checkout)}active{/if} padding-10 hidden-xs hidden-sm">
+                            <div class="cart-icon-desk {if isset($checkout)}active{/if} padding-10 hidden-xs hidden-sm hidden-md">
                                 <a href="{$base_dir_ssl}shop/{$custom_shop_name}/checkout" rel="no-follow">
                                     <span class="ajax_cart_quantity">{$cart_qties}</span>
                                     <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
