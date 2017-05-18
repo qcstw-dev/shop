@@ -3,12 +3,12 @@ var category = '45';
 var nbProductsToDisplay = 12;
 var loading_products = false;
 $(function () {
-    $(window).scroll(function () {
-        scrollPopup();
-    });
-    $('.popup-prod-list').scroll(function () {
-        scrollPopup();
-    });
+//    $(window).scroll(function () {
+//        scrollPopup();
+//    });
+//    $('.popup-prod-list').scroll(function () {
+//        scrollPopup();
+//    });
 
     $('.filter-category').on('click', function () {
         category = $(this).data('id-category');
@@ -36,7 +36,10 @@ function loadProducts(reset) {
     $.ajax({
         type: 'GET',
         url: baseDir,
-        data: 'controller=ajaxcustomshop&action=loadproducts&ajax=true&last_range=' + (reset ? 0 : nbrProducts) + '&nb_products=' + nbProductsToDisplay + '&id_category=' + category,
+        data: 'controller=ajaxcustomshop&action=loadproducts&ajax=true&last_range=' 
+                + (reset ? 0 : nbrProducts) 
+//                + '&nb_products=' + nbProductsToDisplay 
+                + '&id_category=' + category,
         dataType: 'html',
         async: true,
         beforeSend: function () {

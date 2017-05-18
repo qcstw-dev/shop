@@ -629,7 +629,8 @@ class AjaxCustomShopControllerCore extends FrontController {
     }
 
     public function displayAjaxLoadProducts() {
-        $aProducts = Product::getProducts($this->context->language->id, (Tools::getValue('last_range') ? : 0), (Tools::getValue('nb_products') ? : 12), 'date_add', 'DESC', (Tools::getValue('id_category') ? : '45'), true, $this->context);
+//        $aProducts = Product::getProducts($this->context->language->id, (Tools::getValue('last_range') ? : 0), (Tools::getValue('nb_products') ? : 12), 'date_add', 'DESC', (Tools::getValue('id_category') ? : '45'), true, $this->context);
+        $aProducts = Product::getProducts($this->context->language->id, null, null, 'date_add', 'DESC', (Tools::getValue('id_category') ? : '45'), true, $this->context);
         foreach ($aProducts as &$aProduct) {
             $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($this->context->language->id);
             foreach ($aProduct['images'] as $key => $image) {

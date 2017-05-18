@@ -84,7 +84,7 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
         $this->context->smarty->assign([
             'form_error' => isset($aErrors) && $aErrors ? $aErrors : null,
         ]);
-
+        
         $this->context->smarty->assign([
             'side' => 'back',
             'is_super_admin' => false,

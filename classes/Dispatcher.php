@@ -144,6 +144,13 @@ class DispatcherCore
             'rule' =>        'custom-shop-admin',
             'keywords' => array(),
         ),
+        'custom_shop_login' => array(
+            'controller' =>    'customshopregister',
+            'rule' =>        'custom-shop-{preselect}',
+            'keywords' => array(
+                'preselect' => array('regexp' => '[_a-zA-Z0-9_-]+', 'param' => 'preselect')
+            ),
+        ),
         'custom_shop_admin' => array(
             'controller' =>    'customshopadmincreation',
             'rule' =>        '{shop_name}/admin',

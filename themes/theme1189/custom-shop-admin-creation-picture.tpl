@@ -29,8 +29,9 @@
                 {/if}
             </div>
             <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5">
-                <div class="col-xs-7 padding-right-0 padding-left-0 font-size-13 margin-top-10 text-right">Commission price: $</div>
-                <div class="col-xs-4 margin-left-5 input-group-sm padding-0">
+                <div class="col-xs-6 padding-right-0 padding-left-0 font-size-13 margin-top-10 text-right">Commission price:</div>
+                <div class="col-xs-2 padding-left-0 margin-left-5 padding-top-10">USD</div>
+                <div class="col-xs-3 input-group-sm padding-0">
                     <input class="form-control margin-0 margin-top-5 price" 
                            data-db-id="{$db_id}" 
                            data-id="{$counter}" 

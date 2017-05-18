@@ -156,7 +156,7 @@
                         {/if}
                     </ul>
                     <ul class="nav navbar-nav navbar-left">
-                        <li class="{if !$cat && !isset($checkout)}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">Home</a></li>
+                        <li class="{if !$cat && !isset($checkout)}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}"><span class="glyphicon glyphicon-home"></span></a></li>
                             {if $categories}
                                 {foreach from=$categories item='category'}
                                 <li class="{if $cat == $category.link_rewrite}active{/if}">

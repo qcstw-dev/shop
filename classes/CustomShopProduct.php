@@ -105,7 +105,7 @@ class CustomShopProductCore extends ObjectModel {
 		AND `id_shop` = ' . pSQL($iShopId)
                         . ($bOnlyPublished ? ' AND csp.`published` = 1' : '')
                         . ($aCategories ? ' AND csp.`id_product` = cp.`id_product` AND cp.`id_category` IN ('.  implode(',', $aCategories).')' : '').'
-                ORDER BY `order_number`'
+                ORDER BY `order_number`, `id` desc'
                 );
     }
 

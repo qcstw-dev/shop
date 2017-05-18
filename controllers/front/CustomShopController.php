@@ -26,16 +26,6 @@ class CustomShopControllerCore extends FrontController {
             } else {
                 $this->bRedirection = true;
             }
-            if ($this->custom_shop['currency'] && !$this->context->cookie->currency_changed) {
-                $currency = new Currency((int) $this->custom_shop['currency']);
-                if (Validate::isLoadedObject($currency) && !$currency->deleted) {
-                    $this->context->cookie->id_currency = (int) $currency->id;
-                    $this->context->cookie->__set('id_currency', (int) $currency->id);
-                    $this->context->currency = $currency;
-                    $this->context->smarty->assign('currency', $currency);
-                    $this->context->smarty->assign('id_currency_cookie', $currency->id);
-                }
-            }
         } else {
             $this->bRedirection = true;
         }
@@ -49,12 +39,7 @@ class CustomShopControllerCore extends FrontController {
     public function initContent() {
         parent::initContent();
 
-        $oMobile = new Mobile_Detect();
-
         $this->context->smarty->assign(array(
-            'is_mobile' => $oMobile->isMobile(),
-            'is_tablet' => $oMobile->isTablet(),
-            'is_mobile_or_tablet' => $oMobile->isMobile() || $oMobile->isTablet(),
             'shop' => $this->custom_shop,
             'account' => $this->custom_shop_account,
             'logo_default' => _PS_BASE_URL_SSL_ . __PS_BASE_URI__ . 'img/custom_shop_default_logo.jpg',
