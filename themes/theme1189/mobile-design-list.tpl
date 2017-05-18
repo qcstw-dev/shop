@@ -5,13 +5,13 @@
 {foreach from=$designs item=design name=designs}
     <div class="col-xs-6 col-sm-3 margin-bottom-10">
         <div class="col-xs-12 border padding-0">
-            <div class="col-xs-6 padding-0 padding-top-5 padding-bottom-5 text-center btn-add selection" data-id="{$design.id_product}" title="Add to selection">
+            <div class="col-xs-6 btn btn-success padding-0 padding-top-10 padding-bottom-10 text-center btn-add selection" data-id="{$design.id_product}" title="Add to selection">
                 <a href="{$base_uri}mobile-layout-maker?id_design={$design.id_product}">
                     <span class="glyphicon glyphicon-plus-sign"></span> <span class="text">{l s='Select'}</span>
                 </a>
             </div>
             <div class="popup-product" data-id="{$design.id_product}">
-                <div class="col-xs-6 padding-0 padding-top-5 padding-bottom-5 text-center preview">
+                <div class="col-xs-6 padding-0 padding-top-10 padding-bottom-10 text-center preview">
                     <span class="glyphicon glyphicon-zoom-in"></span> <span class="text">{l s='Zoom'}</span>
                 </div>
                 <div class="col-xs-12 padding-0 border-bottom border-top">

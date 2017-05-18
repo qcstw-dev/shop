@@ -368,6 +368,9 @@ ol, ul {
 .margin-top-30 {
     margin-top: 30px !important;
 }
+.margin-top-40 {
+    margin-top: 40px !important;
+}
 .margin-top-50 {
     margin-top: 50px !important;
 }
@@ -523,12 +526,10 @@ ol, ul {
         margin-bottom: 30px !important;
     }
 }
-.selection .glyphicon-plus-sign,
-.product_list .btn .glyphicon-plus-sign {
+.product_list .btn-default .glyphicon-plus-sign {
     color: #38B15D;
 }
-.selection .glyphicon-minus-sign,
-.product_list .btn .glyphicon-minus-sign {
+.product_list .btn-default .glyphicon-minus-sign {
     color: #d9534f;
 }
 .color-preview-list {

@@ -61,6 +61,7 @@ function addRemoveToSelection(element) {
             if (json.success === true) {
                 if (json.type === 'remove') {
                     $('.product-' + id).find('.glyphicon').removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
+                    $('.product-' + id).removeClass('btn-danger').addClass('btn-success');
                     $('.product-' + id).each(function () {
                         $(this).find('.text').text($(this).data('text-add'));
                     });
@@ -77,6 +78,7 @@ function addRemoveToSelection(element) {
                         popupFirstDesignAdd();
                     }
                     element.find('.glyphicon').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
+                    $('.product-' + id).removeClass('btn-success').addClass('btn-danger');
                     element.each(function () {
                         $(this).find('.text').text($(this).data('text-remove'));
                     });

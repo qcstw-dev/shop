@@ -9,16 +9,16 @@
         {if $product.id_category_default == '45'}
             <div class="col-xs-6 col-md-3 margin-bottom-10 block-product">
                 <div class="col-xs-12 border padding-0 shadow">
-                    <div class="col-xs-6 padding-0 padding-top-5 padding-bottom-5 text-center btn-add selection product-{$product.id_product}" data-id="{$product.id_product}" title="{l s='Add to selection'}">
+                    <div class="col-xs-6 padding-0 padding-top-10 padding-bottom-10 text-center btn btn-success btn-add selection product-{$product.id_product}" data-id="{$product.id_product}" title="{l s='Add to selection'}">
                         <a href="{$base_uri}mobile-designs?id_product={$product.id_product}">
                             <span class="glyphicon glyphicon-plus-sign"></span> <span class="text">{l s='Select'}</span>
                         </a>
                     </div>
-                    <div class="col-xs-6 padding-0 padding-top-5 padding-bottom-5 text-center preview product-{$product.id_product} quick-view" data-id-product="{$product.id_product}" {* data-id="{$product.id_product}" *} title="{l s='Product details'}">
+                    <div class="col-xs-6 btn btn-default padding-0 padding-top-10 padding-bottom-10 text-center preview product-{$product.id_product} quick-view" data-id-product="{$product.id_product}" {* data-id="{$product.id_product}" *} title="{l s='Product details'}">
                         <span class="glyphicon glyphicon-zoom-in"></span> <span class="text">{l s='Details'}</span>
                     </div>
                     <div class="col-xs-12 product-name">
-                        {$product.name|truncate:20:'...'|escape:'html':'UTF-8'}
+                        {$product.name|truncate:50:'...'|escape:'html':'UTF-8'}
                     </div>
                     <div class="col-xs-12 border-bottom">
                         <div class="thumbnail border-none margin-bottom-0 popup-product" data-id="{$product.id_product}">

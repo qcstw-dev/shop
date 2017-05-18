@@ -159,7 +159,7 @@ hr {
 }
 
 .selection {
-    border-right: 1px solid #ddd; 
+    /*border-right: 1px solid #ddd;*/ 
 }
 .preview, .selection {
     font-size: 13px;
@@ -231,15 +231,11 @@ hr {
 }
 /************** PRODUCT LIST ****************/
 .product-name {
-    border-top: 1px solid #ddd;
     text-align: center; 
     font-weight: bold;
     padding: 0;
     padding-top : 5px;
-    min-height: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    height: 40px;
 }
 
 /************** PRODUCT PAGE ****************/
