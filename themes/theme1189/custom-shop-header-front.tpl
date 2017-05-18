@@ -44,7 +44,7 @@
     <meta name="description" content="{if isset($og_description)}{$og_description}{else}{if $shop.description}{$shop.description|escape:'html':'UTF-8'}{else}Find keychain, bottle opener, coin keychain, menu holder and more with unbeatbale prices on \"{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}\" shop. Shipping worldwide{/if}{/if}"/>
     <title>{if isset($og_title)}{$og_title}{else}{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if} shop – Gift Attitude{/if}</title>
 </head>
-<body>
+<body {if $smarty.server.HTTP_HOST != 'localhost'} oncontextmenu="return false" {/if}>
     <div class="shop hidden" data-id-shop="{$id_shop}" data-name-shop="{$name_shop}" data-side="front"></div>
     <div class="panel panel-default col-md-2 vertical-center shadow loading-ajax" style="display: none;">
         <div class="thumbnail border-none margin-0">

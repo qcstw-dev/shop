@@ -226,7 +226,7 @@
                     {if (isset($smarty.get.side) && $smarty.get.side == 'front' && $id_creation)}
                         <div class="btn btn-primary add-creation margin-top-20 margin-left-20" data-id-creation="{$id_creation}"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</div>
                     {/if}
-                    {if !isset($smarty.get.side) || (isset($smarty.get.side) && $smarty.get.side != 'admin' && $smarty.get.side != 'front')}
+                    {if !isset($smarty.get.side) || (isset($smarty.get.side) && $smarty.get.side != 'admin' && $smarty.get.side != 'front' && $smarty.get.side != 'front_mobile')}
                         <div class="product_attributes pull-right">
                             {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
                             <div class="btn btn-default selection margin-bottom-10 product-{$product->id}"
@@ -240,6 +240,14 @@
                             </div>
                         </div>
                     {/if}
+                    {if isset($smarty.get.side) && $smarty.get.side == 'front_mobile'}
+                        <div class="pull-right margin-right-20">
+                            <a class="btn btn-default" href="{$base_uri}mobile-designs?id_product={$product->id}">
+                                <span class="glyphicon glyphicon-plus-sign color-green"></span> <span class="text">{l s='Select'}</span>
+                            </a>
+                        </div>
+                    {/if}
+                    
                 </div>
             </div>
             <!-- end center infos-->

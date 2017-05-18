@@ -45,7 +45,7 @@
     border: 1px solid #d6d4d4;
     background: white; }
     .pb-left-column #image-block.is_caroucel {
-      margin-left: 96px;
+      margin-left: 65px;
       margin-right: 4px; }
       @media (min-width: 992px) and (max-width: 1199px) {
         .pb-left-column #image-block.is_caroucel {

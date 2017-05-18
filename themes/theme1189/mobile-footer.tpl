@@ -54,6 +54,8 @@
 {if isset($product_list)}
     <script type="text/javascript" src="{$js_dir}noframework.waypoints.min.js"></script>
     <script type="text/javascript" src="{$js_dir}mobile-product-list.js?{$var_cache}"></script>
+    <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/fancybox/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jqzoom/jquery.jqzoom.js"></script>
 {/if}
 {if isset($checkout)}
     <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jquery.typewatch.js"></script>

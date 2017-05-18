@@ -1,5 +1,9 @@
 $(function () {
     isMobile = $('#mobile').length;
+    $('.quick-view').live('click', function (e) {
+        e.preventDefault();
+        quickView($(this).data('id-product'));
+    });
     $('body').on('click', '.title-block', function () {
         $('.block-' + $(this).data('block')).slideToggle();
     });
@@ -100,6 +104,45 @@ $(function () {
         ajaxCartAdd(idProduct, 1, idDesign, customPicture, originalPicture, this);
     });
 });
+function quickView(id_product, id_creation, id_design) {
+    var url = baseDir + 'product-popup';
+    var anchor = '';
+
+    if (url.indexOf('#') != -1) {
+        anchor = url.substring(url.indexOf('#'), url.length);
+        url = url.substring(0, url.indexOf('#'));
+    }
+    if (url.indexOf('?') != -1)
+        url += '&';
+    else
+        url += '?';
+    
+    var path = (window.location.host !== 'localhost' ? window.location.pathname.split('/')['1'] + '/' + window.location.pathname.split('/')['2'] : window.location.pathname.split('/')['2'] + '/' + window.location.pathname.split('/')['3']);
+    var currentUrl = baseDir + path;
+    
+    if (!!$.prototype.fancybox) {
+        $.fancybox({
+            'padding': 0,
+            'width': 900,
+            'height': 'auto',
+            'type': 'ajax',
+            'autoSize': false,
+            'href': url + 'content_only=1' + anchor + '&side=' + $('.shop').data('side') + '&id_product=' + id_product + (id_creation ? '&id_creation=' + id_creation : '') + (id_design ? '&id_design=' + id_design : ''),
+            ajax: {
+                complete: function () {
+                    $('.jqzoom').jqzoom({
+                        zoomType: 'innerzoom', //innerzoom/standard/reverse/drag
+                        zoomWidth: 458, //zooming div default width(default width value is 200)
+                        zoomHeight: 458, //zooming div default width(default height value is 200)
+                        xOffset: 21, //zooming div default offset(default offset value is 10)
+                        yOffset: 0,
+                        title: false
+                    });
+                }
+            }
+        });
+    }
+}
 function popupMessage(html, style) {
     $.magnificPopup.open({
         items: [{

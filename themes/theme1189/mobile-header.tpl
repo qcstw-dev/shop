@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="{$css_dir}autoload/magnific-popup.css" media="all">
     <link rel="stylesheet" href="{$css_dir}slick/slick.css" media="all">
     <link rel="stylesheet" href="{$css_dir}slick/slick-theme.css" media="all">
+    <link rel="stylesheet" href="{$base_dir_ssl}js/jquery/plugins/fancybox/jquery.fancybox.css" media="all">
+    <link rel="stylesheet" href="{$base_dir_ssl}js/jquery/plugins/jqzoom/jquery.jqzoom.css" media="all">
+    <link rel="stylesheet" href="{$css_dir}product.css?{$var_cache}" media="all">
     <link rel="stylesheet" href="{$css_dir}mobile-style.css?{$var_cache}" media="all">
     {if isset($mobile_custom_shop_intro)}
         <link rel="stylesheet" href="{$css_dir}custom-shop-intro.css?{$var_cache}" media="all">
