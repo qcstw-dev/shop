@@ -19,13 +19,13 @@
         </div>
         <div class="col-xs-2 padding-0">
             {if $shop.facebook}
-                <div class="pull-right margin-right-10"><a href="{if strpos($shop['facebook'], 'http') === false}http://{/if}{$shop.facebook}" target="_blank" class="fa fa-facebook-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{if strpos($shop['facebook'], 'facebook') === false}https://www.facebook.com/{/if}{$shop.facebook}" target="_blank" class="fa fa-facebook-square font-size-30"></a></div>
                 {/if}
                 {if $shop.twitter}
-                <div class="pull-right margin-right-10"><a href="{if strpos($shop['twitter'], 'http') === false}http://{/if}{$shop.twitter}" target="_blank" class="fa fa-twitter-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{if strpos($shop['twitter'], 'twitter') === false}https://www.twitter.com/{/if}{$shop.twitter}" target="_blank" class="fa fa-twitter-square font-size-30"></a></div>
                 {/if}
                 {if $shop.googleplus}
-                <div class="pull-right margin-right-10"><a href="{if strpos($shop['googleplus'], 'http') === false}http://{/if}{$shop.googleplus}" target="_blank" class="fa fa-google-plus-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{if strpos($shop['googleplus'], 'google') === false}https://www.google.com/{/if}{$shop.googleplus}" target="_blank" class="fa fa-google-plus-square font-size-30"></a></div>
                 {/if}
                 {if $shop.instagram}
                 <div class="pull-right margin-right-10">
@@ -36,7 +36,7 @@
                 <div class="pull-right margin-right-10"><a href="{if strpos($shop['linkedin'], 'http') === false}http://{/if}{$shop.linkedin}" target="_blank" class="fa fa-linkedin-square font-size-30"></a></div>
                 {/if}
                 {if $shop.pinterest}
-                <div class="pull-right margin-right-10"><a href="{if strpos($shop['pinterest'], 'http') === false}http://{/if}{$shop.pinterest}" target="_blank" class="fa fa-pinterest-square font-size-30"></a></div>
+                <div class="pull-right margin-right-10"><a href="{if strpos($shop['pinterest'], 'pinterest') === false}https://www.pinterest.com/{/if}{$shop.pinterest}" target="_blank" class="fa fa-pinterest-square font-size-30"></a></div>
                 {/if}
         </div>
     </div>
@@ -82,8 +82,8 @@
 <script type="text/javascript" src="{$js_dir}autoload/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/fancybox/jquery.fancybox.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jqzoom/jquery.jqzoom.js"></script>
-<script type="text/javascript" src="{$js_dir}custom-shop.js"></script>
-<script type="text/javascript" src="{$js_dir}custom-shop-front.js"></script>
+<script type="text/javascript" src="{$js_dir}custom-shop.js?{$var_cache}"></script>
+<script type="text/javascript" src="{$js_dir}custom-shop-front.js?{$var_cache}"></script>
 <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/tools.js"></script>
 
