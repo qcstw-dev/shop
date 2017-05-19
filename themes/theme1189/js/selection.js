@@ -79,7 +79,7 @@ function addRemoveToSelection(element) {
                     }
                     element.find('.glyphicon').removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
                     $('.product-' + id).removeClass('btn-success').addClass('btn-danger');
-                    element.each(function () {
+                    $('.product-' + id).each(function () {
                         $(this).find('.text').text($(this).data('text-remove'));
                     });
                     if (element.data('type') === 'product') {

@@ -7401,7 +7401,7 @@ ul.step a:hover:after {
 
 .btn-success {
     background: #449d44;
-    border: none;
+    /*border: none;*/
     color: #fff;
     @includw transition(.3s); }
 .btn-success:hover, .btn-success:active, .btn-success:active:focus, .btn-success:focus {

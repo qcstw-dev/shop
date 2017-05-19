@@ -216,7 +216,7 @@
                         <div class="clear"></div>
                     </div> <!-- end content_prices -->
                     {if $product->category != 'designs' && (!isset($smarty.get.side) || (isset($smarty.get.side) && $smarty.get.side != 'admin')) }
-                        <div class="pull-left">
+                        <div class="pull-left margin-top-10">
                             <div class="our_price_display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                 {strip}
                                     <span id="our_price_display" itemprop="price">{convertPrice price=$prices.10}*</span>
@@ -231,9 +231,9 @@
                         <div class="btn btn-primary add-creation margin-top-20 margin-left-20" data-id-creation="{$id_creation}"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</div>
                     {/if}
                     {if !isset($smarty.get.side) || (isset($smarty.get.side) && $smarty.get.side != 'admin' && $smarty.get.side != 'front' && $smarty.get.side != 'front_mobile')}
-                        <div class="product_attributes pull-right">
+                        <div class="product_attributes pull-right margin-top-10 margin-right-10">
                             {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
-                            <div class="btn btn-default selection margin-bottom-10 product-{$product->id}"
+                            <div class="btn btn-{if !$isInSelection}success{else}danger{/if} btn-lg selection margin-bottom-10 product-{$product->id}"
                                  data-product-link="{$product->getLink()|escape:'html':'UTF-8'}" 
                                  data-img="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" 
                                  data-id="{$product->id}" data-product-title="{$product->name}"

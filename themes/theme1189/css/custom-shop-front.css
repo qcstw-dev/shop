@@ -117,6 +117,7 @@ a, a:hover {
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.73);
     font-size: 13px;
+    margin: 1px;
 }
 .share-btn {
     line-height: 12px;
@@ -148,20 +149,30 @@ a, a:hover {
 #message {
     height: 225px;
 }
+.cart-desk {
+    position: absolute;
+    width: 200px;
+    right: 0;
+    z-index: 1;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #DDD;
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 2px 0 rgba(0, 0, 0, 0.10);
+}
+.mini-picture {
+    cursor: pointer;
+    max-height: 57px;
+}
+.big-picture-container {
+    height: 220px;
+}
+.big-picture {
+    max-height: 100%;
+}
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
     .container {
         width: 1170px;
-    }
-    .cart-desk {
-        position: absolute;
-        width: 200px;
-        right: 0;
-        z-index: 1;
-        background: #fff;
-        padding: 10px;
-        border: 1px solid #DDD;
-        box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 2px 0 rgba(0, 0, 0, 0.10);
     }
 }
 .ajax_cart_quantity {
@@ -299,6 +310,16 @@ a, a:hover {
 }
 .required {
     color: #f13340;
+}
+@media (max-width: 1000px) {
+    .navbar-nav {
+        margin-left: 0;
+        max-width: none;
+    }
+    .icon-inner-desk {
+        margin-left: 0;
+        margin-right: 10px;
+    }
 }
 
 @media (min-width: 320px) {

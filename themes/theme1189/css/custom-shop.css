@@ -7,9 +7,6 @@ body, .btn-default {
 .popup-picture {
     cursor: zoom-in;
 }
-.mini-picture {
-    cursor: pointer;
-}
 .confirm, .saving, .loading-ajax {
     position: fixed;
     top: 50%;

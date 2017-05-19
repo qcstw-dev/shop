@@ -1,7 +1,7 @@
 <div class="col-xs-12 margin-top-10">
     <div class="col-xs-12">
         {assign var="isInSelection" value="{($selection && in_array($product->id, $selection))}"}
-        <div class="btn btn-default selection margin-bottom-10 product-{$product->id} pull-right"
+        <div class="btn btn-{if !$isInSelection}success{else}danger{/if} btn-lg selection margin-bottom-10 product-{$product->id} pull-right"
              data-product-link="{$product->getLink()|escape:'html':'UTF-8'}" 
              data-img="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" 
              data-img-large="{$link->getImageLink($product->link_rewrite, $product->image.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" 

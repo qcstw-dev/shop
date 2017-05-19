@@ -570,7 +570,7 @@ ol, ul {
 select.form-control {
     padding: 6px 0px;
 }
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
     .navbar-header {
         float: none;
     }
