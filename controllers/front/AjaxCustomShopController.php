@@ -25,17 +25,24 @@ class AjaxCustomShopControllerCore extends FrontController {
         $result['success'] = true;
         if (CustomShopAccount::emailExists(Tools::getValue('email'))) {
             $oCustomAccount = CustomShopAccount::getAccountByEmail(Tools::getValue('email'));
-            //send email
-            $data = array();
-            $data['{shop_name}'] = Tools::safeOutput(Configuration::get('PS_SHOP_NAME', null, null, null));
-            $data['{firstname}'] = $oCustomAccount->firstname;
-            $data['{lastname}'] = $oCustomAccount->lastname;
-            $data['{email}'] = $oCustomAccount->email;
-            $data['{passwd}'] = $oCustomAccount->passwd;
-            $mail = Mail::Send($this->context->language->id, 'custom_shop_password', 'Password request', $data, $oCustomAccount->email);
-            if (!$mail) {
-                $result['success'] = false;
-                $result['error'] = 'Email could not be sent successfully';
+            // reset password
+            $oCustomAccount->passwd = $this->generateRandomString();
+            if ($oCustomAccount->save()) {
+                //send email
+                $data = array();
+                $data['{shop_name}'] = Tools::safeOutput(Configuration::get('PS_SHOP_NAME', null, null, null));
+                $data['{firstname}'] = $oCustomAccount->firstname;
+                $data['{lastname}'] = $oCustomAccount->lastname;
+                $data['{email}'] = $oCustomAccount->email;
+                $data['{passwd}'] = $oCustomAccount->passwd;
+                $mail = Mail::Send($this->context->language->id, 'custom_shop_password', 'Password request', $data, $oCustomAccount->email);
+                if (!$mail) {
+                    $result['success'] = false;
+                    $result['error'] = 'Email could not be sent successfully';
+                }
+            } else {
+                    $result['success'] = false;
+                    $result['error'] = 'Error: could not reset the password, please contact us';
             }
         } else {
             $result['success'] = false;
@@ -43,7 +50,9 @@ class AjaxCustomShopControllerCore extends FrontController {
         }
         echo json_encode($result);
     }
-
+    public function generateRandomString($length = 10) {
+        return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+    }
     public function displayAjaxActivateDeactivateShop() {
         $result = [];
         $result['success'] = true;

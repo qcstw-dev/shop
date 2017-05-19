@@ -79,7 +79,7 @@
 <div class="hidden">
     <div class="forgot-password-form">
         <div class="bold">Enter your account's email</div>
-        <div class="font-size-13">We will send you your password</div>
+        <div class="font-size-13">We will reset and send you your new password</div>
         <div class="col-xs-12 col-lg-6 margin-auto padding-0 margin-bottom-10 margin-top-10">
             <div class="col-xs-12">
                 <div class="alert alert-danger error-message error-message-email">Please enter a valid email address</div>
