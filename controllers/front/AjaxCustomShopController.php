@@ -2,10 +2,31 @@
 
 class AjaxCustomShopControllerCore extends FrontController {
 
+    public function displayAjaxSaveDesignCategory() {
+        $result = [];
+        $result['success'] = true;
+        if (Tools::getValue('category') != null && Tools::getValue('id_design')) {
+            $oDesign = new CustomShopDesign(Tools::getValue('id_design'));
+            if ($oDesign) {
+                $oDesign->id_category = Tools::getValue('category');
+                if ($oDesign->save()) {
+                    $result['success'] = true;
+                } else {
+                    $result['success'] = false;
+                    $result['error'] = 'Impossible to modify';
+                }
+            }
+        } else {
+            $result['success'] = false;
+            $result['error'] = 'Information missing';
+        }
+        echo json_encode($result);
+    }
+
     public function displayAjaxSaveProductsOrder() {
         $result = [];
         $result['success'] = true;
-        
+
         if (Tools::getValue('order') && Tools::getValue('shop')) {
             foreach (Tools::getValue('order') as $sCreationId => $sOrderNumber) {
                 $oCreation = new CustomShopProduct($sCreationId);
@@ -20,6 +41,7 @@ class AjaxCustomShopControllerCore extends FrontController {
         }
         echo json_encode($result);
     }
+
     public function displayAjaxSendPassword() {
         $result = [];
         $result['success'] = true;
@@ -41,8 +63,8 @@ class AjaxCustomShopControllerCore extends FrontController {
                     $result['error'] = 'Email could not be sent successfully';
                 }
             } else {
-                    $result['success'] = false;
-                    $result['error'] = 'Error: could not reset the password, please contact us';
+                $result['success'] = false;
+                $result['error'] = 'Error: could not reset the password, please contact us';
             }
         } else {
             $result['success'] = false;
@@ -50,9 +72,11 @@ class AjaxCustomShopControllerCore extends FrontController {
         }
         echo json_encode($result);
     }
+
     public function generateRandomString($length = 10) {
-        return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+        return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length / strlen($x)))), 1, $length);
     }
+
     public function displayAjaxActivateDeactivateShop() {
         $result = [];
         $result['success'] = true;
@@ -678,6 +702,7 @@ class AjaxCustomShopControllerCore extends FrontController {
         $iOffset = Tools::getValue('offset') ? : 0;
         $iNbrItem = Tools::getValue('nbr') ? : 1;
         $iNumberEnd = $iOffset + $iNbrItem;
+        $aDesignCategories = CustomShopDesign::getDesignCategories();
         for ($i = $iOffset + 1; $i <= $iNumberEnd; $i++) {
             $sHtml .= '
                 <div class="col-sm-4 col-md-4 col-lg-3 margin-bottom-10 block-picture-container block-picture-container-' . $i . '">
@@ -687,8 +712,19 @@ class AjaxCustomShopControllerCore extends FrontController {
                             <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-' . $i . '" data-db-id="" placeholder="Picture name" value="" disabled="">
                         </div>
                         <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-auto block-picture cursor-pointer upload-btn" data-db-id="" data-id="' . $i . '" >
-                                                <img class="upload-picture upload-picture-' . $i . '" src="' . __PS_BASE_URI__ . 'img/upload-icon.jpg" title="upload" alt="upload">
-                                        </div>
+                            <img class="upload-picture upload-picture-' . $i . '" src="' . __PS_BASE_URI__ . 'img/upload-icon.jpg" title="upload" alt="upload">
+                        </div>
+                        <div class="col-xs-12 font-size-13 padding-0">
+                        <div class="col-xs-4 padding-right-0 bold">Category: </div>
+                        <div class="col-xs-8 padding-right-0">
+                            <select class="design-category" data-db-id="" disabled>
+                                <option value="0">Other</option>';
+                            foreach ($aDesignCategories as $aDesignCategory) {
+                                $sHtml .= '<option value="'.$aDesignCategory['id'].'">'.$aDesignCategory['name'].'</option>';
+                            }
+                            $sHtml .= '</select>
+                        </div>
+                    </div>
                         <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5">
                             <div class="col-xs-7 padding-right-0 padding-left-0 font-size-13 margin-top-10 text-right">Commission price: $</div>
                             <div class="col-xs-4 margin-left-5 input-group-sm padding-0">
