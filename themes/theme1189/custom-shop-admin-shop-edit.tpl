@@ -183,6 +183,18 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-row">
+            <label class="cursor-pointer pull-right" for="included">
+                <input id="included" name="included" class="included" type="checkbox" {if $shop.included}checked{/if}> I want my creation to also be posted on Gift Attitude marketplace (comission remains unchanged)
+            </label>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <label class="cursor-pointer pull-right" for="promoted">
+                <input id="promoted" name="promoted" class="promoted" type="checkbox" {if $shop.promoted}checked{/if}> I want Gift Attitude to promote my creations through their social media network and internet advertisign campaigns.
+            </label>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
             <input class="btn btn-primary pull-right col-xs-12 col-lg-4" type="submit" value="Save" />
         </div>
     </form>
