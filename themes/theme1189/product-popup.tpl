@@ -35,15 +35,17 @@
                 <!-- product img-->        
                 <div id="image-block" class="clearfix{if isset($images) && count($images) > 0} is_caroucel{/if}">
                     <div class="col-xs-12 font-size-13 margin-top-10 hidden bold color-danger product-picture-message">*Design not for sell. For reference only</div>
-                    {if $product->new}
-                        <span class="new-box no-print">
-                            <span class="new-label">{l s='New'}</span>
-                        </span>
-                    {/if}
-                    {if $product->on_sale}
-                        <span class="sale-box no-print">
-                            <span class="sale-label">{l s='Sale!'}</span>
-                        </span>
+                    {if !$content_only}
+                        {if $product->new}
+                            <span class="new-box no-print">
+                                <span class="new-label">{l s='New'}</span>
+                            </span>
+                        {/if}
+                        {if $product->on_sale}
+                            <span class="sale-box no-print">
+                                <span class="sale-label">{l s='Sale!'}</span>
+                            </span>
+                        {/if}
                     {/if}
                     {if $have_image}
                         <span id="view_full_size">
@@ -102,7 +104,7 @@
                                                             {assign var='img_url_small' value=$link->getImageLink($product->link_rewrite, $imageIds, 'tm_large_default')|escape:'html':'UTF-8'}
                                                             {assign var='img_url_large' value=$link->getImageLink($product->link_rewrite, $imageIds, 'tm_large_default')|escape:'html':'UTF-8'}
                                                         {/if}
-                                                        {if $counter==1}
+                                                        {if $counter==1 || $k == 'design'}
                                                             class="first-thumb"
                                                         {/if}
                                                         {$counter++}
@@ -119,12 +121,14 @@
                                                         class="fancybox{if $image.id_image == $cover.id_image} shown{/if}"
                                                     {/if}
                                                     title="{$imageTitle}">
-                                                    {if isset($smarty.get.side) && $smarty.get.side == 'front' && $image.cover}
+                                                    {if isset($smarty.get.side) && $smarty.get.side == 'front' && isset($image.cover) && $image.cover}
                                                         {assign var='mini_img_url' value=$image.cover}
+                                                    {else if isset($smarty.get.side) && $smarty.get.side == 'front' && $k == 'design' && isset($image.picture)}
+                                                        {assign var='mini_img_url' value=$image.picture}
                                                     {else}
                                                         {assign var='mini_img_url' value=$link->getImageLink($product->link_rewrite, $imageIds, 'tm_cart_default')|escape:'html':'UTF-8'}
                                                     {/if}
-                                                        <img class="img-responsive" id="thumb_{$image.id_image}" src="{$mini_img_url}" alt="{$imageTitle}" title="{$imageTitle}" height="{$cartSize.height}" width="{$cartSize.width}" itemprop="image" />
+                                                    <img class="img-responsive" id="thumb_{$image.id_image}" src="{$mini_img_url}" alt="{$imageTitle}" title="{$imageTitle}" height="{$cartSize.height}" width="{$cartSize.width}" itemprop="image" />
                                                 </a>
                                             </li>
                                         {/if}
@@ -247,7 +251,7 @@
                             </a>
                         </div>
                     {/if}
-                    
+
                 </div>
             </div>
             <!-- end center infos-->

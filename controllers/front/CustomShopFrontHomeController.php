@@ -24,17 +24,19 @@ class CustomShopFrontHomeControllerCore extends CustomShopFrontControllerCore {
             if (!$oPrestashopProduct->active) {
                 unset($aCustomProducts[$key]);
             } else {
+                $aCustomDesign = CustomShopDesign::getDesignById($aCustomProd['id_design']);
                 $aCustomProd['link_rewrite'] = $oPrestashopProduct->getLink();
                 $aCustomProd['images'] = $oPrestashopProduct->getImages($this->context->language->id);
                 foreach ($aCustomProd['images'] as $key => $image) {
-                    if ($image['legend'] == 'recess' || is_numeric($image['legend']) || strpos($image['legend'], 'No design') != false) {
+                    if ($image['legend'] == 'recess' || is_numeric($image['legend']) || strpos($image['legend'], 'No design') != false || strpos($image['legend'], 'Catalog') != false) {
                         unset($aCustomProd['images'][$key]);
                     }
                 }
+                $aCustomProd['design_image'] = _PS_BASE_URL_.__PS_BASE_URI__.'img/custom_shop/picture/'.$aCustomDesign['picture'];
                 $aQuantities = [1, 5, 10, 25, 50, 100];
                 $aPrices = [];
                 foreach ($aQuantities as $iQuantity) {
-                    $aPrices[$iQuantity] = Product::getPriceStatic((int) $aCustomProd['id_product'], true, null, 2, null, false, true, $iQuantity) + CustomShopDesign::getPrice($aCustomProd['id_design']);
+                    $aPrices[$iQuantity] = Product::getPriceStatic((int) $aCustomProd['id_product'], true, null, 2, null, false, true, $iQuantity) + $aCustomDesign['price'];
                 }
                 $aCustomProd['prices'] = $aPrices;
             }
