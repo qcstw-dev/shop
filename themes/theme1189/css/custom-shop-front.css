@@ -169,12 +169,6 @@ a, a:hover {
 .big-picture {
     max-height: 100%;
 }
-/* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-    .container {
-        width: 1170px;
-    }
-}
 .ajax_cart_quantity {
     position: absolute;
     top: 8px;
@@ -186,12 +180,24 @@ a, a:hover {
     font-size: 10px;
     z-index: 1;
 }
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+@media only screen and (max-width : 1024px) {
+    .mini-picture {
+        max-height: 40px;
+    }
+}
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
 }
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
+    
     .header-label {
         margin-top: -24px;
         width: 96%;
