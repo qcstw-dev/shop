@@ -83,7 +83,7 @@
                                 {if isset($images)}
                                     {assign var='counter' value=1}
                                     {foreach from=$images key=k item=image name=thumbnails}
-                                        {if !($is_mobile && $counter == 3)}
+                                        {if !($is_mobile && $counter == 3 && strpos('Catalog', $image['legend']) !== false)}
                                             {if preg_match('/^[0-9]+$/', $image.legend) || $image.legend == 'recess'}
                                                 {continue}
                                             {else}

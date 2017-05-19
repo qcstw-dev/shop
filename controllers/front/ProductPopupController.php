@@ -355,11 +355,13 @@ class ProductPopupControllerCore extends FrontController {
                 );
             }
         }
-        $sPicture = CustomShopDesign::getDesignById(Tools::getValue('id_design'))['picture'];
-        if (Tools::getValue('id_design') && $sPicture) {
-            $product_images['design']['id_image'] = (Configuration::get('PS_LEGACY_IMAGES') ? ($this->product->id . '-' . $image['id_image']) : $image['id_image']);
-            $product_images['design']['legend'] = 'design';
-            $product_images['design']['cover'] = __PS_BASE_URI__.'img/custom_shop/picture/'.$sPicture;
+        if (Tools::getValue('id_design')) {
+            $sPicture = CustomShopDesign::getDesignById(Tools::getValue('id_design'))['picture'];
+            if ($sPicture) {
+                $product_images['design']['id_image'] = (Configuration::get('PS_LEGACY_IMAGES') ? ($this->product->id . '-' . $image['id_image']) : $image['id_image']);
+                $product_images['design']['legend'] = 'design';
+                $product_images['design']['cover'] = __PS_BASE_URI__.'img/custom_shop/picture/'.$sPicture;
+            }
         }
         $size = Image::getSize(ImageType::getFormatedName('large'));
         $this->context->smarty->assign(array(
