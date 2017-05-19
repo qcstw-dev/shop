@@ -6,6 +6,7 @@ class CustomShopDesignCore extends ObjectModel {
     public $price;
     public $picture;
     public $name;
+    public $id_category;
     public $id_shop;
     public static $definition = array(
         'table' => 'custom_shop_design',
@@ -45,6 +46,11 @@ class CustomShopDesignCore extends ObjectModel {
 		WHERE `deleted` = 0
 		AND `id_shop` = ' . pSQL($iId));
     }
+    public static function getDesignCategories() {
+        return Db::getInstance()->executeS('
+		SELECT *
+		FROM `' . _DB_PREFIX_ . 'custom_shop_design_category`');
+    }
 
     public function setName($sName) {
         $this->name = $sName;
@@ -82,6 +88,7 @@ class CustomShopDesignCore extends ObjectModel {
             'price' => pSQL($this->price),
             'picture' => pSQL($this->picture),
             'name' => pSQL($this->name),
+            'id_category' => pSQL($this->id_category),
             'id_shop' => pSQL($this->id_shop)
         ];
         if ($this->id) {
