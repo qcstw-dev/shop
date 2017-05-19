@@ -56,30 +56,33 @@
     </div>
     <img class="hidden" src="{$base_uri}img/loader.gif" />
     {if !$shop.deactivated}
-        <div class="container">
-            <div class="col-xs-12">
-                <div class="logo thumbnail visible-xs">
-                    <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
-                        <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
-                    </a>
-                </div>
-                <div class="header-label">
-                    <span class="shop-title">{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
-                    <span class="shop-motto">"{if $shop.motto}{$shop.motto|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
-                </div>
-                <div class="header" style="background-image: url('{if $shop.header}{$base_dir_ssl}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
-                <div class="logo thumbnail hidden-xs">
-                    <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
-                        <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
-                    </a>
+        {if !$is_iframe}
+            <div class="container">
+                <div class="col-xs-12">
+                    <div class="logo thumbnail visible-xs">
+                        <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
+                            <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
+                        </a>
+                    </div>
+                    <div class="header-label">
+                        <span class="shop-title">{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
+                        <span class="shop-motto">"{if $shop.motto}{$shop.motto|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
+                    </div>
+                    <div class="header" style="background-image: url('{if $shop.header}{$base_dir_ssl}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
+                    <div class="logo thumbnail hidden-xs">
+                        <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
+                            <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="clearfix"></div>
+        {/if}
         <nav class="navbar navbar-default border-left-0 border-right-0">
             <div class="container">
                 <div class="header-icon">
-                        {foreach from=$currencies key=k item=f_currency}
-                            {if $cookie->id_currency == $f_currency.id_currency}
+                    {foreach from=$currencies key=k item=f_currency}
+                        {if $cookie->id_currency == $f_currency.id_currency}
                             <div class="visible-xs visible-sm icon-inner icon-inner-mobile icon-currency" data-block="currencies">
                                 <div class="currency-btn currency-btn-mobile">
                                     <div class="icon-sign-{$f_currency.sign|count_characters}">
@@ -94,8 +97,8 @@
                                     </div>
                                 </div>
                             </div>
-                            {/if}
-                        {/foreach}
+                        {/if}
+                    {/foreach}
                 </div>
                 <div class="list-currency hidden block-currencies">
                     <div class="font-size-20 text-center bold">
@@ -118,13 +121,12 @@
                         {/foreach}
                     </div>
                 </div>
+                <div class="cart-icon-mobile {if isset($checkout)}active{/if} padding-10 pull-right margin-right-20 {if !$is_mobile_or_tablet}hidden{/if}">
+                    <span class="ajax_cart_quantity margin-right-40">{$cart_qties}</span>
+                    <span class="glyphicon glyphicon-shopping-cart font-size-24 pull-right"></span>
+                </div>
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <div class="cart-icon-mobile {if isset($checkout)}active{/if} padding-10 pull-right margin-right-20 visible-xs visible-sm visible-md">
-                        <span class="ajax_cart_quantity margin-right-20 visible-xs">{$cart_qties}</span>
-                        <span class="ajax_cart_quantity margin-right-40 visible-sm visible-md">{$cart_qties}</span>
-                        <span class="glyphicon glyphicon-shopping-cart font-size-24 pull-right"></span>
-                    </div>
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -136,7 +138,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="pull-right margin-right-10">
-                            <div class="cart-icon-desk {if isset($checkout)}active{/if} padding-10 hidden-xs hidden-sm hidden-md">
+                            <div class="cart-icon-desk {if isset($checkout)}active{/if} padding-10 {if $is_mobile_or_tablet}hidden{/if}">
                                 <a href="{$base_dir_ssl}shop/{$custom_shop_name}/checkout" rel="no-follow">
                                     <span class="ajax_cart_quantity">{$cart_qties}</span>
                                     <span class="glyphicon glyphicon-shopping-cart font-size-24"></span>
@@ -157,8 +159,8 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-left">
                         <li class="{if !$cat && !isset($checkout)}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}"><span class="glyphicon glyphicon-home"></span></a></li>
-                            {if $categories}
-                                {foreach from=$categories item='category'}
+                                {if $categories}
+                                    {foreach from=$categories item='category'}
                                 <li class="{if $cat == $category.link_rewrite}active{/if}">
                                     <a href="{$base_uri}shop/{$custom_shop_name}?category={$category.link_rewrite}" title="{$category.name}">
                                         {$category.name}
@@ -171,7 +173,7 @@
             </div><!-- /.container-fluid -->
         </nav>
     {/if}
-    <div class="container">
+    <div class="{if !$is_iframe}container{/if}">
         <div class="margin-top-50 visible-sm visible-md visible-lg"></div>
         <div class="col-xs-12 padding-0">
             {if $shop.deactivated}

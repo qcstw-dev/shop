@@ -57,9 +57,11 @@
         <div class="col-sm-2 text-center">
             <div class="col-xs-6 padding-top-10">Shipping:</div><div class="col-xs-6 thumbnail margin-bottom-0 border-none"><img src="{$base_dir_ssl}img/EMS.jpg" alt="EMS - Express mail service" title="EMS - Express mail service" /></div>
         </div>
-        <div class="col-sm-3 padding-0 text-center padding-top-10">
-            Website powered by Gift attitude
-        </div>
+        {if !$is_iframe}
+            <div class="col-sm-3 padding-0 text-center padding-top-10">
+                Website powered by Gift attitude
+            </div>
+        {/if}
     </div>
 </div>
 <script>
