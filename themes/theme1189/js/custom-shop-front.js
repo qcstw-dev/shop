@@ -113,9 +113,9 @@ $(function () {
     $('.mini-picture').on('click', function () {
         $('.big-picture-' + $(this).data('id-creation')).attr('src', $(this).attr('src'));
         $('.big-picture-' + $(this).data('id-creation')).data('text', $(this).data('text'));
-        $('.picture-mention[data-id-creation="' + $(this).data('id-creation') + '"]').removeClass('hidden');
-        if ($(this).hasClass('first-thumb')) {
-            $('.picture-mention[data-id-creation="' + $(this).data('id-creation') + '"]').addClass('hidden');
+        $('.picture-mention[data-id-creation="' + $(this).data('id-creation') + '"]').addClass('hidden');
+        if ($(this).hasClass('thumb-picture-mention')) {
+            $('.picture-mention[data-id-creation="' + $(this).data('id-creation') + '"]').removeClass('hidden');
         }
     });
     if ($('.contact-form').hasClass('auto-display')) {
