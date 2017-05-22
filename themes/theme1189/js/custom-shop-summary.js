@@ -1,4 +1,23 @@
 $(function () {
+    $('.rotate-creation').on('click', function () {
+        var id_creation = $(this).data('id-creation');
+        $.ajax({
+            url: baseDir + 'index.php',
+            data: 'controller=ajaxcustomshop&action=RotateCreationPicture&ajax=true&id_creation=' + id_creation + '&direction=' + $(this).data('direction'),
+            dataType: 'json',
+            beforeSend: function () {
+                loading('Rotate...');
+            },
+            success: function (json) {
+                loading_hide();
+                if (json.success) {
+                    $('.creation-picture-'+id_creation).attr('src', json.picture);
+                } else {
+                    popupError(json.error);
+                }
+            }
+        });
+    });
     if (!is_mobile && !is_tablet) {
         $('.sortable').sortable({
             items: '.block-creation',
@@ -122,11 +141,9 @@ $(function () {
             success: function (json) {
                 loading_hide();
                 if (json.success) {
-                    if (json.success) {
-                        $('.block-creation-' + id_creation).fadeOut(300, function () {
-                            $(this).remove();
-                        });
-                    }
+                    $('.block-creation-' + id_creation).fadeOut(300, function () {
+                        $(this).remove();
+                    });
                 } else {
                     popupError(json.error);
                 }

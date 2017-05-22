@@ -68,7 +68,7 @@ function quickView(id_product, id_creation, id_design) {
             },
             afterClose: function () {
                 window.history.pushState({path: currentUrl}, '', currentUrl);
-            }
+            },
         });
         if (!getUrlParameter('id_product') || !getUrlParameter('id_creation') || !getUrlParameter('id_design')) {
             var newUrl = currentUrl + '?id_product=' + id_product + '&id_creation=' + id_creation + '&id_design=' + id_design;

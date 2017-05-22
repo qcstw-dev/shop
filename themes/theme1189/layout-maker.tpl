@@ -41,7 +41,11 @@
         </div>                
         <div class="btn-rotate rotate">
             <div class="glyphicon glyphicon-repeat font-size-30"></div>
-            <div class="bold margin-top-5">Rotate 90°</div>
+            <div class="bold margin-top-5">Rotate<br />picture90°</div>
+        </div>
+        <div class="btn-rotate rotate-product margin-top-100">
+            <div class="glyphicon glyphicon-repeat font-size-30"></div>
+            <div class="bold margin-top-5">Rotate<br />product 90°</div>
         </div>
         <div id="component" class="component margin-bottom-10">
             <div class="overlay">

@@ -48,14 +48,21 @@
 </div>
 <div class="btn-rotate rotate visible-lg hidden pull-right">
     <div class="glyphicon glyphicon-repeat font-size-30"></div>
-    <div class="bold margin-top-5">Rotate 90°</div>
+    <div class="bold margin-top-5">Rotate<br />picture 90°</div>
+</div>
+<div class="btn-rotate rotate-product margin-top-100 visible-lg hidden pull-right">
+    <div class="glyphicon glyphicon-repeat font-size-30"></div>
+    <div class="bold margin-top-5">Rotate<br />product 90°</div>
 </div>
 <div class="col-md-3 padding-0 {if !$is_mobile_or_tablet}pull-left{/if}">
     <div class="btn-add-creation margin-bottom-10 col-xs-12">
-        <div class="col-xs-6 col-sm-12 padding-left-0">
+        <div class="col-xs-6 col-sm-12 ">
             <button class="btn btn-info rotate hidden-lg col-xs-12 margin-bottom-10"><span class="glyphicon glyphicon-repeat"></span> Rotate 90°</button>
         </div>
-        <div class="col-xs-6 col-sm-12 padding-0">
+        <div class="col-xs-6 col-sm-12 ">
+            <button class="btn btn-success rotate-product hidden-lg col-xs-12 margin-bottom-10"><span class="glyphicon glyphicon-repeat"></span> Rotate product</button>
+        </div>
+        <div class="col-xs-12 col-sm-12 padding-0">
             <button class="btn btn-warning preview col-xs-12"><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
         </div>
         <button class="btn btn-primary btn-lg add-creation margin-top-10 col-xs-12 font-size-20" 

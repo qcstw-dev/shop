@@ -1,24 +1,24 @@
-.change-color-product-block {
-    position: initial;
-}
-.btn-rotate {
-    right: 12px;
-}
-@media only screen and (max-width : 768px) {
-    .resize-handle-ne, .resize-handle-se, .resize-handle-nw, .resize-handle-sw, .rotate-handle-ne, .rotate-handle-se, .rotate-handle-nw, .rotate-handle-sw {
-        width: 30px;
-        height: 30px;
-    }
-    .btn-add-creation, .change-color-product-block {
-        position: initial;
-        max-width: none;
-        width: 100%;
-        margin-left: 0;
-    }
-}
-@media only screen and (max-width : 600px) {
-    .component, .overlay, .overlay img {
-        height: 300px;
-        width: 300px;
-    }
-}
+.change-color-product-block {
+    position: initial;
+}
+.btn-rotate {
+    right: 12px;
+}
+@media only screen and (max-width : 768px) {
+    .resize-handle-ne, .resize-handle-se, .resize-handle-nw, .resize-handle-sw, .rotate-handle-ne, .rotate-handle-se, .rotate-handle-nw, .rotate-handle-sw {
+        width: 30px;
+        height: 30px;
+    }
+    .btn-add-creation, .change-color-product-block {
+        position: initial;
+        max-width: none;
+        width: 100%;
+        margin-left: 0;
+    }
+}
+@media only screen and (max-width : 600px) {
+    .component, .overlay, .overlay img {
+        height: 300px;
+        width: 300px;
+    }
+}

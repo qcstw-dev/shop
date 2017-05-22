@@ -30,7 +30,13 @@
                 </div>
                 <div class="col-xs-12">
                     <div class="thumbnail margin-bottom-0">
-                        <img class="popup-picture" src="{$base_dir_ssl}img/custom_shop/creation/{$creation.custom_img}" alt="{$creation.custom_img}" title="{$creation.custom_img}" />
+                        <div class="rotate-creation cursor-pointer pull-right font-size-13 bold margin-top-5" data-id-creation="{$creation.id}" data-direction="left">
+                            <span class="fa fa-rotate-left"></span>
+                        </div>
+                        <div class="rotate-creation cursor-pointer pull-left font-size-13 bold margin-top-5" data-id-creation="{$creation.id}" data-direction="right">
+                            <span class="fa fa-rotate-right"></span>
+                        </div>
+                        <img class="popup-picture creation-picture-{$creation.id}" src="{$base_dir_ssl}img/custom_shop/creation/{$creation.custom_img}" alt="{$creation.custom_img}" title="{$creation.custom_img}" />
                     </div>
                 </div>
                 <div class="col-xs-12 text-center">
