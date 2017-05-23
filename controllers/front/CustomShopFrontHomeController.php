@@ -32,7 +32,7 @@ class CustomShopFrontHomeControllerCore extends CustomShopFrontControllerCore {
                         unset($aCustomProd['images'][$key]);
                     }
                 }
-                $aCustomProd['design_image'] = _PS_BASE_URL_.__PS_BASE_URI__.'img/custom_shop/picture/'.$aCustomDesign['picture'];
+                $aCustomProd['design_image'] = _PS_BASE_URL_SSL_.__PS_BASE_URI__.'img/custom_shop/picture/'.$aCustomDesign['picture'];
                 $aQuantities = [1, 5, 10, 25, 50, 100];
                 $aPrices = [];
                 foreach ($aQuantities as $iQuantity) {

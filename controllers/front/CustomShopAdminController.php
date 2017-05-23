@@ -27,7 +27,8 @@ class CustomShopAdminControllerCore extends CustomShopControllerCore {
             'is_super_admin' => $this->context->cookie->__get('custom_shop_loggedin_super'),
             'header' => _PS_THEME_DIR_ . 'custom-shop-header-back.tpl',
             'footer' => _PS_THEME_DIR_ . 'custom-shop-footer-back.tpl',
-            'menu' => _PS_THEME_DIR_ . 'custom-shop-admin-menu.tpl'
+            'menu' => _PS_THEME_DIR_ . 'custom-shop-admin-menu.tpl',
+            'iframe' => _PS_THEME_DIR_ . 'custom-shop-admin-iframe.tpl'
         ]);
     }
 

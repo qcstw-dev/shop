@@ -57,32 +57,32 @@
     <img class="hidden" src="{$base_uri}img/loader.gif" />
     {if !$shop.deactivated}
         {if !$is_iframe}
-            <div class="container">
-                <div class="col-xs-12">
-                    <div class="logo thumbnail visible-xs">
-                        <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
-                            <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
-                        </a>
-                    </div>
-                    <div class="header-label">
-                        <span class="shop-title">{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
-                        <span class="shop-motto">"{if $shop.motto}{$shop.motto|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
-                    </div>
-                    <div class="header" style="background-image: url('{if $shop.header}{$base_dir_ssl}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
-                    <div class="logo thumbnail hidden-xs">
-                        <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
-                            <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
-                        </a>
-                    </div>
+        <div class="container">
+            <div class="col-xs-12">
+                <div class="logo thumbnail visible-xs">
+                    <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
+                        <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
+                    </a>
+                </div>
+                <div class="header-label">
+                    <span class="shop-title">{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
+                    <span class="shop-motto">"{if $shop.motto}{$shop.motto|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
+                </div>
+                <div class="header" style="background-image: url('{if $shop.header}{$base_dir_ssl}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
+                <div class="logo thumbnail hidden-xs">
+                    <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
+                        <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
+                    </a>
                 </div>
             </div>
+        </div>
             <div class="clearfix"></div>
         {/if}
         <nav class="navbar navbar-default border-left-0 border-right-0">
-            <div class="container">
+            <div class="{if !$is_iframe}container{/if}">
                 <div class="header-icon">
-                    {foreach from=$currencies key=k item=f_currency}
-                        {if $cookie->id_currency == $f_currency.id_currency}
+                        {foreach from=$currencies key=k item=f_currency}
+                            {if $cookie->id_currency == $f_currency.id_currency}
                             <div class="visible-xs visible-sm icon-inner icon-inner-mobile icon-currency" data-block="currencies">
                                 <div class="currency-btn currency-btn-mobile">
                                     <div class="icon-sign-{$f_currency.sign|count_characters}">
@@ -97,8 +97,8 @@
                                     </div>
                                 </div>
                             </div>
-                        {/if}
-                    {/foreach}
+                            {/if}
+                        {/foreach}
                 </div>
                 <div class="list-currency hidden block-currencies">
                     <div class="font-size-20 text-center bold">
@@ -159,8 +159,8 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-left">
                         <li class="{if !$cat && !isset($checkout)}active{/if}"><a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}"><span class="glyphicon glyphicon-home"></span></a></li>
-                                {if $categories}
-                                    {foreach from=$categories item='category'}
+                            {if $categories}
+                                {foreach from=$categories item='category'}
                                 <li class="{if $cat == $category.link_rewrite}active{/if}">
                                     <a href="{$base_uri}shop/{$custom_shop_name}?category={$category.link_rewrite}" title="{$category.name}">
                                         {$category.name}

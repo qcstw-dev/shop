@@ -1,7 +1,7 @@
 </div><!-- content-admin -->
 </div><!-- container -->
 <div class="col-xs-12 margin-top-20 border-top border-bottom padding-10 background-light">
-    <div class="container background-light">
+    <div class="{if !$is_iframe}container{/if} background-light">
         <div class="col-xs-10">
             {if $shop.website}
                 <div>
@@ -42,7 +42,7 @@
     </div>
 </div>
 <div class="col-xs-12 margin-bottom-10 border-bottom bold">
-    <div class="container">
+    <div class="{if !$is_iframe}container{/if}">
         <div class="col-sm-2 padding-0">
             <div class="thumbnail padding-0 border-none margin-bottom-0">
                 <img src="{$base_dir_ssl}img/credit-cards.png" alt="payment logo" title="payment logo" />
@@ -55,7 +55,7 @@
             <div class="btn-contact cursor-pointer" data-page="contactus">Contact us</div>
         </div>
         <div class="col-sm-2 text-center">
-            <div class="col-xs-6 padding-top-10">Shipping:</div><div class="col-xs-6 thumbnail margin-bottom-0 border-none"><img src="{$base_dir_ssl}img/EMS.jpg" alt="EMS - Express mail service" title="EMS - Express mail service" /></div>
+            <div class="col-xs-8 padding-top-10">Shipping:</div><div class="col-xs-4 margin-top-5 thumbnail margin-bottom-0 border-none"><img src="{$base_dir_ssl}img/EMS.jpg" alt="EMS - Express mail service" title="EMS - Express mail service" /></div>
         </div>
         {if !$is_iframe}
             <div class="col-sm-3 padding-0 text-center padding-top-10">
@@ -84,6 +84,7 @@
 <script type="text/javascript" src="{$js_dir}autoload/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/fancybox/jquery.fancybox.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jqzoom/jquery.jqzoom.js"></script>
+<script type="text/javascript" src="{$js_dir}jquery.cookie.js"></script>
 <script type="text/javascript" src="{$js_dir}custom-shop.js?{$var_cache}"></script>
 <script type="text/javascript" src="{$js_dir}custom-shop-front.js?{$var_cache}"></script>
 <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>

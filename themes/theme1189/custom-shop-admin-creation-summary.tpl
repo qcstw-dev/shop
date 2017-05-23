@@ -2,8 +2,9 @@
 {include file=$menu}
 {include file=$menu_creation}
 <div class="col-xs-12 margin-bottom-10">
-    <div class="btn btn-success pull-left publish-all"><span class="glyphicon glyphicon-check"></span> Publish all</div>
-    <a href="{$base_uri}shop/{$custom_shop_name}" target="_blank" class="btn btn-info pull-left margin-left-10"><span class="glyphicon glyphicon-globe"></span> Visit your shop</a>
+    <div class="btn btn-success publish-all"><span class="glyphicon glyphicon-check"></span> Publish all</div>
+    <div class="btn btn-danger btn-iframe"><span class="glyphicon glyphicon-chevron-left"></span>Iframe<span class="glyphicon glyphicon-chevron-right"></span></div>
+    <a  class="btn btn-info" href="{$base_uri}shop/{$custom_shop_name}" target="_blank"><span class="glyphicon glyphicon-globe"></span> Visit your shop</a>
 </div>
 <div class="clearfix"></div>
 <ul class="sortable">
@@ -52,7 +53,7 @@
                 </div>
                 <div class="popup-embed-{$creation.id} hidden">
                     <div class="text-center bold margin-bottom-10">Copy this code and paste it in your web page:</div>
-                    <textarea class="embed-textarea-{$creation.id} text-left" style="width:100%; height: 200px; font-size: 10px"></textarea>
+                    <textarea class="embed-textarea-{$creation.id} textarea-copy text-left" style="width:100%; height: 200px; font-size: 10px"></textarea>
                     <div class="embed-content-{$creation.id} hidden">
                         <div style="display: inline-block; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; padding: 10px; width: 225px; border: 1px solid #eee;">
                             <a href="{$base_dir_ssl}shop/{$custom_shop_name}?id_product={$creation.id_product}&id_creation={$creation.id}&id_design={$creation.id_design}" target="_blank" title="{if $creation.product_name}{$creation.product_name}{else}{$creation.design.name} {$creation.original_product_name}{/if}" style="text-decoration: none; color: #000;">
@@ -84,4 +85,5 @@
     </li>
 </ul>
 <div class="clearfix"></div>
+{include file=$iframe}
 {include file=$footer}

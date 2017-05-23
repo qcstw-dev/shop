@@ -22,6 +22,7 @@ a, a:hover {
 }
 .icon-inner-mobile {
     margin-left: 20px;
+    margin-right: 10px;
 }
 .icon-inner.icon-currency {
     font-weight: bold;
@@ -80,7 +81,7 @@ a, a:hover {
     border-radius: 0;
 }
 .navbar-nav {
-    margin-left: 199px;
+    margin-left: 189px;
     max-width: 718px;
 }
 .navbar-nav.navbar-right {
@@ -245,6 +246,9 @@ a, a:hover {
         margin: auto;
         margin-top: 5px;
         position: initial;
+    }
+    .shop-title {
+        margin-left: 0;
     }
     .shop-motto {
         font-style: italic;

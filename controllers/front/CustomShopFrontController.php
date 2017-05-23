@@ -66,7 +66,16 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
                 $aCategories[$key] = $aCategory['infos'];
             }
         }
-
+        
+        if (isset($_GET['iframe'])) {
+            setcookie('iframe', 1, time()+2*60*60*1000);
+            setcookie('first_url' , parse_url($_SERVER['HTTP_REFERER'])['host']);
+        } else if (isset($_COOKIE['iframe']) && $_COOKIE['iframe'] && (!isset($_SERVER['HTTP_REFERER']) 
+                || (parse_url($_SERVER['HTTP_REFERER'])['host'] != $_COOKIE['first_url']
+                    && parse_url($_SERVER['HTTP_REFERER'])['host'] != parse_url(_PS_BASE_URL_)['host']))) {
+            unset($_COOKIE['iframe']);
+        }
+        
         $aProducts = $this->context->cart->getProducts(true, null, null, true);
         $cart_qties = $this->context->cart->nbProducts(true);
         $this->context->smarty->assign([
@@ -74,6 +83,7 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
             'meta_title' => $this->custom_shop['title'] ? : $this->custom_shop['name'],
             'token' => Tools::getToken(false),
             'cart_products' => $aProducts,
+            'is_iframe' => isset($_GET['iframe']) || (isset($_COOKIE['iframe']) && $_COOKIE['iframe']),
             'side' => 'front',
             'header' => _PS_THEME_DIR_ . 'custom-shop-header-front.tpl',
             'footer' => _PS_THEME_DIR_ . 'custom-shop-footer-front.tpl',

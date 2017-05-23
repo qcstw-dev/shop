@@ -109,7 +109,9 @@ class CustomShopCore extends ObjectModel {
 		FROM `' . _DB_PREFIX_ . 'product`
 		WHERE `id_product` = ' . pSQL($aOrder['id_product']));
             $aOrder['product_creation'] = CustomShopProduct::getProductById($aOrder['id_customized_prod']);
-            $aOrder['product_creation']['design'] = CustomShopDesign::getDesignById($aOrder['product_creation']['id_design']);
+            if (isset($aOrder['product_creation']['id_design'])) {
+                $aOrder['product_creation']['design'] = CustomShopDesign::getDesignById($aOrder['product_creation']['id_design']);
+            }
             $aOrder['customer'] = Db::getInstance()->getRow('
 		SELECT *
 		FROM `' . _DB_PREFIX_ . 'customer`

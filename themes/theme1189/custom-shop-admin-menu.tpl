@@ -3,8 +3,8 @@
     <div class="clearfix"></div>
 {/if}
 <div class="alert alert-danger text-center margin-bottom-10 pull-right {if !$shop.deactivated}hidden{/if}">Your shop is currently deactivated</div>
-<a href="{$base_uri}shop/{$custom_shop_name}" target="_blank" class="btn btn-warning pull-left"><span class="glyphicon glyphicon-globe"></span> Visit your shop</a>
-<div class="open-video pull-right color-primary bold cursor-pointer margin-top-10 margin-bottom-10 margin-left-20"><span class="glyphicon glyphicon-question-sign"></span> Need help ?</div>
+<a href="{$base_uri}shop/{$custom_shop_name}" target="_blank" class="btn btn-warning btn-lg margin-bottom-10 pull-left"><span class="glyphicon glyphicon-globe"></span> Visit your shop</a>
+<div class="open-video pull-right color-primary bold cursor-pointer margin-top-20 margin-bottom-10 margin-left-20"><span class="glyphicon glyphicon-question-sign"></span> Need help ?</div>
 <div class="clearfix"></div>
 <div class="col-xs-12 col-md-1 padding-0 hidden-xs hidden-sm">
     <div class="list-group admin-menu">
