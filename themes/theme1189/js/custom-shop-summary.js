@@ -56,11 +56,6 @@ $(function () {
             }
         }).disableSelection();
     }
-    $('.textarea-copy').live('focus', function () {
-        $(this).select();
-        document.execCommand("copy");
-        confirm('Copied to clipboard!');
-    });
     $('.btn-embed').click(function () {
         var title = $('.creation-name[data-id-creation="' + $(this).data('id') + '"').val();
         $('.embed-title-' + $(this).data('id')).text(title);
@@ -71,17 +66,6 @@ $(function () {
             items: [{
                     src: $('<div class="white-popup">' +
                             $('.popup-embed-' + $(this).data('id')).html() +
-                            '</div>'),
-                    type: 'inline'
-                }]
-        });
-    });
-    $('.btn-iframe').click(function () {
-        $('.iframe-textarea').text($('.iframe-html').html());
-        $.magnificPopup.open({
-            items: [{
-                    src: $('<div class="white-popup text-left">' +
-                            $('.iframe-container').html() +
                             '</div>'),
                     type: 'inline'
                 }]

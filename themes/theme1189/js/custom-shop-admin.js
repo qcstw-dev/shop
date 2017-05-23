@@ -17,6 +17,22 @@ $(function () {
             $('.admin-menu').removeClass('fixed');
         }
     });
+    $('.btn-iframe').click(function () {
+        $('.iframe-textarea').text($('.iframe-html').html());
+        $.magnificPopup.open({
+            items: [{
+                    src: $('<div class="white-popup text-left">' +
+                            $('.iframe-container').html() +
+                            '</div>'),
+                    type: 'inline'
+                }]
+        });
+    });
+    $('.textarea-copy').live('focus', function () {
+        $(this).select();
+        document.execCommand("copy");
+        confirm('Copied to clipboard!');
+    });
 });
 
 function saving() {
