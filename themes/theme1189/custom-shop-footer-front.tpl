@@ -84,7 +84,6 @@
 <script type="text/javascript" src="{$js_dir}autoload/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/fancybox/jquery.fancybox.js"></script>
 <script type="text/javascript" src="{$base_dir_ssl}js/jquery/plugins/jqzoom/jquery.jqzoom.js"></script>
-<script type="text/javascript" src="{$js_dir}jquery.cookie.js"></script>
 <script type="text/javascript" src="{$js_dir}custom-shop.js?{$var_cache}"></script>
 <script type="text/javascript" src="{$js_dir}custom-shop-front.js?{$var_cache}"></script>
 <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
