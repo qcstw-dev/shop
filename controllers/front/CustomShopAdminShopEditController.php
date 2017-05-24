@@ -34,10 +34,16 @@ class CustomShopAdminShopEditControllerCore extends CustomShopAdminControllerCor
             $oCustomShop->save();
             // refresh info
             $this->custom_shop = CustomShop::getShopById($this->custom_shop['id']);
+            
+            
             $this->context->smarty->assign([
-               'shop' => $this->custom_shop 
+               'shop' => $this->custom_shop,
             ]);
         }
+        $aDesignCategories = CustomShop::getDesignCategories();
+        $this->context->smarty->assign([
+           'design_categories' => $aDesignCategories
+        ]);
         
         
         $this->setTemplate(_PS_THEME_DIR_ . 'custom-shop-admin-shop-edit.tpl');

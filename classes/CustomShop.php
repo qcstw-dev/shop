@@ -20,6 +20,7 @@ class CustomShopCore extends ObjectModel {
     public $currency;
     public $included;
     public $promoted;
+    public $id_category;
     public $deactivated;
     public $id_account;
     public static $definition = array(
@@ -38,7 +39,11 @@ class CustomShopCore extends ObjectModel {
             }
         }
     }
-
+    public static function getDesignCategories() {
+        return Db::getInstance()->executeS('
+                SELECT *
+                FROM `' . _DB_PREFIX_ . 'custom_shop_design_category`');
+    }
     public static function getAllShops() {
         return Db::getInstance()->executeS('
 		SELECT *
@@ -148,7 +153,6 @@ class CustomShopCore extends ObjectModel {
 		FROM `' . _DB_PREFIX_ . 'custom_shop`
 		WHERE `name` = \'' . pSQL($sName) . '\'');
     }
-
     public function save() {
         $aData = [
             'name' => pSQL($this->name),
@@ -168,6 +172,7 @@ class CustomShopCore extends ObjectModel {
             'currency' => pSQL($this->currency),
             'included' => pSQL($this->included),
             'promoted' => pSQL($this->promoted),
+            'id_category' => pSQL($this->id_category),
             'deactivated' => pSQL($this->deactivated),
             'id_account' => pSQL($this->id_account)
         ];

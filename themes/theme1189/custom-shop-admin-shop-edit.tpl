@@ -26,6 +26,20 @@
                 <label>Default currency</label>
             </div>
             <div class="form-input">
+                <select class="form-control" name="id_category">
+                    <option value="0">Other</option>
+                    {foreach from=$design_categories key=k item=design_category}
+                        <option value="{$design_category.id}" {if $design_category.id == $shop.id_category}selected{/if}>{$design_category.name}</option>
+                    {/foreach}
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                <label>Default currency</label>
+            </div>
+            <div class="form-input">
                 <select class="form-control" name="currency">
                     <option value="0">Choose default currency</option>
                     {foreach from=$currencies key=k item=f_currency}
