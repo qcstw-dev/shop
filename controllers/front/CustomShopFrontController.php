@@ -66,9 +66,8 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
                 $aCategories[$key] = $aCategory['infos'];
             }
         }
-        
         if (isset($_GET['iframe'])) {
-            setcookie('iframe', 1, time()+2*60*60*1000);
+            setcookie('iframe', 1);
             setcookie('first_url' , parse_url($_SERVER['HTTP_REFERER'])['host']);
         } else if (isset($_COOKIE['iframe']) && $_COOKIE['iframe'] && (!isset($_SERVER['HTTP_REFERER']) 
                 || (parse_url($_SERVER['HTTP_REFERER'])['host'] != $_COOKIE['first_url']
