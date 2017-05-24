@@ -12,11 +12,9 @@ class CustomShopAdminCreationPictureControllerCore extends CustomShopAdminContro
 
     public function initContent() {
         parent::initContent();
-        $aDesignCategories = CustomShopDesign::getDesignCategories();
         $aPictures = CustomShopDesign::getPicturesByShopId($this->custom_shop['id']);
         $aCreations = CustomShopProduct::getProducts($this->custom_shop['id'], false);
         $this->context->smarty->assign([
-                'design_categories' => $aDesignCategories,
                 'pictures' => $aPictures,
                 'creations' => $aCreations,
                 'menu_creation' => _PS_THEME_DIR_ . 'custom-shop-admin-menu-creation.tpl'
