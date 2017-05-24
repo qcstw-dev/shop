@@ -57,39 +57,39 @@ class AjaxCustomShopControllerCore extends FrontController {
         echo json_encode($result);
     }
 
-    public function displayAjaxSaveDesignCategory() {
-
-        $result = [];
-
-        $result['success'] = true;
-
-        if (Tools::getValue('category') != null && Tools::getValue('id_design')) {
-
-            $oDesign = new CustomShopDesign(Tools::getValue('id_design'));
-
-            if ($oDesign) {
-
-                $oDesign->id_category = Tools::getValue('category');
-
-                if ($oDesign->save()) {
-
-                    $result['success'] = true;
-                } else {
-
-                    $result['success'] = false;
-
-                    $result['error'] = 'Impossible to modify';
-                }
-            }
-        } else {
-
-            $result['success'] = false;
-
-            $result['error'] = 'Information missing';
-        }
-
-        echo json_encode($result);
-    }
+//    public function displayAjaxSaveDesignCategory() {
+//
+//        $result = [];
+//
+//        $result['success'] = true;
+//
+//        if (Tools::getValue('category') != null && Tools::getValue('id_design')) {
+//
+//            $oDesign = new CustomShopDesign(Tools::getValue('id_design'));
+//
+//            if ($oDesign) {
+//
+//                $oDesign->id_category = Tools::getValue('category');
+//
+//                if ($oDesign->save()) {
+//
+//                    $result['success'] = true;
+//                } else {
+//
+//                    $result['success'] = false;
+//
+//                    $result['error'] = 'Impossible to modify';
+//                }
+//            }
+//        } else {
+//
+//            $result['success'] = false;
+//
+//            $result['error'] = 'Information missing';
+//        }
+//
+//        echo json_encode($result);
+//    }
 
     public function displayAjaxSaveProductsOrder() {
 
@@ -1164,35 +1164,7 @@ class AjaxCustomShopControllerCore extends FrontController {
 
     public function displayAjaxLoadProducts() {
 
-//        $aProducts = Product::getProducts($this->context->language->id, (Tools::getValue('last_range') ? : 0), (Tools::getValue('nb_products') ? : 12), 'date_add', 'DESC', (Tools::getValue('id_category') ? : '45'), true, $this->context);
-
-        $aProducts = Product::getProducts($this->context->language->id, null, null, 'date_add', 'DESC', (Tools::getValue('id_category') ? : '45'), true, $this->context);
-
-        foreach ($aProducts as &$aProduct) {
-
-            $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($this->context->language->id);
-
-            foreach ($aProduct['images'] as $key => $image) {
-
-                if ($image['legend'] == 'recess' || is_numeric($image['legend'])) {
-
-                    unset($aProduct['images'][$key]);
-                }
-            }
-
-
-
-            $aQuantities = [1, 5, 10, 25, 50, 100];
-
-            $aPrices = [];
-
-            foreach ($aQuantities as $iQuantity) {
-
-                $aPrices[$iQuantity] = Product::getPriceStatic((int) $aProduct['id_product'], true, null, 2, null, false, true, $iQuantity);
-            }
-
-            $aProduct['prices'] = $aPrices;
-        }
+        $aProducts = Product::getProducts($this->context->language->id, null, null, 'date_add', 'DESC', (Tools::getValue('id_category') ? : '45'), true, $this->context, true);
 
         $this->context->smarty->assign([
 
@@ -1255,27 +1227,6 @@ class AjaxCustomShopControllerCore extends FrontController {
                             <img class="upload-picture upload-picture-' . $i . '" src="' . __PS_BASE_URI__ . 'img/upload-icon.jpg" title="upload" alt="upload">
 
                         </div>
-
-                        <div class="col-xs-12 font-size-13 padding-0">
-
-                        <div class="col-xs-4 padding-right-0 bold">Category: </div>
-
-                        <div class="col-xs-8 padding-right-0">
-
-                            <select class="design-category" data-db-id="" disabled>
-
-                                <option value="0">Other</option>';
-
-            foreach ($aDesignCategories as $aDesignCategory) {
-
-                $sHtml .= '<option value="' . $aDesignCategory['id'] . '">' . $aDesignCategory['name'] . '</option>';
-            }
-
-            $sHtml .= '</select>
-
-                        </div>
-
-                    </div>
 
                         <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5">
 
@@ -1451,7 +1402,6 @@ class AjaxCustomShopControllerCore extends FrontController {
 
                 $result['price'] = $oCustomShopDesign->price;
             } else {
-
                 $result['success'] = false;
             }
         }

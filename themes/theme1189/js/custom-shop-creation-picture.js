@@ -1,23 +1,23 @@
 $(document).ready(function () {
     fileuploadListener();
-    $('.design-category').live('change', function () {
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: baseDir + 'index.php?controller=ajaxcustomshop&action=savedesigncategory&ajax=true&category='+ this.value + '&id_design='+ $(this).data('db-id'),
-            beforeSend: function () {
-                loading('Saving...');
-            },
-            success: function (json) {
-                loading_hide();
-                if (json.success) {
-                    confirm('Saved!');
-                } else {
-                    popupError(json.error);
-                }
-            }
-        });
-    });
+//    $('.design-category').live('change', function () {
+//        $.ajax({
+//            type: 'POST',
+//            dataType: 'json',
+//            url: baseDir + 'index.php?controller=ajaxcustomshop&action=savedesigncategory&ajax=true&category='+ this.value + '&id_design='+ $(this).data('db-id'),
+//            beforeSend: function () {
+//                loading('Saving...');
+//            },
+//            success: function (json) {
+//                loading_hide();
+//                if (json.success) {
+//                    confirm('Saved!');
+//                } else {
+//                    popupError(json.error);
+//                }
+//            }
+//        });
+//    });
     $('.upload-btn').live('click', function (e) {
         $('.hidden-fileupload').data('db-id', $(this).data('db-id'));
         $('.hidden-fileupload').data('id-upload', $(this).data('id'));

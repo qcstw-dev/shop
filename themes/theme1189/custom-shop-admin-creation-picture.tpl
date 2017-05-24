@@ -28,7 +28,7 @@
                     <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}img/upload-icon.jpg" title="upload" alt="upload" />
                 {/if}
             </div>
-            <div class="col-xs-12 font-size-13 padding-0">
+            {*<div class="col-xs-12 font-size-13 padding-0">
                 <div class="col-xs-4 padding-right-0 bold">Category: </div>
                 <div class="col-xs-8 padding-right-0">
                     <select class="design-category" data-db-id="{$db_id}" {if !isset($pictures.$counter.id)}disabled{/if}>
@@ -38,7 +38,7 @@
                         {/foreach}
                     </select>
                 </div>
-            </div>
+            </div>*}
             <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5">
                 <div class="col-xs-6 padding-right-0 padding-left-0 font-size-13 margin-top-10 text-right">Commission price:</div>
                 <div class="col-xs-2 padding-left-0 margin-left-5 padding-top-10">USD</div>
