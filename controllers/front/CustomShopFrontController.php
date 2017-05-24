@@ -66,12 +66,17 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
                 $aCategories[$key] = $aCategory['infos'];
             }
         }
+        $aParsedUrl = parse_url($_SERVER['HTTP_REFERER']);
+        if (isset($_COOKIE['iframe']) && $_COOKIE['iframe'] != $aParsedUrl['scheme'].'://'.$aParsedUrl['host'].$aParsedUrl['path']) {
+            unset($_COOKIE['iframe']);
+        }
         if (isset($_GET['iframe'])) {
-            setcookie('iframe', 1);
+            setcookie('iframe', _PS_BASE_URL_SSL_.'/shop/'.$this->custom_shop['name']);
             setcookie('first_url' , parse_url($_SERVER['HTTP_REFERER'])['host']);
-        } else if (isset($_COOKIE['iframe']) && $_COOKIE['iframe'] && (!isset($_SERVER['HTTP_REFERER']) 
+        } else if (isset($_COOKIE['iframe'])
+                && (!isset($_SERVER['HTTP_REFERER']) 
                 || (parse_url($_SERVER['HTTP_REFERER'])['host'] != $_COOKIE['first_url']
-                    && parse_url($_SERVER['HTTP_REFERER'])['host'] != parse_url(_PS_BASE_URL_)['host']))) {
+                        && parse_url($_SERVER['HTTP_REFERER'])['host'] != parse_url(_PS_BASE_URL_)['host']))) {
             unset($_COOKIE['iframe']);
         }
         
