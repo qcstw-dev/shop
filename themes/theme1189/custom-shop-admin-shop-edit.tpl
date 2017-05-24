@@ -1,8 +1,15 @@
 {include file=$header}
 {include file=$menu}
-<div class="col-lg-6 margin-auto">
-    <div class="font-size-20 bold text-center margin-top-10 margin-bottom-20">My shop Information</div>
-    <form method="post">
+<form method="post">
+    <div class="form-row pull-right">
+        <label class="cursor-pointer font-size-10 pull-right" for="deactivate-shop">
+            <input id="deactivate-shop" name="deactivated" class="deactivated" type="checkbox" {if $shop.deactivated}checked{/if}> I want to deactivate my shop
+        </label>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-lg-6 margin-auto">
+        <div class="font-size-20 bold text-center margin-top-10 margin-bottom-20">My shop Information</div>
         <div class="form-row">
             <div class="form-label">
                 <label>Shop title</label>
@@ -23,7 +30,7 @@
         </div>
         <div class="form-row">
             <div class="form-label">
-                <label>Default currency</label>
+                <label>Shop category</label>
             </div>
             <div class="form-input">
                 <select class="form-control" name="id_category">
@@ -191,12 +198,6 @@
             <div class="clearfix"></div>
         </div>
         <div class="form-row">
-            <label class="cursor-pointer font-size-10 pull-right" for="deactivate-shop">
-                <input id="deactivate-shop" name="deactivated" class="deactivated" type="checkbox" {if $shop.deactivated}checked{/if}> I want to deactivate my shop
-            </label>
-            <div class="clearfix"></div>
-        </div>
-        <div class="form-row">
             <label class="cursor-pointer pull-right" for="included">
                 <input id="included" name="included" class="included" type="checkbox" {if $shop.included}checked{/if}> I want my creation to also be posted on Gift Attitude marketplace (comission remains unchanged)
             </label>
@@ -211,7 +212,7 @@
         <div class="form-row">
             <input class="btn btn-primary pull-right col-xs-12 col-lg-4" type="submit" value="Save" />
         </div>
-    </form>
-    <div class="clearfix"></div>
-</div>
+        <div class="clearfix"></div>
+    </div>
+</form>
 {include file=$footer}
