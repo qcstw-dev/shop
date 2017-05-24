@@ -42,7 +42,7 @@ class CustomShopRegisterControllerCore extends CustomShopControllerCore {
                         if (!$oCustomShopAccount->save()) {
                             $aErrors['database'] = 'Impossible to create your account, please contact us';
                         } else {
-                            $oCustomShop = new CustomShop(null, ['name' => Tools::getValue('shop_name'), 'id_account' => $oCustomShopAccount->id]);
+                            $oCustomShop = new CustomShop(null, ['name' => Tools::getValue('shop_name'), 'id_account' => $oCustomShopAccount->id, 'included' => 1, 'promoted' => 1]);
                             $oCustomShop->save();
                             
                             // send confirm email
