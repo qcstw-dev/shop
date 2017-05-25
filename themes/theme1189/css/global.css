@@ -7845,3 +7845,8 @@ ul.step a:hover:after {
     height: 150px;
     overflow: auto;
 }
+/*************** MARKET PLACE ***********/
+.creation-title, .creation-shop-name {
+    height: 38px;
+    overflow: hidden;
+}

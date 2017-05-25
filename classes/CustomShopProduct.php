@@ -97,6 +97,38 @@ class CustomShopProductCore extends ObjectModel {
 		WHERE `id_design` = ' . pSQL($iDesignId));
     }
 
+    public static function getCreations($aCriteria = null) {
+        $Db = Database::getInstance();
+        $Db->join(_DB_PREFIX_.'custom_shop s', "p.id_shop = s.id", "LEFT");
+        if (isset($aCriteria['id_cat_design'])) {
+            if (is_array($aCriteria['id_cat_design'])) {
+                foreach ($aCriteria['id_cat_design'] as $iIdCategory) {
+                    $Db->where('s.id_category', $iIdCategory);
+                }
+            } else {
+                $Db->where('s.id_category', $aCriteria['id_cat_design']);
+            }
+        }
+        if (isset($aCriteria['id_cat_prod'])) {
+            $Db->join(_DB_PREFIX_.'category_product cp', "cp.id_product = p.id_product", "LEFT");
+            if (is_array($aCriteria['id_cat_prod'])) {
+                foreach ($aCriteria['id_cat_prod'] as $iIdCategory) {
+                    $Db->orWhere('cp.id_category', $iIdCategory);
+                }
+            } else {
+                $Db->orWhere('cp.id_category', $aCriteria['id_cat_prod']);
+            }
+        }
+        if(isset($aCriteria['order'])) {
+            switch ($aCriteria['order']) {
+                case 'random':
+                    $Db->orderBy("RAND()");
+                break;
+            }
+        }
+        return $Db->get(_DB_PREFIX_ . self::$definition['table'].' p', 20, 'p.*');
+    }
+    
     public static function getProducts($iShopId, $bOnlyPublished = true, $aCategories = []) {
         return Db::getInstance()->executeS('
 		SELECT *

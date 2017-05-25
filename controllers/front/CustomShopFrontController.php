@@ -81,12 +81,17 @@ class CustomShopFrontControllerCore extends CustomShopControllerCore {
         }
         
         $aProducts = $this->context->cart->getProducts(true, null, null, true);
+        $aCartCreationsId = [];
+        foreach ($aProducts as $aProduct) {
+            $aCartCreationsId[] = $aProduct['id_customized_prod'];
+        }
         $cart_qties = $this->context->cart->nbProducts(true);
         $this->context->smarty->assign([
             'cart_qties' => $cart_qties,
             'meta_title' => $this->custom_shop['title'] ? : $this->custom_shop['name'],
             'token' => Tools::getToken(false),
             'cart_products' => $aProducts,
+            'cart_creations_id' => $aCartCreationsId,
             'is_iframe' => isset($_GET['iframe']) || (isset($_COOKIE['iframe']) && $_COOKIE['iframe']),
             'side' => 'front',
             'header' => _PS_THEME_DIR_ . 'custom-shop-header-front.tpl',

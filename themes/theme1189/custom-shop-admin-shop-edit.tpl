@@ -1,5 +1,10 @@
 {include file=$header}
 {include file=$menu}
+{if $submit_success}
+    <div class="alert alert-success text-center">
+        Shop information updated!
+    </div>
+{/if}
 <form method="post">
     <div class="form-row pull-right">
         <label class="cursor-pointer font-size-10 pull-right" for="deactivate-shop">

@@ -12,7 +12,7 @@ class CustomShopAdminShopEditControllerCore extends CustomShopAdminControllerCor
 
     public function initContent() {
         parent::initContent();
-        
+        $submit_success = false;
         if (isset($_POST['title'])) {
             $oCustomShop = new CustomShop($this->custom_shop['id']);
             if (!in_array('included', $_POST)) {
@@ -39,10 +39,12 @@ class CustomShopAdminShopEditControllerCore extends CustomShopAdminControllerCor
             $this->context->smarty->assign([
                'shop' => $this->custom_shop,
             ]);
+            $submit_success = true;
         }
         $aDesignCategories = CustomShop::getDesignCategories();
         $this->context->smarty->assign([
-           'design_categories' => $aDesignCategories
+            'design_categories' => $aDesignCategories,
+            'submit_success' =>$submit_success
         ]);
         
         

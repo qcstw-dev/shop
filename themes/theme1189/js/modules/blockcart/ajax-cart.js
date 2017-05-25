@@ -590,7 +590,7 @@ var ajaxCart = {
                     $('.cart_block_no_products').hide();
                 }
                 //if product is not in the displayed cart, add a new product's line
-                var domIdProduct = this.id + '_' + (this.idCombination ? this.idCombination : '0') + '_' + (this.idAddressDelivery ? this.idAddressDelivery : '0') + '_' + this.custom_picture+ '_' + this.id_customized_prod;
+                var domIdProduct = this.id + '_' + (this.idCombination ? this.idCombination : '0') + '_' + (this.idAddressDelivery ? this.idAddressDelivery : '0') + '_' + (this.custom_picture ? this.custom_picture : '0') + '_' + (this.id_customized_prod ? this.id_customized_prod : '0');
                 var domIdProductAttribute = this.id + '_' + (this.idCombination ? this.idCombination : '0');
 
                 if ($('dt[data-id="cart_block_product_' + domIdProduct + '"]').length == 0)

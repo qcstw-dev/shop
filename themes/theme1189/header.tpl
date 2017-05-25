@@ -78,7 +78,7 @@
         {assign var="columns" value="3"}
     {/if}
     <body{if isset($page_name)} id="{$page_name|escape:'html':'UTF-8'}"{/if} class="{if isset($page_name)}{$page_name|escape:'html':'UTF-8'}{/if}{if isset($body_classes) && $body_classes|@count} {implode value=$body_classes separator=' '}{/if}{if $hide_left_column} hide-left-column{/if}{if $hide_right_column} hide-right-column{/if}{if isset($content_only) && $content_only} content_only{/if} lang_{$lang_iso} {if !$content_only}{if $columns == 2} two-columns{elseif $columns == 3} three-columns{else} one-column{/if}{/if}"
-                                {if $smarty.server.HTTP_HOST != 'localhost'} oncontextmenu="return false" {/if}>
+                                {if !in_array($smarty.server.HTTP_HOST, ['localhost', 'pimpyourkeys.com'])} oncontextmenu="return false" {/if}>
         <!-- Google Code for Adwords added tag - Gift attitude Conversion Page -->
         <script type="text/javascript">
             /* <![CDATA[ */
@@ -159,6 +159,7 @@
                     && $page_name !='design'
                     && $page_name !='category'
                     && $page_name !='shop'
+                    && $page_name !='marketplace'
                     && $page_name !='customshopintroduction'
                     }
                     {include file="$tpl_dir./breadcrumb.tpl"}

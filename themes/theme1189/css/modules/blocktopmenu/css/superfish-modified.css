@@ -38,7 +38,7 @@
 .sf-menu > li {
     float: left;
     border-right: 1px solid #fff;
-    width: 33%;
+    width: 24%;
     text-align: center;
 }
 @media (min-width: 768px) {

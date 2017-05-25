@@ -936,15 +936,11 @@ class AjaxCustomShopControllerCore extends FrontController {
                 }
             }
 
-
-
             $oCreation = new CustomShopProduct(Tools::getValue('id_creation'));
 
-
-
             if ($this->context->cart->updateQty('1', $oCreation->id_product, null, null, 'up', null, null, null, null, null, null, $oCreation->id)) {
-
                 $result['nb_products'] = $this->context->cart->nbProducts(true);
+                $result['product']['image'] = _PS_BASE_URL_SSL_.__PS_BASE_URI__.'img/custom_shop/creation/'.$oCreation->custom_img;
             } else {
 
                 $result['success'] = false;

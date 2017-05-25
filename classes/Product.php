@@ -1188,7 +1188,7 @@ class ProductCore extends ObjectModel
     * @return array Products details
     */
     public static function getProducts($id_lang, $start, $limit, $order_by, $order_way, $id_category = false,
-        $only_active = false, Context $context = null)
+        $only_active = false, Context $context = null, $bFormated = false)
     {
         if (!$context) {
             $context = Context::getContext();
@@ -1221,7 +1221,7 @@ class ProductCore extends ObjectModel
 				LEFT JOIN `'._DB_PREFIX_.'product_lang` pl ON (p.`id_product` = pl.`id_product` '.Shop::addSqlRestrictionOnLang('pl').')
 				LEFT JOIN `'._DB_PREFIX_.'manufacturer` m ON (m.`id_manufacturer` = p.`id_manufacturer`)
 				LEFT JOIN `'._DB_PREFIX_.'supplier` s ON (s.`id_supplier` = p.`id_supplier`)'.
-                ($id_category ? 'LEFT JOIN `'._DB_PREFIX_.'category_product` c ON (c.`id_product` = p.`id_product`)' : '').'
+                    ($id_category ? 'LEFT JOIN `'._DB_PREFIX_.'category_product` c ON (c.`id_product` = p.`id_product`)' : '').'
 				WHERE pl.`id_lang` = '.(int)$id_lang.
                     ($id_category ? ' AND c.`id_category` = '.(int)$id_category : '').
                     ($front ? ' AND product_shop.`visibility` IN ("both", "catalog")' : '').
@@ -1236,7 +1236,33 @@ class ProductCore extends ObjectModel
         foreach ($rq as &$row) {
             $row = Product::getTaxesInformations($row);
         }
+        
+        if ($bFormated) {
+            foreach ($rq as &$aProduct) {
 
+                $aProduct['images'] = (new Product($aProduct['id_product']))->getImages($context->language->id);
+
+                foreach ($aProduct['images'] as $key => $image) {
+
+                    if ($image['legend'] == 'recess' || is_numeric($image['legend'])) {
+
+                        unset($aProduct['images'][$key]);
+                    }
+                }
+                
+                $aQuantities = [1, 5, 10, 25, 50, 100];
+
+                $aPrices = [];
+
+                foreach ($aQuantities as $iQuantity) {
+
+                    $aPrices[$iQuantity] = Product::getPriceStatic((int) $aProduct['id_product'], true, null, 2, null, false, true, $iQuantity);
+                }
+
+                $aProduct['prices'] = $aPrices;
+            }
+        }
+        
         return ($rq);
     }
 

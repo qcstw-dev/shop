@@ -125,6 +125,16 @@ class DispatcherCore
             'rule' =>        'custom-shop-register',
             'keywords' => array(),
         ),
+        'market_place' => array(
+            'controller' =>    'marketplace',
+            'rule' =>        'shop',
+            'keywords' => array(),
+        ),
+        'market_place' => array(
+            'controller' =>    'marketplace',
+            'rule' =>        'shop/',
+            'keywords' => array(),
+        ),
         'custom_shop_front_home' => array(
             'controller' =>    'customshopfronthome',
             'rule' =>        'shop/{shop_name}',

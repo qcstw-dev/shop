@@ -35,16 +35,6 @@
                 <!-- product img-->        
                 <div id="image-block" class="clearfix{if isset($images) && count($images) > 0} is_caroucel{/if}">
                     <div class="col-xs-12 font-size-13 margin-top-10 hidden bold color-danger product-picture-message">*Design not for sell. For reference only</div>
-                    {*{if $product->new}
-                    <span class="new-box no-print">
-                    <span class="new-label">{l s='New'}</span>
-                    </span>
-                    {/if}
-                    {if $product->on_sale}
-                    <span class="sale-box no-print">
-                    <span class="sale-label">{l s='Sale!'}</span>
-                    </span>
-                    {/if}*}
                     {if $have_image}
                         <span id="view_full_size">
                             {if isset($smarty.get.side) && $smarty.get.side == 'front'}
@@ -251,7 +241,6 @@
                             </a>
                         </div>
                     {/if}
-
                 </div>
             </div>
             <!-- end center infos-->
