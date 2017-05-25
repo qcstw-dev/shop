@@ -39,10 +39,10 @@
             </div>
             <div class="col-xs-12 padding-0">
                 <div class="picture-mention hidden color-danger" data-id-creation="{$product.id}">*Design not for sell, for reference only</div>
-                <div class="thumbnail margin-bottom-0 big-picture-container vertical-center">
+                <div class="thumbnail border-none padding-0 margin-bottom-0 big-picture-container vertical-center">
                     <img itemprop="image" src="{$base_dir_ssl}img/custom_shop/creation/{$product.custom_img}" alt="{$product.product_name}" title="{$product.product_name}"
                          {* data-text="*On this preview the picture might look pixelated. No worry! We use the original picture to produce."*}
-                         class="big-picture big-picture-{$product.id} cursor-pointer quick-view" data-id-product="{$product.id_product}" data-id-creation="{$product.id}"
+                         class="big-picture big-picture-{$product.id} cursor-pointer padding-0 quick-view" data-id-product="{$product.id_product}" data-id-creation="{$product.id}"
                          data-id-design="{$product.id_design}"/>
                 </div>
                 <div class="col-xs-4 padding-5">

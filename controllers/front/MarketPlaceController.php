@@ -28,7 +28,7 @@ class MarketPlaceControllerCore extends FrontController {
         }
         if (!Tools::getValue('design_cat') && !Tools::getValue('id_cat_prod')) {
             $aCriteria['order'] = 'random';
-            $aCriteria['limit'] = 3;
+            $aCriteria['limit'] = 50;
         }
         
         

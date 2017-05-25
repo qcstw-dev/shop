@@ -125,23 +125,9 @@ $(document).ready(function () {
         $('.filter[data-type="product"]:checked').each(function () {
             product_cat.push($(this).val());
         });
-        $.ajax({
-            type: 'POST',
-            url: baseDir + 'index.php?controller=ajax&action=SearchCreations&ajax=true',
-            data: {
-                'design_cat' : design_cat,
-                'product_cat' : product_cat
-            },
-            cache: false,
-            dataType: 'html',
-            beforeSend: function (xhr) {
-                $('.products-container').html('<div class="text-center margin-top-100"><img src="'+baseDir+'img/gears.gif" /></div>');
-            },
-            success: function (html) {
-                if (html) {
-                    $('.products-container').replaceWith(html);
-                }
-            }
+        updateCreationsList({
+            'design_cat' : design_cat,
+            'product_cat' : product_cat
         });
         var query_string = '';
         $.each(design_cat, function (key, value) {
@@ -154,6 +140,23 @@ $(document).ready(function () {
         window.history.pushState({path: currentUrl}, '', newUrl);
     });
 });
+function updateCreationsList(data) {
+    $.ajax({
+        type: 'POST',
+        url: baseDir + 'index.php?controller=ajax&action=SearchCreations&ajax=true',
+        data: data,
+        cache: false,
+        dataType: 'html',
+        beforeSend: function (xhr) {
+            $('.products-container').html('<div class="text-center margin-top-100"><img src="'+baseDir+'img/gears.gif" /></div>');
+        },
+        success: function (html) {
+            if (html) {
+                $('.products-container').replaceWith(html);
+            }
+        }
+    });
+}
 function array_values (input) { // eslint-disable-line camelcase
   //  discuss at: http://locutus.io/php/array_values/
   // original by: Kevin van Zonneveld (http://kvz.io)
