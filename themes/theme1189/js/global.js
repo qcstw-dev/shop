@@ -3,6 +3,8 @@ var responsiveflag = false;
 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 var isiPad = /iPad/i.test(navigator.userAgent);
 var timer;
+var path = (window.location.host !== 'localhost' ? window.location.pathname.split('/')['1'] + '/' + window.location.pathname.split('/')['2'] : window.location.pathname.split('/')['2'] + '/' + window.location.pathname.split('/')['3']);
+var currentUrl = baseDir + path;
 
 $(document).ready(function () {
     controller = new ScrollMagic();
@@ -102,9 +104,8 @@ $(document).ready(function () {
                     $.fancybox.hideLoading();
                     $('.ajax_cart_quantity').html(json.nb_products).show();
                     ajaxCart.refresh();
-                    ajaxCart.collapse();
-                    $('.add-creation[data-id-creation="'+id_creation+'"').removeClass('btn-primary').addClass('btn-success');
-                    $('.add-creation[data-id-creation="'+id_creation+'"').find('.glyphicon').removeClass('glyphicon-shopping-cart').addClass('glyphicon-ok');
+                    $('.add-creation[data-id-creation="' + id_creation + '"]').removeClass('btn-primary').addClass('btn-success');
+                    $('.add-creation[data-id-creation="' + id_creation + '"]').find('.glyphicon').removeClass('glyphicon-shopping-cart').addClass('glyphicon-ok');
                 } else {
                     popupError(json.error);
                 }
@@ -115,7 +116,60 @@ $(document).ready(function () {
         e.preventDefault();
         quickView($(this).data('id-product'), $(this).data('id-creation'), $(this).data('id-design'));
     });
+    $('.filter').on('change', function (e) {
+        var design_cat = [];
+        $('.filter[data-type="design"]:checked').each(function () {
+            design_cat.push($(this).val());
+        });
+        var product_cat = [];
+        $('.filter[data-type="product"]:checked').each(function () {
+            product_cat.push($(this).val());
+        });
+        $.ajax({
+            type: 'POST',
+            url: baseDir + 'index.php?controller=ajax&action=SearchCreations&ajax=true',
+            data: {
+                'design_cat' : design_cat,
+                'product_cat' : product_cat
+            },
+            cache: false,
+            dataType: 'html',
+            beforeSend: function (xhr) {
+                $('.products-container').html('<div class="text-center margin-top-100"><img src="'+baseDir+'img/gears.gif" /></div>');
+            },
+            success: function (html) {
+                if (html) {
+                    $('.products-container').replaceWith(html);
+                }
+            }
+        });
+        var query_string = '';
+        $.each(design_cat, function (key, value) {
+            query_string += (key === 0 ? '?' : '&')+'design_cat[]='+value;
+        });
+        $.each(product_cat, function (key, value) {
+            query_string += (query_string === '' ? '?' : '&')+'product_cat[]='+value;
+        });
+        var newUrl = currentUrl + query_string;
+        window.history.pushState({path: currentUrl}, '', newUrl);
+    });
 });
+function array_values (input) { // eslint-disable-line camelcase
+  //  discuss at: http://locutus.io/php/array_values/
+  // original by: Kevin van Zonneveld (http://kvz.io)
+  // improved by: Brett Zamir (http://brett-zamir.me)
+  //   example 1: array_values( {firstname: 'Kevin', surname: 'van Zonneveld'} )
+  //   returns 1: [ 'Kevin', 'van Zonneveld' ]
+  var tmpArr = []
+  var key = ''
+  for (key in input) {
+    tmpArr[tmpArr.length] = input[key]
+  }
+  return tmpArr
+}
+function popupError(error) {
+    popupMessage('<div class="glyphicon glyphicon-warning-sign font-size-30 color-red"></div><div class="bold">' + error + '</div>');
+}
 function popupMessage(html, style) {
     $.magnificPopup.open({
         items: [{
@@ -149,9 +203,9 @@ function loading() {
 }
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
 
     for (i = 0; i < sURLVariables.length; i++) {
         sParameterName = sURLVariables[i].split('=');
@@ -173,10 +227,10 @@ function quickView(id_product, id_creation, id_design) {
         url += '&';
     else
         url += '?';
-    
+
     var path = (window.location.host !== 'localhost' ? window.location.pathname.split('/')['1'] + '/' + window.location.pathname.split('/')['2'] : window.location.pathname.split('/')['2'] + '/' + window.location.pathname.split('/')['3']);
     var currentUrl = baseDir + path;
-    
+
     if (!!$.prototype.fancybox) {
         $.fancybox({
             'padding': 0,

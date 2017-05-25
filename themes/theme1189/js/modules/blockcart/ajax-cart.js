@@ -118,7 +118,7 @@ var ajaxCart = {
                 minimalQuantity = 1;
             if ($(this).prop('disabled') != 'disabled')
                 ajaxCart.add(idProduct, null, false, this, minimalQuantity, false, idDesign, customPicture, originalPicture);
-
+            ajaxCart.refresh();
             $.magnificPopup.close();
         });
         //for product page 'add' button...

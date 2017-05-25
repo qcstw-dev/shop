@@ -104,8 +104,8 @@ $(function () {
                     loadCart();
                     $('.cart-desk').css('height', 'auto');
                     $('.ajax_cart_quantity').html(json.nb_products);
-                    $('.add-creation[data-id-creation="'+id_creation+'"').removeClass('btn-primary').addClass('btn-success');
-                    $('.add-creation[data-id-creation="'+id_creation+'"').find('.glyphicon').removeClass('glyphicon-shopping-cart').addClass('glyphicon-ok');
+                    $('.add-creation[data-id-creation="'+id_creation+'"]').removeClass('btn-primary').addClass('btn-success');
+                    $('.add-creation[data-id-creation="'+id_creation+'"]').find('.glyphicon').removeClass('glyphicon-shopping-cart').addClass('glyphicon-ok');
                 } else {
                     popupError(json.error);
                 }

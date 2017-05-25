@@ -26,24 +26,14 @@ class MarketPlaceControllerCore extends FrontController {
         if (Tools::getValue('product_cat')) {
             $aCriteria['id_cat_prod'] = Tools::getValue('product_cat');
         }
-        $aCriteria['order'] = 'random';
+        if (!Tools::getValue('design_cat') && !Tools::getValue('id_cat_prod')) {
+            $aCriteria['order'] = 'random';
+            $aCriteria['limit'] = 3;
+        }
+        
         
         $aProducts = CustomShopProduct::getCreations($aCriteria);
 
-        $aQuantities = [1, 5, 10, 25, 50, 100];
-
-        foreach ($aProducts as &$aProduct) {
-
-            $aPrices = [];
-
-            foreach ($aQuantities as $iQuantity) {
-
-                $aPrices[$iQuantity] = Product::getPriceStatic((int) $aProduct['id_product'], true, null, 2, null, false, true, $iQuantity);
-            }
-
-            $aProduct['prices'] = $aPrices;
-            $aProduct['shop'] = CustomShop::getShopById($aProduct['id_shop']);
-        }
         $aCartProducts = $this->context->cart->getProducts(true, null, null, true);
         
         $aCartCreationsId = [];
@@ -55,7 +45,8 @@ class MarketPlaceControllerCore extends FrontController {
             'product_categories' => $aProductCategories,
             'cart_creations_id' => $aCartCreationsId,
             'products' => $aProducts,
-            'criteria' => $aCriteria
+            'criteria' => $aCriteria,
+            'creations_list' => _PS_THEME_DIR_ . 'market-place-creations-list.tpl',
         ]);
         $this->setTemplate(_PS_THEME_DIR_ . 'market-place.tpl');
     }

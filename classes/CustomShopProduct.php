@@ -99,24 +99,27 @@ class CustomShopProductCore extends ObjectModel {
 
     public static function getCreations($aCriteria = null) {
         $Db = Database::getInstance();
-        $Db->join(_DB_PREFIX_.'custom_shop s', "p.id_shop = s.id", "LEFT");
+        $oSubQueryIds = null;
         if (isset($aCriteria['id_cat_design'])) {
+            $oSubQueryIds = $Db->subQuery ();
+            $oSubQueryIds->join(_DB_PREFIX_.'custom_shop s', 'p.id_shop = s.id', 'LEFT');
             if (is_array($aCriteria['id_cat_design'])) {
-                foreach ($aCriteria['id_cat_design'] as $iIdCategory) {
-                    $Db->where('s.id_category', $iIdCategory);
-                }
+                $oSubQueryIds->orWhere('s.id_category', $aCriteria['id_cat_design'], 'in');
             } else {
-                $Db->where('s.id_category', $aCriteria['id_cat_design']);
+                $oSubQueryIds->orWhere('s.id_category', $aCriteria['id_cat_design']);
             }
+            $oSubQueryIds->get(_DB_PREFIX_ . self::$definition['table'].' p', null, 'p.id');
+        }
+        
+        if ($oSubQueryIds) {
+            $Db->where('p.id', $oSubQueryIds, 'in');
         }
         if (isset($aCriteria['id_cat_prod'])) {
-            $Db->join(_DB_PREFIX_.'category_product cp', "cp.id_product = p.id_product", "LEFT");
+            $Db->join(_DB_PREFIX_.'category_product cp', 'cp.id_product = p.id_product', 'LEFT');
             if (is_array($aCriteria['id_cat_prod'])) {
-                foreach ($aCriteria['id_cat_prod'] as $iIdCategory) {
-                    $Db->orWhere('cp.id_category', $iIdCategory);
-                }
+                $Db->where('cp.id_category', $aCriteria['id_cat_prod'], 'in');
             } else {
-                $Db->orWhere('cp.id_category', $aCriteria['id_cat_prod']);
+                $Db->where('cp.id_category', $aCriteria['id_cat_prod']);
             }
         }
         if(isset($aCriteria['order'])) {
@@ -126,7 +129,17 @@ class CustomShopProductCore extends ObjectModel {
                 break;
             }
         }
-        return $Db->get(_DB_PREFIX_ . self::$definition['table'].' p', 20, 'p.*');
+        $aProducts = $Db->get(_DB_PREFIX_ . self::$definition['table'].' p', (isset($aCriteria['limit']) ? $aCriteria['limit'] : null), 'p.*');
+        $aQuantities = [1, 5, 10, 25, 50, 100];
+        foreach ($aProducts as &$aProduct) {
+            $aPrices = [];
+            foreach ($aQuantities as $iQuantity) {
+                $aPrices[$iQuantity] = Product::getPriceStatic((int) $aProduct['id_product'], true, null, 2, null, false, true, $iQuantity);
+            }
+            $aProduct['prices'] = $aPrices;
+            $aProduct['shop'] = CustomShop::getShopById($aProduct['id_shop']);
+        }
+        return $aProducts;
     }
     
     public static function getProducts($iShopId, $bOnlyPublished = true, $aCategories = []) {

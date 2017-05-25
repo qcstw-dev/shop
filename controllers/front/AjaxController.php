@@ -2,6 +2,32 @@
 
 class AjaxControllerCore extends FrontController {
 
+    public function displayAjaxSearchCreations() {
+        $aCriteria = [];
+        if (Tools::getValue('design_cat')) {
+            $aCriteria['id_cat_design'] = Tools::getValue('design_cat');
+        }
+        if (Tools::getValue('product_cat')) {
+            $aCriteria['id_cat_prod'] = Tools::getValue('product_cat');
+        }
+        $aProducts = CustomShopProduct::getCreations($aCriteria);
+        
+        $aCartProducts = $this->context->cart->getProducts(true, null, null, true);
+        
+        $aCartCreationsId = [];
+        foreach ($aCartProducts as $aCartProduct) {
+            $aCartCreationsId[] = $aCartProduct['id_customized_prod'];
+        }
+        
+        $this->context->smarty->assign(array(
+            'products' => $aProducts,
+            'cart_creations_id' => $aCartCreationsId,
+        ));
+        $this->setTemplate(_PS_THEME_DIR_ . 'market-place-creations-list.tpl');
+        $sHtml = rtrim($this->display(), "1");
+        echo $sHtml;
+    }
+    
     public function displayAjaxGetShippingCostByCountry() {
         $oCountry = new Country(Tools::getValue('id_country'));
         $oCarrier = new Carrier(Carrier::getCarriers($this->context->language->id, true, false)[0]['id_carrier']);
