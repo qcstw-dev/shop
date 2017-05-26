@@ -38,19 +38,19 @@
     <div class="ajax_block_product col-xs-6 col-sm-{12/$nbItemsPerLineTablet} col-md-{12/$nbItemsPerLine}{if $smarty.foreach.products.iteration%$nbItemsPerLine == 0} last-in-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLine == 1} first-in-line{/if}{if $smarty.foreach.products.iteration > ($smarty.foreach.products.total - $totModulo)} last-line{/if}{if $smarty.foreach.products.iteration%$nbItemsPerLineTablet == 0} last-item-of-tablet-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLineTablet == 1} first-item-of-tablet-line{/if}{if $smarty.foreach.products.iteration%$nbItemsPerLineMobile == 0} last-item-of-mobile-line{elseif $smarty.foreach.products.iteration%$nbItemsPerLineMobile == 1} first-item-of-mobile-line{/if}{if $smarty.foreach.products.iteration > ($smarty.foreach.products.total - $totModuloMobile)} last-mobile-line{/if}">
         <div class="product-container shadow" itemscope itemtype="http://schema.org/Product">
             <div class="left-block">
-                <div class="product-image-container">
+                <div class="product-image-container padding-top-10">
                     {if $product.category == 'products'}
-                        <div class="col-xs-6 padding-0">
+                        <div class="col-xs-6 padding-right-0">
                         {else}
                             <div class="col-xs-12 padding-0">
                             {/if}
-                            <div class="btn btn-lg selection cursor-pointer {if !$isInSelection}btn-success btn-add{else}btn-danger btn-remove{/if} product-{$product.id_product}" data-product-link="{$product.link|escape:'html':'UTF-8'}" data-img="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-img-large="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" data-type="{if $product.category == 'products'}product{else}design{/if}" data-id="{$product.id_product}" data-product-title="{$product.name}" title="{if !$isInSelection} {l s='Select'} {else} {l s='Remove'}{/if}" data-text-add="{l s='Select'}" data-text-remove="{l s='Remove'}">
+                            <div class="btn btn-lg border-none selection cursor-pointer {if !$isInSelection}btn-success btn-add{else}btn-danger btn-remove{/if} product-{$product.id_product}" data-product-link="{$product.link|escape:'html':'UTF-8'}" data-img="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-img-large="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" data-type="{if $product.category == 'products'}product{else}design{/if}" data-id="{$product.id_product}" data-product-title="{$product.name}" title="{if !$isInSelection} {l s='Select'} {else} {l s='Remove'}{/if}" data-text-add="{l s='Select'}" data-text-remove="{l s='Remove'}">
                                 <span class="glyphicon glyphicon-{if !$isInSelection}plus-sign{else}minus-sign{/if}"></span> <span class="text">{if !$isInSelection}{l s='Select'}{else}{l s='Remove'}{/if}</span>
                             </div>
                         </div>
                         {if $product.category == 'products'}
                             <div class="col-xs-6 padding-0">
-                                <a class="btn btn-default btn-lg btn-detail cursor-pointer quick-view-bis" href="{$base_uri}product-popup?id_product={$product.id_product}">
+                                <a class="btn btn-default btn-lg border-none btn-detail cursor-pointer quick-view-bis" href="{$base_uri}product-popup?id_product={$product.id_product}">
                                     <span class="glyphicon glyphicon-zoom-in"></span> {l s='Details'}
                                 </a>
                             </div>
