@@ -1381,12 +1381,12 @@ class CartCore extends ObjectModel
                 if (file_exists($sPathToCustomImage)) {
                     unlink($sPathToCustomImage);
                 }
-            if ($original_picture) {
-                $sPathToOriginalImage = _PS_IMG_DIR_.'layout_maker/original_pictures/'.$original_picture.'.png';
-                if (file_exists($sPathToOriginalImage)) {
-                    unlink($sPathToOriginalImage);
-                }
-            }
+//            if ($original_picture) {
+//                $sPathToOriginalImage = _PS_IMG_DIR_.'layout_maker/original_pictures/'.$original_picture.'.png';
+//                if (file_exists($sPathToOriginalImage)) {
+//                    unlink($sPathToOriginalImage);
+//                }
+//            }
         }
         
         if ($result) {
