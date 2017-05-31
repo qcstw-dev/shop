@@ -1,12 +1,12 @@
 function popupFirstDesignAdd() {
 
     var firstButton = '<div>\n\
-                            <a class="btn btn-default margin-auto col-xs-7 font-size-20 border-blue close-popup initialcase">\n\
-                                <span class="glyphicon glyphicon-plus-sign font-size-30"></span> Add other designs to your selection</a>\n\
+                            <a class="btn btn-success btn-lg margin-auto col-xs-7 close-popup initialcase">\n\
+                                <span class="glyphicon glyphicon-plus-sign"></span> Add other design/picture to your selection</a>\n\
                         </div>';
     var secondButton = '<div class="margin-top-10">\n\
-                            <a href="' + baseDir + 'layout-maker" class="btn btn-default margin-auto col-xs-7 border-red font-size-20 initialcase">\n\
-                                <span class="glyphicon glyphicon-wrench font-size-30"></span> Place your design on product\n\
+                            <a href="' + baseDir + 'layout-maker" class="btn btn-primary btn-lg margin-auto col-xs-7 initialcase">\n\
+                                <span class="glyphicon glyphicon-wrench"></span> Place design/picture on product\n\
                             </a>\n\
                         </div>';
     $.magnificPopup.open({
@@ -22,14 +22,13 @@ function popupFirstDesignAdd() {
 function popupFirstProductAdd() {
     var firstButton = '\
         <div>\n\
-            <a class="btn btn-default margin-auto col-xs-7 border-blue close-popup initialcase font-size-20">\n\
-                <span class="glyphicon glyphicon-plus-sign font-size-30"></span> Add other products to your selection</a>\n\
+            <a class="btn btn-success btn-lg margin-auto col-xs-7 close-popup initialcase">\n\
+                <span class="glyphicon glyphicon-plus-sign"></span> Add other products to my selection</a>\n\
         </div>';
     var secondButton = '<div class="margin-top-10">\n\
-                            <a href="' + baseDir + 'pictures" class="btn btn-default margin-auto col-xs-7 border-red initialcase">\n\
-                                <span class="glyphicon glyphicon-check margin-top-10 padding-right-10 font-size-30 pull-left"></span>\n\
-                                <span class="font-size-20 pull-left">I am done with product selection.<br />\n\
-                                Bring me to design selection step</span>\n\
+                            <a href="' + baseDir + 'pictures" class="btn btn-primary btn-lg margin-auto col-xs-7 initialcase">\n\
+                                <span class="glyphicon glyphicon-check padding-right-10"></span>\n\
+                                Upload my picture/design\n\
                             </a>\n\
                         </div>';
     $.magnificPopup.open({

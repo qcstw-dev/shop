@@ -42,7 +42,7 @@
                     {if $product.category == 'products'}
                         <div class="col-xs-6 padding-right-0">
                         {else}
-                            <div class="col-xs-12 padding-0">
+                            <div class="col-xs-12">
                             {/if}
                             <div class="btn btn-lg border-none selection cursor-pointer {if !$isInSelection}btn-success btn-add{else}btn-danger btn-remove{/if} product-{$product.id_product}" data-product-link="{$product.link|escape:'html':'UTF-8'}" data-img="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_home_default')|escape:'html':'UTF-8'}" data-img-large="{$link->getImageLink($product.link_rewrite, $product.id_image, 'tm_thickbox_default')|escape:'html':'UTF-8'}" data-type="{if $product.category == 'products'}product{else}design{/if}" data-id="{$product.id_product}" data-product-title="{$product.name}" title="{if !$isInSelection} {l s='Select'} {else} {l s='Remove'}{/if}" data-text-add="{l s='Select'}" data-text-remove="{l s='Remove'}">
                                 <span class="glyphicon glyphicon-{if !$isInSelection}plus-sign{else}minus-sign{/if}"></span> <span class="text">{if !$isInSelection}{l s='Select'}{else}{l s='Remove'}{/if}</span>
