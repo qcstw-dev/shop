@@ -68,7 +68,7 @@
                     <span class="shop-title">{if $shop.title}{$shop.title|escape:'html':'UTF-8'}{else}{$shop.name}{/if}</span>
                     <span class="shop-motto">"{if $shop.motto}{$shop.motto|escape:'html':'UTF-8'}{else}Your shop motto{/if}"</span>
                 </div>
-                <div class="header" style="background-image: url('{if $shop.header}{$base_dir_ssl}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}')"></div>
+                <div class="header" style="background-image: url('{if $shop.header}{$base_dir_ssl}img/custom_shop/header/{$shop.header}{else}{$header_default}{/if}'); background-position-y: 50%;"></div>
                 <div class="logo thumbnail hidden-xs">
                     <a href="{$base_uri}shop/{$custom_shop_name}" title="{$shop.name}">
                         <img src="{if $shop.logo}{$base_dir_ssl}img/custom_shop/logo/{$shop.logo}{else}{$logo_default}{/if}" alt="{$shop.title}" title="{$shop.title}" />
