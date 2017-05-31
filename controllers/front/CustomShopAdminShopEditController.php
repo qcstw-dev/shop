@@ -31,23 +31,29 @@ class CustomShopAdminShopEditControllerCore extends CustomShopAdminControllerCor
             if (!isset($_POST['deactivated'])) {
                 $oCustomShop->deactivated = 0;
             }
+            if (!$this->context->cookie->__get('custom_shop_loggedin_super')) {
+                $oCustomShop->modified = 1;
+            }
             $oCustomShop->save();
             // refresh info
             $this->custom_shop = CustomShop::getShopById($this->custom_shop['id']);
-            
-            
-            $this->context->smarty->assign([
-               'shop' => $this->custom_shop,
-            ]);
+
             $submit_success = true;
+
+            $this->context->smarty->assign([
+                'shop' => $this->custom_shop
+            ]);
+        } else {
+            if ($this->context->cookie->__get('custom_shop_loggedin_super')) {
+                $oCustomShop = new CustomShop($this->custom_shop['id']);
+                $oCustomShop->modified = 0;
+                $oCustomShop->save();
+            }
         }
-        $aDesignCategories = CustomShop::getDesignCategories();
         $this->context->smarty->assign([
-            'design_categories' => $aDesignCategories,
-            'submit_success' =>$submit_success
+            'submit_success' => $submit_success
         ]);
-        
-        
+
         $this->setTemplate(_PS_THEME_DIR_ . 'custom-shop-admin-shop-edit.tpl');
     }
 

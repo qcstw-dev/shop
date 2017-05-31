@@ -31,5 +31,4 @@ class CustomShopAdminControllerCore extends CustomShopControllerCore {
             'iframe' => _PS_THEME_DIR_ . 'custom-shop-admin-iframe.tpl'
         ]);
     }
-
 }

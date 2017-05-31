@@ -2,6 +2,25 @@
 
 class AjaxCustomShopControllerCore extends FrontController {
 
+    public function displayAjaxSaveDesignCategories() {
+        $result['success'] = false;
+        $result['error'] = 'Information missing';
+        if (Tools::getValue('id_design') && Tools::getValue('categories')) {
+            $Db = Database::getInstance();
+            foreach (Tools::getValue('categories') as $iIdCat => $bChecked) {
+                if ($bChecked) {
+                    $Db->setQueryOption('IGNORE')->insert('ps_custom_shop_asso_design_category', ['id_design' => Tools::getValue('id_design'), 'id_category' => $iIdCat]);
+                } else {
+                    $Db->where('id_design', Tools::getValue('id_design'));
+                    $Db->where('id_category', $iIdCat);
+                    $Db->delete('ps_custom_shop_asso_design_category', 1);
+                }
+            }
+            $result['success'] = true;
+            unset($result['error']);
+        }
+        echo json_encode($result);
+    }
     public function displayAjaxRotateCreationPicture() {
 
         $result['success'] = false;
@@ -1200,8 +1219,6 @@ class AjaxCustomShopControllerCore extends FrontController {
 
         $iNumberEnd = $iOffset + $iNbrItem;
 
-        $aDesignCategories = CustomShopDesign::getDesignCategories();
-
         for ($i = $iOffset + 1; $i <= $iNumberEnd; $i++) {
 
             $sHtml .= '
@@ -1400,6 +1417,11 @@ class AjaxCustomShopControllerCore extends FrontController {
             } else {
                 $result['success'] = false;
             }
+        }
+        if ($result['success'] && !$this->context->cookie->__get('custom_shop_loggedin_super')) {
+            $oCustomShop = new CustomShop($oCustomShopDesign->id_shop);
+            $oCustomShop->new_design = 1;
+            $oCustomShop->save();
         }
 
         echo json_encode($result);

@@ -1,5 +1,11 @@
 {include file=$header}
 <div class="text-center bold font-size-24">Customers' management</div>
+<div class="col-xs-12 margin-bottom-10">
+    <div class="pull-left margin-right-10 border" style="background: #d9edf7; width: 50px; height: 30px;"></div><div class="pull-left bold margin-top-5"> New design(s)</div>
+</div>
+<div class="col-xs-12">
+    <div class="pull-left margin-right-10 border" style="background: #FFF6D3; width: 50px; height: 30px;"></div><div class="pull-left bold margin-top-5"> Informations edited by shop owner</div>
+</div>
 {if !$is_super_admin}
     <div class="col-xs-12 col-lg-3 margin-auto margin-top-20">
         {if $error_message}
@@ -45,7 +51,7 @@
         </thead> 
         <tbody>
             {foreach from=$shops item=shop}
-                <tr>
+                <tr {if $shop.new_design}style="background: #d9edf7"{else if $shop.modified}style="background: #FFF6D3"{/if}>
                     <td>{$shop.id}</td>
                     <td>{$shop.name}</td>
                     <td>{$shop.customer.email}</td>

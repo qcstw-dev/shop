@@ -18,6 +18,50 @@ $(document).ready(function () {
 //            }
 //        });
 //    });
+    $('.save-categories').on('click', function () {
+        var categories = {};
+        var element = $(this);
+       $(this).parent('.items').find('.item').each( function() {
+           categories[$(this).data('id-cat')] = $(this).is(':checked') ? 1 : 0;
+       });
+       $.ajax({
+            type: 'POST',
+            url: baseDir + 'index.php?controller=ajaxcustomshop&action=savedesigncategories&ajax=true',
+            dataType: 'json',
+            data: {
+                categories: categories,
+                id_design: $(this).data('id-design')
+            },
+            beforeSend: function () {
+                loading('Saving...');
+            },
+            success: function (json) {
+                loading_hide();
+                if(json.success) {
+                    confirm('Saved!');
+                    element.parents('.dropdown-check-list').find('.anchor').trigger('click');
+                } else {
+                    popupError(json.error);
+                }
+            }
+        });
+    });
+    var checkList = $('.dropdown-check-list');
+    checkList.each(function (index) {
+        var items = $(this).find('.items');
+        $(this).find('.anchor').on('click', function (evt) {
+            if (items.hasClass('visible')) {
+                items.removeClass('visible');
+                items.addClass('hidden');
+            } else {
+                items.removeClass('hidden');
+                items.addClass('visible');
+            }
+        });
+        items.on('blur', function (evt) {
+            items.classList.remove('visible');
+        });
+    });
     $('.upload-btn').live('click', function (e) {
         $('.hidden-fileupload').data('db-id', $(this).data('db-id'));
         $('.hidden-fileupload').data('id-upload', $(this).data('id'));

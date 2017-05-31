@@ -263,6 +263,36 @@
     /*border: 1px solid #ddd;*/
     vertical-align: middle;
 }
+
+.dropdown-check-list {
+    display: inline-block;
+    width: 83%;
+}
+.dropdown-check-list .anchor {
+    position: relative;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.dropdown-check-list .anchor .glyphicon{
+    margin-top: 3px;
+    float: right;
+}
+.dropdown-check-list ul.items {
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    position: absolute;
+    z-index: 9;
+    background: #fff;
+    width: 72%;
+}
+.dropdown-check-list ul.items li {
+    list-style: none;
+}
+
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
     .container {

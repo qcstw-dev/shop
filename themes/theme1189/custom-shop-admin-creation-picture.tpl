@@ -21,24 +21,30 @@
             <div class="col-xs-10 margin-auto input-group-sm">
                 <input class="form-control margin-top-5 margin-bottom-5 text-center picture-name picture-name-{$counter}" data-db-id="{$db_id}" placeholder="Picture name" value="{if $db_id}{$pictures.$counter.name}{/if}" {if !$db_id}disabled{/if}/>
             </div>
-            <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-auto block-picture cursor-pointer {if !isset($pictures.$counter)}upload-btn{/if}" data-db-id="{$db_id}" data-id="{$counter}">
+            <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-auto block-picture {if !$db_id}cursor-pointer{/if} {if !isset($pictures.$counter)}upload-btn{/if}" data-db-id="{$db_id}" data-id="{$counter}">
                 {if isset($pictures.$counter)}
                     <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}{$picture_dir}{$pictures.$counter.picture}" title="upload" alt="upload" />
                 {else}
                     <img class="upload-picture upload-picture-{$counter}" src="{$base_uri}img/upload-icon.jpg" title="upload" alt="upload" />
                 {/if}
             </div>
-            {*<div class="col-xs-12 font-size-13 padding-0">
-                <div class="col-xs-4 padding-right-0 bold">Category: </div>
-                <div class="col-xs-8 padding-right-0">
-                    <select class="design-category" data-db-id="{$db_id}" {if !isset($pictures.$counter.id)}disabled{/if}>
-                        <option value="0">Other</option>
-                        {foreach from=$design_categories key=k item=design_category}
-                            <option value="{$design_category.id}" {if isset($pictures.$counter.id) && $design_category.id == $pictures.$counter.id_category}selected{/if}>{$design_category.name}</option>
-                        {/foreach}
-                    </select>
+            {if $is_super_admin && $db_id}
+                <div class="col-xs-12">
+                    {*<div id="list" class="dropdown-check-list" tabindex="100">
+                        <div class="anchor">Select category <span class="glyphicon glyphicon-chevron-down"></span></div>*}
+                        <ul id="items" class="items {*hidden*}" style="list-style:none; padding: 0;">
+                            {foreach from=$design_categories key=k item=design_category}
+                                <li>
+                                    <label class="cursor-pointer" for="{$db_id}_{$design_category.id}">
+                                        <input type="checkbox" id="{$db_id}_{$design_category.id}" data-id-cat="{$design_category.id}" class="item margin-right-5" {if isset($pictures[$counter]['categories']) && in_array($design_category['id'], $pictures[$counter]['categories'])}checked{/if}/> {$design_category.name}
+                                    </label>
+                                </li>
+                            {/foreach}
+                            <div class="col-xs-12 btn btn-primary btn-sm save-categories" data-id-design="{$db_id}"><span class="glyphicon glyphicon-floppy-disk"></span> Save</div>
+                        </ul>
+                    {*</div>*}
                 </div>
-            </div>*}
+            {/if}
             <div class="col-xs-12 padding-0 margin-top-5 margin-bottom-5">
                 <div class="col-xs-6 padding-right-0 padding-left-0 font-size-13 margin-top-10 text-right">Commission price:</div>
                 <div class="col-xs-2 padding-left-0 margin-left-5 padding-top-10">USD</div>
