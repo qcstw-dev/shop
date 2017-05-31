@@ -102,11 +102,11 @@ class CustomShopProductCore extends ObjectModel {
         $oSubQueryIds = null;
         if (isset($aCriteria['id_cat_design'])) {
             $oSubQueryIds = $Db->subQuery ();
-            $oSubQueryIds->join(_DB_PREFIX_.'custom_shop s', 'p.id_shop = s.id', 'LEFT');
+            $oSubQueryIds->join(_DB_PREFIX_.'custom_shop_asso_design_category csadc', 'p.id_design = csadc.id_design', 'LEFT');
             if (is_array($aCriteria['id_cat_design'])) {
-                $oSubQueryIds->orWhere('s.id_category', $aCriteria['id_cat_design'], 'in');
+                $oSubQueryIds->orWhere('csadc.id_category', $aCriteria['id_cat_design'], 'in');
             } else {
-                $oSubQueryIds->orWhere('s.id_category', $aCriteria['id_cat_design']);
+                $oSubQueryIds->orWhere('csadc.id_category', $aCriteria['id_cat_design']);
             }
             $oSubQueryIds->get(_DB_PREFIX_ . self::$definition['table'].' p', null, 'p.id');
         }
@@ -129,6 +129,8 @@ class CustomShopProductCore extends ObjectModel {
                 break;
             }
         }
+        $Db->where('p.deleted', 0);
+        $Db->where('p.published', 1);
         $aProducts = $Db->get(_DB_PREFIX_ . self::$definition['table'].' p', (isset($aCriteria['limit']) ? $aCriteria['limit'] : null), 'p.*');
         $aQuantities = [1, 5, 10, 25, 50, 100];
         foreach ($aProducts as &$aProduct) {

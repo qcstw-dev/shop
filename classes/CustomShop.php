@@ -20,7 +20,8 @@ class CustomShopCore extends ObjectModel {
     public $currency;
     public $included;
     public $promoted;
-    public $id_category;
+    public $modified;
+    public $new_design;
     public $deactivated;
     public $id_account;
     public static $definition = array(
@@ -172,7 +173,8 @@ class CustomShopCore extends ObjectModel {
             'currency' => pSQL($this->currency),
             'included' => pSQL($this->included),
             'promoted' => pSQL($this->promoted),
-            'id_category' => pSQL($this->id_category),
+            'new_design' => pSQL($this->new_design),
+            'modified' => pSQL($this->modified),
             'deactivated' => pSQL($this->deactivated),
             'id_account' => pSQL($this->id_account)
         ];
