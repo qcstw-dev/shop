@@ -447,7 +447,7 @@ var ajaxCart = {
                 //retrieve idProduct and idCombination from the displayed product in the block cart
                 var domIdProduct = $(this).data('id');
                 var firstCut = domIdProduct.replace('cart_block_product_', '');
-                var ids = firstCut.split('_');
+                ids = firstCut.split('_');
 
                 //try to know if the current product is still in the new list
                 var stayInTheCart = false;
@@ -455,7 +455,7 @@ var ajaxCart = {
                 {
                     //we've called the variable aProduct because IE6 bug if this variable is called product
                     //if product has attributes
-                    if (jsonData.products[aProduct]['custom_picture'] == ids[3] + '_' + ids[4] && (!ids[1] || jsonData.products[aProduct]['idCombination'] == ids[1]))
+                    if ((jsonData.products[aProduct]['custom_picture'] === ids[3] + '_' + ids[4] || jsonData.products[aProduct]['id_customized_prod'] === ids[4]) && (!ids[1] || jsonData.products[aProduct]['idCombination'] == ids[1]))
                     {
                         stayInTheCart = true;
                         // update the product customization display (when the product is still in the cart)
@@ -604,6 +604,18 @@ var ajaxCart = {
                         <a class="cart-images col-md-6 thumbnail" href="'+baseUri+'product-popup?id_product='+productId+'" title="' + name + '">\n\
                             <img class="popup" src="' + this.image_cart + '" alt="' + this.name + '">\n\
                         </a>';
+                    if (typeof (this.is_gift) == 'undefined' || this.is_gift == 0) {
+                        content += '\
+                                <div class="col-md-6 text-right">\n\
+                                    <a rel="nofollow" class="ajax_cart_block_remove_link"  data-id-product=' + productId +' data-custom-product="' + this.custom_picture + '" data-original-product="' + this.original_picture + '" data-id-customized-prod="' + this.id_customized_prod + '" href="' + baseUri + '?controller=cart&amp;delete=1&amp;id_product=' + productId + '&amp;token=' + static_token + '&custom_picture=' + this.custom_picture + '"> \n\
+                                    <span class="fa fa-trash-o font-size-20"></span>\n\
+                                    </a>\n\
+                                </div>';
+                        
+                    } else {
+                        content += '<span class="remove_link"></span>';
+                    }
+                    
                     content += '<div class="cart-info col-md-6">'
                             +'<div class="product-name">' 
                             + '<span class="quantity-formated">'
@@ -619,14 +631,6 @@ var ajaxCart = {
                     if (typeof (freeProductTranslation) != 'undefined')
                         content += '<span class="price">' + (parseFloat(this.price_float) > 0 ? this.priceByLine : freeProductTranslation) + '</span></div>';
 
-                    if (typeof (this.is_gift) == 'undefined' || this.is_gift == 0)
-                        content += '\
-                                <span class="remove_link">\n\
-                                    <a rel="nofollow" class="ajax_cart_block_remove_link"  data-id-product=' + productId +' data-custom-product="' + this.custom_picture + '" data-original-product="' + this.original_picture + '" data-id-customized-prod="' + this.id_customized_prod + '" href="' + baseUri + '?controller=cart&amp;delete=1&amp;id_product=' + productId + '&amp;token=' + static_token + '&custom_picture=' + this.custom_picture + '"> \n\
-                                    </a>\n\
-                                </span>';
-                    else
-                        content += '<span class="remove_link"></span>';
                     content += '</dt>';
                     if (this.hasAttributes)
                         content += '<dd data-id="cart_block_combination_of_' + domIdProduct + '" class="unvisible">';

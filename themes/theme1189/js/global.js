@@ -3,7 +3,7 @@ var responsiveflag = false;
 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 var isiPad = /iPad/i.test(navigator.userAgent);
 var timer;
-var path = (window.location.host !== 'localhost' ? window.location.pathname.split('/')['1'] + '/' + window.location.pathname.split('/')['2'] : window.location.pathname.split('/')['2'] + '/' + window.location.pathname.split('/')['3']);
+var path = (window.location.host !== 'localhost' ? window.location.pathname.split('/')['1'] : window.location.pathname.split('/')['2']);
 var currentUrl = baseDir + path;
 
 $(document).ready(function () {

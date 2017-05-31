@@ -30,7 +30,7 @@
     <table class="table dashboard-table"> 
         <thead> 
             <tr class="text-center">
-                <th>Customer ID</th>
+                <th>Shop ID</th>
                 <th>Shop name</th>
                 <th>Email</th>
                 <th>Owner</th>
@@ -46,7 +46,7 @@
         <tbody>
             {foreach from=$shops item=shop}
                 <tr>
-                    <td>{$shop.id_account}</td>
+                    <td>{$shop.id}</td>
                     <td>{$shop.name}</td>
                     <td>{$shop.customer.email}</td>
                     <td>{$shop.customer.firstname} {$shop.customer.lastname}{if !$shop.customer.firstname && !$shop.customer.lastname} - {/if}</td>
