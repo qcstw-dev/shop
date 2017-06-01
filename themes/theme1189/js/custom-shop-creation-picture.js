@@ -19,25 +19,36 @@ $(document).ready(function () {
 //        });
 //    });
     $('.save-categories').on('click', function () {
-        var categories = {};
         var element = $(this);
-       $(this).parent('.items').find('.item').each( function() {
-           categories[$(this).data('id-cat')] = $(this).is(':checked') ? 1 : 0;
-       });
-       $.ajax({
+        var data = {};
+        if ($(this).data('type') === 'all') {
+            $('.items').each(function () {
+                var id_design = $(this).data('id-design');
+                var categories = {};
+                $(this).find('.item').each(function () {
+                    categories[$(this).data('id-cat')] = $(this).is(':checked') ? 1 : 0;
+                });
+                data[id_design] = categories;
+            });
+        } else {
+            var categories = {};
+            var id_design = $(this).data('id-design');
+            $(this).parent('.items').find('.item').each(function () {
+                categories[$(this).data('id-cat')] = $(this).is(':checked') ? 1 : 0;
+            });
+            data[id_design] =  categories;
+        }
+        $.ajax({
             type: 'POST',
             url: baseDir + 'index.php?controller=ajaxcustomshop&action=savedesigncategories&ajax=true',
             dataType: 'json',
-            data: {
-                categories: categories,
-                id_design: $(this).data('id-design')
-            },
+            data: {'categories' : data},
             beforeSend: function () {
                 loading('Saving...');
             },
             success: function (json) {
                 loading_hide();
-                if(json.success) {
+                if (json.success) {
                     confirm('Saved!');
                     element.parents('.dropdown-check-list').find('.anchor').trigger('click');
                 } else {

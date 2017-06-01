@@ -5,15 +5,17 @@ class AjaxCustomShopControllerCore extends FrontController {
     public function displayAjaxSaveDesignCategories() {
         $result['success'] = false;
         $result['error'] = 'Information missing';
-        if (Tools::getValue('id_design') && Tools::getValue('categories')) {
+        if (Tools::getValue('categories')) {
             $Db = Database::getInstance();
-            foreach (Tools::getValue('categories') as $iIdCat => $bChecked) {
-                if ($bChecked) {
-                    $Db->setQueryOption('IGNORE')->insert('ps_custom_shop_asso_design_category', ['id_design' => Tools::getValue('id_design'), 'id_category' => $iIdCat]);
-                } else {
-                    $Db->where('id_design', Tools::getValue('id_design'));
-                    $Db->where('id_category', $iIdCat);
-                    $Db->delete('ps_custom_shop_asso_design_category', 1);
+            foreach (Tools::getValue('categories') as $iIdDesin => $aCat) {
+                foreach ($aCat as $iIdCat => $bChecked) {
+                    if ($bChecked) {
+                        $Db->setQueryOption('IGNORE')->insert('ps_custom_shop_asso_design_category', ['id_design' => $iIdDesin, 'id_category' => $iIdCat]);
+                    } else {
+                        $Db->where('id_design', Tools::getValue('id_design'));
+                        $Db->where('id_category', $iIdCat);
+                        $Db->delete('ps_custom_shop_asso_design_category', 1);
+                    }
                 }
             }
             $result['success'] = true;
@@ -21,6 +23,7 @@ class AjaxCustomShopControllerCore extends FrontController {
         }
         echo json_encode($result);
     }
+
     public function displayAjaxRotateCreationPicture() {
 
         $result['success'] = false;
@@ -959,7 +962,7 @@ class AjaxCustomShopControllerCore extends FrontController {
 
             if ($this->context->cart->updateQty('1', $oCreation->id_product, null, null, 'up', null, null, null, null, null, null, $oCreation->id)) {
                 $result['nb_products'] = $this->context->cart->nbProducts(true);
-                $result['product']['image'] = _PS_BASE_URL_SSL_.__PS_BASE_URI__.'img/custom_shop/creation/'.$oCreation->custom_img;
+                $result['product']['image'] = _PS_BASE_URL_SSL_ . __PS_BASE_URI__ . 'img/custom_shop/creation/' . $oCreation->custom_img;
             } else {
 
                 $result['success'] = false;

@@ -5,6 +5,11 @@
     <a href="{$base_uri}{$custom_shop_name}/admin/creation/layout-maker" class="btn btn-info pull-right {if !$pictures}disabled{/if} menu-item-picture">Place picture on products <span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
 <div class="clearfix"></div>*}
+{if $is_super_admin}
+    <div class="col-xs-12 margin-bottom-10">
+        <div class="btn btn-warning save-categories" data-type="all">Save all design categories</div>
+    </div>
+{/if}
 <div class="pictures-list"></div>
 {assign var='nbr_pic' value=6}
 {if count($pictures) >= 7}
@@ -32,7 +37,7 @@
                 <div class="col-xs-12">
                     {*<div id="list" class="dropdown-check-list" tabindex="100">
                         <div class="anchor">Select category <span class="glyphicon glyphicon-chevron-down"></span></div>*}
-                        <ul id="items" class="items {*hidden*}" style="list-style:none; padding: 0;">
+                        <ul id="items" class="items {*hidden*}" data-id-design="{$db_id}" style="list-style:none; padding: 0;">
                             {foreach from=$design_categories key=k item=design_category}
                                 <li>
                                     <label class="cursor-pointer" for="{$db_id}_{$design_category.id}">
