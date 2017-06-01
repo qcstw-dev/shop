@@ -25,7 +25,7 @@ class CustomShopProductCore extends ObjectModel {
             }
         }
     }
-    
+
     public static function publishAll($iShopId) {
         $aIdProductsPublished = [];
         $aProducts = Db::getInstance()->executeS('
@@ -42,6 +42,7 @@ class CustomShopProductCore extends ObjectModel {
         }
         return $aIdProductsPublished;
     }
+
     public function setPublished($bStatus) {
         $this->published = $bStatus;
         if (!$bStatus) {
@@ -97,63 +98,77 @@ class CustomShopProductCore extends ObjectModel {
 		WHERE `id_design` = ' . pSQL($iDesignId));
     }
 
-    public static function getCreations($aCriteria = null) {
+    public static function getCreations($aCriteria = null, $iOffset = null, $iLimit = null) {
         $Db = Database::getInstance();
         $oSubQueryIds = null;
         if (isset($aCriteria['id_cat_design'])) {
-            $oSubQueryIds = $Db->subQuery ();
-            $oSubQueryIds->join(_DB_PREFIX_.'custom_shop_asso_design_category csadc', 'p.id_design = csadc.id_design', 'LEFT');
+            $oSubQueryIds = $Db->subQuery();
+            $oSubQueryIds->join(_DB_PREFIX_ . 'custom_shop_asso_design_category csadc', 'p.id_design = csadc.id_design', 'LEFT');
             if (is_array($aCriteria['id_cat_design'])) {
                 $oSubQueryIds->orWhere('csadc.id_category', $aCriteria['id_cat_design'], 'in');
             } else {
                 $oSubQueryIds->orWhere('csadc.id_category', $aCriteria['id_cat_design']);
             }
-            $oSubQueryIds->get(_DB_PREFIX_ . self::$definition['table'].' p', null, 'p.id');
+            $oSubQueryIds->get(_DB_PREFIX_ . self::$definition['table'] . ' p', null, 'p.id');
         }
-        
+
         if ($oSubQueryIds) {
             $Db->where('p.id', $oSubQueryIds, 'in');
         }
         if (isset($aCriteria['id_cat_prod'])) {
-            $Db->join(_DB_PREFIX_.'category_product cp', 'cp.id_product = p.id_product', 'LEFT');
+            $Db->join(_DB_PREFIX_ . 'category_product cp', 'cp.id_product = p.id_product', 'LEFT');
             if (is_array($aCriteria['id_cat_prod'])) {
                 $Db->where('cp.id_category', $aCriteria['id_cat_prod'], 'in');
             } else {
                 $Db->where('cp.id_category', $aCriteria['id_cat_prod']);
             }
         }
-        if(isset($aCriteria['order'])) {
+        if (isset($aCriteria['order'])) {
             switch ($aCriteria['order']) {
                 case 'random':
                     $Db->orderBy("RAND()");
-                break;
+                    break;
             }
         }
         $Db->where('p.deleted', 0);
         $Db->where('p.published', 1);
-        $aProducts = $Db->get(_DB_PREFIX_ . self::$definition['table'].' p', (isset($aCriteria['limit']) ? $aCriteria['limit'] : null), 'p.*');
+
+        $mPagination = null;
+        if ($iOffset) {
+            $mPagination[] = $iOffset;
+            $mPagination[] = $iLimit ? : 40;
+        } else if ($iLimit) {
+            $mPagination = $iLimit;
+        }
+        $aProducts = $Db->withTotalCount()->get(_DB_PREFIX_ . self::$definition['table'] . ' p', $mPagination, 'p.*');
         $aQuantities = [1, 5, 10, 25, 50, 100];
         foreach ($aProducts as &$aProduct) {
+            $aCustomDesign = CustomShopDesign::getDesignById($aProduct['id_design']);
             $aPrices = [];
             foreach ($aQuantities as $iQuantity) {
-                $aPrices[$iQuantity] = Product::getPriceStatic((int) $aProduct['id_product'], true, null, 2, null, false, true, $iQuantity);
+                $aPrices[$iQuantity] = Product::getPriceStatic((int) $aProduct['id_product'], true, null, 2, null, false, true, $iQuantity) + $aCustomDesign['price'];
             }
             $aProduct['prices'] = $aPrices;
             $aProduct['shop'] = CustomShop::getShopById($aProduct['id_shop']);
         }
-        return $aProducts;
+        
+        $aResult['count'] = $Db->count;
+        $aResult['total_count'] = $Db->totalCount;
+        $aResult['products'] = $aProducts;
+        
+        return $aResult;
     }
-    
+
     public static function getProducts($iShopId, $bOnlyPublished = true, $aCategories = []) {
         return Db::getInstance()->executeS('
 		SELECT *
-		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '` csp '.($aCategories ? ', '. _DB_PREFIX_ .'category_product as cp' : '') .'
+		FROM `' . _DB_PREFIX_ . self::$definition['table'] . '` csp ' . ($aCategories ? ', ' . _DB_PREFIX_ . 'category_product as cp' : '') . '
 		WHERE `deleted` = 0
 		AND `id_shop` = ' . pSQL($iShopId)
                         . ($bOnlyPublished ? ' AND csp.`published` = 1' : '')
-                        . ($aCategories ? ' AND csp.`id_product` = cp.`id_product` AND cp.`id_category` IN ('.  implode(',', $aCategories).')' : '').'
+                        . ($aCategories ? ' AND csp.`id_product` = cp.`id_product` AND cp.`id_category` IN (' . implode(',', $aCategories) . ')' : '') . '
                 ORDER BY `order_number`, `id` desc'
-                );
+        );
     }
 
     public function delete() {
@@ -162,12 +177,13 @@ class CustomShopProductCore extends ObjectModel {
 //        return Db::getInstance()->delete(self::$definition['table'], 'id = ' . pSQL($this->id));
         return Db::getInstance()->update(self::$definition['table'], ['deleted' => 1], 'id = ' . pSQL($this->id));
     }
+
     public function deleteFromCart() {
         Db::getInstance()->execute('
                DELETE cp FROM ' . _DB_PREFIX_ . 'cart_product cp 
                 LEFT JOIN ' . _DB_PREFIX_ . 'orders orders ON orders.id_cart = cp.id_cart 
                 WHERE orders.id_cart IS NULL
-                AND cp.id_customized_prod = '. pSQL($this->id)
+                AND cp.id_customized_prod = ' . pSQL($this->id)
         );
     }
 

@@ -20,6 +20,7 @@ class MarketPlaceControllerCore extends FrontController {
 
         $aCriteria = [];
 
+        $iLimit = null;
         if (Tools::getValue('design_cat')) {
             $aCriteria['id_cat_design'] = Tools::getValue('design_cat');
         }
@@ -28,12 +29,11 @@ class MarketPlaceControllerCore extends FrontController {
         }
         if (!Tools::getValue('design_cat') && !Tools::getValue('id_cat_prod')) {
             $aCriteria['order'] = 'random';
-            $aCriteria['limit'] = 50;
+            $iLimit = 40;
         }
         
+        $aResult = CustomShopProduct::getCreations($aCriteria, null, $iLimit);
         
-        $aProducts = CustomShopProduct::getCreations($aCriteria);
-
         $aCartProducts = $this->context->cart->getProducts(true, null, null, true);
         
         $aCartCreationsId = [];
@@ -44,7 +44,11 @@ class MarketPlaceControllerCore extends FrontController {
             'design_categories' => $aDesignCategories,
             'product_categories' => $aProductCategories,
             'cart_creations_id' => $aCartCreationsId,
-            'products' => $aProducts,
+            'loadmore' => false,
+            'offset' => 0,
+            'products' => $aResult['products'],
+            'count' => $aResult['count'],
+            'total_count' => $aResult['total_count'],
             'criteria' => $aCriteria,
             'creations_list' => _PS_THEME_DIR_ . 'market-place-creations-list.tpl',
         ]);

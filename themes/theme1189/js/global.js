@@ -116,8 +116,15 @@ $(document).ready(function () {
         e.preventDefault();
         quickView($(this).data('id-product'), $(this).data('id-creation'), $(this).data('id-design'));
     });
+    $('.btn-load-more-creations').live('click', function () {
+        loadProducts($('.block-product').length, 1, !($('.filter[data-type="design"]:checked').length && $('.filter[data-type="product"]:checked').length));
+    });
     $('.filter').on('change', function (e) {
-        var design_cat = [];
+        loadProducts();
+    });
+});
+function loadProducts(offset, loadmore, random) {
+    var design_cat = [];
         $('.filter[data-type="design"]:checked').each(function () {
             design_cat.push($(this).val());
         });
@@ -127,7 +134,10 @@ $(document).ready(function () {
         });
         updateCreationsList({
             'design_cat' : design_cat,
-            'product_cat' : product_cat
+            'product_cat' : product_cat,
+            'offset' : offset,
+            'random' : random,
+            'loadmore' : loadmore
         });
         var query_string = '';
         $.each(design_cat, function (key, value) {
@@ -138,8 +148,7 @@ $(document).ready(function () {
         });
         var newUrl = currentUrl + query_string;
         window.history.pushState({path: currentUrl}, '', newUrl);
-    });
-});
+}
 function updateCreationsList(data) {
     $.ajax({
         type: 'POST',
@@ -148,11 +157,20 @@ function updateCreationsList(data) {
         cache: false,
         dataType: 'html',
         beforeSend: function (xhr) {
-            $('.products-container').html('<div class="text-center margin-top-100"><img src="'+baseDir+'img/gears.gif" /></div>');
+            if(!data['loadmore']) {
+                $('.products-container').html('<div class="text-center margin-top-100"><img src="'+baseDir+'img/gears.gif" /></div>');
+            } else {
+                $.fancybox.showLoading();
+            }
         },
         success: function (html) {
+            $.fancybox.hideLoading();
             if (html) {
-                $('.products-container').replaceWith(html);
+                if (data['loadmore']) {
+                    $('.btn-load-more-creations').replaceWith(html);
+                } else {
+                    $('.products-container').replaceWith(html);
+                }
             }
         }
     });

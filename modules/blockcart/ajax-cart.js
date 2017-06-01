@@ -600,7 +600,7 @@ var ajaxCart = {
 		else
 		{
 			ajaxCart.updateCartEverywhere(jsonData);
-			ajaxCart.hideOldProducts(jsonData);
+//			ajaxCart.hideOldProducts(jsonData);
 			ajaxCart.displayNewProducts(jsonData);
 			ajaxCart.refreshVouchers(jsonData);
 

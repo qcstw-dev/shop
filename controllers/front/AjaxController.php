@@ -10,7 +10,11 @@ class AjaxControllerCore extends FrontController {
         if (Tools::getValue('product_cat')) {
             $aCriteria['id_cat_prod'] = Tools::getValue('product_cat');
         }
-        $aProducts = CustomShopProduct::getCreations($aCriteria);
+        if (Tools::getValue('random')) {
+            $aCriteria['order'] = 'random';
+        }
+        
+        $aResult = CustomShopProduct::getCreations($aCriteria, Tools::getValue('offset'), 40);
         
         $aCartProducts = $this->context->cart->getProducts(true, null, null, true);
         
@@ -20,7 +24,11 @@ class AjaxControllerCore extends FrontController {
         }
         
         $this->context->smarty->assign(array(
-            'products' => $aProducts,
+            'products' => $aResult['products'],
+            'loadmore' => Tools::getValue('loadmore'),
+            'offset' => Tools::getValue('offset'),
+            'count' => $aResult['count'],
+            'total_count' => $aResult['total_count'],
             'cart_creations_id' => $aCartCreationsId,
         ));
         $this->setTemplate(_PS_THEME_DIR_ . 'market-place-creations-list.tpl');

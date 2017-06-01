@@ -1,4 +1,4 @@
-<div class="col-xs-2 margin-top-20 padding-top-10 border">
+<div class="col-xs-2 margin-top-20 padding-top-10 border shadow">
     <div class="bold font-size-20">Design category:</div>
     <ul>
         {foreach from=$design_categories item='design_category'}
@@ -16,4 +16,6 @@
         {/foreach}
     </ul>
 </div>
-{include file=$creations_list}
+<div class="col-xs-10">
+    {include file=$creations_list}
+</div>
