@@ -20,19 +20,16 @@ class MarketPlaceControllerCore extends FrontController {
 
         $aCriteria = [];
 
-        $iLimit = null;
+        $iLimit = 40;
         if (Tools::getValue('design_cat')) {
             $aCriteria['id_cat_design'] = Tools::getValue('design_cat');
         }
         if (Tools::getValue('product_cat')) {
             $aCriteria['id_cat_prod'] = Tools::getValue('product_cat');
         }
-        if (!Tools::getValue('design_cat') && !Tools::getValue('id_cat_prod')) {
-            $aCriteria['order'] = 'random';
-            $iLimit = 40;
-        }
+        $aCriteria['order'] = 'random';
         
-        $aResult = CustomShopProduct::getCreations($aCriteria, null, $iLimit);
+        $aResult = CustomShopProduct::getCreations($aCriteria, $iLimit);
         
         $aCartProducts = $this->context->cart->getProducts(true, null, null, true);
         
@@ -45,7 +42,6 @@ class MarketPlaceControllerCore extends FrontController {
             'product_categories' => $aProductCategories,
             'cart_creations_id' => $aCartCreationsId,
             'loadmore' => false,
-            'offset' => 0,
             'products' => $aResult['products'],
             'count' => $aResult['count'],
             'total_count' => $aResult['total_count'],

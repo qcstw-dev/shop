@@ -10,11 +10,9 @@ class AjaxControllerCore extends FrontController {
         if (Tools::getValue('product_cat')) {
             $aCriteria['id_cat_prod'] = Tools::getValue('product_cat');
         }
-        if (Tools::getValue('random')) {
-            $aCriteria['order'] = 'random';
-        }
+        $aCriteria['order'] = 'random';
         
-        $aResult = CustomShopProduct::getCreations($aCriteria, Tools::getValue('offset'), 40);
+        $aResult = CustomShopProduct::getCreations($aCriteria, 40, Tools::getValue('exceptions'));
         
         $aCartProducts = $this->context->cart->getProducts(true, null, null, true);
         
@@ -26,7 +24,6 @@ class AjaxControllerCore extends FrontController {
         $this->context->smarty->assign(array(
             'products' => $aResult['products'],
             'loadmore' => Tools::getValue('loadmore'),
-            'offset' => Tools::getValue('offset'),
             'count' => $aResult['count'],
             'total_count' => $aResult['total_count'],
             'cart_creations_id' => $aCartCreationsId,

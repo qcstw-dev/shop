@@ -7743,8 +7743,8 @@ ul.step a:hover:after {
 .icons .icon-hover {
     width: 100%;
 }
-.icons .icon a,
-.icons .icon a:hover{
+.icons .icon>a,
+.icons .icon>a:hover{
     color: #9E9E9E;
 }
 .icons .icon-hover .icon-sign,

@@ -181,10 +181,11 @@
             {/if}
         </div>
         <p class="cart-buttons">
-            <a id="button_order_cart" class="btn btn-default btn-sm icon-right" href="{$link->getPageLink("$order_process", true)|escape:"html":"UTF-8"}" title="{l s='Check out' mod='blockcart'}" rel="nofollow">
+            <a id="button_order_cart" class="col-xs-12 btn btn-success btn-lg" href="{$link->getPageLink("$order_process", true)|escape:"html":"UTF-8"}" title="{l s='Check out' mod='blockcart'}" rel="nofollow">
                 <span>
                     {l s='Check out' mod='blockcart'}
                 </span>
+                <span class="glyphicon glyphicon-chevron-right pull-right"></span>
             </a>
         </p>
     </div>

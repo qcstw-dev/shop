@@ -117,13 +117,17 @@ $(document).ready(function () {
         quickView($(this).data('id-product'), $(this).data('id-creation'), $(this).data('id-design'));
     });
     $('.btn-load-more-creations').live('click', function () {
-        loadProducts($('.block-product').length, 1, !($('.filter[data-type="design"]:checked').length && $('.filter[data-type="product"]:checked').length));
+        var exceptions = [];
+        $('.block-product').each(function () {
+           exceptions.push($(this).data('id-creation'));
+        });
+        loadProducts(1, exceptions);
     });
     $('.filter').on('change', function (e) {
         loadProducts();
     });
 });
-function loadProducts(offset, loadmore, random) {
+function loadProducts(loadmore, exceptions) {
     var design_cat = [];
         $('.filter[data-type="design"]:checked').each(function () {
             design_cat.push($(this).val());
@@ -135,8 +139,7 @@ function loadProducts(offset, loadmore, random) {
         updateCreationsList({
             'design_cat' : design_cat,
             'product_cat' : product_cat,
-            'offset' : offset,
-            'random' : random,
+            'exceptions' : exceptions,
             'loadmore' : loadmore
         });
         var query_string = '';

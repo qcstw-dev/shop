@@ -147,9 +147,10 @@
   font: 300 12px/normal Ubuntu, sans-serif;
   color: #333333;
   border-top: 1px solid #ddd;
-  text-transform: uppercase; }
-  .cart_block .cart-buttons .btn {
-    padding: 7px 11px; }
+  /*text-transform: uppercase;*/
+}
+/*  .cart_block .cart-buttons .btn {
+    padding: 7px 11px; }*/
 
 /*******************************************************************
 					Cart Block(Header) Styles

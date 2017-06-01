@@ -4,7 +4,7 @@
     {if $products}
         {foreach from=$products item='product'}
             <div class="col-xs-3 margin-bottom-20">
-                <div class="col-xs-12 border shadow padding-top-10 padding-bottom-10 block-product" itemscope itemtype="http://schema.org/Product">
+                <div class="col-xs-12 border shadow padding-top-10 padding-bottom-10 block-product" data-id-creation="{$product.id}" itemscope itemtype="http://schema.org/Product">
                     <div class="thumbnail border-none padding-0 margin-bottom-0 cursor-pointer quick-view-creation" 
                          data-id-product="{$product.id_product}" 
                          data-id-creation="{$product.id}"
@@ -36,11 +36,13 @@
     </div>
 {/foreach}
 {else}
-    <div class="col-xs-12 padding-0">
-        <div class="alert alert-info bold text-center">No products found for your criteria</div>
-    </div>
+    {if !$loadmore}
+        <div class="col-xs-12 padding-0">
+            <div class="alert alert-info bold text-center">No products found for your criteria</div>
+        </div>
+    {/if}
 {/if}
-{if $offset + $count < $total_count}
+{if $count == 40 && $total_count > 40}
     <div class="col-xs-12 btn-load-more-creations">
         <div class="col-xs-12 btn btn-success btn-lg">
             <span class="glyphicon glyphicon-plus-sign"></span> Load more creations

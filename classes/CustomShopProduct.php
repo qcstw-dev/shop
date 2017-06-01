@@ -98,7 +98,7 @@ class CustomShopProductCore extends ObjectModel {
 		WHERE `id_design` = ' . pSQL($iDesignId));
     }
 
-    public static function getCreations($aCriteria = null, $iOffset = null, $iLimit = null) {
+    public static function getCreations($aCriteria = null, $iLimit = null, $aExceptions = null) {
         $Db = Database::getInstance();
         $oSubQueryIds = null;
         if (isset($aCriteria['id_cat_design'])) {
@@ -130,17 +130,21 @@ class CustomShopProductCore extends ObjectModel {
                     break;
             }
         }
+        if ($aExceptions) {
+            $Db->where('p.id', $aExceptions, 'not in');
+        }
         $Db->where('p.deleted', 0);
         $Db->where('p.published', 1);
 
-        $mPagination = null;
-        if ($iOffset) {
-            $mPagination[] = $iOffset;
-            $mPagination[] = $iLimit ? : 40;
-        } else if ($iLimit) {
-            $mPagination = $iLimit;
-        }
-        $aProducts = $Db->withTotalCount()->get(_DB_PREFIX_ . self::$definition['table'] . ' p', $mPagination, 'p.*');
+//        $mPagination = null;
+//        if ($iOffset) {
+//            $mPagination[] = $iOffset;
+//            $mPagination[] = $iLimit ? : 40;
+//        } else if ($iLimit) {
+//            $mPagination = $iLimit;
+//        }
+        $Db->orderBy('p.id');
+        $aProducts = $Db->withTotalCount()->get(_DB_PREFIX_ . self::$definition['table'] . ' p', $iLimit, 'p.*');
         $aQuantities = [1, 5, 10, 25, 50, 100];
         foreach ($aProducts as &$aProduct) {
             $aCustomDesign = CustomShopDesign::getDesignById($aProduct['id_design']);
