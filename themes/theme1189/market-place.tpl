@@ -1,3 +1,4 @@
+<h1 class="row-title font-size-20">SHOP</h1>
 <div class="col-xs-2 margin-top-20 padding-top-10 border shadow">
     <div class="bold font-size-20">Design category:</div>
     <ul>

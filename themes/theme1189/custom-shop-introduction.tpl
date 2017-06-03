@@ -17,25 +17,25 @@
 <div class="col-xs-12 margin-bottom-20">
     <div class="col-xs-6 col-sm-3">
         <div class="intro-block-picture">
-            <img src="{$img_dir}custom-shop-intro/charity.png" alt="charity" title="charity" />
+            <img src="{$img_dir}custom-shop-intro/charity.png?{$var_cache}" alt="charity" title="charity" />
         </div>
         <div class="font-size-20 text-center">Charity</div>
     </div>
     <div class="col-xs-6 col-sm-3">
         <div class="intro-block-picture">
-            <img src="{$img_dir}custom-shop-intro/club.png" alt="club association" title="club association" />
+            <img src="{$img_dir}custom-shop-intro/club.png?{$var_cache}" alt="club association" title="club association" />
         </div>
         <div class="font-size-20 text-center">Club association</div>
     </div>
     <div class="col-xs-6 col-sm-3">
         <div class="intro-block-picture">
-            <img src="{$img_dir}custom-shop-intro/artist.png" alt="Artist" title="Artist" />
+            <img src="{$img_dir}custom-shop-intro/artist.png?{$var_cache}" alt="Artist" title="Artist" />
         </div>
         <div class="font-size-20 text-center">Artist</div>
     </div>
     <div class="col-xs-6 col-sm-3">
         <div class="intro-block-picture">
-            <img src="{$img_dir}custom-shop-intro/designer.png" alt="Designer" title="Designer" />
+            <img src="{$img_dir}custom-shop-intro/designer.png?{$var_cache}" alt="Designer" title="Designer" />
         </div>
         <div class="font-size-20 text-center">Designer</div>
     </div>
@@ -45,7 +45,7 @@
         And you want to use your <span class="hidden-xs">image / </span>design to <span class="hidden-xs">increase / </span> create revenue
     </div>
     <div class="col-xs-12 text-center thumbnail border-none margin-top-20">
-        <img src="{$img_dir}custom-shop-intro/money.png" alt="increase / create revenue" title="increase / create revenue" />
+        <img src="{$img_dir}custom-shop-intro/money.png?{$var_cache}" alt="increase / create revenue" title="increase / create revenue" />
     </div>
 </div>
 <div class="col-xs-6 padding-top-20">
@@ -53,7 +53,7 @@
         Create your personal shop with us today
     </div>
     <div class="col-xs-12 text-center thumbnail border-none">
-        <img src="{$img_dir}custom-shop-intro/shop.png" alt="Personal shop" title="Personal shop" />
+        <img src="{$img_dir}custom-shop-intro/shop.png?{$var_cache}" alt="Personal shop" title="Personal shop" />
     </div>
     <div class="col-xs-12 italic text-center margin-bottom-20 intro-quote">
         "It's completely free and will forever be"
@@ -65,19 +65,19 @@
     </div>
     <div class="col-xs-12 col-lg-4">
         <div class="intro-block-picture-square thumbnail">
-            <img src="{$img_dir}custom-shop-intro/batch-of-prod.png" alt="Choose the products" title="Choose the products" />
+            <img src="{$img_dir}custom-shop-intro/batch-of-prod.png?{$var_cache}" alt="Choose the products" title="Choose the products" />
         </div>
         <div class="font-size-20 text-center">Choose the products you want to offer & place your design on it</div>
     </div>
     <div class="col-xs-12 col-lg-4">
         <div class="intro-block-picture-square thumbnail">
-            <img src="{$img_dir}custom-shop-intro/dollars.png" alt="Set your commission" title="Set your commission" />
+            <img src="{$img_dir}custom-shop-intro/dollars.png?{$var_cache}" alt="Set your commission" title="Set your commission" />
         </div>
         <div class="font-size-20 text-center">Decide how much you earn on each product sold</div>
     </div>
     <div class="col-xs-12 col-lg-4">
         <div class="intro-block-picture-square thumbnail">
-            <img src="{$img_dir}custom-shop-intro/custom-shop.png" alt="Manage your shop" title="Manage your shop" />
+            <img src="{$img_dir}custom-shop-intro/custom-shop.png?{$var_cache}" alt="Manage your shop" title="Manage your shop" />
         </div>
         <div class="font-size-20 text-center">Manage your shop looking</div>
     </div>
@@ -88,37 +88,37 @@
     </div>
     <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
-            <img src="{$img_dir}custom-shop-intro/order-process.png" alt="Order process" title="Order process" />
+            <img src="{$img_dir}custom-shop-intro/order-process.png?{$var_cache}" alt="Order process" title="Order process" />
         </div>
         <div class="font-size-20 text-center">Order process</div>
     </div>
     <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
-            <img src="{$img_dir}custom-shop-intro/payment.png" alt="Payment" title="Payment" />
+            <img src="{$img_dir}custom-shop-intro/payment.png?{$var_cache}" alt="Payment" title="Payment" />
         </div>
         <div class="font-size-20 text-center">Payment</div>
     </div>
     <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
-            <img src="{$img_dir}custom-shop-intro/stock.png" alt="Stock" title="Stock" />
+            <img src="{$img_dir}custom-shop-intro/stock.png?{$var_cache}" alt="Stock" title="Stock" />
         </div>
         <div class="font-size-20 text-center">Stock</div>
     </div>
     <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
-            <img src="{$img_dir}custom-shop-intro/personalization.png" alt="Personalization" title="Personalization" />
+            <img src="{$img_dir}custom-shop-intro/personalization.png?{$var_cache}" alt="Personalization" title="Personalization" />
         </div>
         <div class="font-size-20 text-center">Personalization</div>
     </div>
     <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
-            <img src="{$img_dir}custom-shop-intro/shipping.png" alt="Shipping" title="Shipping" />
+            <img src="{$img_dir}custom-shop-intro/shipping.png?{$var_cache}" alt="Shipping" title="Shipping" />
         </div>
         <div class="font-size-20 text-center">Shipping</div>
     </div>
     <div class="col-xs-6 col-sm-2">
         <div class="intro-block-picture">
-            <img src="{$img_dir}custom-shop-intro/customer-service.png" alt="Customer service" title="Customer service" />
+            <img src="{$img_dir}custom-shop-intro/customer-service.png?{$var_cache}" alt="Customer service" title="Customer service" />
         </div>
         <div class="font-size-20 text-center">Customer service</div>
     </div>
@@ -138,7 +138,7 @@
         <div class="col-xs-6 col-sm-3">
             <a target="_blank" href="https://www.giftattitude.com/shop/phoenixgear" title="phoenixgear shop Gift Attitude">
                 <div class="thumbnail margin-bottom-10">
-                    <img src="{$img_dir}custom-shop-intro/they-trust-us/phoenixgear-shop-Gift-Attitude.jpg" alt="phoenixgear shop Gift Attitude" title="phoenixgear shop Gift Attitude" />
+                    <img src="{$img_dir}custom-shop-intro/they-trust-us/phoenixgear-shop-Gift-Attitude.jpg?{$var_cache}" alt="phoenixgear shop Gift Attitude" title="phoenixgear shop Gift Attitude" />
                 </div>
                 <div class="font-size-20 text-center">Phoenix</div>
             </a>
@@ -146,7 +146,7 @@
         <div class="col-xs-6 col-sm-3">
             <a target="_blank" href="https://www.giftattitude.com/shop/brazil" title="Bazil Goodies shop">
                 <div class="thumbnail margin-bottom-10">
-                    <img src="{$img_dir}custom-shop-intro/they-trust-us/Bazil-Goodies-shop-Gift-Attitude.jpg" alt="Bazil Goodies shop Gift Attitude" title="Bazil Goodies shop Gift Attitude" />
+                    <img src="{$img_dir}custom-shop-intro/they-trust-us/Bazil-Goodies-shop-Gift-Attitude.jpg?{$var_cache}" alt="Bazil Goodies shop Gift Attitude" title="Bazil Goodies shop Gift Attitude" />
                 </div>
                 <div class="font-size-20 text-center">Brazil shop</div>
             </a>
@@ -154,7 +154,7 @@
         <div class="col-xs-6 col-sm-3">
             <a target="_blank" href="https://www.giftattitude.com/shop/pimpmydog" title="P!MP My Dog shop Gift Attitude">
                 <div class="thumbnail margin-bottom-10">
-                    <img src="{$img_dir}custom-shop-intro/they-trust-us/PiMP-My-Dog-shop-Gift-Attitude.jpg" alt="P!MP My Dog shop Gift Attitude" title="P!MP My Dog shop Gift Attitude" />
+                    <img src="{$img_dir}custom-shop-intro/they-trust-us/PiMP-My-Dog-shop-Gift-Attitude.jpg?{$var_cache}" alt="P!MP My Dog shop Gift Attitude" title="P!MP My Dog shop Gift Attitude" />
                 </div>
                 <div class="font-size-20 text-center">P!MP My Dog</div>
             </a>
@@ -162,7 +162,7 @@
         <div class="col-xs-6 col-sm-3">
             <a target="_blank" href="https://www.giftattitude.com/shop/cities-by-night" title="Cities by night shop Gift Attitude">
                 <div class="thumbnail margin-bottom-10">
-                    <img src="{$img_dir}custom-shop-intro/they-trust-us/Cities-by-night-shop-Gift-Attitude.jpg" alt="Cities by night shop Gift Attitude" title="Cities by night shop Gift Attitude" />
+                    <img src="{$img_dir}custom-shop-intro/they-trust-us/Cities-by-night-shop-Gift-Attitude.jpg?{$var_cache}" alt="Cities by night shop Gift Attitude" title="Cities by night shop Gift Attitude" />
                 </div>
                 <div class="font-size-20 text-center">Cities by night</div>
             </a>

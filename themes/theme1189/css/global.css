@@ -7517,12 +7517,14 @@ ul.step a:hover:after {
 }
 .row-title {
     text-align: center;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background: #4267b2;
-    color: #fff;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid #ccc;
+    padding: 5px;
+    /* background: #ff9800; */
+    color: #777777;
+    font-size: 25px;
     font-weight: normal;
-    /*text-transform: uppercase;*/
+    /* text-transform: uppercase; */
 }
 .primary-color {
     color: #4267b2;
