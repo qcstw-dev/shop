@@ -26,7 +26,7 @@
     font-size: 24px;
     line-height: 25px;
 }
-.intro-title:before, .intro-title:after {
+/*.intro-title:before, .intro-title:after {
     content: " ";
     background: #f0ad4e;
     width: 100%;
@@ -34,7 +34,7 @@
     position: absolute;
     top: 0;
     right: 100%;
-}
+}*/
 .intro-title-twince-right:before {
     content: initial;
 }
@@ -44,9 +44,9 @@
 .intro-title:after {
     left: 100%;
 }
-.btn-connect {
+/*.btn-connect {
     border-radius: 30px
-}
+}*/
 @media only screen and (max-width : 1200px) {
     .intro-title:before, .intro-title:after {
         content: none;

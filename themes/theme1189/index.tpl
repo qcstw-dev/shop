@@ -116,55 +116,63 @@
     </div>
     <div class="clearfix"></div>
     <h4 class="row-title">{l s='SELL'}</h4>
-    <a href="{$base_dir_ssl}custom-shop-introduction" title="Create your shop">
-        <div class="col-sm-3 border-right">
-            <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-top-10">
-                <img src="{$img_dir}custom-shop-intro/shop.png?{$var_cache}" alt="Personal shop" title="Personal shop" />
-            </div>
-            <div class="col-xs-12 font-size-15 text-center bold">
-                "Create your shop today.<br />It's free and will forever be"
-            </div>
+    <div class="col-sm-4 border-right">
+        <div class="col-xs-12 thumbnail border-none margin-bottom-0 margin-top-10">
+            <img src="{$img_dir}custom-shop-intro/shop.png?{$var_cache}" alt="Personal shop" title="Personal shop" />
         </div>
-        <div class="col-sm-9">
-            <div class="col-xs-12 text-center font-size-24 margin-bottom-10 padding-10 background-light">Easy 3 step process</div>
+        <div class="col-xs-12 font-size-15 text-center bold">
+            "Create your shop today.<br />It's free and will forever be"
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="col-xs-12 text-center font-size-20 margin-bottom-10 padding-10 border background-light">Easy 3 step process</div>
+        <div class="clearfix"></div>
+        <div class="col-xs-12 margin-auto padding-20 margin-bottom-10">
+            <div class="col-xs-offset-1 col-xs-3 padding-0">
+                <div class="col-xs-12 padding-0 thumbnail border-none margin-bottom-0">
+                    <img src="{$img_dir}custom-shop-intro/upload-pictures.png?{$var_cache}" alt="" title="" />
+                </div>
+                <div class="col-xs-12 padding-0 text-center bold font-size-15">
+                    Upload your design
+                </div>
+            </div>
+            <div class="col-xs-1 margin-top-90">
+                <span class="glyphicon glyphicon-arrow-right color-warning font-size-44"></span>
+            </div>
+            <div class="col-xs-3 padding-0">
+                <div class="col-xs-12 padding-0 thumbnail border-none margin-bottom-0">
+                    <img src="{$img_dir}custom-shop-intro/place-product.png?{$var_cache}" alt="Create your product" title="Create your product" />
+                </div>
+                <div class="col-xs-12 padding-0 text-center bold font-size-15">
+                    Place it on picture
+                </div>
+            </div>
+            <div class="col-xs-1 margin-top-90">
+                <span class="glyphicon glyphicon-arrow-right color-warning font-size-44"></span>
+            </div>
+            <div class="col-xs-3 padding-0">
+                <div class="col-xs-12 padding-20 thumbnail border-none margin-bottom-0">
+                    <img src="{$img_dir}custom-shop-intro/dollars.png?{$var_cache}" alt="Make money" title="Make money" />
+                </div>
+                <div class="col-xs-12 padding-0 text-center bold font-size-15">
+                    Publish & collect money
+                </div>
+            </div>
             <div class="clearfix"></div>
-            <div class="col-xs-12 margin-auto padding-20">
-                <div class="col-xs-offset-1 col-xs-3 padding-0">
-                    <div class="col-xs-12 padding-0 thumbnail border-none margin-bottom-0">
-                        <img src="{$img_dir}custom-shop-intro/upload-pictures.png?{$var_cache}" alt="" title="" />
-                    </div>
-                    <div class="col-xs-12 padding-0 text-center bold font-size-15">
-                        Upload your design
-                    </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-sm-9 margin-auto">
+                <div class="col-xs-6">
+                    <a class="btn btn-danger btn-lg col-xs-12" href="{$base_dir_ssl}custom-shop-register" title="Create your shop"><span class="glyphicon glyphicon-edit"></span> Create your shop</a>
                 </div>
-                <div class="col-xs-1 margin-top-90">
-                    <span class="glyphicon glyphicon-arrow-right color-warning font-size-44"></span>
+                <div class="col-xs-6">
+                    <a class="btn btn-warning btn-lg col-xs-12" href="{$base_dir_ssl}custom-shop-introduction" title="Custom shop introduction"><span class="glyphicon glyphicon-info-sign"></span> Read more</a>
                 </div>
-                <div class="col-xs-3 padding-0">
-                    <div class="col-xs-12 padding-0 thumbnail border-none margin-bottom-0">
-                        <img src="{$img_dir}custom-shop-intro/place-product.png?{$var_cache}" alt="Create your product" title="Create your product" />
-                    </div>
-                    <div class="col-xs-12 padding-0 text-center bold font-size-15">
-                        Place it on picture
-                    </div>
-                </div>
-                <div class="col-xs-1 margin-top-90">
-                    <span class="glyphicon glyphicon-arrow-right color-warning font-size-44"></span>
-                </div>
-                <div class="col-xs-3 padding-0">
-                    <div class="col-xs-12 padding-20 thumbnail border-none margin-bottom-0">
-                        <img src="{$img_dir}custom-shop-intro/dollars.png?{$var_cache}" alt="Make money" title="Make money" />
-                    </div>
-                    <div class="col-xs-12 padding-0 text-center bold font-size-15">
-                        Publish & collect money
-                    </div>
-                </div>
-                <div class="clearfix"></div>
             </div>
         </div>
-    </a>
+    </div>
     <div class="col-xs-12 padding-0 margin-top-10">
-        <div class="col-xs-12 text-center font-size-24 margin-bottom-20 padding-10 background-light">
+        <div class="col-xs-12 text-center font-size-20 margin-bottom-20 padding-10 border background-light">
             They trusted  us:
         </div>
         <div class="col-xs-12 padding-0">

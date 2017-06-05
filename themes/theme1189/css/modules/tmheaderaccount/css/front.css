@@ -1,6 +1,5 @@
 #header-login {
-  position: relative;
-  float: right; }
+  position: relative; }
   #header-login .header_user_info {
     float: right;
     line-height: 14px; }
@@ -31,14 +30,17 @@
 #header-login-content {
   display: none;
   width: 270px;
-  padding: 5px;
+  height: auto !important;
+  padding: 10px;
   margin: 0;
   position: absolute;
   right: 10px;
   top: 43px;
+  right: -60px;
   z-index: 1;
   background: #fff;
   color: #888;
+  border: 1px solid #eee;
   box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15); }
   #header-login-content label {

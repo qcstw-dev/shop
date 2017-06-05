@@ -1,3 +1,7 @@
+@font-face {
+    font-family: comili;
+    src: url(../fonts/Comili-Book.otf) format("opentype");
+}
 @charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -4180,10 +4184,6 @@ sup, .required {
 #header {
     z-index: 5003;
 }
-#header .background{
-    background: url('../img/header-background.jpg') no-repeat -57px 0;
-}
-
 .columns-container {
     background: white; }
 
@@ -7516,15 +7516,29 @@ ul.step a:hover:after {
 .sf-menu {
 }
 .row-title {
+    font-family: 'comili';
     text-align: center;
-    border-bottom: 2px solid #ccc;
-    border-top: 2px solid #ccc;
-    padding: 5px;
-    /* background: #ff9800; */
-    color: #777777;
-    font-size: 25px;
-    font-weight: normal;
-    /* text-transform: uppercase; */
+    border-bottom: 1px solid #ccc;
+    margin-top: 20px;
+    color: #666;
+    font-weight: bold;
+    font-size: 35px;
+}
+/*.row-title:before, .row-title:after {
+    content: '';
+    position: absolute;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 38px;
+    width: 100%;   
+    background: #eee;
+    margin-top: -7px;
+}*/
+.row-title:before {
+    left: 98%;
+}
+.row-title:after {
+    right: 98%;
 }
 .primary-color {
     color: #4267b2;
@@ -7598,9 +7612,10 @@ ul.step a:hover:after {
     width: 270px;
 }
 .slogan {
-    margin-top: 50px;
-    line-height: 2em;
+    font-family: 'comili';
+    margin-top: 55px;
     font-size: 25px;
+    font-weight: bold;
     font-style: italic;
     color: #4267b2;
     float: left;
@@ -7723,31 +7738,33 @@ ul.step a:hover:after {
 }
 /**************** ICONS HEADER **********************/
 .icons {
-    float: right;
-    width: 300px;
-    padding-top: 8px;
+    right: 0;
+    width: 200px;
+    bottom: 0;
+    position: absolute;
+    margin-bottom: 70px;
 }
 .icons .icon {
     position: relative;
-    float: right;
+    float: left;
     background: #fff;
     border-radius: 50px;
-    border: 2px solid #9E9E9E;
-    padding: 10px;
-    color: #9E9E9E;
+    border: 1px solid #4267b2;
+    padding: 11px;
+    color: #4267b2;
     cursor: pointer;
     margin-bottom: 7px;
-    margin-right: 20px;
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
 }
 .icons .icon-hover {
     width: 100%;
 }
 .icons .icon>a,
 .icons .icon>a:hover{
-    color: #9E9E9E;
+    color: #4267b2;
 }
 .icons .icon-hover .icon-sign,
 .icons .icon-hover .glyphicon{
@@ -7758,24 +7775,34 @@ ul.step a:hover:after {
 }
 .icons .icon-currency{
     padding: 0;
-    padding-top: 11px;
+    padding-top: 10px;
     text-align: center;
 }
 .icons .icon .icon-sign-3,
 .icons .icon .icon-sign-4 {
-    font-size: 15px;
+    font-size: 12px;
 }
 .icons .icon .icon-sign-1{
-    font-size: 24px;
+    font-size: 20px;
 }
 .icons .icon-hover .icon-sign {
     padding-left: 5px;
 }
-.icons .icon #search_block_top {
-    float: right;
-    margin-right: 4px;
-    margin-top: -4px;
+.icons .icon .icon-content.hovered {
+    display: block !important;
+}
+.icons .icon .icon-content {
+    width: 257px;
+    top: 40px;
+    background: #fff;
+    border: 1px solid #eee;
+    z-index: 9;
+    padding: 10px;
+    left: -100px;
+    position: absolute;
     display: none;
+    box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 5px 21px rgba(0, 0, 0, 0.15);
 }
 .icons .icon-hover #search_block_top {
     display: block;
