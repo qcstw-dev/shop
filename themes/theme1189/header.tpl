@@ -131,7 +131,7 @@
                             <div>
                                 <div class="container background">
                                     <div class="row">
-                                        <div id="header_logo" class="margin-right-40">
+                                        <div id="header_logo" class="margin-right-40 padding-left-30">
                                             <a href="{if $force_ssl}{$base_dir_ssl}{else}{$base_dir}{/if}" title="{$shop_name|escape:'html':'UTF-8'}">
                                                 <img class="logo img-responsive" src="{$logo_url}" alt="{$shop_name|escape:'html':'UTF-8'}" width="120" height="120"/>
                                             </a>

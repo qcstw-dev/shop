@@ -47,18 +47,22 @@
     <img class="hidden" src="{$base_uri}img/loader.gif" />
     <div class="container">
         {if $display_top_logo && $page_name != 'customshopsuperadmin'}
-            <div class="col-xs-12 logo-top-container">
-                <img src="{$logo_gift}" title="{$shop_title}" alt="{$shop_title}" />
+            <div class="col-xs-12 padding-left-0 margin-right-30 logo-top-container">
+                <img src="{$logo_gift}" title="{$shop_title}" alt="{$shop_title}" width="150" height="150"/>
                 <div class="slogan">
-                    <span class="primary-color">"</span>{l s='Personalized gifts'}<br /> {l s='for unique memories'}<span class="primary-color">"</span>
+                    <span class="primary-color">"</span>Personalized gifts for unique memories<span class="primary-color">"</span>
+                </div>
+                <div class="">
+                    <a href="{$base_uri}shop/{$custom_shop_name}" target="_blank" class="btn btn-warning btn-lg margin-bottom-10 pull-right"><span class="glyphicon glyphicon-globe"></span> Visit your shop</a>
+                    <div class="open-video pull-right color-primary bold cursor-pointer margin-top-20 margin-bottom-10 margin-right-20"><span class="glyphicon glyphicon-question-sign"></span> Need help ?</div>
                 </div>
             </div>
         {/if}
         {if $is_super_admin && $page_name == 'customshopsuperadmin'}
-            <div class="col-xs-12 margin-top-10">
+            <div class="pull-right margin-top-20">
                 <form method="post"><input type="hidden" name="disconnect"><button class="btn btn-danger pull-right" type="submit"><span class="glyphicon glyphicon-log-out"></span> Log out</button></form>
             </div>
         {/if}
     </div>
     <div class="{if $page_name != 'customshopsuperadmin'}container{/if}">
-        <div class="col-xs-12 padding-0 padding-top-10">
+        <div class="col-xs-12 padding-0">
