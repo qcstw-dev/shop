@@ -45,6 +45,11 @@ class DispatcherCore
      * @var array List of default routes
      */
     public $default_routes = array(
+        'sitemap_auto' => array(
+            'controller' =>    'sitemapauto',
+            'rule' =>        'sitemap-auto',
+            'keywords' => array(),
+        ),
         'mobile' => array(
             'controller' =>    'mobilehome',
             'rule' =>        'mobile',
