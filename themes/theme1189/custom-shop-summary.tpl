@@ -22,7 +22,7 @@
                     </div>
                     <div class="row margin-top-5">
                         <div class="col-xs-6 padding-right-0 col-sm-2 bold underline">{l s="Unit price"}:</div>
-                        <div class="col-xs-5 padding-left-40 bold unit_product_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}">
+                        <div class="col-xs-5 bold unit_product_{$product.id_product}_{$product.custom_picture}_{$product.id_customized_prod}">
                             <del class="price_without_quantity_discount">
                                 {if $product.price != $product.price_without_reduction}
                                     {displayWtPrice p="`$product.price_without_reduction`"}

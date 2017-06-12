@@ -265,10 +265,10 @@
   position: absolute;
   display: none;
   z-index: 99;
-  width: 84%;
+  width: 400%;
+  left: -350%;
   margin-right: 8%;
   margin-left: 8%;
-  left: 0;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px; }
