@@ -1,0 +1,56 @@
+*ERROR* 	2017/03/30 - 21:52:16: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, cat' at line 6<br /><br /><pre>
+			SELECT *
+			FROM `ps_category` c
+			 INNER JOIN ps_category_shop category_shop
+		ON (category_shop.id_category = c.id_category AND category_shop.id_shop = 1)
+			LEFT JOIN `ps_category_lang` cl ON c.`id_category` = cl.`id_category` AND cl.id_shop = 1 
+			WHERE 1 AND c.`id_parent` = 45 AND c.`id_category` IN () AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, category_shop.`position` ASC
+			</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/30 - 21:53:05: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, cat' at line 6<br /><br /><pre>
+			SELECT *
+			FROM `ps_category` c
+			 INNER JOIN ps_category_shop category_shop
+		ON (category_shop.id_category = c.id_category AND category_shop.id_shop = 1)
+			LEFT JOIN `ps_category_lang` cl ON c.`id_category` = cl.`id_category` AND cl.id_shop = 1 
+			WHERE 1 AND c.`id_parent` = 45 AND c.`id_category` IN () AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, category_shop.`position` ASC
+			</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/30 - 21:53:51: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, cat' at line 6<br /><br /><pre>
+			SELECT *
+			FROM `ps_category` c
+			 INNER JOIN ps_category_shop category_shop
+		ON (category_shop.id_category = c.id_category AND category_shop.id_shop = 1)
+			LEFT JOIN `ps_category_lang` cl ON c.`id_category` = cl.`id_category` AND cl.id_shop = 1 
+			WHERE 1 AND c.`id_parent` = 45 AND c.`id_category` IN () AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, category_shop.`position` ASC
+			</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/30 - 21:54:05: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, cat' at line 6<br /><br /><pre>
+			SELECT *
+			FROM `ps_category` c
+			 INNER JOIN ps_category_shop category_shop
+		ON (category_shop.id_category = c.id_category AND category_shop.id_shop = 1)
+			LEFT JOIN `ps_category_lang` cl ON c.`id_category` = cl.`id_category` AND cl.id_shop = 1 
+			WHERE 1 AND c.`id_parent` = 45 AND c.`id_category` IN () AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, category_shop.`position` ASC
+			</pre> at line 791 in file classes/db/Db.php

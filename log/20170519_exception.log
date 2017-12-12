@@ -1,0 +1,24 @@
+*ERROR* 	2017/05/19 - 00:12:37: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/05/19 - 00:12:53: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/05/19 - 03:00:06: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_design`
+                WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/05/19 - 03:00:18: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_design`
+                WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/05/19 - 03:03:24: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_design`
+                WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/05/19 - 03:03:27: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_design`
+                WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php

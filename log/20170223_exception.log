@@ -1,0 +1,37 @@
+*ERROR* 	2017/02/23 - 02:56:12: Unknown column 'cp.id' in 'on clause'<br /><br /><pre>
+		SELECT *
+		FROM `ps_orders` o
+                LEFT JOIN `ps_cart_product` cp
+                    ON cp.`id` = o.`id_cart`
+                LEFT JOIN `ps_custom_shop_customized_prod` cscp
+                    ON cscp.`id` = cp.`id_customized_prod`
+		WHERE cscp.`id_shop` = 3</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/23 - 03:09:34: Unknown column 'o.quantity' in 'field list'<br /><br /><pre>
+		SELECT *, SUM(o.`quantity`)
+		FROM `ps_orders` o
+                LEFT JOIN `ps_cart_product` cp
+                    ON cp.`id_cart` = o.`id_cart`
+                LEFT JOIN `ps_custom_shop_customized_prod` cscp
+                    ON cscp.`id` = cp.`id_customized_prod`
+		WHERE cscp.`id_shop` = 3</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/23 - 03:26:07: Unknown column 'o.id' in 'group statement'<br /><br /><pre>
+		SELECT *, count(cp.quantity)
+		FROM `ps_orders` o, `ps_cart_product` cp, `ps_custom_shop_customized_prod` cscp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND cscp.`id` = cp.`id_customized_prod`
+		AND cscp.`id_shop` = 3 GROUP BY o.`id`</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/23 - 04:41:32: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*
+		FROM `ps_orders` o, `ps_cart_product` cp, `ps_custom_shop_customized_prod` c' at line 1<br /><br /><pre>
+		SELECT o.`id_order`, *
+		FROM `ps_orders` o, `ps_cart_product` cp, `ps_custom_shop_customized_prod` cscp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND cscp.`id` = cp.`id_customized_prod`
+		AND cscp.`id_shop` = 6 GROUP BY cscp.`id`</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/23 - 22:11:56: Unknown column 'id' in 'where clause'<br /><br /><pre>
+		SELECT *
+		FROM `ps_product`
+		WHERE `id` = 470 LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/23 - 22:37:31: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_address`
+		WHERE `id_address` = LIMIT 1</pre> at line 791 in file classes/db/Db.php

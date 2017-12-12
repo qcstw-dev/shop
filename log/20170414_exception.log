@@ -1,0 +1,14 @@
+*ERROR* 	2017/04/14 - 02:50:01: Unknown column 'cscp.id' in 'where clause'<br /><br /><pre>
+		SELECT o.*, cp.*
+		FROM `ps_orders` o, `ps_cart_product` cp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND o.`valid` = 1
+                AND cscp.`id` = cp.`id_customized_prod`
+		AND cscp.`id_shop` = 13 ORDER BY o.`id_order` DESC</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/04/14 - 03:22:55: Unknown column 'cscp.id' in 'where clause'<br /><br /><pre>
+		SELECT o.*, cp.*
+		FROM `ps_orders` o, `ps_cart_product` cp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND o.`valid` = 1
+                AND cscp.`id` = cp.`id_customized_prod`
+		AND cp.`id_shop` = 13 ORDER BY o.`id_order` DESC</pre> at line 791 in file classes/db/Db.php

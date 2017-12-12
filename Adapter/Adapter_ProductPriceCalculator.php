@@ -43,7 +43,9 @@ class Adapter_ProductPriceCalculator
         $with_ecotax = true,
         $use_group_reduction = true,
         Context $context = null,
-        $use_customer_price = true
+        $use_customer_price = true,
+        $custom_picture = null,
+        $id_customized_prod = null
     ) {
         return Product::getPriceStatic(
             $id_product,
@@ -62,7 +64,9 @@ class Adapter_ProductPriceCalculator
             $with_ecotax,
             $use_group_reduction,
             $context,
-            $use_customer_price
+            $use_customer_price,
+            $custom_picture,
+            $id_customized_prod
         );
     }
 }

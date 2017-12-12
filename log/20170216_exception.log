@@ -1,0 +1,4 @@
+*ERROR* 	2017/02/16 - 22:36:21: Unknown column 'NaN' in 'where clause'<br /><br /><pre>SELECT cp.`quantity` FROM `ps_cart_product` cp
+			WHERE cp.`id_product` = 514
+			AND cp.`id_product_attribute` = 0
+			AND cp.`id_cart` = 204 AND cp.`id_customized_prod` = NaN LIMIT 1</pre> at line 791 in file classes/db/Db.php

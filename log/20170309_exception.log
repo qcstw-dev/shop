@@ -1,0 +1,6 @@
+*ERROR* 	2017/03/09 - 01:06:22: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1<br /><br /><pre>UPDATE `ps_orders` SET `id_billing` = '15',`status` = '5' WHERE `id_order` IN ()</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/09 - 03:43:31: Unknown column 's.deactivated' in 'field list'<br /><br /><pre>
+		SELECT s.`deactivated`
+		FROM `ps_custom_shop` cs, `ps_custom_shop_account` csa
+                WHERE cs.`id_account` = csa.`id`
+		AND csa.`email` = 'maxime@qcsasia.com' LIMIT 1</pre> at line 791 in file classes/db/Db.php

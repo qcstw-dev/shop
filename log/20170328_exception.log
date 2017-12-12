@@ -1,0 +1,97 @@
+*ERROR* 	2017/03/28 - 00:11:39: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY o.`id_order` DESC' at line 6<br /><br /><pre>
+		SELECT o.*, cp.*
+		FROM `ps_orders` o, `ps_cart_product` cp, `ps_custom_shop_customized_prod` cscp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND o.`valid` = 1
+                AND cscp.`id` = cp.`id_customized_prod`
+		AND cscp.`id_shop` =  ORDER BY o.`id_order` DESC</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/28 - 00:12:34: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY o.`id_order` DESC' at line 6<br /><br /><pre>
+		SELECT o.*, cp.*
+		FROM `ps_orders` o, `ps_cart_product` cp, `ps_custom_shop_customized_prod` cscp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND o.`valid` = 1
+                AND cscp.`id` = cp.`id_customized_prod`
+		AND cscp.`id_shop` =  ORDER BY o.`id_order` DESC</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/28 - 00:14:06: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY o.`id_order` DESC' at line 6<br /><br /><pre>
+		SELECT o.*, cp.*
+		FROM `ps_orders` o, `ps_cart_product` cp, `ps_custom_shop_customized_prod` cscp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND o.`valid` = 1
+                AND cscp.`id` = cp.`id_customized_prod`
+		AND cscp.`id_shop` =  ORDER BY o.`id_order` DESC</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/28 - 00:14:52: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY o.`id_order` DESC' at line 6<br /><br /><pre>
+		SELECT o.*, cp.*
+		FROM `ps_orders` o, `ps_cart_product` cp, `ps_custom_shop_customized_prod` cscp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND o.`valid` = 1
+                AND cscp.`id` = cp.`id_customized_prod`
+		AND cscp.`id_shop` =  ORDER BY o.`id_order` DESC</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/28 - 03:39:46: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, cat' at line 6<br /><br /><pre>
+			SELECT *
+			FROM `ps_category` c
+			 INNER JOIN ps_category_shop category_shop
+		ON (category_shop.id_category = c.id_category AND category_shop.id_shop = 1)
+			LEFT JOIN `ps_category_lang` cl ON c.`id_category` = cl.`id_category` AND cl.id_shop = 1 
+			WHERE 1 AND `id_parent` = 45 AND `id` = () AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, category_shop.`position` ASC
+			</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/28 - 03:41:13: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, cat' at line 6<br /><br /><pre>
+			SELECT *
+			FROM `ps_category` c
+			 INNER JOIN ps_category_shop category_shop
+		ON (category_shop.id_category = c.id_category AND category_shop.id_shop = 1)
+			LEFT JOIN `ps_category_lang` cl ON c.`id_category` = cl.`id_category` AND cl.id_shop = 1 
+			WHERE 1 AND `id_parent` = 45 AND `id` = () AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, category_shop.`position` ASC
+			</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/28 - 03:42:59: Unknown column 'id' in 'where clause'<br /><br /><pre>
+			SELECT *
+			FROM `ps_category` c
+			 INNER JOIN ps_category_shop category_shop
+		ON (category_shop.id_category = c.id_category AND category_shop.id_shop = 1)
+			LEFT JOIN `ps_category_lang` cl ON c.`id_category` = cl.`id_category` AND cl.id_shop = 1 
+			WHERE 1 AND `id_parent` = 45 AND `id` = (51,50) AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, category_shop.`position` ASC
+			</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/28 - 03:43:12: Unknown column 'id' in 'where clause'<br /><br /><pre>
+			SELECT *
+			FROM `ps_category` c
+			 INNER JOIN ps_category_shop category_shop
+		ON (category_shop.id_category = c.id_category AND category_shop.id_shop = 1)
+			LEFT JOIN `ps_category_lang` cl ON c.`id_category` = cl.`id_category` AND cl.id_shop = 1 
+			WHERE 1 AND `id_parent` = 45 AND `id` IN (51,50) AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, category_shop.`position` ASC
+			</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/28 - 03:43:34: Column 'id_category' in where clause is ambiguous<br /><br /><pre>
+			SELECT *
+			FROM `ps_category` c
+			 INNER JOIN ps_category_shop category_shop
+		ON (category_shop.id_category = c.id_category AND category_shop.id_shop = 1)
+			LEFT JOIN `ps_category_lang` cl ON c.`id_category` = cl.`id_category` AND cl.id_shop = 1 
+			WHERE 1 AND `id_parent` = 45 AND `id_category` IN (51,50) AND `id_lang` = 1
+			AND `active` = 1
+			
+			ORDER BY c.`level_depth` ASC, category_shop.`position` ASC
+			</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/28 - 04:42:54: Unknown column 'Array' in 'where clause'<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_customized_prod` csp , ps_category_product as cp
+		WHERE `id_shop` = 6 AND csp.`published` = 1 AND csp.`id_product` = cp.`id_product` AND cp.`id_category` IN (Array)</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/28 - 04:43:38: Unknown column 'Array' in 'where clause'<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_customized_prod` csp , ps_category_product as cp
+		WHERE `id_shop` = 6 AND csp.`published` = 1 AND csp.`id_product` = cp.`id_product` AND cp.`id_category` IN (Array)</pre> at line 791 in file classes/db/Db.php

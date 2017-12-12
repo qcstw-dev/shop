@@ -1,0 +1,5 @@
+*ERROR* 	2017/02/09 - 22:34:40: Unknown column 'id_product' in 'where clause'<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = 78
+		AND `id_product` = 514 LIMIT 1</pre> at line 791 in file classes/db/Db.php

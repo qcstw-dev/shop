@@ -1,0 +1,13 @@
+*ERROR* 	2017/01/19 - 04:33:41: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@gmail.com LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `id_customer`
+		FROM `ps_customer`
+		WHERE `email` = maxime.lefevre89@gmail.com LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/01/19 - 04:35:00: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@gmail.com LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `id`
+		FROM `ps_custom_shop_account`
+		WHERE `email` = maxime.lefevre89@gmail.com LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/01/19 - 04:55:49: Identifier or table format not valid for class CustomShopAccount at line 208 in file classes/ObjectModel.php
+*ERROR* 	2017/01/19 - 22:43:34: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@gmail.com LIMIT 1' at line 3<br /><br /><pre>
+		SELECT id
+		FROM `ps_custom_shop_account`
+		WHERE `email` = maxime.lefevre89@gmail.com LIMIT 1</pre> at line 791 in file classes/db/Db.php

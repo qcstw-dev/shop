@@ -1,0 +1,37 @@
+*ERROR* 	2016/08/25 - 03:48:08: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY od.product_quantity, cp.custom_picture' at line 9<br /><br /><pre>
+		SELECT *
+		FROM `ps_order_detail` od
+		LEFT JOIN `ps_product` p
+		ON p.id_product = od.product_id
+		LEFT JOIN `ps_product_shop` ps ON (ps.id_product = p.id_product AND ps.id_shop = od.id_shop)
+                LEFT JOIN `ps_orders` o ON (o.id_order = od.id_order AND o.id_shop = od.id_shop)
+                LEFT JOIN `ps_cart_product` cp ON (o.id_cart = cp.id_cart and od.product_quantity = cp.quantity)
+		WHERE od.`id_order` = 12
+		 AND od.`id_order_invoice` = 1 ORDER BY od.`product_name` GROUP BY od.product_quantity, cp.custom_picture</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/25 - 03:49:01: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BY od.`product_name`' at line 9<br /><br /><pre>
+		SELECT *
+		FROM `ps_order_detail` od
+		LEFT JOIN `ps_product` p
+		ON p.id_product = od.product_id
+		LEFT JOIN `ps_product_shop` ps ON (ps.id_product = p.id_product AND ps.id_shop = od.id_shop)
+                LEFT JOIN `ps_orders` o ON (o.id_order = od.id_order AND o.id_shop = od.id_shop)
+                LEFT JOIN `ps_cart_product` cp ON (o.id_cart = cp.id_cart and od.product_quantity = cp.quantity)
+		WHERE od.`id_order` = 12
+		 AND od.`id_order_invoice` = 1 GROUP BY od.product_quantity, cp.custom_pictureORDER BY od.`product_name`</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/25 - 03:49:29: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY od.product_quantity, cp.custom_picture' at line 9<br /><br /><pre>
+		SELECT *
+		FROM `ps_order_detail` od
+		LEFT JOIN `ps_product` p
+		ON p.id_product = od.product_id
+		LEFT JOIN `ps_product_shop` ps ON (ps.id_product = p.id_product AND ps.id_shop = od.id_shop)
+                LEFT JOIN `ps_orders` o ON (o.id_order = od.id_order AND o.id_shop = od.id_shop)
+                LEFT JOIN `ps_cart_product` cp ON (o.id_cart = cp.id_cart and od.product_quantity = cp.quantity)
+		WHERE od.`id_order` = 12
+		 AND od.`id_order_invoice` = 1 ORDER BY od.`product_name` GROUP BY od.product_quantity, cp.custom_picture</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/08/25 - 06:04:30: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY `date_add`
+                GROUP BY od.product_quantity, cp.custom_pict' at line 4<br /><br /><pre>
+		SELECT *
+		FROM `ps_cart_product`
+		WHERE 
+                    ORDER BY `date_add`
+                GROUP BY od.product_quantity, cp.custom_picture</pre> at line 791 in file classes/db/Db.php

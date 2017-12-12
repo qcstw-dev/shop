@@ -1,0 +1,24 @@
+*ERROR* 	2017/03/05 - 21:06:21: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		SELECT o.*, cp.*
+		FROM `ps_orders` o, `ps_cart_product` cp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND cp.`id_customized_prod` != 0
+		AND o.`id_billing` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/05 - 21:08:36: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		SELECT o.*, cp.*
+		FROM `ps_orders` o, `ps_cart_product` cp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND cp.`id_customized_prod` != 0
+		AND o.`id_billing` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/05 - 21:11:15: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		SELECT o.*, cp.*
+		FROM `ps_orders` o, `ps_cart_product` cp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND cp.`id_customized_prod` != 0
+		AND o.`id_billing` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/05 - 21:13:20: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		SELECT o.*, cp.*
+		FROM `ps_orders` o, `ps_cart_product` cp
+                WHERE cp.`id_cart` = o.`id_cart`
+                AND cp.`id_customized_prod` != 0
+		AND o.`id_billing` = </pre> at line 791 in file classes/db/Db.php

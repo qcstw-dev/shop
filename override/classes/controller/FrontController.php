@@ -63,15 +63,9 @@ class FrontController extends FrontControllerCore {
         $cookie_video = new CookieCore('popup_video');
         
         $oMobile = new Mobile_Detect();
-
-        if (!$this->context->cookie->iframe && isset($_GET['iframe'])) {
-            $this->context->cookie->__set('iframe', 1);
-        } else if ($this->context->cookie->iframe && strpos($_SERVER['HTTP_REFERER'], 'giftattitude') == false) {
-            $this->context->cookie->__set('iframe', 0);
-        }
+//        var_dump(time());
         $this->context->smarty->assign(array(
-            'var_cache' => '1495188317',
-            'is_iframe' =>  $this->context->cookie->iframe,
+            'var_cache' => '1496479756',
             'is_mobile' => $oMobile->isMobile(),
             'is_tablet' => $oMobile->isTablet(),
             'is_mobile_or_tablet' => $oMobile->isMobile() || $oMobile->isTablet(),

@@ -1,0 +1,14 @@
+*ERROR* 	2017/03/23 - 04:33:17: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4<br /><br /><pre>
+               DELETE cp FROM ps_cart_product cp 
+                LEFT JOIN ps_orders orders ON orders.id_cart = cp.id_cart 
+                WHERE orders.id_cart IS NULL
+                AND cp.id_customized_prod = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/23 - 04:33:23: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4<br /><br /><pre>
+               DELETE cp FROM ps_cart_product cp 
+                LEFT JOIN ps_orders orders ON orders.id_cart = cp.id_cart 
+                WHERE orders.id_cart IS NULL
+                AND cp.id_customized_prod = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/23 - 21:31:18: Unknown column 'undefined' in 'where clause'<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop`
+		WHERE `id` = undefined LIMIT 1</pre> at line 791 in file classes/db/Db.php

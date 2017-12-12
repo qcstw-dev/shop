@@ -1,0 +1,4 @@
+*ERROR* 	2017/01/25 - 01:40:17: Unknown column '$db_id' in 'where clause'<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_design`
+		WHERE `id` = $db_id LIMIT 1</pre> at line 791 in file classes/db/Db.php

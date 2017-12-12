@@ -1,0 +1,160 @@
+*ERROR* 	2017/02/15 - 03:00:50: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 03:01:08: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 04:06:05: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 21:50:38: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 22:40:26: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 24
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		AND `id_address_delivery` = 1487216390 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 22:54:48: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 24
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		AND `id_address_delivery` = 1487217102 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:01:16: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 24
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		AND `id_address_delivery` = 1487217217 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:03:02: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:07:16: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:07:57: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:09:00: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:09:37: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:10:04: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:11:35: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:12:29: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:13:23: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:14:21: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:14:34: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:14:44: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:14:57: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:15:08: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:17:09: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:19:33: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:22:53: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:23:15: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:24:11: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 514
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:24:29: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 24
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		AND `id_address_delivery` = 1487217217 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/15 - 23:26:23: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 5<br /><br /><pre>
+		DELETE FROM `ps_cart_product`
+		WHERE `id_product` = 24
+		 AND `id_product_attribute` = 0
+		AND `id_cart` = 201
+		AND `id_address_delivery` = 1487217217 AND `id_customized_prod` = </pre> at line 791 in file classes/db/Db.php

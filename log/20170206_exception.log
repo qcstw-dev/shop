@@ -1,0 +1,1 @@
+*ERROR* 	2017/02/06 - 01:14:58: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1<br /><br /><pre>DELETE FROM `ps_custom_shop_design` WHERE id = </pre> at line 791 in file classes/db/Db.php

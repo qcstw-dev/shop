@@ -1,0 +1,21 @@
+*ERROR* 	2017/02/08 - 02:38:24: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_account`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/08 - 02:39:43: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_account`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/08 - 02:40:06: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_account`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/08 - 04:55:59: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's Shop',`motto` = '',`logo` = '1486545757_3_Hydrangeas.jpg',`header` = '14865452' at line 1<br /><br /><pre>UPDATE `ps_custom_shop` SET `name` = 'maxshop',`title` = 'Max's Shop',`motto` = '',`logo` = '1486545757_3_Hydrangeas.jpg',`header` = '1486545233_3_Lighthouse.jpg',`facebook` = '',`twitter` = '',`id_account` = '38' WHERE id = 3</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/08 - 20:33:39: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_customized_prod`
+		WHERE `id_shop` = </pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/08 - 20:36:34: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_design`
+		WHERE `id_shop` = </pre> at line 791 in file classes/db/Db.php

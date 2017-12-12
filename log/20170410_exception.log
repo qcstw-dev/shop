@@ -1,0 +1,35 @@
+*ERROR* 	2017/04/10 - 07:22:08: Table 'shop.ps_shop_url' doesn't exist<br /><br /><pre>SELECT s.id_shop, CONCAT(su.physical_uri, su.virtual_uri) AS uri, su.domain, su.main
+					FROM ps_shop_url su
+					LEFT JOIN ps_shop s ON (s.id_shop = su.id_shop)
+					WHERE (su.domain = 'localhost' OR su.domain_ssl = 'localhost')
+						AND s.active = 1
+						AND s.deleted = 0
+					ORDER BY LENGTH(CONCAT(su.physical_uri, su.virtual_uri)) DESC</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/04/10 - 04:23:19: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/04/10 - 04:23:28: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/04/10 - 04:24:15: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/04/10 - 04:24:35: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/04/10 - 04:25:47: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/04/10 - 04:26:03: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/04/10 - 04:28:39: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php

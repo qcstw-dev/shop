@@ -1,0 +1,24 @@
+*ERROR* 	2017/03/19 - 21:56:53: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `published` = 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_customized_prod`
+		WHERE `id_shop` =  AND `published` = 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/19 - 21:58:17: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `published` = 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_customized_prod`
+		WHERE `id_shop` =  AND `published` = 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/19 - 21:58:31: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `published` = 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_customized_prod`
+		WHERE `id_shop` =  AND `published` = 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/19 - 21:58:59: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `published` = 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_customized_prod`
+		WHERE `id_shop` =  AND `published` = 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/19 - 21:59:20: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `published` = 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_customized_prod`
+		WHERE `id_shop` =  AND `published` = 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/03/19 - 21:59:23: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND `published` = 1' at line 3<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_customized_prod`
+		WHERE `id_shop` =  AND `published` = 1</pre> at line 791 in file classes/db/Db.php

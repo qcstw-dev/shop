@@ -1,0 +1,8 @@
+*ERROR* 	2017/02/17 - 22:12:37: Unknown column 'undefined' in 'where clause'<br /><br /><pre>
+		SELECT *
+		FROM `ps_custom_shop_customized_prod`
+		WHERE `id` = undefined LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/17 - 23:22:40: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 3<br /><br /><pre>
+		SELECT `price`
+		FROM `ps_custom_shop_design`
+		WHERE `id` = LIMIT 1</pre> at line 791 in file classes/db/Db.php

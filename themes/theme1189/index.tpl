@@ -210,6 +210,10 @@
             </div>
         </div>
     </div>
+    <div class="col-xs-12 margin-top-20 text-right">
+        <hr>
+        Website designed by <a href="https://www.pineapple-web.com" class="text-underline color-primary" target="_blank">Pineapple Web - Web & digital marketing agency</a>
+    </div>
     {*{if $aProducts}
     <h4 class="row-title font-size-20">{l s='Latest product available'}</h4>
     {include file="./product-list.tpl" products=$aProducts home_category='products'}

@@ -1,0 +1,7 @@
+*ERROR* 	2017/02/14 - 03:08:26: Unknown column 'id_customized_product' in 'field list'<br /><br /><pre>INSERT INTO `ps_cart_product` (`id_product`, `id_product_attribute`, `id_cart`, `id_address_delivery`, `id_shop`, `quantity`, `date_add`, `id_design`, `custom_picture`, `original_picture`, `id_customized_product`, `design_price`, `product_price`) VALUES ('470', '0', '0', '0', '1', '1', '2017-02-14 03:08:26', '0', 'toto', '', '2', '5', '4.4')</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/14 - 03:13:07: Property Cart->id_currency is empty at line 909 in file classes/ObjectModel.php
+*ERROR* 	2017/02/14 - 23:09:29: Unknown column 'cp.id_customized_pro' in 'where clause'<br /><br /><pre>SELECT cp.`quantity` FROM `ps_cart_product` cp
+			WHERE cp.`id_product` = 514
+			AND cp.`id_product_attribute` = 0
+			AND cp.`id_cart` = 200 AND cp.`id_customized_pro` = 15 LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2017/02/14 - 23:10:58: Duplicate entry '200-514-0-' for key 'PRIMARY'<br /><br /><pre>INSERT INTO `ps_cart_product` (`id_product`, `id_product_attribute`, `id_cart`, `id_address_delivery`, `id_shop`, `quantity`, `date_add`, `id_design`, `custom_picture`, `original_picture`, `id_customized_prod`, `design_price`, `product_price`) VALUES ('514', '0', '200', '0', '1', '1', '2017-02-14 23:10:58', '0', '', '', '15', '5', '6.19')</pre> at line 791 in file classes/db/Db.php

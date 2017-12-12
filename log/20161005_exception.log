@@ -1,0 +1,16 @@
+*ERROR* 	2016/10/05 - 22:25:32: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'product_shop.`date_add` > "2016-09-25" AND product_shop.`visibility` IN ("both",' at line 5<br /><br /><pre>SELECT COUNT(p.`id_product`) AS nb
+					FROM `ps_product` p
+					 INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+					WHERE product_shop.`active` = 1AND product_shop.`date_add` > "2016-09-25" AND product_shop.`visibility` IN ("both", "catalog")
+					 AND EXISTS(SELECT 1 FROM `ps_category_product` cp
+				JOIN `ps_category_group` cg ON (cp.id_category = cg.id_category AND cg.`id_group` = 1)
+				WHERE cp.`id_product` = p.`id_product`) LIMIT 1</pre> at line 791 in file classes/db/Db.php
+*ERROR* 	2016/10/05 - 22:34:17: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 8<br /><br /><pre>SELECT COUNT(p.`id_product`) AS nb
+					FROM `ps_product` p
+					 INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+					WHERE product_shop.`active` = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					 AND EXISTS(SELECT 1 FROM `ps_category_product` cp
+				JOIN `ps_category_group` cg ON (cp.id_category = cg.id_category AND cg.`id_group` = 1)
+				WHERE cp.`id_product` = p.`id_product`) limit 10 LIMIT 1</pre> at line 791 in file classes/db/Db.php
